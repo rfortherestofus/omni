@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i,900');
+
+body {
+  font-family: "Lato", Arial, serif;
+}
+
+h1 {
+  font-size: 24pt;
+  background-color: #314160;
+  color: #ffffff;
+  padding: 5pt;
+}
+
+.subtitle {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+/* DK: Adjust title text so it is bigger and doesn't have background */
+
+.title {
+  font-size: 36pt;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+h2 {
+  font-size: 18pt;
+  font-weight: 900;
+}
+
+h3 {
+  font-size: 14pt;
+  font-weight: 700;
+  color: #304160;
+}
+
+h4 {
+  font-size: 11pt;
+  color: #333333;
+}
+
+p {
+  font-size: 12pt;
+}
+
+
