@@ -19,6 +19,41 @@ output:
     self_contained: TRUE
     number_sections: FALSE
     css: ["omni-fonts.css", "omni-page.css", "default"]
+abstract: >-
+  <!-- ![](omni-logo-horizontal.svg) -->
+  
+  ## `r rmarkdown::metadata$title` 
+  
+  ## `r rmarkdown::metadata$subtitle`
+  
+  Submitted to: 
+  
+  `r rmarkdown::metadata$client_name`
+  
+  `r rmarkdown::metadata$client_organization`
+  
+  `r rmarkdown::metadata$report_month` `r rmarkdown::metadata$report_year`
+  
+  Author(s): `r rmarkdown::metadata$report_authors`
+  
+  Project Team: `r rmarkdown::metadata$project_team`
+  
+  
+  For More Information:
+  
+  Project Code: `r rmarkdown::metadata$project_code`
+  
+  projects@omni.org
+  
+  
+  Acknowledgements:
+  
+  The OMNI Institute wants to thank `r rmarkdown::metadata$acknowledgements` for their contributions to the creation of this report.
+  
+  
+  Suggested Citation:
+  
+  The OMNI Institute (`r rmarkdown::metadata$report_year`). `r rmarkdown::metadata$title`. Submitted to `r rmarkdown::metadata$client_organization`, `r rmarkdown::metadata$client_city`, `r rmarkdown::metadata$client_state`
 ---
 
 ```{r setup, include=FALSE}
@@ -27,44 +62,6 @@ library(tidyverse)
 library(devtools)
 load_all()
 ```
-
-<div class="omni-secondary-cover-page">
-![](omni-logo-horizontal.svg)
-
-## `r rmarkdown::metadata$title` 
-
-## `r rmarkdown::metadata$subtitle`
-
-Submitted to: 
-
-`r rmarkdown::metadata$client_name`
-
-`r rmarkdown::metadata$client_organization`
-
-`r rmarkdown::metadata$report_month` `r rmarkdown::metadata$report_year`
-
-Author(s): `r rmarkdown::metadata$report_authors`
-
-Project Team: `r rmarkdown::metadata$project_team`
-
-
-For More Information:
-
-Project Code: `r rmarkdown::metadata$project_code`
-
-projects@omni.org
-
-
-Acknowledgements:
-
-The OMNI Institute wants to thank `r rmarkdown::metadata$acknowledgements` for their contributions to the creation of this report.
-
-
-Suggested Citation:
-
-The OMNI Institute (`r rmarkdown::metadata$report_year`). `r rmarkdown::metadata$title`. Submitted to `r rmarkdown::metadata$client_organization`, `r rmarkdown::metadata$client_city`, `r rmarkdown::metadata$client_state`
-
-</div>
 
 
 # First Level Header
