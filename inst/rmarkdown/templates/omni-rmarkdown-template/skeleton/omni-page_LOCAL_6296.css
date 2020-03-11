@@ -100,7 +100,7 @@
 }
 
 @page chapter {
- /* background-image: url(colorbar.svg); */
+  background-image: url(colorbar.svg);
   background-position: bottom 0.15in left;
   background-size: contain;
   background-repeat: no-repeat;
@@ -239,26 +239,14 @@ caption {
 
 /* Secondary Cover Page */
 
-div.abstract {
-  margin: 0 0 -1in 0;
+#page-4 {
+  margin: 0 0 0 0;
   background-color: #ffffff;
- /* background-image: url(orange-rectangle.svg); */
+  background-image: url(orange-rectangle.svg);
   background-repeat: no-repeat;
   background-position: left center;
 
 }
 
-div.abstract img {
-  margin: 0 auto;
-  display: block;
-}
 
-/* put the abstract on its own page */
-div.abstract {
-  page-break-before: always;
-}
 
-/* remove the h3 title "Abstract" */
-h3.abstract {
-  display: none;
-}

@@ -226,7 +226,7 @@ caption {
 @page:first{
   margin: 0 0 0 0;
   background-color: #ffffff;
-  background-image: url(blue-cover-sidebar-v2.svg);
+ /* background-image: url(OMNI Report Cover Page Options-03.png); */
   background-repeat: no-repeat;
   background-position: right center;
 }

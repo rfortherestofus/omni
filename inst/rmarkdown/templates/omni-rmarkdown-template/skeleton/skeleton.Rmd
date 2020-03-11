@@ -19,6 +19,41 @@ output:
     self_contained: TRUE
     number_sections: FALSE
     css: ["omni-fonts.css", "omni-page.css", "default"]
+abstract: >-
+  <!-- ![](omni-logo-horizontal.svg) -->
+  
+  ## `r rmarkdown::metadata$title` 
+  
+  ## `r rmarkdown::metadata$subtitle`
+  
+  Submitted to: 
+  
+  `r rmarkdown::metadata$client_name`
+  
+  `r rmarkdown::metadata$client_organization`
+  
+  `r rmarkdown::metadata$report_month` `r rmarkdown::metadata$report_year`
+  
+  Author(s): `r rmarkdown::metadata$report_authors`
+  
+  Project Team: `r rmarkdown::metadata$project_team`
+  
+  
+  For More Information:
+  
+  Project Code: `r rmarkdown::metadata$project_code`
+  
+  projects@omni.org
+  
+  
+  Acknowledgements:
+  
+  The OMNI Institute wants to thank `r rmarkdown::metadata$acknowledgements` for their contributions to the creation of this report.
+  
+  
+  Suggested Citation:
+  
+  The OMNI Institute (`r rmarkdown::metadata$report_year`). `r rmarkdown::metadata$title`. Submitted to `r rmarkdown::metadata$client_organization`, `r rmarkdown::metadata$client_city`, `r rmarkdown::metadata$client_state`
 ---
 
 ```{r setup, include=FALSE}
@@ -28,48 +63,14 @@ library(devtools)
 load_all()
 ```
 
-<div class="omni-secondary-cover-page">
-![](omni-logo-horizontal.svg)
-
-## `r rmarkdown::metadata$title` 
-
-## `r rmarkdown::metadata$subtitle`
-
-Submitted to: 
-
-`r rmarkdown::metadata$client_name`
-
-`r rmarkdown::metadata$client_organization`
-
-`r rmarkdown::metadata$report_month` `r rmarkdown::metadata$report_year`
-
-Author(s): `r rmarkdown::metadata$report_authors`
-
-Project Team: `r rmarkdown::metadata$project_team`
-
-
-For More Information:
-
-Project Code: `r rmarkdown::metadata$project_code`
-
-projects@omni.org
-
-
-Acknowledgements:
-
-The OMNI Institute wants to thank `r rmarkdown::metadata$acknowledgements` for their contributions to the creation of this report.
-
-
-Suggested Citation:
-
-The OMNI Institute (`r rmarkdown::metadata$report_year`). `r rmarkdown::metadata$title`. Submitted to `r rmarkdown::metadata$client_organization`, `r rmarkdown::metadata$client_city`, `r rmarkdown::metadata$client_state`
-
-</div>
-
 
 # First Level Header
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit. Maecenas pharetra convallis posuere morbi leo. Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.
+
+<aside>
+Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.
+</aside>
 
 
 ## Second Level Header

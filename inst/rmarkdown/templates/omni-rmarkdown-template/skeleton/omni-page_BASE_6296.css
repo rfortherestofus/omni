@@ -100,7 +100,7 @@
 }
 
 @page chapter {
- /* background-image: url(colorbar.svg); */
+  background-image: url(colorbar.svg);
   background-position: bottom 0.15in left;
   background-size: contain;
   background-repeat: no-repeat;
@@ -226,7 +226,7 @@ caption {
 @page:first{
   margin: 0 0 0 0;
   background-color: #ffffff;
-  background-image: url(blue-cover-sidebar-v2.svg);
+  background-image: url(OMNI Report Cover Page Options-03.png);
   background-repeat: no-repeat;
   background-position: right center;
 }
@@ -239,26 +239,17 @@ caption {
 
 /* Secondary Cover Page */
 
-div.abstract {
+.omni-secondary-cover-page {
   margin: 0 0 -1in 0;
   background-color: #ffffff;
- /* background-image: url(orange-rectangle.svg); */
+  background-image: url(orange-rectangle.svg);
   background-repeat: no-repeat;
   background-position: left center;
 
 }
 
-div.abstract img {
+.omni-secondary-cover-page img {
   margin: 0 auto;
   display: block;
 }
 
-/* put the abstract on its own page */
-div.abstract {
-  page-break-before: always;
-}
-
-/* remove the h3 title "Abstract" */
-h3.abstract {
-  display: none;
-}
