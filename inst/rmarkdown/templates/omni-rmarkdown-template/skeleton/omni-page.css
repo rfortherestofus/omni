@@ -100,7 +100,7 @@
 }
 
 @page chapter {
-  background-image: url(colorbar.png);
+  background-image: url(colorbar.svg);
   background-position: bottom 0.15in left;
   background-size: contain;
   background-repeat: no-repeat;
@@ -118,10 +118,6 @@
   counter-reset: page;
 }
 
-.title::before {
-  content: url(omni-logo-horizontal.png);
-  height: 1.5in;
-}
 
 /* Front matter*/
 
@@ -222,5 +218,38 @@ caption {
 
 .pull-quote p {
   font-size: 16pt;
+}
+
+
+/* Cover Page */
+
+@page:first{
+  margin: 0 0 0 0;
+  background-color: #ffffff;
+  background-image: url(OMNI Report Cover Page Options-03.png);
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+/* Make title not go onto blue sidebar */
+
+#header {
+  width: 5in;
+}
+
+/* Secondary Cover Page */
+
+.omni-secondary-cover-page {
+  margin: 0 0 -1in 0;
+  background-color: #ffffff;
+  background-image: url(orange-rectangle.svg);
+  background-repeat: no-repeat;
+  background-position: left center;
+
+}
+
+.omni-secondary-cover-page img {
+  margin: 0 auto;
+  display: block;
 }
 
