@@ -60,14 +60,22 @@ a, a:active, a:visited {
 /* aside tags */
 aside {
     width: 40%;
-    padding-left: .5rem;
-    margin-left: .5rem;
     float: right;
-    /* box-shadow: inset 5px 0 5px -5px #29627e; */
-    font-style: italic;
-    color: #29627e;
 }
 
-aside > p {
-    margin: .5rem;
+aside > blockquote {
+  margin: 0 .1in 0 .25in;
 }
+
+aside > blockquote > p {
+    margin: 0in 0 0 .1in;
+    font-size: 16pt;
+}
+
+.quote-author {
+    margin: .1in 0 .1in .1in;
+    font-size: 10pt;
+    text-align: right;
+}
+
+
