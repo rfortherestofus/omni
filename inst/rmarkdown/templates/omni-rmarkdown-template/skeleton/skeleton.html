@@ -18,7 +18,7 @@
 <meta name="description" content="Document Title">
 
 <script id="pandoc-meta" type="application/json">
-{"newpage_html_class":"page-break-after","report_authors":"Authors","client_organization":"Client Organization","report_year":"Report Year","client_city":"Client City","client_name":"Client Name","report_month":"Report Month","subtitle":"Document Subtitle","project_code":"Project Code","output":{"pagedown::html_paged":{"self_contained":true,"toc":true,"css":["omni-fonts.css","omni-page.css","default"],"toc_title":"Contents","number_sections":false}},"project_team":"Project Team","abstract":"<!-- ![](omni-logo-horizontal.svg) -->\n<h2 id=\"document-title\">Document Title</h2>\n<h2 id=\"document-subtitle\">Document Subtitle</h2>\n<p>Submitted to:\nClient Name\nClient Organization\nReport Month Report Year\nAuthor(s): Authors\nProject Team: Project Team</p>\n<p>For More Information:\nProject Code: Project Code\n<a href=\"mailto:projects@omni.org\" class=\"email\">projects@omni.org</a></p>\n<p>Acknowledgements:\nThe OMNI Institute wants to thank Names of People to Thank for their contributions to the creation of this report.</p>\nSuggested Citation:\nThe OMNI Institute (Report Year). Document Title. Submitted to Client Organization, Client City, Client State","knit":"pagedown::chrome_print","title":"Document Title","acknowledgements":"Names of People to Thank","client_state":"Client State"}
+{"newpage_html_class":"page-break-after","report_authors":"Authors","client_organization":"Client Organization","report_year":"Report Year","client_city":"Client City","client_name":"Client Name","report_month":"Report Month","subtitle":"Document Subtitle","project_code":"Project Code","output":{"pagedown::html_paged":{"self_contained":true,"toc":true,"css":["omni-fonts.css","omni-page.css","default"],"toc_title":"Contents","number_sections":false}},"project_team":"Project Team","photo_background":true,"abstract":"<!-- ![](omni-logo-horizontal.svg) -->\n<h2 id=\"document-title\">Document Title</h2>\n<h2 id=\"document-subtitle\">Document Subtitle</h2>\n<p>Submitted to:\nClient Name\nClient Organization\nReport Month Report Year\nAuthor(s): Authors\nProject Team: Project Team</p>\n<p>For More Information:\nProject Code: Project Code\n<a href=\"mailto:projects@omni.org\" class=\"email\">projects@omni.org</a></p>\n<p>Acknowledgements:\nThe OMNI Institute wants to thank Names of People to Thank for their contributions to the creation of this report.</p>\nSuggested Citation:\nThe OMNI Institute (Report Year). Document Title. Submitted to Client Organization, Client City, Client State","knit":"pagedown::chrome_print","title":"Document Title","acknowledgements":"Names of People to Thank","client_state":"Client State"}
 </script>
 
 <title>Document Title</title>
@@ -28557,15 +28557,19 @@ color: #000000;
 
 aside {
 width: 40%;
-padding-left: .5rem;
-margin-left: .5rem;
 float: right;
-
-font-style: italic;
-color: #29627e;
 }
-aside > p {
-margin: .5rem;
+aside > blockquote {
+margin: 0 .1in 0 .25in;
+}
+aside > blockquote > p {
+margin: 0in 0 0 .1in;
+font-size: 16pt;
+}
+.quote-author {
+margin: .1in 0 .1in .1in;
+font-size: 10pt;
+text-align: right;
 }
 </style>
 <style type="text/css">
@@ -28798,11 +28802,16 @@ The OMNI Institute (Report Year). Document Title. Submitted to Client Organizati
 <div id="first-level-header" class="section level1">
 <h1>First Level Header</h1>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit. Maecenas pharetra convallis posuere morbi leo. Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.</p>
-<aside>
-Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.
-</aside>
 <div id="second-level-header" class="section level2">
 <h2>Second Level Header</h2>
+<aside>
+<blockquote>
+<p>Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.</p>
+</blockquote>
+<p class="quote-author">
+– George Washington
+</p>
+</aside>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit. Maecenas pharetra convallis posuere morbi leo. Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.</p>
 <div id="third-level-header" class="section level3">
 <h3>Third Level Header</h3>
