@@ -4,7 +4,7 @@ Title: RMarkdown template, ggplot2 theme, and table function for OMNI Institute
 Version: 0.1.0
 Author: David Keyes
 Maintainer: David Keyes <david@rfortherestofus.com>
-Description: TK
+Description: RMarkdown template, ggplot2 theme, and table function for OMNI Institute.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

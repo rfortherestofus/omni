@@ -58,6 +58,7 @@ omni_pal <- function(palette = "Main", reverse = FALSE, ...) {
 #' @param palette Character name of palette in omni_palettes
 #' @param reverse Boolean indicating whether the palette should be reversed
 #' @param ... Additional arguments passed to discrete_scale()
+#' @rdname scale_omni_discrete
 #'
 scale_colour_omni_discrete <- function(palette = "Main", reverse = FALSE, ...) {
 
@@ -67,8 +68,9 @@ scale_colour_omni_discrete <- function(palette = "Main", reverse = FALSE, ...) {
 
 }
 
-#' @rdname scale_color_omni_discrete
+#' @rdname scale_omni_discrete
 #' @export
+#' @usage NULL
 scale_color_omni_discrete <- scale_colour_omni_discrete
 
 #' Continuous color scale based on OMNI colors
@@ -76,6 +78,7 @@ scale_color_omni_discrete <- scale_colour_omni_discrete
 #' @param palette Character name of palette in omni_palettes
 #' @param reverse Boolean indicating whether the palette should be reversed
 #' @param ... Additional arguments passed to discrete_scale()
+#' @rdname scale_omni_continuous
 #'
 scale_colour_omni_continuous <- function(palette = "Main", reverse = FALSE, ...) {
 
@@ -85,8 +88,9 @@ scale_colour_omni_continuous <- function(palette = "Main", reverse = FALSE, ...)
 
 }
 
-#' @rdname scale_colour_omni_continuous
+#' @rdname scale_omni_continuous
 #' @export
+#' @usage NULL
 scale_color_omni_continuous <- scale_colour_omni_continuous
 
 
@@ -108,7 +112,7 @@ scale_fill_omni_discrete <- function(palette = "Main", reverse = FALSE, ...) {
 
 #' Continuous fill scale based on OMNI colors
 #'
-#' @param palette Character name of palette in omni_palettes
+#' @param palette Character name of palette in omni_palettes. Right now, only "Main" and "Blues" exist.
 #' @param reverse Boolean indicating whether the palette should be reversed
 #' @param ... Additional arguments passed to discrete_scale()
 #'
@@ -119,4 +123,3 @@ scale_fill_omni_continuous <- function(palette = "Main", reverse = FALSE, ...) {
   ggplot2::scale_fill_gradientn(colours = pal(256), ...)
 
 }
-
