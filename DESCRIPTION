@@ -3,7 +3,7 @@ Type: Package
 Title: RMarkdown template, ggplot2 theme, and table function for OMNI Institute
 Version: 0.1.0
 Author: David Keyes
-Maintainer: David Keyes <david@rfortherestofus.com.
+Maintainer: David Keyes <david@rfortherestofus.com>
 Description: TK
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -14,6 +14,7 @@ Imports:
     magrittr,
     flextable,
     officer,
-    pagedown
+    pagedown,
+    stringr
 URL: https://github.com/dgkeyes/omni
 BugReports: https://github.com/dgkeyes/omni/issues

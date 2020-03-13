@@ -17,10 +17,10 @@ df %>%
   flextable::bold(part = "header", bold = TRUE) %>%
   flextable::bold(part = "body", j = 1, bold = TRUE) %>%
   flextable::align(part = "all", align = "center") %>%
-  flextable::bg(part = "header", bg = omni_cols("Dark Blue")) %>%
+  flextable::bg(part = "header", bg = omni_colors("Dark Blue")) %>%
   flextable::color(part = "header", color = "white") %>%
   flextable::color(part = "body", color = "#333333") %>%
-  flextable::bg(part = "body", j = 1, bg = omni_cols("Dark Blue")) %>%
+  flextable::bg(part = "body", j = 1, bg = omni_colors("Dark Blue")) %>%
   flextable::color(part = "body", j = 1, color = "white") %>%
   flextable::height_all(height = 0.4) %>%
   flextable::border_inner(part = "body", border = officer::fp_border(color = "white")) %>%
