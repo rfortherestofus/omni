@@ -16,10 +16,10 @@ knit: pagedown::chrome_print
 output:
   pagedown::html_paged:
     toc: TRUE
-    toc_title: Contents
     self_contained: TRUE
     number_sections: FALSE
-    css: ["omni-fonts.css", "omni-page.css", "default"]
+    css: ["omni-fonts.css", "omni-page.css", "default.css"]
+toc-title: "Table of Contents"
 abstract: >-
   <img class = "omni_logo_abstract" src = "omni-logo-horizontal.svg">
   <img class = "orange_rect_abstract" src = "orange-rectangle.svg">
@@ -111,6 +111,22 @@ mtcars %>%
   omni_table() %>% 
   flextable::set_caption("Test")
 ```
+
+# An other first level header
+
+Bla bla bla
+
+## With second level 1
+
+### And third level A
+
+## And second level 2 with a very very very very long title
+
+### And third level A
+
+### And third level C
+
+## And second level 3
 
 
 

@@ -35,24 +35,10 @@ a[href^="http"]:not([class="uri"])::after {
 }
 
 /* TOC, LOT, LOF */
-.toc ul, .lot ul, .lof ul {
-  list-style: none;
-  padding-left: 0;
-  overflow-x: hidden;
-}
-.toc li li {
-  padding-left: 1em;
-}
-.toc a, .lot a, .lof a {
-  text-decoration: none;
-  background: white;
-  padding-right: .33em;
-}
 .toc a::after, .lot a::after, .lof a::after {
   /* content: leader(dotted) target-counter(attr(href), page); */
   content: target-counter(attr(href), page);
   float: right;
-  background: white;
 }
 .toc a.front-matter-ref::after, .lot a.front-matter-ref::after, .lof a.front-matter-ref::after {
   /* content: leader(dotted) target-counter(attr(href), page, lower-roman); */
@@ -62,7 +48,11 @@ a[href^="http"]:not([class="uri"])::after {
   float: left;
   width: 0;
   white-space: nowrap;
-  content: ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ";
+  content: "...........................................................................................................................................................................................................";
+}
+
+.pagedjs_pagebox * {
+    box-sizing: border-box;
 }
 
 /* Chapter name */

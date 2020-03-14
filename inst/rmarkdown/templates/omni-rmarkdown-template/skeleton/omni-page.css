@@ -237,7 +237,7 @@ caption {
   width: 5in;
 }
 
-/* ------------------ Secondary Cover Page --------------------*/
+/* ------------------ Secondary Cover Page -------------------- */
 /*  properties of abstract */
 div.abstract {
   margin: 0 0 0 0;
@@ -270,4 +270,52 @@ div.abstract {
 /* remove the h3 title "Abstract" */
 h3.abstract {
   display: none;
+}
+
+/* ------------------ Table of Contents formatting ----------------- */
+/* TOC title */
+.toc-title {
+  font-size: 24pt;
+  font-weight: 300;
+  background-color: #ffffff;
+  color: #000000;
+  margin-bottom: 0;
+}
+
+/* spacing between elements + no underline */
+.toc a {
+  line-height: 30px;
+  text-decoration: none;
+}
+
+/* to remove the bullets + cut the dots at the end --> took it back from default.css */
+.toc ul {
+    list-style: none;
+    padding-left: 0;
+    overflow-x: hidden;
+}
+
+.toc li li {
+  padding-left: 1em;
+}
+
+/* here each level contain the following one so we have to override the properties */
+/* first level */
+.toc ul > li > a  {
+  font-weight: 600;
+}
+
+/* second level and more */
+.toc ul > li > ul > li > a {
+  font-weight: 300;
+}
+
+/* third level */
+.toc > ul > li > ul > li > ul > li > a {
+  font-weight: 300;
+}
+
+/* background color */
+.toc ul, .toc a, .toc a::after {
+  background-color: #c0c0c0;
 }
