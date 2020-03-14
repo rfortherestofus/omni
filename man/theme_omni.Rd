@@ -9,6 +9,9 @@ theme_omni(
   base_theme = ggplot2::theme_minimal(base_family = "Lato")
 )
 }
+\arguments{
+\item{base_theme}{}
+}
 \value{
 
 }

@@ -1,5 +1,8 @@
 #' OMNI Institute ggplot2 theme
 #'
+#' @param grid_lines
+#' @param base_theme
+#'
 #' @return
 #' @export
 #'
