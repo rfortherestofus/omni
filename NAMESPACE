@@ -3,7 +3,5 @@
 export("%>%")
 export(omni_colors)
 export(omni_table)
-export(scale_color_omni_continuous)
-export(scale_color_omni_discrete)
 export(theme_omni)
 importFrom(magrittr,"%>%")

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • omni</title>
+<title>Continuous color scale based on OMNI colors — scale_color_omni_continuous • omni</title>
 
 
 <!-- jquery -->
@@ -35,7 +35,9 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Continuous color scale based on OMNI colors — scale_color_omni_continuous" />
+<meta property="og:description" content="Continuous color scale based on OMNI colors" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -54,7 +56,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -101,78 +103,44 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Continuous color scale based on OMNI colors</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dgkeyes/omni/blob/master/R/scales.R'><code>R/scales.R</code></a></small>
+    <div class="hidden name"><code>scale_color_omni_continuous.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Continuous color scale based on OMNI colors</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>scale_color_omni_continuous</span>(<span class='kw'>palette</span> <span class='kw'>=</span> <span class='st'>"Main"</span>, <span class='kw'>reverse</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="omni_colors.html">omni_colors()</a></code> </p>
-        </td>
-        <td><p>Function to extract OMNI colors as hex codes</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="omni_table.html">omni_table()</a></code> </p>
-        </td>
-        <td><p>OMNI Table Function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="scale_color_omni_continuous.html">scale_color_omni_continuous()</a></code> </p>
-        </td>
-        <td><p>Continuous color scale based on OMNI colors</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="scale_color_omni_discrete.html">scale_color_omni_discrete()</a></code> </p>
-        </td>
-        <td><p>Discrete color scale based on OMNI colors</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="scale_fill_omni_continuous.html">scale_fill_omni_continuous()</a></code> </p>
-        </td>
-        <td><p>Continuous fill scale based on OMNI colors</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="scale_fill_omni_discrete.html">scale_fill_omni_discrete()</a></code> </p>
-        </td>
-        <td><p>Discrete fill scale based on OMNI colors</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="theme_omni.html">theme_omni()</a></code> </p>
-        </td>
-        <td><p>OMNI Institute ggplot2 theme</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>palette</th>
+      <td><p>Character name of palette in omni_palettes</p></td>
+    </tr>
+    <tr>
+      <th>reverse</th>
+      <td><p>Boolean indicating whether the palette should be reversed</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments passed to discrete_scale()</p></td>
+    </tr>
     </table>
-  </div>
 
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#arguments">Arguments</a></li>
     </ul>
+
   </div>
 </div>
 

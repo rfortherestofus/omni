@@ -43,6 +43,7 @@ omni_palettes <- list(
 #' @param palette Character name of palette in omni_palettes
 #' @param reverse Boolean indicating whether the palette should be reversed
 #' @param ... Additional arguments to pass to colorRampPalette()
+#' @keywords internal
 #'
 omni_pal <- function(palette = "Main", reverse = FALSE, ...) {
   pal <- omni_palettes[[palette]]
@@ -58,40 +59,31 @@ omni_pal <- function(palette = "Main", reverse = FALSE, ...) {
 #' @param palette Character name of palette in omni_palettes
 #' @param reverse Boolean indicating whether the palette should be reversed
 #' @param ... Additional arguments passed to discrete_scale()
-#' @rdname scale_omni_discrete
 #'
-scale_colour_omni_discrete <- function(palette = "Main", reverse = FALSE, ...) {
+scale_color_omni_discrete <- function(palette = "Main", reverse = FALSE, ...) {
 
   pal <- omni_pal(palette = palette, reverse = reverse)
 
-  ggplot2::discrete_scale("colour", paste0("omni_", palette), palette = pal, ...)
+  ggplot2::discrete_scale("color", paste0("omni_", palette), palette = pal, ...)
 
 }
 
-#' @rdname scale_omni_discrete
-#' @export
-#' @usage NULL
-scale_color_omni_discrete <- scale_colour_omni_discrete
+
 
 #' Continuous color scale based on OMNI colors
 #'
 #' @param palette Character name of palette in omni_palettes
 #' @param reverse Boolean indicating whether the palette should be reversed
 #' @param ... Additional arguments passed to discrete_scale()
-#' @rdname scale_omni_continuous
 #'
-scale_colour_omni_continuous <- function(palette = "Main", reverse = FALSE, ...) {
+scale_color_omni_continuous <- function(palette = "Main", reverse = FALSE, ...) {
 
   pal <- omni_pal(palette = palette, reverse = reverse)
 
-  ggplot2::scale_color_gradientn(colours = pal(256), ...)
+  ggplot2::scale_color_gradientn(colors = pal(256), ...)
 
 }
 
-#' @rdname scale_omni_continuous
-#' @export
-#' @usage NULL
-scale_color_omni_continuous <- scale_colour_omni_continuous
 
 
 
@@ -120,6 +112,6 @@ scale_fill_omni_continuous <- function(palette = "Main", reverse = FALSE, ...) {
 
   pal <- omni_pal(palette = palette, reverse = reverse)
 
-  ggplot2::scale_fill_gradientn(colours = pal(256), ...)
+  ggplot2::scale_fill_gradientn(colors = pal(256), ...)
 
 }

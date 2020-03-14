@@ -16,3 +16,4 @@ omni_pal(palette = "Main", reverse = FALSE, ...)
 \description{
 Return function to interpolate an OMNI color palette
 }
+\keyword{internal}
