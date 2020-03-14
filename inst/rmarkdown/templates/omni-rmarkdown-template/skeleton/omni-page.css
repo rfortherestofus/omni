@@ -100,7 +100,7 @@
 }
 
 @page chapter {
- /* background-image: url(colorbar.svg); */
+  background-image: url(colorbar.svg);
   background-position: bottom 0.15in left;
   background-size: contain;
   background-repeat: no-repeat;
@@ -237,20 +237,29 @@ caption {
   width: 5in;
 }
 
-/* Secondary Cover Page */
-
+/* ------------------ Secondary Cover Page --------------------*/
+/*  properties of abstract */
 div.abstract {
-  margin: 0 0 -1in 0;
+  margin: 0 0 0 0;
   background-color: #ffffff;
- /* background-image: url(orange-rectangle.svg); */
-  background-repeat: no-repeat;
-  background-position: left center;
-
 }
 
-div.abstract img {
+/* OMNI LOGO*/
+img.omni_logo_abstract {
   margin: 0 auto;
   display: block;
+  width: 25%;
+}
+
+/* Orange rectangle */
+img.orange_rect_abstract {
+  margin: 0 auto;
+  display: block;
+  height: 200px;
+  max-width: 100px;
+  position: absolute;
+  top: 80px;
+  left: -110px;
 }
 
 /* put the abstract on its own page */
