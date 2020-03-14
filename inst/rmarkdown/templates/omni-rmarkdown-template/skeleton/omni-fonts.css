@@ -15,7 +15,7 @@ h1.title {
   font-size: 36pt;
   font-weight: 900;
   margin-block-start: 0;
-    margin-block-end: 0;
+  margin-block-end: 0;
 }
 
 .subtitle {
@@ -29,6 +29,16 @@ h1.title {
   font-size: 36pt;
   background-color: #ffffff;
   color: #000000;
+  margin-bottom: 0;
+}
+
+.subtitle {
+  margin-top: 5px;
+}
+
+/* remove spacing around h1 */
+h1 {
+  padding: 0;
 }
 
 h2 {
