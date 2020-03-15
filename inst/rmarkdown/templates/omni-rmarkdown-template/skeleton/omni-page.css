@@ -169,7 +169,7 @@
 
 /* page breaks; aka CSS fragmentation */
 .level1 {
-  break-before: recto;
+  break-before: avoid;
   page: chapter;
 }
 .front-matter-container .level1 {
@@ -337,6 +337,11 @@ h3.abstract {
   background-color: #ffffff;
   color: #000000;
   margin-bottom: 0;
+}
+
+.exec-summary {
+  page-break-before: always;
+  break-after: always;
 }
 
 /* -------------------- Captions ----------------------- */
