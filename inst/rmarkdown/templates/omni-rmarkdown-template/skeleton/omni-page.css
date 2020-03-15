@@ -319,3 +319,20 @@ h3.abstract {
 .toc ul, .toc a, .toc a::after {
   background-color: #ffffff;
 }
+
+/* ------------------- Executive summary --------------------------- */
+.exec-summary h1 {
+  font-size: 24pt;
+  font-weight: 300;
+  background-color: #ffffff;
+  color: #000000;
+  margin-bottom: 0;
+}
+
+.exec-summary h2 {
+  font-size: 18pt;
+  font-weight: 100;
+  background-color: #ffffff;
+  color: #000000;
+  margin-bottom: 0;
+}
