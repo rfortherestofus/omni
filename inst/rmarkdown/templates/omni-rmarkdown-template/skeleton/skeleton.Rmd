@@ -160,20 +160,14 @@ knitr::include_graphics("example_figure.png")
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit. Maecenas pharetra convallis posuere morbi leo. Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.
 
-```{r, include=FALSE}
+```{r fig.cap="Table as image", out.extra='data-prefix="Table"'}
 mtcars %>% 
   slice(1:5) %>% 
-  omni_table() %>% 
-  save_as_image("test_flextable.png")
+  omni_table() 
 ```
 
-```{r, fig.cap="Table as image", out.extra='data-prefix="Table"'}
-include_graphics("test_flextable.png")
-```
 
-# An other first level header
-
-Bla bla bla
+# Another first level header
 
 ## With second level 1
 
