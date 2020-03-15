@@ -68,6 +68,34 @@ abstract: >-
   The OMNI Institute (`r rmarkdown::metadata$report_year`). `r rmarkdown::metadata$title`. Submitted to `r rmarkdown::metadata$client_organization`, `r rmarkdown::metadata$client_city`, `r rmarkdown::metadata$client_state`
 ---
 
+```{js, echo=FALSE}
+Paged.registerHandlers(class extends Paged.Handler {
+  constructor(chunker, polisher, caller) {
+    super(chunker, polisher, caller);    this.prefixes = [];
+  }  retrieveUniquePrefixes(content) {
+    const els = content.querySelectorAll('.figure > img[data-prefix] + p.caption, .figure > p.caption + img[data-prefix]');
+    // retrieve all prefixes
+    let prefixes = Array.from(els)
+                        .map(el => el.parentNode.querySelector('img').dataset.prefix);
+    // get unique prefixes
+    this.prefixes = [...new Set(prefixes)];
+  }  beforeParsed(content) {
+    this.retrieveUniquePrefixes(content);
+    for (const prefix of this.prefixes) {
+      const els = content.querySelectorAll('.figure > img[data-prefix="' + prefix + '"] + p.caption, .figure > p.caption + img[data-prefix="' + prefix + '"]');      for (let i = 0; i < els.length; i++) {
+        const newLabel = prefix + ' ' + (i + 1);
+        const caption = els[i].parentNode.querySelector('p.caption');
+        caption.textContent = caption.textContent.replace(/[^:]*/, newLabel);
+        const figure = caption.parentNode; 
+        const id = figure.firstElementChild.id;
+        const lofEntry = content.querySelector('#LOF a[href*="' + id +'"]');
+        lofEntry.childNodes[0].textContent = lofEntry.childNodes[0].textContent
+                                                                   .replace(/\d*.\d*/, newLabel + ':');      }
+    }
+  }
+});
+```
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE,
                       fig.topcaption = TRUE)
@@ -111,7 +139,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit. Maecenas pharetra convallis posuere morbi leo. Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.
 
-```{r fig.height=3, fig.cap = "A very nice iris plot"}
+```{r fig.height=3, fig.cap = "A very nice iris plot", out.extra='data-prefix="Chart"'}
 iris %>%
   group_by(Species) %>%
   summarise(sepal_length_mean = mean(Sepal.Length)) %>%
@@ -124,7 +152,7 @@ iris %>%
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit.
 
-```{r, fig.cap = "A random figure", out.width="200px", fig.align='center'}
+```{r, fig.cap = "A random figure", out.width="200px", fig.align='center', out.extra='data-prefix="Figure"'}
 knitr::include_graphics("example_figure.png")
 ```
 
@@ -139,7 +167,7 @@ mtcars %>%
   save_as_image("test_flextable.png")
 ```
 
-```{r, fig.cap="Table as image"}
+```{r, fig.cap="Table as image", out.extra='data-prefix="Table"'}
 include_graphics("test_flextable.png")
 ```
 
