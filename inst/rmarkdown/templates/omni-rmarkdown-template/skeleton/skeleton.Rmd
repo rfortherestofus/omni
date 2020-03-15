@@ -20,6 +20,8 @@ output:
     number_sections: FALSE
     css: ["omni-fonts.css", "omni-page.css", "default.css"]
 toc-title: "Table of Contents"
+lot: TRUE
+lof: TRUE
 abstract: >-
   <img class = "omni_logo_abstract" src = "omni-logo-horizontal.svg">
   <img class = "orange_rect_abstract" src = "orange-rectangle.svg">
@@ -106,14 +108,22 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit. Maecenas pharetra convallis posuere morbi leo. Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.
 
-
-
+```{r fig.height=3, fig.cap = "A very nice iris plot", fig.topcaption=TRUE}
+iris %>%
+  group_by(Species) %>%
+  summarise(sepal_length_mean = mean(Sepal.Length)) %>%
+  ggplot(aes(x = Species, y = sepal_length_mean, fill = Species)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  scale_fill_omni_discrete() +
+  theme_omni()
+```
 
 #### Fourth Level Header
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit. Maecenas pharetra convallis posuere morbi leo. Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.
 
-```{r fig.cap="This is a sample table", fig.cap=TRUE}
+```{r table_example, fig.cap="This is a sample table"}
 mtcars %>% 
   slice(1:5) %>% 
   omni_table() %>% 

@@ -273,9 +273,9 @@ h3.abstract {
   display: none;
 }
 
-/* ------------------ Table of Contents formatting ----------------- */
+/* ------------------ Table of Contents/Figures/Tables formatting ----------------- */
 /* TOC title */
-.toc-title {
+.toc-title, .lof-title {
   font-size: 24pt;
   font-weight: 300;
   background-color: #ffffff;
@@ -284,40 +284,40 @@ h3.abstract {
 }
 
 /* spacing between elements + no underline */
-.toc a {
+.toc a, .lof a{
   line-height: 30px;
   text-decoration: none;
 }
 
 /* to remove the bullets + cut the dots at the end --> took it back from default.css */
-.toc ul {
+.toc ul, .lof ul {
     list-style: none;
     padding-left: 0;
     overflow-x: hidden;
 }
 
-.toc li li {
+.toc li li, .lof li li {
   padding-left: 1em;
 }
 
 /* here each level contain the following one so we have to override the properties */
 /* first level */
-.toc ul > li > a  {
+.toc ul > li > a, .lof ul > li > a  {
   font-weight: 600;
 }
 
 /* second level and more */
-.toc ul > li > ul > li > a {
+.toc ul > li > ul > li > a, .lof ul > li > ul > li > a {
   font-weight: 300;
 }
 
 /* third level */
-.toc > ul > li > ul > li > ul > li > a {
+.toc > ul > li > ul > li > ul > li > a, .lof > ul > li > ul > li > ul > li > a {
   font-weight: 300;
 }
 
 /* background color */
-.toc ul, .toc a, .toc a::after {
+.toc ul, .toc a, .toc a::after, .lof ul, .lof a, .lof a::after  {
   background-color: #ffffff;
 }
 
@@ -337,4 +337,11 @@ h3.abstract {
   background-color: #ffffff;
   color: #000000;
   margin-bottom: 0;
+}
+
+/* -------------------- Caption ------------------------- */
+p.caption {
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #333333;
 }
