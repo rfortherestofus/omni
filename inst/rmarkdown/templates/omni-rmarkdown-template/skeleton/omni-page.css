@@ -99,13 +99,14 @@
   background-repeat: no-repeat;
 }
 
-@page chapter {
+/* --------------------- Page style ----------------------- */
+/* Add colorbar to all pages (first and last are overriden later) */
+@page {
   background-image: url(colorbar.svg);
   background-position: bottom 0.15in left;
   background-size: contain;
   background-repeat: no-repeat;
 }
-
 
 
 /* Front cover */
@@ -321,6 +322,7 @@ h3.abstract {
 }
 
 /* ------------------- Executive summary --------------------------- */
+/* title and subtitles style */
 .exec-summary h1 {
   font-size: 24pt;
   font-weight: 300;
