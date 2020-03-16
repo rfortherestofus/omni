@@ -18,7 +18,7 @@
 <meta name="description" content="Document Title">
 
 <script id="pandoc-meta" type="application/json">
-{"newpage_html_class":"page-break-after","report_authors":"Authors","client_organization":"Client Organization","toc-title":"Table of Contents","lof":true,"report_year":"Report Year","client_city":"Client City","client_name":"Client Name","report_month":"Report Month","subtitle":"Document Subtitle","project_code":"Project Code","lot":false,"output":{"pagedown::html_paged":{"self_contained":true,"toc":true,"css":["style/omni-fonts.css","style/omni-page.css","style/default.css"],"html":"style/meta_lof_js.html","number_sections":false}},"project_team":"Project Team","customjs":"style/lof.js","photo_background":true,"abstract":"<img class = \"omni_logo_abstract\" src = \"images/omni-logo-horizontal.svg\">\n<img class = \"orange_rect_abstract\" src = \"images/orange-rectangle.svg\">\n<br>\n<h1 class=\"title\">\nDocument Title\n</h1>\n<h1 class=\"subtitle\">\nDocument Subtitle\n</h1>\n<br>\nSubmitted to:\n<br>\n<br>\nClient Name\n<br>\nClient Organization\n<br>\nReport Month Report Year\n<br>\n<br>\n<br>\nAuthor(s): Authors\n<br>\nProject Team: Project Team\n<br>\n<br>\n<br>\nFor More Information:\n<br>\n<br>\nProject Code: Project Code\n<br>\n<a href=\"mailto:projects@omni.org\" class=\"email\">projects@omni.org</a>\n<br>\n<br>\n<br>\nAcknowledgements:\n<br>\n<br>\nThe OMNI Institute wants to thank Names of People to Thank for their contributions to the creation of this report.\n<br>\n<br>\n<br>\nSuggested Citation:\n<br>\n<br>\nThe OMNI Institute (Report Year). Document Title. Submitted to Client Organization, Client City, Client State","knit":"pagedown::chrome_print","title":"Document Title","acknowledgements":"Names of People to Thank","client_state":"Client State"}
+{"newpage_html_class":"page-break-after","report_authors":"Authors","client_organization":"Client Organization","toc-title":"Table of Contents","lof":true,"report_year":"Report Year","client_city":"Client City","client_name":"Client Name","report_month":"Report Month","subtitle":"Document Subtitle","project_code":"Project Code","lot":false,"output":{"pagedown::html_paged":{"include":{"in_header":"style/meta_lof_js.html"},"self_contained":true,"toc":true,"css":["style/omni-fonts.css","style/omni-page.css","style/default.css"],"number_sections":false}},"project_team":"Project Team","customjs":"style/lof.js","photo_background":true,"abstract":"<img class = \"omni_logo_abstract\" src = \"images/omni-logo-horizontal.svg\">\n<img class = \"orange_rect_abstract\" src = \"images/orange-rectangle.svg\">\n<br>\n<h1 class=\"title\">\nDocument Title\n</h1>\n<h1 class=\"subtitle\">\nDocument Subtitle\n</h1>\n<br>\nSubmitted to:\n<br>\n<br>\nClient Name\n<br>\nClient Organization\n<br>\nReport Month Report Year\n<br>\n<br>\n<br>\nAuthor(s): Authors\n<br>\nProject Team: Project Team\n<br>\n<br>\n<br>\nFor More Information:\n<br>\n<br>\nProject Code: Project Code\n<br>\n<a href=\"mailto:projects@omni.org\" class=\"email\">projects@omni.org</a>\n<br>\n<br>\n<br>\nAcknowledgements:\n<br>\n<br>\nThe OMNI Institute wants to thank Names of People to Thank for their contributions to the creation of this report.\n<br>\n<br>\n<br>\nSuggested Citation:\n<br>\n<br>\nThe OMNI Institute (Report Year). Document Title. Submitted to Client Organization, Client City, Client State","knit":"pagedown::chrome_print","title":"Document Title","acknowledgements":"Names of People to Thank","client_state":"Client State"}
 </script>
 
 <title>Document Title</title>
@@ -28227,6 +28227,32 @@ img {
     }
   });
 }
+</script>
+<script>Paged.registerHandlers(class extends Paged.Handler {
+  constructor(chunker, polisher, caller) {
+    super(chunker, polisher, caller);    this.prefixes = [];
+  }  retrieveUniquePrefixes(content) {
+    const els = content.querySelectorAll('.figure > img[data-prefix] + p.caption, .figure > p.caption + img[data-prefix]');
+    // retrieve all prefixes
+    let prefixes = Array.from(els)
+                        .map(el => el.parentNode.querySelector('img').dataset.prefix);
+    // get unique prefixes
+    this.prefixes = [...new Set(prefixes)];
+  }  beforeParsed(content) {
+    this.retrieveUniquePrefixes(content);
+    for (const prefix of this.prefixes) {
+      const els = content.querySelectorAll('.figure > img[data-prefix="' + prefix + '"] + p.caption, .figure > p.caption + img[data-prefix="' + prefix + '"]');      for (let i = 0; i < els.length; i++) {
+        const newLabel = prefix + ' ' + (i + 1);
+        const caption = els[i].parentNode.querySelector('p.caption');
+        caption.textContent = caption.textContent.replace(/[^:]*/, newLabel);
+        const figure = caption.parentNode;
+        const id = figure.firstElementChild.id;
+        const lofEntry = content.querySelector('#LOF a[href*="' + id +'"]');
+        lofEntry.childNodes[0].textContent = lofEntry.childNodes[0].textContent
+                                                                   .replace(/\d*.\d*/, newLabel + ':');      }
+    }
+  }
+});
 </script>
 
 

@@ -19,7 +19,8 @@ output:
     self_contained: TRUE
     number_sections: FALSE
     css: ["style/omni-fonts.css", "style/omni-page.css", "style/default.css"]
-    html: "style/meta_lof_js.html"
+    include: 
+      in_header: "style/meta_lof_js.html"
 customjs: "style/lof.js"
 toc-title: "Table of Contents"
 lot: FALSE
