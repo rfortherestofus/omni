@@ -36,7 +36,10 @@
 
 
 <meta property="og:title" content="Function to extract OMNI colors as hex codes — omni_colors" />
-<meta property="og:description" content="Function to extract OMNI colors as hex codes" />
+<meta property="og:description" content="omni_colors() enables you to pull colors directly from the OMNI palette.
+Choose one of the following options: Gray, Dark Gray, Dark Blue, Medium Blue,
+Light Blue, Teal, Orange, or Tan. You'll use this function as follows:
+omni_colors(&quot;Dark Blue&quot;) returns the hex value of the OMNI Dark Blue." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -111,7 +114,10 @@
     </div>
 
     <div class="ref-description">
-    <p>Function to extract OMNI colors as hex codes</p>
+    <p>omni_colors() enables you to pull colors directly from the OMNI palette.
+Choose one of the following options: Gray, Dark Gray, Dark Blue, Medium Blue,
+Light Blue, Teal, Orange, or Tan. You'll use this function as follows:
+omni_colors("Dark Blue") returns the hex value of the OMNI Dark Blue.</p>
     </div>
 
     <pre class="usage"><span class='fu'>omni_colors</span>(<span class='no'>...</span>)</pre>
@@ -121,7 +127,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>...</th>
-      <td></td>
+      <td><p>color or colors you want to return</p></td>
     </tr>
     </table>
 
@@ -131,12 +137,17 @@
 
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>omni_colors</span>(<span class='st'>"Dark Blue"</span>, <span class='st'>"Light Blue"</span>)</div><div class='output co'>#&gt;  Dark Blue Light Blue 
+#&gt;  "#314160"  "#779aab" </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

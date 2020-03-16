@@ -10,11 +10,24 @@ theme_omni(
 )
 }
 \arguments{
-\item{base_theme}{}
+\item{grid_lines}{Boolean to indicate whether to have grid_lines}
+
+\item{base_theme}{The base theme used (theme_minimal() with the Lato font)}
 }
 \value{
 
 }
 \description{
 OMNI Institute ggplot2 theme
+}
+\examples{
+library(tidyverse)
+
+iris \%>\%
+  group_by(Species) \%>\%
+  summarise(sepal_length_mean = mean(Sepal.Length)) \%>\%
+  ggplot(aes(x = Species, y = sepal_length_mean, fill = Species)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  theme_omni()
 }

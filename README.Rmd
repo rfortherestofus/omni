@@ -1,0 +1,49 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# omni
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of omni is to ...
+
+## Installation
+
+
+You can install `omni` from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("dgkeyes/omni")
+```
+## Example
+
+```{r}
+library(tidyverse)
+library(omni)
+
+iris %>%
+  group_by(Species) %>%
+  summarise(sepal_length_mean = mean(Sepal.Length)) %>%
+  ggplot(aes(x = Species, y = sepal_length_mean, fill = Species)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  # scale_fill_omni_discrete() +
+  theme_omni()
+```
+
+
+

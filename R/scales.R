@@ -2,12 +2,20 @@
 
 #' Function to extract OMNI colors as hex codes
 #'
-#' @param ...
+#' omni_colors() enables you to pull colors directly from the OMNI palette.
+#' Choose one of the following options: Gray, Dark Gray, Dark Blue, Medium Blue,
+#' Light Blue, Teal, Orange, or Tan. You'll use this function as follows:
+#' omni_colors("Dark Blue") returns the hex value of the OMNI Dark Blue.
+#'
+#'
+#' @param ... color or colors you want to return
 #'
 #' @return
 #' @export
 #'
 #' @examples
+#' omni_colors("Dark Blue", "Light Blue")
+#'
 omni_colors <- function(...) {
 
   omni_colors_vector <- c(`Gray` = "#666666",
@@ -56,9 +64,19 @@ omni_pal <- function(palette = "Main", reverse = FALSE, ...) {
 
 #' Discrete color scale based on OMNI colors
 #'
-#' @param palette Character name of palette in omni_palettes
+#' @param palette Character name of palette in omni_palettes (Main or Blues)
 #' @param reverse Boolean indicating whether the palette should be reversed
 #' @param ... Additional arguments passed to discrete_scale()
+#'
+#' @example
+#' iris %>%
+#' group_by(Species) %>%
+#' summarise(sepal_length_mean = mean(Sepal.Length)) %>%
+#' ggplot(aes(x = Species, y = sepal_length_mean, fill = Species)) +
+#' geom_bar(stat = "identity") +
+#' coord_flip() +
+#' scale_fill_omni_discrete() +
+#' theme_omni()
 #'
 scale_color_omni_discrete <- function(palette = "Main", reverse = FALSE, ...) {
 

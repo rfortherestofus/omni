@@ -7,7 +7,7 @@
 scale_color_omni_discrete(palette = "Main", reverse = FALSE, ...)
 }
 \arguments{
-\item{palette}{Character name of palette in omni_palettes}
+\item{palette}{Character name of palette in omni_palettes (Main or Blues)}
 
 \item{reverse}{Boolean indicating whether the palette should be reversed}
 
