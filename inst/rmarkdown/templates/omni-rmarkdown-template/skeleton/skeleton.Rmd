@@ -18,13 +18,13 @@ output:
     toc: TRUE
     self_contained: TRUE
     number_sections: FALSE
-    css: ["omni-fonts.css", "omni-page.css", "default.css"]
+    css: ["style/omni-fonts.css", "style/omni-page.css", "style/default.css"]
 toc-title: "Table of Contents"
 lot: FALSE
 lof: TRUE
 abstract: >-
-  <img class = "omni_logo_abstract" src = "omni-logo-horizontal.svg">
-  <img class = "orange_rect_abstract" src = "orange-rectangle.svg">
+  <img class = "omni_logo_abstract" src = "images/omni-logo-horizontal.svg">
+  <img class = "orange_rect_abstract" src = "images/orange-rectangle.svg">
   <br> 
   <h1 class = "title">`r rmarkdown::metadata$title` </h1>
   <h1 class = "subtitle"> `r rmarkdown::metadata$subtitle` </h1>
@@ -153,7 +153,7 @@ iris %>%
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit.
 
 ```{r, fig.cap = "A random figure", out.width="200px", fig.align='center', out.extra='data-prefix="Figure"'}
-knitr::include_graphics("example_figure.png")
+knitr::include_graphics("images/example_figure.png")
 ```
 
 #### Fourth Level Header
