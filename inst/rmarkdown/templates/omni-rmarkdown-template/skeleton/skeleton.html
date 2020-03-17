@@ -18,7 +18,7 @@
 <meta name="description" content="Document Title">
 
 <script id="pandoc-meta" type="application/json">
-{"newpage_html_class":"page-break-after","report_authors":"Authors","client_organization":"Client Organization","toc-title":"Table of Contents","lof":true,"report_year":"Report Year","client_city":"Client City","client_name":"Client Name","report_month":"Report Month","subtitle":"Document Subtitle","project_code":"Project Code","lot":false,"output":{"pagedown::html_paged":{"include":{"in_header":"style/meta_lof_js.html"},"self_contained":true,"toc":true,"css":["style/omni-fonts.css","style/omni-page.css","style/default.css"],"number_sections":false}},"project_team":"Project Team","customjs":"style/lof.js","photo_background":true,"abstract":"<img class = \"omni_logo_abstract\" src = \"images/omni-logo-horizontal.svg\">\n<img class = \"orange_rect_abstract\" src = \"images/orange-rectangle.svg\">\n<br>\n<h1 class=\"title\">\nDocument Title\n</h1>\n<h1 class=\"subtitle\">\nDocument Subtitle\n</h1>\n<br>\nSubmitted to:\n<br>\n<br>\nClient Name\n<br>\nClient Organization\n<br>\nReport Month Report Year\n<br>\n<br>\n<br>\nAuthor(s): Authors\n<br>\nProject Team: Project Team\n<br>\n<br>\n<br>\nFor More Information:\n<br>\n<br>\nProject Code: Project Code\n<br>\n<a href=\"mailto:projects@omni.org\" class=\"email\">projects@omni.org</a>\n<br>\n<br>\n<br>\nAcknowledgements:\n<br>\n<br>\nThe OMNI Institute wants to thank Names of People to Thank for their contributions to the creation of this report.\n<br>\n<br>\n<br>\nSuggested Citation:\n<br>\n<br>\nThe OMNI Institute (Report Year). Document Title. Submitted to Client Organization, Client City, Client State","knit":"pagedown::chrome_print","title":"Document Title","acknowledgements":"Names of People to Thank","client_state":"Client State"}
+{"newpage_html_class":"page-break-after","report_authors":"Authors","client_organization":"Client Organization","toc-title":"Table of Contents","lof":true,"report_year":"Report Year","client_city":"Client City","client_name":"Client Name","report_month":"Report Month","subtitle":"Document Subtitle","project_code":"Project Code","lot":false,"output":{"pagedown::html_paged":{"include":{"in_header":"style/meta_lof_js.html"},"self_contained":true,"toc":true,"css":["style/omni-style.css","style/omni-page.css","style/omni-default.css"],"number_sections":false}},"project_team":"Project Team","customjs":"style/lof.js","photo_background":false,"abstract":"<img class = \"omni_logo_abstract\" src = \"images/omni-logo-horizontal.svg\">\n<img class = \"orange_rect_abstract\" src = \"images/orange-rectangle.svg\">\n<br>\n<h1 class=\"title\">\nDocument Title\n</h1>\n<h1 class=\"subtitle\">\nDocument Subtitle\n</h1>\n<br>\nSubmitted to:\n<br>\n<br>\nClient Name\n<br>\nClient Organization\n<br>\nReport Month Report Year\n<br>\n<br>\n<br>\nAuthor(s): Authors\n<br>\nProject Team: Project Team\n<br>\n<br>\n<br>\nFor More Information:\n<br>\n<br>\nProject Code: Project Code\n<br>\n<a href=\"mailto:projects@omni.org\" class=\"email\">projects@omni.org</a>\n<br>\n<br>\n<br>\nAcknowledgements:\n<br>\n<br>\nThe OMNI Institute wants to thank Names of People to Thank for their contributions to the creation of this report.\n<br>\n<br>\n<br>\nSuggested Citation:\n<br>\n<br>\nThe OMNI Institute (Report Year). Document Title. Submitted to Client Organization, Client City, Client State","knit":"pagedown::chrome_print","title":"Document Title","acknowledgements":"Names of People to Thank","client_state":"Client State"}
 </script>
 
 <title>Document Title</title>
@@ -28267,7 +28267,11 @@ img {
   }
 </style>
 
-<style type="text/css">@font-face {
+<style type="text/css">
+
+
+
+@font-face {
 font-family: 'Lato';
 font-style: italic;
 font-weight: 400;
@@ -28299,35 +28303,32 @@ src: local('Lato Black'), local('Lato-Black'), url(data:font/ttf;base64,AAEAAAAQ
 }
 body {
 font-family: "Lato", Arial, serif;
+hyphens: auto;
 }
-h1 {
-font-size: 24pt;
-background-color: #314160;
-color: #ffffff;
-padding: 5pt;
-}
-h1.title {
+
+
+.title {
 font-size: 36pt;
 font-weight: 900;
 margin-block-start: 0;
 margin-block-end: 0;
-}
-.subtitle {
-background-color: #ffffff;
-color: #333333;
-}
-
-.title {
-font-size: 36pt;
 background-color: #ffffff;
 color: #000000;
 margin-bottom: 0;
 }
 .subtitle {
+background-color: #ffffff;
+color: #333333;
 margin-top: 5px;
+}
+.subtitle span {
+font-size: .9em;
 }
 
 h1 {
+font-size: 24pt;
+background-color: #314160;
+color: #ffffff;
 padding: 0;
 }
 h2 {
@@ -28343,6 +28344,7 @@ h4 {
 font-size: 11pt;
 color: #333333;
 }
+
 p {
 font-size: 12pt;
 }
@@ -28350,6 +28352,7 @@ font-size: 12pt;
 a, a:active, a:visited {
 color: #000000;
 }
+
 
 aside {
 width: 40%;
@@ -28380,12 +28383,98 @@ margin: 0% 0% 0% 1%;
 background-color: #347686;
 color: white;
 font-size: 14pt;
-}</style>
+}
+
+table {
+margin: auto;
+border-top: 1px solid #666;
+border-bottom: 1px solid #666;
+}
+table thead th {
+border-bottom: 1px solid #ddd;
+}
+thead, tfoot, tr:nth-child(even) {
+background: #eee;
+}
+
+img {
+max-width: 100%;
+}
+
+p.caption {
+text-transform: uppercase;
+font-weight: 600;
+color: #333333;
+text-align: left;
+}
+table caption {
+text-transform: uppercase;
+font-weight: 600;
+color: #333333;
+text-align: left;
+margin-bottom: 5px;
+}
+
+ul {
+list-style-type: disc;
+}
+
+.footnotes {
+font-size: 90%;
+}
+.footnotes hr::before {
+content: "Footnotes:";
+}
+.footnotes hr {
+border: none;
+}
+.footnote-break {
+width: 1in;
+}
+
+abbr {
+text-decoration: none;
+}
+blockquote {
+font-size: 150pt;
+}
+.quote-footer {
+float: right;
+font-style: italic;
+}
+code {
+hyphens: none;
+}
+
+pre {
+padding: 1em;
+}
+pre[class] {
+background: #f9f9f9;
+}
+pre.numberSource a.sourceLine {
+left: 0 !important;
+text-indent: -5em
+}
+pre.numberSource {
+margin-left: 0 !important;
+}
+</style>
 <style type="text/css">
+
+
+
 @page {
 size: 8.5in 11in; 
 }
 @page :blank {
+}
+
+html {
+line-height: 1.3;
+}
+.pagedjs_pagebox * {
+box-sizing: border-box;
 }
 
 .shorttitle1 {
@@ -28405,7 +28494,6 @@ overflow: hidden;
 content: string(h1-text);
 }
 @page chapter:left {
-
 @bottom-right {
 content: counter(page);
 }
@@ -28424,7 +28512,6 @@ overflow: hidden;
 content: string(h2-text);
 }
 @page chapter:right {
-
 @bottom-right {
 content: counter(page);
 }
@@ -28441,21 +28528,6 @@ content: none;
 content: counter(page);
 }
 }
-@page :first {
-@top-left {
-content: none;
-}
-@top-right {
-content: none;
-}
-@bottom-right {
-content: none !important;
-}
-background-image: var(--front-cover);
-background-position: center;
-background-size: contain;
-background-repeat: no-repeat;
-}
 
 
 @page {
@@ -28471,18 +28543,6 @@ break-after: recto;
 
 .front-page {
 counter-reset: page;
-}
-
-
-
-.back-cover {
-
-}
-.pagedjs_page:last-of-type {
-background-image: var(--back-cover);
-background-position: center;
-background-size: contain;
-background-repeat: no-repeat;
 }
 
 .level1 {
@@ -28512,29 +28572,21 @@ break-inside: avoid;
 break-after: avoid;
 }
 
-.left-column {
-float: left;
-width: 3in;
-}
-.right-column {
-float: right;
-width: 3in;
-}
-
-.pull-quote {
-float: right;
-width: 2.5in;
-}
-.pull-quote p {
-font-size: 16pt;
-}
-
 @page:first{
 margin: 0 0 0 0;
 background-color: #ffffff;
 background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+Cjxzdmcgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDYxMiA3OTIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM6c2VyaWY9Imh0dHA6Ly93d3cuc2VyaWYuY29tLyIgc3R5bGU9ImZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoyOyI+CiAgICA8cmVjdCB4PSI0NTAuNjUiIHk9IjAiIHdpZHRoPSIxNjEuMzUiIGhlaWdodD0iNzkyIiBzdHlsZT0iZmlsbDpyZ2IoNTAsNjYsOTcpO2ZpbGwtcnVsZTpub256ZXJvOyIvPgogICAgPGcgdHJhbnNmb3JtPSJtYXRyaXgoMC4yNCwwLDAsMC4yNCwxMjguMiw3MzkuNCkiPgogICAgICAgIDxnIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLDEsLTYyLjUsLTYyLjUpIj4KICAgICAgICAgICAgPGNsaXBQYXRoIGlkPSJfY2xpcDEiPgogICAgICAgICAgICAgICAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEyNSIgaGVpZ2h0PSIxMjUiLz4KICAgICAgICAgICAgPC9jbGlwUGF0aD4KICAgICAgICAgICAgPGcgY2xpcC1wYXRoPSJ1cmwoI19jbGlwMSkiPgogICAgICAgICAgICAgICAgPGcgdHJhbnNmb3JtPSJtYXRyaXgoNC4xNjY2NywwLDAsNC4xNjY2NywwLDApIj4KICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMjkuNTU5LDE1LjIyQzI5LjU1OSwyMy4zODMgMjIuOTQyLDMwIDE0Ljc3OSwzMEM2LjYxNywzMCAwLDIzLjM4MyAwLDE1LjIyQzAsNy4wNTggNi42MTcsMC40NCAxNC43NzksMC40NEMyMi45NDIsMC40NCAyOS41NTksNy4wNTggMjkuNTU5LDE1LjIyWiIgc3R5bGU9ImZpbGw6cmdiKDE0MCwxOTMsMTc5KTtmaWxsLXJ1bGU6bm9uemVybzsiLz4KICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNNy41NzksMTIuMTU2TDguMzg5LDEyLjk2NkMxMC4xMzUsMTEuMTQ4IDEyLjI3NywxMC4yNDggMTQuNzc5LDEwLjI0OEMxNy4yODEsMTAuMjQ4IDE5LjQyMywxMS4xNDggMjEuMTY5LDEyLjk2NkwyMS45NzksMTIuMTU2QzE5Ljk5OSwxMC4xNCAxNy41ODcsOS4xMzIgMTQuNzc5LDkuMTMyQzExLjk3MSw5LjEzMiA5LjU1OSwxMC4xNCA3LjU3OSwxMi4xNTZaTTkuNTc3LDE0LjE1NEwxMC4zNTEsMTQuOTY0QzExLjU3NSwxMy43MDQgMTMuMDUxLDEzLjA1NiAxNC43NzksMTMuMDU2QzE2LjUwNywxMy4wNTYgMTcuOTgzLDEzLjcwNCAxOS4yMDcsMTQuOTY0TDE5Ljk4MSwxNC4xNTRDMTguNTU5LDEyLjY3OCAxNi44MTMsMTEuOTQgMTQuNzc5LDExLjk0QzEyLjc0NSwxMS45NCAxMC45OTksMTIuNjc4IDkuNTc3LDE0LjE1NFpNMTEuNTM5LDE2LjE1MkwxMi4zMTMsMTYuOTI2QzEyLjk5NywxNi4yMjQgMTMuODI1LDE1Ljg4MiAxNC43NzksMTUuODgyQzE1LjczMywxNS44ODIgMTYuNTYxLDE2LjIyNCAxNy4yNDUsMTYuOTI2TDE4LjAxOSwxNi4xNTJDMTcuMTE5LDE1LjIxNiAxNi4wMzksMTQuNzQ4IDE0Ljc3OSwxNC43NDhDMTMuNTE5LDE0Ljc0OCAxMi40MzksMTUuMjE2IDExLjUzOSwxNi4xNTJaTTEzLjUxOSwxOC4xMzJMMTQuNzc5LDE5LjM5MkwxNi4wMzksMTguMTMyQzE1LjY5NywxNy43NTQgMTUuMjY1LDE3LjU1NiAxNC43NzksMTcuNTU2QzE0LjI5MywxNy41NTYgMTMuODYxLDE3Ljc1NCAxMy41MTksMTguMTMyWiIgc3R5bGU9ImZpbGw6d2hpdGU7ZmlsbC1ydWxlOm5vbnplcm87Ii8+CiAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+CiAgICA8ZyB0cmFuc2Zvcm09Im1hdHJpeCgwLjI0LDAsMCwwLjI0LDU4LjUsNzM5LjQpIj4KICAgICAgICA8ZyB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwxLC02Mi41LC02Mi41KSI+CiAgICAgICAgICAgIDxjbGlwUGF0aCBpZD0iX2NsaXAyIj4KICAgICAgICAgICAgICAgIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMjUiIGhlaWdodD0iMTI1Ii8+CiAgICAgICAgICAgIDwvY2xpcFBhdGg+CiAgICAgICAgICAgIDxnIGNsaXAtcGF0aD0idXJsKCNfY2xpcDIpIj4KICAgICAgICAgICAgICAgIDxnIHRyYW5zZm9ybT0ibWF0cml4KDQuMTY2NjcsMCwwLDQuMTY2NjcsMCwwKSI+CiAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTI5LjU1OSwxNS4yMkMyOS41NTksMjMuMzgzIDIyLjk0MiwzMCAxNC43NzksMzBDNi42MTcsMzAgMCwyMy4zODMgMCwxNS4yMkMwLDcuMDU4IDYuNjE3LDAuNDQgMTQuNzc5LDAuNDRDMjIuOTQyLDAuNDQgMjkuNTU5LDcuMDU4IDI5LjU1OSwxNS4yMloiIHN0eWxlPSJmaWxsOnJnYig1MywxMjAsMTM1KTtmaWxsLXJ1bGU6bm9uemVybzsiLz4KICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMjAuMDYsOS44N0wxOS44MDUsMTAuMDhDMTkuNjI1LDEwLjE4NSAxOS4zNCwxMC4zNjUgMTguOTY1LDEwLjYwNUMxOC41OSwxMC44MyAxOC4yLDExLjA1NSAxNy44MSwxMS4yNUMxNi4wNTUsMTIuMTUgMTQuNTEsMTIuNTg1IDEzLjIwNSwxMi41ODVMOS4xMSwxMi41ODVMOC42NDUsMTIuNTg1TDguNjQ1LDE2LjkzNUw5LjU3NSwyMC4yMDVMOS42OTUsMjAuNTY1TDEyLjUzLDIwLjU2NUwxMi4zOTUsMTkuOThMMTEuNjMsMTcuMjhMMTMuMjA1LDE3LjI4QzE0LjQ4LDE3LjI4IDE1Ljk5NSwxNy43MyAxNy43OCwxOC42M0MxOC42OCwxOS4wOTUgMTkuNDQ1LDE5LjU2IDIwLjA2LDIwLjAxTDIwLjgyNSwyMC41NjVMMjAuODI1LDE5LjYyTDIwLjgyNSwxNi4yNkMyMS40NTUsMTYuMDIgMjEuNzcsMTUuNTg1IDIxLjc3LDE0Ljk0QzIxLjc3LDE0LjI5NSAyMS40NTUsMTMuODQ1IDIwLjgyNSwxMy42MkwyMC44MjUsMTAuMjQ1TDIwLjgyNSw5LjMxNUwyMC4wNiw5Ljg3Wk0xOS44OTUsMTMuNTNMMTkuODk1LDE4LjgxQzE5LjI5NSwxOC4zOSAxOC43NCwxOC4wNiAxOC4yMTUsMTcuODA1QzE2LjM4NSwxNi44NDUgMTQuNzUsMTYuMzY1IDEzLjMyNSwxNi4zMzVMMTMuMzI1LDEzLjUzQzE0Ljc1LDEzLjUxNSAxNi4zODUsMTMuMDIgMTguMjQ1LDEyLjA2QzE4Ljc1NSwxMS43OSAxOS4yOTUsMTEuNDYgMTkuODk1LDExLjA3TDE5Ljg5NSwxMy41M1pNMTIuMzk1LDEzLjUzTDEyLjM5NSwxNi4zMzVMOS41NzUsMTYuMzM1TDkuNTc1LDEzLjUzTDEyLjM5NSwxMy41M1pNMTAuNjI1LDE3LjI4TDExLjI3LDE5LjYyTDEwLjQsMTkuNjJMOS43NTUsMTcuMjhMMTAuNjI1LDE3LjI4WiIgc3R5bGU9ImZpbGw6d2hpdGU7ZmlsbC1ydWxlOm5vbnplcm87Ii8+CiAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+CiAgICA8cmVjdCB4PSI1MS4yIiB5PSI3MzEuNzciIHdpZHRoPSIxOS44NiIgaGVpZ2h0PSIxOC42NiIgc3R5bGU9ImZpbGw6bm9uZTtmaWxsLXJ1bGU6bm9uemVybzsiLz4KICAgIDxyZWN0IHg9IjI4LjE2IiB5PSI3NjIuMDUiIHdpZHRoPSI2MC4yMiIgaGVpZ2h0PSIxNS45OCIgc3R5bGU9ImZpbGw6bm9uZTtmaWxsLXJ1bGU6bm9uemVybzsiLz4KICAgIDxnIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLDEsMjguMTYyNiw3NjguNjA0KSI+CiAgICAgICAgPHRleHQgeD0iMHB4IiB5PSIwcHgiIHN0eWxlPSJmb250LWZhbWlseTonTGF0by1MaWdodCcsICdMYXRvJywgc2Fucy1zZXJpZjtmb250LXdlaWdodDozMDA7Zm9udC1zaXplOjlweDtmaWxsOnJnYigxLDEsMSk7Ij4zMDMtODM5LTk0MjI8L3RleHQ+CiAgICA8L2c+CiAgICA8cmVjdCB4PSIxMTEuMDgiIHk9Ijc2Mi4wNSIgd2lkdGg9IjM1IiBoZWlnaHQ9IjE2LjE4IiBzdHlsZT0iZmlsbDpub25lO2ZpbGwtcnVsZTpub256ZXJvOyIvPgogICAgPGcgdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsMSwxMTEuMDgyLDc2OC42MDQpIj4KICAgICAgICA8dGV4dCB4PSIwcHgiIHk9IjBweCIgc3R5bGU9ImZvbnQtZmFtaWx5OidMYXRvLUxpZ2h0JywgJ0xhdG8nLCBzYW5zLXNlcmlmO2ZvbnQtd2VpZ2h0OjMwMDtmb250LXNpemU6OXB4O2ZpbGw6cmdiKDEsMSwxKTsiPm9tbmkub3JnPC90ZXh0PgogICAgPC9nPgogICAgPHJlY3QgeD0iMTU2LjkyIiB5PSI3NjMuNDgiIHdpZHRoPSI4NS4wOSIgaGVpZ2h0PSIxOS45MyIgc3R5bGU9ImZpbGw6bm9uZTtmaWxsLXJ1bGU6bm9uemVybzsiLz4KICAgIDxnIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLDEsMTU5LjkwNSw3NzAuMDM5KSI+CiAgICAgICAgPHRleHQgeD0iMHB4IiB5PSIwcHgiIHN0eWxlPSJmb250LWZhbWlseTonTGF0by1MaWdodCcsICdMYXRvJywgc2Fucy1zZXJpZjtmb250LXdlaWdodDozMDA7Zm9udC1zaXplOjlweDtmaWxsOnJnYigxLDEsMSk7Ij44OTkgTDx0c3BhbiB4PSIyMS44NTJweCAyNi43MjFweCAiIHk9IjBweCAwcHggIj5vZzwvdHNwYW4+YW4gU3QsIFN0IDYwMDwvdGV4dD4KICAgICAgICA8ZyB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwxLDIuNywxMC44KSI+CiAgICAgICAgICAgIDx0ZXh0IHg9IjBweCIgeT0iMHB4IiBzdHlsZT0iZm9udC1mYW1pbHk6J0xhdG8tTGlnaHQnLCAnTGF0bycsIHNhbnMtc2VyaWY7Zm9udC13ZWlnaHQ6MzAwO2ZvbnQtc2l6ZTo5cHg7ZmlsbDpyZ2IoMSwxLDEpOyI+RGVuPHRzcGFuIHg9IjE2LjE5NnB4IDIwLjQ5OHB4IDI1LjA5N3B4IDI4LjEwN3B4IDI5Ljg4NXB4ICIgeT0iMHB4IDBweCAwcHggMHB4IDBweCAiPnZlciwgPC90c3Bhbj5DTyA4MDIwMzwvdGV4dD4KICAgICAgICA8L2c+CiAgICA8L2c+CiAgICA8cGF0aCBkPSJNMjE0LjI1LDczOS4xN0MyMTQuMjUsNzQ3LjMzIDIwNy42Myw3NTMuOTUgMTk5LjQ3LDc1My45NUMxOTEuMzEsNzUzLjk1IDE4NC42OSw3NDcuMzMgMTg0LjY5LDczOS4xN0MxODQuNjksNzMxLjAxIDE5MS4zMSw3MjQuMzkgMTk5LjQ3LDcyNC4zOUMyMDcuNjMsNzI0LjM5IDIxNC4yNSw3MzEuMDEgMjE0LjI1LDczOS4xN1oiIHN0eWxlPSJmaWxsOnJnYig1MCw2Niw5Nyk7ZmlsbC1ydWxlOm5vbnplcm87Ii8+CiAgICA8Zz4KICAgICAgICA8cGF0aCBkPSJNMTk2LjEzLDczOC42MkwxOTYuMTMsNzQzLjQ3TDE5OC4zOCw3NDMuNDdMMTk4LjM4LDczOS45NUwyMDAuNTYsNzM5Ljk1TDIwMC41Niw3NDMuNDdMMjAyLjgxLDc0My40N0wyMDIuODEsNzM4LjYyTDE5Ni4xMyw3MzguNjJaIiBzdHlsZT0iZmlsbDp3aGl0ZTtmaWxsLXJ1bGU6bm9uemVybzsiLz4KICAgICAgICA8cGF0aCBkPSJNMTk5LjQ3LDczNC41MkwxOTQuNTYsNzM4Ljc0TDIwNC4zOCw3MzguNzRMMTk5LjQ3LDczNC41MloiIHN0eWxlPSJmaWxsOndoaXRlO2ZpbGwtcnVsZTpub256ZXJvOyIvPgogICAgICAgIDxwYXRoIGQ9Ik01MjUuMjIsNzMxLjQ1QzUyNS4yMiw3MjUuNzIgNTI5Ljg3LDcyMS4wNyA1MzUuNiw3MjEuMDdDNTQxLjMzLDcyMS4wNyA1NDUuOTgsNzI1LjcyIDU0NS45OCw3MzEuNDVDNTQ1Ljk4LDczMS41OCA1NDUuOTcsNzMxLjcgNTQ1Ljk2LDczMS44M0M1NDYuMDgsNzMxLjE2IDU0Ni4xNiw3MzAuNDcgNTQ2LjE2LDcyOS43NkM1NDYuMTYsNzIzLjM5IDU0MSw3MTguMjMgNTM0LjYyLDcxOC4yM0M1MjguMjUsNzE4LjIzIDUyMy4wOCw3MjMuMzkgNTIzLjA4LDcyOS43NkM1MjMuMDgsNzM0LjcyIDUyNi4yMiw3MzguOTQgNTMwLjYxLDc0MC41N0M1MjcuNDEsNzM4Ljc5IDUyNS4yMiw3MzUuMzggNTI1LjIyLDczMS40NVoiIHN0eWxlPSJmaWxsOndoaXRlO2ZpbGwtcnVsZTpub256ZXJvOyIvPgogICAgICAgIDxwYXRoIGQ9Ik01MzUuMjEsNzIzLjI4QzUzNC45NSw3MjMuMjggNTM0LjY5LDcyMy4zIDUzNC40NCw3MjMuMzJDNTM4LjY5LDcyMy4zNSA1NDIuMTIsNzI2LjggNTQyLjEyLDczMS4wNUM1NDIuMTIsNzM1LjMyIDUzOC42Niw3MzguNzggNTM0LjM4LDczOC43OEM1MzAuMTMsNzM4Ljc4IDUyNi42OCw3MzUuMzUgNTI2LjY1LDczMS4xQzUyNi42Myw3MzEuMzUgNTI2LjYxLDczMS42MSA1MjYuNjEsNzMxLjg3QzUyNi42MSw3MzYuNjIgNTMwLjQ2LDc0MC40NiA1MzUuMjEsNzQwLjQ2QzUzOS45Niw3NDAuNDYgNTQzLjgsNzM2LjYxIDU0My44LDczMS44N0M1NDMuOCw3MjcuMTMgNTM5Ljk2LDcyMy4yOCA1MzUuMjEsNzIzLjI4WiIgc3R5bGU9ImZpbGw6d2hpdGU7ZmlsbC1ydWxlOm5vbnplcm87Ii8+CiAgICAgICAgPHBhdGggZD0iTTUxNi4xOSw3NTguNDNDNTE3LjU3LDc1OC40MyA1MjAuNDQsNzU3LjYzIDUyMC40NCw3NTMuMTVDNTIwLjQ0LDc0OS40NiA1MTguMTksNzQ3LjQ3IDUxNS43Niw3NDcuNDdDNTEzLjE5LDc0Ny40NyA1MTEuMjcsNzQ5LjE2IDUxMS4yNyw3NTIuNTNDNTExLjI2LDc1Ni4xMyA1MTMuNDIsNzU4LjQzIDUxNi4xOSw3NTguNDNaTTUxNS44Niw3NDYuOTZDNTE5LjMyLDc0Ni45NiA1MjEuOTEsNzQ5LjE0IDUyMS45MSw3NTIuNzNDNTIxLjkxLDc1Ni4xOCA1MTkuNDgsNzU5LjAyIDUxNS43Nyw3NTkuMDJDNTExLjU2LDc1OS4wMiA1MDkuOCw3NTUuNzQgNTA5LjgsNzUyLjk3QzUwOS44LDc1MC40OCA1MTEuNjIsNzQ2Ljk2IDUxNS44Niw3NDYuOTZaIiBzdHlsZT0iZmlsbDp3aGl0ZTtmaWxsLXJ1bGU6bm9uemVybzsiLz4KICAgICAgICA8cGF0aCBkPSJNNTM2LjkyLDc1Ni44MkM1MzYuOTgsNzU3LjM3IDUzNy4wOSw3NTguMjMgNTM3Ljc1LDc1OC40NUM1MzguMiw3NTguNTkgNTM4LjYsNzU4LjU5IDUzOC43NSw3NTguNTlDNTM4LjgzLDc1OC41OSA1MzguODcsNzU4LjYxIDUzOC44Nyw3NTguNjdDNTM4Ljg3LDc1OC43NiA1MzguNzMsNzU4LjgxIDUzOC41NSw3NTguODFDNTM4LjIxLDc1OC44MSA1MzYuNTUsNzU4Ljc2IDUzNS45OCw3NTguNzJDNTM1LjYzLDc1OC42OSA1MzUuNTUsNzU4LjY0IDUzNS41NSw3NTguNTdDNTM1LjU1LDc1OC41MSA1MzUuNTgsNzU4LjQ4IDUzNS42Niw3NTguNDZDNTM1Ljc0LDc1OC40NCA1MzUuNzUsNzU4LjE4IDUzNS43Miw3NTcuOTFMNTM0Ljk4LDc0OS45N0w1MzQuOTMsNzQ5Ljk3TDUzMS4xNiw3NTcuOTdDNTMwLjg0LDc1OC42NSA1MzAuNzksNzU4Ljc5IDUzMC42NSw3NTguNzlDNTMwLjU0LDc1OC43OSA1MzAuNDcsNzU4LjY0IDUzMC4xNyw3NTguMDhDNTI5Ljc3LDc1Ny4zMyA1MjguNDUsNzU0LjY2IDUyOC4zNyw3NTQuNTFDNTI4LjIzLDc1NC4yMyA1MjYuNTEsNzUwLjU0IDUyNi4zNCw3NTAuMTNMNTI2LjI4LDc1MC4xM0w1MjUuNjYsNzU3LjI3QzUyNS42NSw3NTcuNTIgNTI1LjY1LDc1Ny43OSA1MjUuNjUsNzU4LjA1QzUyNS42NSw3NTguMjggNTI1LjgyLDc1OC40OCA1MjYuMDUsNzU4LjUzQzUyNi4zMSw3NTguNTkgNTI2LjU0LDc1OC42MSA1MjYuNjQsNzU4LjYxQzUyNi43LDc1OC42MSA1MjYuNzYsNzU4LjY0IDUyNi43Niw3NTguNjlDNTI2Ljc2LDc1OC44IDUyNi42Nyw3NTguODMgNTI2LjQ4LDc1OC44M0M1MjUuOTEsNzU4LjgzIDUyNS4xNyw3NTguNzggNTI1LjA1LDc1OC43OEM1MjQuOTEsNzU4Ljc4IDUyNC4xNyw3NTguODMgNTIzLjc2LDc1OC44M0M1MjMuNjEsNzU4LjgzIDUyMy41LDc1OC44IDUyMy41LDc1OC42OUM1MjMuNSw3NTguNjQgNTIzLjU4LDc1OC42MSA1MjMuNjUsNzU4LjYxQzUyMy43Nyw3NTguNjEgNTIzLjg4LDc1OC42MSA1MjQuMTEsNzU4LjU2QzUyNC42Miw3NTguNDcgNTI0LjY2LDc1Ny44NyA1MjQuNzMsNzU3LjI4TDUyNS44NCw3NDcuMjVDNTI1Ljg3LDc0Ny4wOCA1MjUuOTIsNzQ2Ljk3IDUyNi4wMSw3NDYuOTdDNTI2LjEsNzQ2Ljk3IDUyNi4xNiw3NDcuMDMgNTI2LjI0LDc0Ny4yTDUzMC45NSw3NTYuODdMNTM1LjQ3LDc0Ny4yMUM1MzUuNTMsNzQ3LjA3IDUzNS41OSw3NDYuOTYgNTM1LjcsNzQ2Ljk2QzUzNS44MSw3NDYuOTYgNTM1Ljg1LDc0Ny4wOCA1MzUuODksNzQ3LjM4TDUzNi45Miw3NTYuODJaIiBzdHlsZT0iZmlsbDp3aGl0ZTtmaWxsLXJ1bGU6bm9uemVybzsiLz4KICAgICAgICA8cGF0aCBkPSJNNTQyLjA1LDc1Ni43MUM1NDIuMDgsNzU3Ljk3IDU0Mi4yMyw3NTguMzcgNTQyLjY1LDc1OC41QzU0Mi45NCw3NTguNTggNTQzLjI4LDc1OC41OSA1NDMuNDIsNzU4LjU5QzU0My41LDc1OC41OSA1NDMuNTQsNzU4LjYyIDU0My41NCw3NTguNjhDNTQzLjU0LDc1OC43NyA1NDMuNDUsNzU4LjggNTQzLjI2LDc1OC44QzU0Mi4zOCw3NTguOCA1NDEuNzcsNzU4Ljc1IDU0MS42Myw3NTguNzVDNTQxLjQ5LDc1OC43NSA1NDAuODUsNzU4LjggNTQwLjE1LDc1OC44QzU0MCw3NTguOCA1MzkuOSw3NTguNzggNTM5LjksNzU4LjY4QzUzOS45LDc1OC42MiA1MzkuOTUsNzU4LjU5IDU0MC4wMiw3NTguNTlDNTQwLjE0LDc1OC41OSA1NDAuNDIsNzU4LjU3IDU0MC42NSw3NTguNUM1NDEuMDMsNzU4LjM5IDU0MS4xMSw3NTcuOTUgNTQxLjExLDc1Ni41NUw1NDEuMTMsNzQ3Ljc0QzU0MS4xMyw3NDcuMTQgNTQxLjE4LDc0Ni45NyA1NDEuMyw3NDYuOTdDNTQxLjQyLDc0Ni45NyA1NDEuNjksNzQ3LjMxIDU0MS44NCw3NDcuNDZDNTQyLjA3LDc0Ny43MiA1NDQuMzYsNzUwLjIgNTQ2LjczLDc1Mi43NEM1NDguMjUsNzU0LjM3IDU0OS45Myw3NTYuMjUgNTUwLjQyLDc1Ni43NUw1NTAuMjUsNzQ4Ljk0QzU1MC4yNCw3NDcuOTQgNTUwLjEzLDc0Ny42IDU0OS42NSw3NDcuNDhDNTQ5LjM3LDc0Ny40MiA1NDkuMDIsNzQ3LjQgNTQ4LjksNzQ3LjRDNTQ4Ljc5LDc0Ny40IDU0OC43OCw3NDcuMzUgNTQ4Ljc4LDc0Ny4yOUM1NDguNzgsNzQ3LjIgNTQ4LjksNzQ3LjE4IDU0OS4wOSw3NDcuMThDNTQ5Ljc4LDc0Ny4xOCA1NTAuNTIsNzQ3LjIzIDU1MC42OSw3NDcuMjNDNTUwLjg2LDc0Ny4yMyA1NTEuMzcsNzQ3LjE4IDU1Miw3NDcuMThDNTUyLjE3LDc0Ny4xOCA1NTIuMjgsNzQ3LjIgNTUyLjI4LDc0Ny4yOUM1NTIuMjgsNzQ3LjM1IDU1Mi4yMiw3NDcuNCA1NTIuMTEsNzQ3LjRDNTUyLjAzLDc0Ny40IDU1MS45Myw3NDcuNCA1NTEuNzQsNzQ3LjQ1QzU1MS4yMyw3NDcuNTYgNTUxLjE3LDc0Ny45IDU1MS4xNyw3NDguODJMNTUxLjE0LDc1Ny44M0M1NTEuMTQsNzU4Ljg0IDU1MS4xMSw3NTguOTIgNTUxLDc1OC45MkM1NTAuODgsNzU4LjkyIDU1MC42OSw3NTguNzUgNTQ5Ljg4LDc1Ny45NEM1NDkuNzEsNzU3Ljc5IDU0Ny41LDc1NS41MyA1NDUuODcsNzUzLjc3QzU0NC4wOSw3NTEuODUgNTQyLjM1LDc0OS45MSA1NDEuODYsNzQ5LjM2TDU0Mi4wNSw3NTYuNzFaIiBzdHlsZT0iZmlsbDp3aGl0ZTtmaWxsLXJ1bGU6bm9uemVybzsiLz4KICAgICAgICA8cGF0aCBkPSJNNTU3LjQ5LDc1NC4zNEM1NTcuNDksNzU1LjgyIDU1Ny40OSw3NTcuMDMgNTU3LjU3LDc1Ny42OEM1NTcuNjIsNzU4LjEzIDU1Ny43MSw3NTguNDYgNTU4LjE3LDc1OC41M0M1NTguMzksNzU4LjU2IDU1OC43Miw3NTguNTkgNTU4Ljg2LDc1OC41OUM1NTguOTUsNzU4LjU5IDU1OC45OCw3NTguNjQgNTU4Ljk4LDc1OC42OEM1NTguOTgsNzU4Ljc2IDU1OC45LDc1OC44IDU1OC43Myw3NTguOEM1NTcuODgsNzU4LjggNTU2LjkxLDc1OC43NSA1NTYuODQsNzU4Ljc1QzU1Ni43Niw3NTguNzUgNTU1Ljc5LDc1OC44IDU1NS4zMyw3NTguOEM1NTUuMTYsNzU4LjggNTU1LjA4LDc1OC43NyA1NTUuMDgsNzU4LjY4QzU1NS4wOCw3NTguNjMgNTU1LjExLDc1OC41OSA1NTUuMiw3NTguNTlDNTU1LjM0LDc1OC41OSA1NTUuNTIsNzU4LjU2IDU1NS42Niw3NTguNTNDNTU1Ljk3LDc1OC40NyA1NTYuMDUsNzU4LjEzIDU1Ni4xMSw3NTcuNjhDNTU2LjE5LDc1Ny4wMyA1NTYuMTksNzU1LjgyIDU1Ni4xOSw3NTQuMzRMNTU2LjE5LDc1MS42M0M1NTYuMTksNzQ5LjIzIDU1Ni4xOSw3NDguOCA1NTYuMTYsNzQ4LjMxQzU1Ni4xMyw3NDcuNzkgNTU1Ljk3LDc0Ny41MyA1NTUuNjQsNzQ3LjQ1QzU1NS40Nyw3NDcuNCA1NTUuMjcsNzQ3LjM5IDU1NS4xNiw3NDcuMzlDNTU1LjEsNzQ3LjM5IDU1NS4wNCw3NDcuMzYgNTU1LjA0LDc0Ny4zQzU1NS4wNCw3NDcuMjEgNTU1LjEyLDc0Ny4xOCA1NTUuMjgsNzQ3LjE4QzU1NS43OSw3NDcuMTggNTU2Ljc2LDc0Ny4yMyA1NTYuODMsNzQ3LjIzQzU1Ni45MSw3NDcuMjMgNTU3Ljg4LDc0Ny4xOCA1NTguMzQsNzQ3LjE4QzU1OC41MSw3NDcuMTggNTU4LjU5LDc0Ny4yMSA1NTguNTksNzQ3LjNDNTU4LjU5LDc0Ny4zNiA1NTguNTMsNzQ3LjM5IDU1OC40Nyw3NDcuMzlDNTU4LjM2LDc0Ny4zOSA1NTguMjcsNzQ3LjQxIDU1OC4wOSw3NDcuNDRDNTU3LjY3LDc0Ny41MiA1NTcuNTUsNzQ3Ljc4IDU1Ny41Miw3NDguMzJDNTU3LjQ5LDc0OC44MSA1NTcuNDksNzQ5LjI0IDU1Ny40OSw3NTEuNjRMNTU3LjQ5LDc1NC4zNFoiIHN0eWxlPSJmaWxsOndoaXRlO2ZpbGwtcnVsZTpub256ZXJvOyIvPgogICAgPC9nPgo8L3N2Zz4K);
 background-repeat: no-repeat;
 background-position: right center;
+@top-left {
+content: none;
+}
+@top-right {
+content: none;
+}
+@bottom-right {
+content: none !important;
+}
 }
 
 #header {
@@ -28569,6 +28621,17 @@ page-break-before: always;
 
 h3.abstract {
 display: none;
+}
+
+
+.back-cover {
+
+}
+.pagedjs_page:last-of-type {
+background-image: var(--back-cover);
+background-position: center;
+background-size: contain;
+background-repeat: no-repeat;
 }
 
 
@@ -28626,29 +28689,33 @@ background-color: #ffffff;
 color: #000000;
 margin-bottom: 0;
 }
+
 .exec-summary {
 page-break-before: always;
 break-after: always;
 }
 
-p.caption {
-text-transform: uppercase;
-font-weight: 600;
-color: #333333;
-text-align: left;
+.left-column {
+float: left;
+width: 3in;
 }
-table caption {
-text-transform: uppercase;
-font-weight: 600;
-color: #333333;
-text-align: left;
-margin-bottom: 5px;
+.right-column {
+float: right;
+width: 3in;
 }
 
-ul {
-list-style-type: disc;
+.pull-quote {
+float: right;
+width: 2.5in;
+}
+.pull-quote p {
+font-size: 16pt;
 }</style>
-<style type="text/css">:root {
+<style type="text/css">
+
+
+
+:root {
 --background: whitesmoke;
 --pagedjs-width: 8.5in;
 --pagedjs-height: 11in;
@@ -28657,72 +28724,6 @@ list-style-type: disc;
 --running-title-width: 2.5in;
 --screen-pages-spacing: 5mm;
 }
-html {
-line-height: 1.3;
-}
-
-a[href^="http"]:not([class="uri"])::after {
-content: " (" attr(href) ")";
-font-size: 90%;
-hyphens: none;
-word-break: break-all;
-}
-.references a[href^=http]:not([class=uri])::after {
-content: none;
-}
-.main a[href^="#"]:not([class^="footnote-"]):not([href*=":"])::after {
-content: " (page " target-counter(attr(href), page) ")";
-}
-.main a.front-matter-ref[href^="#"]:not([class^="footnote-"]):not([href*=":"])::after {
-content: " (page " target-counter(attr(href), page, lower-roman) ")";
-}
-
-.sourceCode a[href^="#"]:not([class^="footnote-"]):not([href*=":"])::after,
-.sourceCode a.front-matter-ref[href^="#"]:not([class^="footnote-"]):not([href*=":"])::after {
-content: unset;
-}
-
-.toc a::after, .lot a::after, .lof a::after {
-
-content: target-counter(attr(href), page);
-float: right;
-}
-.toc a.front-matter-ref::after, .lot a.front-matter-ref::after, .lof a.front-matter-ref::after {
-
-content: target-counter(attr(href), page, lower-roman);
-}
-.toc .leaders::before, .lot .leaders::before, .lof .leaders::before {
-float: left;
-width: 0;
-white-space: nowrap;
-content: "...........................................................................................................................................................................................................";
-}
-.pagedjs_pagebox * {
-box-sizing: border-box;
-}
-
-.chapter > h1 > .header-section-number::before, .chapter-ref > .toc-section-number::before {
-content: var(--chapter-name-before, "Chapter ");
-}
-.chapter > h1 > .header-section-number::after, .chapter-ref > .toc-section-number::after {
-content: var(--chapter-name-after, "");
-}
-
-.subtitle span {
-font-size: .9em;
-}
-img {
-max-width: 100%;
-}
-pre {
-padding: 1em;
-}
-pre[class] {
-background: #f9f9f9;
-}
-abbr {
-text-decoration: none;
-}
 @media screen {
 div.sourceCode {
 overflow: visible !important;
@@ -28730,42 +28731,6 @@ overflow: visible !important;
 a.sourceLine::before {
 text-decoration: unset !important;
 }
-}
-pre.numberSource a.sourceLine {
-left: 0 !important;
-text-indent: -5em
-}
-pre.numberSource {
-margin-left: 0 !important;
-}
-table {
-margin: auto;
-border-top: 1px solid #666;
-border-bottom: 1px solid #666;
-}
-table thead th {
-border-bottom: 1px solid #ddd;
-}
-thead, tfoot, tr:nth-child(even) {
-background: #eee;
-}
-.footnotes {
-font-size: 90%;
-}
-.footnotes hr::before {
-content: "Footnotes:";
-}
-.footnotes hr {
-border: none;
-}
-.footnote-break {
-width: 1in;
-}
-body {
-hyphens: auto;
-}
-code {
-hyphens: none;
 }
 
 @media screen {
@@ -28804,12 +28769,48 @@ width: calc(var(--pagedjs-width) + 2 * var(--screen-pages-spacing));
 }
 }
 
-blockquote {
-font-size: 150pt;
+a[href^="http"]:not([class="uri"])::after {
+content: " (" attr(href) ")";
+font-size: 90%;
+hyphens: none;
+word-break: break-all;
 }
-.quote-footer {
+.references a[href^=http]:not([class=uri])::after {
+content: none;
+}
+.main a[href^="#"]:not([class^="footnote-"]):not([href*=":"])::after {
+content: " (page " target-counter(attr(href), page) ")";
+}
+.main a.front-matter-ref[href^="#"]:not([class^="footnote-"]):not([href*=":"])::after {
+content: " (page " target-counter(attr(href), page, lower-roman) ")";
+}
+
+.sourceCode a[href^="#"]:not([class^="footnote-"]):not([href*=":"])::after,
+.sourceCode a.front-matter-ref[href^="#"]:not([class^="footnote-"]):not([href*=":"])::after {
+content: unset;
+}
+
+.toc a::after, .lot a::after, .lof a::after {
+
+content: target-counter(attr(href), page);
 float: right;
-font-style: italic;
+}
+.toc a.front-matter-ref::after, .lot a.front-matter-ref::after, .lof a.front-matter-ref::after {
+
+content: target-counter(attr(href), page, lower-roman);
+}
+.toc .leaders::before, .lot .leaders::before, .lof .leaders::before {
+float: left;
+width: 0;
+white-space: nowrap;
+content: "...........................................................................................................................................................................................................";
+}
+
+.chapter > h1 > .header-section-number::before, .chapter-ref > .toc-section-number::before {
+content: var(--chapter-name-before, "Chapter ");
+}
+.chapter > h1 > .header-section-number::after, .chapter-ref > .toc-section-number::after {
+content: var(--chapter-name-after, "");
 }
 </style>
 

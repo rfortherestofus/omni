@@ -18,7 +18,7 @@ output:
     toc: TRUE
     self_contained: TRUE
     number_sections: FALSE
-    css: ["style/omni-fonts.css", "style/omni-page.css", "style/default.css"]
+    css: ["style/omni-style.css", "style/omni-page.css", "style/omni-default.css"]
     include: 
       in_header: "style/meta_lof_js.html"
 customjs: "style/lof.js"

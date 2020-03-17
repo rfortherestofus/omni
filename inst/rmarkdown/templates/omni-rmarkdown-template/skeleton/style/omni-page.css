@@ -1,4 +1,9 @@
-/* page size */
+/* -------------------------------------------- */
+/* CSS : styles related to how we put this on pages */
+/* -------------------------------------------- */
+
+
+/* ------------------ Page size ---------------- */
 @page {
   size: 8.5in 11in; /* var(--pagedjs-width) doesn't work in browser when printing */
 }
@@ -6,6 +11,15 @@
 
 }
 
+
+/* --------------------- Handle recto and verso pages ---------------- */
+html {
+  line-height: 1.3;
+}
+
+.pagedjs_pagebox * {
+    box-sizing: border-box;
+}
 
 /* store some string variables */
 .shorttitle1 {
@@ -28,15 +42,6 @@
 }
 
 @page chapter:left {
-  /*
-  @top-left {
-    content: counter(page);
-  }
-  @top-right {
-    content: element(runningH1Title);
-    white-space: nowrap !important;
-  }
-  */
   @bottom-right {
     content: counter(page);
   }
@@ -56,21 +61,12 @@
   content: string(h2-text);
 }
 @page chapter:right {
-  /*
-  @top-right {
-    content: counter(page);
-  }
-  @top-left {
-    content: element(runningH2Title);
-    white-space: nowrap !important;
-  }
-  */
    @bottom-right {
     content: counter(page);
   }
 }
 
-/* New chapter page */
+/* ----------------- New chapter page --------------------- */
 @page chapter:first {
   @top-left {
     content: none;
@@ -83,21 +79,6 @@
   }
 
 }
-@page :first {
-  @top-left {
-    content: none;
-  }
-  @top-right {
-    content: none;
-  }
-  @bottom-right {
-    content: none !important;
-  }
-  background-image: var(--front-cover);
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
 
 /* --------------------- Page style ----------------------- */
 /* Add colorbar to all pages (first and last are overriden later) */
@@ -108,7 +89,6 @@
   background-repeat: no-repeat;
 }
 
-
 /* Front cover */
 .front-cover {
   break-after: recto;
@@ -117,54 +97,6 @@
 /* Front page or title page */
 .front-page {
   counter-reset: page;
-}
-
-
-/* Front matter*/
-
-/* DK: I commented this all out
-
-@page frontmatter:left {
-  @top-left {
-    content: counter(page, lower-roman);
-  }
-  @top-right {
-    content: element(runningH1Title);
-    white-space: nowrap !important;
-  }
-}
-@page frontmatter:right {
-  @top-right {
-    content: counter(page, lower-roman);
-  }
-  @top-left {
-    content: element(runningH1Title);
-    white-space: nowrap !important;
-  }
-}
-@page frontmatter:first {
-  @top-left {
-    content: none;
-  }
-  @top-right {
-    content: none;
-  }
-  @bottom-right {
-    content: counter(page, lower-roman);
-  }
-}
-
-*/
-
-/* last page or back cover */
-.back-cover {
-  /* break-before: verso; */
-}
-.pagedjs_page:last-of-type {
-  background-image: var(--back-cover);
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 
 /* page breaks; aka CSS fragmentation */
@@ -197,39 +129,23 @@ caption {
   break-after: avoid;
 }
 
-/* Columns */
-
-.left-column {
-  float: left;
-  width: 3in;
-}
-
-.right-column {
-  float: right;
-  width: 3in;
-}
-
-
-/* Pull quotes */
-
-.pull-quote {
-  float: right;
-  width: 2.5in;
-}
-
-.pull-quote p {
-  font-size: 16pt;
-}
-
-
-/* Cover Page */
-
+/* --------------------- Cover Page ------------------ */
 @page:first{
   margin: 0 0 0 0;
   background-color: #ffffff;
   background-image: url(../images/blue-cover-sidebar.svg);
   background-repeat: no-repeat;
   background-position: right center;
+
+  @top-left {
+    content: none;
+  }
+  @top-right {
+    content: none;
+  }
+  @bottom-right {
+    content: none !important;
+  }
 }
 
 /* Make title not go onto blue sidebar */
@@ -271,6 +187,18 @@ div.abstract {
 /* remove the h3 title "Abstract" */
 h3.abstract {
   display: none;
+}
+
+/* ---------------------- Last page ----------------- */
+/* last page or back cover */
+.back-cover {
+  /* break-before: verso; */
+}
+.pagedjs_page:last-of-type {
+  background-image: var(--back-cover);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 /* ------------------ Table of Contents/Figures/Tables formatting ----------------- */
@@ -339,28 +267,30 @@ h3.abstract {
   margin-bottom: 0;
 }
 
+/* page style */
 .exec-summary {
   page-break-before: always;
   break-after: always;
 }
 
-/* -------------------- Captions ----------------------- */
-p.caption {
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #333333;
-  text-align: left;
+/* --------------------- Columns ------------------- */
+.left-column {
+  float: left;
+  width: 3in;
 }
 
-table caption {
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #333333;
-  text-align: left;
-  margin-bottom: 5px;
+.right-column {
+  float: right;
+  width: 3in;
 }
 
-/* ----------------- List style ------------------- */
-ul {
-  list-style-type: disc;
+
+/* -------------------- Pull quotes ---------------- */
+.pull-quote {
+  float: right;
+  width: 2.5in;
+}
+
+.pull-quote p {
+  font-size: 16pt;
 }
