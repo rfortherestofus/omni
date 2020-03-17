@@ -71,6 +71,7 @@ a, a:active, a:visited {
 aside {
     width: 40%;
     float: right;
+    margin: 0% 0% 0% 1%;
 }
 
 aside > blockquote {
@@ -89,3 +90,17 @@ aside > blockquote > p {
 }
 
 
+/* ----------------- Information call out ------------- */
+aside.info_call {
+  width: 40%;
+  border-style: solid;
+  border-color: #666666;
+  border-width: thin;
+  margin: 0% 0% 0% 1%;
+}
+
+.info_call_title {
+  background-color: #347686;
+  color: white;
+  font-size: 14pt;
+}

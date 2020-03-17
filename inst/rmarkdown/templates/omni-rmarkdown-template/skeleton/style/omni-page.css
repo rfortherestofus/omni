@@ -359,3 +359,8 @@ table caption {
   text-align: left;
   margin-bottom: 5px;
 }
+
+/* ----------------- List style ------------------- */
+ul {
+  list-style-type: disc;
+}
