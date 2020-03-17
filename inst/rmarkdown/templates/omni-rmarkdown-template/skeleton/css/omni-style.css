@@ -92,16 +92,21 @@ aside > blockquote > p {
 /* Information call out */
 aside.info_call {
   width: 40%;
-  border-style: solid;
-  border-color: #666666;
-  border-width: thin;
-  margin: 0% 0% 0% 1%;
+  border: none;
+  margin: 0.1in .1in 0 .25in;;
 }
 
 .info_call_title {
   background-color: #347686;
   color: white;
   font-size: 14pt;
+  font-weight: 700;
+  margin: 0 0 8pt 0;
+  padding: 4pt;
+}
+
+.info_call p:not(.info_call_title) {
+  margin: 0;
 }
 
 /* ----------------- Tables -------------------- */

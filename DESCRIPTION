@@ -15,6 +15,7 @@ Imports:
     flextable,
     officer,
     pagedown,
-    stringr
+    stringr,
+    knitr
 URL: https://github.com/dgkeyes/omni
 BugReports: https://github.com/dgkeyes/omni/issues

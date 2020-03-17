@@ -18,21 +18,24 @@ output:
     toc: TRUE
     self_contained: TRUE
     number_sections: FALSE
-    css: ["style/omni-style.css", "style/omni-page.css", "style/omni-default.css"]
+    fig_caption: TRUE
+    css: ["css/omni-style.css", "css/omni-page.css", "css/omni-default.css"]
     include: 
-      in_header: "style/meta_lof_js.html"
-customjs: "style/lof.js"
+      in_header: "js/meta_lof_js.html"
+customjs: "js/lof.js"
 toc-title: "Table of Contents"
 lot: FALSE
 lof: TRUE
 abstract: >-
-  ```{r, child = "style/abstract.Rmd"}
+  ```{r, child = "rmd/abstract.Rmd"}
   ```
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE,
-                      fig.topcaption = TRUE)
+                      fig.topcaption = TRUE,
+                      fig.cap = TRUE,
+                      dpi = 150)
 library(tidyverse)
 library(devtools)
 library(flextable)
@@ -98,6 +101,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ```{r, fig.cap = "A random figure", out.width="200px", fig.align='center', out.extra='data-prefix="Figure"'}
 knitr::include_graphics("images/example_figure.png")
+
+
 ```
 
 #### Fourth Level Header
@@ -106,7 +111,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 <aside class = "info_call">
 
-<p class="info_call_title"> Information call out</p>
+<p class="info_call_title">Information call out</p>
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus.
 
@@ -117,8 +122,10 @@ Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit dui
 ```{r fig.cap="Table as image", out.extra='data-prefix="Table"'}
 mtcars %>% 
   slice(1:5) %>% 
-  omni_table() 
+  omni_table("Sample table")
 ```
+
+
 
 # Another first level header
 

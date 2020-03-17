@@ -1,12 +1,20 @@
 #' OMNI Table Function
 #'
 #' @param df
+#' @param table_name
 #'
 #' @return
 #' @export
 #'
 #' @examples
-omni_table <- function(df) {
+omni_table <- function(df, table_name) {
+
+  table_name <- table_name %>%
+    stringr::str_to_lower() %>%
+    stringr::str_replace_all("[[:punct:]]", " ") %>%
+    stringr::str_replace_all(" ", "-")
+
+  table_file_name <- stringr::str_glue("images/{table_name}.png")
 
   df %>%
     flextable::flextable() %>%
@@ -25,7 +33,7 @@ omni_table <- function(df) {
     flextable::height_all(height = 0.4) %>%
     flextable::border_inner(part = "body", border = officer::fp_border(color = "white")) %>%
     flextable::border(part = "header", border.bottom = officer::fp_border(color = "white")) %>%
-    flextable::save_as_image("images/test_flextable.png")
+    flextable::save_as_image(table_file_name)
 
-  knitr::include_graphics("images/test_flextable.png")
+  knitr::include_graphics(table_file_name)
 }
