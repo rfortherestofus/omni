@@ -3,5 +3,5 @@
 .RData
 .Ruserdata
 *.dotx
-inst/rmarkdown/template/omni-rmarkdown-template/skeleton/skeleton.pdf
-inst/rmarkdown/template/omni-rmarkdown-template/skeleton/skeleton.html
+/inst/rmarkdown/template/omni-rmarkdown-template/skeleton/skeleton.pdf
+/inst/rmarkdown/template/omni-rmarkdown-template/skeleton/skeleton.html
