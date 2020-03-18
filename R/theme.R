@@ -2,6 +2,7 @@
 #'
 #' @param grid_lines Boolean to indicate whether to have grid_lines
 #' @param base_theme The base theme used (theme_minimal() with the Lato font)
+#' @param show_legend Whether or not to show the legend
 #'
 #' @return
 #' @export
@@ -16,22 +17,30 @@
 #'   geom_bar(stat = "identity") +
 #'   coord_flip() +
 #'   theme_omni()
-theme_omni <- function(grid_lines = TRUE,
+theme_omni <- function(show_grid_lines = TRUE,
+                       show_legend = TRUE,
                        base_theme = ggplot2::theme_minimal(base_family = "Lato")) {
 
 
   omni_theme <- base_theme +
-    ggplot2::theme(panel.grid.minor = element_blank(),
-                   axis.ticks = element_blank(),
-                   axis.title.x = element_text(margin = ggplot2::margin(15, 0, 0, 0)),
-                   axis.title.y = element_text(margin = ggplot2::margin(0, 15, 0, 0)),
-                   plot.title = element_text(margin = ggplot2::margin(0, 0, 15, 0),
-                                             face = "bold"),)
+    ggplot2::theme(panel.grid.minor = ggplot2::element_blank(),
+                   axis.ticks = ggplot2::element_blank(),
+                   axis.title.x = ggplot2::element_text(margin = ggplot2::margin(15, 0, 0, 0)),
+                   axis.title.y = ggplot2::element_text(margin = ggplot2::margin(0, 15, 0, 0)),
+                   plot.title = ggplot2::element_text(margin = ggplot2::margin(0, 0, 15, 0),
+                                                      face = "bold"),)
 
-  if (grid_lines == FALSE) {
+  if (show_grid_lines == FALSE) {
 
     omni_theme <- omni_theme +
-      ggplot2::theme(panel.grid.major = element_blank())
+      ggplot2::theme(panel.grid.major = ggplot2::element_blank())
+
+  }
+
+  if (show_legend == FALSE) {
+
+    omni_theme <- omni_theme +
+      ggplot2::theme(legend.position = "none")
 
   }
 

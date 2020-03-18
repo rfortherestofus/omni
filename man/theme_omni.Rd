@@ -5,14 +5,17 @@
 \title{OMNI Institute ggplot2 theme}
 \usage{
 theme_omni(
-  grid_lines = TRUE,
+  show_grid_lines = TRUE,
+  show_legend = TRUE,
   base_theme = ggplot2::theme_minimal(base_family = "Lato")
 )
 }
 \arguments{
-\item{grid_lines}{Boolean to indicate whether to have grid_lines}
+\item{show_legend}{Whether or not to show the legend}
 
 \item{base_theme}{The base theme used (theme_minimal() with the Lato font)}
+
+\item{grid_lines}{Boolean to indicate whether to have grid_lines}
 }
 \value{
 

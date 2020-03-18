@@ -5,7 +5,7 @@ Version: 0.1.0
 Author: David Keyes
 Maintainer: David Keyes <david@rfortherestofus.com>
 Description: RMarkdown template, ggplot2 theme, and table function for OMNI Institute.
-License: MIT + file LICENSE
+License: &copy; OMNI Institute
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.0.2
@@ -13,9 +13,13 @@ Imports:
     tibble,
     magrittr,
     flextable,
-    officer,
     pagedown,
     stringr,
-    knitr
+    knitr,
+    scales,
+    fs
 URL: https://github.com/dgkeyes/omni
 BugReports: https://github.com/dgkeyes/omni/issues
+VignetteBuilder: knitr
+Suggests: 
+    rmarkdown

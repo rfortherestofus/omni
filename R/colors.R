@@ -34,16 +34,50 @@ omni_colors <- function(...) {
   if (is.null(cols))
     return (omni_colors_vector)
 
+  omni_colors_vector[cols] %>%
+    as.vector()
+
+}
+
+#' Title
+#'
+#' @param ...
+#'
+#' @return
+#' @export
+#' @keywords internal
+#'
+#' @examples
+omni_colors_internal <- function(...) {
+
+  omni_colors_vector <- c(`Gray` = "#666666",
+                          `Dark Gray` = "#333333",
+                          `Dark Blue` = "#314160",
+                          `Medium Blue` = "#347686",
+                          `Light Blue` = "#779aab",
+                          `Teal` = "#8bc0b2",
+                          `Orange` = "#eab66f",
+                          `Tan` = "#7b7754")
+
+  cols <- c(...)
+
+  cols <- stringr::str_to_title(cols)
+
+  if (is.null(cols))
+    return (omni_colors_vector)
+
   omni_colors_vector[cols]
 
 }
 
-omni_palettes <- list(
-
-  `Main` = omni_colors("Dark Blue", "Medium Blue", "Light Blue", "Teal", "Orange"),
-
-  `Blues` = omni_colors("Dark Blue", "Medium Blue", "Light Blue")
-)
+# omni_palettes <- list(
+#
+#   `Main` = omni_colors_internal("Dark Blue", "Medium Blue", "Light Blue", "Teal", "Orange", "Tan"),
+#
+#   `Blues` = omni_colors_internal("Dark Blue", "Medium Blue", "Light Blue", "Teal")
+# )
+#
+# usethis::use_data(omni_palettes)
 
 
 #' Return function to interpolate an OMNI color palette
@@ -111,6 +145,7 @@ scale_color_omni_continuous <- function(palette = "Main", reverse = FALSE, ...) 
 #' @param palette Character name of palette in omni_palettes
 #' @param reverse Boolean indicating whether the palette should be reversed
 #' @param ... Additional arguments passed to discrete_scale()
+#' @export
 #'
 scale_fill_omni_discrete <- function(palette = "Main", reverse = FALSE, ...) {
 
@@ -125,7 +160,7 @@ scale_fill_omni_discrete <- function(palette = "Main", reverse = FALSE, ...) {
 #' @param palette Character name of palette in omni_palettes. Right now, only "Main" and "Blues" exist.
 #' @param reverse Boolean indicating whether the palette should be reversed
 #' @param ... Additional arguments passed to discrete_scale()
-#'
+#' @export
 scale_fill_omni_continuous <- function(palette = "Main", reverse = FALSE, ...) {
 
   pal <- omni_pal(palette = palette, reverse = reverse)

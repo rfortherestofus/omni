@@ -9,6 +9,10 @@
 #' @examples
 omni_table <- function(df, table_name) {
 
+  if (!fs::dir_exists("images")) {
+    fs::dir_create("images")
+  }
+
   table_name <- table_name %>%
     stringr::str_to_lower() %>%
     stringr::str_replace_all("[[:punct:]]", " ") %>%
@@ -37,3 +41,4 @@ omni_table <- function(df, table_name) {
 
   knitr::include_graphics(table_file_name)
 }
+

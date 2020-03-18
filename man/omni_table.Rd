@@ -4,10 +4,10 @@
 \alias{omni_table}
 \title{OMNI Table Function}
 \usage{
-omni_table(df)
+omni_table(df, table_name)
 }
 \arguments{
-\item{df}{}
+\item{table_name}{}
 }
 \value{
 

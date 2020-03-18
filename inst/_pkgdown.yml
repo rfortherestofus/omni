@@ -1,0 +1,12 @@
+navbar:
+  left:
+  - text: RMarkdown
+    href: articles/rmarkdown.html
+  - text: Colors
+    href: articles/colors.html
+  - text: ggplot2 theme
+    href: articles/theme.html
+  - text: Tables
+    href: articles/tables.html
+  - text: Reference
+    href: reference/index.html

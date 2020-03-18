@@ -2,6 +2,9 @@
 
 export("%>%")
 export(omni_colors)
+export(omni_colors_internal)
 export(omni_table)
+export(scale_fill_omni_continuous)
+export(scale_fill_omni_discrete)
 export(theme_omni)
 importFrom(magrittr,"%>%")

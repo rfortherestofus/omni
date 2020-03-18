@@ -1,0 +1,25 @@
+---
+title: "Tables"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Tables}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(omni)
+```
+
+```{r fig.cap="Table as image", out.extra='data-prefix="Table"'}
+mtcars %>% 
+  dplyr::slice(1:5) %>% 
+  omni_table("Sample table")
+```
