@@ -14,6 +14,8 @@ acknowledgements: "Names of People to Thank"
 photo_background: FALSE
 knit: pagedown::chrome_print
 output:
+  word_document:
+    reference_docx: "docx/omni-template.docx"
   pagedown::html_paged:
     toc: TRUE
     self_contained: TRUE
