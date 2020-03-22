@@ -19,7 +19,7 @@ library(omni)
 library(dplyr)
 ```
 
-```{r include = FALSE}
+```{r include = FALSE, echo = TRUE}
 mtcars %>% 
   slice(1:5) %>% 
   omni_table("Sample table")

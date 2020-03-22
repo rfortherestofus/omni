@@ -98,7 +98,7 @@ omni_pal <- function(palette = "Main", reverse = FALSE, ...) {
 
 #' Discrete color scale based on OMNI colors
 #'
-#' @param palette Character name of palette in omni_palettes (Main or Blues)
+#' @param palette Character name of palette in omni_palettes ("Main" or "Blues")
 #' @param reverse Boolean indicating whether the palette should be reversed
 #' @param ... Additional arguments passed to discrete_scale()
 #'
@@ -124,9 +124,9 @@ scale_color_omni_discrete <- function(palette = "Main", reverse = FALSE, ...) {
 
 #' Continuous color scale based on OMNI colors
 #'
-#' @param palette Character name of palette in omni_palettes
+#' @param palette Character name of palette in omni_palettes ("Main" or "Blues")
 #' @param reverse Boolean indicating whether the palette should be reversed
-#' @param ... Additional arguments passed to discrete_scale()
+#' @param ... Additional arguments passed to scale_color_gradientn()
 #'
 scale_color_omni_continuous <- function(palette = "Main", reverse = FALSE, ...) {
 
@@ -142,7 +142,7 @@ scale_color_omni_continuous <- function(palette = "Main", reverse = FALSE, ...) 
 
 #' Discrete fill scale based on OMNI colors
 #'
-#' @param palette Character name of palette in omni_palettes
+#' @param palette Character name of palette in omni_palettes ("Main" or "Blues")
 #' @param reverse Boolean indicating whether the palette should be reversed
 #' @param ... Additional arguments passed to discrete_scale()
 #' @export
@@ -157,9 +157,9 @@ scale_fill_omni_discrete <- function(palette = "Main", reverse = FALSE, ...) {
 
 #' Continuous fill scale based on OMNI colors
 #'
-#' @param palette Character name of palette in omni_palettes. Right now, only "Main" and "Blues" exist.
+#' @param palette Character name of palette in omni_palettes ("Main" or "Blues")
 #' @param reverse Boolean indicating whether the palette should be reversed
-#' @param ... Additional arguments passed to discrete_scale()
+#' @param ... Additional arguments passed to scale_color_gradientn()
 #' @export
 scale_fill_omni_continuous <- function(palette = "Main", reverse = FALSE, ...) {
 

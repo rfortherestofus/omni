@@ -1,8 +1,8 @@
 #' OMNI Institute ggplot2 theme
 #'
-#' @param grid_lines Boolean to indicate whether to have grid_lines
+#' @param grid_lines Boolean to indicate whether to have grid_lines (TRUE by default)
+#' @param show_legend Whether or not to show the legend (TRUE by default)
 #' @param base_theme The base theme used (theme_minimal() with the Lato font)
-#' @param show_legend Whether or not to show the legend
 #'
 #' @return
 #' @export

@@ -2,7 +2,7 @@
 
 #' Create a new report using the OMNI RMarkdown template
 #'
-#' @param file_name The name of the file for your RMarkdown document
+#' @param file_name The name of the file for your RMarkdown document. Defaults to "report" and creates a file called report.Rmd
 #'
 #' @return
 #' @export
