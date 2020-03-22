@@ -14,3 +14,6 @@ You can install `omni` from [GitHub](https://github.com/) with:
 # install.packages("devtools")
 devtools::install_github("dgkeyes/omni")
 ```
+
+You can rerun this code at any point to get the newest version of the
+package.

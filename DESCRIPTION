@@ -16,10 +16,8 @@ Imports:
     pagedown,
     stringr,
     knitr,
-    scales,
-    fs
+    fs,
+    rmarkdown
 URL: https://github.com/dgkeyes/omni
 BugReports: https://github.com/dgkeyes/omni/issues
 VignetteBuilder: knitr
-Suggests: 
-    rmarkdown

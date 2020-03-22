@@ -8,15 +8,6 @@
 #' @export
 #'
 #' @examples
-#' library(tidyverse)
-#'
-#' iris %>%
-#'   group_by(Species) %>%
-#'   summarise(sepal_length_mean = mean(Sepal.Length)) %>%
-#'   ggplot(aes(x = Species, y = sepal_length_mean, fill = Species)) +
-#'   geom_bar(stat = "identity") +
-#'   coord_flip() +
-#'   theme_omni()
 theme_omni <- function(show_grid_lines = TRUE,
                        show_legend = TRUE,
                        base_theme = ggplot2::theme_minimal(base_family = "Lato")) {

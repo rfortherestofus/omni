@@ -1,6 +1,6 @@
 ---
 title: "Tables"
-output: rmarkdown::html_vignette
+output: distill::distill_article
 vignette: >
   %\VignetteIndexEntry{Tables}
   %\VignetteEngine{knitr::rmarkdown}
@@ -14,12 +14,15 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r setup, message = FALSE, warning = FALSE}
 library(omni)
+library(dplyr)
 ```
 
-```{r fig.cap="Table as image", out.extra='data-prefix="Table"'}
+```{r include = FALSE}
 mtcars %>% 
-  dplyr::slice(1:5) %>% 
+  slice(1:5) %>% 
   omni_table("Sample table")
 ```
+
+![](https://github.com/dgkeyes/omni/raw/master/inst/rmarkdown/templates/omni-rmarkdown-template/skeleton/images/sample-table.png)

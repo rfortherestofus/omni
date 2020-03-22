@@ -1,0 +1,44 @@
+ <img class = "omni_logo_abstract" src = "images/omni-logo-horizontal.svg">
+  <img class = "orange_rect_abstract" src = "images/orange-rectangle.svg">
+  <br>
+  <h1 class = "title">`r rmarkdown::metadata$title` </h1>
+  <h1 class = "subtitle"> `r rmarkdown::metadata$subtitle` </h1>
+  <br>
+  Submitted to:
+  <br>
+  <br>
+  `r rmarkdown::metadata$client_name`
+  <br>
+  `r rmarkdown::metadata$client_organization`
+  <br>
+  `r rmarkdown::metadata$report_month` `r rmarkdown::metadata$report_year`
+  <br>
+  <br>
+  <br>
+  Author(s): `r rmarkdown::metadata$report_authors`
+  <br>
+  Project Team: `r rmarkdown::metadata$project_team`
+  <br>
+  <br>
+  <br>
+  For More Information:
+  <br>
+  <br>
+  Project Code: `r rmarkdown::metadata$project_code`
+  <br>
+  projects@omni.org
+  <br>
+  <br>
+  <br>
+  Acknowledgements:
+  <br>
+  <br>
+  The OMNI Institute wants to thank `r rmarkdown::metadata$acknowledgements` for their contributions to the creation of this report.
+  <br>
+  <br>
+  <br>
+  Suggested Citation:
+  <br>
+  <br>
+  The OMNI Institute (`r rmarkdown::metadata$report_year`). `r rmarkdown::metadata$title`. Submitted to `r rmarkdown::metadata$client_organization`, `r rmarkdown::metadata$client_city`, `r rmarkdown::metadata$client_state`
+

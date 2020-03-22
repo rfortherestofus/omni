@@ -23,14 +23,3 @@ theme_omni(
 \description{
 OMNI Institute ggplot2 theme
 }
-\examples{
-library(tidyverse)
-
-iris \%>\%
-  group_by(Species) \%>\%
-  summarise(sepal_length_mean = mean(Sepal.Length)) \%>\%
-  ggplot(aes(x = Species, y = sepal_length_mean, fill = Species)) +
-  geom_bar(stat = "identity") +
-  coord_flip() +
-  theme_omni()
-}

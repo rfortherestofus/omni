@@ -2,3 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
+inst/rmarkdown/templates/omni-rmarkdown-template/skeleton/skeleton.html
+inst/rmarkdown/templates/omni-rmarkdown-template/skeleton/skeleton.pdf

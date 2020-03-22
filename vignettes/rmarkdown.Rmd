@@ -18,4 +18,69 @@ knitr::opts_chunk$set(
 library(omni)
 ```
 
-To make a new RMarkdown document that uses the OMNI template, go to
+# Creating a New File
+
+After you have installed the package, you will have access to a new custom RMarkdown template. You can create a new RMarkdown document that uses the OMNI template in the same way you'd normally make a new RMarkdown document: go to File > New File > RMarkdown.
+
+![](https://p218.p3.n0.cdn.getcloudapp.com/items/OAurlKq9/Screen%20Recording%202020-03-19%20at%2002.01%20PM.gif)
+
+However, this first method will force you to make a new folder to put all of your files in, which is kind of annoying. I've created a function that gets around this. Just load the `omni` package using `library(omni)` and then type `omni_report()`. By default, this function creates a new RMarkdown document called report.Rmd, but you can change this to anything you want. You can also enter an argument in the function to change it that way. For example, type `omni_report("snazzy-report")` and you'll get an RMarkdown file called snazzy-report.Rmd.
+
+When you type `omni_report()` you'll get a pop-up like this. Just hit save and then find the report.Rmd (or whatever location you chose) and start working.
+
+![](https://p218.p3.n0.cdn.getcloudapp.com/items/4gumRNGK/Screen%20Recording%202020-03-22%20at%2002.21%20PM.gif)
+
+# YAML
+
+When you create a new RMarkdown document you'll see that there are a bunch of custom fields in the YAML. Please fill them out. 
+
+![](https://p218.p3.n0.cdn.getcloudapp.com/items/yAuvnJq7/Image%202020-03-22%20at%202.25.56%20PM.png)
+
+When you knit your document, these fields are used to populate the first non-cover page of the report.
+
+![](https://p218.p3.n0.cdn.getcloudapp.com/items/4gumRNLp/Image%202020-03-22%20at%202.24.38%20PM.png)
+There is a bunch of other stuff in the YAML that may look confusing to you. Please just leave it so everything works correctly!
+
+# Executive Summary
+
+There is an Executive Summary section. If you want to have an Executive Summary, please change the content here. Please note that the {-} at the end of the headers in that section serves an important purpose: [it makes those headers not show up in the Table of Contents](https://bookdown.org/yihui/rmarkdown/markdown-syntax.html#block-level-elements).
+
+You'll also see some HTML above (`<div class="exec-summary">`) and below (`</div>`) the Executive Summary. This ensures all the styling works for that section. Please leave it.
+
+# Figures, Charts, and Tables
+
+You'll need to make sure you add titles to all figures, charts, and tables. To do so, use the `fig.cap` chunk option. You'll also need to include a special bit of code to help the template know whether the code chunk is producing a figure, chart, or table (and thus label and number it correctly). To do for a figure, for example, you'd add `out.extra='data-prefix="Figure"'` to your code chunk. You substitute "Chart" or "Table" as appropriate in other code chunks. There are examples of each in the default content of the RMarkdown template. 
+
+# Pull Quotes and Information Call-Outs
+
+To add a pull quote, you need to add a bit of HTML code. You start with `<aside>`, add whatever text you want, and end the pull quote with `</aside>`. If you want to add an author, follow the template below (which is also in the RMarkdown template). 
+
+![](https://p218.p3.n0.cdn.getcloudapp.com/items/JruWmePN/Image%202020-03-22%20at%202.39.51%20PM.png)
+
+You'll end up with this:
+
+![](https://p218.p3.n0.cdn.getcloudapp.com/items/bLumyZz4/Image%202020-03-22%20at%202.42.31%20PM.png)
+
+Information call-outs are handled quite similarly. 
+
+You start with a special type of `aside` tag: `<aside class = "info-callout">`. 
+
+You need to use the following format for the title: `<p class="info-callout-title">Information call-out</p>`
+
+Then add any content before using `</aside>` to finish this section.
+
+![](https://p218.p3.n0.cdn.getcloudapp.com/items/Z4u5pGd1/Image%202020-03-22%20at%202.41.36%20PM.png)
+
+Your information call-out will look like this:
+
+![](https://p218.p3.n0.cdn.getcloudapp.com/items/9ZuALyqG/Image%202020-03-22%20at%202.44.25%20PM.png)
+
+
+
+
+
+
+
+
+
+

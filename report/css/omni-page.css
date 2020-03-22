@@ -110,7 +110,7 @@ html {
 .section > h1, .section > h2, .section > h3, .section > h4, .section > h5, .section > h6 {
   break-after: avoid;
 }
-.footnotes {
+.footenotes {
   break-before: always;
   break-after: always;
 }

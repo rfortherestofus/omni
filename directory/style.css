@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i');
+
+
+body { 
+  font-family: 'Karla', sans-serif; 
+  color: #404e6b;
+  
+}
+
+
+.remark-slide-content {
+  font-size: 25px;
+  line-height: 1.25;
+}
+
+.remark-slide-content h1{font-size:55px}
+.remark-slide-content h2{font-size:50px}
+.remark-slide-content h3{font-size:40px}
+
+
+
+.large { 
+  font-size: 130% 
+}
+
+.small { 
+  font-size: 70% 
+}
+
+a , a > code {
+  color: #6cabdd;
+  text-decoration: underline;
+  
+}
+
+.error-text{
+  color: #ff0000;
+}
+
+.hljs-github .hljs-string, .hljs-github .hljs-doctag {
+    color: #19751E;
+}
+
+
+
+
+
+.inverse {
+     background-color: #6cabdd;
+     background-image: none;
+     text-shadow: none;
+}
+
+.inverse, .inverse a {
+  color: #f3f3f3;
+}
+
+
+
+
+.title-slide h3 {
+  font-weight: 400;
+}
+
+.title-slide h1 {
+  font-size: 75px;
+}
+
+
+.remark-slide-content:after {
+    content: "";
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    height: 70px;
+    width: 70px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("https://raw.githubusercontent.com/rfortherestofus/course-assets/master/images/rru-logo-blue.png");
+}
+
+.inverse:after, .dk-section-title:after {
+    content: "";
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    height: 70px;
+    width: 70px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("https://raw.githubusercontent.com/rfortherestofus/course-assets/master/images/rru-logo-white.png");
+}
+
+
+/* Footer */
+
+.remark-slide-number {
+  /* font-size: 80%; */
+  display: none;
+}
+
+div.dk-footer {
+    background-color: #ffffff;
+    /* border-top: 1px solid #5f749e; */
+    position: absolute;
+    bottom: 0px;
+    left: 70px;
+    height: 45px;
+    width: 100%;
+}
+
+div.dk-footer span {
+    position: absolute;
+    color: #5f749e;
+    left: 20px;
+    bottom: 10px;
+}
+
+div.dk-footer a {
+    color: #404e6b;
+    opacity: 0.5;
+    text-decoration: none;
+    font-size: 80%;
+}
+
+.inverse div.dk-footer {
+    background-color: #6cabdd;
+    border-top: none;
+}
+
+.inverse div.dk-footer span {
+    position: absolute;
+    color: #6cabdd;
+    left: 20px;
+    bottom: 10px;
+}
+
+
+.inverse div.dk-footer a {
+    color: #f3f3f3;
+    opacity: 0.5;
+    text-decoration: none;
+}
+
+
+.dk-section-title div.dk-footer {
+    display: none;
+    opacity: 0.5;
+    
+}
+
+.dk-section-title h1 {
+  color: #f3f3f3;
+  font-size: 100px;
+  line-height: 1;
+}
+
+.dk-section-title h2 {
+  color: #f3f3f3;
+  font-size: 75px;
+  line-height: 1;
+}
+
+.dk-section-title .remark-slide-number {
+  display: none;
+}
+
+/* Highlight box */
+
+.dk-highlight-box {
+  /* border: 2px #6CABDD solid; */
+  width: 80%;
+  border-radius: 28px;
+  margin: 50px auto;
+  background-color: rgba(108, 171, 221, 0.8);
+  color: #fff;
+  background-color: ;
+  padding: 1px 50px;
+}
+
+.sticky-good {
+  background-color: #6CABDD;
+  padding: 150px 25px;
+  margin: 50px;
+  text-align: center;
+  color: white;
+  font-size: 250%;
+}
+
+.sticky-stuck {
+  background-color: #FFC659;
+  padding: 150px 25px;
+  margin: 50px;
+  text-align: center;
+  color: white;
+  font-size: 250%;
+}
+
+
+/* Non-slides */
+
+.toc-content h1, h2, h3 {
+  font-weight: 700;
+}
+
+.section.level1, .section.level2, .section.level3 {
+  margin-top: 50px;
+}
+
+/*
+.section.level1:before {
+  content: url(images/rru-logo-blue.png);
+  justify-content: center;
+  display: flex;
+}
+
+.section.level1:before:nth-of-type(1) {
+  content: "";
+}
+*/
+
+.toc-content p {
+  font-size: 18px;
+  margin: 18px 0;
+}
+
+/* Floating TOC */
+
+.tocify-header {
+  text-indent: 0;
+}
+
+.tocify .tocify-item a, .tocify .list-group-item {
+    padding: 10px;
+}
