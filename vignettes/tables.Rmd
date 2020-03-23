@@ -25,4 +25,4 @@ mtcars %>%
   omni_table("Sample table")
 ```
 
-![](https://github.com/dgkeyes/omni/raw/master/inst/rmarkdown/templates/omni-rmarkdown-template/skeleton/images/sample-table.png)
+![](https://github.com/rfortherestofus/omni/raw/master/inst/rmarkdown/templates/omni-rmarkdown-template/skeleton/images/sample-table.png)

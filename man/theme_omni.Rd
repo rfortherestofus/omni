@@ -11,11 +11,11 @@ theme_omni(
 )
 }
 \arguments{
-\item{show_legend}{Whether or not to show the legend}
+\item{show_legend}{Whether or not to show the legend (TRUE by default)}
 
 \item{base_theme}{The base theme used (theme_minimal() with the Lato font)}
 
-\item{grid_lines}{Boolean to indicate whether to have grid_lines}
+\item{grid_lines}{Boolean to indicate whether to have grid_lines (TRUE by default)}
 }
 \value{
 

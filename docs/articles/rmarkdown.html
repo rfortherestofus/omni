@@ -61,7 +61,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/dgkeyes/omni">
+  <a href="https://github.com/rfortherestofus/omni">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -82,7 +82,7 @@
       <h1>RMarkdown Template</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/dgkeyes/omni/blob/master/vignettes/rmarkdown.Rmd"><code>vignettes/rmarkdown.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rfortherestofus/omni/blob/master/vignettes/rmarkdown.Rmd"><code>vignettes/rmarkdown.Rmd</code></a></small>
       <div class="hidden name"><code>rmarkdown.Rmd</code></div>
 
     </div>
@@ -90,13 +90,13 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(omni)</a></code></pre></div>
-<div id="creating-a-new-file" class="section level1">
+<div id="creating-a-new-report" class="section level1">
 <h1 class="hasAnchor">
-<a href="#creating-a-new-file" class="anchor"></a>Creating a New File</h1>
+<a href="#creating-a-new-report" class="anchor"></a>Creating a New Report</h1>
 <p>After you have installed the package, you will have access to a new custom RMarkdown template. You can create a new RMarkdown document that uses the OMNI template in the same way you’d normally make a new RMarkdown document: go to File &gt; New File &gt; RMarkdown.</p>
 <p><img src="https://p218.p3.n0.cdn.getcloudapp.com/items/OAurlKq9/Screen%20Recording%202020-03-19%20at%2002.01%20PM.gif"></p>
-<p>However, this first method will force you to make a new folder to put all of your files in, which is kind of annoying. I’ve created a function that gets around this. Just load the <code>omni</code> package using <code><a href="https://rdrr.io/r/base/library.html">library(omni)</a></code> and then type <code><a href="../reference/omni_report.html">omni_report()</a></code>. By default, this function creates a new RMarkdown document called report.Rmd, but you can change this to anything you want. You can also enter an argument in the function to change it that way. For example, type <code><a href="../reference/omni_report.html">omni_report("snazzy-report")</a></code> and you’ll get an RMarkdown file called snazzy-report.Rmd.</p>
-<p>When you type <code><a href="../reference/omni_report.html">omni_report()</a></code> you’ll get a pop-up like this. Just hit save and then find the report.Rmd (or whatever location you chose) and start working.</p>
+<p>However, this first method will force you to make a new folder to put all of your files in, which is kind of annoying. I’ve created a function that gets around this. Just load the <code>omni</code> package using <code><a href="https://rdrr.io/r/base/library.html">library(omni)</a></code> and then type <code><a href="../reference/new_omni_report.html">new_omni_report()</a></code>. By default, this function creates a new RMarkdown document called report.Rmd, but you can change this to anything you want. You can also enter an argument in the function to change it that way. For example, type <code><a href="../reference/new_omni_report.html">new_omni_report("snazzy-report")</a></code> and you’ll get an RMarkdown file called snazzy-report.Rmd.</p>
+<p>When you type <code><a href="../reference/new_omni_report.html">new_omni_report()</a></code> you’ll get a pop-up like this. Just hit save and then find the report.Rmd (or whatever location you chose) and start working.</p>
 <p><img src="https://p218.p3.n0.cdn.getcloudapp.com/items/4gumRNGK/Screen%20Recording%202020-03-22%20at%2002.21%20PM.gif"></p>
 </div>
 <div id="yaml" class="section level1">
@@ -141,7 +141,7 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#creating-a-new-file">Creating a New File</a></li>
+<li><a href="#creating-a-new-report">Creating a New Report</a></li>
       <li><a href="#yaml">YAML</a></li>
       <li><a href="#executive-summary">Executive Summary</a></li>
       <li><a href="#figures-charts-and-tables">Figures, Charts, and Tables</a></li>

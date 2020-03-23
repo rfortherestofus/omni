@@ -8,6 +8,10 @@
 #' @export
 #'
 #' @examples
-omni_report <- function(file_name = "report") {
-  rmarkdown::draft(file = stringr::str_glue("{file_name}.Rmd"), template = "omni-rmarkdown-template", package = "omni", create_dir = FALSE)
+new_omni_report <- function(file_name = "report") {
+  rmarkdown::draft(file = stringr::str_glue("{file_name}.Rmd"),
+                   template = "omni-rmarkdown-template",
+                   package = "omni",
+                   create_dir = FALSE,
+                   edit = FALSE)
 }

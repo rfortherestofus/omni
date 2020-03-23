@@ -21,7 +21,7 @@ You can install `omni` from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("dgkeyes/omni")
+devtools::install_github("rfortherestofus/omni")
 ```
 
 You can rerun this code at any point to get the newest version of the package.

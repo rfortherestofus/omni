@@ -43,7 +43,10 @@
 
 
 <meta property="og:title" content="OMNI Table Function — omni_table" />
-<meta property="og:description" content="OMNI Table Function" />
+<meta property="og:description" content="This function creates a table in OMNI's style. In order to use it, you have
+to give the function a name for each table. This is because, behind the
+scenes, the function actually saves each table as an image, and each image
+must have a unique file name when it is saved." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -100,7 +103,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/dgkeyes/omni">
+  <a href="https://github.com/rfortherestofus/omni">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -119,12 +122,15 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>OMNI Table Function</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dgkeyes/omni/blob/master/R/table.R'><code>R/table.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/rfortherestofus/omni/blob/master/R/table.R'><code>R/table.R</code></a></small>
     <div class="hidden name"><code>omni_table.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>OMNI Table Function</p>
+    <p>This function creates a table in OMNI's style. In order to use it, you have
+to give the function a name for each table. This is because, behind the
+scenes, the function actually saves each table as an image, and each image
+must have a unique file name when it is saved.</p>
     </div>
 
     <pre class="usage"><span class='fu'>omni_table</span>(<span class='no'>df</span>, <span class='no'>table_name</span>)</pre>
@@ -133,8 +139,12 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>df</th>
+      <td><p>The data frame to be put into the table</p></td>
+    </tr>
+    <tr>
       <th>table_name</th>
-      <td></td>
+      <td><p>The name of the table</p></td>
     </tr>
     </table>
 
