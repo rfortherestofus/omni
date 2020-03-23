@@ -18,6 +18,6 @@ Imports:
     knitr,
     fs,
     rmarkdown
-URL: https://github.com/dgkeyes/omni
-BugReports: https://github.com/dgkeyes/omni/issues
+URL: https://github.com/rfortherestofus/omni
+BugReports: https://github.com/rfortherestofus/omni/issues
 VignetteBuilder: knitr
