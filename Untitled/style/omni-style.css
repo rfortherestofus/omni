@@ -90,45 +90,31 @@ aside > blockquote > p {
 }
 
 /* Information call out */
-aside.info-callout {
+aside.info_call {
   width: 40%;
-  border: none;
-  margin: 0.1in .1in 0 .25in;;
+  border-style: solid;
+  border-color: #666666;
+  border-width: thin;
+  margin: 0% 0% 0% 1%;
 }
 
-.info-callout-title {
+.info_call_title {
   background-color: #347686;
   color: white;
   font-size: 14pt;
-  font-weight: 700;
-  margin: 0 0 8pt 0;
-  padding: 4pt;
-}
-
-.info-callout p:not(.info-callout-title) {
-  margin: 0;
 }
 
 /* ----------------- Tables -------------------- */
 table {
-  font-family: "Lato", Arial, serif;
-  font-size: 12pt;
   margin: auto;
   border-top: 1px solid #666;
   border-bottom: 1px solid #666;
-  width: 100%;
 }
-/*
 table thead th {
   border-bottom: 1px solid #ddd;
 }
 thead, tfoot, tr:nth-child(even) {
   background: #eee;
-}
-*/
-
-td {
-  padding: 10pt 0 10pt 0;
 }
 
 /* ----------------- Images -------------------- */
@@ -152,10 +138,6 @@ table caption {
   margin-bottom: 5px;
 }
 
-.figure {
-  break-inside: avoid;
-}
-
 /* ----------------- List style ------------------- */
 ul {
   list-style-type: disc;
@@ -174,15 +156,6 @@ ul {
 .footnote-break {
   width: 1in;
 }
-
-.footnote-ref {
-  text-decoration: none;
-}
-
-.footnote sup {
-  padding-right: 0.5em;
-}
-
 
 /* --------------------- Misc --------------- */
 abbr {
