@@ -28,6 +28,10 @@ However, this first method will force you to make a new folder to put all of you
 
 ![](https://p218.p3.n0.cdn.getcloudapp.com/items/xQugQqBe/Screen%20Recording%202020-03-23%20at%2002.10%20PM.gif)
 
+# Knitting
+
+When you knit your report, RStudio will create both an HTML and PDF version of your report. 
+
 # YAML
 
 When you create a new RMarkdown document you'll see that there are a bunch of custom fields in the YAML. Please fill them out. 
