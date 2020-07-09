@@ -2,7 +2,7 @@
 title: "RMarkdown Template"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{RMarkdwon Template}
+  %\VignetteIndexEntry{RMarkdown Template}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

@@ -17,8 +17,9 @@ this OMNI branded template please contact <omni@omni.org>.*
 You can install `omni` from [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("rfortherestofus/omni")
+# install.packages("remotes")
+remotes::install_github("rfortherestofus/omni",
+                         upgrade = "always")
 ```
 
 You can rerun this code at any point to get the newest version of the

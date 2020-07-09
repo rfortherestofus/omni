@@ -16,8 +16,10 @@ knitr::opts_chunk$set(
 
 ```{r setup, message = FALSE, warning = FALSE}
 library(omni)
-library(dplyr)
+library(tidyverse)
 ```
+
+To make a table, you can use the `omni_table()` function. This function takes two arguments, the data (which is usually piped into the function as seen below) and a name for the table. 
 
 ```{r include = FALSE, echo = TRUE}
 mtcars %>% 
