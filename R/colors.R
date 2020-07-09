@@ -3,7 +3,7 @@
 #' Function to extract OMNI colors as hex codes
 #'
 #' omni_colors() enables you to pull colors directly from the OMNI palette.
-#' Choose one of the following options: Gray, Dark Gray, Dark Blue, Medium Blue,
+#' Choose one of the following options: Gray, Medium Gray, Dark Gray, Dark Blue, Medium Blue,
 #' Light Blue, Teal, Orange, or Tan. You'll use this function as follows:
 #' omni_colors("Dark Blue") returns the hex value of the OMNI Dark Blue.
 #'
@@ -18,7 +18,8 @@
 #'
 omni_colors <- function(...) {
 
-  omni_colors_vector <- c(`Gray` = "#666666",
+  omni_colors_vector <- c(`Gray` = "#A6A6A6",
+                          `Medium Gray` = "#666666",
                           `Dark Gray` = "#333333",
                           `Dark Blue` = "#314160",
                           `Medium Blue` = "#347686",
@@ -50,7 +51,8 @@ omni_colors <- function(...) {
 #' @examples
 omni_colors_internal <- function(...) {
 
-  omni_colors_vector <- c(`Gray` = "#666666",
+  omni_colors_vector <- c(`Gray` = "#A6A6A6",
+                          `Medium Gray` = "#666666",
                           `Dark Gray` = "#333333",
                           `Dark Blue` = "#314160",
                           `Medium Blue` = "#347686",
@@ -70,14 +72,15 @@ omni_colors_internal <- function(...) {
 
 }
 
-# omni_palettes <- list(
-#
-#   `Main` = omni_colors_internal("Dark Blue", "Medium Blue", "Light Blue", "Teal", "Orange", "Tan"),
-#
-#   `Blues` = omni_colors_internal("Dark Blue", "Medium Blue", "Light Blue", "Teal")
-# )
-#
-# usethis::use_data(omni_palettes)
+omni_palettes <- list(
+
+  `Main` = omni_colors_internal("Dark Blue", "Medium Blue", "Gray", "Light Blue", "Teal", "Orange", "Tan"),
+
+  `Blues` = omni_colors_internal("Dark Blue", "Medium Blue", "Light Blue", "Teal")
+)
+
+usethis::use_data(omni_palettes,
+                  overwrite = TRUE)
 
 
 #' Return function to interpolate an OMNI color palette

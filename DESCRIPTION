@@ -21,3 +21,5 @@ Imports:
 URL: https://github.com/rfortherestofus/omni
 BugReports: https://github.com/rfortherestofus/omni/issues
 VignetteBuilder: knitr
+Depends: 
+    R (>= 2.10)
