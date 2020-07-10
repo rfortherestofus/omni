@@ -102,8 +102,7 @@
   <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span>(<span class="kw">stat</span> <span class="kw">=</span> <span class="st">"identity"</span>) +
   <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span>() +
   <span class="fu"><a href="../reference/scale_fill_omni_discrete.html">scale_fill_omni_discrete</a></span>() +
-  <span class="fu"><a href="../reference/theme_omni.html">theme_omni</a></span>(<span class="kw">show_legend</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
-<span class="co">#&gt; `summarise()` ungrouping output (override with `.groups` argument)</span></pre></body></html></div>
+  <span class="fu"><a href="../reference/theme_omni.html">theme_omni</a></span>(<span class="kw">show_legend</span> <span class="kw">=</span> <span class="fl">FALSE</span>)</pre></body></html></div>
 <p><img src="colors_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
 <p>You can change the palette by using the palette argument.</p>
 <div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">iris</span> <span class="kw">%&gt;%</span>
@@ -113,8 +112,7 @@
   <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span>(<span class="kw">stat</span> <span class="kw">=</span> <span class="st">"identity"</span>) +
   <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span>() +
   <span class="fu"><a href="../reference/scale_fill_omni_discrete.html">scale_fill_omni_discrete</a></span>(<span class="kw">palette</span> <span class="kw">=</span> <span class="st">"Blues"</span>) +
-  <span class="fu"><a href="../reference/theme_omni.html">theme_omni</a></span>(<span class="kw">show_legend</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
-<span class="co">#&gt; `summarise()` ungrouping output (override with `.groups` argument)</span></pre></body></html></div>
+  <span class="fu"><a href="../reference/theme_omni.html">theme_omni</a></span>(<span class="kw">show_legend</span> <span class="kw">=</span> <span class="fl">FALSE</span>)</pre></body></html></div>
 <p><img src="colors_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
 <p>You can reverse the order by using the reverse argument.</p>
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">iris</span> <span class="kw">%&gt;%</span>
@@ -125,8 +123,7 @@
   <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span>() +
   <span class="fu"><a href="../reference/scale_fill_omni_discrete.html">scale_fill_omni_discrete</a></span>(<span class="kw">palette</span> <span class="kw">=</span> <span class="st">"Blues"</span>,
                            <span class="kw">reverse</span> <span class="kw">=</span> <span class="fl">TRUE</span>) +
-  <span class="fu"><a href="../reference/theme_omni.html">theme_omni</a></span>(<span class="kw">show_legend</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
-<span class="co">#&gt; `summarise()` ungrouping output (override with `.groups` argument)</span></pre></body></html></div>
+  <span class="fu"><a href="../reference/theme_omni.html">theme_omni</a></span>(<span class="kw">show_legend</span> <span class="kw">=</span> <span class="fl">FALSE</span>)</pre></body></html></div>
 <p><img src="colors_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
 <p>There is also a <code><a href="../reference/scale_fill_omni_continuous.html">scale_fill_omni_continuous()</a></code> function as well as <code><a href="../reference/scale_color_omni_discrete.html">scale_color_omni_discrete()</a></code> and <code><a href="../reference/scale_color_omni_continuous.html">scale_color_omni_continuous()</a></code> functions for colors.</p>
 <p>Need more control? There is a <code><a href="../reference/omni_colors.html">omni_colors()</a></code> function that allows you to extract individual colors. You can choose from: Dark Gray, Dark Blue, Medium, Blue, Light Blue, Teal, Orange, and Tan.</p>
@@ -137,8 +134,7 @@
   <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span>(<span class="kw">stat</span> <span class="kw">=</span> <span class="st">"identity"</span>) +
   <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span>() +
   <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span>(<span class="kw">values</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fu"><a href="../reference/omni_colors.html">omni_colors</a></span>(<span class="st">"Dark Blue"</span>, <span class="st">"Orange"</span>, <span class="st">"Tan"</span>))) +
-  <span class="fu"><a href="../reference/theme_omni.html">theme_omni</a></span>(<span class="kw">show_legend</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
-<span class="co">#&gt; `summarise()` ungrouping output (override with `.groups` argument)</span></pre></body></html></div>
+  <span class="fu"><a href="../reference/theme_omni.html">theme_omni</a></span>(<span class="kw">show_legend</span> <span class="kw">=</span> <span class="fl">FALSE</span>)</pre></body></html></div>
 <p><img src="colors_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
   </div>
 

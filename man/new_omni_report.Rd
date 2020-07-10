@@ -4,10 +4,12 @@
 \alias{new_omni_report}
 \title{Create a new report using the OMNI RMarkdown template}
 \usage{
-new_omni_report(file_name = "report")
+new_omni_report(file_name = "report", type_of_report = "General")
 }
 \arguments{
 \item{file_name}{The name of the file for your RMarkdown document. Defaults to "report" and creates a file called report.Rmd}
+
+\item{type_of_report}{The type of report you're creating ("General", "Simple Report", or "Cleaning")}
 }
 \value{
 

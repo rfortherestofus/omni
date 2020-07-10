@@ -90,41 +90,44 @@
     
     
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">omni</span>)</pre></body></html></div>
-<div id="creating-a-new-report" class="section level1">
+<div id="general-omni-template" class="section level1">
 <h1 class="hasAnchor">
-<a href="#creating-a-new-report" class="anchor"></a>Creating a New Report</h1>
+<a href="#general-omni-template" class="anchor"></a>General OMNI Template</h1>
+<div id="creating-a-new-report" class="section level2">
+<h2 class="hasAnchor">
+<a href="#creating-a-new-report" class="anchor"></a>Creating a New Report</h2>
 <p>After you have installed the package, you will have access to a new custom RMarkdown template. You can create a new RMarkdown document that uses the OMNI template in the same way you’d normally make a new RMarkdown document: go to File &gt; New File &gt; RMarkdown.</p>
 <p><img src="https://p218.p3.n0.cdn.getcloudapp.com/items/OAurlKq9/Screen%20Recording%202020-03-19%20at%2002.01%20PM.gif"></p>
 <p>However, this first method will force you to make a new folder to put all of your files in, which is kind of annoying. I’ve created a function that gets around this. Just load the <code>omni</code> package using <code><a href="https://rdrr.io/pkg/omni/man">library(omni)</a></code> and then type <code><a href="../reference/new_omni_report.html">new_omni_report()</a></code>. By default, this function creates a new RMarkdown document called report.Rmd, but you can change this to anything you want. You can also enter an argument in the function to change it that way. For example, type <code><a href="../reference/new_omni_report.html">new_omni_report("snazzy-report")</a></code> and you’ll get an RMarkdown file called snazzy-report.Rmd. Once you’ve created a new project, look in the bottom right pane for your new RMarkdown document.</p>
 <p><img src="https://p218.p3.n0.cdn.getcloudapp.com/items/xQugQqBe/Screen%20Recording%202020-03-23%20at%2002.10%20PM.gif"></p>
 </div>
-<div id="knitting" class="section level1">
-<h1 class="hasAnchor">
-<a href="#knitting" class="anchor"></a>Knitting</h1>
+<div id="knitting" class="section level2">
+<h2 class="hasAnchor">
+<a href="#knitting" class="anchor"></a>Knitting</h2>
 <p>When you knit your report, RStudio will create both an HTML and PDF version of your report.</p>
 </div>
-<div id="yaml" class="section level1">
-<h1 class="hasAnchor">
-<a href="#yaml" class="anchor"></a>YAML</h1>
+<div id="yaml" class="section level2">
+<h2 class="hasAnchor">
+<a href="#yaml" class="anchor"></a>YAML</h2>
 <p>When you create a new RMarkdown document you’ll see that there are a bunch of custom fields in the YAML. Please fill them out.</p>
 <p><img src="https://p218.p3.n0.cdn.getcloudapp.com/items/yAuvnJq7/Image%202020-03-22%20at%202.25.56%20PM.png"></p>
 <p>When you knit your document, these fields are used to populate the first non-cover page of the report.</p>
 <p><img src="https://p218.p3.n0.cdn.getcloudapp.com/items/4gumRNLp/Image%202020-03-22%20at%202.24.38%20PM.png"> There is a bunch of other stuff in the YAML that may look confusing to you. Please just leave it so everything works correctly!</p>
 </div>
-<div id="executive-summary" class="section level1">
-<h1 class="hasAnchor">
-<a href="#executive-summary" class="anchor"></a>Executive Summary</h1>
+<div id="executive-summary" class="section level2">
+<h2 class="hasAnchor">
+<a href="#executive-summary" class="anchor"></a>Executive Summary</h2>
 <p>There is an Executive Summary section. If you want to have an Executive Summary, please change the content here. Please note that the {-} at the end of the headers in that section serves an important purpose: <a href="https://bookdown.org/yihui/rmarkdown/markdown-syntax.html#block-level-elements">it makes those headers not show up in the Table of Contents</a>.</p>
 <p>You’ll also see some HTML above (<code>&lt;div class="exec-summary"&gt;</code>) and below (<code>&lt;/div&gt;</code>) the Executive Summary. This ensures all the styling works for that section. Please leave it.</p>
 </div>
-<div id="figures-charts-and-tables" class="section level1">
-<h1 class="hasAnchor">
-<a href="#figures-charts-and-tables" class="anchor"></a>Figures, Charts, and Tables</h1>
+<div id="figures-charts-and-tables" class="section level2">
+<h2 class="hasAnchor">
+<a href="#figures-charts-and-tables" class="anchor"></a>Figures, Charts, and Tables</h2>
 <p>You’ll need to make sure you add titles to all figures, charts, and tables. To do so, use the <code>fig.cap</code> chunk option. You’ll also need to include a special bit of code to help the template know whether the code chunk is producing a figure, chart, or table (and thus label and number it correctly). To do for a figure, for example, you’d add <code>out.extra='data-prefix="Figure"'</code> to your code chunk. You substitute “Chart” or “Table” as appropriate in other code chunks. There are examples of each in the default content of the RMarkdown template.</p>
 </div>
-<div id="pull-quotes-and-information-call-outs" class="section level1">
-<h1 class="hasAnchor">
-<a href="#pull-quotes-and-information-call-outs" class="anchor"></a>Pull Quotes and Information Call-Outs</h1>
+<div id="pull-quotes-and-information-call-outs" class="section level2">
+<h2 class="hasAnchor">
+<a href="#pull-quotes-and-information-call-outs" class="anchor"></a>Pull Quotes and Information Call-Outs</h2>
 <p>To add a pull quote, you need to add a bit of HTML code. You start with <code>&lt;aside&gt;</code>, add whatever text you want, and end the pull quote with <code>&lt;/aside&gt;</code>. If you want to add an author, follow the template below (which is also in the RMarkdown template).</p>
 <p><img src="https://p218.p3.n0.cdn.getcloudapp.com/items/JruWmePN/Image%202020-03-22%20at%202.39.51%20PM.png"></p>
 <p>You’ll end up with this:</p>
@@ -136,6 +139,13 @@
 <p><img src="https://p218.p3.n0.cdn.getcloudapp.com/items/Z4u5pGd1/Image%202020-03-22%20at%202.41.36%20PM.png"></p>
 <p>Your information call-out will look like this:</p>
 <p><img src="https://p218.p3.n0.cdn.getcloudapp.com/items/9ZuALyqG/Image%202020-03-22%20at%202.44.25%20PM.png"></p>
+</div>
+</div>
+<div id="other-templates" class="section level1">
+<h1 class="hasAnchor">
+<a href="#other-templates" class="anchor"></a>Other templates</h1>
+<p>There is also a simple report template and a cleaning and analysis report template built into the package. You can access them using the <code><a href="../reference/new_omni_report.html">new_omni_report()</a></code> function. You’ll need to use the type_of_report argument and enter either “Simple Report” or “Cleaning” to get the associated template.</p>
+<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="../reference/new_omni_report.html">new_omni_report</a></span>(<span class="kw">type_of_report</span> <span class="kw">=</span> <span class="st">"Cleaning"</span>)</pre></body></html></div>
 </div>
   </div>
 

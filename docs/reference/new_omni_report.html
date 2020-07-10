@@ -130,7 +130,7 @@
     <p>Create a new report using the OMNI RMarkdown template</p>
     </div>
 
-    <pre class="usage"><span class='fu'>new_omni_report</span>(<span class='kw'>file_name</span> <span class='kw'>=</span> <span class='st'>"report"</span>)</pre>
+    <pre class="usage"><span class='fu'>new_omni_report</span>(<span class='kw'>file_name</span> <span class='kw'>=</span> <span class='st'>"report"</span>, <span class='kw'>type_of_report</span> <span class='kw'>=</span> <span class='st'>"General"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -138,6 +138,10 @@
     <tr>
       <th>file_name</th>
       <td><p>The name of the file for your RMarkdown document. Defaults to "report" and creates a file called report.Rmd</p></td>
+    </tr>
+    <tr>
+      <th>type_of_report</th>
+      <td><p>The type of report you're creating ("General", "Simple Report", or "Cleaning")</p></td>
     </tr>
     </table>
 

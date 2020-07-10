@@ -14,7 +14,7 @@ omni_colors(...)
 }
 \description{
 omni_colors() enables you to pull colors directly from the OMNI palette.
-Choose one of the following options: Gray, Dark Gray, Dark Blue, Medium Blue,
+Choose one of the following options: Gray, Medium Gray, Dark Gray, Dark Blue, Medium Blue,
 Light Blue, Teal, Orange, or Tan. You'll use this function as follows:
 omni_colors("Dark Blue") returns the hex value of the OMNI Dark Blue.
 }
