@@ -41,9 +41,6 @@ omni_table <- function(df, table_name) {
     flextable::color(part = "body", j = 1, color = "white") %>%
     flextable::height_all(height = 0.4) %>%
     flextable::border_inner(part = "body", border = officer::fp_border(color = "white")) %>%
-    flextable::border(part = "header", border.bottom = officer::fp_border(color = "white")) %>%
-    flextable::save_as_image(table_file_name)
-
-  knitr::include_graphics(table_file_name)
+    flextable::border(part = "header", border.bottom = officer::fp_border(color = "white"))
 }
 

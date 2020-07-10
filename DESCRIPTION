@@ -1,7 +1,7 @@
 Package: omni
 Type: Package
 Title: RMarkdown template, ggplot2 theme, and table function for OMNI Institute
-Version: 0.1.0
+Version: 0.1.1
 Author: David Keyes
 Maintainer: David Keyes <david@rfortherestofus.com>
 Description: RMarkdown template, ggplot2 theme, and table function for OMNI Institute.
