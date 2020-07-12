@@ -91,7 +91,7 @@ html {
 
 /* Front cover */
 .front-cover {
-  break-after: recto;
+  break-after: page;
 }
 
 /* Front page or title page */
@@ -101,12 +101,9 @@ html {
 
 /* page breaks; aka CSS fragmentation */
 .level1 {
-  break-before: avoid;
-  page: chapter;
+  break-before: page;
 }
-.front-matter-container .level1 {
-  page: frontmatter;
-}
+
 .section > h1, .section > h2, .section > h3, .section > h4, .section > h5, .section > h6 {
   break-after: avoid;
 }
@@ -201,6 +198,12 @@ h3.abstract {
   background-repeat: no-repeat;
 }
 
+/* avoid supplementary blank page */
+.page-content div {
+    width: auto !important;
+    max-width: 99%;
+}
+
 /* ------------------ Table of Contents/Figures/Tables formatting ----------------- */
 /* TOC title */
 .toc-title, .lof h1, .lot h1 {
@@ -270,7 +273,7 @@ h3.abstract {
 /* page style */
 .exec-summary {
   page-break-before: always;
-  break-after: always;
+  break-after: avoid;
 }
 
 /* --------------------- Columns ------------------- */
@@ -294,3 +297,5 @@ h3.abstract {
 .pull-quote p {
   font-size: 16pt;
 }
+
+
