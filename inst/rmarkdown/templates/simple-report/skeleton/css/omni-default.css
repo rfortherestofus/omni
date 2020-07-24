@@ -107,4 +107,3 @@ a[href^="http"]:not([class="uri"])::after {
 .chapter > h1 > .header-section-number::after, .chapter-ref > .toc-section-number::after {
   content: var(--chapter-name-after, "");
 }
-

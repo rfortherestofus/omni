@@ -7,10 +7,10 @@
 @page {
   size: 8.5in 11in; /* var(--pagedjs-width) doesn't work in browser when printing */
 }
-
 @page :blank {
 
 }
+
 
 /* --------------------- Handle recto and verso pages ---------------- */
 html {
@@ -47,7 +47,6 @@ html {
   }
 }
 
-
 /* right page */
 .running-h2-title {
   position: running(runningH2Title);
@@ -67,6 +66,19 @@ html {
   }
 }
 
+/* ----------------- New chapter page --------------------- */
+@page chapter:first {
+  @top-left {
+    content: none;
+  }
+  @top-right {
+    content: none;
+  }
+  @bottom-right {
+    content: counter(page);
+  }
+
+}
 
 /* --------------------- Page style ----------------------- */
 /* Add colorbar to all pages (first and last are overriden later) */
@@ -79,7 +91,7 @@ html {
 
 /* Front cover */
 .front-cover {
-  break-after: recto;
+  break-after: page;
 }
 
 /* Front page or title page */
@@ -89,12 +101,9 @@ html {
 
 /* page breaks; aka CSS fragmentation */
 .level1 {
-  break-before: avoid;
-  page: chapter;
+  break-before: page;
 }
-.front-matter-container .level1 {
-  page: frontmatter;
-}
+
 .section > h1, .section > h2, .section > h3, .section > h4, .section > h5, .section > h6 {
   break-after: avoid;
 }
@@ -115,6 +124,84 @@ html {
 caption {
   break-inside: avoid;
   break-after: avoid;
+}
+
+/* --------------------- Cover Page ------------------ */
+@page:first{
+  margin: 0 0 0 0;
+  background-color: #ffffff;
+  background-image: url(../images/blue-cover-sidebar.svg);
+  background-repeat: no-repeat;
+  background-position: right center;
+
+  @top-left {
+    content: none;
+  }
+  @top-right {
+    content: none;
+  }
+  @bottom-right {
+    content: none !important;
+  }
+}
+
+/* Make title not go onto blue sidebar */
+
+#header {
+  width: 5in;
+}
+
+/* ------------------ Secondary Cover Page -------------------- */
+/*  properties of abstract */
+div.abstract {
+  margin: 0 0 0 0;
+  background-color: #ffffff;
+}
+
+/* OMNI LOGO*/
+img.omni_logo_abstract {
+  margin: 0 auto;
+  display: block;
+  width: 25%;
+}
+
+/* Orange rectangle */
+img.orange_rect_abstract {
+  margin: 0 auto;
+  display: block;
+  height: 200px;
+  max-width: 100px;
+  position: absolute;
+  top: 20px;
+  left: -110px;
+}
+
+/* put the abstract on its own page */
+div.abstract {
+  page-break-before: always;
+}
+
+/* remove the h3 title "Abstract" */
+h3.abstract {
+  display: none;
+}
+
+/* ---------------------- Last page ----------------- */
+/* last page or back cover */
+.back-cover {
+  /* break-before: verso; */
+}
+.pagedjs_page:last-of-type {
+  background-image: var(--back-cover);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* avoid supplementary blank page */
+.page-content div {
+    width: auto !important;
+    max-width: 99%;
 }
 
 /* ------------------ Table of Contents/Figures/Tables formatting ----------------- */
@@ -165,6 +252,29 @@ caption {
   background-color: #ffffff;
 }
 
+/* ------------------- Executive summary --------------------------- */
+/* title and subtitles style */
+.exec-summary h1 {
+  font-size: 24pt;
+  font-weight: 300;
+  background-color: #ffffff;
+  color: #000000;
+  margin-bottom: 0;
+}
+
+.exec-summary h2 {
+  font-size: 18pt;
+  font-weight: 100;
+  background-color: #ffffff;
+  color: #000000;
+  margin-bottom: 0;
+}
+
+/* page style */
+.exec-summary {
+  page-break-before: always;
+  break-after: avoid;
+}
 
 /* --------------------- Columns ------------------- */
 .left-column {
@@ -187,3 +297,5 @@ caption {
 .pull-quote p {
   font-size: 16pt;
 }
+
+
