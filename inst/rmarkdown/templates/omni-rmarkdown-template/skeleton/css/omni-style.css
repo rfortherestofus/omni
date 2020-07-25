@@ -3,7 +3,7 @@
 /* -------------------------------------------- */
 
 /* ----------------- Fonts --------------------- */
-@import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i,900');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900');
 
 body {
   font-family: "Lato", Arial, serif;
@@ -35,6 +35,7 @@ body {
 /* Levels of title */
 h1 {
   font-size: 24pt;
+  font-weight: 700;
   background-color: #314160;
   color: #ffffff;
   padding: 0;
@@ -48,17 +49,20 @@ h2 {
 h3 {
   font-size: 14pt;
   font-weight: 700;
+  text-transform: uppercase;
   color: #304160;
 }
 
 h4 {
   font-size: 11pt;
+  font-weight: 400;
   color: #333333;
 }
 
 /* Normal paragraph */
 p {
   font-size: 11pt;
+  font-weight: 300;
 }
 
 /* Links */
@@ -81,11 +85,13 @@ aside > blockquote {
 aside > blockquote > p {
     margin: 0in 0 0 .1in;
     font-size: 16pt;
+    font-weight: 400;
 }
 
 .quote-author {
     margin: .1in 0 .1in .1in;
     font-size: 10pt;
+    font-weight: 400;
     text-align: right;
 }
 
@@ -93,7 +99,7 @@ aside > blockquote > p {
 aside.info-callout {
   width: 40%;
   border: none;
-  margin: 0.1in .1in 0 .25in;;
+  margin: 0.1in 0.1in 0.1in .25in;
 }
 
 .info-callout-title {
@@ -112,6 +118,7 @@ aside.info-callout {
 /* ----------------- Tables -------------------- */
 table {
   font-family: "Lato", Arial, serif;
+  font-weight: 300;
   font-size: 12pt;
   margin: auto;
   border-top: 1px solid #666;

@@ -208,7 +208,7 @@ h3.abstract {
 /* TOC title */
 .toc-title, .lof h1, .lot h1 {
   font-size: 24pt;
-  font-weight: 300;
+  font-weight: 900;
   background-color: #ffffff;
   color: #000000;
   margin-bottom: 0;
@@ -256,7 +256,7 @@ h3.abstract {
 /* title and subtitles style */
 .exec-summary h1 {
   font-size: 24pt;
-  font-weight: 300;
+  font-weight: 900;
   background-color: #ffffff;
   color: #000000;
   margin-bottom: 0;
@@ -264,7 +264,7 @@ h3.abstract {
 
 .exec-summary h2 {
   font-size: 18pt;
-  font-weight: 100;
+  font-weight: 700;
   background-color: #ffffff;
   color: #000000;
   margin-bottom: 0;
