@@ -99,6 +99,11 @@ html {
   counter-reset: page;
 }
 
+/* Hide cover page */
+.pagedjs_first_page {
+  display: none;
+}
+
 /* page breaks; aka CSS fragmentation */
 .level1 {
   break-before: page;
