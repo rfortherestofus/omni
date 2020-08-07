@@ -5,7 +5,7 @@ output:
     self_contained: TRUE
     number_sections: FALSE
     fig_caption: TRUE
-    css: ["css/omni-style.css", "css/omni-page.css", "css/omni-default.css"]
+    css: ["css/simple-report-style.css", "css/simple-report-page.css", "css/simple-report-default.css"]
 paged-footnotes: TRUE
 ---
 

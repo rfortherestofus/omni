@@ -17,7 +17,8 @@ Imports:
     stringr,
     knitr,
     fs,
-    rmarkdown
+    rmarkdown,
+    webshot
 URL: https://github.com/rfortherestofus/omni
 BugReports: https://github.com/rfortherestofus/omni/issues
 VignetteBuilder: knitr
