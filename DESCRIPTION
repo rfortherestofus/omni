@@ -18,7 +18,8 @@ Imports:
     knitr,
     fs,
     rmarkdown,
-    webshot
+    webshot,
+    extrafont
 URL: https://github.com/rfortherestofus/omni
 BugReports: https://github.com/rfortherestofus/omni/issues
 VignetteBuilder: knitr
