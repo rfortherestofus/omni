@@ -19,7 +19,9 @@ Imports:
     fs,
     rmarkdown,
     webshot,
-    extrafont
+    extrafont,
+    grDevices,
+    purrr
 URL: https://github.com/rfortherestofus/omni
 BugReports: https://github.com/rfortherestofus/omni/issues
 VignetteBuilder: knitr

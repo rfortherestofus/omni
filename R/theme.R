@@ -12,6 +12,27 @@ theme_omni <- function(show_grid_lines = TRUE,
                        show_legend = TRUE,
                        base_theme = ggplot2::theme_minimal(base_family = "Lato")) {
 
+  # Determine user OS
+  # https://stackoverflow.com/questions/4463087/detecting-operating-system-in-r-e-g-for-adaptive-rprofile-files
+  user_os <- Sys.info()[['sysname']]
+
+  if (user_os == "Windows") {
+    grDevices::windowsFonts(`Lato` = grDevices::windowsFont("Lato Regular"))
+    grDevices::windowsFonts(`Lato Light` = grDevices::windowsFont("Lato Light"))
+    grDevices::windowsFonts(`Lato Black` = grDevices::windowsFont("Lato Black"))
+  }
+
+  has_lato_installed <- extrafont::fonts() %>%
+    tibble::tibble() %>%
+    purrr::set_names("font") %>%
+    dplyr::filter(stringr::str_detect(font, "Lato")) %>%
+    nrow() %>%
+    as.logical()
+
+  if (user_os != "Windows" & has_lato_installed == FALSE) {
+    import_lato()
+  }
+
 
   omni_theme <- base_theme +
     ggplot2::theme(panel.grid.minor = ggplot2::element_blank(),
