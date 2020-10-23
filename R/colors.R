@@ -105,6 +105,7 @@ omni_pal <- function(palette = "Main", reverse = FALSE, ...) {
 #' @param reverse Boolean indicating whether the palette should be reversed
 #' @param ... Additional arguments passed to discrete_scale()
 #'
+#' @export
 #' @example
 #' iris %>%
 #' group_by(Species) %>%
