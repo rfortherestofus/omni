@@ -12,7 +12,7 @@ theme_omni <- function(show_grid_lines = TRUE,
                        show_legend = TRUE,
                        base_theme = ggplot2::theme_minimal()) {
 
-  import_lato()
+  # import_lato()
 
   omni_theme <- base_theme +
     ggplot2::theme(panel.grid.minor = ggplot2::element_blank(),
