@@ -10,7 +10,19 @@
 theme_omni <- function(show_grid_lines = TRUE,
                        show_legend = TRUE) {
 
-  import_lato()
+  # Determine user OS
+  # https://stackoverflow.com/questions/4463087/detecting-operating-system-in-r-e-g-for-adaptive-rprofile-files
+  user_os <- Sys.info()[['sysname']]
+
+  if (user_os == "Windows") {
+    grDevices::windowsFonts(`Lato` = grDevices::windowsFont("Lato"))
+    grDevices::windowsFonts(`Lato Light` = grDevices::windowsFont("Lato Light"))
+    grDevices::windowsFonts(`Lato Black` = grDevices::windowsFont("Lato Black"))
+  } else {
+    suppressWarnings(suppressMessages(extrafont::font_import(pattern = "Lato", prompt=FALSE)))
+  }
+
+  usethis::ui_done("Lato font has been imported and can be used")
 
   omni_theme <- ggplot2::theme_minimal(base_family = "Lato") +
     ggplot2::theme(panel.grid.minor = ggplot2::element_blank(),
