@@ -10,7 +10,7 @@
 #' @examples
 theme_omni <- function(show_grid_lines = TRUE,
                        show_legend = TRUE,
-                       base_theme = ggplot2::theme_minimal(base_family = "Lato")) {
+                       base_theme = ggplot2::theme_minimal()) {
 
   import_lato()
 
