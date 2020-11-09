@@ -17,7 +17,7 @@ import_lato <- function() {
   user_os <- Sys.info()[['sysname']]
 
   if (user_os == "Windows") {
-    grDevices::windowsFonts(`Lato` = grDevices::windowsFont("Lato Regular"))
+    grDevices::windowsFonts(`Lato` = grDevices::windowsFont("Lato"))
     grDevices::windowsFonts(`Lato Light` = grDevices::windowsFont("Lato Light"))
     grDevices::windowsFonts(`Lato Black` = grDevices::windowsFont("Lato Black"))
   } else {
