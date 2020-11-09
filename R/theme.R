@@ -2,13 +2,15 @@
 #'
 #' @param grid_lines Boolean to indicate whether to have grid_lines (TRUE by default)
 #' @param show_legend Whether or not to show the legend (TRUE by default)
+#' @param base_family Base font family (Lato by default). If you want to use a custom font, you need to register it first.
 #'
 #' @return
 #' @export
 #'
 #' @examples
 theme_omni <- function(show_grid_lines = TRUE,
-                       show_legend = TRUE) {
+                       show_legend = TRUE,
+                       base_family = "Lato") {
 
   import_lato()
 

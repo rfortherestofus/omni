@@ -4,10 +4,12 @@
 \alias{theme_omni}
 \title{OMNI Institute ggplot2 theme}
 \usage{
-theme_omni(show_grid_lines = TRUE, show_legend = TRUE)
+theme_omni(show_grid_lines = TRUE, show_legend = TRUE, base_family = "Lato")
 }
 \arguments{
 \item{show_legend}{Whether or not to show the legend (TRUE by default)}
+
+\item{base_family}{Base font family (Lato by default). If you want to use a custom font, you need to register it first.}
 
 \item{grid_lines}{Boolean to indicate whether to have grid_lines (TRUE by default)}
 }
