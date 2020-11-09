@@ -19,7 +19,7 @@ You can install `omni` from [GitHub](https://github.com/) with:
 ``` r
 # install.packages("remotes")
 remotes::install_github("rfortherestofus/omni",
-                         upgrade = "always")
+                        force = TRUE)
 ```
 
 You can rerun this code at any point to get the newest version of the

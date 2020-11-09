@@ -14,7 +14,7 @@ theme_omni <- function(show_grid_lines = TRUE,
 
   import_lato()
 
-  omni_theme <- ggplot2::theme_minimal(base_family = "Lato") +
+  omni_theme <- ggplot2::theme_minimal(base_family = base_family) +
     ggplot2::theme(panel.grid.minor = ggplot2::element_blank(),
                    axis.ticks = ggplot2::element_blank(),
                    axis.title.x = ggplot2::element_text(margin = ggplot2::margin(15, 0, 0, 0)),
