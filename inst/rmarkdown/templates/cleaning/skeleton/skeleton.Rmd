@@ -41,7 +41,7 @@ library(summarytools) #for easily summarizing data
 
 Write a description of the data files here if you want to.
 
-```{r data, echo=TRUE, eval = FALSE}
+```{r data, echo=TRUE, eval = TRUE}
 
 # .csv data
 df_name <- read_csv("pathway/file_name.csv", na = c("-99","NA")) %>% 
