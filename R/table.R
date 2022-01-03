@@ -12,20 +12,10 @@
 #' @export
 #'
 #' @examples
-omni_table <- function(df, table_name) {
+omni_table <- function(df, table_name, no_image = FALSE) {
 
-  if (!fs::dir_exists("images")) {
-    fs::dir_create("images")
-  }
 
-  table_name <- table_name %>%
-    stringr::str_to_lower() %>%
-    stringr::str_replace_all("[[:punct:]]", " ") %>%
-    stringr::str_replace_all(" ", "-")
-
-  table_file_name <- stringr::str_glue("images/{table_name}.png")
-
-  df %>%
+  table <- df %>%
     flextable::flextable() %>%
     flextable::theme_zebra(even_body = "#9DAECE",
                            odd_body = "#CED6E6") %>%
@@ -41,9 +31,31 @@ omni_table <- function(df, table_name) {
     flextable::color(part = "body", j = 1, color = "white") %>%
     flextable::height_all(height = 0.4) %>%
     flextable::border_inner(part = "body", border = officer::fp_border(color = "white")) %>%
-    flextable::border(part = "header", border.bottom = officer::fp_border(color = "white")) %>%
-    flextable::save_as_image(table_file_name)
+    flextable::border(part = "header", border.bottom = officer::fp_border(color = "white"))
 
-  knitr::include_graphics(table_file_name)
+  if (no_image == FALSE) {
+
+
+    if (!fs::dir_exists("images")) {
+      fs::dir_create("images")
+    }
+
+    table_name <- table_name %>%
+      stringr::str_to_lower() %>%
+      stringr::str_replace_all("[[:punct:]]", " ") %>%
+      stringr::str_replace_all(" ", "-")
+
+    table_file_name <- stringr::str_glue("images/{table_name}.png")
+
+    table %>%
+      flextable::save_as_image(table_file_name)
+
+    knitr::include_graphics(table_file_name)
+
+  } else {
+    table
+  }
+
+
 }
 
