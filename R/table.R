@@ -12,7 +12,7 @@
 #' @export
 #'
 #' @examples
-omni_table <- function(df, table_name, no_image = FALSE) {
+omni_table <- function(df, table_name, use_image = TRUE) {
 
 
   table <- df %>%
