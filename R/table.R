@@ -33,8 +33,7 @@ omni_table <- function(df, table_name, use_image = TRUE) {
     flextable::border_inner(part = "body", border = officer::fp_border(color = "white")) %>%
     flextable::border(part = "header", border.bottom = officer::fp_border(color = "white"))
 
-  if (no_image == FALSE) {
-
+  if (use_image == TRUE) {
 
     if (!fs::dir_exists("images")) {
       fs::dir_create("images")
@@ -53,7 +52,9 @@ omni_table <- function(df, table_name, use_image = TRUE) {
     knitr::include_graphics(table_file_name)
 
   } else {
+
     table
+
   }
 
 
