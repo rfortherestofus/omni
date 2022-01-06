@@ -12,7 +12,7 @@ paged-footnotes: TRUE
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE,
                       warning = FALSE,
-                      erro= FALSE,
+                      error = FALSE,
                       fig.topcaption = TRUE,
                       fig.cap = TRUE,
                       dpi = 150)
