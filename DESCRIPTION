@@ -8,7 +8,7 @@ Description: RMarkdown template, ggplot2 theme, and table function for OMNI Inst
 License: &copy; OMNI Institute
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Imports: 
     tibble,
     magrittr,
