@@ -2,10 +2,13 @@
 % Please edit documentation in R/qualtromni.R
 \name{qualtromni_list_survey}
 \alias{qualtromni_list_survey}
-\title{Title}
+\title{Get surveys}
 \usage{
 qualtromni_list_survey()
 }
+\value{
+A tibble with all surveys
+}
 \description{
-Title
+Get surveys
 }
