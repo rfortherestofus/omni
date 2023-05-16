@@ -6,9 +6,6 @@
 \usage{
 import_lato()
 }
-\value{
-
-}
 \description{
 This function imports the Lato font and makes it available
 for use in R. You just need to run this function once on each computer.

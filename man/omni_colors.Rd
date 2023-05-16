@@ -9,9 +9,6 @@ omni_colors(...)
 \arguments{
 \item{...}{color or colors you want to return}
 }
-\value{
-
-}
 \description{
 omni_colors() enables you to pull colors directly from the OMNI palette.
 Choose one of the following options: Gray, Medium Gray, Dark Gray, Dark Blue, Medium Blue,

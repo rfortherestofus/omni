@@ -9,9 +9,6 @@ omni_colors_internal(...)
 \arguments{
 \item{...}{}
 }
-\value{
-
-}
 \description{
 Title
 }

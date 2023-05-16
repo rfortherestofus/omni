@@ -11,9 +11,6 @@ new_omni_report(file_name = "report", type_of_report = "General")
 
 \item{type_of_report}{The type of report you're creating ("General", "Simple Report", or "Cleaning")}
 }
-\value{
-
-}
 \description{
 Create a new report using the OMNI RMarkdown template
 }

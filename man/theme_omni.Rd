@@ -13,9 +13,6 @@ theme_omni(show_grid_lines = TRUE, show_legend = TRUE, base_family = "Lato")
 
 \item{grid_lines}{Boolean to indicate whether to have grid_lines (TRUE by default)}
 }
-\value{
-
-}
 \description{
 OMNI Institute ggplot2 theme
 }
