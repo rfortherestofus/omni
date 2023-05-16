@@ -67,7 +67,7 @@ qualtromni_get_survey <- function(survey_id_name) {
     qualtRics::fetch_survey(survey_id_name)
   } else{
     # by name
-    survey_id <- all_surveys() |>
+    survey_id <- qualtRics::all_surveys() |>
       dplyr::filter(name == survey_id_name) |>
       dplyr::pull(id)
 
