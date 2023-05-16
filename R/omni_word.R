@@ -1,4 +1,4 @@
-#' OMNI word output
+#' OMNI Word Template
 #'
 #' @param ... Other params to bookdown::word_document2
 #' @param toc Table of content as True/False
