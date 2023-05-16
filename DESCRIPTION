@@ -22,7 +22,8 @@ Imports:
     webshot,
     extrafont,
     grDevices,
-    purrr
+    purrr,
+    qualtRics
 URL: https://github.com/rfortherestofus/omni
 BugReports: https://github.com/rfortherestofus/omni/issues
 VignetteBuilder: knitr
