@@ -1,12 +1,12 @@
 #' Write API key to the system - run only once
 #'
-#' @param people_name Your name
+#' @param organization_name Name of your organization (e.g. OMNI)
 #' @param api_key Your Qualtrics API key
 #'
 #' @return Env variables
 #' @export
 #'
-qualtrics_register <- function(people_name, api_key, base_url) {
+qualtrics_register <- function(organization_name = "OMNI", api_key, base_url) {
   # taken from qualtrics function - write with name
   home <- Sys.getenv("HOME")
   renv <- file.path(home, ".Renviron")
@@ -17,10 +17,10 @@ qualtrics_register <- function(people_name, api_key, base_url) {
     file.create(renv)
   }
   keyconcat <-
-    paste0("QUALTRICS_API_KEY_", people_name, " = '", api_key,
+    paste0("QUALTRICS_API_KEY_", organization_name, " = '", api_key,
            "'")
   urlconcat <-
-    paste0("QUALTRICS_BASE_URL_", people_name, " = '", base_url,
+    paste0("QUALTRICS_BASE_URL_", organization_name, " = '", base_url,
            "'")
   write(keyconcat, renv, sep = "\n", append = TRUE)
   write(urlconcat, renv, sep = "\n", append = TRUE)
@@ -32,15 +32,15 @@ qualtrics_register <- function(people_name, api_key, base_url) {
 #' @return Connection to Qualtrics
 #' @export
 #'
-qualtrics_connect <- function(people_name) {
+qualtrics_connect <- function(organization_name = "OMNI") {
   readRenviron("~/.Renviron")
 
   suppressMessages(
     qualtRics::qualtrics_api_credentials(api_key = Sys.getenv(
-      paste0("QUALTRICS_API_KEY_", people_name)
+      paste0("QUALTRICS_API_KEY_", organization_name)
     ),
     base_url = Sys.getenv(
-      paste0("QUALTRICS_BASE_URL_", people_name)
+      paste0("QUALTRICS_BASE_URL_", organization_name)
     ))
   )
 }

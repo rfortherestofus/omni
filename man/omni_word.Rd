@@ -2,7 +2,7 @@
 % Please edit documentation in R/omni_word.R
 \name{omni_word}
 \alias{omni_word}
-\title{OMNI word output}
+\title{OMNI Word Template}
 \usage{
 omni_word(toc = FALSE, number_sections = TRUE, ...)
 }
@@ -17,5 +17,5 @@ omni_word(toc = FALSE, number_sections = TRUE, ...)
 An rmd format
 }
 \description{
-OMNI word output
+OMNI Word Template
 }

@@ -4,10 +4,10 @@
 \alias{qualtrics_register}
 \title{Write API key to the system - run only once}
 \usage{
-qualtrics_register(people_name, api_key, base_url)
+qualtrics_register(organization_name = "OMNI", api_key, base_url)
 }
 \arguments{
-\item{people_name}{Your name}
+\item{organization_name}{Name of your organization (e.g. OMNI)}
 
 \item{api_key}{Your Qualtrics API key}
 }

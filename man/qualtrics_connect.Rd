@@ -4,7 +4,7 @@
 \alias{qualtrics_connect}
 \title{Connect to Qualtrics - need to have API key register before}
 \usage{
-qualtrics_connect(people_name)
+qualtrics_connect(organization_name = "OMNI")
 }
 \value{
 Connection to Qualtrics
