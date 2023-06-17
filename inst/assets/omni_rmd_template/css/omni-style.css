@@ -19,6 +19,8 @@ body {
   margin-block-end: 0;
   background-color: #ffffff;
   color: #000000;
+  margin-top: 3em;
+  margin-left: 1em;
   margin-bottom: 0;
 }
 
@@ -26,6 +28,7 @@ body {
   background-color: #ffffff;
   color: #333333;
   margin-top: 5px;
+  margin-left: 1em;
 }
 
 .subtitle span {
