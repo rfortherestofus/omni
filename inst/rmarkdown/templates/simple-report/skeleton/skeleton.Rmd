@@ -1,11 +1,7 @@
 ---
 knit: pagedown::chrome_print
 output:
-  pagedown::html_paged:
-    self_contained: TRUE
-    number_sections: FALSE
-    fig_caption: TRUE
-    css: ["css/simple-report-style.css", "css/simple-report-page.css", "css/simple-report-default.css"]
+  omni::simple_report_format
 paged-footnotes: TRUE
 ---
 
@@ -54,7 +50,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit. Maecenas pharetra convallis posuere morbi leo. Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.
 
-```{r fig.height=3, fig.cap = "Title", out.extra='data-prefix="Chart"'}
+```{r ggplot, fig.height=3, fig.cap = "Title", out.extra='data-prefix="Chart"'}
 iris %>%
   group_by(Species) %>%
   summarise(sepal_length_mean = mean(Sepal.Length)) %>%
@@ -67,8 +63,8 @@ iris %>%
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit.
 
-```{r, fig.cap = "Title", out.width="200px", fig.align='center', out.extra='data-prefix="Figure"'}
-knitr::include_graphics("images/example_figure.png")
+```{r img, fig.cap = "Title", out.width="200px", fig.align='center', out.extra='data-prefix="Figure"'}
+knitr::include_graphics(system.file("assets/omni_simple_report/images/example_figure.png", package = "omni"))
 ```
 
 #### Fourth Level Header
@@ -88,7 +84,7 @@ Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit dui
 
 Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi.
 
-```{r fig.cap="Title", out.extra='data-prefix="Table"'}
+```{r table, fig.cap="Title", out.extra='data-prefix="Table"'}
 mtcars %>%
   slice(1:5) %>%
   omni_table("Sample Table")

@@ -14,22 +14,15 @@ acknowledgements: "Names of People to Thank"
 photo_background: FALSE
 knit: pagedown::chrome_print
 output:
-  pagedown::html_paged:
-    toc: TRUE
-    self_contained: TRUE
-    number_sections: FALSE
-    fig_caption: TRUE
-    css: ["css/omni-style.css", "css/omni-page.css", "css/omni-default.css"]
-    include: 
-      in_header: "js/meta_lof_js.html"
-customjs: "js/lof.js"
+  omni::omni_rmd_template
+customjs: "`r system.file('assets/omni_rmd_template/js/lof.js', package = 'omni')`"
 toc-title: "Table of Contents"
 lot: FALSE
-lof: TRUE
-lof-title: "Figures and Tables"
+# lof: TRUE
+# lof-title: "Figures and Tables"
 paged-footnotes: TRUE
 abstract: >-
-  ```{r, child = "rmd/abstract.Rmd"}
+  ```{r, child = system.file('assets/omni_rmd_template/rmd/abstract.Rmd', package = 'omni')}
   ```
 ---
 
@@ -102,7 +95,7 @@ iris %>%
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit.
 
 ```{r, fig.cap = "Title", out.width="200px", fig.align='center', out.extra='data-prefix="Figure"'}
-knitr::include_graphics("images/example_figure.png")
+knitr::include_graphics(system.file("assets/omni_rmd_template/images/example_figure.png", package = "omni"))
 ```
 
 #### Fourth Level Header

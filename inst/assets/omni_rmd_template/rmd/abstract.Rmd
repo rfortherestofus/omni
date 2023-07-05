@@ -1,5 +1,5 @@
- <img class = "omni_logo_abstract" src = "images/omni-logo-horizontal.svg">
-  <img class = "orange_rect_abstract" src = "images/orange-rectangle.svg">
+ <img class = "omni_logo_abstract" src = "`r system.file('assets/omni_rmd_template/images/omni-logo-horizontal.svg', package = 'omni')`">
+  <img class = "orange_rect_abstract" src = "`r system.file('assets/omni_rmd_template/images/orange-rectangle.svg', package = 'omni')`">
   <br>
   <h1 class = "title">`r rmarkdown::metadata$title` </h1>
   <h1 class = "subtitle"> `r rmarkdown::metadata$subtitle` </h1>

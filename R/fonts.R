@@ -24,6 +24,4 @@ import_lato <- function() {
     suppressWarnings(suppressMessages(extrafont::font_import(pattern = "Lato", prompt=FALSE)))
   }
 
-  usethis::ui_done("Lato font has been imported and can be used")
-
 }
