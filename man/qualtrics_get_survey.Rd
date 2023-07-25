@@ -4,7 +4,7 @@
 \alias{qualtrics_get_survey}
 \title{Get survey by name of ID}
 \usage{
-qualtrics_get_survey(survey_id_name)
+qualtrics_get_survey(survey_id_name, ...)
 }
 \arguments{
 \item{survey_id_name}{Survey name or ID}
