@@ -66,7 +66,7 @@ qualtrics_get_survey <- function(survey_id_name, ...) {
     # by ID
     qualtRics::fetch_survey(survey_id_name,
                             label = TRUE,
-                            convert = TRUE,
+                            convert = FALSE,
                             force_request = TRUE,
                             verbose = FALSE,
                             ...)
@@ -78,7 +78,7 @@ qualtrics_get_survey <- function(survey_id_name, ...) {
 
     qualtRics::fetch_survey(survey_id,
                             label = TRUE,
-                            convert = TRUE,
+                            convert = FALSE,
                             force_request = TRUE,
                             verbose = FALSE,
                             ...)
