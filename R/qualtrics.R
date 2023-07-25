@@ -61,14 +61,15 @@ qualtrics_list_surveys <- function() {
 #' @return A survey
 #' @export
 #'
-qualtrics_get_survey <- function(survey_id_name) {
+qualtrics_get_survey <- function(survey_id_name, ...) {
   if (substr(survey_id_name, 1, 3) == "SV_") {
     # by ID
     qualtRics::fetch_survey(survey_id_name,
                             label = TRUE,
                             convert = TRUE,
                             force_request = TRUE,
-                            verbose = FALSE)
+                            verbose = FALSE,
+                            ...)
   } else{
     # by name
     survey_id <- qualtRics::all_surveys() |>
@@ -79,6 +80,7 @@ qualtrics_get_survey <- function(survey_id_name) {
                             label = TRUE,
                             convert = TRUE,
                             force_request = TRUE,
-                            verbose = FALSE)
+                            verbose = FALSE,
+                            ...)
   }
 }
