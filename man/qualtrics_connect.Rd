@@ -6,6 +6,9 @@
 \usage{
 qualtrics_connect(organization_name = "OMNI")
 }
+\arguments{
+\item{organization_name}{Organization name}
+}
 \value{
 Connection to Qualtrics
 }

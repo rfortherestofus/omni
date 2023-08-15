@@ -2,6 +2,7 @@
 #'
 #' @param organization_name Name of your organization (e.g. OMNI)
 #' @param api_key Your Qualtrics API key
+#' @param base_url Base URL
 #'
 #' @return Env variables
 #' @export
@@ -28,6 +29,8 @@ qualtrics_register <- function(organization_name = "OMNI", api_key, base_url) {
 }
 
 #' Connect to Qualtrics - need to have API key register before
+#'
+#' @param organization_name Organization name
 #'
 #' @return Connection to Qualtrics
 #' @export
@@ -57,6 +60,8 @@ qualtrics_list_surveys <- function() {
 #' Get survey by name of ID
 #'
 #' @param survey_id_name Survey name or ID
+#' @param convert Convert characters, default to FALSE
+#' @param ... Others args
 #'
 #' @return A survey
 #' @export

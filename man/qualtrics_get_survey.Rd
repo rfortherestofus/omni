@@ -4,10 +4,14 @@
 \alias{qualtrics_get_survey}
 \title{Get survey by name of ID}
 \usage{
-qualtrics_get_survey(survey_id_name, ...)
+qualtrics_get_survey(survey_id_name, convert = FALSE, ...)
 }
 \arguments{
 \item{survey_id_name}{Survey name or ID}
+
+\item{convert}{Convert characters, default to FALSE}
+
+\item{...}{Others args}
 }
 \value{
 A survey

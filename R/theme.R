@@ -1,8 +1,8 @@
 #' OMNI Institute ggplot2 theme
 #'
-#' @param grid_lines Boolean to indicate whether to have grid_lines (TRUE by default)
 #' @param show_legend Whether or not to show the legend (TRUE by default)
 #' @param base_family Base font family (Lato by default). If you want to use a custom font, you need to register it first.
+#' @param show_grid_lines Show grid lines or not
 #'
 #' @return
 #' @export
@@ -10,9 +10,9 @@
 #' @examples
 theme_omni <- function(show_grid_lines = TRUE,
                        show_legend = TRUE,
-                       base_family = "Lato") {
-
-  import_lato()
+                       base_family = "Calibri") {
+#
+#   import_lato()
 
   omni_theme <- ggplot2::theme_minimal(base_family = base_family) +
     ggplot2::theme(panel.grid.minor = ggplot2::element_blank(),

@@ -1,6 +1,6 @@
 ---
 title: "Tables"
-output: distill::distill_article
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Tables}
   %\VignetteEngine{knitr::rmarkdown}

@@ -10,6 +10,8 @@ omni_table(df, table_name, use_image = TRUE)
 \item{df}{The data frame to be put into the table}
 
 \item{table_name}{The name of the table}
+
+\item{use_image}{Convert as image}
 }
 \description{
 This function creates a table in OMNI's style. In order to use it, you have

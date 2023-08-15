@@ -7,6 +7,7 @@
 #'
 #' @param df The data frame to be put into the table
 #' @param table_name The name of the table
+#' @param use_image Convert as image
 #'
 #' @return
 #' @export

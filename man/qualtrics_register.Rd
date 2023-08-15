@@ -10,6 +10,8 @@ qualtrics_register(organization_name = "OMNI", api_key, base_url)
 \item{organization_name}{Name of your organization (e.g. OMNI)}
 
 \item{api_key}{Your Qualtrics API key}
+
+\item{base_url}{Base URL}
 }
 \value{
 Env variables
