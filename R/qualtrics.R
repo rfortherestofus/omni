@@ -66,6 +66,7 @@ qualtrics_list_surveys <- function() {
 #' @return A survey
 #' @export
 #'
+#' @importFrom rlang .data
 qualtrics_get_survey <- function(survey_id_name, convert = FALSE, ...) {
   if (substr(survey_id_name, 1, 3) == "SV_") {
     # by ID
@@ -78,8 +79,8 @@ qualtrics_get_survey <- function(survey_id_name, convert = FALSE, ...) {
   } else{
     # by name
     survey_id <- qualtRics::all_surveys() |>
-      dplyr::filter(name == survey_id_name) |>
-      dplyr::pull(id)
+      dplyr::filter(.data$name == survey_id_name) |>
+      dplyr::pull(.data$id)
 
     qualtRics::fetch_survey(surveyID = survey_id,
                             label = TRUE,
