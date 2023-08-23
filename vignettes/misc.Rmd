@@ -21,6 +21,12 @@ library(omni)
 library(tidyverse)
 ```
 
+## Titles
+
+>	**A graph’s title should be a descriptive sentence that ends in a period.** Subtitles or additional annotation are provided as needed. 
+>
+>	**Titles should be 12PT Calibri Bold and gray (HEX#666666)** with appropriate emphasis colors when appropriate.
+
 ## Decimal points
 
 > **Decimal points are not included unless absolutely necessary.** Most data can be rounded to whole numbers without losing important detail. Include one or two decimal places only if that level of precision is needed.
@@ -91,7 +97,7 @@ library(ggtext)
 iris |>
   ggplot(aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
   geom_point()  +
-  labs(title = str_glue("All points for <span style = 'color:{omni_colors('Dark Blue')}'>setosa</span>,<span style = 'color:{omni_colors('Light Blue')}'>versicolor</span> and <span style = 'color:{omni_colors('Tan')}'>virginica</span>")) +
+  labs(title = str_glue("All points for <span style = 'color:{omni_colors('Dark Blue')}'>setosa</span>,<span style = 'color:{omni_colors('Light Blue')}'>versicolor</span> and <span style = 'color:{omni_colors('Tan')}'>virginica</span>.")) +
   scale_color_omni_discrete() +
   theme_omni(show_legend = FALSE) +
   theme(plot.title = element_markdown(colour = "darkgrey"))

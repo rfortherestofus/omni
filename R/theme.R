@@ -4,39 +4,41 @@
 #' @param base_family Base font family (Lato by default). If you want to use a custom font, you need to register it first.
 #' @param show_grid_lines Show grid lines or not
 #'
-#' @return
+#' @return A ggplot2 theme
 #' @export
 #'
-#' @examples
+#' @importFrom ggplot2 theme_minimal theme element_blank element_text margin
+#' @importFrom ggtext element_markdown
 theme_omni <- function(show_grid_lines = TRUE,
                        show_legend = TRUE,
                        base_family = "Calibri") {
-#
-#   import_lato()
+  # general theme based on theme_minimal
+  omni_theme <- theme_minimal(base_family = base_family) +
+    theme(
+      panel.grid.minor = element_blank(),
+      axis.ticks = element_blank(),
+      axis.title.x = element_text(margin = margin(15, 0, 0, 0)),
+      axis.title.y = element_text(margin = margin(0, 15, 0, 0)),
+      plot.title = element_markdown(
+        margin = margin(0, 0, 15, 0),
+        face = "bold",
+        size = 12
+      ),
+      plot.subtitle = element_markdown(size = 12),
+      plot.caption = element_text(size = 11, face = "italic")
+    )
 
-  omni_theme <- ggplot2::theme_minimal(base_family = base_family) +
-    ggplot2::theme(panel.grid.minor = ggplot2::element_blank(),
-                   axis.ticks = ggplot2::element_blank(),
-                   axis.title.x = ggplot2::element_text(margin = ggplot2::margin(15, 0, 0, 0)),
-                   axis.title.y = ggplot2::element_text(margin = ggplot2::margin(0, 15, 0, 0)),
-                   plot.title = ggplot2::element_text(margin = ggplot2::margin(0, 0, 15, 0),
-                                                      face = "bold"))
-
+  # grid lines option
   if (show_grid_lines == FALSE) {
-
     omni_theme <- omni_theme +
-      ggplot2::theme(panel.grid.major = ggplot2::element_blank())
-
+      theme(panel.grid.major = element_blank())
   }
 
   if (show_legend == FALSE) {
-
     omni_theme <- omni_theme +
-      ggplot2::theme(legend.position = "none")
-
+      theme(legend.position = "none")
   }
 
+  # return
   omni_theme
-
 }
-
