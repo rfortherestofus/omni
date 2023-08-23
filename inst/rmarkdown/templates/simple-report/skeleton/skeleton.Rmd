@@ -1,7 +1,7 @@
 ---
 knit: pagedown::chrome_print
 output:
-  omni::simple_report_format
+  omni::omni_rmd_template
 paged-footnotes: TRUE
 ---
 

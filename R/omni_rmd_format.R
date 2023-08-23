@@ -1,29 +1,3 @@
-#' Simple report format
-#'
-#' @param ... Other params to pagedown::html_paged
-#'
-#' @return An rmd format
-#' @export
-#'
-simple_report_format <- function(...) {
-  # fichiers de style
-  css_style <-
-    pkg_resource("omni_simple_report/css/", "simple-report-style.css")
-  css_page <-
-    pkg_resource("omni_simple_report/css/", "simple-report-page.css")
-  css_default <-
-    pkg_resource("omni_simple_report/css/", "simple-report-default.css")
-
-  # template
-  pagedown::html_paged(
-    self_contained = TRUE,
-    number_sections = FALSE,
-    fig_caption = TRUE,
-    css = c(css_style, css_page, css_default),
-    ...
-  )
-}
-
 #' Omni RMD template
 #'
 #' @param ... Other params to pagedown::html_paged

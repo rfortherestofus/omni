@@ -1,36 +1,42 @@
-Package: omni
 Type: Package
-Title: RMarkdown template, ggplot2 theme, and table function for OMNI Institute
-Version: 0.1.1
-Author: David Keyes
-Maintainer: David Keyes <david@rfortherestofus.com>
-Description: RMarkdown template, ggplot2 theme, and table function for OMNI Institute.
+Package: omni
+Title: RMarkdown template, ggplot2 theme, and table function for OMNI
+    Institute
+Version: 1.0.2023
+Description: RMarkdown template, ggplot2 theme, and table function for
+    OMNI Institute.
 License: file LICENSE
+URL: https://github.com/rfortherestofus/omni,
+    https://rfortherestofus.github.io/omni/
+BugReports: https://github.com/rfortherestofus/omni/issues
+Depends: 
+    R (>= 4.1)
+Imports: 
+    bookdown,
+    dplyr,
+    flextable,
+    fs,
+    ggplot2,
+    ggtext,
+    grDevices,
+    knitr,
+    officer,
+    pagedown,
+    qualtRics,
+    rlang,
+    rmarkdown,
+    stringr,
+    usethis
+Suggests:
+    gghighlight,
+    scales,
+    tidyverse
+VignetteBuilder: 
+    knitr
+Author: c( person("Thomas", "Vroylandt", email =
+    "thomas@rfortherestofus.com", role = "cre"), person("David", "Keyes",
+    email = "david@rfortherestofus.com", role = c("aut")) )
+Maintainer: Thomas Vroylandt <thomas@rfortherestofus.com>
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.2.3
-Imports: 
-    flextable,
-    pagedown,
-    bookdown,
-    stringr,
-    knitr,
-    fs,
-    rmarkdown,
-    qualtRics,
-    ggplot2,
-    grDevices,
-    ggtext,
-    dplyr,
-    rlang,
-    usethis,
-    officer
-Suggests:
-  tidyverse,
-  scales,
-  gghighlight
-URL: https://github.com/rfortherestofus/omni, https://rfortherestofus.github.io/omni/
-BugReports: https://github.com/rfortherestofus/omni/issues
-VignetteBuilder: knitr
-Depends: 
-    R (>= 4.1)
