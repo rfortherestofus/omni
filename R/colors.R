@@ -108,8 +108,8 @@ omni_colors <- function(colors_sub = c("Dark Blue",
   # get number and id
   df_palette <- tibble(color = omni_colors_vector,
                        palette = names(omni_colors_vector)) |>
-    mutate(variation =  str_sub(palette, -1, -1),
-           palette = str_sub(palette, 0, -2))
+    mutate(variation =  str_sub(palette,-1,-1),
+           palette = str_sub(palette, 0,-2))
 
   # filter
   df_palette_filter <- df_palette |>
@@ -134,7 +134,9 @@ omni_colors <- function(colors_sub = c("Dark Blue",
 omni_pal <- function(palette = "Main",
                      reverse = FALSE,
                      ...) {
-  if (palette == "Main") {
+  if (length(palette) > 1) {
+    pal <- omni_colors(colors_sub = palette)
+  } else if (palette == "Main") {
     pal <- omni_colors()
   } else if (palette == "Blues") {
     pal <-
@@ -221,6 +223,6 @@ scale_fill_omni_continuous <-
            reverse = FALSE,
            ...) {
     ggplot2::scale_fill_gradientn(colors = omni_pal(palette = palette,
-                                                    reverse = reverse)(256),)
+                                                    reverse = reverse)(256), )
 
   }

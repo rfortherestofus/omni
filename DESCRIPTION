@@ -20,15 +20,17 @@ Imports:
     qualtRics,
     ggplot2,
     grDevices,
+    ggtext,
     dplyr,
     rlang,
     usethis,
     officer
 Suggests:
   tidyverse,
-  scales
+  scales,
+  gghighlight
 URL: https://github.com/rfortherestofus/omni
 BugReports: https://github.com/rfortherestofus/omni/issues
 VignetteBuilder: knitr
 Depends: 
-    R (>= 2.10)
+    R (>= 4.1)
