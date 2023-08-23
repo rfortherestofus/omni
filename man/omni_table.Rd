@@ -13,6 +13,9 @@ omni_table(df, table_name, use_image = TRUE)
 
 \item{use_image}{Convert as image}
 }
+\value{
+A table themed
+}
 \description{
 This function creates a table in OMNI's style. In order to use it, you have
 to give the function a name for each table. This is because, behind the

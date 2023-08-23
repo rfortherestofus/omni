@@ -8,80 +8,120 @@
 #' omni_colors("Dark Blue") returns the hex value of the OMNI Dark Blue.
 #'
 #'
-#' @param ... color or colors you want to return
+#' @param colors_sub color or colors you want to return - vector
+#' @param variations_sub Variation, default to 0 - vector
 #'
-#' @return
+#' @return A color vector
 #' @export
 #'
 #' @examples
-#' omni_colors("Dark Blue", "Light Blue")
+#' omni_colors(c("Dark Blue", "Light Blue"))
 #'
-omni_colors <- function(...) {
+omni_colors <- function(colors_sub = c("Dark Blue",
+                                       "Medium Blue",
+                                       "Light Blue",
+                                       "Teal",
+                                       "Orange",
+                                       "Tan"),
+                        variations_sub = "0") {
+  # base color vector
+  omni_colors_vector_base <- c(
+    "White0" = "#ffffff",
+    "Black0" = "#000000",
+    "Gray0" = "#666666",
+    "Dark Gray0" = "#333333",
+    "Dark Blue0" = "#314160",
+    "Medium Blue0" = "#347686",
+    "Light Blue0" = "#779aab",
+    "Teal0" = "#8bc0b2",
+    "Orange0" = "#eab66f",
+    "Tan0" = "#7b7754"
+  )
 
-  omni_colors_vector <- c(`Gray` = "#A6A6A6",
-                          `Medium Gray` = "#666666",
-                          `Dark Gray` = "#333333",
-                          `Dark Blue` = "#314160",
-                          `Medium Blue` = "#347686",
-                          `Light Blue` = "#779aab",
-                          `Teal` = "#8bc0b2",
-                          `Orange` = "#eab66f",
-                          `Tan` = "#7b7754")
+  # variations
+  omni_colors_vector_variations <- c(
+    "White1" = "#f2f2f2",
+    "White2" = "#d9d9d9",
+    "White3" = "#bfbfbf",
+    "White4" = "#a6a6a6",
+    "White5" = "#807f80",
 
-  cols <- c(...)
+    "Black1" = "#807f80",
+    "Black2" = "#595959",
+    "Black3" = "#404040",
+    "Black4" = "#262626",
+    "Black5" = "#0d0d0d",
 
-  cols <- stringr::str_to_title(cols)
+    "Gray1" = "#e0e0e0",
+    "Gray2" = "#c2c2c1",
+    "Gray3" = "#a3a3a3",
+    "Gray4" = "#4d4c4c",
+    "Gray5" = "#333333",
 
-  if (is.null(cols))
-    return (omni_colors_vector)
+    "Dark Gray1" = "#d6d6d6",
+    "Dark Gray2" = "#adadad",
+    "Dark Gray3" = "#858585",
+    "Dark Gray4" = "#262626",
+    "Dark Gray5" = "#1a191a",
 
-  omni_colors_vector[cols] %>%
-    as.vector()
+    "Dark Blue1" = "#ced7e7",
+    "Dark Blue2" = "#9dafcd",
+    "Dark Blue3" = "#6c87b5",
+    "Dark Blue4" = "#243147",
+    "Dark Blue5" = "#182130",
 
+    "Medium Blue1" = "#d0e7ed",
+    "Medium Blue2" = "#a1cfdb",
+    "Medium Blue3" = "#72b7c9",
+    "Medium Blue4" = "#265865",
+    "Medium Blue5" = "#1a3a43",
+
+    "Light Blue1" = "#e4ebee",
+    "Light Blue2" = "#c8d6dd",
+    "Light Blue3" = "#adc2cd",
+    "Light Blue4" = "#537587",
+    "Light Blue5" = "#374e5a",
+
+    "Teal1" = "#e8f2f0",
+    "Teal2" = "#d0e6e0",
+    "Teal3" = "#b8d9d1",
+    "Teal4" = "#57a18d",
+    "Teal5" = "#3a6b5f",
+
+    "Orange1" = "#fbf0e2",
+    "Orange2" = "#f6e2c5",
+    "Orange3" = "#f2d3a8",
+    "Orange4" = "#dd9124",
+    "Orange5" = "#956116",
+
+    "Tan1" = "#e7e5da",
+    "Tan2" = "#ceccb6",
+    "Tan3" = "#b6b292",
+    "Tan4" = "#5c593e",
+    "Tan5" = "#3e3b2a"
+  )
+
+  # concatenate vectors
+  omni_colors_vector <-
+    c(omni_colors_vector_base, omni_colors_vector_variations)
+
+  # get number and id
+  df_palette <- tibble(color = omni_colors_vector,
+                       palette = names(omni_colors_vector)) |>
+    mutate(variation =  str_sub(palette, -1, -1),
+           palette = str_sub(palette, 0, -2))
+
+  # filter
+  df_palette_filter <- df_palette |>
+    filter(palette %in% colors_sub & variation %in% variations_sub)
+
+  # return a color palette
+  output_colors <- df_palette_filter$color
+  names(output_colors) <-
+    paste0(df_palette_filter$palette, df_palette_filter$variation)
+
+  output_colors
 }
-
-#' Title
-#'
-#' @param ...
-#'
-#' @return
-#' @export
-#' @keywords internal
-#'
-#' @examples
-omni_colors_internal <- function(...) {
-
-  omni_colors_vector <- c(`Gray` = "#A6A6A6",
-                          `Medium Gray` = "#666666",
-                          `Dark Gray` = "#333333",
-                          `Dark Blue` = "#314160",
-                          `Medium Blue` = "#347686",
-                          `Light Blue` = "#779aab",
-                          `Teal` = "#8bc0b2",
-                          `Orange` = "#eab66f",
-                          `Tan` = "#7b7754")
-
-  cols <- c(...)
-
-  cols <- stringr::str_to_title(cols)
-
-  if (is.null(cols))
-    return (omni_colors_vector)
-
-  omni_colors_vector[cols]
-
-}
-
-omni_palettes <- list(
-
-  `Main` = omni_colors_internal("Dark Blue", "Medium Blue", "Gray", "Light Blue", "Teal", "Orange", "Tan"),
-
-  `Blues` = omni_colors_internal("Dark Blue", "Medium Blue", "Light Blue", "Teal")
-)
-
-usethis::use_data(omni_palettes,
-                  overwrite = TRUE)
-
 
 #' Return function to interpolate an OMNI color palette
 #'
@@ -90,14 +130,27 @@ usethis::use_data(omni_palettes,
 #' @param ... Additional arguments to pass to colorRampPalette()
 #' @keywords internal
 #'
-omni_pal <- function(palette = "Main", reverse = FALSE, ...) {
-  pal <- omni_palettes[[palette]]
+#' @importFrom grDevices colorRampPalette
+omni_pal <- function(palette = "Main",
+                     reverse = FALSE,
+                     ...) {
+  if (palette == "Main") {
+    pal <- omni_colors()
+  } else if (palette == "Blues") {
+    pal <-
+      omni_colors(colors_sub = c("Dark Blue", "Medium Blue", "Light Blue"))
+  } else{
+    pal <-
+      omni_colors(colors_sub = palette,
+                  variations_sub = c("1", "2", "3", "4", "5"))
+  }
 
-  if (reverse) pal <- rev(pal)
+  if (reverse == TRUE) {
+    pal <- rev(pal)
+  }
 
-  grDevices::colorRampPalette(pal, ...)
+  colorRampPalette(pal, ...)
 }
-
 
 #' Discrete color scale based on OMNI colors
 #'
@@ -106,25 +159,19 @@ omni_pal <- function(palette = "Main", reverse = FALSE, ...) {
 #' @param ... Additional arguments passed to discrete_scale()
 #'
 #' @export
-#' @example
-#' iris %>%
-#' group_by(Species) %>%
-#' summarise(sepal_length_mean = mean(Sepal.Length)) %>%
-#' ggplot(aes(x = Species, y = sepal_length_mean, fill = Species)) +
-#' geom_bar(stat = "identity") +
-#' coord_flip() +
-#' scale_fill_omni_discrete() +
-#' theme_omni()
-#'
-scale_color_omni_discrete <- function(palette = "Main", reverse = FALSE, ...) {
+scale_color_omni_discrete <-
+  function(palette = "Main",
+           reverse = FALSE,
+           ...) {
+    ggplot2::discrete_scale(
+      aesthetics = "color",
+      scale_name = paste0("omni_", palette),
+      palette = omni_pal(palette = palette,
+                         reverse = reverse),
+      ...
+    )
 
-  pal <- omni_pal(palette = palette, reverse = reverse)
-
-  ggplot2::discrete_scale("color", paste0("omni_", palette), palette = pal, ...)
-
-}
-
-
+  }
 
 #' Continuous color scale based on OMNI colors
 #'
@@ -132,16 +179,15 @@ scale_color_omni_discrete <- function(palette = "Main", reverse = FALSE, ...) {
 #' @param reverse Boolean indicating whether the palette should be reversed
 #' @param ... Additional arguments passed to scale_color_gradientn()
 #'
-scale_color_omni_continuous <- function(palette = "Main", reverse = FALSE, ...) {
+scale_color_omni_continuous <-
+  function(palette = "Main",
+           reverse = FALSE,
+           ...) {
+    ggplot2::scale_color_gradientn(colors = omni_pal(palette = palette,
+                                                     reverse = reverse)(256),
+                                   ...)
 
-  pal <- omni_pal(palette = palette, reverse = reverse)
-
-  ggplot2::scale_color_gradientn(colors = pal(256), ...)
-
-}
-
-
-
+  }
 
 
 #' Discrete fill scale based on OMNI colors
@@ -151,13 +197,18 @@ scale_color_omni_continuous <- function(palette = "Main", reverse = FALSE, ...) 
 #' @param ... Additional arguments passed to discrete_scale()
 #' @export
 #'
-scale_fill_omni_discrete <- function(palette = "Main", reverse = FALSE, ...) {
-
-  pal <- omni_pal(palette = palette, reverse = reverse)
-
-  ggplot2::discrete_scale("fill", paste0("omni_", palette), palette = pal, ...)
-
-}
+scale_fill_omni_discrete <-
+  function(palette = "Main",
+           reverse = FALSE,
+           ...) {
+    ggplot2::discrete_scale(
+      aesthetics = "fill",
+      scale_name = paste0("omni_", palette),
+      palette = omni_pal(palette = palette,
+                         reverse = reverse),
+      ...
+    )
+  }
 
 #' Continuous fill scale based on OMNI colors
 #'
@@ -165,10 +216,11 @@ scale_fill_omni_discrete <- function(palette = "Main", reverse = FALSE, ...) {
 #' @param reverse Boolean indicating whether the palette should be reversed
 #' @param ... Additional arguments passed to scale_color_gradientn()
 #' @export
-scale_fill_omni_continuous <- function(palette = "Main", reverse = FALSE, ...) {
+scale_fill_omni_continuous <-
+  function(palette = "Main",
+           reverse = FALSE,
+           ...) {
+    ggplot2::scale_fill_gradientn(colors = omni_pal(palette = palette,
+                                                    reverse = reverse)(256),)
 
-  pal <- omni_pal(palette = palette, reverse = reverse)
-
-  ggplot2::scale_fill_gradientn(colors = pal(256), ...)
-
-}
+  }

@@ -4,10 +4,18 @@
 \alias{omni_colors}
 \title{Function to extract OMNI colors as hex codes}
 \usage{
-omni_colors(...)
+omni_colors(
+  colors_sub = c("Dark Blue", "Medium Blue", "Light Blue", "Teal", "Orange", "Tan"),
+  variations_sub = "0"
+)
 }
 \arguments{
-\item{...}{color or colors you want to return}
+\item{colors_sub}{color or colors you want to return - vector}
+
+\item{variations_sub}{Variation, default to 0 - vector}
+}
+\value{
+A color vector
 }
 \description{
 omni_colors() enables you to pull colors directly from the OMNI palette.
@@ -16,6 +24,6 @@ Light Blue, Teal, Orange, or Tan. You'll use this function as follows:
 omni_colors("Dark Blue") returns the hex value of the OMNI Dark Blue.
 }
 \examples{
-omni_colors("Dark Blue", "Light Blue")
+omni_colors(c("Dark Blue", "Light Blue"))
 
 }

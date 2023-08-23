@@ -13,6 +13,9 @@ theme_omni(show_grid_lines = TRUE, show_legend = TRUE, base_family = "Calibri")
 
 \item{base_family}{Base font family (Lato by default). If you want to use a custom font, you need to register it first.}
 }
+\value{
+A ggplot2 theme
+}
 \description{
 OMNI Institute ggplot2 theme
 }
