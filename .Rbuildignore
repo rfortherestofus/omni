@@ -5,3 +5,7 @@
 ^images/
 ^pkgdown/
 ^doc/
+^\.github$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

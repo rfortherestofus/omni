@@ -14,6 +14,9 @@
 #' @return A color vector
 #' @export
 #'
+#' @importFrom dplyr mutate filter
+#' @importFrom stringr str_sub
+#'
 #' @examples
 #' omni_colors(c("Dark Blue", "Light Blue"))
 #'
@@ -106,10 +109,10 @@ omni_colors <- function(colors_sub = c("Dark Blue",
     c(omni_colors_vector_base, omni_colors_vector_variations)
 
   # get number and id
-  df_palette <- tibble(color = omni_colors_vector,
+  df_palette <- data.frame(color = omni_colors_vector,
                        palette = names(omni_colors_vector)) |>
-    mutate(variation =  str_sub(palette,-1,-1),
-           palette = str_sub(palette, 0,-2))
+    mutate(variation =  str_sub(palette, -1, -1),
+           palette = str_sub(palette, 0, -2))
 
   # filter
   df_palette_filter <- df_palette |>
@@ -131,6 +134,7 @@ omni_colors <- function(colors_sub = c("Dark Blue",
 #' @keywords internal
 #'
 #' @importFrom grDevices colorRampPalette
+#'
 omni_pal <- function(palette = "Main",
                      reverse = FALSE,
                      ...) {
@@ -160,12 +164,14 @@ omni_pal <- function(palette = "Main",
 #' @param reverse Boolean indicating whether the palette should be reversed
 #' @param ... Additional arguments passed to discrete_scale()
 #'
+#' @importFrom ggplot2 discrete_scale
+#'
 #' @export
 scale_color_omni_discrete <-
   function(palette = "Main",
            reverse = FALSE,
            ...) {
-    ggplot2::discrete_scale(
+    discrete_scale(
       aesthetics = "color",
       scale_name = paste0("omni_", palette),
       palette = omni_pal(palette = palette,
@@ -181,6 +187,9 @@ scale_color_omni_discrete <-
 #' @param reverse Boolean indicating whether the palette should be reversed
 #' @param ... Additional arguments passed to scale_color_gradientn()
 #'
+#' @importFrom ggplot2 scale_color_gradientn
+#'
+#' @export
 scale_color_omni_continuous <-
   function(palette = "Main",
            reverse = FALSE,
@@ -197,6 +206,9 @@ scale_color_omni_continuous <-
 #' @param palette Character name of palette in omni_palettes ("Main" or "Blues")
 #' @param reverse Boolean indicating whether the palette should be reversed
 #' @param ... Additional arguments passed to discrete_scale()
+#'
+#' @importFrom ggplot2 discrete_scale
+#'
 #' @export
 #'
 scale_fill_omni_discrete <-
@@ -217,12 +229,15 @@ scale_fill_omni_discrete <-
 #' @param palette Character name of palette in omni_palettes ("Main" or "Blues")
 #' @param reverse Boolean indicating whether the palette should be reversed
 #' @param ... Additional arguments passed to scale_color_gradientn()
+#'
+#' @importFrom ggplot2 scale_color_gradientn
+#'
 #' @export
 scale_fill_omni_continuous <-
   function(palette = "Main",
            reverse = FALSE,
            ...) {
     ggplot2::scale_fill_gradientn(colors = omni_pal(palette = palette,
-                                                    reverse = reverse)(256), )
+                                                    reverse = reverse)(256), ...)
 
   }
