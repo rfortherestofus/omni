@@ -14,7 +14,7 @@
 #' @importFrom knitr include_graphics
 #'
 
-omni_table <- function(d) {
+omni_table <- function(df) {
   # table theme
   table <- df |>
     flextable() |>
