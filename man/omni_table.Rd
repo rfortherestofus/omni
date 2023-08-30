@@ -4,7 +4,7 @@
 \alias{omni_table}
 \title{OMNI Table Function}
 \usage{
-omni_table(d)
+omni_table(df)
 }
 \arguments{
 \item{df}{The data frame to be put into the table}

@@ -110,13 +110,14 @@ omni_colors <- function(colors_sub = c("Dark Blue",
 
   # get number and id
   df_palette <- data.frame(color = omni_colors_vector,
-                       palette = names(omni_colors_vector)) |>
-    mutate(variation =  str_sub(palette, -1, -1),
-           palette = str_sub(palette, 0, -2))
+                           palette = names(omni_colors_vector)) |>
+    mutate(variation =  str_sub(palette,-1,-1),
+           palette = str_sub(palette, 0,-2))
 
   # filter
   df_palette_filter <- df_palette |>
-    filter(palette %in% colors_sub & variation %in% variations_sub)
+    filter(.data$palette %in% colors_sub &
+             .data$variation %in% variations_sub)
 
   # return a color palette
   output_colors <- df_palette_filter$color
