@@ -1,0 +1,39 @@
+---
+title: "Word Template"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Word Template}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(omni)
+```
+
+# Word OMNI Template
+
+## Creating a New Report
+
+After you have installed the package, you will have access to a new custom RMarkdown template.
+
+You can create a new RMarkdown document that uses the OMNI template in the same way you'd normally make a new RMarkdown document: go to File > New File > RMarkdown > OMNI Word Template.
+
+![](https://p218.p3.n0.cdn.getcloudapp.com/items/OAurlKq9/Screen%20Recording%202020-03-19%20at%2002.01%20PM.gif)
+
+## Executive Summary
+
+There is an Executive Summary section. If you want to have an Executive Summary, please change the content here. Please note that the {-} at the end of the headers in that section serves an important purpose: [it makes those headers not show up in the Table of Contents](https://bookdown.org/yihui/rmarkdown/markdown-syntax.html#block-level-elements).
+
+You'll also see some HTML above (`<div class="exec-summary">`) and below (`</div>`) the Executive Summary. This ensures all the styling works for that section. Please leave it.
+
+## Figures, Charts, and Tables
+
+You'll need to make sure you add titles to all figures, charts, and tables. To do so, use the `fig.cap` chunk option. You'll also need to include a special bit of code to help the template know whether the code chunk is producing a figure, chart, or table (and thus label and number it correctly). To do for a figure, for example, you'd add `out.extra='data-prefix="Figure"'` to your code chunk. You substitute "Chart" or "Table" as appropriate in other code chunks. There are examples of each in the default content of the RMarkdown template. 

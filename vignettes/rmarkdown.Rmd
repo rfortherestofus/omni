@@ -22,11 +22,17 @@ library(omni)
 
 ## Creating a New Report
 
-After you have installed the package, you will have access to a new custom RMarkdown template. You can create a new RMarkdown document that uses the OMNI template in the same way you'd normally make a new RMarkdown document: go to File > New File > RMarkdown.
+After you have installed the package, you will have access to a new custom RMarkdown template.
+
+### Option 1
+
+You can create a new RMarkdown document that uses the OMNI template in the same way you'd normally make a new RMarkdown document: go to File > New File > RMarkdown.
 
 ![](https://p218.p3.n0.cdn.getcloudapp.com/items/OAurlKq9/Screen%20Recording%202020-03-19%20at%2002.01%20PM.gif)
 
-However, this first method will force you to make a new folder to put all of your files in, which is kind of annoying. I've created a function that gets around this. Just load the `omni` package using `library(omni)` and then type `new_omni_report()`. By default, this function creates a new RMarkdown document called report.Rmd, but you can change this to anything you want. You can also enter an argument in the function to change it that way. For example, type `new_omni_report("snazzy-report")` and you'll get an RMarkdown file called snazzy-report.Rmd. Once you've created a new project, look in the bottom right pane for your new RMarkdown document. 
+### Option 2
+
+Just load the `omni` package using `library(omni)` and then type `new_omni_report()`. By default, this function creates a new RMarkdown document called report.Rmd, but you can change this to anything you want. You can also enter an argument in the function to change it that way. For example, type `new_omni_report("snazzy-report")` and you'll get an RMarkdown file called snazzy-report.Rmd. Once you've created a new project, look in the bottom right pane for your new RMarkdown document. 
 
 ![](https://p218.p3.n0.cdn.getcloudapp.com/items/xQugQqBe/Screen%20Recording%202020-03-23%20at%2002.10%20PM.gif)
 
@@ -88,9 +94,3 @@ There is also a simple report template and a cleaning and analysis report templa
 ```{r eval = FALSE}
 new_omni_report(type_of_report = "Cleaning")
 ```
-
-
-
-
-
-

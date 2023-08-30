@@ -24,7 +24,7 @@ When saving your file, make sure not to include any spaces or special characters
 
 ```{r packages, message = FALSE, warning=FALSE}
 # this code chunk should load all of the packages you will be using in the file.
-library(tidyverse) #loads multiple packages for BP data management, viz, and more. Should always incldue
+library(tidyverse) #loads multiple packages for BP data management, viz, and more. Should always include
 library(openxlsx) #for reading and writing excel files
 library(janitor) #for cleaning data
 library(summarytools) #for easily summarizing data
