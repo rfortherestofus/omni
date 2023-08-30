@@ -4,21 +4,14 @@
 \alias{omni_table}
 \title{OMNI Table Function}
 \usage{
-omni_table(df, table_name, use_image = TRUE)
+omni_table(d)
 }
 \arguments{
 \item{df}{The data frame to be put into the table}
-
-\item{table_name}{The name of the table}
-
-\item{use_image}{Convert as image}
 }
 \value{
 A table themed
 }
 \description{
-This function creates a table in OMNI's style. In order to use it, you have
-to give the function a name for each table. This is because, behind the
-scenes, the function actually saves each table as an image, and each image
-must have a unique file name when it is saved.
+This function creates a table in OMNI's style.
 }

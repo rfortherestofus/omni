@@ -5,10 +5,9 @@
 #' @param file_name The name of the file for your RMarkdown document. Defaults to "report" and creates a file called report.Rmd
 #' @param type_of_report The type of report you're creating ("General", "Simple Report", or "Cleaning")
 #'
-#' @return
+#' @return A report themed Rmd
 #' @export
 #'
-#' @examples
 new_omni_report <- function(file_name = "report",
                             type_of_report = "General") {
 

@@ -22,7 +22,7 @@ library(flextable)
 
 To make a table, you can use the `omni_table()` function. This function takes two arguments, the data (which is usually piped into the function as seen below) and a name for the table. 
 
-```{r echo = TRUE, eval = FALSE}
+```{r echo = TRUE}
 mtcars  |>  
   # This is used because the `mtcars` data frame uses 
   # row names and we want to convert these into a variable
@@ -31,18 +31,13 @@ mtcars  |>
   omni_table("Sample table")
 ```
 
-![](https://github.com/rfortherestofus/omni/raw/master/vignettes/images/sample-table.png)
-
-
 The table will be created based on whatever data you pipe into the `omni_table()` function. So, for example, if you wanted to only include certain variables, you could do as follows:
 
-```{r echo = TRUE, eval = FALSE}
+```{r echo = TRUE}
 mtcars %>% 
   rownames_to_column(var = "car") |> 
   slice(1:5) |> 
   select(car, mpg, hp) |> 
   omni_table("Sample table v2")
 ```
-
-![](https://github.com/rfortherestofus/omni/raw/master/vignettes/images/sample-table-v2.png)
 
