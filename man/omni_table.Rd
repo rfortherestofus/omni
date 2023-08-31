@@ -4,10 +4,12 @@
 \alias{omni_table}
 \title{OMNI Table Function}
 \usage{
-omni_table(df)
+omni_table(df, option = "flextable")
 }
 \arguments{
 \item{df}{The data frame to be put into the table}
+
+\item{option}{flextable (by default) or gt}
 }
 \value{
 A table themed
