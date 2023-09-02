@@ -3,6 +3,7 @@
 export(new_omni_report)
 export(omni_colors)
 export(omni_rmd_template)
+export(omni_slidy)
 export(omni_table)
 export(omni_word)
 export(qualtrics_connect)
