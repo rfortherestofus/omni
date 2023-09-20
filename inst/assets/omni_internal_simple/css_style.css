@@ -1,0 +1,17 @@
+/* Style for OMNI internal template */
+
+body {
+  font-family: "Calibri", Arial, serif;
+  hyphens: auto;
+}
+
+
+.list-group-item.active{
+  background-color: #314160;
+  border-color: #314160;
+}
+
+h1, h2, h3 {
+  color: #314160;
+  font-weight: bold;
+}

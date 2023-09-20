@@ -1,0 +1,40 @@
+---
+title: "Project title"
+subtitle: "What you are doing"
+author: "Who is doing it"
+date: "`r Sys.Date()`"
+output:
+  omni::omni_internal_simple
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.path='figs/',
+                      echo=FALSE, # change to TRUE if most code chunks should knit to report 
+                      warning=FALSE, 
+                      message=FALSE)
+```
+
+```{r packages, echo=FALSE}
+
+libs = c('tidyverse',
+         'kableExtra',
+         'knitr',
+         'janitor') # 
+
+invisible(lapply(libs,library, character.only=T))
+
+# this generates bib for all packages in case we need to cite any in text -  
+knitr::write_bib(c(.packages(), "bookdown"), "packages.bib")
+
+```
+
+## Summary
+
+# Header 1
+
+
+## Sub header 

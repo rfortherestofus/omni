@@ -2,6 +2,7 @@
 
 export(new_omni_report)
 export(omni_colors)
+export(omni_internal_simple)
 export(omni_rmd_template)
 export(omni_slidy)
 export(omni_table)
