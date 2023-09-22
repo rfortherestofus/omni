@@ -23,7 +23,8 @@ knitr::opts_chunk$set(fig.path='figs/',
 libs = c('tidyverse',
          'kableExtra',
          'knitr',
-         'janitor') # 
+         'janitor',
+         'omni') # 
 
 invisible(lapply(libs,library, character.only=T))
 
