@@ -1,6 +1,7 @@
 ---
-title: "Tapi subgroup analysis"
-author: "Oskar"
+title: "Title"
+subtitle: "Subtitle"
+author: "Author"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   omni::omni_word
@@ -11,9 +12,13 @@ always_allow_html: yes
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE,
                       fig.topcaption = TRUE,
                       fig.cap = TRUE,
-                      dpi = 150)
+                      dpi = 150,
+                      warning = FALSE,
+                      message = FALSE)
 library(tidyverse)
 library(flextable)
 library(knitr)
@@ -70,6 +75,7 @@ iris %>%
   geom_bar(stat = "identity") +
   coord_flip() +
   scale_fill_omni_discrete() +
+  labs(y = "Mean Sepal Length") +
   theme_omni()
 ```
 
@@ -90,7 +96,8 @@ Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit dui
 ```{r fig.cap="Title", out.extra='data-prefix="Table"'}
 mtcars %>% 
   slice(1:5) %>% 
-  omni_table()
+  omni_table() |> 
+  autofit()
 ```
 
 
