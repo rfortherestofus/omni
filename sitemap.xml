@@ -64,7 +64,13 @@
     <loc>https://rfortherestofus.github.io/omni/reference/pkg_resource.html</loc>
   </url>
   <url>
+    <loc>https://rfortherestofus.github.io/omni/reference/qualtrics_apply_labels.html</loc>
+  </url>
+  <url>
     <loc>https://rfortherestofus.github.io/omni/reference/qualtrics_connect.html</loc>
+  </url>
+  <url>
+    <loc>https://rfortherestofus.github.io/omni/reference/qualtrics_get_labels.html</loc>
   </url>
   <url>
     <loc>https://rfortherestofus.github.io/omni/reference/qualtrics_get_survey.html</loc>
