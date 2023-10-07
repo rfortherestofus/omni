@@ -105,3 +105,45 @@ qualtrics_get_survey <-
       )
     }
   }
+
+#' Get labels
+#'
+#' @param survey_id_name Survey name or ID
+#'
+#' @return A dataframe with questions codes and labels
+#' @export
+#'
+#' @examples
+qualtrics_get_labels <- function(survey_id_name) {
+  survey_data <- qualtRics::fetch_survey(
+    surveyID = survey_id_name,
+    limit = 1,
+    force_request = TRUE,
+    verbose = FALSE
+  )
+  # return
+  tibble(
+    var_name = colnames(survey_data),
+    var_label = colnames(sjlabelled::label_to_colnames(survey_data))
+  )
+}
+
+#' Apply labels to survey
+#'
+#' @param survey_data Output or subset of omni::qualtrics_get_survey()
+#' @param labels_data Output of omni::qualtrics_get_labels()
+#'
+#' @return survey data with columns names replaces.
+#' @export
+#'
+#' @examples
+qualtrics_apply_labels <- function(survey_data, labels_data) {
+  # create list
+  list_labels <- labels_data$var_name
+  names(list_labels) <-
+    make.unique(labels_data$var_label, sep = "_")
+
+  # rename
+  survey_data |>
+    rename(any_of(list_labels))
+}

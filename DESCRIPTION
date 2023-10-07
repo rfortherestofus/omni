@@ -27,7 +27,8 @@ Imports:
     rmarkdown,
     stringr,
     usethis,
-    gt
+    gt,
+    sjlabelled
 Suggests:
     gghighlight,
     scales,
