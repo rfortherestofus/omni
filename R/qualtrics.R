@@ -113,7 +113,6 @@ qualtrics_get_survey <-
 #' @return A dataframe with questions codes and labels
 #' @export
 #'
-#' @examples
 qualtrics_get_labels <- function(survey_id_name) {
   survey_data <- qualtRics::fetch_survey(
     surveyID = survey_id_name,
@@ -136,7 +135,6 @@ qualtrics_get_labels <- function(survey_id_name) {
 #' @return survey data with columns names replaces.
 #' @export
 #'
-#' @examples
 qualtrics_apply_labels <- function(survey_data, labels_data) {
   # create list
   list_labels <- labels_data$var_name
