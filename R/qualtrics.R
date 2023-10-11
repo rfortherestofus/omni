@@ -145,3 +145,4 @@ qualtrics_apply_labels <- function(survey_data, labels_data) {
   survey_data |>
     rename(any_of(list_labels))
 }
+
