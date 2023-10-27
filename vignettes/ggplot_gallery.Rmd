@@ -1,0 +1,107 @@
+---
+title: "Ggplot gallery"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ggplot_gallery}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This vignette demonstrate a few graphs made with `ggplot2` and the `omni` packages, aligned with OMNI style guide.
+
+```{r setup}
+library(omni)
+library(tidyverse)
+library(palmerpenguins)
+```
+
+## Principles
+
+
+## Graphs
+
+### Bar charts
+
+```{r}
+penguins |>
+  group_by(island, species) |>
+  summarise(body_mass_g_mean = mean(body_mass_g, na.rm = TRUE)) |>
+  ungroup() |>
+  ggplot(aes(x = island, y  = body_mass_g_mean, fill = species)) +
+  geom_col(position = "dodge") +
+  scale_fill_omni_discrete() +
+  facet_wrap(vars(species)) +
+  theme_omni()
+```
+
+```{r}
+penguins |>
+  group_by(species) |>
+  summarise(across(
+    c(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g),
+    \(x) mean(x, na.rm = TRUE)
+  )) |>
+  ungroup() |>
+  pivot_longer(-species, names_to = "measure") |>
+  ggplot(aes(x = species, y  = value, fill = species)) +
+  geom_col(position = "dodge") +
+  geom_text(aes(label = scales::number(value, accuracy = 1)),
+            position = position_stack(vjust = .5),
+            color = "white",
+            family = "Calibri") +
+  scale_fill_omni_discrete() +
+  coord_flip() +
+  facet_wrap(vars(measure), scales = "free_x", ncol = 1) +
+  theme_omni()
+```
+
+### Scatterplots
+
+```{r}
+penguins |>
+  ggplot(aes(
+    x = bill_length_mm,
+    y = bill_depth_mm,
+    color = species,
+    size = body_mass_g
+  )) +
+  geom_point() +
+  scale_color_omni_discrete() +
+  facet_wrap(vars(island)) +
+  theme_omni()
+
+# change point type
+# change alpha
+# add grey points behind
+```
+
+### Line charts
+
+```{r}
+
+```
+
+### Area charts
+
+```{r}
+
+```
+
+### Maps
+
+```{r}
+
+```
+
+## Going interactive
+
+```{r}
+
+```
