@@ -85,23 +85,63 @@ penguins |>
 ### Line charts
 
 ```{r}
-
+tidyr::world_bank_pop |> 
+  filter(country %in% c("FRA", "GBR", "ITA", "DEU", "ESP")) |> 
+  pivot_longer(-c(country, indicator), names_to = "year") |> 
+  mutate(year = as.numeric(year)) |> 
+  ggplot(aes(x = year, y = value, color = country)) +
+  geom_line(linewidth = 1) +
+  facet_wrap(vars(indicator), scales = "free_y") +
+  scale_color_omni_discrete() +
+  theme_omni()
 ```
 
 ### Area charts
 
 ```{r}
-
+tidyr::world_bank_pop |> 
+  filter(country %in% c("FRA", "GBR", "ITA", "DEU", "ESP") & indicator == "SP.POP.GROW") |> 
+  pivot_longer(-c(country, indicator), names_to = "year") |> 
+  mutate(year = as.numeric(year)) |> 
+  ggplot(aes(x = year, y = value / 5, fill = country)) +
+  geom_area() +
+  facet_wrap(vars(indicator), scales = "free_y") +
+  scale_fill_omni_discrete() +
+  theme_omni()
 ```
 
 ### Maps
 
 ```{r}
+shp_states <- tigris::states(cb = TRUE)
 
+shp_states |>
+  filter(
+    !NAME %in% c(
+      "Guam",
+      "Alaska",
+      "Hawaii",
+      "Commonwealth of the Northern Mariana Islands",
+      "United States Virgin Islands",
+      "American Samoa",
+      "Puerto Rico"
+    )
+  ) |>
+  left_join(tibble(state = row.names(USArrests),
+                   USArrests), by = c("NAME" = "state")) |>
+  ggplot() +
+  geom_sf() +
+  geom_point(aes(
+    color = Murder,
+    size = UrbanPop,
+    geometry = geometry
+  ), stat = "sf_coordinates") +
+  scale_color_omni_continuous() +
+  theme_omni()
 ```
 
 ## Going interactive
 
 ```{r}
-
+library(ggiraph)
 ```
