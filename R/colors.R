@@ -10,6 +10,7 @@
 #'
 #' @param colors_sub color or colors you want to return - vector
 #' @param variations_sub Variation, default to 0 - vector
+#' @param named Snould the output be named ? FALSE by default
 #'
 #' @return A color vector
 #' @export
@@ -26,7 +27,8 @@ omni_colors <- function(colors_sub = c("Dark Blue",
                                        "Teal",
                                        "Orange",
                                        "Tan"),
-                        variations_sub = "0") {
+                        variations_sub = "0",
+                        named = FALSE) {
   # base color vector
   omni_colors_vector_base <- c(
     "White0" = "#ffffff",
@@ -124,7 +126,12 @@ omni_colors <- function(colors_sub = c("Dark Blue",
   names(output_colors) <-
     paste0(df_palette_filter$palette, df_palette_filter$variation)
 
-  output_colors
+  # named
+  if(named){
+    output_colors
+  }else{
+    unname(output_colors)
+  }
 }
 
 #' Return function to interpolate an OMNI color palette
