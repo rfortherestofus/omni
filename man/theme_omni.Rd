@@ -4,7 +4,11 @@
 \alias{theme_omni}
 \title{OMNI Institute ggplot2 theme}
 \usage{
-theme_omni(show_grid_lines = TRUE, show_legend = TRUE, base_family = "Calibri")
+theme_omni(
+  show_grid_lines = FALSE,
+  show_legend = TRUE,
+  base_family = "Calibri"
+)
 }
 \arguments{
 \item{show_grid_lines}{Show grid lines or not}

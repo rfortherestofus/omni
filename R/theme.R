@@ -9,7 +9,7 @@
 #'
 #' @importFrom ggplot2 theme_minimal theme element_blank element_text margin
 #' @importFrom ggtext element_markdown
-theme_omni <- function(show_grid_lines = TRUE,
+theme_omni <- function(show_grid_lines = FALSE,
                        show_legend = TRUE,
                        base_family = "Calibri") {
   # general theme based on theme_minimal
