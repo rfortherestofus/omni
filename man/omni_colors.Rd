@@ -6,13 +6,16 @@
 \usage{
 omni_colors(
   colors_sub = c("Dark Blue", "Medium Blue", "Light Blue", "Teal", "Orange", "Tan"),
-  variations_sub = "0"
+  variations_sub = "0",
+  named = FALSE
 )
 }
 \arguments{
 \item{colors_sub}{color or colors you want to return - vector}
 
 \item{variations_sub}{Variation, default to 0 - vector}
+
+\item{named}{Snould the output be named ? FALSE by default}
 }
 \value{
 A color vector
