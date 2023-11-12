@@ -13,6 +13,7 @@ Depends:
     R (>= 4.1)
 Imports: 
     bookdown,
+    tibble,
     dplyr,
     flextable,
     fs,

@@ -121,7 +121,7 @@ qualtrics_get_labels <- function(survey_id_name) {
     verbose = FALSE
   )
   # return
-  tibble(
+  tibble::tibble(
     var_name = colnames(survey_data),
     var_label = colnames(sjlabelled::label_to_colnames(survey_data))
   )
@@ -143,5 +143,5 @@ qualtrics_apply_labels <- function(survey_data, labels_data) {
 
   # rename
   survey_data |>
-    rename(any_of(list_labels))
+    dplyr::rename(dplyr::any_of(list_labels))
 }
