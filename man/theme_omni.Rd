@@ -6,7 +6,7 @@
 \usage{
 theme_omni(
   show_grid_lines = FALSE,
-  show_legend = TRUE,
+  show_legend = FALSE,
   base_family = "Calibri"
 )
 }
