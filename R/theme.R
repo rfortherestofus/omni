@@ -1,8 +1,8 @@
 #' OMNI Institute ggplot2 theme
 #'
-#' @param show_legend Whether or not to show the legend (TRUE by default)
-#' @param base_family Base font family (Lato by default). If you want to use a custom font, you need to register it first.
-#' @param show_grid_lines Show grid lines or not
+#' @param show_legend Whether or not to show the legend. FALSE by default.
+#' @param base_family Base font family. Calibri by default.
+#' @param show_grid_lines Whether or not to show grid lines. FALSE by default.
 #'
 #' @return A ggplot2 theme
 #' @export
