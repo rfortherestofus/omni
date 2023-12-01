@@ -10,22 +10,25 @@
 #' @importFrom ggplot2 theme_minimal theme element_blank element_text margin
 #' @importFrom ggtext element_markdown
 theme_omni <- function(show_grid_lines = FALSE,
-                       show_legend = TRUE,
+                       show_legend = FALSE,
                        base_family = "Calibri") {
   # general theme based on theme_minimal
-  omni_theme <- theme_minimal(base_family = base_family) +
+  omni_theme <- theme_minimal(base_family = base_family,
+                              base_size = 10) +
     theme(
       panel.grid.minor = element_blank(),
       axis.ticks = element_blank(),
-      axis.title.x = element_text(margin = margin(15, 0, 0, 0)),
-      axis.title.y = element_text(margin = margin(0, 15, 0, 0)),
+      axis.title.x = element_text(margin = margin(15, 0, 0, 0), color = "#595959"),
+      axis.title.y = element_text(margin = margin(0, 15, 0, 0), color = "#595959"),
       plot.title = element_markdown(
         margin = margin(0, 0, 15, 0),
+        color = "#595959",
         face = "bold",
         size = 12
       ),
-      plot.subtitle = element_markdown(size = 12),
-      plot.caption = element_text(size = 11, face = "italic")
+      plot.subtitle = element_markdown(size = 11, color = "#595959"),
+      plot.caption = element_text(size = 11, face = "italic"),
+      plot.margin = margin(t = 7, r = 7, b = 7, l = 7, unit = "points")
     )
 
   # grid lines option
