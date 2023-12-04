@@ -6,16 +6,16 @@
 \usage{
 theme_omni(
   show_grid_lines = FALSE,
-  show_legend = TRUE,
+  show_legend = FALSE,
   base_family = "Calibri"
 )
 }
 \arguments{
-\item{show_grid_lines}{Show grid lines or not}
+\item{show_grid_lines}{Whether or not to show grid lines. FALSE by default.}
 
-\item{show_legend}{Whether or not to show the legend (TRUE by default)}
+\item{show_legend}{Whether or not to show the legend. FALSE by default.}
 
-\item{base_family}{Base font family (Lato by default). If you want to use a custom font, you need to register it first.}
+\item{base_family}{Base font family. Calibri by default.}
 }
 \value{
 A ggplot2 theme
