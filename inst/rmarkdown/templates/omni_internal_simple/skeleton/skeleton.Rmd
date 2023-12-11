@@ -4,7 +4,8 @@ subtitle: "What you are doing"
 author: "Who is doing it"
 date: "`r Sys.Date()`"
 output:
-  omni::omni_internal_simple
+  omni::omni_internal_simple:
+    hypothesis: true
 editor_options: 
   chunk_output_type: console
   markdown: 

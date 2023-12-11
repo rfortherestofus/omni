@@ -4,10 +4,12 @@
 \alias{omni_slidy}
 \title{Omni Slidy template}
 \usage{
-omni_slidy(...)
+omni_slidy(hypothesis = FALSE, ...)
 }
 \arguments{
 \item{...}{Other params to rmarkdown::slidy_presentation}
+
+\item{add_hypothesis}{Add Hypothesis}
 }
 \value{
 An rmd format

@@ -4,10 +4,12 @@
 \alias{omni_internal_simple}
 \title{Omni internal RMD template}
 \usage{
-omni_internal_simple(...)
+omni_internal_simple(hypothesis = FALSE, ...)
 }
 \arguments{
 \item{...}{Other params to bookdown::html_document2}
+
+\item{add_hypothesis}{Add Hypothesis}
 }
 \value{
 An rmd format
