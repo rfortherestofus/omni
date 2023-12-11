@@ -4,6 +4,7 @@
 #'
 #' @param df The data frame to be put into the table
 #' @param option flextable (by default) or gt
+#' @param grouped Only with option="flextable", use grouped output
 #' @param first_col_blue Should the first column be blue. Default to TRUE
 #'
 #' @return A table themed
@@ -20,12 +21,22 @@
 omni_table <-
   function(df,
            option = "flextable",
+           grouped = NULL,
            first_col_blue = TRUE) {
     if (option == "flextable")
     {
+      # handle group
+      if (!is.null(grouped)) {
+        table <- df |>
+          as_grouped_data(grouped) |>
+          as_flextable(hide_grouplabel = TRUE)
+      } else{
+        table <- df |>
+          flextable()
+      }
+
       # table theme with flextable
-      table <- df |>
-        flextable() |>
+      table <- table |>
         theme_zebra(even_body = "#9DAECE",
                     odd_body = "#CED6E6")  |>
         fontsize(part = "all", size = 11) |>

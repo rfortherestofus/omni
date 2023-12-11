@@ -4,12 +4,14 @@
 \alias{omni_table}
 \title{OMNI Table Function}
 \usage{
-omni_table(df, option = "flextable", first_col_blue = TRUE)
+omni_table(df, option = "flextable", grouped = NULL, first_col_blue = TRUE)
 }
 \arguments{
 \item{df}{The data frame to be put into the table}
 
 \item{option}{flextable (by default) or gt}
+
+\item{grouped}{Only with option="flextable", use grouped output}
 
 \item{first_col_blue}{Should the first column be blue. Default to TRUE}
 }
