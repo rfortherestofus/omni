@@ -14,7 +14,7 @@ acknowledgements: "Names of People to Thank"
 photo_background: FALSE
 knit: pagedown::chrome_print
 output:
-  omni::omni_rmd_template
+  omni::omni_pdf_report
 customjs: "`r system.file('assets/omni_rmd_template/js/lof.js', package = 'omni')`"
 toc-title: "Table of Contents"
 lot: FALSE

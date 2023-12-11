@@ -4,7 +4,7 @@ subtitle: "Subtitle"
 author: "Author"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
-  omni::omni_word
+  omni::omni_word_report
 editor_options:
   chunk_output_type: console
 always_allow_html: yes
