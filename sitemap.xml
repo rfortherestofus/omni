@@ -31,6 +31,9 @@
     <loc>https://rfortherestofus.github.io/omni/index.html</loc>
   </url>
   <url>
+    <loc>https://rfortherestofus.github.io/omni/reference/ggplot_defaults.html</loc>
+  </url>
+  <url>
     <loc>https://rfortherestofus.github.io/omni/reference/include_hypothesis.html</loc>
   </url>
   <url>
@@ -92,6 +95,9 @@
   </url>
   <url>
     <loc>https://rfortherestofus.github.io/omni/reference/scale_fill_omni_discrete.html</loc>
+  </url>
+  <url>
+    <loc>https://rfortherestofus.github.io/omni/reference/set_omni_defaults.html</loc>
   </url>
   <url>
     <loc>https://rfortherestofus.github.io/omni/reference/theme_omni.html</loc>
