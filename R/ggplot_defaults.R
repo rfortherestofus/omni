@@ -6,13 +6,13 @@
 #'
 #' @import ggplot2
 #' @import ggrepel
-#' @md
+#'
 #' @export
 set_omni_defaults <- function(base_family = "Calibri",
                               base_color = "#314160") {
   # set default theme -----------------------------------------------------
 
-  ggplot2::theme_set(omni_theme(base_family = base_family))
+  ggplot2::theme_set(omni::theme_omni(base_family = base_family))
 
   # add base_family font to text and label geoms ---------------------------
 
