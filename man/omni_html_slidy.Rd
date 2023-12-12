@@ -7,9 +7,9 @@
 omni_html_slidy(hypothesis = FALSE, ...)
 }
 \arguments{
-\item{...}{Other params to rmarkdown::slidy_presentation}
+\item{hypothesis}{Add Hypothesis}
 
-\item{add_hypothesis}{Add Hypothesis}
+\item{...}{Other params to rmarkdown::slidy_presentation}
 }
 \value{
 An rmd format

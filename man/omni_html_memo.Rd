@@ -7,9 +7,9 @@
 omni_html_memo(hypothesis = FALSE, ...)
 }
 \arguments{
-\item{...}{Other params to bookdown::html_document2}
+\item{hypothesis}{Add Hypothesis}
 
-\item{add_hypothesis}{Add Hypothesis}
+\item{...}{Other params to bookdown::html_document2}
 }
 \value{
 An rmd format

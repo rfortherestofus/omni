@@ -58,7 +58,7 @@ omni_word_report <- function(toc = FALSE,
 
 #' Omni HTML internal template
 #'
-#' @param add_hypothesis Add Hypothesis
+#' @param hypothesis Add Hypothesis
 #' @param ... Other params to bookdown::html_document2
 #'
 #' @return An rmd format
@@ -83,7 +83,7 @@ omni_html_memo <- function(hypothesis = FALSE, ...) {
 
 #' Omni HTML Slidy template
 #'
-#' @param add_hypothesis Add Hypothesis
+#' @param hypothesis Add Hypothesis
 #' @param ... Other params to rmarkdown::slidy_presentation
 #'
 #' @return An rmd format

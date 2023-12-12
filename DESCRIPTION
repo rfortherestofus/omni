@@ -18,6 +18,7 @@ Imports:
     flextable,
     fs,
     ggplot2,
+    ggrepel,
     ggtext,
     grDevices,
     knitr,
