@@ -39,7 +39,7 @@ body {
   font-family: var(--main-font);
 }
 
-/* --------------------- Titles & text ------------------ */
+/* ---- Titles & text ------------------ */
 /* Main title and subtitle */
 h1.title {
   font-size: 24pt;
@@ -90,7 +90,7 @@ a:visited {
   color: #000000;
 }
 
-/* ----------------- Images -------------------- */
+/* ---- Images -------------------- */
 img {
   max-width: 100%;
 }
@@ -99,7 +99,7 @@ img {
   break-inside: avoid;
 }
 
-/* -------------------- Captions ----------------------- */
+/* ---- Captions ----------------------- */
 p.caption {
   text-transform: uppercase;
   font-weight: 600;
@@ -125,7 +125,7 @@ caption {
   break-after: avoid;
 }
 
-/* ----------------- List style ------------------- */
+/* ---- List style ------------------- */
 ul {
   list-style-type: disc;
   font-family: "Lato", Arial, serif;
@@ -133,7 +133,7 @@ ul {
   font-size: 10pt;
 }
 
-/* ----------------- Footnotes -------------------- */
+/* ----- Footnotes -------------------- */
 .footnotes {
   font-size: 90%;
 }
@@ -163,7 +163,7 @@ ul {
   break-after: always;
 }
 
-/* --------------------- Misc --------------- */
+/* ---- Misc --------------- */
 
 blockquote {
   font-size: 150pt;
