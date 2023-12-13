@@ -24,6 +24,9 @@ omni_pdf_report <- function(...) {
 #' Omni Paged PDF Memo
 #'
 #' @param ... Other params to pagedown::html_paged
+#' @param main_font Main font
+#' @param header_font Header font
+#' @param main_color Main color
 #'
 #' @return An rmd format
 #' @export
