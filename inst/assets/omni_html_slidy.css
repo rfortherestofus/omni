@@ -2,9 +2,17 @@
 /* ---- OMNI HTML Slidy CSS ---- */
 /* -------------------------------------------- */
 
+/* ---- Variables ------------------- */
+/* setup default values for variables */
+:root {
+  --main-font: "Calibri";
+  --header-font: "Calibri";
+  --main-color: #314160;
+}
+
 /* ----------------- Fonts --------------------- */
 body {
-  font-family: "Calibri", Arial, serif;
+  font-family: var(--main-font);
   hyphens: auto;
 }
 
@@ -14,7 +22,7 @@ body {
 h1 {
   font-size: 36pt;
   font-weight: 700;
-  color: #314160;
+  color: var(--main-color);
   padding: 0;
 }
 
@@ -27,7 +35,7 @@ h3 {
   font-size: 18pt;
   font-weight: 700;
   text-transform: uppercase;
-  color: #314160;
+  color: var(--main-color);
 }
 
 /* Normal paragraph */
