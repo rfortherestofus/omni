@@ -15,14 +15,14 @@ photo_background: FALSE
 knit: pagedown::chrome_print
 output:
   omni::omni_pdf_report
-customjs: "`r system.file('assets/omni_rmd_template/js/lof.js', package = 'omni')`"
+customjs: "`r system.file('assets/js/lof.js', package = 'omni')`"
 toc-title: "Table of Contents"
 lot: FALSE
 # lof: TRUE
 # lof-title: "Figures and Tables"
 paged-footnotes: TRUE
 abstract: >-
-  ```{r, child = system.file('assets/omni_rmd_template/rmd/abstract.Rmd', package = 'omni')}
+  ```{r, child = system.file('assets/rmd/abstract.Rmd', package = 'omni')}
   ```
 ---
 

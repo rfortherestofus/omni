@@ -1,5 +1,5 @@
 /* -------------------------------------------- */
-/* Style for OMNI PDF reports */
+/* ---- OMNI PDF Report CSS ---- */
 /* -------------------------------------------- */
 
 /* ---- Variables ----------------------------------- */
@@ -91,7 +91,7 @@ html {
 /* --------------------- Page style ----------------------- */
 /* Add colorbar to all pages (first and last are overriden later) */
 @page {
-  background-image: url(../images/colorbar.svg);
+  background-image: url(images/colorbar.svg);
   background-position: bottom 0.15in left;
   background-size: contain;
   background-repeat: no-repeat;
@@ -138,7 +138,7 @@ caption {
 @page:first{
   margin: 0 0 0 0;
   background-color: #ffffff;
-  background-image: url(../images/blue-cover-sidebar.svg);
+  background-image: url(images/blue-cover-sidebar.svg);
   background-repeat: no-repeat;
   background-position: right center;
 

@@ -8,7 +8,7 @@
 omni_pdf_report <- function(...) {
   # style
   css_style <-
-    pkg_resource("omni_pdf_report/css/", "omni-style.css")
+    pkg_resource("omni_pdf_report.css")
 
   # template
   pagedown::html_paged(
@@ -38,7 +38,7 @@ omni_pdf_memo <-
            ...) {
     # style
     css_style <-
-      pkg_resource("omni_pdf_memo/", "omni-style.css")
+      pkg_resource("omni_pdf_memo.css")
 
     # change CSS variables
     if (!is.null(main_font)) {
@@ -61,10 +61,10 @@ omni_pdf_memo <-
 
     additional_css <-
       paste0(":root{",
-            main_font_css,
-            header_font_css,
-            main_color_css,
-            "}")
+             main_font_css,
+             header_font_css,
+             main_color_css,
+             "}")
 
     # write tempfile
     tempfile_name <- paste0(tempfile(), ".css")
@@ -122,7 +122,7 @@ omni_word_report <- function(toc = FALSE,
 omni_html_memo <- function(hypothesis = FALSE, ...) {
   # style
   css_style <-
-    pkg_resource("omni_html_memo/", "css_style.css")
+    pkg_resource("omni_html_memo.css")
 
   # template
   bookdown::html_document2(
@@ -147,7 +147,7 @@ omni_html_memo <- function(hypothesis = FALSE, ...) {
 omni_html_report <- function(hypothesis = FALSE, ...) {
   # style
   css_style <-
-    pkg_resource("omni_html_report/", "css_style.css")
+    pkg_resource("omni_html_report.css")
 
   # template
   bookdown::html_document2(
@@ -173,7 +173,7 @@ omni_html_report <- function(hypothesis = FALSE, ...) {
 omni_html_slidy <- function(hypothesis = FALSE, ...) {
   # style
   css_slidy <-
-    pkg_resource("omni_html_slidy", "css_slidy.css")
+    pkg_resource("omni_html_slidy.css")
 
   # template
   rmarkdown::slidy_presentation(

@@ -1,5 +1,5 @@
 /* -------------------------------------------- */
-/* CSS : styles of the omni template */
+/* ---- OMNI HTML Slidy CSS ---- */
 /* -------------------------------------------- */
 
 /* ----------------- Fonts --------------------- */
@@ -63,13 +63,13 @@ img {
 }
 
 .slide{
-  background-image: url(../omni_rmd_template/images/colorbar.svg);
+  background-image: url(images/colorbar.svg);
   background-repeat: no-repeat;
   background-position: 0in 7.5in;
 }
 
 .titlepage{
-  background-image: url(../omni_rmd_template/images/colorbar.svg), url(../logo/OMNI_Logo-Gold_Stacked.svg);
+  background-image: url(images/colorbar.svg), url(logo/OMNI_Logo-Gold_Stacked.svg);
   background-repeat: no-repeat, no-repeat;
   background-position: 0in 7.5in, .5in .5in;
   background-size: contain, 1in;
