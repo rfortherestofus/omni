@@ -1,108 +1,168 @@
 ---
-title: "Document Title"
-subtitle: "Document Subtitle" 
-knit: pagedown::chrome_print
+title: "The Great Organization Year Three Impact Audit Report"
+subtitle: "Impact Period: March 1, 2022 – October 12, 2022"
 output:
-  omni::omni_pdf_report
+  omni::omni_pdf_memo
 paged-footnotes: TRUE
+knit: pagedown::chrome_print
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE,
+                      eval = FALSE,
                       warning = FALSE,
-                      error = FALSE,
+                      erro= FALSE,
                       fig.topcaption = TRUE,
                       fig.cap = TRUE,
                       dpi = 150)
+
+```
+
+```{r}
 library(tidyverse)
 library(flextable)
 library(knitr)
 library(omni)
 library(scales)
+library(kableExtra)
+library(readxl)
+library(openxlsx)
 ```
 
+```{r, include=FALSE}
+#units of impact
+lm_measures <- read_xlsx("")
 
-# First Level Header
+#units of impact table Y2
+lm_results <- read_xlsx("")
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit. Maecenas pharetra convallis posuere morbi leo. Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.
+#units of impact table cumulative
+lm_results_cum <- read_xlsx("")
 
-## Second Level Header
+#remove reasons
+lm_removed_500 <- read_xlsx("")
+lm_removed_2500 <- read_xlsx("")
 
-<aside>
-
-> Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.
-
-<p class="quote-author">-- George Washington</p>
-
-</aside>
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit. Maecenas pharetra convallis posuere morbi leo. Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.
-
-+ list 1
-+ list 2
-  + list 2.1
-    + list 2.1.1
-    + list 2.1.2
-  + list 2.2
-+ list 3
-  + list 3.1
-  + list 3.2
-
-### Third Level Header
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit. Maecenas pharetra convallis posuere morbi leo. Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.
-
-```{r ggplot, fig.height=3, fig.cap = "Title", out.extra='data-prefix="Chart"'}
-iris %>%
-  group_by(Species) %>%
-  summarise(sepal_length_mean = mean(Sepal.Length)) %>%
-  ggplot(aes(x = Species, y = sepal_length_mean, fill = Species)) +
-  geom_bar(stat = "identity") +
-  coord_flip() +
-  scale_fill_omni_discrete() +
-  theme_omni()
 ```
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit.
+The Great Organization is a nonprofit organization located in  that helps people save money for the future and protect against emergencies. Through its Financial Friend program, the Great Organization enables people to create a habit of savings by combining the security and ease of a mobile app with the trust of community Financial Friends. In 2021, the Great Organization raised $700,000 in an Impact Security to  support and scale the Financial Friends, with the goal of onboarding new members and helping them build $500 or more in savings (the “Project”). The goal of the Project is to align and incentivize donors, the Great Organization, and impact investors toward maximizing the same impact goal.
 
-```{r img, fig.cap = "Title", out.width="200px", fig.align='center', out.extra='data-prefix="Figure"'}
-knitr::include_graphics(system.file("assets/omni_simple_report/images/example_figure.png", package = "omni"))
+Impact investors provided capital to support the attainment of specific Units of Impact. Simultaneously, donors have placed donations into a Donor Impact Fund that are tied to the same Units of Impact. At the end of each Impact Period, funds are released from the Donor Impact Fund to the nonprofit based on the number of Units of Impact achieved. The nonprofit uses these funds to repay the investors, with the potential for investors to achieve a rate of return. If investors earn a maximum possible return, the Great Organization will also be eligible to keep a portion of the donations tied to the number of members that reach a savings balance of $2,000. 
+
+The Great Organization Impact Security covers members who are onboarded after March 1, 2021 and achieve impact between March 1, 2021 and November 31, 2023. The Great Organization Impact Security has a single Impact Period from March 1, 2021 to November 31, 2023. This Year Three Impact Audit report covers the time period from March 1, 2023 to September 12, 2023. This third and final Impact Audit report was produced before the end of the Great Organization's single Impact Period because the Great Organization reached their impact targets in July 2023. 
+
+This Impact Audit report was prepared by OMNI Institute, the evaluator for the Impact Security. OMNI is a nonprofit social science consultancy that provides integrated research, evaluation, and capacity building to foster understanding, guide collaboration, and inform action to accelerate positive social change.
+
+\newpage
+The Units of Impact measured for the Great Organization are defined in Table 1.
+
+```{r fig.cap="Title", out.extra='data-prefix="Table"', message=FALSE}
+
+lm_measures %>% 
+  kable(escape = F, align = c("l", "l", "l"), table.attr = "style='width:100%;'", caption = "Units of Impact") %>%
+  kable_styling(position = "left",
+                bootstrap_options = c("striped", "condensed"),
+                font_size = 14,) %>%
+  column_spec(1, width = "5em") %>%
+  column_spec(2, width = "15em") %>% 
+  column_spec(3, width = "12em") %>% 
+  row_spec(0, background = "#314160", color = "white", align = "left")
+
 ```
 
-#### Fourth Level Header
+Unit of Impact results from the Year Three Impact Period are summarized in Table 2.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit. Maecenas pharetra convallis posuere morbi leo.
+```{r fig.cap="Title", out.extra='data-prefix="Table"', message=FALSE}
 
-<aside class = "info-callout">
+# indicator table
+lm_results %>% 
+  kable(align = c("l", "c"), table.attr = "style='width:100%;'", caption = "RESULTS OF YEAR THREE IMPACT AUDIT") %>% 
+  kable_styling(position = "left",
+                bootstrap_options = c("striped", "condensed"),
+                font_size = 14,) %>%
+  column_spec(1, width = "7") %>% 
+  column_spec(2, width = "10em") %>% 
+  row_spec(0, background = "#314160", color = "white", align = "left")
 
-<p class="info-callout-title">Information
- call-out</p>
-
-Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi.
-
-</aside>
-
-Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.^[This is a footnote]
-
-Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi.
-
-```{r table, fig.cap="Title", out.extra='data-prefix="Table"'}
-mtcars %>%
-  slice(1:5) %>%
-  omni_table()
 ```
+Note: Individuals who reached $2,000 in this Impact Period were also included in the count of individuals who reached $500 either in this Impact Period or in a previous Impact Period.
+
+\newpage
+
+## Technical Appendix
+
+The Great Organization hosts a database of members' account transactions and provided OMNI access to this database. In July 2021, OMNI downloaded all relevant data for an initial audit. The Great Organization also provided a data dictionary defining each transaction type to indicate which transactions qualify a member to be included in the Impact Audit.
+
+On September 13, 2023, OMNI downloaded data inclusive of the entire Impact Period included in this Impact Audit. After removing transactions that occurred after 9/12/2023 (the end of this Impact Period), the data file included seven fields, 44,495 transactions, and 2,673 unique members. OMNI confirmed the data was in the same format as the initial data download in July 2021, with one row for each transaction completed per member. OMNI staff also conducted other data quality checks, including checking for duplicate cases and reporting outside of acceptable ranges for each service type.
+
+Using a unique user identification number for each member, OMNI calculated members' account totals following each transaction. OMNI tallied the number of member accounts that reached a balance of $500 and $2,000 for the first time during this Impact Period. 
+
+To count toward the Unit of Impact, a member must meet the following criteria:
+
+- Have a first deposit on or after March 1, 2021, or
+- Have a first deposit that was a $50 Manaus Emergency Fund deposit or Valley Settlement deposit before March 1, 2021 and have an additional deposit on or after March 1, 2021.
+
+### Exclusions: $500 in Savings 
+
+Based on the criteria above and the Unit of Impact definitions, members excluded from the $500 in Savings Unit of Impact are detailed in Table 3. 
+
+```{r fig.cap="Title", out.extra='data-prefix="Table"', message=FALSE}
+# Reason for 500 Removal Table
+
+lm_removed_500 %>% 
+  mutate(`Number Excluded` = format(as.numeric(`Number Excluded`), big.mark = ",")) %>% #adding comma to number
+  kable(align = "lc", table.attr = "style='width:100%;'", caption = "REASON FOR EXCLUSION FROM $500 in Savings UNIT OF IMPACT") %>% 
+  kable_styling(position = "left",
+                bootstrap_options = c("striped", "condensed"),
+                font_size = 14,) %>%
+  column_spec(1, width = "10") %>% 
+  column_spec(2, width = "9.5em") %>% 
+  row_spec(0, background = "#314160", color = "white", align = "left") %>% 
+  row_spec(nrow(lm_removed_500), bold = TRUE) # bold total row (final row in table)
 
 
-# Another first level header
+```
+### Exclusions: $2,000 in Savings
 
-## With second level 1
+Members excluded from the $2,000 in Savings Unit of Impact are detailed in Table 4. 
 
-### And third level A
+```{r fig.cap="Title", out.extra='data-prefix="Table"', message=FALSE}
+# Reason for 2500 Removal Table
 
-## And second level 2 with a very very very very long title
+lm_removed_2500 %>% 
+  mutate(`Number Excluded` = format(as.numeric(`Number Excluded`), big.mark = ",")) %>% #adding comma to number
+  kable(align = "lc", table.attr = "style='width:100%;'", caption = "REASON FOR EXCLUSION FROM $2,000 in Savings UNIT OF IMPACT") %>% 
+  kable_styling(position = "left",
+                bootstrap_options = c("striped", "condensed"),
+                font_size = 14,) %>%
+  column_spec(1, width = "10") %>% 
+  column_spec(2, width = "9.5em") %>% 
+  row_spec(0, background = "#314160", color = "white", align = "left") %>% 
+  row_spec(nrow(lm_removed_500), bold = TRUE) # bold total row (final row in table)
 
-### And third level A
 
-### And third level C
+```
+### Cumulative Reporting
 
-## And second level 3
+To aid in year-to-year tracking, Table 5 shows the number of members counting toward each Unit of Impact by Impact Audit year.  
+
+The Year One Impact Period spanned from March 1, 2021 to November 31, 2021. The Year Two Impact Period spanned from March 1, 2022 to November 31, 2022. As noted in the Year Two Impact Audit Report, five of the 80 members counted towards the $500 Savings Unit of Impact in Year One actually achieved this during the Year Two impact period; one member counted towards the $2,000 Savings Unit of Impact in Year One actually achieved this during the Year Two impact period. These counts do not affect the total number of members who achieved the $500 and $2,000 Units of Impact (452 and 111, respectively; see Table 5).
+
+The Year Three Impact Period was originally planned to span from March 1, 2023 to November 31, 2023. However, because the Great Organization met their impact targets by July 2023, the Great Organization requested shortening the Year Three Impact Period to facilitate earlier reporting. The final Year Three Impact Period spanned from March 1, 2023 to September 12, 2023.
+
+```{r fig.cap="Title", out.extra='data-prefix="Table"', message=FALSE}
+# Cumualtive Table
+
+lm_results_cum %>% 
+  kable(align = c("l", "c", "c", "c"), table.attr = "style='width:100%;'", caption = "CUMULATIVE Units of Impact Result") %>% 
+  kable_styling(position = "left",
+                bootstrap_options = c("striped", "condensed"),
+                font_size = 14,) %>%
+  column_spec(1, width = "15em") %>% 
+  column_spec(2, width = "10em") %>% 
+  column_spec(3, width = "10em") %>% 
+  column_spec(4, width = "10em") %>% 
+  row_spec(0, background = "#314160", color = "white") %>% 
+  column_spec(ncol(lm_results_cum), bold = TRUE) # bold total column (final col in table)
+
+```
