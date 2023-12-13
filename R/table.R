@@ -12,10 +12,12 @@
 #'
 #' @import flextable
 #' @import gt
+#' @import dplyr
 #' @importFrom officer fp_border
 #' @importFrom stringr str_to_lower str_replace_all str_glue
 #' @importFrom fs dir_create dir_exists
 #' @importFrom knitr include_graphics
+#' @importFrom tibble rowid_to_column
 #'
 
 omni_table <-
@@ -59,9 +61,8 @@ omni_table <-
           slice(1) |>
           ungroup() |>
           rowid_to_column(var = "rowid2") |>
-          mutate(rowid = rowid + rowid2 - 1) |>
-          pull(rowid)
-
+          mutate(rowid = .data$rowid + .data$rowid2 - 1) |>
+          pull(.data$rowid)
 
         table <- table |>
           bg(
