@@ -2,7 +2,10 @@
 title: "The Great Organization Year Three Impact Audit Report"
 subtitle: "Impact Period: March 1, 2022 – October 12, 2022"
 output:
-  omni::omni_pdf_memo
+  omni::omni_pdf_memo:
+    main_font: "Comic Sans MS"
+    header_font: "Figtree"
+    main_color: red
 paged-footnotes: TRUE
 knit: pagedown::chrome_print
 ---
