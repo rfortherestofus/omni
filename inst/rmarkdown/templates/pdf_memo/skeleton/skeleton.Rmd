@@ -1,4 +1,6 @@
 ---
+title: "Document Title"
+subtitle: "Document Subtitle" 
 knit: pagedown::chrome_print
 output:
   omni::omni_pdf_report

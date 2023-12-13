@@ -51,6 +51,40 @@ omni_table <-
         border(part = "header",
                border.bottom = fp_border(color = "white"))
 
+      # highlight grouped row
+      if (!is.null(grouped)) {
+        # get row nb of grouped row
+        grouped_row_nb <- df |>
+          group_by(!!sym(grouped)) |>
+          slice(1) |>
+          ungroup() |>
+          rowid_to_column(var = "rowid2") |>
+          mutate(rowid = rowid + rowid2 - 1) |>
+          pull(rowid)
+
+
+        table <- table |>
+          bg(
+            part = "body",
+            j = 1,
+            i = grouped_row_nb,
+            bg = omni_colors("Dark Blue")
+          ) |>
+          bold(
+            part = "body",
+            j = 1,
+            i = grouped_row_nb,
+            bold = TRUE
+          )  |>
+          color(
+            part = "body",
+            j = 1,
+            i = grouped_row_nb,
+            color = "white"
+          )
+      }
+
+      # first column
       if (first_col_blue) {
         table <- table  |>
           bg(part = "body",
