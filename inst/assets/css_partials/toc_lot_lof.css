@@ -1,0 +1,73 @@
+/* TOC, LOT, LOF */
+
+/* TOC style */
+.toc a::after, .lot a::after, .lof a::after {
+    content: target-counter(attr(href), page);
+    float: right;
+  }
+  .toc a.front-matter-ref::after, .lot a.front-matter-ref::after, .lof a.front-matter-ref::after {
+    content: target-counter(attr(href), page, lower-roman);
+  }
+  .toc .leaders::before, .lot .leaders::before, .lof .leaders::before {
+    float: left;
+    width: 0;
+    white-space: nowrap;
+    content: "...........................................................................................................................................................................................................";
+  }
+
+  /* TOC title */
+.toc-title, .lof h1, .lot h1 {
+    font-size: 24pt;
+    font-weight: 900;
+    background-color: #ffffff;
+    color: #000000;
+    margin-bottom: 0;
+  }
+  
+  /* spacing between elements + no underline */
+  .toc a, .lof a, .lot a{
+    line-height: 30px;
+    text-decoration: none;
+  }
+  
+  /* to remove the bullets + cut the dots at the end --> took it back from default.css */
+  .toc ul, .lof ul, .lot ul {
+      list-style: none;
+      padding-left: 0;
+      overflow-x: hidden;
+  }
+  
+  .toc li li, .lof li li, .lot li li {
+    padding-left: 1em;
+  }
+  
+  /* here each level contain the following one so we have to override the properties */
+  /* first level */
+  .toc ul > li > a, .lof ul > li > a, .lot ul > li > a  {
+    font-weight: 600;
+  }
+  
+  /* second level and more */
+  .toc ul > li > ul > li > a {
+    font-weight: 300;
+  }
+  
+  /* third level */
+  .toc > ul > li > ul > li > ul > li > a {
+    font-weight: 300;
+  }
+  
+  /* background color */
+  .toc ul, .toc a, .toc a::after, .lof ul, .lof a, .lof a::after, .lot ul, .lot a, .lof a::after   {
+    background-color: #ffffff;
+  }
+  
+
+  /* chapter name */
+  .chapter > h1 > .header-section-number::before, .chapter-ref > .toc-section-number::before {
+    content: var(--chapter-name-before, "Chapter ");
+  }
+  .chapter > h1 > .header-section-number::after, .chapter-ref > .toc-section-number::after {
+    content: var(--chapter-name-after, "");
+  }
+  
