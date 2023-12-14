@@ -57,6 +57,7 @@ omni_table <-
       if (!is.null(grouped)) {
         # get row nb of grouped row
         grouped_row_nb <- df |>
+          rowid_to_column() |>
           group_by(!!sym(grouped)) |>
           slice(1) |>
           ungroup() |>
