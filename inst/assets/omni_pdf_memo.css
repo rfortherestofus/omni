@@ -57,7 +57,10 @@ h1.subtitle {
 }
 
 /* Levels of title */
-h1, h2, h3, h4{
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--header-font);
 }
 
@@ -88,6 +91,13 @@ a,
 a:active,
 a:visited {
   color: #000000;
+}
+
+/* ---- Tables -------------------- */
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
 }
 
 /* ---- Images -------------------- */
