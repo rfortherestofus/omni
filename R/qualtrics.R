@@ -59,6 +59,9 @@ qualtrics_connect <-
 
       if (api_key == "" | base_url == "") {
         print("Base URL or API key are missing, please provide them")
+
+        stop()
+
       } else{
         qualtrics_register(
           organization_name = organization_name,
@@ -66,21 +69,22 @@ qualtrics_connect <-
           base_url = base_url
         )
       }
+      # read Renviron again
+      readRenviron("~/.Renviron")
+
+      api_key_renviron <-
+        Sys.getenv(paste0("QUALTRICS_API_KEY_", organization_name))
+      base_url_renviron <-
+        Sys.getenv(paste0("QUALTRICS_BASE_URL_", organization_name))
     }
-
-    # read Renviron again
-    readRenviron("~/.Renviron")
-
-    api_key_renviron <-
-      Sys.getenv(paste0("QUALTRICS_API_KEY_", organization_name))
-    base_url_renviron <-
-      Sys.getenv(paste0("QUALTRICS_BASE_URL_", organization_name))
 
     # connect
     suppressMessages(
       qualtRics::qualtrics_api_credentials(api_key = api_key_renviron,
                                            base_url = base_url_renviron)
     )
+
+    print("Connection ok")
   }
 
 #' Get surveys
