@@ -4,10 +4,14 @@
 \alias{qualtrics_connect}
 \title{Connect to Qualtrics - need to have API key register before}
 \usage{
-qualtrics_connect(organization_name = "OMNI")
+qualtrics_connect(organization_name = "OMNI", api_key, base_url)
 }
 \arguments{
 \item{organization_name}{Organization name}
+
+\item{api_key}{Your Qualtrics API key}
+
+\item{base_url}{Base URL}
 }
 \value{
 Connection to Qualtrics

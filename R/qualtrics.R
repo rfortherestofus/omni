@@ -35,22 +35,34 @@ qualtrics_register <-
 #' Connect to Qualtrics - need to have API key register before
 #'
 #' @param organization_name Organization name
+#' @param api_key Your Qualtrics API key
+#' @param base_url Base URL
 #'
 #' @return Connection to Qualtrics
 #' @export
 #'
-qualtrics_connect <- function(organization_name = "OMNI") {
-  readRenviron("~/.Renviron")
+qualtrics_connect <-
+  function(organization_name = "OMNI", api_key, base_url) {
+    readRenviron("~/.Renviron")
 
-  suppressMessages(
-    qualtRics::qualtrics_api_credentials(api_key = Sys.getenv(
-      paste0("QUALTRICS_API_KEY_", organization_name)
-    ),
-    base_url = Sys.getenv(
-      paste0("QUALTRICS_BASE_URL_", organization_name)
-    ))
-  )
-}
+    # if first use, then register
+    if (Sys.getenv(paste0("QUALTRICS_API_KEY_", organization_name)) == "") {
+      qualtrics_register(
+        organization_name = organization_name,
+        api_key = api_key,
+        base_url = base_url
+      )
+    }
+
+    suppressMessages(
+      qualtRics::qualtrics_api_credentials(api_key = Sys.getenv(
+        paste0("QUALTRICS_API_KEY_", organization_name)
+      ),
+      base_url = Sys.getenv(
+        paste0("QUALTRICS_BASE_URL_", organization_name)
+      ))
+    )
+  }
 
 #' Get surveys
 #'
