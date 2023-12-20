@@ -8,3 +8,7 @@ inst/rmarkdown/templates/omni-rmarkdown-template/skeleton/skeleton.pdf
 omni.Rproj
 inst/doc
 docs
+skeleton.html
+skeleton.pdf
+skeleton.docx
+inst/rmarkdown/templates/word_report/skeleton/~$eleton.docx

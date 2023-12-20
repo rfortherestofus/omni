@@ -82,7 +82,7 @@ iris %>%
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit.
 
 ```{r, fig.cap = "Title", out.width="200px", fig.align='center', out.extra='data-prefix="Figure"'}
-knitr::include_graphics(system.file("assets/omni_rmd_template/images/example_figure.png", package = "omni"))
+knitr::include_graphics(system.file("assets/images/example_figure.png", package = "omni"))
 ```
 
 #### Fourth Level Header

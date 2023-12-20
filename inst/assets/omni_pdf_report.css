@@ -27,67 +27,10 @@
   background-position: bottom 0.15in left;
   background-size: contain;
   background-repeat: no-repeat;
-}
-
-/* store some string variables for left and right pages with titles inside */
-.shorttitle1 {
-  string-set: h1-text content(text);
-}
-
-.shorttitle2 {
-  string-set: h2-text content(text);
-}
-
-/* left page */
-.running-h1-title {
-  position: running(runningH1Title);
-  width: var(--running-title-width);
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-.running-h1-title:before {
-  content: string(h1-text);
-}
-
-@page chapter:left {
-  @bottom-right {
-    content: counter(page);
-  }
-}
-
-/* right page */
-.running-h2-title {
-  position: running(runningH2Title);
-  width: var(--running-title-width);
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-.running-h2-title:before {
-  content: string(h2-text);
-}
-
-@page chapter:right {
-  @bottom-right {
-    content: counter(page);
-  }
-}
-
-/* New chapter page */
-@page chapter:first {
-  @top-left {
-    content: none;
-  }
-
-  @top-right {
-    content: none;
-  }
 
   @bottom-right {
     content: counter(page);
   }
-
 }
 
 /* ---- Breaks ----------------------- */
@@ -125,16 +68,8 @@
   background-position: right center;
 
   /* remove the rest of the content */
-  @top-left {
-    content: none;
-  }
-
-  @top-right {
-    content: none;
-  }
-
   @bottom-right {
-    content: none !important;
+    display: none;
   }
 }
 
