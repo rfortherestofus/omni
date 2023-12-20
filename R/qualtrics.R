@@ -42,25 +42,44 @@ qualtrics_register <-
 #' @export
 #'
 qualtrics_connect <-
-  function(organization_name = "OMNI", api_key, base_url) {
+  function(organization_name = "OMNI",
+           api_key = "",
+           base_url = "") {
+    # read Renviron
     readRenviron("~/.Renviron")
 
+    api_key_renviron <-
+      Sys.getenv(paste0("QUALTRICS_API_KEY_", organization_name))
+    base_url_renviron <-
+      Sys.getenv(paste0("QUALTRICS_BASE_URL_", organization_name))
+
     # if first use, then register
-    if (Sys.getenv(paste0("QUALTRICS_API_KEY_", organization_name)) == "") {
-      qualtrics_register(
-        organization_name = organization_name,
-        api_key = api_key,
-        base_url = base_url
-      )
+    if (api_key_renviron == "") {
+      print("No API key registred - First time connecting")
+
+      if (api_key == "" | base_url == "") {
+        print("Base URL or API key are missing, please provide them")
+      } else{
+        qualtrics_register(
+          organization_name = organization_name,
+          api_key = api_key,
+          base_url = base_url
+        )
+      }
     }
 
+    # read Renviron again
+    readRenviron("~/.Renviron")
+
+    api_key_renviron <-
+      Sys.getenv(paste0("QUALTRICS_API_KEY_", organization_name))
+    base_url_renviron <-
+      Sys.getenv(paste0("QUALTRICS_BASE_URL_", organization_name))
+
+    # connect
     suppressMessages(
-      qualtRics::qualtrics_api_credentials(api_key = Sys.getenv(
-        paste0("QUALTRICS_API_KEY_", organization_name)
-      ),
-      base_url = Sys.getenv(
-        paste0("QUALTRICS_BASE_URL_", organization_name)
-      ))
+      qualtRics::qualtrics_api_credentials(api_key = api_key_renviron,
+                                           base_url = base_url_renviron)
     )
   }
 
