@@ -12,12 +12,14 @@ qualtrics_register <-
     # taken from qualtrics function - write with name
     home <- Sys.getenv("HOME")
     renv <- file.path(home, ".Renviron")
+
     if (file.exists(renv)) {
       file.copy(renv, file.path(home, ".Renviron_backup"))
     }
     if (!file.exists(renv)) {
       file.create(renv)
     }
+
     keyconcat <-
       paste0("QUALTRICS_API_KEY_", organization_name, " = '", api_key,
              "'")
@@ -32,7 +34,32 @@ qualtrics_register <-
 
   }
 
-#' Connect to Qualtrics - need to have API key register before
+#' Read Renviron Qualtrics variables
+#'
+#' @param organization_name Organization name
+#'
+#' @return Environment variables loaded
+#' @internal
+#'
+read_renviron_qualtrics <- function(organization_name = "OMNI") {
+  readRenviron("~/.Renviron")
+
+  api_key_renviron <-
+    Sys.getenv(paste0("QUALTRICS_API_KEY_", organization_name))
+
+  base_url_renviron <-
+    Sys.getenv(paste0("QUALTRICS_BASE_URL_", organization_name))
+
+  # return
+  list("api_key" = api_key_renviron,
+       "base_url" = base_url_renviron)
+}
+
+#' Connect to Qualtrics
+#'
+#' This function connect to Qualtrics. It calls omni::qualtrics_register behind the scenes
+#' to provide a connection if no API key and URL are registrered (or if they are expired).
+#' In that case, please provide `api_key` and `base_url`
 #'
 #' @param organization_name Organization name
 #' @param api_key Your Qualtrics API key
@@ -46,18 +73,28 @@ qualtrics_connect <-
            api_key = "",
            base_url = "") {
     # read Renviron
-    readRenviron("~/.Renviron")
+    list_connect_vars <-
+      read_renviron_qualtrics(organization_name = organization_name)
 
-    api_key_renviron <-
-      Sys.getenv(paste0("QUALTRICS_API_KEY_", organization_name))
-    base_url_renviron <-
-      Sys.getenv(paste0("QUALTRICS_BASE_URL_", organization_name))
+    # connect
+    try(suppressMessages(
+      qualtRics::qualtrics_api_credentials(api_key = list_connect_vars$api_key,
+                                           base_url = list_connect_vars$base_url)
+    ),
+    silent = TRUE)
 
-    # if first use, then register
-    if (api_key_renviron == "") {
-      print("No API key registred - First time connecting")
+    # test connection
+    # taken from https://stackoverflow.com/questions/2158780/catching-an-error-and-then-branching-logic
+    t <- try(qualtrics_list_surveys(), silent = TRUE)
+
+    if ("try-error" %in% class(t)) {
+      # ----
+      # register (first use or expired API key/URL)
+      print("No API key or base URL registred , or API key or base URL expired")
 
       if (api_key == "" | base_url == "") {
+        # ----
+        # missing API or URL in the function
         print("Base URL or API key are missing, please provide them")
 
         stop()
@@ -70,21 +107,38 @@ qualtrics_connect <-
         )
       }
       # read Renviron again
-      readRenviron("~/.Renviron")
+      list_connect_vars <-
+        read_renviron_qualtrics(organization_name = organization_name)
 
-      api_key_renviron <-
-        Sys.getenv(paste0("QUALTRICS_API_KEY_", organization_name))
-      base_url_renviron <-
-        Sys.getenv(paste0("QUALTRICS_BASE_URL_", organization_name))
+      # try connection again
+      try(suppressMessages(
+        qualtRics::qualtrics_api_credentials(
+          api_key = list_connect_vars$api_key,
+          base_url = list_connect_vars$base_url
+        )
+      ),
+      silent = TRUE)
+
+      # test connection again
+      t_bis <- try(qualtrics_list_surveys(), silent = TRUE)
+
+      if ("try-error" %in% class(t)) {
+        print("Problem somewhere please check your inputs")
+
+        stop()
+
+      } else{
+        # ----
+        # ALL OK after that
+        print("Connection ok")
+      }
+
+    } else{
+      # ----
+      # ALL OK on first try
+      print("Connection ok")
     }
 
-    # connect
-    suppressMessages(
-      qualtRics::qualtrics_api_credentials(api_key = api_key_renviron,
-                                           base_url = base_url_renviron)
-    )
-
-    print("Connection ok")
   }
 
 #' Get surveys

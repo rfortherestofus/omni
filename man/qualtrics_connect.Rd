@@ -2,9 +2,9 @@
 % Please edit documentation in R/qualtrics.R
 \name{qualtrics_connect}
 \alias{qualtrics_connect}
-\title{Connect to Qualtrics - need to have API key register before}
+\title{Connect to Qualtrics}
 \usage{
-qualtrics_connect(organization_name = "OMNI", api_key, base_url)
+qualtrics_connect(organization_name = "OMNI", api_key = "", base_url = "")
 }
 \arguments{
 \item{organization_name}{Organization name}
@@ -17,5 +17,7 @@ qualtrics_connect(organization_name = "OMNI", api_key, base_url)
 Connection to Qualtrics
 }
 \description{
-Connect to Qualtrics - need to have API key register before
+This function connect to Qualtrics. It calls omni::qualtrics_register behind the scenes
+to provide a connection if no API key and URL are registrered (or if they are expired).
+In that case, please provide `api_key` and `base_url`
 }
