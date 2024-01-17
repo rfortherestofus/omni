@@ -81,7 +81,7 @@ iris %>%
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit.
 
-```{r, fig.cap = "Title", out.width="200px", fig.align='center', out.extra='data-prefix="Figure"'}
+```{r, fig.cap = "Title", out.width="200px", out.extra='data-prefix="Figure"'}
 knitr::include_graphics(system.file("assets/images/example_figure.png", package = "omni"))
 ```
 
@@ -93,10 +93,10 @@ Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit dui
 
 Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi.
 
-```{r fig.cap="Title", out.extra='data-prefix="Table"'}
+```{r out.extra='data-prefix="Table"'}
 mtcars %>% 
-  slice(1:5) %>% 
-  omni_table() |> 
+  slice(1:5) |> 
+  omni_table(caption = "Caption") |> 
   autofit()
 ```
 

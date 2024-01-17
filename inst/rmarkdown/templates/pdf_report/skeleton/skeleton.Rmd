@@ -115,10 +115,10 @@ Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit dui
 
 Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi.
 
-```{r fig.cap="Title", out.extra='data-prefix="Table"'}
+```{r out.extra='data-prefix="Table"'}
 mtcars %>% 
-  slice(1:5) %>% 
-  omni_table()
+  slice(1:5)  %>% 
+  omni_table(caption = "Caption")
 ```
 
 

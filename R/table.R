@@ -103,8 +103,16 @@ omni_table <-
       }
       # add caption within flextable
       if (!is.null(caption)) {
-        table <- table |>
-          set_caption(caption = caption)
+        # if rmd format is word
+        if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "docx") {
+          table <- table |>
+            set_caption(as_paragraph(as_chunk(
+              "caption", props = fp_text_default(font.family = "Calibri")
+            )), word_stylename = "Table Caption")
+        } else{
+          table <- table |>
+            set_caption(caption = caption)
+        }
       }
     } else if (option == "gt") {
       # table theme with gt
