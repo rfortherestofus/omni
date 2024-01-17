@@ -19,6 +19,7 @@ theme_omni <- function(show_grid_lines = FALSE,
       axis.ticks = element_blank(),
       axis.title.x = element_text(margin = margin(15, 0, 0, 0), size = 10, color = "#595959"),
       axis.title.y = element_text(margin = margin(0, 15, 0, 0), size = 10, color = "#595959"),
+      axis.text = element_text(size = 11),
       plot.title = element_markdown(
         margin = margin(0, 0, 15, 0),
         color = "#595959",
