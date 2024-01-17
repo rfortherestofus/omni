@@ -25,6 +25,7 @@ theme_omni <- function(show_grid_lines = FALSE,
         face = "bold",
         size = 12
       ),
+      plot.title.position = "plot",
       plot.subtitle = element_markdown(size = 11, color = "#595959"),
       plot.caption = element_text(size = 11, face = "italic"),
       plot.margin = margin(t = 7, r = 7, b = 7, l = 7, unit = "points")
