@@ -4,7 +4,13 @@
 \alias{omni_table}
 \title{OMNI Table Function}
 \usage{
-omni_table(df, option = "flextable", grouped = NULL, first_col_blue = TRUE)
+omni_table(
+  df,
+  option = "flextable",
+  grouped = NULL,
+  first_col_blue = TRUE,
+  caption = NULL
+)
 }
 \arguments{
 \item{df}{The data frame to be put into the table}
@@ -14,6 +20,8 @@ omni_table(df, option = "flextable", grouped = NULL, first_col_blue = TRUE)
 \item{grouped}{Only with option="flextable", use grouped output}
 
 \item{first_col_blue}{Should the first column be blue. Default to TRUE}
+
+\item{caption}{The caption of the table}
 }
 \value{
 A table themed

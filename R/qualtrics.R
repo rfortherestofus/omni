@@ -39,7 +39,6 @@ qualtrics_register <-
 #' @param organization_name Organization name
 #'
 #' @return Environment variables loaded
-#' @internal
 #'
 read_renviron_qualtrics <- function(organization_name = "OMNI") {
   readRenviron("~/.Renviron")

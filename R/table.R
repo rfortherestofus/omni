@@ -6,6 +6,7 @@
 #' @param option flextable (by default) or gt
 #' @param grouped Only with option="flextable", use grouped output
 #' @param first_col_blue Should the first column be blue. Default to TRUE
+#' @param caption The caption of the table
 #'
 #' @return A table themed
 #' @export
@@ -24,7 +25,8 @@ omni_table <-
   function(df,
            option = "flextable",
            grouped = NULL,
-           first_col_blue = TRUE) {
+           first_col_blue = TRUE,
+           caption = NULL) {
     if (option == "flextable")
     {
       # handle group
@@ -99,6 +101,11 @@ omni_table <-
                 j = 1,
                 color = "white")
       }
+      # add caption within flextable
+      if (!is.null(caption)) {
+        table <- table |>
+          set_caption(caption = caption)
+      }
     } else if (option == "gt") {
       # table theme with gt
       table <- df |>
@@ -140,6 +147,12 @@ omni_table <-
             cell_fill(color = omni_colors("Dark Blue"))
           ),
           locations = cells_body(columns = 1))
+      }
+
+      # add caption within gt
+      if (!is.null(caption)) {
+        table <- table |>
+          tab_caption(caption = caption)
       }
     }
     # return table

@@ -21,10 +21,8 @@ knitr::opts_chunk$set(fig.path='figs/',
 
 ```{r packages, echo=FALSE}
 library(tidyverse)
-library(kableExtra)
-library(knitr)
-library(janitor)
 library(omni)
+library(flextable)
 
 ```
 
@@ -94,3 +92,20 @@ helpful.*
 # Header 1
 
 ## Sub header
+
+First table
+
+```{r}
+mtcars %>% 
+  slice(1:5) %>% 
+  omni_table(caption = "Caption", option = "gt") 
+```
+
+Second table
+
+```{r}
+mtcars %>% 
+  slice(1:5) %>% 
+  omni_table(caption = "Caption") |> 
+  autofit()
+```
