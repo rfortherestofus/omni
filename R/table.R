@@ -107,7 +107,7 @@ omni_table <-
         if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "docx") {
           table <- table |>
             set_caption(as_paragraph(as_chunk(
-              "caption", props = fp_text_default(font.family = "Calibri")
+              caption, props = fp_text_default(font.family = "Calibri")
             )), word_stylename = "Table Caption")
         } else{
           table <- table |>
