@@ -23,7 +23,7 @@ theme_omni <- function(show_grid_lines = FALSE,
         margin = margin(0, 0, 15, 0),
         color = "#595959",
         face = "bold",
-        size = 12
+        size = 13
       ),
       plot.title.position = "plot",
       plot.subtitle = element_markdown(size = 11, color = "#595959"),

@@ -8,23 +8,51 @@
 #' @import ggrepel
 #'
 #' @export
-set_omni_defaults <- function(base_family = "Calibri",
-                              base_color = "#314160") {
+set_omni_defaults <- function(
+  base_family = "Calibri",
+  base_color = "#314160"
+) {
   # set default theme -----------------------------------------------------
 
   ggplot2::theme_set(omni::theme_omni(base_family = base_family))
 
   # add base_family font to text and label geoms ---------------------------
 
-  ggplot2::update_geom_defaults("text", list(family = base_family))
-  ggplot2::update_geom_defaults("label", list(family = base_family))
-  ggplot2::update_geom_defaults("text_repel", list(family = base_family))
-  ggplot2::update_geom_defaults("label_repel", list(family = base_family))
+  ggplot2::update_geom_defaults(
+    "text",
+    list(
+      family = base_family,
+      size = 5
+    )
+  )
+  ggplot2::update_geom_defaults(
+    "label",
+    list(
+      family = base_family,
+      size = 5
+    )
+  )
+  ggplot2::update_geom_defaults(
+    "text_repel",
+    list(
+      family = base_family,
+      size = 5
+    )
+  )
+  ggplot2::update_geom_defaults(
+    "label_repel",
+    list(
+      family = base_family,
+      size = 5
+    )
+  )
 
   # set default color scales for continuous variables -----------------------
 
-  options(ggplot2.continuous.colour = "gradient",
-          ggplot2.continuous.fill = "gradient")
+  options(
+    ggplot2.continuous.colour = "gradient",
+    ggplot2.continuous.fill = "gradient"
+  )
 
   # set default colors for monochromatic geoms ------------------------------
 
@@ -58,7 +86,6 @@ set_omni_defaults <- function(base_family = "Calibri",
   ggplot2::update_geom_defaults("path", list(linewidth = 1))
   ggplot2::update_geom_defaults("point", list(size = 3))
   ggplot2::update_geom_defaults("text", list(size = 1 / 0.352777778))
-
 }
 
 #' Resets to default setting
@@ -107,5 +134,4 @@ ggplot_defaults <- function() {
   ggplot2::update_geom_defaults("path", list(linewidth = .5))
   ggplot2::update_geom_defaults("point", list(size = 1.5))
   ggplot2::update_geom_defaults("text", list(size = 3.88))
-
 }
