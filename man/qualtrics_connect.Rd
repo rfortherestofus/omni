@@ -18,6 +18,6 @@ Connection to Qualtrics
 }
 \description{
 This function connect to Qualtrics. It calls omni::qualtrics_register behind the scenes
-to provide a connection if no API key and URL are registrered (or if they are expired).
+to provide a connection if no API key and URL are registered (or if they are expired).
 In that case, please provide `api_key` and `base_url`
 }

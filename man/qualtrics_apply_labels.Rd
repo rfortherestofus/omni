@@ -12,7 +12,7 @@ qualtrics_apply_labels(survey_data, labels_data)
 \item{labels_data}{Output of omni::qualtrics_get_labels()}
 }
 \value{
-survey data with columns names replaces.
+survey data with columns names replaced by labels
 }
 \description{
 Apply labels to survey

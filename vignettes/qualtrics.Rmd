@@ -1,0 +1,82 @@
+---
+title: "Qualtrics"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{qualtrics}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  eval = FALSE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(omni)
+```
+
+## Register Credentials
+
+We have built functionality to help you access data directly from Qualtrics. The first step to use these functions is to register an API key. You should get this from Oskar or someone else on the OMNI team. You also need the Qualtrics base URL. This should be omniinstitute.co1.qualtrics.com. Please check with Oskar to see if it has changed. From there, you can run the following in your console to register your API key (change 1234567 to the actual API key, of course) and base URL with R:
+
+```{r}
+#| echo: true
+qualtrics_register(
+  api_key = "1234567",
+  base_url = "omniinstitute.co1.qualtrics.com"
+)
+```
+
+With your credentials in place, you can now connect to Qualtrics. Working in an R script file or R Markdown document, run the `qualtrics_connect()` function. This will read the API key and base URL that you registered previously and ensure that you can connect to Qualtrics successfully.
+
+## List Surveys
+
+You can list all the surveys available in your Qualtrics account using the `qualtrics_list_surveys()` function. This will return a data frame with information about all surveys on your account.
+
+## Access Survey Data
+
+To access survey data, use the `qualtrics_get_survey()` function. You will need to provide the survey ID, which you can get from the `qualtrics_list_surveys()` function. For example, your code might look like this:
+
+```{r}
+#| echo: true
+qualtrics_get_survey(
+  survey_id = "SV_1234567"
+)
+```
+
+This will return a data frame with all the data from the survey. If you want to get a subset of the data, you can use the `qualtrics_get_survey()` function to specify the fields you want to get. For example, if you only want to get the `Q1` and `Q2` fields, you can do this:
+
+```{r}
+#| echo: true
+qualtrics_get_survey(
+  survey_id = "SV_1234567",
+  fields = c("Q1", "Q2")
+)
+```
+
+You can also specify the number of records you want to get. For example, if you only want to get the first 10 records, you can do this:
+
+```{r}
+#| echo: true
+qualtrics_get_survey(
+  survey_id = "SV_1234567",
+  fields = c("Q1", "Q2"),
+  n = 10
+)
+```
+
+## Adding Labels
+
+By default, the `qualtrics_get_survey()` function will return the survey data without variable labels (i.e. the variable names will be numbers). If you want to add variable labels, use the `qualtrics_apply_labels()` function. This will add labels to the data frame based on the survey metadata. For example, your code might look like this:
+
+```{r}
+#| echo: true
+qualtrics_get_survey(
+  survey_id = "SV_1234567"
+) |>
+  qualtrics_apply_labels()
+```

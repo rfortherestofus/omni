@@ -57,7 +57,7 @@ read_renviron_qualtrics <- function(organization_name = "OMNI") {
 #' Connect to Qualtrics
 #'
 #' This function connect to Qualtrics. It calls omni::qualtrics_register behind the scenes
-#' to provide a connection if no API key and URL are registrered (or if they are expired).
+#' to provide a connection if no API key and URL are registered (or if they are expired).
 #' In that case, please provide `api_key` and `base_url`
 #'
 #' @param organization_name Organization name
@@ -220,7 +220,7 @@ qualtrics_get_labels <- function(survey_id_name) {
 #' @param survey_data Output or subset of omni::qualtrics_get_survey()
 #' @param labels_data Output of omni::qualtrics_get_labels()
 #'
-#' @return survey data with columns names replaces.
+#' @return survey data with columns names replaced by labels
 #' @export
 #'
 qualtrics_apply_labels <- function(survey_data, labels_data) {
