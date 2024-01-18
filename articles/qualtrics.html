@@ -125,40 +125,7 @@ code might look like this:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/qualtrics_get_survey.html">qualtrics_get_survey</a></span><span class="op">(</span></span>
 <span>  survey_id <span class="op">=</span> <span class="st">"SV_1234567"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>This will return a data frame with all the data from the survey. If
-you want to get a subset of the data, you can use the
-<code><a href="../reference/qualtrics_get_survey.html">qualtrics_get_survey()</a></code> function to specify the fields you
-want to get. For example, if you only want to get the <code>Q1</code>
-and <code>Q2</code> fields, you can do this:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/qualtrics_get_survey.html">qualtrics_get_survey</a></span><span class="op">(</span></span>
-<span>  survey_id <span class="op">=</span> <span class="st">"SV_1234567"</span>,</span>
-<span>  fields <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Q1"</span>, <span class="st">"Q2"</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-<p>You can also specify the number of records you want to get. For
-example, if you only want to get the first 10 records, you can do
-this:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/qualtrics_get_survey.html">qualtrics_get_survey</a></span><span class="op">(</span></span>
-<span>  survey_id <span class="op">=</span> <span class="st">"SV_1234567"</span>,</span>
-<span>  fields <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Q1"</span>, <span class="st">"Q2"</span><span class="op">)</span>,</span>
-<span>  n <span class="op">=</span> <span class="fl">10</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="adding-labels">Adding Labels<a class="anchor" aria-label="anchor" href="#adding-labels"></a>
-</h2>
-<p>By default, the <code><a href="../reference/qualtrics_get_survey.html">qualtrics_get_survey()</a></code> function will
-return the survey data without variable labels (i.e. the variable names
-will be numbers). If you want to add variable labels, use the
-<code><a href="../reference/qualtrics_apply_labels.html">qualtrics_apply_labels()</a></code> function. This will add labels to
-the data frame based on the survey metadata. For example, your code
-might look like this:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/qualtrics_get_survey.html">qualtrics_get_survey</a></span><span class="op">(</span></span>
-<span>  survey_id <span class="op">=</span> <span class="st">"SV_1234567"</span></span>
-<span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/qualtrics_apply_labels.html">qualtrics_apply_labels</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>This will return a data frame with all the data from the survey.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
