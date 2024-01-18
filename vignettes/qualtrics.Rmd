@@ -48,35 +48,4 @@ qualtrics_get_survey(
 )
 ```
 
-This will return a data frame with all the data from the survey. If you want to get a subset of the data, you can use the `qualtrics_get_survey()` function to specify the fields you want to get. For example, if you only want to get the `Q1` and `Q2` fields, you can do this:
-
-```{r}
-#| echo: true
-qualtrics_get_survey(
-  survey_id = "SV_1234567",
-  fields = c("Q1", "Q2")
-)
-```
-
-You can also specify the number of records you want to get. For example, if you only want to get the first 10 records, you can do this:
-
-```{r}
-#| echo: true
-qualtrics_get_survey(
-  survey_id = "SV_1234567",
-  fields = c("Q1", "Q2"),
-  n = 10
-)
-```
-
-## Adding Labels
-
-By default, the `qualtrics_get_survey()` function will return the survey data without variable labels (i.e. the variable names will be numbers). If you want to add variable labels, use the `qualtrics_apply_labels()` function. This will add labels to the data frame based on the survey metadata. For example, your code might look like this:
-
-```{r}
-#| echo: true
-qualtrics_get_survey(
-  survey_id = "SV_1234567"
-) |>
-  qualtrics_apply_labels()
-```
+This will return a data frame with all the data from the survey. 
