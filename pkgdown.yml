@@ -3,11 +3,12 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   colors: colors.html
+  qualtrics: qualtrics.html
   rmarkdown: rmarkdown.html
   tables: tables.html
   theme: theme.html
   word_template: word_template.html
-last_built: 2024-01-17T23:33Z
+last_built: 2024-01-18T17:07Z
 urls:
   reference: https://rfortherestofus.github.io/omni/reference
   article: https://rfortherestofus.github.io/omni/articles
