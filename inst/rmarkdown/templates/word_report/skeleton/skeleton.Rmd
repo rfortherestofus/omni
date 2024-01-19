@@ -44,7 +44,7 @@ block_toc(style = "Image Caption")
 # Table of tables
 
 ```{r}
-block_toc(style = "Table Caption")
+block_toc(seq_id = "tab")
 ```
 
 \newpage
@@ -115,14 +115,12 @@ Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit dui
 
 Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi.
 
-```{r out.extra='data-prefix="Table"'}
+```{r}
 mtcars %>% 
   slice(1:5) |> 
   omni_table(caption = "Caption") |> 
   autofit()
 ```
-
-
 
 # Another first level header
 
