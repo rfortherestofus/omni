@@ -24,9 +24,31 @@ library(flextable)
 library(knitr)
 library(omni)
 library(scales)
+library(officer)
 ```
 
 \newpage
+
+# Table of content
+
+```{r}
+block_toc()
+```
+
+# Table of figures
+
+```{r}
+block_toc(style = "Image Caption")
+```
+
+# Table of tables
+
+```{r}
+block_toc(style = "Table Caption")
+```
+
+\newpage
+
 
 # Executive Summary {-}
 

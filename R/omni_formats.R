@@ -101,12 +101,13 @@ omni_word_report <- function(toc = FALSE,
     pkg_resource("omni_word_report.docx")
 
   # template
-  bookdown::word_document2(
+  officedown::rdocx_document(
     reference_docx = word_template,
     toc = toc,
     toc_float = FALSE,
     fig_caption = TRUE,
     number_sections = number_sections,
+    base_format = "bookdown::word_document2",
     ...
   )
 }
