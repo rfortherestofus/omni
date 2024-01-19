@@ -38,7 +38,7 @@ block_toc()
 # Table of figures
 
 ```{r}
-block_toc(style = "Image Caption")
+block_toc(seq_id = "fig")
 ```
 
 # Table of tables
