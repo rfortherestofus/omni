@@ -30,7 +30,8 @@ Imports:
     stringr,
     usethis,
     gt,
-    sjlabelled
+    sjlabelled,
+    officedown
 Suggests:
     gghighlight,
     scales,

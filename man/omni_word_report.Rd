@@ -4,11 +4,9 @@
 \alias{omni_word_report}
 \title{OMNI Word Template}
 \usage{
-omni_word_report(toc = FALSE, number_sections = TRUE, ...)
+omni_word_report(number_sections = TRUE, ...)
 }
 \arguments{
-\item{toc}{Table of content as True/False}
-
 \item{number_sections}{Number sections as true/false}
 
 \item{...}{Other params to bookdown::word_document2}
