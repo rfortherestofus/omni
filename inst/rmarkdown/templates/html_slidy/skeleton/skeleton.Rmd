@@ -2,7 +2,7 @@
 title: "OMNI Slidy presentation"
 output: 
   omni::omni_html_slidy:
-    hypothesis: true
+    hypothesis: false
 date: "2023-08-30"
 ---
 
@@ -15,6 +15,19 @@ library(omni)
 library(tidyverse)
 ```
 
+<style>
+.highlight{
+  background: red !important;
+}
+
+.highlight > h1 {
+  color: white ;
+  font-size: 36pt!important;
+  text-align: center!important;
+  padding-top: 20%!important;
+}
+</style>
+
 ## R Markdown
 
 This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
@@ -26,6 +39,8 @@ When you click the **Knit** button a document will be generated that includes bo
 - Bullet 1
 - Bullet 2
 - Bullet 3
+
+## New Section! {.highlight}
 
 ## Slide with Table
 
