@@ -29,19 +29,19 @@ library(officer)
 
 \newpage
 
-# Table of content
+# Table of contents
 
 ```{r}
 block_toc()
 ```
 
-# Table of figures
+# List of figures
 
 ```{r}
 block_toc(seq_id = "fig")
 ```
 
-# Table of tables
+# List of tables
 
 ```{r}
 block_toc(seq_id = "tab")
