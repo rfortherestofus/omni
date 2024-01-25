@@ -5,7 +5,7 @@ output:
   omni::omni_pdf_memo:
     main_font: "Calibri"
     header_font: "Arial"
-    main_color: #347686
+    main_color: "#347686"
 paged-footnotes: TRUE
 knit: pagedown::chrome_print
 editor_options: 
@@ -39,7 +39,6 @@ library(openxlsx)
 #  you can change the font and the header style as needed. 
 #  to see OMNI colors check out omni::omni_colors()
 #  the default setting is to omni medium blue #347686
-
 ```
 
 
@@ -47,9 +46,6 @@ library(openxlsx)
 ```{r, include=FALSE}
 # load data 
 # yourdata <- read_xlsx("data/")
-
-
-
 ```
 
 
@@ -73,13 +69,11 @@ Vestibulum per parturient odio pretium sed auctor libero. Dolor, eu, eu etiam, c
 ```{r fig.cap="Title", out.extra='data-prefix="Table"', message=FALSE}
 # this is a placeholder of fake info to demonstrate how the template works 
 # presumably you have data or a table that is being generated in a script and loaded above
-
 measures_table = tibble(
   Measure = c("Financial", "Educational", "Housing"),
   Definition = c("Things related to finances", "Schools and/or universities", "Leases and such"),
   Timeframe = c("Since last December", "From Kindergarten onward", "Current")
 )
-
 measures_table %>% 
   kable(escape = F, align = c("l", "l", "l"), table.attr = "style='width:100%;'", caption = "Units of Impact") %>%
   kable_styling(position = "left",
@@ -89,19 +83,16 @@ measures_table %>%
   column_spec(2, width = "15em") %>% 
   column_spec(3, width = "12em") %>% 
   row_spec(0, background = "#314160", color = "white", align = "left")
-
 ```
 
 Unit of Impact results from the Year Three Impact Period are summarized in Table 2.
 
 ```{r fig.cap="Title", out.extra='data-prefix="Table"', message=FALSE}
 # another fake table - note the use of align here compared to above - this is how you specify justification for each column in the table 
-
 results = tibble(
   `Unit of Impact` = c("Placed in program", "Retained", "Retained and completed"),
   `Number Achieved` = c(22, 9, 4)
 )
-
 # results table
 results %>% 
   kable(align = c("l", "c"), table.attr = "style='width:100%;'", caption = "RESULTS") %>% 
@@ -111,7 +102,6 @@ results %>%
   column_spec(1, width = "7") %>% 
   column_spec(2, width = "10em") %>% 
   row_spec(0, background = "#314160", color = "white", align = "left")
-
 ```
 
 Lorem ipsum dolor sit amet, ut eu sociis, natoque eget montes ullamcorper ridiculus arcu bibendum tempor natoque. Laoreet nostra sem euismod, nisi magna ex quam litora. Nisi vehicula orci diam vestibulum vitae taciti ac. Bibendum augue in platea hendrerit habitant, potenti aliquet, purus rhoncus. Consectetur scelerisque sit vestibulum porttitor sapien sed, ac. Eros aliquet mi diam. Quis tortor urna mauris eget. Orci rhoncus auctor tortor adipiscing, leo. In magnis morbi erat integer ante fringilla porta purus litora eleifend in. Mi in, mauris quisque himenaeos nec bibendum. Neque eu dignissim felis elementum facilisi aliquam. Non pellentesque auctor dolor quis, faucibus ornare. In, a varius ridiculus aliquam nec tortor. Elementum arcu, venenatis sollicitudin at euismod pharetra sit. Lorem habitant tortor eu ridiculus bibendum, elementum sapien dis dolor fames. Viverra inceptos sed maecenas curabitur, sit tristique. Dis porta tortor et aenean sed litora sed lectus habitasse id.
