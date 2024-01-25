@@ -24,7 +24,7 @@ library(tidyverse)
   color: white ;
   font-size: 36pt!important;
   text-align: center!important;
-  padding-top: 20%!important;
+  padding-top: 30%!important;
 }
 </style>
 
