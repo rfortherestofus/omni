@@ -40,16 +40,6 @@
 
 /* ---- Breaks ----------------------- */
 
-/* Front cover */
-.front-cover {
-  break-after: page;
-}
-
-/* page breaks; aka CSS fragmentation */
-.level1 {
-  break-before: page;
-}
-
 .section>h1,
 .section>h2,
 .section>h3,
@@ -62,17 +52,45 @@
 /* --------------------- Cover Page ------------------ */
 @page:first {
 
-  margin: 0 0 0 0;
-
-  padding-top: 2.45in;
+  margin-top: 1in;
 
   border-top: solid 1px var(--omni-tan);
   border-bottom: none;
+
+  background-image: url(logo/OMNI_Logo-White_Horizontal.png);
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 1in;
 
   /* remove the rest of the content */
   @bottom-right {
     display: none;
   }
+}
+
+/* Main title and subtitle */
+
+.title {
+  font-size: 36pt;
+  font-weight: 900;
+  color: white;
+  z-index:1;
+}
+
+.title:before{
+  position:absolute;
+  z-index:-1;
+  width: 8.5in;
+  height: 2.45in;
+  left: -0.5625in ;
+  top: -1in;
+  content:"";
+  background-color: var(--omni-dark-blue);
+}
+
+.date {
+  color: white;
+  z-index:1;
 }
 
 /* ---- Fonts --------------------- */
@@ -82,29 +100,6 @@ body {
 }
 
 /* ---- Style ------------------ */
-/* Main title and subtitle */
-h1.title {
-  font-size: 36pt;
-  font-weight: 900;
-  margin-block-start: 0;
-  margin-block-end: 0;
-  background-color: #ffffff;
-  color: #000000;
-  margin-top: 3em;
-  margin-left: 1em;
-  margin-bottom: 0;
-}
-
-h1.subtitle {
-  background-color: #ffffff;
-  color: #333333;
-  margin-top: 5px;
-  margin-left: 1em;
-}
-
-.subtitle span {
-  font-size: .9em;
-}
 
 /* Levels of title */
 h1 {

@@ -1,8 +1,6 @@
 ---
 title: "Document Title"
-subtitle: "Document Subtitle" 
 date: "01-01-2024"
-author: "Karl Marx"
 output:
   omni::omni_pdf_report_new
 knit: pagedown::chrome_print
