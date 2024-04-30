@@ -11,7 +11,7 @@
 /* setup default values for variables */
 :root {
   --main-font: "Calibri";
-  --header-font: "Calibri";
+  --second-font: "Arial";
 
   --omni-dark-blue: #314160;
   --omni-medium-blue: #347686;
@@ -71,8 +71,9 @@
 /* Main title and subtitle */
 
 .title {
-  font-size: 36pt;
-  font-weight: 900;
+  font-size: 26pt;
+  font-family: var(--second-font);
+  font-weight: bold;
   color: white;
   z-index:1;
 }
@@ -103,29 +104,26 @@ body {
 
 /* Levels of title */
 h1 {
-  font-size: 24pt;
-  font-weight: 700;
-  background-color: #314160;
-  color: #ffffff;
+  font-size: 15pt;
+  font-weight: bold;
+  font-family: var(--second-font);
   padding: 0;
 }
 
 h2 {
-  font-size: 18pt;
-  font-weight: 900;
+  font-size: 14pt;
+  font-weight: bold;
 }
 
 h3 {
-  font-size: 14pt;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #304160;
+  font-size: 13pt;
+  font-weight: bold;
 }
 
 h4 {
-  font-size: 11pt;
+  font-size: 12pt;
   font-weight: 400;
-  color: #333333;
+  color: var(--omni-dark-blue);
 }
 
 /* Normal paragraph */
