@@ -3,7 +3,7 @@ title: "Document Title"
 date: "01-01-2024"
 output:
   omni::omni_pdf_report_new
-knit: pagedown::chrome_print
+# knit: pagedown::chrome_print
 ---
 
 ```{r setup, include=FALSE}

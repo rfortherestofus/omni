@@ -3,7 +3,7 @@
 /* -------------------------------------------- */
 
 /* ---- Interface ------------------- */
-/* Include interface for debugging */
+/* Include interface for debugging *
 
 @import "css_partials/interface.css";
 
@@ -58,9 +58,9 @@
   border-bottom: none;
 
   background-image: url(logo/OMNI_Logo-White_Horizontal.png);
-  background-position: 0 0;
+  background-position: 0.5625in 0.5625in;
   background-repeat: no-repeat;
-  background-size: 1in;
+  background-size: 1.2in;
 
   /* remove the rest of the content */
   @bottom-right {
@@ -70,12 +70,19 @@
 
 /* Main title and subtitle */
 
+#header{
+  display: table;
+  min-height: 1.45in;
+}
+
 .title {
   font-size: 26pt;
   font-family: var(--second-font);
   font-weight: bold;
   color: white;
   z-index:1;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .title:before{
@@ -90,14 +97,21 @@
 }
 
 .date {
+  font-size: 14pt;
+  font-weight: normal;
   color: white;
-  z-index:1;
+  z-index: 1;
+  position: absolute;
+  top: -0.5625in;
+  right: 0in;
+  text-align: right;
 }
 
 /* ---- Fonts --------------------- */
 body {
   font-family: var(--main-font);
   hyphens: auto;
+  color: black;
 }
 
 /* ---- Style ------------------ */
@@ -108,22 +122,26 @@ h1 {
   font-weight: bold;
   font-family: var(--second-font);
   padding: 0;
+  margin-top: 0.15in;
 }
 
 h2 {
   font-size: 14pt;
   font-weight: bold;
+  margin-top: 0.085in;
 }
 
 h3 {
   font-size: 13pt;
   font-weight: bold;
+  margin-top: 0.105in;
 }
 
 h4 {
   font-size: 12pt;
   font-weight: 400;
   color: var(--omni-dark-blue);
+  margin-top: 0.105in;
 }
 
 /* Normal paragraph */
@@ -169,14 +187,12 @@ img {
 p.caption {
   text-transform: uppercase;
   font-weight: 600;
-  color: #333333;
   text-align: left;
 }
 
 table caption {
   text-transform: uppercase;
   font-weight: 600;
-  color: #333333;
   text-align: left;
   margin-bottom: 5px;
 }
