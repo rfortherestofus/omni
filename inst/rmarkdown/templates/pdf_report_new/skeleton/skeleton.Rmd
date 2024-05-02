@@ -60,7 +60,7 @@ pt. Arial Bold for stats numbers. 11 pt Arial Bold for stats content.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit. Maecenas pharetra convallis posuere morbi leo. Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.
 
-```{r fig.height=3}
+```{r fig.height=3, fig.cap = "Iris sepal length"}
 iris |>
   group_by(Species) |>
   summarise(sepal_length_mean = mean(Sepal.Length)) |>
@@ -73,7 +73,7 @@ iris |>
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit.
 
-```{r, out.width="200px", fig.align='center'}
+```{r, out.width="200px", fig.align='center', fig.cap = "Some triangle"}
 knitr::include_graphics(system.file("assets/images/example_figure.png", package = "omni"))
 ```
 
