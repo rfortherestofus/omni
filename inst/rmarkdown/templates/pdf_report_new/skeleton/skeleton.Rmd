@@ -20,7 +20,17 @@ library(scales)
 
 # First Level Header
 
+:::wrap-columns
+:::column-70
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit. Maecenas pharetra convallis posuere morbi leo. Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.
+:::
+
+:::column-30
+> ## Sidebar Header, 13pt Arial Bold
+>
+> Text is inset from all edges by .125”, with the sidebar body copy having the exact same specs as the standard body copy.
+:::
+:::
 
 ## Second Level Header
 
@@ -36,6 +46,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   + list 3.1
   + list 3.2
     + list 3.2.1
+
+:::stats-block
+:::stats-number
+24
+:::
+:::stats-content
+pt. Arial Bold for stats numbers. 11 pt Arial Bold for stats content.
+:::
+:::
 
 ### Third Level Header
 
