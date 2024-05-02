@@ -324,12 +324,15 @@ ul {
   text-align: center;
   z-index: 1;
   background-color: white;
+  display: table;
 }
 
 .stats-number p {
   font-family: var(--second-font);
   font-weight: bold;
   font-size: 24pt;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .stats-content {
@@ -338,7 +341,7 @@ ul {
   max-height: 20pt;
   margin-left: -10pt;
   padding-left: 15pt;
-  margin-top: 10pt;
+  margin-top: 12pt;
   z-index: -1;
 }
 
@@ -348,4 +351,13 @@ ul {
   font-size: 11pt;
   display: table-cell;
   max-width: 3in;
+  height: 20pt;
+  vertical-align: middle;
+}
+
+/* sections */
+.section-header h1{
+  font-weight: normal;
+  font-size: 23pt;
+  page-break-before: always;
 }
