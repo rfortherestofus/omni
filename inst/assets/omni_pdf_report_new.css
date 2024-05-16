@@ -247,19 +247,16 @@ ul {
 
 .column-20 {
   flex: 20%;
-  padding-left: var(--column-inside-padding);
   padding-right: var(--column-inside-padding);
 }
 
 .column-25 {
   flex: 25%;
-  padding-left: var(--column-inside-padding);
   padding-right: var(--column-inside-padding);
 }
 
 .column-30 {
   flex: 30%;
-  padding-left: var(--column-inside-padding);
   padding-right: var(--column-inside-padding);
 }
 
@@ -271,13 +268,11 @@ ul {
 
 .column-40 {
   flex: 40%;
-  padding-left: var(--column-inside-padding);
   padding-right: var(--column-inside-padding);
 }
 
 .column-50 {
   flex: 50%;
-  padding-left: var(--column-inside-padding);
   padding-right: var(--column-inside-padding);
 }
 
@@ -289,25 +284,21 @@ ul {
 
 .column-66 {
   flex: 66%;
-  padding-left: var(--column-inside-padding);
   padding-right: var(--column-inside-padding);
 }
 
 .column-70 {
   flex: 70%;
-  padding-left: var(--column-inside-padding);
   padding-right: var(--column-inside-padding);
 }
 
 .column-75 {
   flex: 75%;
-  padding-left: var(--column-inside-padding);
   padding-right: var(--column-inside-padding);
 }
 
 .column-80 {
   flex: 80%;
-  padding-left: var(--column-inside-padding);
   padding-right: var(--column-inside-padding);
 }
 
