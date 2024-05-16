@@ -21,6 +21,29 @@ omni_pdf_report <- function(...) {
   )
 }
 
+#' Omni Paged PDF Report - new style
+#'
+#' @param ... Other params to pagedown::html_paged
+#'
+#' @return An rmd format
+#' @export
+#'
+omni_pdf_report_new <- function(...) {
+  # style
+  css_style <-
+    pkg_resource("omni_pdf_report_new.css")
+
+  # template
+  pagedown::html_paged(
+    self_contained = TRUE,
+    toc = FALSE,
+    number_sections = FALSE,
+    fig_caption = TRUE,
+    css = css_style,
+    ...
+  )
+}
+
 #' Omni Paged PDF Memo
 #'
 #' @param ... Other params to pagedown::html_paged

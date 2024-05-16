@@ -1,0 +1,354 @@
+/* -------------------------------------------- */
+/* ---- OMNI PDF Report CSS ---- */
+/* -------------------------------------------- */
+
+/* ---- Interface ------------------- */
+/* Include interface for debugging *
+
+@import "css_partials/interface.css";
+
+/* ---- Variables ------------------- */
+/* setup default values for variables */
+:root {
+  --main-font: "Calibri";
+  --second-font: "Arial";
+
+  --omni-dark-blue: #314160;
+  --omni-medium-blue: #347686;
+  --omni-light-blue: #c8d6dd;
+  --omni-tan: #7b7754;
+  --omni-teal: #8bc0b2;
+
+  --pagedjs-margin-left: 0.5625in;
+  --pagedjs-margin-right: 0.5625in;
+  --pagedjs-margin-bottom: 0.5625in;
+  --pagedjs-margin-top: 0.5625in;
+
+  --column-inside-padding: 0.05in;
+}
+
+/* ---- Pages ----------------------- */
+
+@page {
+  size: 8.5in 11in;
+  /* var(--pagedjs-width) doesn't work in browser when printing */
+
+  border-top: solid 1px var(--omni-medium-blue);
+  border-bottom: solid 1px var(--omni-medium-blue);
+
+  @bottom-right {
+    content: counter(page);
+  }
+}
+
+/* ---- Breaks ----------------------- */
+
+.section > h1,
+.section > h2,
+.section > h3,
+.section > h4,
+.section > h5,
+.section > h6 {
+  break-after: avoid;
+}
+
+/* --------------------- Cover Page ------------------ */
+@page:first{
+  margin-top: 1in;
+
+  border-top: solid 1px var(--omni-tan);
+  border-bottom: none;
+
+  background-image: url(logo/OMNI_Logo-White_Horizontal.png);
+  background-position: 0.5625in 0.5625in;
+  background-repeat: no-repeat;
+  background-size: 1.2in;
+
+  /* remove the rest of the content */
+  @bottom-right {
+    display: none;
+  }
+}
+
+/* Main title and subtitle */
+
+#header {
+  display: table;
+  min-height: 1.45in;
+}
+
+.title {
+  font-size: 26pt;
+  font-family: var(--second-font);
+  font-weight: bold;
+  color: white;
+  z-index: 1;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.title:before {
+  position: absolute;
+  z-index: -1;
+  width: 8.5in;
+  height: 2.45in;
+  left: -0.5625in;
+  top: -1in;
+  content: "";
+  background-color: var(--omni-dark-blue);
+}
+
+.date {
+  font-size: 14pt;
+  font-weight: normal;
+  color: white;
+  z-index: 1;
+  position: absolute;
+  top: -0.5625in;
+  right: 0in;
+  text-align: right;
+}
+
+/* ---- Fonts --------------------- */
+body {
+  font-family: var(--main-font);
+  hyphens: auto;
+  color: black;
+}
+
+/* ---- Style ------------------ */
+
+h1,
+h2,
+h3,
+h4 {
+  margin-block-end: 0in;
+  margin-inline-start: 0in;
+  margin-inline-end: 0in;
+}
+
+/* Levels of title */
+h1 {
+  font-size: 15pt;
+  font-weight: bold;
+  font-family: var(--second-font);
+  padding: 0;
+  margin-block-start: 0.15in;
+}
+
+h2 {
+  font-size: 14pt;
+  font-weight: bold;
+  margin-block-start: 0.085in;
+}
+
+h3 {
+  font-size: 13pt;
+  font-weight: bold;
+  margin-block-start: 0.105in;
+}
+
+h4 {
+  font-size: 12pt;
+  font-weight: 400;
+  color: var(--omni-dark-blue);
+  margin-block-start: 0.105in;
+}
+
+/* blockquote */
+blockquote h2 {
+  font-size: 13pt;
+  font-weight: bold;
+  font-family: var(--second-font);
+}
+
+blockquote {
+  background-color: var(--omni-light-blue);
+  padding: 0.125in;
+  margin-block-start: 0in;
+  margin-block-end: 0in;
+  margin-inline-start: 0in;
+  margin-inline-end: 0in;
+}
+
+/* Normal paragraph */
+p {
+  font-size: 11pt;
+  font-weight: 300;
+  margin-block-start: 0.0625in;
+  margin-block-end: 0.025in;
+  margin-inline-start: 0in;
+  margin-inline-end: 0in;
+}
+
+/* Links */
+a,
+a:active,
+a:visited {
+  color: #000000;
+}
+
+/* tables */
+table {
+  font-family: var(--main-font);
+  font-weight: 300;
+  font-size: 12pt;
+  margin: auto;
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #666;
+  width: 100%;
+}
+
+td {
+  padding: 10pt 0 10pt 0;
+}
+
+/* images */
+/* this ensure images doesn't go outside the page */
+img {
+  max-width: 100%;
+}
+
+.figure {
+  break-inside: avoid;
+}
+
+/* captions */
+p.caption {
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: left;
+}
+
+table caption {
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+caption {
+  break-inside: avoid;
+  break-after: avoid;
+}
+
+/* list */
+ul {
+  list-style-type: disc;
+}
+
+/* ---- Utils ------------------ */
+/* columns */
+
+.wrap-columns {
+  display: flex;
+  padding: 0 0pt;
+}
+
+.column-20 {
+  flex: 20%;
+  padding-right: var(--column-inside-padding);
+}
+
+.column-25 {
+  flex: 25%;
+  padding-right: var(--column-inside-padding);
+}
+
+.column-30 {
+  flex: 30%;
+  padding-right: var(--column-inside-padding);
+}
+
+.column-33 {
+  flex: 33%;
+  padding-left: var(--column-inside-padding);
+  padding-right: var(--column-inside-padding);
+}
+
+.column-40 {
+  flex: 40%;
+  padding-right: var(--column-inside-padding);
+}
+
+.column-50 {
+  flex: 50%;
+  padding-right: var(--column-inside-padding);
+}
+
+.column-60 {
+  flex: 60%;
+  padding-left: var(--column-inside-padding);
+  padding-right: var(--column-inside-padding);
+}
+
+.column-66 {
+  flex: 66%;
+  padding-right: var(--column-inside-padding);
+}
+
+.column-70 {
+  flex: 70%;
+  padding-right: var(--column-inside-padding);
+}
+
+.column-75 {
+  flex: 75%;
+  padding-right: var(--column-inside-padding);
+}
+
+.column-80 {
+  flex: 80%;
+  padding-right: var(--column-inside-padding);
+}
+
+/* stats number */
+.stats-block{
+  display: flex;
+}
+
+.stats-number {
+  border-radius: 50%;
+  border: var(--omni-teal) 5px solid;
+  width: 50pt;
+  height: 50pt;
+  text-align: center;
+  z-index: 1;
+  background-color: white;
+  display: table;
+}
+
+.stats-number p {
+  font-family: var(--second-font);
+  font-weight: bold;
+  font-size: 24pt;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.stats-content {
+  display: table;
+  background-color: var(--omni-teal);
+  max-height: 20pt;
+  margin-left: -10pt;
+  padding-left: 15pt;
+  margin-top: 12pt;
+  z-index: -1;
+}
+
+.stats-content p {
+  font-family: var(--second-font);
+  font-weight: bold;
+  font-size: 11pt;
+  display: table-cell;
+  max-width: 3in;
+  height: 20pt;
+  vertical-align: middle;
+}
+
+/* sections */
+.section-header h1{
+  font-weight: normal;
+  font-size: 23pt;
+  page-break-before: always;
+}

@@ -1,0 +1,111 @@
+---
+title: "Document Title"
+date: "01-01-2024"
+output:
+  omni::omni_pdf_report_new
+knit: pagedown::chrome_print
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      fig.topcaption = TRUE,
+                      fig.cap = TRUE,
+                      dpi = 150)
+library(tidyverse)
+library(flextable)
+library(knitr)
+library(omni)
+library(scales)
+```
+
+# First Level Header
+
+:::wrap-columns
+:::column-70
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit. Maecenas pharetra convallis posuere morbi leo. Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.
+:::
+
+:::column-30
+> ## Sidebar Header, 13pt Arial Bold
+>
+> Text is inset from all edges by .125”, with the sidebar body copy having the exact same specs as the standard body copy.
+:::
+:::
+
+## Second Level Header
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit. Maecenas pharetra convallis posuere morbi leo. Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.
+
++ list 1
++ list 2
+  + list 2.1
+    + list 2.1.1
+    + list 2.1.2
+  + list 2.2
++ list 3
+  + list 3.1
+  + list 3.2
+    + list 3.2.1
+
+:::stats-block
+:::stats-number
+24
+:::
+:::stats-content
+pt. Arial Bold for stats numbers. 11 pt Arial Bold for stats content.
+:::
+:::
+
+### Third Level Header
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit. Maecenas pharetra convallis posuere morbi leo. Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.
+
+```{r fig.height=3, fig.cap = "Iris sepal length"}
+iris |>
+  group_by(Species) |>
+  summarise(sepal_length_mean = mean(Sepal.Length)) |>
+  ggplot(aes(x = Species, y = sepal_length_mean, fill = Species)) +
+  geom_col() +
+  coord_flip() +
+  scale_fill_omni_discrete() +
+  theme_omni()
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit.
+
+```{r, out.width="200px", fig.align='center', fig.cap = "Some triangle"}
+knitr::include_graphics(system.file("assets/images/example_figure.png", package = "omni"))
+```
+
+#### Fourth Level Header
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit. Maecenas pharetra convallis posuere morbi leo. 
+
+Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.
+
+Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi.
+
+```{r}
+mtcars |> 
+  slice(1:5)  |> 
+  omni_table(caption = "Caption")
+```
+
+:::section-header
+# Section header
+:::
+
+## With second level 1
+
+### And third level A
+
+## And second level 2 with a very very very very long title
+
+### And third level A
+
+### And third level C
+
+## And second level 3
+
+
+
