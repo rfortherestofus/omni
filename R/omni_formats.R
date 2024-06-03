@@ -131,6 +131,30 @@ omni_word_report <- function(number_sections = TRUE,
   )
 }
 
+#' OMNI Word Template
+#'
+#' @param ... Other params to bookdown::word_document2
+#' @param number_sections Number sections as true/false
+#'
+#' @return An rmd format
+#' @export
+#'
+omni_word_report_new <- function(number_sections = TRUE,
+                             ...) {
+  # word template
+  word_template <-
+    pkg_resource("omni_word_report_new.docx")
+
+  # template
+  officedown::rdocx_document(
+    reference_docx = word_template,
+    fig_caption = TRUE,
+    number_sections = number_sections,
+    base_format = "bookdown::word_document2",
+    ...
+  )
+}
+
 #' Omni HTML internal template
 #'
 #' @param hypothesis Add Hypothesis
