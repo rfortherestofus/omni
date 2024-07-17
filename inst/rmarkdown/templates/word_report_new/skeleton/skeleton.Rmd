@@ -8,7 +8,9 @@ output:
 knitr::opts_chunk$set(echo = FALSE,
                       fig.topcaption = TRUE,
                       fig.cap = TRUE,
-                      dpi = 150)
+                      dpi = 150,
+                      warning = FALSE)
+
 library(tidyverse)
 library(flextable)
 library(knitr)
@@ -17,8 +19,6 @@ library(scales)
 ```
 
 # First Level Header
-
-<!---BLOCK_MULTICOL_START--->
 
 <p class="left-column">
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit. Maecenas pharetra convallis posuere morbi leo. Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.
@@ -29,8 +29,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 Text is inset from all edges by .125”, with the sidebar body copy having the exact same specs as the standard body copy.
 </p>
-
-<!---BLOCK_MULTICOL_STOP--->
 
 ## Second Level Header
 
@@ -88,7 +86,8 @@ Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit dui
 ```{r}
 mtcars |> 
   slice(1:5)  |> 
-  omni_table(caption = "Caption")
+  omni_table(caption = "Caption") |> 
+  autofit()
 ```
 
 :::section-header
