@@ -1,5 +1,6 @@
 ---
 title: "Document Title"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
     omni::omni_word_report_new
 ---
