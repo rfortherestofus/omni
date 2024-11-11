@@ -1,0 +1,65 @@
+<style>
+  #header {
+    background-color: #314160;
+    width: 100%;
+    color: white;
+    padding: 40px 0; /* Remove horizontal padding */
+    position: relative;
+  }
+
+  /* New wrapper for contained content */
+  .header-wrapper {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 0 20px; /* Add some padding to prevent content touching edges on smaller screens */
+  }
+
+  /* Rest of your styles remain the same */
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .logo {
+    height: 40px;
+    width: auto;
+  }
+
+  .date {
+    font-family: "Calibri", sans-serif;
+    font-size: 1.5em;
+    white-space: nowrap;
+  }
+
+  .header-line {
+    height: 2px;
+    background-color: #7b7754;
+    margin: 15px 0;
+  }
+
+  .title {
+    font-size: 2.5em;
+    color: white;
+    font-weight: bold;
+    font-family: "Calibri", sans-serif;
+    text-align: left;
+    padding-top: 10px;
+  }
+</style>
+
+<div id="header">
+  <div class="header-wrapper">
+    <div class="header-content">
+      <img
+        src="../../../../assets/logo/OMNI_Logo-White_Horizontal.png"
+        class="logo"
+        alt="Logo"
+      />
+      <!-- <div class="date">Today's date</div> -->
+    </div>
+    <!-- <div class="title">`r TheTitle`</div> -->
+    <div class="header-line"></div>
+  </div>
+</div>

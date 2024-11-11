@@ -1,0 +1,47 @@
+/* Header styling */
+.header {
+  background-color: #00274d; /* Dark blue */
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .title {
+  font-size: 2em;
+  font-weight: bold;
+  font-family: "Calibri", sans-serif;
+}
+
+.header .date {
+  font-family: "Calibri", sans-serif;
+}
+
+.header .logo {
+  height: 50px;
+  width: auto;
+  margin-right: 10px;
+}
+
+/* Horizontal yellow bar */
+.header-bar {
+  height: 5px;
+  background-color: #ffcc00; /* Yellow */
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Body styling */
+body {
+  background-color: white;
+  font-family: "Calibri", sans-serif;
+}
+
+/* Titles styling */
+h1,
+h2,
+h3 {
+  font-family: "Calibri", sans-serif;
+  font-weight: bold;
+}
