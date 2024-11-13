@@ -1,6 +1,6 @@
 ---
 title: "Here is where you write your title, and the aim of this document"
-date: "`r Sys.Date()`"
+date: "`r Sys.Date() |> format('%B %d, %Y')`"
 output:
    html_document:
       template: template.html
