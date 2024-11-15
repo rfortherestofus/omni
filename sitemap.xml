@@ -1,123 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/404.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/articles/colors.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/articles/qualtrics.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/articles/rmarkdown.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/articles/tables.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/articles/theme.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/articles/word_template.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/index.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/ggplot_defaults.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/include_hypothesis.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/new_omni_report.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/omni_colors.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/omni_html_memo.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/omni_html_report.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/omni_html_slidy.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/omni_pal.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/omni_pdf_memo.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/omni_pdf_report.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/omni_pdf_report_new.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/omni_table.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/omni_word_report.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/omni_word_report_new.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/pkg_resource.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/qualtrics_apply_labels.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/qualtrics_connect.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/qualtrics_get_labels.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/qualtrics_get_survey.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/qualtrics_list_surveys.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/qualtrics_register.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/read_renviron_qualtrics.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/scale_color_omni_continuous.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/scale_color_omni_discrete.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/scale_fill_omni_continuous.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/scale_fill_omni_discrete.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/set_omni_defaults.html</loc>
-  </url>
-  <url>
-    <loc>https://rfortherestofus.github.io/omni/reference/theme_omni.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://rfortherestofus.github.io/omni/404.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/LICENSE-text.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/articles/colors.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/articles/index.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/articles/qualtrics.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/articles/rmarkdown.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/articles/tables.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/articles/theme.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/articles/word_template.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/authors.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/index.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/ggplot_defaults.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/include_hypothesis.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/index.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/new_omni_report.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/omni_colors.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/omni_html_memo.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/omni_html_report.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/omni_html_slidy.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/omni_pal.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/omni_pdf_memo.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/omni_pdf_report.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/omni_pdf_report_new.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/omni_table.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/omni_word_report.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/omni_word_report_new.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/pkg_resource.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/qualtrics_apply_labels.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/qualtrics_connect.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/qualtrics_get_labels.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/qualtrics_get_survey.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/qualtrics_list_surveys.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/qualtrics_register.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/read_renviron_qualtrics.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/scale_color_omni_continuous.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/scale_color_omni_discrete.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/scale_fill_omni_continuous.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/scale_fill_omni_discrete.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/set_omni_defaults.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/theme_omni.html</loc></url>
 </urlset>
+
