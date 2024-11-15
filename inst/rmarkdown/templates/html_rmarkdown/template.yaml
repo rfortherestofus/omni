@@ -1,0 +1,3 @@
+name: "Omni RMD template"
+description: "A template for a custom R Markdown document for the Omni institute"
+create_dir: FALSE
