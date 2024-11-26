@@ -87,8 +87,8 @@ Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit dui
 
 ```{r}
 mtcars |> 
-  slice(1:5)  |> 
-  omni_table(caption = "Caption")
+  slice(1:6)  |> 
+  omni_table(caption = "Interesting caption")
 ```
 
 :::section-header
