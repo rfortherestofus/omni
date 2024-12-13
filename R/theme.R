@@ -11,7 +11,7 @@
 #' @importFrom ggtext element_markdown
 theme_omni <- function(show_grid_lines = FALSE,
                        show_legend = FALSE,
-                       base_family = "Calibri") {
+                       base_family = "Times New Roman") {
   # general theme based on theme_minimal
   omni_theme <- theme_minimal(base_family = base_family) +
     theme(
