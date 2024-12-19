@@ -129,15 +129,15 @@ h4 {
 
 /* Levels of title */
 h1 {
-  font-size: 15pt;
+  font-size: 16pt;
   font-weight: bold;
-  font-family: var(--second-font);
+  font-family: var(--main-font);
   padding: 0;
   margin-block-start: 0.15in;
 }
 
 h2 {
-  font-size: 14pt;
+  font-size: 15pt;
   font-weight: bold;
   margin-block-start: 0.085in;
 }
@@ -157,9 +157,9 @@ h4 {
 
 /* blockquote */
 blockquote h2 {
-  font-size: 13pt;
+  font-size: 12pt;
   font-weight: bold;
-  font-family: var(--second-font);
+  font-family: var(--main-font);
 }
 
 blockquote {
@@ -339,7 +339,7 @@ ul {
 .stats-content p {
   font-family: var(--second-font);
   font-weight: bold;
-  font-size: 11pt;
+  font-size: 12pt;
   display: table-cell;
   max-width: 3in;
   height: 20pt;
