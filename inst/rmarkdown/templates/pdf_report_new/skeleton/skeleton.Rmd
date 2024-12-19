@@ -10,7 +10,9 @@ knit: pagedown::chrome_print
 knitr::opts_chunk$set(echo = FALSE,
                       fig.topcaption = TRUE,
                       fig.cap = TRUE,
-                      dpi = 150)
+                      dpi = 150,
+                      warning = FALSE,
+                      message = FALSE)
 library(tidyverse)
 library(flextable)
 library(knitr)
@@ -88,7 +90,7 @@ Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit dui
 ```{r}
 mtcars |> 
   slice(1:6)  |> 
-  omni_table(caption = "Interesting caption")
+  omni_table(caption = "Interesting caption", option = "gt")
 ```
 
 :::section-header
