@@ -11,7 +11,7 @@
 /* setup default values for variables */
 :root {
   --main-font: "Calibri";
-  --second-font: "Arial";
+  --second-font: "Calibri";
 
   --omni-dark-blue: #314160;
   --omni-medium-blue: #347686;
@@ -173,7 +173,7 @@ blockquote {
 
 /* Normal paragraph */
 p {
-  font-size: 11pt;
+  font-size: 12pt;
   font-weight: 300;
   margin-block-start: 0.0625in;
   margin-block-end: 0.025in;
