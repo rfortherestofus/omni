@@ -8,8 +8,8 @@
 <title>Tables • omni</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Tables">
 </head>
 <body>
@@ -71,6 +71,8 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rfortherestofus/omni" class="external-link">omni</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in get(paste0(generic, ".", class), envir = get_method_env()) : </span></span>
+<span><span class="co">#&gt;   object 'type_sum.accel' not found</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ardata-fr.github.io/flextable-book/" class="external-link">flextable</a></span><span class="op">)</span></span></code></pre></div>
 <p>To make a table, you can use the <code><a href="../reference/omni_table.html">omni_table()</a></code> function.
@@ -84,92 +86,92 @@ the function as seen below) and a name for the table.</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/omni_table.html">omni_table</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="tabwid">
-<style>.cl-301948d4{}.cl-3012fd80{font-family:'Calibri';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(255, 255, 255, 1.00);background-color:transparent;}.cl-3012fd8a{font-family:'Calibri';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(51, 51, 51, 1.00);background-color:transparent;}.cl-30159806{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-3015b4b2{width:0.75in;background-color:rgba(49, 65, 96, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3015b4bc{width:0.75in;background-color:rgba(49, 65, 96, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3015b4bd{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3015b4c6{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3015b4c7{width:0.75in;background-color:rgba(49, 65, 96, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3015b4c8{width:0.75in;background-color:rgba(157, 174, 206, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3015b4c9{width:0.75in;background-color:rgba(157, 174, 206, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3015b4d0{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3015b4d1{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3015b4da{width:0.75in;background-color:rgba(49, 65, 96, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3015b4db{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3015b4dc{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="table cl-301948d4">
+<style>.cl-e78315ce{}.cl-e77cd308{font-family:'Calibri';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(255, 255, 255, 1.00);background-color:transparent;}.cl-e77cd312{font-family:'Calibri';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(51, 51, 51, 1.00);background-color:transparent;}.cl-e77f6afa{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e77f8666{width:0.75in;background-color:rgba(49, 65, 96, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e77f8667{width:0.75in;background-color:rgba(49, 65, 96, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e77f8670{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e77f8671{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e77f867a{width:0.75in;background-color:rgba(49, 65, 96, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e77f867b{width:0.75in;background-color:rgba(157, 174, 206, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e77f867c{width:0.75in;background-color:rgba(157, 174, 206, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e77f8684{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e77f8685{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e77f868e{width:0.75in;background-color:rgba(49, 65, 96, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e77f868f{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e77f8690{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="table cl-e78315ce">
 <thead><tr style="overflow-wrap:break-word;">
-<th class="cl-3015b4b2"><p class="cl-30159806"><span class="cl-3012fd80">car</span></p></th>
-<th class="cl-3015b4b2"><p class="cl-30159806"><span class="cl-3012fd80">mpg</span></p></th>
-<th class="cl-3015b4b2"><p class="cl-30159806"><span class="cl-3012fd80">cyl</span></p></th>
-<th class="cl-3015b4b2"><p class="cl-30159806"><span class="cl-3012fd80">disp</span></p></th>
-<th class="cl-3015b4b2"><p class="cl-30159806"><span class="cl-3012fd80">hp</span></p></th>
-<th class="cl-3015b4b2"><p class="cl-30159806"><span class="cl-3012fd80">drat</span></p></th>
-<th class="cl-3015b4b2"><p class="cl-30159806"><span class="cl-3012fd80">wt</span></p></th>
-<th class="cl-3015b4b2"><p class="cl-30159806"><span class="cl-3012fd80">qsec</span></p></th>
-<th class="cl-3015b4b2"><p class="cl-30159806"><span class="cl-3012fd80">vs</span></p></th>
-<th class="cl-3015b4b2"><p class="cl-30159806"><span class="cl-3012fd80">am</span></p></th>
-<th class="cl-3015b4b2"><p class="cl-30159806"><span class="cl-3012fd80">gear</span></p></th>
-<th class="cl-3015b4b2"><p class="cl-30159806"><span class="cl-3012fd80">carb</span></p></th>
+<th class="cl-e77f8666"><p class="cl-e77f6afa"><span class="cl-e77cd308">car</span></p></th>
+<th class="cl-e77f8666"><p class="cl-e77f6afa"><span class="cl-e77cd308">mpg</span></p></th>
+<th class="cl-e77f8666"><p class="cl-e77f6afa"><span class="cl-e77cd308">cyl</span></p></th>
+<th class="cl-e77f8666"><p class="cl-e77f6afa"><span class="cl-e77cd308">disp</span></p></th>
+<th class="cl-e77f8666"><p class="cl-e77f6afa"><span class="cl-e77cd308">hp</span></p></th>
+<th class="cl-e77f8666"><p class="cl-e77f6afa"><span class="cl-e77cd308">drat</span></p></th>
+<th class="cl-e77f8666"><p class="cl-e77f6afa"><span class="cl-e77cd308">wt</span></p></th>
+<th class="cl-e77f8666"><p class="cl-e77f6afa"><span class="cl-e77cd308">qsec</span></p></th>
+<th class="cl-e77f8666"><p class="cl-e77f6afa"><span class="cl-e77cd308">vs</span></p></th>
+<th class="cl-e77f8666"><p class="cl-e77f6afa"><span class="cl-e77cd308">am</span></p></th>
+<th class="cl-e77f8666"><p class="cl-e77f6afa"><span class="cl-e77cd308">gear</span></p></th>
+<th class="cl-e77f8666"><p class="cl-e77f6afa"><span class="cl-e77cd308">carb</span></p></th>
 </tr></thead>
 <tbody>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-3015b4bc"><p class="cl-30159806"><span class="cl-3012fd80">Mazda RX4</span></p></td>
-<td class="cl-3015b4bd"><p class="cl-30159806"><span class="cl-3012fd8a">21.0</span></p></td>
-<td class="cl-3015b4bd"><p class="cl-30159806"><span class="cl-3012fd8a">6</span></p></td>
-<td class="cl-3015b4bd"><p class="cl-30159806"><span class="cl-3012fd8a">160</span></p></td>
-<td class="cl-3015b4bd"><p class="cl-30159806"><span class="cl-3012fd8a">110</span></p></td>
-<td class="cl-3015b4bd"><p class="cl-30159806"><span class="cl-3012fd8a">3.90</span></p></td>
-<td class="cl-3015b4bd"><p class="cl-30159806"><span class="cl-3012fd8a">2.620</span></p></td>
-<td class="cl-3015b4bd"><p class="cl-30159806"><span class="cl-3012fd8a">16.46</span></p></td>
-<td class="cl-3015b4bd"><p class="cl-30159806"><span class="cl-3012fd8a">0</span></p></td>
-<td class="cl-3015b4bd"><p class="cl-30159806"><span class="cl-3012fd8a">1</span></p></td>
-<td class="cl-3015b4bd"><p class="cl-30159806"><span class="cl-3012fd8a">4</span></p></td>
-<td class="cl-3015b4c6"><p class="cl-30159806"><span class="cl-3012fd8a">4</span></p></td>
+<td class="cl-e77f8667"><p class="cl-e77f6afa"><span class="cl-e77cd308">Mazda RX4</span></p></td>
+<td class="cl-e77f8670"><p class="cl-e77f6afa"><span class="cl-e77cd312">21.0</span></p></td>
+<td class="cl-e77f8670"><p class="cl-e77f6afa"><span class="cl-e77cd312">6</span></p></td>
+<td class="cl-e77f8670"><p class="cl-e77f6afa"><span class="cl-e77cd312">160</span></p></td>
+<td class="cl-e77f8670"><p class="cl-e77f6afa"><span class="cl-e77cd312">110</span></p></td>
+<td class="cl-e77f8670"><p class="cl-e77f6afa"><span class="cl-e77cd312">3.90</span></p></td>
+<td class="cl-e77f8670"><p class="cl-e77f6afa"><span class="cl-e77cd312">2.620</span></p></td>
+<td class="cl-e77f8670"><p class="cl-e77f6afa"><span class="cl-e77cd312">16.46</span></p></td>
+<td class="cl-e77f8670"><p class="cl-e77f6afa"><span class="cl-e77cd312">0</span></p></td>
+<td class="cl-e77f8670"><p class="cl-e77f6afa"><span class="cl-e77cd312">1</span></p></td>
+<td class="cl-e77f8670"><p class="cl-e77f6afa"><span class="cl-e77cd312">4</span></p></td>
+<td class="cl-e77f8671"><p class="cl-e77f6afa"><span class="cl-e77cd312">4</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-3015b4c7"><p class="cl-30159806"><span class="cl-3012fd80">Mazda RX4 Wag</span></p></td>
-<td class="cl-3015b4c8"><p class="cl-30159806"><span class="cl-3012fd8a">21.0</span></p></td>
-<td class="cl-3015b4c8"><p class="cl-30159806"><span class="cl-3012fd8a">6</span></p></td>
-<td class="cl-3015b4c8"><p class="cl-30159806"><span class="cl-3012fd8a">160</span></p></td>
-<td class="cl-3015b4c8"><p class="cl-30159806"><span class="cl-3012fd8a">110</span></p></td>
-<td class="cl-3015b4c8"><p class="cl-30159806"><span class="cl-3012fd8a">3.90</span></p></td>
-<td class="cl-3015b4c8"><p class="cl-30159806"><span class="cl-3012fd8a">2.875</span></p></td>
-<td class="cl-3015b4c8"><p class="cl-30159806"><span class="cl-3012fd8a">17.02</span></p></td>
-<td class="cl-3015b4c8"><p class="cl-30159806"><span class="cl-3012fd8a">0</span></p></td>
-<td class="cl-3015b4c8"><p class="cl-30159806"><span class="cl-3012fd8a">1</span></p></td>
-<td class="cl-3015b4c8"><p class="cl-30159806"><span class="cl-3012fd8a">4</span></p></td>
-<td class="cl-3015b4c9"><p class="cl-30159806"><span class="cl-3012fd8a">4</span></p></td>
+<td class="cl-e77f867a"><p class="cl-e77f6afa"><span class="cl-e77cd308">Mazda RX4 Wag</span></p></td>
+<td class="cl-e77f867b"><p class="cl-e77f6afa"><span class="cl-e77cd312">21.0</span></p></td>
+<td class="cl-e77f867b"><p class="cl-e77f6afa"><span class="cl-e77cd312">6</span></p></td>
+<td class="cl-e77f867b"><p class="cl-e77f6afa"><span class="cl-e77cd312">160</span></p></td>
+<td class="cl-e77f867b"><p class="cl-e77f6afa"><span class="cl-e77cd312">110</span></p></td>
+<td class="cl-e77f867b"><p class="cl-e77f6afa"><span class="cl-e77cd312">3.90</span></p></td>
+<td class="cl-e77f867b"><p class="cl-e77f6afa"><span class="cl-e77cd312">2.875</span></p></td>
+<td class="cl-e77f867b"><p class="cl-e77f6afa"><span class="cl-e77cd312">17.02</span></p></td>
+<td class="cl-e77f867b"><p class="cl-e77f6afa"><span class="cl-e77cd312">0</span></p></td>
+<td class="cl-e77f867b"><p class="cl-e77f6afa"><span class="cl-e77cd312">1</span></p></td>
+<td class="cl-e77f867b"><p class="cl-e77f6afa"><span class="cl-e77cd312">4</span></p></td>
+<td class="cl-e77f867c"><p class="cl-e77f6afa"><span class="cl-e77cd312">4</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-3015b4c7"><p class="cl-30159806"><span class="cl-3012fd80">Datsun 710</span></p></td>
-<td class="cl-3015b4d0"><p class="cl-30159806"><span class="cl-3012fd8a">22.8</span></p></td>
-<td class="cl-3015b4d0"><p class="cl-30159806"><span class="cl-3012fd8a">4</span></p></td>
-<td class="cl-3015b4d0"><p class="cl-30159806"><span class="cl-3012fd8a">108</span></p></td>
-<td class="cl-3015b4d0"><p class="cl-30159806"><span class="cl-3012fd8a">93</span></p></td>
-<td class="cl-3015b4d0"><p class="cl-30159806"><span class="cl-3012fd8a">3.85</span></p></td>
-<td class="cl-3015b4d0"><p class="cl-30159806"><span class="cl-3012fd8a">2.320</span></p></td>
-<td class="cl-3015b4d0"><p class="cl-30159806"><span class="cl-3012fd8a">18.61</span></p></td>
-<td class="cl-3015b4d0"><p class="cl-30159806"><span class="cl-3012fd8a">1</span></p></td>
-<td class="cl-3015b4d0"><p class="cl-30159806"><span class="cl-3012fd8a">1</span></p></td>
-<td class="cl-3015b4d0"><p class="cl-30159806"><span class="cl-3012fd8a">4</span></p></td>
-<td class="cl-3015b4d1"><p class="cl-30159806"><span class="cl-3012fd8a">1</span></p></td>
+<td class="cl-e77f867a"><p class="cl-e77f6afa"><span class="cl-e77cd308">Datsun 710</span></p></td>
+<td class="cl-e77f8684"><p class="cl-e77f6afa"><span class="cl-e77cd312">22.8</span></p></td>
+<td class="cl-e77f8684"><p class="cl-e77f6afa"><span class="cl-e77cd312">4</span></p></td>
+<td class="cl-e77f8684"><p class="cl-e77f6afa"><span class="cl-e77cd312">108</span></p></td>
+<td class="cl-e77f8684"><p class="cl-e77f6afa"><span class="cl-e77cd312">93</span></p></td>
+<td class="cl-e77f8684"><p class="cl-e77f6afa"><span class="cl-e77cd312">3.85</span></p></td>
+<td class="cl-e77f8684"><p class="cl-e77f6afa"><span class="cl-e77cd312">2.320</span></p></td>
+<td class="cl-e77f8684"><p class="cl-e77f6afa"><span class="cl-e77cd312">18.61</span></p></td>
+<td class="cl-e77f8684"><p class="cl-e77f6afa"><span class="cl-e77cd312">1</span></p></td>
+<td class="cl-e77f8684"><p class="cl-e77f6afa"><span class="cl-e77cd312">1</span></p></td>
+<td class="cl-e77f8684"><p class="cl-e77f6afa"><span class="cl-e77cd312">4</span></p></td>
+<td class="cl-e77f8685"><p class="cl-e77f6afa"><span class="cl-e77cd312">1</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-3015b4c7"><p class="cl-30159806"><span class="cl-3012fd80">Hornet 4 Drive</span></p></td>
-<td class="cl-3015b4c8"><p class="cl-30159806"><span class="cl-3012fd8a">21.4</span></p></td>
-<td class="cl-3015b4c8"><p class="cl-30159806"><span class="cl-3012fd8a">6</span></p></td>
-<td class="cl-3015b4c8"><p class="cl-30159806"><span class="cl-3012fd8a">258</span></p></td>
-<td class="cl-3015b4c8"><p class="cl-30159806"><span class="cl-3012fd8a">110</span></p></td>
-<td class="cl-3015b4c8"><p class="cl-30159806"><span class="cl-3012fd8a">3.08</span></p></td>
-<td class="cl-3015b4c8"><p class="cl-30159806"><span class="cl-3012fd8a">3.215</span></p></td>
-<td class="cl-3015b4c8"><p class="cl-30159806"><span class="cl-3012fd8a">19.44</span></p></td>
-<td class="cl-3015b4c8"><p class="cl-30159806"><span class="cl-3012fd8a">1</span></p></td>
-<td class="cl-3015b4c8"><p class="cl-30159806"><span class="cl-3012fd8a">0</span></p></td>
-<td class="cl-3015b4c8"><p class="cl-30159806"><span class="cl-3012fd8a">3</span></p></td>
-<td class="cl-3015b4c9"><p class="cl-30159806"><span class="cl-3012fd8a">1</span></p></td>
+<td class="cl-e77f867a"><p class="cl-e77f6afa"><span class="cl-e77cd308">Hornet 4 Drive</span></p></td>
+<td class="cl-e77f867b"><p class="cl-e77f6afa"><span class="cl-e77cd312">21.4</span></p></td>
+<td class="cl-e77f867b"><p class="cl-e77f6afa"><span class="cl-e77cd312">6</span></p></td>
+<td class="cl-e77f867b"><p class="cl-e77f6afa"><span class="cl-e77cd312">258</span></p></td>
+<td class="cl-e77f867b"><p class="cl-e77f6afa"><span class="cl-e77cd312">110</span></p></td>
+<td class="cl-e77f867b"><p class="cl-e77f6afa"><span class="cl-e77cd312">3.08</span></p></td>
+<td class="cl-e77f867b"><p class="cl-e77f6afa"><span class="cl-e77cd312">3.215</span></p></td>
+<td class="cl-e77f867b"><p class="cl-e77f6afa"><span class="cl-e77cd312">19.44</span></p></td>
+<td class="cl-e77f867b"><p class="cl-e77f6afa"><span class="cl-e77cd312">1</span></p></td>
+<td class="cl-e77f867b"><p class="cl-e77f6afa"><span class="cl-e77cd312">0</span></p></td>
+<td class="cl-e77f867b"><p class="cl-e77f6afa"><span class="cl-e77cd312">3</span></p></td>
+<td class="cl-e77f867c"><p class="cl-e77f6afa"><span class="cl-e77cd312">1</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-3015b4da"><p class="cl-30159806"><span class="cl-3012fd80">Hornet Sportabout</span></p></td>
-<td class="cl-3015b4db"><p class="cl-30159806"><span class="cl-3012fd8a">18.7</span></p></td>
-<td class="cl-3015b4db"><p class="cl-30159806"><span class="cl-3012fd8a">8</span></p></td>
-<td class="cl-3015b4db"><p class="cl-30159806"><span class="cl-3012fd8a">360</span></p></td>
-<td class="cl-3015b4db"><p class="cl-30159806"><span class="cl-3012fd8a">175</span></p></td>
-<td class="cl-3015b4db"><p class="cl-30159806"><span class="cl-3012fd8a">3.15</span></p></td>
-<td class="cl-3015b4db"><p class="cl-30159806"><span class="cl-3012fd8a">3.440</span></p></td>
-<td class="cl-3015b4db"><p class="cl-30159806"><span class="cl-3012fd8a">17.02</span></p></td>
-<td class="cl-3015b4db"><p class="cl-30159806"><span class="cl-3012fd8a">0</span></p></td>
-<td class="cl-3015b4db"><p class="cl-30159806"><span class="cl-3012fd8a">0</span></p></td>
-<td class="cl-3015b4db"><p class="cl-30159806"><span class="cl-3012fd8a">3</span></p></td>
-<td class="cl-3015b4dc"><p class="cl-30159806"><span class="cl-3012fd8a">2</span></p></td>
+<td class="cl-e77f868e"><p class="cl-e77f6afa"><span class="cl-e77cd308">Hornet Sportabout</span></p></td>
+<td class="cl-e77f868f"><p class="cl-e77f6afa"><span class="cl-e77cd312">18.7</span></p></td>
+<td class="cl-e77f868f"><p class="cl-e77f6afa"><span class="cl-e77cd312">8</span></p></td>
+<td class="cl-e77f868f"><p class="cl-e77f6afa"><span class="cl-e77cd312">360</span></p></td>
+<td class="cl-e77f868f"><p class="cl-e77f6afa"><span class="cl-e77cd312">175</span></p></td>
+<td class="cl-e77f868f"><p class="cl-e77f6afa"><span class="cl-e77cd312">3.15</span></p></td>
+<td class="cl-e77f868f"><p class="cl-e77f6afa"><span class="cl-e77cd312">3.440</span></p></td>
+<td class="cl-e77f868f"><p class="cl-e77f6afa"><span class="cl-e77cd312">17.02</span></p></td>
+<td class="cl-e77f868f"><p class="cl-e77f6afa"><span class="cl-e77cd312">0</span></p></td>
+<td class="cl-e77f868f"><p class="cl-e77f6afa"><span class="cl-e77cd312">0</span></p></td>
+<td class="cl-e77f868f"><p class="cl-e77f6afa"><span class="cl-e77cd312">3</span></p></td>
+<td class="cl-e77f8690"><p class="cl-e77f6afa"><span class="cl-e77cd312">2</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -184,38 +186,38 @@ only include certain variables, you could do as follows:</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">car</span>, <span class="va">mpg</span>, <span class="va">hp</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/omni_table.html">omni_table</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="tabwid">
-<style>.cl-303274a8{}.cl-302d3376{font-family:'Calibri';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(255, 255, 255, 1.00);background-color:transparent;}.cl-302d338a{font-family:'Calibri';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(51, 51, 51, 1.00);background-color:transparent;}.cl-302f633a{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-302f7c8a{width:0.75in;background-color:rgba(49, 65, 96, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-302f7c8b{width:0.75in;background-color:rgba(49, 65, 96, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-302f7c94{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-302f7c95{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-302f7c96{width:0.75in;background-color:rgba(49, 65, 96, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-302f7c9e{width:0.75in;background-color:rgba(157, 174, 206, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-302f7ca8{width:0.75in;background-color:rgba(157, 174, 206, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-302f7ca9{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-302f7caa{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-302f7cab{width:0.75in;background-color:rgba(49, 65, 96, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-302f7cb2{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-302f7cb3{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="table cl-303274a8">
+<style>.cl-e79bde88{}.cl-e795cfd4{font-family:'Calibri';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(255, 255, 255, 1.00);background-color:transparent;}.cl-e795cfde{font-family:'Calibri';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(51, 51, 51, 1.00);background-color:transparent;}.cl-e798cf0e{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e798e818{width:0.75in;background-color:rgba(49, 65, 96, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e798e819{width:0.75in;background-color:rgba(49, 65, 96, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e798e81a{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e798e822{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e798e823{width:0.75in;background-color:rgba(49, 65, 96, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e798e824{width:0.75in;background-color:rgba(157, 174, 206, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e798e825{width:0.75in;background-color:rgba(157, 174, 206, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e798e826{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e798e82c{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(255, 255, 255, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e798e82d{width:0.75in;background-color:rgba(49, 65, 96, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e798e82e{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 1pt solid rgba(255, 255, 255, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e798e82f{width:0.75in;background-color:rgba(206, 214, 230, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(255, 255, 255, 1.00);border-left: 1pt solid rgba(255, 255, 255, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="table cl-e79bde88">
 <thead><tr style="overflow-wrap:break-word;">
-<th class="cl-302f7c8a"><p class="cl-302f633a"><span class="cl-302d3376">car</span></p></th>
-<th class="cl-302f7c8a"><p class="cl-302f633a"><span class="cl-302d3376">mpg</span></p></th>
-<th class="cl-302f7c8a"><p class="cl-302f633a"><span class="cl-302d3376">hp</span></p></th>
+<th class="cl-e798e818"><p class="cl-e798cf0e"><span class="cl-e795cfd4">car</span></p></th>
+<th class="cl-e798e818"><p class="cl-e798cf0e"><span class="cl-e795cfd4">mpg</span></p></th>
+<th class="cl-e798e818"><p class="cl-e798cf0e"><span class="cl-e795cfd4">hp</span></p></th>
 </tr></thead>
 <tbody>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-302f7c8b"><p class="cl-302f633a"><span class="cl-302d3376">Mazda RX4</span></p></td>
-<td class="cl-302f7c94"><p class="cl-302f633a"><span class="cl-302d338a">21.0</span></p></td>
-<td class="cl-302f7c95"><p class="cl-302f633a"><span class="cl-302d338a">110</span></p></td>
+<td class="cl-e798e819"><p class="cl-e798cf0e"><span class="cl-e795cfd4">Mazda RX4</span></p></td>
+<td class="cl-e798e81a"><p class="cl-e798cf0e"><span class="cl-e795cfde">21.0</span></p></td>
+<td class="cl-e798e822"><p class="cl-e798cf0e"><span class="cl-e795cfde">110</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-302f7c96"><p class="cl-302f633a"><span class="cl-302d3376">Mazda RX4 Wag</span></p></td>
-<td class="cl-302f7c9e"><p class="cl-302f633a"><span class="cl-302d338a">21.0</span></p></td>
-<td class="cl-302f7ca8"><p class="cl-302f633a"><span class="cl-302d338a">110</span></p></td>
+<td class="cl-e798e823"><p class="cl-e798cf0e"><span class="cl-e795cfd4">Mazda RX4 Wag</span></p></td>
+<td class="cl-e798e824"><p class="cl-e798cf0e"><span class="cl-e795cfde">21.0</span></p></td>
+<td class="cl-e798e825"><p class="cl-e798cf0e"><span class="cl-e795cfde">110</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-302f7c96"><p class="cl-302f633a"><span class="cl-302d3376">Datsun 710</span></p></td>
-<td class="cl-302f7ca9"><p class="cl-302f633a"><span class="cl-302d338a">22.8</span></p></td>
-<td class="cl-302f7caa"><p class="cl-302f633a"><span class="cl-302d338a">93</span></p></td>
+<td class="cl-e798e823"><p class="cl-e798cf0e"><span class="cl-e795cfd4">Datsun 710</span></p></td>
+<td class="cl-e798e826"><p class="cl-e798cf0e"><span class="cl-e795cfde">22.8</span></p></td>
+<td class="cl-e798e82c"><p class="cl-e798cf0e"><span class="cl-e795cfde">93</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-302f7c96"><p class="cl-302f633a"><span class="cl-302d3376">Hornet 4 Drive</span></p></td>
-<td class="cl-302f7c9e"><p class="cl-302f633a"><span class="cl-302d338a">21.4</span></p></td>
-<td class="cl-302f7ca8"><p class="cl-302f633a"><span class="cl-302d338a">110</span></p></td>
+<td class="cl-e798e823"><p class="cl-e798cf0e"><span class="cl-e795cfd4">Hornet 4 Drive</span></p></td>
+<td class="cl-e798e824"><p class="cl-e798cf0e"><span class="cl-e795cfde">21.4</span></p></td>
+<td class="cl-e798e825"><p class="cl-e798cf0e"><span class="cl-e795cfde">110</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-302f7cab"><p class="cl-302f633a"><span class="cl-302d3376">Hornet Sportabout</span></p></td>
-<td class="cl-302f7cb2"><p class="cl-302f633a"><span class="cl-302d338a">18.7</span></p></td>
-<td class="cl-302f7cb3"><p class="cl-302f633a"><span class="cl-302d338a">175</span></p></td>
+<td class="cl-e798e82d"><p class="cl-e798cf0e"><span class="cl-e795cfd4">Hornet Sportabout</span></p></td>
+<td class="cl-e798e82e"><p class="cl-e798cf0e"><span class="cl-e795cfde">18.7</span></p></td>
+<td class="cl-e798e82f"><p class="cl-e798cf0e"><span class="cl-e795cfde">175</span></p></td>
 </tr>
 </tbody>
 </table>
