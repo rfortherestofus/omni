@@ -2,7 +2,7 @@
 title: "Project title"
 subtitle: "What you are doing"
 author: "Who is doing it"
-date: "`r Sys.Date()`"
+date: "`r Sys.Date() |> format('%B %d, %Y')`"
 output:
   omni::omni_html_report:
     hypothesis: false

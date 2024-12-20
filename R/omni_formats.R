@@ -65,29 +65,31 @@ omni_pdf_memo <-
 
     # change CSS variables
     if (!is.null(main_font)) {
-      main_font_css <- paste0("--main-font: ", main_font , ";")
-    } else{
+      main_font_css <- paste0("--main-font: ", main_font, ";")
+    } else {
       main_font_css <- ""
     }
 
     if (!is.null(header_font)) {
-      header_font_css <- paste0("--header-font: ", header_font , ";")
-    } else{
+      header_font_css <- paste0("--header-font: ", header_font, ";")
+    } else {
       header_font_css <- ""
     }
 
     if (!is.null(main_color)) {
-      main_color_css <- paste0("--main-color: ", main_color , ";")
-    } else{
+      main_color_css <- paste0("--main-color: ", main_color, ";")
+    } else {
       main_color_css <- ""
     }
 
     additional_css <-
-      paste0(":root{",
-             main_font_css,
-             header_font_css,
-             main_color_css,
-             "}")
+      paste0(
+        ":root{",
+        main_font_css,
+        header_font_css,
+        main_color_css,
+        "}"
+      )
 
     # write tempfile
     tempfile_name <- paste0(tempfile(), ".css")
@@ -103,7 +105,6 @@ omni_pdf_memo <-
       css = c(css_style, tempfile_name),
       ...
     )
-
   }
 
 
@@ -140,7 +141,7 @@ omni_word_report <- function(number_sections = TRUE,
 #' @export
 #'
 omni_word_report_new <- function(number_sections = TRUE,
-                             ...) {
+                                 ...) {
   # word template
   word_template <-
     pkg_resource("omni_word_report_new.docx")
@@ -223,6 +224,25 @@ omni_html_slidy <- function(hypothesis = FALSE, ...) {
   rmarkdown::slidy_presentation(
     css = c(css_slidy),
     includes = rmarkdown::includes(before_body = include_hypothesis(hypothesis)),
+    ...
+  )
+}
+
+#' Omni HTML Rmarkdown template
+#'
+#' @name omni_rmarkdown
+#' @param ... Other params to rmarkdown::html_document
+#'
+#' @return An rmd format
+#' @export
+#'
+omni_rmarkdown <- function(...) {
+  template <- pkg_resource("rmarkdown_template.html")
+  css <- pkg_resource("omni_rmarkdown.css")
+
+  rmarkdown::html_document(
+    template = template,
+    css = css,
     ...
   )
 }
