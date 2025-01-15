@@ -228,21 +228,21 @@ omni_html_slidy <- function(hypothesis = FALSE, ...) {
   )
 }
 
-#' Omni HTML Rmarkdown template
-#'
-#' @name omni_rmarkdown
-#' @param ... Other params to rmarkdown::html_document
-#'
-#' @return An rmd format
-#' @export
-#'
-omni_rmarkdown <- function(...) {
-  template <- pkg_resource("rmarkdown_template.html")
-  css <- pkg_resource("omni_rmarkdown.css")
+# Omni HTML Rmarkdown template
+#
+# @name omni_rmarkdown
+# @param ... Other params to rmarkdown::html_document
+# 
+# @return An rmd format
+# @export
 
-  rmarkdown::html_document(
-    template = template,
-    css = css,
-    ...
-  )
-}
+# omni_rmarkdown <- function(...) {
+#   template <- pkg_resource("rmarkdown_template.html")
+#   css <- pkg_resource("omni_rmarkdown.css")
+# 
+#   rmarkdown::html_document(
+#     template = template,
+#     css = css,
+#     ...
+#   )
+# }
