@@ -98,12 +98,12 @@ set_omni_defaults <- function(
 ggplot_defaults <- function() {
   ggplot2::theme_set(ggplot2::theme_grey())
 
-  # add Helvetica font to text and label geoms ---------------------------
+  # add Inter Tight font to text and label geoms ---------------------------
 
-  ggplot2::update_geom_defaults("text", list(family = "Helvetica"))
-  ggplot2::update_geom_defaults("label", list(family = "Helvetica"))
-  ggplot2::update_geom_defaults("text_repel", list(family = "Helvetica"))
-  ggplot2::update_geom_defaults("label_repel", list(family = "Helvetica"))
+  ggplot2::update_geom_defaults("text", list(family = "Inter Tight"))
+  ggplot2::update_geom_defaults("label", list(family = "Inter Tight"))
+  ggplot2::update_geom_defaults("text_repel", list(family = "Inter Tight"))
+  ggplot2::update_geom_defaults("label_repel", list(family = "Inter Tight"))
 
   # set default colours for monochromatic geoms -----------------------------
 
