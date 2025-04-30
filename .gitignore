@@ -16,3 +16,6 @@ inst/rmarkdown/templates/word_report/skeleton/~$eleton.docx
 test.Rmd
 test.html
 temp.*
+
+# vs code config file
+.vscode/
