@@ -11,17 +11,20 @@ report_year: "Report Year"
 project_team: "Project Team"
 project_code: "Project Code"
 acknowledgements: "Names of People to Thank"
-author: "Your Name"
+author: "Author test"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 toc-title: "Table of Contents"
 knit: pagedown::chrome_print
 output:
   omni::omni_pdf_report
-customjs: "`r system.file('assets/js/lof.js', package = 'omni')`"
 abstract: >-
   ```{r, child = system.file('assets/rmd/abstract.Rmd', package = 'omni')}
   ```
 ---
+
+```{=html}
+<link rel="stylesheet" href="omni_pdf_report.css" type="text/css">
+```
 
 ## Introduction
 

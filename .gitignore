@@ -19,3 +19,4 @@ temp.*
 
 # vs code config file
 .vscode/
+/.quarto/
