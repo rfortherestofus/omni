@@ -295,7 +295,7 @@ scale_fill_omni_continuous <- function(
 #' ggplot(mpg_summary, aes(x = class, y = avg_hwy, fill = avg_hwy)) +
 #'   geom_bar(stat = "identity") +
 #'   scale_fill_orange_red_omni_continuous()
-scale_fill_orange_red_omni_continuous <- function(reverse, ...) {
+scale_fill_orange_red_omni_continuous <- function(reverse = FALSE, ...) {
     scale_fill_omni_continuous(
         c("orange.red.light", "orange.red", "orange.red.dark"),
         reverse,
@@ -321,7 +321,7 @@ scale_fill_orange_red_omni_continuous <- function(reverse, ...) {
 #' ggplot(mpg_summary, aes(x = class, y = avg_hwy, fill = avg_hwy)) +
 #'   geom_bar(stat = "identity") +
 #'   scale_fill_golden_yellow_omni_continuous()
-scale_fill_golden_yellow_omni_continuous <- function(reverse, ...) {
+scale_fill_golden_yellow_omni_continuous <- function(reverse = FALSE, ...) {
     scale_fill_omni_continuous(
         c("golden.yellow.light", "golden.yellow", "golden.yellow.dark"),
         reverse,
@@ -347,7 +347,7 @@ scale_fill_golden_yellow_omni_continuous <- function(reverse, ...) {
 #' ggplot(mpg_summary, aes(x = class, y = avg_hwy, fill = avg_hwy)) +
 #'   geom_bar(stat = "identity") +
 #'   scale_fill_olive_green_omni_continuous()
-scale_fill_olive_green_omni_continuous <- function(reverse, ...) {
+scale_fill_olive_green_omni_continuous <- function(reverse = FALSE, ...) {
     scale_fill_omni_continuous(
         c("olive.green.light", "olive.green", "olive.green.dark"),
         reverse,
@@ -373,7 +373,7 @@ scale_fill_olive_green_omni_continuous <- function(reverse, ...) {
 #' ggplot(mpg_summary, aes(x = class, y = avg_hwy, fill = avg_hwy)) +
 #'   geom_bar(stat = "identity") +
 #'   scale_fill_teal_omni_continuous()
-scale_fill_teal_omni_continuous <- function(reverse, ...) {
+scale_fill_teal_omni_continuous <- function(reverse = FALSE, ...) {
     scale_fill_omni_continuous(
         c("teal.light", "teal", "teal.dark"),
         reverse,
@@ -399,7 +399,7 @@ scale_fill_teal_omni_continuous <- function(reverse, ...) {
 #' ggplot(mpg_summary, aes(x = class, y = avg_hwy, fill = avg_hwy)) +
 #'   geom_bar(stat = "identity") +
 #'   scale_fill_plum_omni_continuous()
-scale_fill_plum_omni_continuous <- function(reverse, ...) {
+scale_fill_plum_omni_continuous <- function(reverse = FALSE, ...) {
     scale_fill_omni_continuous(
         c("plum.light", "plum", "plum.dark"),
         reverse,
@@ -425,7 +425,7 @@ scale_fill_plum_omni_continuous <- function(reverse, ...) {
 #' ggplot(mpg_summary, aes(x = class, y = avg_hwy, fill = avg_hwy)) +
 #'   geom_bar(stat = "identity") +
 #'   scale_fill_periwinkle_omni_continuous()
-scale_fill_periwinkle_omni_continuous <- function(reverse, ...) {
+scale_fill_periwinkle_omni_continuous <- function(reverse = FALSE, ...) {
     scale_fill_omni_continuous(
         c("periwinkle.light", "periwinkle", "periwinkle.dark"),
         reverse,

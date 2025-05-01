@@ -4,7 +4,7 @@
 \alias{scale_fill_plum_omni_continuous}
 \title{Plum continuous fill scale based on OMNI colors}
 \usage{
-scale_fill_plum_omni_continuous(reverse, ...)
+scale_fill_plum_omni_continuous(reverse = FALSE, ...)
 }
 \arguments{
 \item{reverse}{Boolean, should palette be reversed?}

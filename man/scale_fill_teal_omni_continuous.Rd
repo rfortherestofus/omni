@@ -4,7 +4,7 @@
 \alias{scale_fill_teal_omni_continuous}
 \title{Teal continuous fill scale based on OMNI colors}
 \usage{
-scale_fill_teal_omni_continuous(reverse, ...)
+scale_fill_teal_omni_continuous(reverse = FALSE, ...)
 }
 \arguments{
 \item{reverse}{Boolean, should palette be reversed?}
