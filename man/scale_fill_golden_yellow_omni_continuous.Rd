@@ -10,8 +10,6 @@ scale_fill_golden_yellow_omni_continuous(reverse = FALSE, ...)
 \item{reverse}{Boolean, should palette be reversed?}
 
 \item{...}{Additional arguments passed to scale_fill_gradientn()}
-
-\item{palette}{Character vector of OMNI colors.}
 }
 \description{
 Golden-yellow continuous fill scale based on OMNI colors
