@@ -4,15 +4,25 @@
 \alias{scale_fill_omni_discrete}
 \title{Discrete fill scale based on OMNI colors}
 \usage{
-scale_fill_omni_discrete(palette = "Main", reverse = FALSE, ...)
+scale_fill_omni_discrete(
+  palette = c("orange.red", "golden.yellow", "olive.green", "teal", "plum", "periwinkle"),
+  reverse = FALSE,
+  ...
+)
 }
 \arguments{
-\item{palette}{Character name of palette in omni_palettes ("Main" or "Blues")}
+\item{palette}{Character vector of OMNI colors.}
 
-\item{reverse}{Boolean indicating whether the palette should be reversed}
+\item{reverse}{Boolean, should palette be reversed?}
 
 \item{...}{Additional arguments passed to discrete_scale()}
 }
 \description{
 Discrete fill scale based on OMNI colors
+}
+\examples{
+library(ggplot2)
+ggplot(mpg, aes(x = class, fill = class)) +
+  geom_bar() +
+  scale_fill_omni_discrete()
 }

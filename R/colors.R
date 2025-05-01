@@ -83,7 +83,7 @@ omni_colors <- function(
 #' Function to interpolate a OMNI color palette
 #'
 #' @name omni_pal
-#' @param palette Character vector of colors.
+#' @param palette Character vector of OMNI colors.
 #' @param reverse Boolean, should palette be reversed?
 #' @param ... Additional arguments for colorRampPalette()
 #' @return A function that generates interpolated colors.
@@ -92,7 +92,14 @@ omni_colors <- function(
 #' omni_palette <- omni_pal(c("periwinkle.dark", "orange.red"))
 #' omni_palette(10)
 omni_pal <- function(
-    palette,
+    palette = c(
+        "orange.red",
+        "golden.yellow",
+        "olive.green",
+        "teal",
+        "plum",
+        "periwinkle"
+    ),
     reverse = FALSE,
     ...
 ) {
@@ -105,35 +112,11 @@ omni_pal <- function(
     grDevices::colorRampPalette(pal, ...)
 }
 
-#' Discrete color scale based on OMNI colors
-#'
-#' @name scale_color_omni_discrete
-#' @param palette Character vector of colors.
-#' @param reverse Boolean, should palette be reversed?
-#' @param ... Additional arguments passed to discrete_scale()
-#' @export
-#' @examples
-#' library(ggplot2)
-#' ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
-#'     geom_point(size = 2.5) +
-#'     scale_color_omni_discrete()
-scale_color_omni_discrete <- function(
-    palette = c("periwinkle.dark", "orange.red"),
-    reverse = FALSE,
-    ...
-) {
-    ggplot2::discrete_scale(
-        aesthetics = "color",
-        scale_name = "omni",
-        palette = omni_pal(palette, reverse),
-        ...
-    )
-}
 
 #' Continuous color scale based on OMNI colors
 #'
 #' @name scale_color_omni_continuous
-#' @param palette Character vector of colors.
+#' @param palette Character vector of OMNI colors.
 #' @param reverse Boolean, should palette be reversed?
 #' @param ... Additional arguments passed to scale_color_gradientn()
 #' @export
@@ -143,7 +126,7 @@ scale_color_omni_discrete <- function(
 #'     geom_point(size = 2.5) +
 #'     scale_color_omni_continuous()
 scale_color_omni_continuous <- function(
-    palette = c("periwinkle.dark", "orange.red"),
+    palette = c("orange.red.light", "orange.red", "orange.red.dark"),
     reverse = FALSE,
     ...
 ) {
@@ -271,7 +254,7 @@ scale_color_periwinkle_omni_continuous <- function(reverse = FALSE, ...) {
 #' Continuous fill scale based on OMNI colors
 #'
 #' @name scale_fill_omni_continuous
-#' @param palette Character vector of colors.
+#' @param palette Character vector of OMNI colors.
 #' @param reverse Boolean, should palette be reversed?
 #' @param ... Additional arguments passed to scale_fill_gradientn()
 #' @export
@@ -286,14 +269,18 @@ scale_color_periwinkle_omni_continuous <- function(reverse = FALSE, ...) {
 #' ggplot(mpg_summary, aes(x = class, y = avg_hwy, fill = avg_hwy)) +
 #'   geom_bar(stat = "identity") +
 #'   scale_fill_omni_continuous()
-scale_fill_omni_continuous <- function(palette, reverse = FALSE, ...) {
+scale_fill_omni_continuous <- function(
+    palette = c("orange.red.light", "orange.red", "orange.red.dark"),
+    reverse = FALSE,
+    ...
+) {
     ggplot2::scale_fill_gradientn(colors = omni_pal(palette, reverse)(256), ...)
 }
 
-#' Continuous fill scale based on OMNI colors
+#' Orange-red continuous fill scale based on OMNI colors
 #'
-#' @name scale_fill_omni_continuous
-#' @param palette Character vector of colors.
+#' @name scale_fill_orange_red_omni_continuous
+#' @param palette Character vector of OMNI colors.
 #' @param reverse Boolean, should palette be reversed?
 #' @param ... Additional arguments passed to scale_fill_gradientn()
 #' @export
@@ -307,16 +294,150 @@ scale_fill_omni_continuous <- function(palette, reverse = FALSE, ...) {
 #'
 #' ggplot(mpg_summary, aes(x = class, y = avg_hwy, fill = avg_hwy)) +
 #'   geom_bar(stat = "identity") +
-#'   scale_fill_omni_continuous()
-scale_fill_omni_continuous <- function(palette, reverse = FALSE, ...) {
-    ggplot2::scale_fill_gradientn(colors = omni_pal(palette, reverse)(256), ...)
+#'   scale_fill_orange_red_omni_continuous()
+scale_fill_orange_red_omni_continuous <- function(reverse, ...) {
+    scale_fill_omni_continuous(
+        c("orange.red.light", "orange.red", "orange.red.dark"),
+        reverse,
+        ...
+    )
+}
+
+#' Golden-yellow continuous fill scale based on OMNI colors
+#'
+#' @name scale_fill_golden_yellow_omni_continuous
+#' @param palette Character vector of OMNI colors.
+#' @param reverse Boolean, should palette be reversed?
+#' @param ... Additional arguments passed to scale_fill_gradientn()
+#' @export
+#' @examples
+#' library(ggplot2)
+#' library(dplyr)
+#'
+#' mpg_summary <- mpg |>
+#'  group_by(class) |>
+#'  summarise(avg_hwy = mean(hwy))
+#'
+#' ggplot(mpg_summary, aes(x = class, y = avg_hwy, fill = avg_hwy)) +
+#'   geom_bar(stat = "identity") +
+#'   scale_fill_golden_yellow_omni_continuous()
+scale_fill_golden_yellow_omni_continuous <- function(reverse, ...) {
+    scale_fill_omni_continuous(
+        c("golden.yellow.light", "golden.yellow", "golden.yellow.dark"),
+        reverse,
+        ...
+    )
+}
+
+#' Olive-green continuous fill scale based on OMNI colors
+#'
+#' @name scale_fill_olive_green_omni_continuous
+#' @param palette Character vector of OMNI colors.
+#' @param reverse Boolean, should palette be reversed?
+#' @param ... Additional arguments passed to scale_fill_gradientn()
+#' @export
+#' @examples
+#' library(ggplot2)
+#' library(dplyr)
+#'
+#' mpg_summary <- mpg |>
+#'  group_by(class) |>
+#'  summarise(avg_hwy = mean(hwy))
+#'
+#' ggplot(mpg_summary, aes(x = class, y = avg_hwy, fill = avg_hwy)) +
+#'   geom_bar(stat = "identity") +
+#'   scale_fill_olive_green_omni_continuous()
+scale_fill_olive_green_omni_continuous <- function(reverse, ...) {
+    scale_fill_omni_continuous(
+        c("olive.green.light", "olive.green", "olive.green.dark"),
+        reverse,
+        ...
+    )
+}
+
+#' Teal continuous fill scale based on OMNI colors
+#'
+#' @name scale_fill_teal_omni_continuous
+#' @param palette Character vector of OMNI colors.
+#' @param reverse Boolean, should palette be reversed?
+#' @param ... Additional arguments passed to scale_fill_gradientn()
+#' @export
+#' @examples
+#' library(ggplot2)
+#' library(dplyr)
+#'
+#' mpg_summary <- mpg |>
+#'  group_by(class) |>
+#'  summarise(avg_hwy = mean(hwy))
+#'
+#' ggplot(mpg_summary, aes(x = class, y = avg_hwy, fill = avg_hwy)) +
+#'   geom_bar(stat = "identity") +
+#'   scale_fill_teal_omni_continuous()
+scale_fill_teal_omni_continuous <- function(reverse, ...) {
+    scale_fill_omni_continuous(
+        c("teal.light", "teal", "teal.dark"),
+        reverse,
+        ...
+    )
+}
+
+#' Plum continuous fill scale based on OMNI colors
+#'
+#' @name scale_fill_plum_omni_continuous
+#' @param palette Character vector of OMNI colors.
+#' @param reverse Boolean, should palette be reversed?
+#' @param ... Additional arguments passed to scale_fill_gradientn()
+#' @export
+#' @examples
+#' library(ggplot2)
+#' library(dplyr)
+#'
+#' mpg_summary <- mpg |>
+#'  group_by(class) |>
+#'  summarise(avg_hwy = mean(hwy))
+#'
+#' ggplot(mpg_summary, aes(x = class, y = avg_hwy, fill = avg_hwy)) +
+#'   geom_bar(stat = "identity") +
+#'   scale_fill_plum_omni_continuous()
+scale_fill_plum_omni_continuous <- function(reverse, ...) {
+    scale_fill_omni_continuous(
+        c("plum.light", "plum", "plum.dark"),
+        reverse,
+        ...
+    )
+}
+
+#' Periwinkle continuous fill scale based on OMNI colors
+#'
+#' @name scale_fill_periwinkle_omni_continuous
+#' @param palette Character vector of OMNI colors.
+#' @param reverse Boolean, should palette be reversed?
+#' @param ... Additional arguments passed to scale_fill_gradientn()
+#' @export
+#' @examples
+#' library(ggplot2)
+#' library(dplyr)
+#'
+#' mpg_summary <- mpg |>
+#'  group_by(class) |>
+#'  summarise(avg_hwy = mean(hwy))
+#'
+#' ggplot(mpg_summary, aes(x = class, y = avg_hwy, fill = avg_hwy)) +
+#'   geom_bar(stat = "identity") +
+#'   scale_fill_periwinkle_omni_continuous()
+scale_fill_periwinkle_omni_continuous <- function(reverse, ...) {
+    scale_fill_omni_continuous(
+        c("periwinkle.light", "periwinkle", "periwinkle.dark"),
+        reverse,
+        ...
+    )
 }
 
 
 #' Discrete fill scale based on OMNI colors
 #'
 #' @name scale_fill_omni_discrete
-#' @param palette Character vector of colors.
+#' @param palette Character vector of OMNI colors.
 #' @param reverse Boolean, should palette be reversed?
 #' @param ... Additional arguments passed to discrete_scale()
 #' @export
@@ -326,12 +447,51 @@ scale_fill_omni_continuous <- function(palette, reverse = FALSE, ...) {
 #'   geom_bar() +
 #'   scale_fill_omni_discrete()
 scale_fill_omni_discrete <- function(
-    palette,
+    palette = c(
+        "orange.red",
+        "golden.yellow",
+        "olive.green",
+        "teal",
+        "plum",
+        "periwinkle"
+    ),
     reverse = FALSE,
     ...
 ) {
     ggplot2::discrete_scale(
         aesthetics = "fill",
+        scale_name = "omni",
+        palette = omni_pal(palette, reverse),
+        ...
+    )
+}
+
+#' Discrete color scale based on OMNI colors
+#'
+#' @name scale_color_omni_discrete
+#' @param palette Character vector of OMNI colors.
+#' @param reverse Boolean, should palette be reversed?
+#' @param ... Additional arguments passed to discrete_scale()
+#' @export
+#' @examples
+#' library(ggplot2)
+#' ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
+#'     geom_point(size = 2.5) +
+#'     scale_color_omni_discrete()
+scale_color_omni_discrete <- function(
+    palette = c(
+        "orange.red",
+        "golden.yellow",
+        "olive.green",
+        "teal",
+        "plum",
+        "periwinkle"
+    ),
+    reverse = FALSE,
+    ...
+) {
+    ggplot2::discrete_scale(
+        aesthetics = "color",
         scale_name = "omni",
         palette = omni_pal(palette, reverse),
         ...

@@ -4,15 +4,25 @@
 \alias{scale_color_omni_continuous}
 \title{Continuous color scale based on OMNI colors}
 \usage{
-scale_color_omni_continuous(palette = "Main", reverse = FALSE, ...)
+scale_color_omni_continuous(
+  palette = c("orange.red.light", "orange.red", "orange.red.dark"),
+  reverse = FALSE,
+  ...
+)
 }
 \arguments{
-\item{palette}{Character name of palette in omni_palettes ("Main" or "Blues")}
+\item{palette}{Character vector of OMNI colors.}
 
-\item{reverse}{Boolean indicating whether the palette should be reversed}
+\item{reverse}{Boolean, should palette be reversed?}
 
 \item{...}{Additional arguments passed to scale_color_gradientn()}
 }
 \description{
 Continuous color scale based on OMNI colors
+}
+\examples{
+library(ggplot2)
+ggplot(mpg, aes(x = displ, y = hwy, color = hwy)) +
+    geom_point(size = 2.5) +
+    scale_color_omni_continuous()
 }
