@@ -306,7 +306,6 @@ scale_fill_orange_red_omni_continuous <- function(reverse = FALSE, ...) {
 #' Golden-yellow continuous fill scale based on OMNI colors
 #'
 #' @name scale_fill_golden_yellow_omni_continuous
-#' @param palette Character vector of OMNI colors.
 #' @param reverse Boolean, should palette be reversed?
 #' @param ... Additional arguments passed to scale_fill_gradientn()
 #' @export
@@ -332,7 +331,6 @@ scale_fill_golden_yellow_omni_continuous <- function(reverse = FALSE, ...) {
 #' Olive-green continuous fill scale based on OMNI colors
 #'
 #' @name scale_fill_olive_green_omni_continuous
-#' @param palette Character vector of OMNI colors.
 #' @param reverse Boolean, should palette be reversed?
 #' @param ... Additional arguments passed to scale_fill_gradientn()
 #' @export
@@ -358,7 +356,6 @@ scale_fill_olive_green_omni_continuous <- function(reverse = FALSE, ...) {
 #' Teal continuous fill scale based on OMNI colors
 #'
 #' @name scale_fill_teal_omni_continuous
-#' @param palette Character vector of OMNI colors.
 #' @param reverse Boolean, should palette be reversed?
 #' @param ... Additional arguments passed to scale_fill_gradientn()
 #' @export
@@ -384,7 +381,6 @@ scale_fill_teal_omni_continuous <- function(reverse = FALSE, ...) {
 #' Plum continuous fill scale based on OMNI colors
 #'
 #' @name scale_fill_plum_omni_continuous
-#' @param palette Character vector of OMNI colors.
 #' @param reverse Boolean, should palette be reversed?
 #' @param ... Additional arguments passed to scale_fill_gradientn()
 #' @export
@@ -410,7 +406,6 @@ scale_fill_plum_omni_continuous <- function(reverse = FALSE, ...) {
 #' Periwinkle continuous fill scale based on OMNI colors
 #'
 #' @name scale_fill_periwinkle_omni_continuous
-#' @param palette Character vector of OMNI colors.
 #' @param reverse Boolean, should palette be reversed?
 #' @param ... Additional arguments passed to scale_fill_gradientn()
 #' @export
