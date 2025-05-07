@@ -2,11 +2,11 @@
 #'
 #' omni_colors() enables you to pull colors directly from the WVC palette.
 #' Choose from:
-#' "white", "ivory", "ivory.dark", "orange.red.light", "orange.red",
-#' "orange.red.dark", "golden.yellow.light", "golden.yellow", "golden.yellow.dark",
-#' "olive.green.light", "olive.green", "olive.green.dark", "teal.light", "teal",
-#' "teal.dark", "plum.light", "plum", "plum.dark", "periwinkle.light", "periwinkle",
-#' "periwinkle.dark", "steel.blue.light", "steel.blue.dark"
+#' "white", "ivory", "ivory 400", "orange-red 200", "orange-red 400",
+#' "orange-red 600", "golden-yellow 200", "golden-yellow 400", "golden-yellow 600",
+#' "olive-green 200", "olive-green 400", "olive-green 600", "teal 200", "teal 400",
+#' "teal 600", "plum 200", "plum 400", "plum 600", "periwinkle 200", "periwinkle 400",
+#' "periwinkle 600", "steel blue 200", "steel blue"
 #'
 #' @name omni_colors
 #' @param colors_sub Character vector of color names.
@@ -14,61 +14,63 @@
 #' @return A vector of hex codes.
 #' @export
 #' @examples
-#' omni_colors("orange.red")
-#' omni_colors(c("plum", "golden.yellow", "teal"))
-#' omni_colors(c("steel.blue.light", "olive.green"), named = TRUE)
+#' omni_colors("orange-red 400")
+#' omni_colors(c("plum 400", "golden-yellow 400", "teal 400"))
+#' omni_colors(c("steel blue 200", "olive-green 400"), named = TRUE)
 omni_colors <- function(
     colors_sub = c(
         "white",
         "ivory",
-        "ivory.dark",
-        "orange.red.light",
-        "orange.red",
-        "orange.red.dark",
-        "golden.yellow.light",
-        "golden.yellow",
-        "golden.yellow.dark",
-        "olive.green.light",
-        "olive.green",
-        "olive.green.dark",
-        "teal.light",
-        "teal",
-        "teal.dark",
-        "plum.light",
-        "plum",
-        "plum.dark",
-        "periwinkle.light",
-        "periwinkle",
-        "periwinkle.dark",
-        "steel.blue.light",
-        "steel.blue.dark"
+        "ivory 400",
+        "orange-red 200",
+        "orange-red 400",
+        "orange-red 600",
+        "golden-yellow 200",
+        "golden-yellow 400",
+        "golden-yellow 600",
+        "olive-green 200",
+        "olive-green 400",
+        "olive-green 600",
+        "teal 200",
+        "teal 400",
+        "teal 600",
+        "plum 200",
+        "plum 400",
+        "plum 600",
+        "periwinkle 200",
+        "periwinkle 400",
+        "periwinkle 600",
+        "steel blue 200",
+        "steel blue",
+        "navy"
     ),
     named = FALSE
 ) {
     omni_color_vector <- c(
-        white = "#ffffff",
-        ivory = "#F9F7F4",
-        ivory.dark = "#E9DFCF",
-        orange.red.light = "#FF9E85",
-        orange.red = "#FF5E34",
-        orange.red.dark = "#CC4100",
-        golden.yellow.light = "#FDE880",
-        golden.yellow = "#FCD82B",
-        golden.yellow.dark = "#F7B925",
-        olive.green.light = "#B8C690",
-        olive.green = "#89A046",
-        olive.green.dark = "#3B5530",
-        teal.light = "#C5DFD9",
-        teal = "#8AC0B3",
-        teal.dark = "#41816F",
-        plum.light = "#DD9CB9",
-        plum = "#C65A8B",
-        plum.dark = "#821C4C",
-        periwinkle.light = "#D4DDEB",
-        periwinkle = "#A9BAD8",
-        periwinkle.dark = "#5776B2",
-        steel.blue.light = "#BFCBD3",
-        steel.blue.dark = "#677384"
+        `white` = "#ffffff",
+        `ivory` = "#F9F7F4",
+        `ivory 400` = "#E9DFCF",
+        `orange-red 200` = "#FF9E85",
+        `orange-red 400` = "#FF5E34",
+        `orange-red 600` = "#CC4100",
+        `golden-yellow 200` = "#FDE880",
+        `golden-yellow 400` = "#FCD82B",
+        `golden-yellow 600` = "#F7B925",
+        `olive-green 200` = "#B8C690",
+        `olive-green 400` = "#89A046",
+        `olive-green 600` = "#3B5530",
+        `teal 200` = "#C5DFD9",
+        `teal 400` = "#8AC0B3",
+        `teal 600` = "#41816F",
+        `plum 200` = "#DD9CB9",
+        `plum 400` = "#C65A8B",
+        `plum 600` = "#821C4C",
+        `periwinkle 200` = "#D4DDEB",
+        `periwinkle 400` = "#A9BAD8",
+        `periwinkle 600` = "#5776B2",
+        `steel blue 200` = "#BFCBD3",
+        `steel blue` = "#677384",
+        `navy` = "#081C39"
     )
 
     output_colors <- omni_color_vector[colors_sub]
@@ -89,16 +91,16 @@ omni_colors <- function(
 #' @return A function that generates interpolated colors.
 #' @export
 #' @examples
-#' omni_palette <- omni_pal(c("periwinkle.dark", "orange.red"))
+#' omni_palette <- omni_pal(c("periwinkle 600", "orange-red 400"))
 #' omni_palette(10)
 omni_pal <- function(
     palette = c(
-        "orange.red",
-        "golden.yellow",
-        "olive.green",
-        "teal",
-        "plum",
-        "periwinkle"
+        "orange-red 400",
+        "golden-yellow 400",
+        "olive-green 400",
+        "teal 400",
+        "plum 400",
+        "periwinkle 400"
     ),
     reverse = FALSE,
     ...
@@ -126,7 +128,7 @@ omni_pal <- function(
 #'     geom_point(size = 2.5) +
 #'     scale_color_omni_continuous()
 scale_color_omni_continuous <- function(
-    palette = c("orange.red.light", "orange.red", "orange.red.dark"),
+    palette = c("orange-red 200", "orange-red 400", "orange-red 600"),
     reverse = FALSE,
     ...
 ) {
@@ -149,7 +151,7 @@ scale_color_omni_continuous <- function(
 #'     scale_color_orange_red_omni_continuous()
 scale_color_orange_red_omni_continuous <- function(reverse = FALSE, ...) {
     scale_color_omni_continuous(
-        c("orange.red.light", "orange.red", "orange.red.dark"),
+        c("orange-red 200", "orange-red 400", "orange-red 600"),
         reverse,
         ...
     )
@@ -168,7 +170,7 @@ scale_color_orange_red_omni_continuous <- function(reverse = FALSE, ...) {
 #'     scale_color_golden_yellow_omni_continuous()
 scale_color_golden_yellow_omni_continuous <- function(reverse = FALSE, ...) {
     scale_color_omni_continuous(
-        c("golden.yellow.light", "golden.yellow", "golden.yellow.dark"),
+        c("golden-yellow 200", "golden-yellow 400", "golden-yellow 600"),
         reverse,
         ...
     )
@@ -187,7 +189,7 @@ scale_color_golden_yellow_omni_continuous <- function(reverse = FALSE, ...) {
 #'     scale_color_olive_green_omni_continuous()
 scale_color_olive_green_omni_continuous <- function(reverse = FALSE, ...) {
     scale_color_omni_continuous(
-        c("olive.green.light", "olive.green", "olive.green.dark"),
+        c("olive-green 200", "olive-green 400", "olive-green 600"),
         reverse,
         ...
     )
@@ -206,7 +208,7 @@ scale_color_olive_green_omni_continuous <- function(reverse = FALSE, ...) {
 #'     scale_color_teal_omni_continuous()
 scale_color_teal_omni_continuous <- function(reverse = FALSE, ...) {
     scale_color_omni_continuous(
-        c("teal.light", "teal", "teal.dark"),
+        c("teal 200", "teal 400", "teal 600"),
         reverse,
         ...
     )
@@ -225,7 +227,7 @@ scale_color_teal_omni_continuous <- function(reverse = FALSE, ...) {
 #'     scale_color_plum_omni_continuous()
 scale_color_plum_omni_continuous <- function(reverse = FALSE, ...) {
     scale_color_omni_continuous(
-        c("plum.light", "plum", "plum.dark"),
+        c("plum 200", "plum", "plum 600"),
         reverse,
         ...
     )
@@ -244,7 +246,7 @@ scale_color_plum_omni_continuous <- function(reverse = FALSE, ...) {
 #'     scale_color_periwinkle_omni_continuous()
 scale_color_periwinkle_omni_continuous <- function(reverse = FALSE, ...) {
     scale_color_omni_continuous(
-        c("periwinkle.light", "periwinkle", "periwinkle.dark"),
+        c("periwinkle 200", "periwinkle", "periwinkle 600"),
         reverse,
         ...
     )
@@ -270,7 +272,7 @@ scale_color_periwinkle_omni_continuous <- function(reverse = FALSE, ...) {
 #'   geom_bar(stat = "identity") +
 #'   scale_fill_omni_continuous()
 scale_fill_omni_continuous <- function(
-    palette = c("orange.red.light", "orange.red", "orange.red.dark"),
+    palette = c("orange-red 200", "orange-red 400", "orange-red 600"),
     reverse = FALSE,
     ...
 ) {
@@ -296,7 +298,7 @@ scale_fill_omni_continuous <- function(
 #'   scale_fill_orange_red_omni_continuous()
 scale_fill_orange_red_omni_continuous <- function(reverse = FALSE, ...) {
     scale_fill_omni_continuous(
-        c("orange.red.light", "orange.red", "orange.red.dark"),
+        c("orange-red 200", "orange-red 400", "orange-red 600"),
         reverse,
         ...
     )
@@ -321,7 +323,7 @@ scale_fill_orange_red_omni_continuous <- function(reverse = FALSE, ...) {
 #'   scale_fill_golden_yellow_omni_continuous()
 scale_fill_golden_yellow_omni_continuous <- function(reverse = FALSE, ...) {
     scale_fill_omni_continuous(
-        c("golden.yellow.light", "golden.yellow", "golden.yellow.dark"),
+        c("golden-yellow 200", "golden-yellow 400", "golden-yellow 600"),
         reverse,
         ...
     )
@@ -346,7 +348,7 @@ scale_fill_golden_yellow_omni_continuous <- function(reverse = FALSE, ...) {
 #'   scale_fill_olive_green_omni_continuous()
 scale_fill_olive_green_omni_continuous <- function(reverse = FALSE, ...) {
     scale_fill_omni_continuous(
-        c("olive.green.light", "olive.green", "olive.green.dark"),
+        c("olive-green 200", "olive-green 400", "olive-green 600"),
         reverse,
         ...
     )
@@ -371,7 +373,7 @@ scale_fill_olive_green_omni_continuous <- function(reverse = FALSE, ...) {
 #'   scale_fill_teal_omni_continuous()
 scale_fill_teal_omni_continuous <- function(reverse = FALSE, ...) {
     scale_fill_omni_continuous(
-        c("teal.light", "teal", "teal.dark"),
+        c("teal 200", "teal 400", "teal 600"),
         reverse,
         ...
     )
@@ -396,7 +398,7 @@ scale_fill_teal_omni_continuous <- function(reverse = FALSE, ...) {
 #'   scale_fill_plum_omni_continuous()
 scale_fill_plum_omni_continuous <- function(reverse = FALSE, ...) {
     scale_fill_omni_continuous(
-        c("plum.light", "plum", "plum.dark"),
+        c("plum 200", "plum", "plum 600"),
         reverse,
         ...
     )
@@ -421,7 +423,7 @@ scale_fill_plum_omni_continuous <- function(reverse = FALSE, ...) {
 #'   scale_fill_periwinkle_omni_continuous()
 scale_fill_periwinkle_omni_continuous <- function(reverse = FALSE, ...) {
     scale_fill_omni_continuous(
-        c("periwinkle.light", "periwinkle", "periwinkle.dark"),
+        c("periwinkle 200", "periwinkle 400", "periwinkle 600"),
         reverse,
         ...
     )
@@ -442,12 +444,12 @@ scale_fill_periwinkle_omni_continuous <- function(reverse = FALSE, ...) {
 #'   scale_fill_omni_discrete()
 scale_fill_omni_discrete <- function(
     palette = c(
-        "orange.red",
-        "golden.yellow",
-        "olive.green",
-        "teal",
-        "plum",
-        "periwinkle"
+        "orange-red 400",
+        "golden-yellow 400",
+        "olive-green 400",
+        "teal 400",
+        "plum 400",
+        "periwinkle 400"
     ),
     reverse = FALSE,
     ...
@@ -474,12 +476,12 @@ scale_fill_omni_discrete <- function(
 #'     scale_color_omni_discrete()
 scale_color_omni_discrete <- function(
     palette = c(
-        "orange.red",
-        "golden.yellow",
-        "olive.green",
-        "teal",
-        "plum",
-        "periwinkle"
+        "orange-red 400",
+        "golden-yellow 400",
+        "olive-green 400",
+        "teal 400",
+        "plum 400",
+        "periwinkle 400"
     ),
     reverse = FALSE,
     ...
