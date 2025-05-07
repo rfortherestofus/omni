@@ -5,7 +5,8 @@
 \title{Discrete color scale based on OMNI colors}
 \usage{
 scale_color_omni_discrete(
-  palette = c("orange.red", "golden.yellow", "olive.green", "teal", "plum", "periwinkle"),
+  palette = c("orange-red 400", "golden-yellow 400", "olive-green 400", "teal 400",
+    "plum 400", "periwinkle 400"),
   reverse = FALSE,
   ...
 )
