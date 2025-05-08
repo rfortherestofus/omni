@@ -6,7 +6,7 @@
 
 @media screen {
   body {
-    background-color: var(--color-background);
+    background-color: white;
   }
 
   .pagedjs_pages {
@@ -27,5 +27,6 @@
 
   [class*="pagedjs_margin"] {
     box-shadow: 0 0 0 1px inset red;
+    z-index: 100;
   }
 }

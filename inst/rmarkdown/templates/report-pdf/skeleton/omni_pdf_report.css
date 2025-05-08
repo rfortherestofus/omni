@@ -13,6 +13,7 @@
   --main-font: "Neue Haas Grotesk Display Pro";
   --header-font: "Neue Haas Grotesk Text Pro";
   --background-color: #f9f7f4;
+  --dark-blue: #091d38;
   --pagedjs-margin-top: 0mm;
   --pagedjs-margin-right: 0mm;
   --pagedjs-margin-bottom: 0mm;
@@ -34,6 +35,11 @@
   @bottom-right {
     content: counter(page);
   }
+
+  @bottom-center {
+    content: "Omni Institute Report";
+    margin-left: 5in;
+  }
 }
 
 @page: first {
@@ -52,19 +58,25 @@ h1.toc-title li {
   margin-bottom: 1em !important;
 }
 
+.submitted-to {
+  font-weight: 500;
+  font-family: var(--header-font);
+}
+
+p.for-more-info,
+p.acknowledge,
+p.suggested-citation {
+  font-size: 1.2em !important;
+  margin-top: 10pt;
+  margin-bottom: 4pt;
+}
+
 /* ---- Breaks ----------------------- */
 
 /* Front cover */
-.front-cover {
+/* .front-cover {
   break-after: page;
-}
-
-/* Front page or title page */
-
-/* page breaks; aka CSS fragmentation */
-.level1 {
-  break-before: page;
-}
+} */
 
 #TOC {
   break-after: page !important;
@@ -72,7 +84,6 @@ h1.toc-title li {
 
 /* put the abstract on its own page */
 div.abstract {
-  break-after: page !important;
   break-before: page !important;
   width: 100% !important;
 }
@@ -94,6 +105,8 @@ h3.abstract {
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+/* date */
 
 h2.date {
   position: absolute;
@@ -120,8 +133,8 @@ h2.date {
 }
 
 /* title cover page */
-
-h1.title:nth-child(1)::before {
+:is(h1.title:nth-child(1)):not(.abstract h1),
+:is(h1.title:nth-child(1))::before:not(.abstract h1::before) {
   content: "Omni Institute Report";
   display: block;
   background-color: #faecc3;
@@ -135,22 +148,17 @@ h1.title:nth-child(1)::before {
   width: fit-content;
 }
 
-h1.title:nth-child(1) {
+h1.title:nth-child(1):not(.abstract h1) {
   font-weight: bolder;
   font-family: var(--header-font);
   margin-top: 2in;
 }
 
-h1.subtitle:nth-child(2) {
+h1.subtitle:nth-child(2):not(.abstract h1) {
   margin-top: 1.5in;
   border-top: 1px solid #d4ddeb;
   font-family: var(--header-font);
   font-size: 16pt;
-}
-
-/* ---- Fonts --------------------- */
-body {
-  hyphens: auto;
 }
 
 /* ---- Style ------------------ */
@@ -207,7 +215,9 @@ h4 {
 /* Normal paragraph */
 p {
   font-size: 11pt;
-  font-weight: 500 !important;
+  font-weight: 500;
+  padding: 1pt;
+  margin: 1pt 0;
 }
 
 /* images */
@@ -218,38 +228,4 @@ img {
 
 .figure {
   break-inside: avoid;
-}
-
-/* captions */
-p.caption {
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #333333;
-  text-align: left;
-}
-
-table caption {
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #333333;
-  text-align: left;
-  margin-bottom: 5px;
-}
-
-caption {
-  break-inside: avoid;
-  break-after: avoid;
-}
-
-/* ---- Misc elements style --------------------- */
-abbr {
-  text-decoration: none;
-}
-
-blockquote {
-  font-size: 150pt;
-}
-
-code {
-  hyphens: none;
 }
