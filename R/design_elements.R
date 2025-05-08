@@ -4,7 +4,7 @@
 #'
 #' @name quote_box
 #' @param text The text of the quote box. Character vector of length 1. Text that is supposed to be highlighted needs to be wrapped in <highlight></highlight> tags.
-#' @param author The author of quote box. Character vector of length 1.
+#' @param author The author of quote box. Character vector of length 1 or NULL (in case author line isn't required)
 #' @param color The color of the quote box. One of the "version 600" colors from omni_colors(), i.e. "orange-red 600", "golden-yellow 600", "teal 600", "plum 600", "periwinkle 600"
 #' @param fixed_width_px Width of the quote box in px. Must be numeric vector of length 1. Defaults to 300.
 #'
@@ -37,13 +37,15 @@ quote_box <- function(
 ) {
   # Checks on text, author and fixed_width_px arguments -------------------------------
   if (length(text) != 1 || !is.character(text)) {
-    cli::cli_abort('{.var text} must be character vector of length 1')
+    cli::cli_abort('{.var text} must be character vector of length 1.')
   }
-  if (length(author) != 1 || !is.character(author)) {
-    cli::cli_abort('{.var author} must be character vector of length 1')
+  if (!(is.null(author) || (length(author) == 1 && is.character(author)))) {
+    cli::cli_abort(
+      '{.var author} must be character vector of length 1 or NULL.'
+    )
   }
   if (!is.null(fixed_width_px) && !is.numeric(fixed_width_px)) {
-    cli::cli_abort('{.var fixed_width_px} must be numeric vector of length 1')
+    cli::cli_abort('{.var fixed_width_px} must be numeric vector of length 1.')
   }
 
   # Checks on color argument ----------------------------------------------------------
@@ -91,13 +93,15 @@ quote_box <- function(
         color = 'white'
       ),
       htmltools::HTML(paste0('"', preprocessed_text, '"')),
-      htmltools::div(
-        style = htmltools::css(
-          font_size = 'smaller',
-          margin_top = '15px',
-        ),
-        paste('—', author)
-      )
+      if (!is.null(author)) {
+        htmltools::div(
+          style = htmltools::css(
+            font_size = 'smaller',
+            margin_top = '15px',
+          ),
+          paste('—', author)
+        )
+      }
     ),
     htmltools::div(
       style = htmltools::css(
@@ -125,6 +129,15 @@ quote_box <- function(
 #   quote_box(
 #     text = 'This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',
 #     author = 'John Jacob, random guy',
+#     color = 'periwinkle 600'
+#   )
+# ) |>
+#   print()
+
+# htmltools::browsable(
+#   quote_box(
+#     text = 'This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',
+#     author = NULL,
 #     color = 'periwinkle 600'
 #   )
 # ) |>
