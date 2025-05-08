@@ -158,7 +158,7 @@ scale_color_omni_continuous <- function(
 #' Continuous fill scale based on OMNI colors
 #'
 #' @name scale_fill_omni_continuous
-#' @param palette Character vector of OMNI colors.
+#' @param palette Character vector of OMNI colors OR one of `c("orange-red", "golden-yellow", "olive-green", "plum", "teal", "periwinkle")`.
 #' @param reverse Boolean, should palette be reversed?
 #' @param ... Additional arguments passed to scale_fill_gradientn()
 #' @export

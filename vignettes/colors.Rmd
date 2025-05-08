@@ -64,24 +64,31 @@ iris |>
     ggplot(ggplot2::aes(x = Species, y = sepal_length_mean, fill = Species)) +
     geom_bar(stat = "identity") +
     coord_flip() +
-    scale_fill_omni_discrete(palette = "teal", reverse = TRUE) +
+    scale_fill_omni_discrete(
+        palette = c(
+            "orange-red 400",
+            "golden-yellow 400",
+            "olive-green 400"
+        ),
+        reverse = TRUE
+    ) +
     theme_omni(show_legend = FALSE)
 ```
 
 There is also a `scale_fill_omni_continuous()` function as well as `scale_color_omni_discrete()` and `scale_color_omni_continuous()` functions for colors.
 
-You can specify a list of colors if needed :
-
 ```{r}
 iris |>
     group_by(Species) |>
     summarise(sepal_length_mean = mean(Sepal.Length)) |>
-    ggplot(ggplot2::aes(x = Species, y = sepal_length_mean, fill = Species)) +
+    ggplot(ggplot2::aes(
+        x = Species,
+        y = sepal_length_mean,
+        fill = sepal_length_mean
+    )) +
     geom_bar(stat = "identity") +
     coord_flip() +
-    scale_fill_omni_discrete(
-        palette = c("olive-green 200", "golden-yellow 400", "orange-red 600")
-    ) +
+    scale_fill_omni_continuous(palette = "orange-red") +
     theme_omni(show_legend = FALSE)
 ```
 

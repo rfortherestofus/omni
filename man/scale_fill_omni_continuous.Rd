@@ -4,14 +4,10 @@
 \alias{scale_fill_omni_continuous}
 \title{Continuous fill scale based on OMNI colors}
 \usage{
-scale_fill_omni_continuous(
-  palette = c("orange-red 200", "orange-red 400", "orange-red 600"),
-  reverse = FALSE,
-  ...
-)
+scale_fill_omni_continuous(palette, reverse = FALSE, ...)
 }
 \arguments{
-\item{palette}{Character vector of OMNI colors.}
+\item{palette}{Character vector of OMNI colors OR one of `c("orange-red", "golden-yellow", "olive-green", "plum", "teal", "periwinkle")`.}
 
 \item{reverse}{Boolean, should palette be reversed?}
 
