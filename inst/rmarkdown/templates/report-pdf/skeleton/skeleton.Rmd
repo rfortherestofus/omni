@@ -11,7 +11,6 @@ report_year: "Report Year"
 project_team: "Project Team"
 project_code: "Project Code"
 acknowledgements: "Names of People to Thank"
-author: "Author test"
 date: "`r toupper(format(Sys.time(), '%B %Y'))`"
 toc-title: "Table of Contents"
 knit: pagedown::chrome_print

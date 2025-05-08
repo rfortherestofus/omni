@@ -99,7 +99,6 @@ h2.date {
   position: absolute;
   top: 0;
   right: 0;
-  left: 300px;
   font-size: 12pt;
   font-family: "Sometype Mono";
   font-weight: normal;
@@ -133,7 +132,6 @@ h1.title:nth-child(1)::before {
   line-height: 1.2;
   padding-top: 0.3em;
   margin-bottom: 1em;
-  border-radius: 4px;
   width: fit-content;
 }
 
