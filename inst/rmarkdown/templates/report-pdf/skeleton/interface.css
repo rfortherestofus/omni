@@ -2,7 +2,6 @@
 
 :root {
   --color-background: #faf7f5;
-  --color-paper: white;
 }
 
 @media screen {
@@ -16,11 +15,10 @@
     flex: 0;
     flex-wrap: wrap;
     margin: 0 auto;
-    margin-bottom: 3em;
+    margin-bottom: 0;
   }
 
   .pagedjs_page {
-    background-color: var(--color-paper);
     margin: 0;
     flex-shrink: 0;
     flex-grow: 0;
@@ -28,6 +26,6 @@
   }
 
   [class*="pagedjs_margin"] {
-    box-shadow: 0 0 0 1px inset orange;
+    box-shadow: 0 0 0 1px inset red;
   }
 }

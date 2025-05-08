@@ -22,29 +22,29 @@
 #'
 
 omni_table <-
-  function(df,
-           option = "flextable",
-           grouped = NULL,
-           first_col_blue = TRUE,
-           caption = NULL) {
-    if (option == "flextable")
-    {
+  function(
+    df,
+    option = "flextable",
+    grouped = NULL,
+    first_col_blue = TRUE,
+    caption = NULL
+  ) {
+    if (option == "flextable") {
       # handle group
       if (!is.null(grouped)) {
         table <- df |>
           as_grouped_data(grouped) |>
           as_flextable(hide_grouplabel = TRUE)
-      } else{
+      } else {
         table <- df |>
           flextable()
       }
 
       # table theme with flextable
       table <- table |>
-        theme_zebra(even_body = "#9DAECE",
-                    odd_body = "#CED6E6")  |>
+        theme_zebra(even_body = "#9DAECE", odd_body = "#CED6E6") |>
         fontsize(part = "all", size = 11) |>
-        font(part = "all", fontname = "Calibri") |>
+        font(part = "all", fontname = "Neue Haas Grotesk Display Pro") |>
         bold(part = "header", bold = TRUE) |>
         align(part = "all", align = "center") |>
         bg(part = "header", bg = omni_colors("Dark Blue")) |>
@@ -52,8 +52,7 @@ omni_table <-
         color(part = "body", color = "#333333") |>
         height_all(height = 0.4) |>
         border_inner(part = "body", border = fp_border(color = "white")) |>
-        border(part = "header",
-               border.bottom = fp_border(color = "white"))
+        border(part = "header", border.bottom = fp_border(color = "white"))
 
       # highlight grouped row
       if (!is.null(grouped)) {
@@ -79,7 +78,7 @@ omni_table <-
             j = 1,
             i = grouped_row_nb,
             bold = TRUE
-          )  |>
+          ) |>
           color(
             part = "body",
             j = 1,
@@ -90,16 +89,10 @@ omni_table <-
 
       # first column
       if (first_col_blue) {
-        table <- table  |>
-          bg(part = "body",
-             j = 1,
-             bg = omni_colors("Dark Blue")) |>
-          bold(part = "body",
-               j = 1,
-               bold = TRUE)  |>
-          color(part = "body",
-                j = 1,
-                color = "white")
+        table <- table |>
+          bg(part = "body", j = 1, bg = omni_colors("Dark Blue")) |>
+          bold(part = "body", j = 1, bold = TRUE) |>
+          color(part = "body", j = 1, color = "white")
       }
       # add caption within flextable
       if (!is.null(caption)) {
@@ -108,14 +101,20 @@ omni_table <-
           # if rmd format is word
           if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "docx") {
             table <- table |>
-              set_caption(as_paragraph(as_chunk(
-                caption, props = fp_text_default(font.family = "Calibri")
-              )), word_stylename = "Table Caption")
-          } else{
+              set_caption(
+                as_paragraph(as_chunk(
+                  caption,
+                  props = fp_text_default(
+                    font.family = "Neue Haas Grotesk Display Pro"
+                  )
+                )),
+                word_stylename = "Table Caption"
+              )
+          } else {
             table <- table |>
               set_caption(caption = caption)
           }
-        } else{
+        } else {
           table <- table |>
             set_caption(caption = caption)
         }
@@ -124,16 +123,18 @@ omni_table <-
       # table theme with gt
       table <- df |>
         gt() |>
-        tab_style(style = list(cell_text(
-          font = "Calibri",
-          size = 11,
-          color = "#333333"
-        )),
-        locations = list(cells_body())) |>
+        tab_style(
+          style = list(cell_text(
+            font = "Neue Haas Grotesk Display Pro",
+            size = 11,
+            color = "#333333"
+          )),
+          locations = list(cells_body())
+        ) |>
         tab_style(
           style = list(
             cell_text(
-              font = "Calibri",
+              font = "Neue Haas Grotesk Display Pro",
               size = 11,
               weight = "bold",
               color = "white"
@@ -142,25 +143,30 @@ omni_table <-
           ),
           locations = list(cells_column_labels())
         ) |>
-        tab_style(style = cell_borders(color = "white"),
-                  locations = cells_body()) |>
-        tab_style(style = cell_borders("b", color = "white"),
-                  locations = cells_column_labels()) |>
+        tab_style(
+          style = cell_borders(color = "white"),
+          locations = cells_body()
+        ) |>
+        tab_style(
+          style = cell_borders("b", color = "white"),
+          locations = cells_column_labels()
+        ) |>
         cols_align(align = "center") |>
         tab_options(
           table.background.color = "#9DAECE",
-          row.striping.background_color  = "#CED6E6"
+          row.striping.background_color = "#CED6E6"
         ) |>
         opt_row_striping()
 
       if (first_col_blue) {
-        table <- table   |>
-          tab_style(style = list(
-            cell_text(weight = "bold",
-                      color = "white"),
-            cell_fill(color = omni_colors("Dark Blue"))
-          ),
-          locations = cells_body(columns = 1))
+        table <- table |>
+          tab_style(
+            style = list(
+              cell_text(weight = "bold", color = "white"),
+              cell_fill(color = omni_colors("Dark Blue"))
+            ),
+            locations = cells_body(columns = 1)
+          )
       }
 
       # add caption within gt

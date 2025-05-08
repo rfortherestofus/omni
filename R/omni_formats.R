@@ -8,7 +8,10 @@
 omni_pdf_report <- function(...) {
   # style
   css_style <- system.file(
-    "assets",
+    "rmarkdown",
+    "templates",
+    "report-pdf",
+    "skeleton",
     "omni_pdf_report.css",
     package = "omni",
     mustWork = TRUE
@@ -16,11 +19,10 @@ omni_pdf_report <- function(...) {
 
   # template
   pagedown::html_paged(
-    self_contained = FALSE,
+    self_contained = TRUE,
     toc = TRUE,
-    number_sections = FALSE,
     fig_caption = TRUE,
-    css = css_style,
+    #css = css_style,
     ...
   )
 }
