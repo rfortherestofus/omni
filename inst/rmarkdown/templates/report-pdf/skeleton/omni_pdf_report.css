@@ -12,6 +12,7 @@
 :root {
   --main-font: "Neue Haas Grotesk Display Pro";
   --header-font: "Neue Haas Grotesk Text Pro";
+  --secondary-font: "Sometype Mono";
   --background-color: #f9f7f4;
   --dark-blue: #081c39;
   --steel-blue: #677384;
@@ -55,35 +56,46 @@
   }
 }
 
-/* ---- Breaks ----------------------- */
+/* TOC */
 
-/* Front cover */
-.front-cover {
-  break-after: page;
+h1.toc-title {
+  font-size: 16pt;
 }
 
-/* Front page or title page */
-.front-page {
-  counter-reset: page;
-}
-
-/* page breaks; aka CSS fragmentation */
-.level1 {
-  break-before: page;
-}
-
-.section > h1,
-.section > h2,
-.section > h3,
-.section > h4,
-.section > h5,
-.section > h6 {
-  break-after: avoid;
-}
-
-h1.toc-title li {
+#TOC li {
   border-top: 1px solid #ccc !important;
-  margin-bottom: 1em !important;
+  padding: 5pt;
+  align-items: center;
+}
+
+#TOC li a {
+  color: var(--dark-blue) !important;
+}
+
+#TOC li li {
+  border-top: none !important;
+  margin-bottom: 0 !important;
+}
+
+#TOC li li a {
+  color: var(--steel-blue) !important;
+}
+
+.toc .leaders::before {
+  content: "";
+}
+
+.toc-section-number {
+  margin-right: 15px;
+  font-family: var(--secondary-font);
+}
+
+li li .toc-section-number {
+  display: none;
+}
+
+.toc a::after {
+  background-color: var(--background-color);
 }
 
 .submitted-to {
@@ -130,7 +142,7 @@ h2.date {
   top: 0;
   right: 0;
   font-size: 12pt;
-  font-family: "Sometype Mono";
+  font-family: var(--secondary-font);
   font-weight: normal;
   text-align: right;
 }

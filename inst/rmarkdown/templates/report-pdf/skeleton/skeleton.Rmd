@@ -21,11 +21,11 @@ abstract: >
 <link rel="stylesheet" href="omni_pdf_report.css" type="text/css">
 ```
 
-## Introduction
+## Chapter title
 
 This is a very minimal example! The only thing which is changed in this template is a few of the default settings in the YAML. 
 
-## Customisation
+## Chapter title
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
@@ -40,11 +40,30 @@ library(omni)
 
 ```
 
-### sub section 1
+### Section title
 
 Lorem ipsum
 
+## Chapter title
 
-### sub section 2
+### Section title
 
-Lorem ipsum ipsum ipsum
+Lorem ipsum 
+
+### Section title
+
+Lorem ipsum 
+
+### Section title
+
+Lorem ipsum 
+
+## Chapter title
+
+### Section title
+
+Lorem ipsum 
+
+## Appendix A
+
+## Appendix B
