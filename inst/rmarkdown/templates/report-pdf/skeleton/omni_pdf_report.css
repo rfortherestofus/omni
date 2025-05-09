@@ -28,7 +28,7 @@
   font-family: var(--main-font);
 }
 
-/* ---- Pages ----------------------- */
+/* --------------------- Pages ----------------------- */
 
 @page {
   size: 8.5in 11in !important;
@@ -58,7 +58,15 @@
   }
 }
 
-/* TOC */
+/* --------------------- Cover Page ------------------ */
+@page: first {
+  border-bottom: none;
+  background-image: url("pattern-cover.png");
+  background-position: 1in 1in;
+  background-size: 4in;
+}
+
+/*  --------------------- TOC --------------------- */
 
 h1.toc-title {
   font-size: 16pt;
@@ -146,7 +154,7 @@ h3.abstract {
   background-size: contain;
 }
 
-/* date */
+/*  --------------------- date --------------------- */
 
 h2.date {
   position: absolute;
@@ -285,19 +293,19 @@ img {
 
 /* bullet points */
 
-ul,
-ul ul {
+ul:not(.toc ul):not(.toc ul ul),
+ul ul:not(.toc ul ul) {
   list-style: none;
   padding-right: 5pt;
 }
 
-ul > li::before {
+ul:not(.toc ul) > li::before {
   content: "• ";
   font-size: 1.5em;
   vertical-align: middle;
 }
 
-ul ul > li::before {
+ul ul:not(.toc ul ul) > li::before {
   content: "> ";
   font-size: 0.9em;
 }
