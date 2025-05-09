@@ -38,11 +38,13 @@
 
   @bottom-right {
     content: counter(page);
+    font-size: 10pt;
   }
 
   @bottom-center {
     content: "Omni Institute Report";
     margin-left: 5in;
+    font-size: 10pt;
   }
 
   @bottom-left {
@@ -66,7 +68,10 @@ h1.toc-title {
 #TOC li {
   border-top: 1px solid #ccc !important;
   padding: 5pt;
-  align-items: center;
+}
+
+#TOC > ul > li:last-of-type {
+  border-bottom: 1px solid #ccc !important;
 }
 
 #TOC li a {
@@ -91,6 +96,10 @@ h1.toc-title {
 .toc-section-number {
   margin-right: 15px;
   font-family: var(--secondary-font);
+}
+
+.header-section-number {
+  display: none;
 }
 
 li li .toc-section-number {
@@ -235,27 +244,26 @@ h1.subtitle:nth-child(2):not(.abstract h1) {
 h1 {
   font-size: 24pt;
   font-weight: 700;
-  color: #091d38;
+  color: var(--dark-blue);
   padding: 0;
 }
 
 h2 {
   font-size: 18pt;
   font-weight: 900;
-  color: #091d38;
+  color: var(--dark-blue);
 }
 
 h3 {
   font-size: 14pt;
   font-weight: 700;
-  text-transform: uppercase;
-  color: #091d38;
+  color: var(--dark-blue);
 }
 
 h4 {
   font-size: 11pt;
   font-weight: 600;
-  color: #091d38;
+  color: var(--dark-blue);
 }
 
 /* Normal paragraph */
