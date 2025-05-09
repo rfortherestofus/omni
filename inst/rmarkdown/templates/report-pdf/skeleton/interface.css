@@ -21,6 +21,6 @@
 
   [class*="pagedjs_margin"] {
     box-shadow: 0 0 0 1px inset red;
-    z-index: 100;
+    z-index: 200;
   }
 }

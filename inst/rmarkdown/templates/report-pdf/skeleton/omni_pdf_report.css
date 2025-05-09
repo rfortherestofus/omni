@@ -5,7 +5,7 @@
 /* ---- Interface ------------------- */
 /* Include interface for debugging */
 
-/* @import "interface.css"; */
+@import "interface.css";
 
 /* ---- Variables ------------------- */
 /* setup default values for variables */
@@ -32,7 +32,7 @@
 
 @page {
   size: 8.5in 11in !important;
-  margin: 15mm !important;
+  margin: 25mm 15mm;
   background-color: var(--background-color);
   border-bottom: solid 5px var(--steel-blue-light);
 
@@ -43,7 +43,7 @@
 
   @bottom-center {
     content: "Omni Institute Report";
-    margin-left: 5in;
+    margin-left: 4in;
     font-size: 10pt;
   }
 
@@ -123,18 +123,9 @@ p.suggested-citation {
   margin-bottom: 1pt;
 }
 
-/* put the abstract on its own page */
+/* by default, abstracts have smaller width */
 div.abstract {
   width: 100% !important;
-  break-before: always !important;
-}
-
-@media print {
-  /* Force page breaks after specific elements */
-  .page-break {
-    break-after: page !important;
-    page-break-after: always !important;
-  }
 }
 
 /* remove the h3 title "Abstract" */

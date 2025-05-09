@@ -26,6 +26,14 @@ abstract: >
 
 This is a very minimal example! The only thing which is changed in this template is a few of the default settings in the YAML. 
 
+- bullet point 1
+- bullet point 2
+  - sub bullet point 1
+- bullet point 3
+  - sub bullet point 1
+  - sub bullet point 2
+  - sub bullet point 3
+
 
 
 ## Chapter title
