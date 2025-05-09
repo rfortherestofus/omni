@@ -129,6 +129,14 @@ div.abstract {
   break-before: always !important;
 }
 
+@media print {
+  /* Force page breaks after specific elements */
+  .page-break {
+    break-after: page !important;
+    page-break-after: always !important;
+  }
+}
+
 /* remove the h3 title "Abstract" */
 h3.abstract {
   display: none;

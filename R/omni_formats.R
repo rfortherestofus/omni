@@ -6,23 +6,10 @@
 #' @export
 #'
 omni_pdf_report <- function(...) {
-  # style
-  css_style <- system.file(
-    "rmarkdown",
-    "templates",
-    "report-pdf",
-    "skeleton",
-    "omni_pdf_report.css",
-    package = "omni",
-    mustWork = TRUE
-  )
-
-  # template
   pagedown::html_paged(
     self_contained = TRUE,
     toc = TRUE,
     fig_caption = TRUE,
-    #css = css_style,
     ...
   )
 }
