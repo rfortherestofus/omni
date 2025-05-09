@@ -60,6 +60,7 @@
 
 h1.toc-title {
   font-size: 16pt;
+  margin-top: 5pt;
 }
 
 #TOC li {
@@ -75,14 +76,16 @@ h1.toc-title {
 #TOC li li {
   border-top: none !important;
   margin-bottom: 0 !important;
+  padding: 1pt 0 1pt 0;
 }
 
 #TOC li li a {
   color: var(--steel-blue) !important;
+  margin-left: 20pt;
 }
 
 .toc .leaders::before {
-  content: "";
+  content: ""; /* remove all the dots "........." */
 }
 
 .toc-section-number {
