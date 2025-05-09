@@ -5,7 +5,7 @@
 /* ---- Interface ------------------- */
 /* Include interface for debugging */
 
-@import "interface.css";
+/* @import "interface.css"; */
 
 /* ---- Variables ------------------- */
 /* setup default values for variables */
@@ -13,7 +13,9 @@
   --main-font: "Neue Haas Grotesk Display Pro";
   --header-font: "Neue Haas Grotesk Text Pro";
   --background-color: #f9f7f4;
-  --dark-blue: #091d38;
+  --dark-blue: #081c39;
+  --steel-blue: #677384;
+  --steel-blue-light: #bfcbd3;
   --pagedjs-margin-top: 0mm;
   --pagedjs-margin-right: 0mm;
   --pagedjs-margin-bottom: 0mm;
@@ -31,6 +33,7 @@
   size: 8.5in 11in !important;
   margin: 15mm !important;
   background-color: var(--background-color);
+  border-bottom: solid 5px var(--steel-blue-light);
 
   @bottom-right {
     content: counter(page);
@@ -40,17 +43,42 @@
     content: "Omni Institute Report";
     margin-left: 5in;
   }
+
+  @bottom-left {
+    content: "";
+    background-image: url("logo-no-text.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right top;
+    width: 30px;
+    height: auto;
+  }
 }
 
-@page: first {
-  background-image: url(pattern-cover.png);
-  background-repeat: no-repeat;
-  background-position: right center;
+/* ---- Breaks ----------------------- */
 
-  /* remove the rest of the content */
-  @bottom-right {
-    display: none;
-  }
+/* Front cover */
+.front-cover {
+  break-after: page;
+}
+
+/* Front page or title page */
+.front-page {
+  counter-reset: page;
+}
+
+/* page breaks; aka CSS fragmentation */
+.level1 {
+  break-before: page;
+}
+
+.section > h1,
+.section > h2,
+.section > h3,
+.section > h4,
+.section > h5,
+.section > h6 {
+  break-after: avoid;
 }
 
 h1.toc-title li {
@@ -68,24 +96,13 @@ p.acknowledge,
 p.suggested-citation {
   font-size: 1.2em !important;
   margin-top: 10pt;
-  margin-bottom: 4pt;
-}
-
-/* ---- Breaks ----------------------- */
-
-/* Front cover */
-/* .front-cover {
-  break-after: page;
-} */
-
-#TOC {
-  break-after: page !important;
+  margin-bottom: 1pt;
 }
 
 /* put the abstract on its own page */
 div.abstract {
-  break-before: page !important;
   width: 100% !important;
+  break-before: always !important;
 }
 
 /* remove the h3 title "Abstract" */
@@ -133,8 +150,7 @@ h2.date {
 }
 
 /* title cover page */
-:is(h1.title:nth-child(1)):not(.abstract h1),
-:is(h1.title:nth-child(1))::before:not(.abstract h1::before) {
+#header > h1:nth-child(1)::before {
   content: "Omni Institute Report";
   display: block;
   background-color: #faecc3;
@@ -161,23 +177,38 @@ h1.subtitle:nth-child(2):not(.abstract h1) {
   font-size: 16pt;
 }
 
-/* ---- Style ------------------ */
-/* Main title and subtitle */
+/* Abstract title and subtitle */
 .abstract h1.title {
   break-before: page !important;
-  font-size: 36pt;
-  font-weight: 900;
+  font-size: 24pt;
+  font-weight: bolder;
+  font-family: var(--header-font);
   margin-block-start: 0 !important;
   margin-block-end: 0 !important;
-  color: #000000;
+  color: var(--dark-blue);
   margin-top: 0 !important;
   margin-bottom: 0;
   margin-left: 0 !important;
 }
 
-h1.subtitle {
-  color: #333333;
-  margin-top: 5px;
+.abstract h1.title::before {
+  content: "Omni Institute Report";
+  display: block;
+  color: var(--steel-blue);
+  font-weight: 500;
+  font-size: 0.9rem;
+  font-family: var(--main-font);
+  padding-top: 0.3em;
+  width: fit-content;
+}
+
+.abstract h1.subtitle {
+  color: var(--dark-blue);
+  font-weight: bolder;
+  font-size: 12pt;
+  font-family: var(--header-font);
+  margin-top: 5pt;
+  margin-bottom: 20pt;
   margin-left: 0 !important;
 }
 

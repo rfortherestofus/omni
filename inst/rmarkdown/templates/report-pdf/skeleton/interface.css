@@ -1,12 +1,6 @@
-/* Interface */
-
-:root {
-  --color-background: #faf7f5;
-}
-
 @media screen {
   body {
-    background-color: white;
+    background-color: #dddddd;
   }
 
   .pagedjs_pages {

@@ -1,12 +1,11 @@
 ---
 title: "Report Title Goes Here"
 subtitle: "Sub-Headline Goes Here" 
-report_authors: "Authors"
-client_name: "Client Name"
-client_city: "Client City"
-client_state: "Client State"
-report_year: "Report Year"
-acknowledgements: "Names of People to Thank"
+client_name: "[client]"
+client_city: "[city]"
+client_state: "[state]"
+report_year: "[year]"
+acknowledgements: "[...]"
 date: "`r toupper(format(Sys.time(), '%B %Y'))`"
 toc-title: "Table of Contents"
 knit: pagedown::chrome_print
