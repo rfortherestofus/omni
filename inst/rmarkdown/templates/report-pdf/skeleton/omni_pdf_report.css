@@ -282,3 +282,22 @@ img {
 .figure {
   break-inside: avoid;
 }
+
+/* bullet points */
+
+ul,
+ul ul {
+  list-style: none;
+  padding-right: 5pt;
+}
+
+ul > li::before {
+  content: "• ";
+  font-size: 1.5em;
+  vertical-align: middle;
+}
+
+ul ul > li::before {
+  content: "> ";
+  font-size: 0.9em;
+}
