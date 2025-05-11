@@ -1,0 +1,102 @@
+/* -------------------------------------------- */
+/* ---- OMNI HTML Report CSS ---- */
+/* -------------------------------------------- */
+
+/* ---- Variables ------------------- */
+/* setup default values for variables */
+:root {
+  --main-font: "Neue Haas Grotesk Display Pro";
+  --header-font: "Neue Haas Grotesk Text Pro";
+  --secondary-font: "Sometype Mono";
+  --background-color: #f9f7f4;
+  --dark-blue: #081c39;
+  --steel-blue: #677384;
+  --steel-blue-light: #bfcbd3;
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+/* Header  */
+.custom-header {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+}
+.logo {
+  height: 70px;
+}
+.title-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--dark-blue);
+  margin-left: auto;
+}
+
+/* Footer */
+.custom-footer {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-top: 1px solid #ddd;
+  margin-top: 120px;
+}
+.footer-text {
+  margin-left: 20px;
+  font-size: 14px;
+  color: #555;
+}
+.footer-text a {
+  color: #555;
+  text-decoration: none;
+}
+
+/* ---- Titles & text ------------------ */
+/* Main title and subtitle */
+h1.title {
+  font-size: 24pt;
+  font-weight: 700;
+  color: var(--dark-blue);
+  padding: 0;
+}
+
+h1.subtitle {
+  font-weight: bold;
+  text-align: center;
+  font-size: 12pt;
+}
+
+/* Levels of title */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--header-font);
+  margin-top: 50px;
+}
+
+h2 {
+  font-size: 24pt;
+  font-weight: 700;
+  color: var(--dark-blue);
+  padding: 0;
+}
+
+h3 {
+  font-size: 14pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--dark-blue);
+}
+
+/* Normal paragraph */
+p {
+  font-size: 11pt;
+  font-weight: 300;
+}
+
+#TOC {
+  margin-top: 70px !important;
+}

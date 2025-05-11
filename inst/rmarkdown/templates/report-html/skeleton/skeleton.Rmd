@@ -1,0 +1,47 @@
+---
+title: "Project title"
+subtitle: "What you are doing"
+author: "Who is doing it"
+date: "`r Sys.Date() |> format('%B %d, %Y')`"
+output:
+  omni::omni_html_report
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
+---
+
+```{=html}
+<link rel="stylesheet" href="../omni_html_report.css" type="text/css">
+```
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+
+## First section
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+### Sub section
+
+Some text
+
+```{r, echo=FALSE}
+library(tidyverse)
+
+ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+    geom_point() +
+    labs(
+        title = "Sepal Length vs Sepal Width",
+        x = "Sepal Length (cm)",
+        y = "Sepal Width (cm)"
+    ) +
+    theme_minimal()
+```
+
+
+## Second section
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
