@@ -12,6 +12,10 @@ knit: pagedown::chrome_print
 output: 
   pagedown::html_paged:
     css: omni_pdf_report.css
+    toc: true
+abstract: >
+  ```{r, child = system.file('assets/rmd/abstract.Rmd', package = 'omni')}
+  ```
 ---
 
 
