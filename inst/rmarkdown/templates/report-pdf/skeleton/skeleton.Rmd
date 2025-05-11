@@ -10,17 +10,15 @@ date: "`r toupper(format(Sys.time(), '%B %Y'))`"
 toc-title: "Table of Contents"
 knit: pagedown::chrome_print
 output: 
-  omni::omni_pdf_report
-abstract: >
-  ```{r, child = system.file('assets/rmd/abstract.Rmd', package = 'omni')}
-  ```
+  pagedown::html_paged:
+    css: omni_pdf_report.css
 ---
 
 
 ```{=html}
-<link rel="stylesheet" href="omni_pdf_report.css" type="text/css">
 <div class="page-break-before"></div>
 ```
+
 
 ## Chapter title
 
