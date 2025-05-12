@@ -229,19 +229,3 @@ callout_box <- function(
     )
   )
 }
-
-htmltools::browsable(
-  callout_box(
-    text = 'This is a callout box. You can change text color to highlight certain parts, or just leave the text all Navy. Change the bar color to the left as desired to match the page.',
-    color = 'olive-green 600'
-  )
-) |>
-  print()
-
-htmltools::browsable(
-  callout_box(
-    text = 'This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all Navy. Change the bar color to the left as desired to match the page.',
-    color = 'orange-red 600'
-  )
-) |>
-  print()
