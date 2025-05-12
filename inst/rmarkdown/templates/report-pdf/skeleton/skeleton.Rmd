@@ -13,16 +13,16 @@ output:
   pagedown::html_paged:
     css: omni_pdf_report.css
     toc: true
+    includes:
+      in_header: "fix-toc.html"
 abstract: >
   ```{r, child = system.file('assets/rmd/abstract.Rmd', package = 'omni')}
   ```
 ---
 
-
 ```{=html}
 <div class="page-break-before"></div>
 ```
-
 
 ## Chapter title
 
@@ -71,6 +71,28 @@ Lorem Ipsum
 #### Sub section title
 
 Lorem Ipsum
+
+## Chapter title
+
+Lorem Ipsum
+
+## Chapter title
+
+Lorem Ipsum
+
+## Chapter title
+
+Lorem Ipsum
+
+## Chapter title
+
+Lorem Ipsum
+
+## Chapter title
+
+Lorem Ipsum
+
+## Chapter title
 
 ## Appendix A
 
