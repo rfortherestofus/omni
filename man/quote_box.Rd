@@ -9,7 +9,7 @@ quote_box(text, author, color, fixed_width_px = 300)
 \arguments{
 \item{text}{The text of the quote box. Character vector of length 1. Text that is supposed to be highlighted needs to be wrapped in <highlight></highlight> tags.}
 
-\item{author}{The author of quote box. Character vector of length 1.}
+\item{author}{The author of quote box. Character vector of length 1 or NULL (in case author line isn't required)}
 
 \item{color}{The color of the quote box. One of the "version 600" colors from omni_colors(), i.e. "orange-red 600", "golden-yellow 600", "teal 600", "plum 600", "periwinkle 600"}
 
