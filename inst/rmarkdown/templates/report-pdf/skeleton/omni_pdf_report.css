@@ -76,6 +76,7 @@ h1.toc-title {
 #TOC li {
   border-top: 1px solid #ccc !important;
   padding: 5pt;
+  list-style-type: none;
 }
 
 #TOC > ul > li:last-of-type {
@@ -84,6 +85,7 @@ h1.toc-title {
 
 #TOC li a {
   color: var(--dark-blue) !important;
+  text-decoration: none;
 }
 
 #TOC li li {
@@ -304,8 +306,8 @@ img {
 
 /* bullet points */
 
-ul:not(.toc ul):not(.toc ul ul),
-ul ul:not(.toc ul ul) {
+ul:not(.toc ul):not(.toc),
+ul ul:not(.toc) {
   list-style: none;
   padding-right: 5pt;
 }
@@ -316,7 +318,7 @@ ul:not(.toc ul) > li::before {
   vertical-align: middle;
 }
 
-ul ul:not(.toc ul ul) > li::before {
+ul ul:not(.toc) > li::before {
   content: "> ";
   font-size: 0.9em;
 }
