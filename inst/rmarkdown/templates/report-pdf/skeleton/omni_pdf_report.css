@@ -247,6 +247,17 @@ h1.subtitle:nth-child(2):not(.abstract h1) {
   font-size: 0.9em;
 }
 
+.pagedjs_pagebox .pagedjs_margin-bottom-left-corner,
+.pagedjs_pagebox .pagedjs_margin-bottom-right-corner,
+.pagedjs_pagebox .pagedjs_margin-bottom-left,
+.pagedjs_pagebox .pagedjs_margin-bottom-right,
+.pagedjs_pagebox .pagedjs_margin-bottom-center,
+.pagedjs_pagebox .pagedjs_margin-bottom-center {
+  display: block;
+  align-items: center;
+  margin-top: 10px;
+}
+
 /* Levels of title */
 h1 {
   font-size: 24pt;
