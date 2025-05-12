@@ -17,4 +17,5 @@
   <p class="suggested-citation">Suggested Citation:</p>
   <p>OMNI Institute `r rmarkdown::metadata$report_year`. `r rmarkdown::metadata$title`. Submitted to `r rmarkdown::metadata$client_name`, `r rmarkdown::metadata$client_city`, `r rmarkdown::metadata$client_state`.</p>
   </div>
+  <div class="page-break-before"></div>
 
