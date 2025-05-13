@@ -333,6 +333,15 @@ ul ul > li:not(#TOC li)::before {
   gap: 20px;
 }
 
+.cols-float {
+  clear: both;
+}
+.image-float {
+  float: right;
+  margin-bottom: 15px;
+  margin-left: 15px;
+}
+
 /* section markers */
 hr {
   color: var(--steel-blue-light);
