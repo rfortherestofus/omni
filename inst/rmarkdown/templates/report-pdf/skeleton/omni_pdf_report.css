@@ -91,12 +91,15 @@ h1.toc-title {
 #TOC li li {
   border-top: none !important;
   margin-bottom: 0 !important;
-  padding: 1pt 0 1pt 0;
+  padding: 1pt 0pt 1pt 0pt;
 }
 
 #TOC li li a {
   color: var(--steel-blue) !important;
-  margin-left: 20pt;
+}
+
+#TOC li li a::before() {
+  content: none !important;
 }
 
 .toc .leaders::before {
@@ -318,7 +321,7 @@ ul:not(.toc ul) > li::before {
   vertical-align: middle;
 }
 
-ul ul:not(.toc) > li::before {
+ul ul > li:not(#TOC li)::before {
   content: "> ";
   font-size: 0.9em;
 }
