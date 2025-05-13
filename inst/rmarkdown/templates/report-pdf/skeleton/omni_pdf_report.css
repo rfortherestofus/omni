@@ -286,6 +286,7 @@ h1 {
 }
 
 h2 {
+  margin-top: 0 !important;
   font-size: 30pt;
   font-weight: 900;
   color: var(--dark-blue);
