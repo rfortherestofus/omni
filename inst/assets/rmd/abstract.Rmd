@@ -1,5 +1,7 @@
   <div class="logo-container"></div>
-  <div class="cover-container"></div>
+  <div class="cover-container">
+  <div class="cover-image"></div>
+  </div>
 
   <div class="page-break-before"></div>
   <div class="top-of-abstract">
