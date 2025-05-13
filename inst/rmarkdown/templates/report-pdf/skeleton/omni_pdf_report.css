@@ -322,3 +322,10 @@ ul ul:not(.toc) > li::before {
   content: "> ";
   font-size: 0.9em;
 }
+
+/* columns */
+
+.cols {
+  display: flex;
+  gap: 20px;
+}
