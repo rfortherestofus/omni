@@ -3,7 +3,6 @@
   <div class="cover-image"></div>
   </div>
 
-  <div class="page-break-before"></div>
   <div class="top-of-abstract">
   <h1 class="title">`r rmarkdown::metadata$title` </h1>
   <h1 class="subtitle"> `r rmarkdown::metadata$subtitle` </h1>

@@ -321,6 +321,10 @@ img {
 
 /* bullet points */
 
+#TOC > ul {
+  margin-left: 0pt !important;
+}
+
 ul:not(.toc ul):not(.toc),
 ul ul:not(.toc) {
   list-style: none;
