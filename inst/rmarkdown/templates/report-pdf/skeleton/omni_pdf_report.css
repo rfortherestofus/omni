@@ -329,3 +329,9 @@ ul ul:not(.toc) > li::before {
   display: flex;
   gap: 20px;
 }
+
+/* section markers */
+hr {
+  color: var(--steel-blue-light);
+  height: 2px;
+}
