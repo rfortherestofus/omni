@@ -10,8 +10,8 @@
 /* ---- Variables ------------------- */
 /* setup default values for variables */
 :root {
-  --main-font: "Neue Haas Grotesk Display Pro";
-  --header-font: "Neue Haas Grotesk Text Pro";
+  --main-font: "Inter Tight";
+  --header-font: "Inter Tight";
   --secondary-font: "Sometype Mono";
   --background-color: #f9f7f4;
   --dark-blue: #081c39;
@@ -34,7 +34,7 @@
   size: 8.5in 11in !important;
   margin: 25mm 15mm;
   background-color: var(--background-color);
-  border-bottom: solid 5px var(--steel-blue-light);
+  border-bottom: solid 1px var(--steel-blue-light);
 
   @bottom-right {
     content: counter(page);
@@ -358,6 +358,5 @@ ul ul > li:not(#TOC li)::before {
 
 /* section markers */
 hr {
-  color: var(--steel-blue-light);
-  height: 2px;
+  border: 1px solid var(--steel-blue-light);
 }
