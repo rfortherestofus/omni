@@ -74,7 +74,9 @@ quote_box <- function(
   preprocessed_text <- text |>
     stringr::str_replace_all(
       stringr::fixed('<highlight>'),
-      glue::glue('<span style="color:{color_hex_highlight};">')
+      glue::glue(
+        '<span style="color:{color_hex_highlight}; background: {color_hex} !important;">'
+      )
     ) |>
     stringr::str_replace(
       stringr::fixed('</highlight>'),
@@ -89,7 +91,7 @@ quote_box <- function(
     htmltools::div(
       style = htmltools::css(
         padding = '25px 20px',
-        background = color_hex,
+        background = paste(color_hex, '!important;'),
         color = 'white'
       ),
       htmltools::HTML(paste0('"', preprocessed_text, '"')),
@@ -98,6 +100,7 @@ quote_box <- function(
           style = htmltools::css(
             font_size = 'smaller',
             margin_top = '15px',
+            background = paste(color_hex, '!important;')
           ),
           paste('—', author)
         )
@@ -116,32 +119,6 @@ quote_box <- function(
   )
 }
 
-# htmltools::browsable(
-#   quote_box(
-#     text = 'This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',
-#     author = 'John Jacob, random guy',
-#     color = 'olive-green 600'
-#   )
-# ) |>
-#   print()
-
-# htmltools::browsable(
-#   quote_box(
-#     text = 'This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',
-#     author = 'John Jacob, random guy',
-#     color = 'periwinkle 600'
-#   )
-# ) |>
-#   print()
-
-# htmltools::browsable(
-#   quote_box(
-#     text = 'This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',
-#     author = NULL,
-#     color = 'periwinkle 600'
-#   )
-# ) |>
-#   print()
 
 #' Create a callout box
 #'
