@@ -24,13 +24,13 @@
 }
 
 * {
-  background-color: var(--background-color) !important;
+  background-color: var(--background-color);
   font-family: var(--main-font);
 }
 
 /* Import Fonts */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&display=swap");
 
 /* --------------------- Pages ----------------------- */
 
@@ -307,7 +307,7 @@ h4 {
 /* Normal paragraph */
 p {
   font-size: 11pt;
-  font-weight: 500;
+  font-weight: 300;
   padding: 1pt;
   margin: 1pt 0;
 }
