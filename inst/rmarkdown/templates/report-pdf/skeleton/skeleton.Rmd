@@ -37,23 +37,51 @@ library(omni)
 
 
 
+## Example Section
+
+### Subtopic A
+
+The project will start with a virtual project alignment meeting with the key county leadership and staff to discuss the overall approach; review the initial workplan to support establishing strong working relationships; and ensure clear communication, detailed schedules, timelines and milestones. 
+
+#### Subtopic 1
+
+The project will start with a virtual project alignment meeting with the key county leadership and staff to discuss the overall approach; review the initial workplan to support establishing strong working relationships; and ensure clear communication, detailed schedules, timelines and milestones. 
+
+
+
+```{=html}
+<div class="page-break-before"></div>
+```
+
+
+## Example Section
+
+### Subtopic A
+
+:::: {.cols-float}
+
+::: {.image-float style="width: 50%;"}
+![](logo.png)
+:::
+
+The project will start with a virtual project alignment meeting with the key county leadership and staff to discuss the overall approach; review the initial workplan to support establishing strong working relationships; ensure clear communication, detailed schedules, timelines and milestones; and determine how best to foster engagement throughout the project. 
+
+Omni will conduct a thorough review of background materials to ensure that the project is grounded in an understanding of the opioid issues facing Bedford County as well as other related existing community plans to ensure integration. A larger in-person project kickoff meeting that will include key partners will follow, where Omni staff will introduce the project team, present the workplan, and gather input from key partners across the opioid landscape in the County. In-person engagement is an important part of building trust, and this larger kickoff meeting will help establish the groundwork for ongoing collaboration and commitment from all partners.
+
+::::
+
+
+### Section title
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+
 ## Chapter title
 
-This is a very minimal example! The only thing which is changed in this template is a few of the default settings in the YAML. 
-
-- bullet point 1
-- bullet point 2
-  - sub bullet point 1
-- bullet point 3
-  - sub bullet point 1
-  - sub bullet point 2
-  - sub bullet point 3
-
-
-
-## Chapter title
-
+<<<<<<< HEAD
 :::: {.columns}
+=======
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+>>>>>>> 89b6ac2 (clean template)
 
 ::: {.column width="29%"}
 
@@ -73,6 +101,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 ::::
 
+<<<<<<< HEAD
 
 ### Section title
 
@@ -116,6 +145,9 @@ callout_box(
 ::::
 
 :::: {.columns}
+=======
+### First section
+>>>>>>> 89b6ac2 (clean template)
 
 ::: {.column width="50%"}
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum 
@@ -133,6 +165,12 @@ quote_box(
 
 ::::
 
+
+Now we add a separator
+
+<hr>
+
+Then it's another section
 
 
 
