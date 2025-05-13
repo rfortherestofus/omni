@@ -342,18 +342,29 @@ ul ul > li:not(#TOC li)::before {
 
 /* columns */
 
-.cols {
+.columns {
   display: flex;
   gap: 20px;
 }
 
-.cols-float {
+.columns-wrap {
   clear: both;
 }
-.image-float {
+
+.wrap-right {
   float: right;
   margin-bottom: 15px;
+  margin-top: 15px;
   margin-left: 15px;
+  clear: both;
+}
+
+.wrap-left {
+  float: left;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  margin-right: 15px;
+  clear: both;
 }
 
 /* section markers */
