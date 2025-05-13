@@ -1,13 +1,13 @@
 <script>
   setTimeout(() => {
-    // Select only the <a> elements that are not within nested <ul> elements
-    const tocLinks = document.querySelectorAll("#TOC > ul > li > a");
+    // Select all spans with class 'toc-section-number' inside the TOC
+    const tocNumbers = document.querySelectorAll("#TOC .toc-section-number");
 
-    tocLinks.forEach((link) => {
-      const match = link.textContent.match(/^(\d)\b/);
-      if (match) {
-        link.textContent = link.textContent.replace(/^(\d)\b/, "0$1");
+    tocNumbers.forEach((span) => {
+      const num = parseInt(span.textContent.trim(), 10);
+      if (!isNaN(num) && num >= 1 && num <= 9) {
+        span.textContent = `0${num}`;
       }
     });
-  }, 500); // Adjust delay if necessary
+  }, 500); // Adjust if rendering is delayed
 </script>
