@@ -43,7 +43,6 @@
   @bottom-right {
     content: counter(page);
     font-size: 10pt;
-    z-index: 1001; /* one above cover page */
     background: none;
   }
 
@@ -51,7 +50,6 @@
     content: "Omni Institute Report";
     margin-left: 4in;
     font-size: 10pt;
-    z-index: 1001; /* one above cover page */
   }
 
   @bottom-left {
@@ -62,7 +60,6 @@
     background-position: right top;
     width: 30px;
     height: auto;
-    z-index: 1001; /* one above cover page */
   }
 }
 
@@ -74,7 +71,7 @@
   bottom: -12%;
   left: -8%;
   width: 116%;
-  height: 45%;
+  height: 60%;
   z-index: 1000; /* allow to go over margins */
 }
 
@@ -83,8 +80,35 @@
   height: 100%;
   background-image: url("pattern-cover.png");
   background-repeat: no-repeat;
-  background-size: cover; /* or contain depending on your needs */
+  background-size: cover;
   background-position: center bottom;
+}
+
+.cover-page-full {
+  position: absolute;
+  top: -11%;
+  left: -8%;
+  z-index: 1000; /* allow to go over margins */
+  width: 116%;
+  height: 122%;
+  background-image: url("pattern-cover.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.cover-content {
+  background-color: transparent;
+}
+
+.cover-content h2 {
+  position: absolute;
+  left: 10%;
+  bottom: 20%;
+  color: white;
+  background-color: transparent;
+  font-size: 2.5rem;
+  font-weight: bold;
 }
 
 /*  --------------------- TOC --------------------- */
@@ -144,6 +168,8 @@ li li .toc-section-number {
   background-color: var(--background-color);
 }
 
+/* --------------------- Abstract --------------------- */
+
 .submitted-to {
   font-weight: 500;
   font-family: var(--header-font);
@@ -167,7 +193,7 @@ h3.abstract {
   display: none;
 }
 
-/* logo */
+/* --------------------- logo --------------------- */
 
 .logo-container {
   position: absolute;
@@ -217,10 +243,11 @@ h1.title:nth-child(1):not(.abstract h1) {
   font-weight: bolder;
   font-family: var(--header-font);
   margin-top: 2in;
+  font-size: 30pt;
 }
 
 h1.subtitle:nth-child(2):not(.abstract h1) {
-  margin-top: 1.5in;
+  margin-top: 0.5in;
   border-top: 1px solid #d4ddeb;
   font-family: var(--header-font);
   font-weight: bolder;
