@@ -182,7 +182,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 Lorem Ipsum
 
-## Chapter title
+<div class="page-break-before"></div>
 
 ## Appendix A
 
