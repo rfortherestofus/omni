@@ -462,7 +462,8 @@ omni_icon <- function(
       display = 'flex',
       margin = 'auto',
       border_radius = '100%',
-      padding = padding_container
+      padding = padding_container,
+      box_sizing = 'content-box'
     ),
     htmltools::div(
       style = htmltools::css(
