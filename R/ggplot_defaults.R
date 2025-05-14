@@ -22,28 +22,28 @@ set_omni_defaults <- function(
     "text",
     list(
       family = base_family,
-      size = 5
+      size = 4.22
     )
   )
   ggplot2::update_geom_defaults(
     "label",
     list(
       family = base_family,
-      size = 5
+      size = 4.22
     )
   )
   ggplot2::update_geom_defaults(
     "text_repel",
     list(
       family = base_family,
-      size = 5
+      size = 4.22
     )
   )
   ggplot2::update_geom_defaults(
     "label_repel",
     list(
       family = base_family,
-      size = 5
+      size = 4.22
     )
   )
 
