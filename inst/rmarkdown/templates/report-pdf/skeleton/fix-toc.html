@@ -1,0 +1,13 @@
+<script>
+  setTimeout(() => {
+    // Select all spans with class 'toc-section-number' inside the TOC
+    const tocNumbers = document.querySelectorAll("#TOC .toc-section-number");
+
+    tocNumbers.forEach((span) => {
+      const num = parseInt(span.textContent.trim(), 10);
+      if (!isNaN(num) && num >= 1 && num <= 9) {
+        span.textContent = `0${num}`;
+      }
+    });
+  }, 2000); // Adjust if rendering is delayed
+</script>

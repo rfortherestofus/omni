@@ -12,8 +12,8 @@
 /* setup default values for variables */
 /* will be updated by R */
 :root {
-  --main-font: "Calibri";
-  --header-font: "Calibri";
+  --main-font: "Neue Haas Grotesk Display Pro";
+  --header-font: "Neue Haas Grotesk Display Pro";
   --main-color: #314160;
 }
 
@@ -22,7 +22,8 @@
   size: 8.5in 11in;
 
   /* Add colorbar to all pages (first and last are overriden later) */
-  background-image: url(images/omni-logo-horizontal.svg), url(images/colorbar.svg);
+  background-image: url(images/omni-logo-horizontal.svg),
+    url(images/colorbar.svg);
   background-position: bottom 0.33in center, bottom 0.15in left;
   background-size: 15%, contain;
   background-repeat: no-repeat, no-repeat;
@@ -95,7 +96,9 @@ a:visited {
 
 /* ---- Tables -------------------- */
 
-table, th, td {
+table,
+th,
+td {
   border: 1px solid black;
   border-collapse: collapse;
 }
