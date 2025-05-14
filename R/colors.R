@@ -2,11 +2,11 @@
 #'
 #' omni_colors() enables you to pull colors directly from the WVC palette.
 #' Choose from:
-#' "white", "ivory", "ivory 400", "orange-red 200", "orange-red 400",
-#' "orange-red 600", "golden-yellow 200", "golden-yellow 400", "golden-yellow 600",
-#' "olive-green 200", "olive-green 400", "olive-green 600", "teal 200", "teal 400",
-#' "teal 600", "plum 200", "plum 400", "plum 600", "periwinkle 200", "periwinkle 400",
-#' "periwinkle 600", "steel blue 200", "steel blue"
+#' "White", "Ivory", "Ivory 400", "Orange-Red 200", "Orange-Red 400",
+#' "Orange-Red 600", "Golden-Yellow 200", "Golden-Yellow 400", "Golden-Yellow 600",
+#' "Olive-Green 200", "Olive-Green 400", "Olive-Green 600", "Teal 200", "Teal 400",
+#' "Teal 600", "Plum 200", "Plum 400", "Plum 600", "Periwinkle 200", "Periwinkle 400",
+#' "Periwinkle 600", "Steel Blue 200", "Steel Blue"
 #'
 #' @name omni_colors
 #' @param colors_sub Character vector of color names.
@@ -14,63 +14,63 @@
 #' @return A vector of hex codes.
 #' @export
 #' @examples
-#' omni_colors("orange-red 400")
-#' omni_colors(c("plum 400", "golden-yellow 400", "teal 400"))
-#' omni_colors(c("steel blue 200", "olive-green 400"), named = TRUE)
+#' omni_colors("Orange-Red 400")
+#' omni_colors(c("Plum 400", "Golden-Yellow 400", "Teal 400"))
+#' omni_colors(c("Steel Blue 200", "Olive-Green 400"), named = TRUE)
 omni_colors <- function(
     colors_sub = c(
-        "white",
-        "ivory",
-        "ivory 400",
-        "orange-red 200",
-        "orange-red 400",
-        "orange-red 600",
-        "golden-yellow 200",
-        "golden-yellow 400",
-        "golden-yellow 600",
-        "olive-green 200",
-        "olive-green 400",
-        "olive-green 600",
-        "teal 200",
-        "teal 400",
-        "teal 600",
-        "plum 200",
-        "plum 400",
-        "plum 600",
-        "periwinkle 200",
-        "periwinkle 400",
-        "periwinkle 600",
-        "steel blue 200",
-        "steel blue",
-        "navy"
+        "White",
+        "Ivory",
+        "Ivory 400",
+        "Orange-Red 200",
+        "Orange-Red 400",
+        "Orange-Red 600",
+        "Golden-Yellow 200",
+        "Golden-Yellow 400",
+        "Golden-Yellow 600",
+        "Olive-Green 200",
+        "Olive-Green 400",
+        "Olive-Green 600",
+        "Teal 200",
+        "Teal 400",
+        "Teal 600",
+        "Plum 200",
+        "Plum 400",
+        "Plum 600",
+        "Periwinkle 200",
+        "Periwinkle 400",
+        "Periwinkle 600",
+        "Steel Blue 200",
+        "Steel Blue",
+        "Navy"
     ),
     named = FALSE
 ) {
     omni_color_vector <- c(
-        `white` = "#ffffff",
-        `ivory` = "#F9F7F4",
-        `ivory 400` = "#E9DFCF",
-        `orange-red 200` = "#FF9E85",
-        `orange-red 400` = "#FF5E34",
-        `orange-red 600` = "#CC4100",
-        `golden-yellow 200` = "#FDE880",
-        `golden-yellow 400` = "#FCD82B",
-        `golden-yellow 600` = "#F7B925",
-        `olive-green 200` = "#B8C690",
-        `olive-green 400` = "#89A046",
-        `olive-green 600` = "#3B5530",
-        `teal 200` = "#C5DFD9",
-        `teal 400` = "#8AC0B3",
-        `teal 600` = "#41816F",
-        `plum 200` = "#DD9CB9",
-        `plum 400` = "#C65A8B",
-        `plum 600` = "#821C4C",
-        `periwinkle 200` = "#D4DDEB",
-        `periwinkle 400` = "#A9BAD8",
-        `periwinkle 600` = "#5776B2",
-        `steel blue 200` = "#BFCBD3",
-        `steel blue` = "#677384",
-        `navy` = "#081C39"
+        `White` = "#ffffff",
+        `Ivory` = "#F9F7F4",
+        `Ivory 400` = "#E9DFCF",
+        `Orange-Red 200` = "#FF9E85",
+        `Orange-Red 400` = "#FF5E34",
+        `Orange-Red 600` = "#CC4100",
+        `Golden-Yellow 200` = "#FDE880",
+        `Golden-Yellow 400` = "#FCD82B",
+        `Golden-Yellow 600` = "#F7B925",
+        `Olive-Green 200` = "#B8C690",
+        `Olive-Green 400` = "#89A046",
+        `Olive-Green 600` = "#3B5530",
+        `Teal 200` = "#C5DFD9",
+        `Teal 400` = "#8AC0B3",
+        `Teal 600` = "#41816F",
+        `Plum 200` = "#DD9CB9",
+        `Plum 400` = "#C65A8B",
+        `Plum 600` = "#821C4C",
+        `Periwinkle 200` = "#D4DDEB",
+        `Periwinkle 400` = "#A9BAD8",
+        `Periwinkle 600` = "#5776B2",
+        `Steel Blue 200` = "#BFCBD3",
+        `Steel Blue` = "#677384",
+        `Navy` = "#081C39"
     )
 
     output_colors <- omni_color_vector[colors_sub]
@@ -91,16 +91,16 @@ omni_colors <- function(
 #' @return A function that generates interpolated colors.
 #' @export
 #' @examples
-#' omni_palette <- omni_pal(c("periwinkle 600", "orange-red 400"))
+#' omni_palette <- omni_pal(c("Periwinkle 600", "Orange-Red 400"))
 #' omni_palette(10)
 omni_pal <- function(
     palette = c(
-        "orange-red 400",
-        "golden-yellow 400",
-        "olive-green 400",
-        "teal 400",
-        "plum 400",
-        "periwinkle 400"
+        "Orange-Red 400",
+        "Golden-Yellow 400",
+        "Olive-Green 400",
+        "Teal 400",
+        "Plum 400",
+        "Periwinkle 400"
     ),
     reverse = FALSE,
     ...
@@ -118,7 +118,7 @@ omni_pal <- function(
 #' Continuous color scale based on OMNI colors
 #'
 #' @name scale_color_omni_continuous
-#' @param palette Character vector of OMNI colors OR one of `c("orange-red", "golden-yellow", "olive-green", "plum", "teal", "periwinkle")`.
+#' @param palette Character vector of OMNI colors OR one of `c("Orange-Red", "Golden-Yellow", "Olive-Green", "Plum", "Teal", "Periwinkle")`.
 #' @param reverse Boolean, should palette be reversed?
 #' @param ... Additional arguments passed to scale_color_gradientn()
 #' @export
@@ -132,22 +132,22 @@ scale_color_omni_continuous <- function(
     reverse = FALSE,
     ...
 ) {
-    if (palette == "orange-red") {
-        palette = c("orange-red 200", "orange-red 400", "orange-red 600")
-    } else if (palette == "golden-yellow") {
+    if (palette == "Orange-Red") {
+        palette = c("Orange-Red 200", "Orange-Red 400", "Orange-Red 600")
+    } else if (palette == "Golden-Yellow") {
         palette = c(
-            "golden-yellow 200",
-            "golden-yellow 400",
-            "golden-yellow 600"
+            "Golden-Yellow 200",
+            "Golden-Yellow 400",
+            "Golden-Yellow 600"
         )
-    } else if (palette == "olive-green") {
-        palette = c("olive-green 200", "olive-green 400", "olive-green 600")
-    } else if (palette == "teal") {
-        palette = c("teal 200", "teal 400", "teal 600")
-    } else if (palette == "plum") {
-        palette = c("plum 200", "plum 400", "plum 600")
-    } else if (palette == "periwinkle") {
-        palette = c("periwinkle 200", "periwinkle 400", "periwinkle 600")
+    } else if (palette == "Olive-Green") {
+        palette = c("Olive-Green 200", "Olive-Green 400", "Olive-Green 600")
+    } else if (palette == "Teal") {
+        palette = c("Teal 200", "Teal 400", "Teal 600")
+    } else if (palette == "Plum") {
+        palette = c("Plum 200", "Plum 400", "Plum 600")
+    } else if (palette == "Periwinkle") {
+        palette = c("Periwinkle 200", "Periwinkle 400", "Periwinkle 600")
     }
     ggplot2::scale_color_gradientn(
         colors = omni_pal(palette, reverse)(256),
@@ -158,7 +158,7 @@ scale_color_omni_continuous <- function(
 #' Continuous fill scale based on OMNI colors
 #'
 #' @name scale_fill_omni_continuous
-#' @param palette Character vector of OMNI colors OR one of `c("orange-red", "golden-yellow", "olive-green", "plum", "teal", "periwinkle")`.
+#' @param palette Character vector of OMNI colors OR one of `c("Orange-Red", "Golden-Yellow", "Olive-Green", "Plum", "Teal", "Periwinkle")`.
 #' @param reverse Boolean, should palette be reversed?
 #' @param ... Additional arguments passed to scale_fill_gradientn()
 #' @export
@@ -178,22 +178,22 @@ scale_fill_omni_continuous <- function(
     reverse = FALSE,
     ...
 ) {
-    if (palette == "orange-red") {
-        palette = c("orange-red 200", "orange-red 400", "orange-red 600")
-    } else if (palette == "golden-yellow") {
+    if (palette == "Orange-Red") {
+        palette = c("Orange-Red 200", "Orange-Red 400", "Orange-Red 600")
+    } else if (palette == "Golden-Yellow") {
         palette = c(
-            "golden-yellow 200",
-            "golden-yellow 400",
-            "golden-yellow 600"
+            "Golden-Yellow 200",
+            "Golden-Yellow 400",
+            "Golden-Yellow 600"
         )
-    } else if (palette == "olive-green") {
-        palette = c("olive-green 200", "olive-green 400", "olive-green 600")
-    } else if (palette == "teal") {
-        palette = c("teal 200", "teal 400", "teal 600")
-    } else if (palette == "plum") {
-        palette = c("plum 200", "plum 400", "plum 600")
-    } else if (palette == "periwinkle") {
-        palette = c("periwinkle 200", "periwinkle 400", "periwinkle 600")
+    } else if (palette == "Olive-Green") {
+        palette = c("Olive-Green 200", "Olive-Green 400", "Olive-Green 600")
+    } else if (palette == "Teal") {
+        palette = c("Teal 200", "Teal 400", "Teal 600")
+    } else if (palette == "Plum") {
+        palette = c("Plum 200", "Plum 400", "Plum 600")
+    } else if (palette == "Periwinkle") {
+        palette = c("Periwinkle 200", "Periwinkle 400", "Periwinkle 600")
     }
 
     ggplot2::scale_fill_gradientn(colors = omni_pal(palette, reverse)(256), ...)
@@ -214,12 +214,12 @@ scale_fill_omni_continuous <- function(
 #'   scale_fill_omni_discrete()
 scale_fill_omni_discrete <- function(
     palette = c(
-        "orange-red 400",
-        "golden-yellow 400",
-        "olive-green 400",
-        "teal 400",
-        "plum 400",
-        "periwinkle 400"
+        "Orange-Red 400",
+        "Golden-Yellow 400",
+        "Olive-Green 400",
+        "Teal 400",
+        "Plum 400",
+        "Periwinkle 400"
     ),
     reverse = FALSE,
     ...
@@ -246,12 +246,12 @@ scale_fill_omni_discrete <- function(
 #'     scale_color_omni_discrete()
 scale_color_omni_discrete <- function(
     palette = c(
-        "orange-red 400",
-        "golden-yellow 400",
-        "olive-green 400",
-        "teal 400",
-        "plum 400",
-        "periwinkle 400"
+        "Orange-Red 400",
+        "Golden-Yellow 400",
+        "Olive-Green 400",
+        "Teal 400",
+        "Plum 400",
+        "Periwinkle 400"
     ),
     reverse = FALSE,
     ...
