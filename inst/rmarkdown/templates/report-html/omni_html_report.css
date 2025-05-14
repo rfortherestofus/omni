@@ -23,6 +23,7 @@ body {
   padding: 15px;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid #ddd;
 }
 .logo {
   height: 70px;
@@ -43,11 +44,16 @@ body {
   border-top: 1px solid #ddd;
   margin-top: 120px;
 }
+
 .footer-text {
-  margin-left: 20px;
+  margin-left: auto; /* Push to the right */
+  text-align: right;
+  display: flex;
+  flex-direction: column; /* Stack the paragraphs vertically */
   font-size: 14px;
   color: #555;
 }
+
 .footer-text a {
   color: #555;
   text-decoration: none;
@@ -69,10 +75,10 @@ h1.subtitle {
 }
 
 /* Levels of title */
-h1,
-h2,
-h3,
-h4 {
+h1:not(#header h1),
+h2:not(#header h2),
+h3:not(#header h3),
+h4:not(#header h4) {
   font-family: var(--header-font);
   margin-top: 50px;
 }
@@ -99,4 +105,5 @@ p {
 
 #TOC {
   margin-top: 70px !important;
+  font-size: 1.4em;
 }

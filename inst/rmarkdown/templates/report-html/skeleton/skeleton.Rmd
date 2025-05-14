@@ -1,19 +1,18 @@
 ---
 title: "Project title"
-subtitle: "What you are doing"
-author: "Who is doing it"
+subtitle: "Project subtitle"
+author: "Author"
 date: "`r Sys.Date() |> format('%B %d, %Y')`"
-output:
-  omni::omni_html_report
-editor_options: 
-  chunk_output_type: console
-  markdown: 
-    wrap: 72
+toc-title: "Table of Content"
+output: 
+  html_document:
+    css: "../omni_html_report.css"
+    toc: true
+    includes:
+      before_body: "../header.html"
+      after_body: "../footer.html"
 ---
 
-```{=html}
-<link rel="stylesheet" href="../omni_html_report.css" type="text/css">
-```
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE)
