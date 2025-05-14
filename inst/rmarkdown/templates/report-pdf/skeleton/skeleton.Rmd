@@ -119,8 +119,8 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 ```{r}
 callout_box(
-    text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
-    color = "olive-green 600"
+  text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
+  color = "olive-green 600"
 )
 ```
 
@@ -140,9 +140,9 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 ::: {.column width="50%"}
 ```{r}
 quote_box(
-    text = "This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
-    author = "David Keyes",
-    color = "olive-green 600"
+  text = "This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
+  author = "David Keyes",
+  color = "olive-green 600"
 )
 ```
 

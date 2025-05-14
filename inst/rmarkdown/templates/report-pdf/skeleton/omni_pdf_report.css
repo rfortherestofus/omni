@@ -288,26 +288,31 @@ h1 {
 h2 {
   margin-top: 0 !important;
   font-size: 30pt;
-  font-weight: 900;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  padding-top: 5.3pt;
   color: var(--dark-blue);
 }
 
 h3 {
   font-size: 14pt;
-  font-weight: 700;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  padding-top: 12pt;
   color: var(--dark-blue);
 }
 
 h4 {
   font-size: 11pt;
-  font-weight: 600;
+  font-weight: 400;
+  letter-spacing: 0.03em;
   color: var(--dark-blue);
 }
 
 /* Normal paragraph */
 p {
   font-size: 11pt;
-  font-weight: 300;
+  font-weight: 400;
   padding: 1pt;
   margin: 1pt 0;
 }
