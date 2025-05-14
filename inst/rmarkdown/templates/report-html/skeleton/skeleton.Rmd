@@ -8,7 +8,7 @@ output:
   html_document:
     css: "../omni_html_report.css"
     toc: true
-    toc_float: true
+    toc_float: false
     includes:
       before_body: "../header.html"
       after_body: "../footer.html"
@@ -32,13 +32,13 @@ Some text
 library(tidyverse)
 
 ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
-  geom_point() +
-  labs(
-    title = "Sepal Length vs Sepal Width",
-    x = "Sepal Length (cm)",
-    y = "Sepal Width (cm)"
-  ) +
-  theme_minimal()
+    geom_point() +
+    labs(
+        title = "Sepal Length vs Sepal Width",
+        x = "Sepal Length (cm)",
+        y = "Sepal Width (cm)"
+    ) +
+    theme_minimal()
 ```
 
 

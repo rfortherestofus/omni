@@ -204,7 +204,17 @@ omni_html_report <- function(...) {
     mustWork = TRUE
   )
 
+  css_file <- system.file(
+    "rmarkdown",
+    "templates",
+    "report-html",
+    "omni_html_report.css",
+    package = "omni",
+    mustWork = TRUE
+  )
+
   bookdown::html_document2(
+    css = css_file,
     toc = FALSE,
     toc_float = FALSE,
     fig_caption = TRUE,
