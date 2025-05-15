@@ -239,25 +239,80 @@ callout_box <- function(
 #' @param number The emphasized number. Numeric or character vector of length 1.
 #' @param text The info text. Character vector of length 1.
 #' @param color Desired background color. Must be one `omni::omni_colors()`
+#' @param font_size_pt Font size of emphasized number in pt. Numeric vector of length 1. Defaults to 16.
 #' @param fixed_width_px Width of the number emphasis in px. Must be numeric vector of length 1. Defaults to 300.
 #'
 #' @return HTML & CSS that of the desired number emphasis
 #'
 #' @examples
 #'
+#' number_emphasis(
+#'    number = 1234,
+#'    text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
+#'    color = 'teal 400'
+#' ),
+#'
+#' htmltools::browsable(
+#'  htmltools::div(
+#'    style = 'font-family: "Inter Tight"',
+#'    number_emphasis(
+#'      number = 1,
+#'      text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
+#'      color = 'teal 400'
+#'    ),
+#'    htmltools::br(),
+#'    number_emphasis(
+#'      number = 12,
+#'      text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
+#'      color = 'teal 400'
+#'    ),
+#'    htmltools::br(),
+#'    number_emphasis(
+#'      number = 123,
+#'      text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
+#'      color = 'teal 400'
+#'    ),
+#'    htmltools::br(),
+#'    number_emphasis(
+#'      number = 1234,
+#'      text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
+#'      color = 'teal 400'
+#'    ),
+#'    htmltools::br(),
+#'    number_emphasis(
+#'      number = '12.1K',
+#'      text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
+#'      color = 'teal 400'
+#'    ),
+#'    htmltools::br(),
+#'    number_emphasis(
+#'      number = '123,456',
+#'      text = 'and some shorter text as well.',
+#'      color = 'teal 400',
+#'      font_size_pt = 14
+#'    )
+#'  )
+#') |>
+#'  print()
+#'
 #' @export
 number_emphasis <- function(
   number,
   text,
   color,
+  font_size_pt = 16,
   fixed_width_px = 300
 ) {
   # Checks on text and fixed_width_px arguments -------------------------------
   if (length(text) != 1 || !is.character(text)) {
     cli::cli_abort('{.var text} must be character vector of length 1.')
   }
-  if (!is.null(fixed_width_px) && !is.numeric(fixed_width_px)) {
+  if (!is.numeric(fixed_width_px)) {
     cli::cli_abort('{.var fixed_width_px} must be numeric vector of length 1.')
+  }
+
+  if (!is.numeric(font_size_pt)) {
+    cli::cli_abort('{.var font_size_pt} must be numeric vector of length 1.')
   }
 
   # Checks on number arguments -------------------------------
@@ -276,15 +331,11 @@ number_emphasis <- function(
     )
   }
 
-  # Preprocess colors  ----------------------------------------------------------------
+  # Preprocess settings  ----------------------------------------------------------------
   color_hex <- allowed_colors[color]
   width_textbox <- paste0(fixed_width_px, 'px')
-
+  font_size <- paste0(font_size_pt, 'pt')
   border_width_px <- 5
-
-  n_character <- number |> as.character() |> nchar()
-  is_two_or_less_chars <- (n_character <= 2)
-  width_when_two_or_less <- '66px'
 
   # Assemble HTML & CSS ----------------------------------------------------------------
   htmltools::div(
@@ -295,14 +346,14 @@ number_emphasis <- function(
     ),
     htmltools::div(
       style = htmltools::css(
-        font_size = '24pt',
+        font_size = font_size,
         color = 'black',
         background = 'white',
         border = paste0(border_width_px, 'px solid ', color_hex),
         border_radius = '100%',
-        padding = '10px',
         aspect_ratio = 1,
-        width = if (is_two_or_less_chars) width_when_two_or_less,
+        width = '75px',
+        height = '75px',
         display = 'flex',
       ),
       htmltools::div(
@@ -319,7 +370,7 @@ number_emphasis <- function(
         font_size = '12pt',
         margin_top = 'auto',
         margin_bottom = 'auto',
-        margin_left = '-50px',
+        margin_left = '-30px',
         padding_left = '55px',
         padding_right = '10px',
         padding_top = '2px',
@@ -331,37 +382,44 @@ number_emphasis <- function(
   )
 }
 
-
 htmltools::browsable(
   htmltools::div(
+    style = 'font-family: "Inter Tight"',
     number_emphasis(
       number = 1,
-      text = 'pt. Arial Bold for stats numbers. 11 pt Arial Bold for stats content.',
+      text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
       color = 'teal 400'
     ),
     htmltools::br(),
     number_emphasis(
       number = 12,
-      text = 'pt. Arial Bold for stats numbers. 11 pt Arial Bold for stats content.',
+      text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
       color = 'teal 400'
     ),
     htmltools::br(),
     number_emphasis(
       number = 123,
-      text = 'pt. Arial Bold for stats numbers. 11 pt Arial Bold for stats content.',
+      text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
       color = 'teal 400'
     ),
     htmltools::br(),
     number_emphasis(
       number = 1234,
-      text = 'pt. Arial Bold for stats numbers. 11 pt Arial Bold for stats content.',
+      text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
       color = 'teal 400'
     ),
     htmltools::br(),
     number_emphasis(
       number = '12.1K',
-      text = 'pt. Arial Bold for stats numbers. 11 pt Arial Bold for stats content.',
+      text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
       color = 'teal 400'
+    ),
+    htmltools::br(),
+    number_emphasis(
+      number = '123,456',
+      text = 'and some shorter text as well.',
+      color = 'teal 400',
+      font_size_pt = 14
     )
   )
 ) |>
