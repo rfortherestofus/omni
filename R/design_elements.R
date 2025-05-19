@@ -5,7 +5,7 @@
 #' @name quote_box
 #' @param text The text of the quote box. Character vector of length 1. Text that is supposed to be highlighted needs to be wrapped in <highlight></highlight> tags.
 #' @param author The author of quote box. Character vector of length 1 or NULL (in case author line isn't required)
-#' @param color The color of the quote box. One of the "version 600" colors from omni_colors(), i.e. "Orange-Red 600", "Golden-Yellow 600", "Teal 600", "Plum 600", "Periwinkle 600"
+#' @param color The color of the quote box. One of the "version 600" colors from omni_colors(), i.e. "orange-red-600", "golden-yellow-600", "teal-600", "plum-600", "periwinkle-600"
 #' @param fixed_width_px Width of the quote box in px. Must be numeric vector of length 1. Defaults to 300.
 #'
 #' @return HTML & CSS that of the desired quote box
@@ -16,7 +16,7 @@
 #'   quote_box(
 #'     text = 'This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',
 #'     author = 'John Jacob, random guy',
-#'     color = 'Olive-Green 600'
+#'     color = 'olive-green-600'
 #'   )
 #' )
 #'
@@ -24,7 +24,7 @@
 #'   quote_box(
 #'     text = 'This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',
 #'     author = 'John Jacob, random guy',
-#'     color = 'Periwinkle 600'
+#'     color = 'periwinkle-600'
 #'   )
 #' )
 #'
@@ -126,7 +126,7 @@ quote_box <- function(
 #'
 #' @name callout_box
 #' @param text The text of the callout box. Character vector of length 1. Text that is supposed to be highlighted needs to be wrapped in <highlight></highlight> tags.
-#' @param color The color of the callout box. One of the "version 600" colors from omni_colors(), i.e. "Orange-Red 600", "Golden-Yellow 600", "Teal 600", "Plum 600", "Periwinkle 600"
+#' @param color The color of the callout box. One of the "version 600" colors from omni_colors(), i.e. "orange-red-600", "golden-yellow-600", "teal-600", "plum-600", "periwinkle-600"
 #' @param fixed_width_px Width of the callout box in px. Must be numeric vector of length 1. Defaults to 300.
 #'
 #' @return HTML & CSS that of the desired callout box
@@ -136,14 +136,14 @@ quote_box <- function(
 #' htmltools::browsable(
 #'   callout_box(
 #'     text = 'This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',
-#'     color = 'Olive-Green 600'
+#'     color = 'olive-green-600'
 #'   )
 #' )
 #'
 #' htmltools::browsable(
 #'   callout_box(
 #'     text = 'This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',
-#'     color = 'Orange-Red 600'
+#'     color = 'orange-red-600'
 #'   )
 #' )
 #'
@@ -199,7 +199,7 @@ callout_box <- function(
     htmltools::div(
       style = htmltools::css(
         padding_left = '10px',
-        color = allowed_colors['Navy'],
+        color = allowed_colors['navy'],
         border_left = paste('5px solid', color_hex)
       ),
       htmltools::HTML(preprocessed_text),
