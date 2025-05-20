@@ -1,5 +1,5 @@
 ---
-title: "Report Title Goes Here"
+title: "Report Title Goes Here:<br>2 Lines Max for Best Readability"
 subtitle: "Sub-Headline Goes Here" 
 client_name: "[client]"
 client_city: "[city]"
@@ -77,12 +77,10 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 :::: {.columns}
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-
 
 ::: {.column width="29%"}
 
-![](logo.png)
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
 
 :::
 
@@ -92,7 +90,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 ::: {.column width="70%"}
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+![](logo.png)
 
 :::
 
@@ -133,8 +131,8 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 ```{r}
 callout_box(
-    text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
-    color = "olive-green 600"
+  text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
+  color = "olive-green 600"
 )
 ```
 
@@ -142,10 +140,11 @@ callout_box(
 
 ::::
 
-:::: {.columns}
+
 
 ### First section
 
+:::: {.columns}
 
 ::: {.column width="50%"}
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum 
@@ -154,9 +153,9 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 ::: {.column width="50%"}
 ```{r}
 quote_box(
-    text = "This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
-    author = "David Keyes",
-    color = "olive-green 600"
+  text = "This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
+  author = "David Keyes",
+  color = "olive-green 600"
 )
 ```
 
@@ -166,9 +165,27 @@ quote_box(
 
 
 
-
+\newpage
 
 ## Chapter title
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+- Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore. 
+  - Lorem ipsum dolor sit amet, consectetu.
+- Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  - Ut enim ad minim veniam, quis nostru.
+  - Nisi ut aliquip ex ea commodo consequat.
+
+:::
+
+::: {.column width="50%"}
+![](https://images.unsplash.com/photo-1747599309107-20504ba6b8dd?q=80&w=1752&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+:::
+
+::::
 
 ### Section title
 

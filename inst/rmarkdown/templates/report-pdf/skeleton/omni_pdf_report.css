@@ -173,6 +173,7 @@ li li .toc-section-number {
 .submitted-to {
   font-weight: 500;
   font-family: var(--header-font);
+  margin-top: 325pt;
 }
 
 p.for-more-info,
@@ -216,6 +217,7 @@ h2.date {
   font-family: var(--secondary-font);
   font-weight: normal;
   text-align: right;
+  padding-top: 0;
 }
 
 /* avoid supplementary blank page */
@@ -231,7 +233,7 @@ h2.date {
   background-color: #faecc3;
   color: black;
   font-weight: 500;
-  font-size: 0.8rem;
+  font-size: 11pt;
   font-family: var(--main-font);
   line-height: 1.2;
   padding-top: 0.3em;
@@ -313,7 +315,7 @@ h1 {
 }
 
 h2 {
-  margin-top: 0 !important;
+  margin-block-end: 0 !important;
   font-size: 30pt;
   font-weight: 400;
   letter-spacing: 0.03em;
@@ -322,7 +324,8 @@ h2 {
 }
 
 h3 {
-  font-size: 14pt;
+  margin-block-end: 8pt !important;
+  font-size: 16pt;
   font-weight: 400;
   letter-spacing: 0.03em;
   padding-top: 12pt;
@@ -330,6 +333,7 @@ h3 {
 }
 
 h4 {
+  margin-block-end: 5.5pt !important;
   font-size: 11pt;
   font-weight: 400;
   letter-spacing: 0.03em;
@@ -342,6 +346,7 @@ p {
   font-weight: 400;
   padding: 1pt;
   margin: 1pt 0;
+  line-height: 1.4;
 }
 
 /* images */
@@ -358,6 +363,7 @@ img {
 
 #TOC > ul {
   margin-left: 0pt !important;
+  padding-inline-start: 10pt;
 }
 
 ul:not(.toc ul):not(.toc),
@@ -386,6 +392,10 @@ ul ul > li:not(#TOC li)::before {
 
 .columns-wrap {
   clear: both;
+}
+
+.columns img {
+  padding-top: 20px;
 }
 
 .wrap-right {
