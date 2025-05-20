@@ -22,24 +22,36 @@ theme_omni <- function(
       axis.title.x = element_text(
         margin = margin(15, 0, 0, 0),
         size = 10,
-        color = "#595959"
+        color = "#333333"
       ),
       axis.title.y = element_text(
         margin = margin(0, 15, 0, 0),
-        size = 10,
-        color = "#595959"
+        size = 14,
+        color = "#333333"
       ),
       axis.text = element_text(size = 11),
       plot.title = element_markdown(
         margin = margin(0, 0, 15, 0),
-        color = "#595959",
+        color = "#666665",
         face = "bold",
         size = 13
       ),
       plot.title.position = "plot",
-      plot.subtitle = element_markdown(size = 11, color = "#595959"),
-      plot.caption = element_text(size = 11, face = "italic"),
-      plot.margin = margin(t = 7, r = 7, b = 7, l = 7, unit = "points")
+      plot.subtitle = element_markdown(
+        size = 11,
+        color = "#333333"
+      ),
+      plot.caption = element_text(
+        size = 11,
+        face = "italic"
+      ),
+      plot.margin = margin(
+        t = 7,
+        r = 7,
+        b = 7,
+        l = 7,
+        unit = "points"
+      )
     )
 
   # grid lines option
