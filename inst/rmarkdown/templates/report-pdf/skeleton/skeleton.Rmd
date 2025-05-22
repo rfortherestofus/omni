@@ -9,10 +9,8 @@ acknowledgements: "[...]"
 date: "`r toupper(format(Sys.time(), '%B %Y'))`"
 toc-title: "Table of Contents"
 knit: pagedown::chrome_print
-output: 
-  omni::pdf_report:
-    background_color: "#ccc"
-    primary_color: "rgb(183, 221, 43)"
+output:
+  omni::pdf_report
 abstract: >
   ```{r, child = system.file('assets/rmd/abstract.Rmd', package = 'omni')}
   ```

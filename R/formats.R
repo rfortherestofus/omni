@@ -10,6 +10,7 @@ pdf_report <- function(
     secondary_font = NULL,
     background_color = NULL,
     primary_color = NULL,
+    remove_logo = FALSE,
     ...
 ) {
     css_file <- pkg_resource("pdf_report.css")
@@ -28,6 +29,8 @@ pdf_report <- function(
         primary_color = primary_color
     )
 
+    if (remove_logo) css_file <- remove_logo(file = css_file)
+
     pagedown::html_paged(
         css = c(css_file, interface_css),
         self_contained = TRUE,
@@ -36,6 +39,29 @@ pdf_report <- function(
         includes = rmarkdown::includes(in_header = fix_toc_html),
         ...
     )
+}
+
+#' Remove logo files in CSS
+#'
+#' @param file CSS file path
+remove_logo <- function(file) {
+    css_lines <- readLines(file)
+
+    css_lines <- gsub(
+        '--logo-bottom:.*?;',
+        '--logo-bottom: none;',
+        css_lines
+    )
+
+    css_lines <- gsub(
+        '--logo-cover:.*?;',
+        '--logo-cover: none;',
+        css_lines
+    )
+
+    temp_css <- file.path(dirname(file), "temp.css")
+    writeLines(css_lines, temp_css)
+    return(temp_css)
 }
 
 #' Change main colors in CSS
