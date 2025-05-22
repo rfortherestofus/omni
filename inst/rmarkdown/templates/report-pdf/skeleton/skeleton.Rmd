@@ -136,8 +136,8 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 ```{r}
 callout_box(
-    text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
-    color = "olive-green 600"
+  text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
+  color = "olive-green 600"
 )
 ```
 
@@ -158,9 +158,9 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 ::: {.column width="50%"}
 ```{r}
 quote_box(
-    text = "This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
-    author = "David Keyes",
-    color = "olive-green 600"
+  text = "This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
+  author = "David Keyes",
+  color = "olive-green 600"
 )
 ```
 
@@ -202,7 +202,45 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 <hr>
 
+
+
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum 
+
+#### Number Emphasis
+
+```{r}
+number_emphasis(
+  number = 1234,
+  text = "pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.",
+  color = "teal 400"
+)
+```
+
+
+#### Icon Text Grid
+
+```{r}
+width_px <- 50
+icon_color_fg <- "white"
+icon_color_bg <- 'teal 600'
+
+icon_text_grid(
+  omni_icon('education', width_px, icon_color_bg, icon_color_fg),
+  icon_text(
+    text = '**71.9%:** Any person younger than 21 caught with or suspected of consuming alcohol or marijuana is charged with Minor in Possession (MIP).'
+  ),
+  omni_icon('security', width_px, icon_color_bg, icon_color_fg),
+  icon_text(
+    '**69.8%:** Adults in Colorado who knowingly hep someone younger than 18 break the law - which includes providing minors with alcohol or drubgs - can be charged with a Class 4 felony.'
+  ),
+  omni_icon('vault', width_px, icon_color_bg, icon_color_fg),
+  icon_text(
+    '**34.4%:** It is legal for a person ages 18-20 to possess marijuana with a medical marijuana card.'
+  ),
+  width_px = width_px
+)
+```
+
 
 #### Sub section title
 
