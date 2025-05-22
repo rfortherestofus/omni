@@ -239,7 +239,7 @@ h2.date {
 #header > h1:nth-child(1)::before {
   content: "Omni Institute Report";
   display: block;
-  background-color: #faecc3;
+  /* background-color: #faecc3; */
   color: black;
   font-weight: 500;
   font-size: 11pt;
