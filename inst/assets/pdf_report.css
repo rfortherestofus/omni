@@ -87,7 +87,7 @@ h1.title {
 .cover-image {
   width: 100%;
   height: 100%;
-  background-image: url("images/pattern-cover.png");
+  background-image: url("images/pattern-cover-periwinkle.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center bottom;
@@ -100,7 +100,7 @@ h1.title {
   z-index: 1000; /* allow to go over margins */
   width: 116%;
   height: 122%;
-  background-image: url("images/pattern-cover.png");
+  background-image: url("images/pattern-cover-periwinkle.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
