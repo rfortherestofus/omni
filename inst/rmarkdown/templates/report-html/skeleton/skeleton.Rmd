@@ -8,7 +8,7 @@ output:
   html_document:
     css: "../omni_html_report.css"
     toc: true
-    toc_float: false
+    toc_float: true
     includes:
       before_body: "../header.html"
       after_body: "../footer.html"
