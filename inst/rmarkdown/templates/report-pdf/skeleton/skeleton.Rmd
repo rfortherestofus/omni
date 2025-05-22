@@ -10,7 +10,12 @@ date: "`r toupper(format(Sys.time(), '%B %Y'))`"
 toc-title: "Table of Contents"
 knit: pagedown::chrome_print
 output:
-  omni::pdf_report
+  omni::pdf_report:
+    main_font: "Inter Tight"
+    secondary_font: "Sometype Mono"
+    background_color: "#f9f7f4"
+    primary_color: "#081c39"
+    remove_logo: FALSE
 abstract: >
   ```{r, child = system.file('assets/rmd/abstract.Rmd', package = 'omni')}
   ```
