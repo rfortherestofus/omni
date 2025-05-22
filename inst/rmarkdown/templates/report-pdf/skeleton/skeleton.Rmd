@@ -33,7 +33,9 @@ library(omni)
 ```
 
 
-
+::: {.small-title .dot-red}
+Small title section 
+:::
 
 ## Example Section
 
@@ -47,10 +49,13 @@ The project will start with a virtual project alignment meeting with the key cou
 
 This is the end of the page.
 
-```{=html}
-<div class="page-break-before"></div>
-```
+\newpage
 
+
+
+::: {.small-title .dot-green}
+Small title section 
+:::
 
 ## Example Section
 
@@ -72,6 +77,10 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 <div class="page-break-after"></div>
 ```
+
+::: {.small-title .dot-purple}
+Small title section 
+:::
 
 ## Chapter title
 
@@ -131,8 +140,8 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 ```{r}
 callout_box(
-  text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
-  color = "olive-green 600"
+    text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
+    color = "olive-green 600"
 )
 ```
 
@@ -153,9 +162,9 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 ::: {.column width="50%"}
 ```{r}
 quote_box(
-  text = "This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
-  author = "David Keyes",
-  color = "olive-green 600"
+    text = "This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
+    author = "David Keyes",
+    color = "olive-green 600"
 )
 ```
 
@@ -166,6 +175,10 @@ quote_box(
 
 
 \newpage
+
+::: {.small-title}
+Small title section 
+:::
 
 ## Chapter title
 
