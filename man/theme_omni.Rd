@@ -7,7 +7,7 @@
 theme_omni(
   show_grid_lines = FALSE,
   show_legend = FALSE,
-  base_family = "Calibri"
+  base_family = "Inter Tight"
 )
 }
 \arguments{
@@ -15,7 +15,7 @@ theme_omni(
 
 \item{show_legend}{Whether or not to show the legend. FALSE by default.}
 
-\item{base_family}{Base font family. Calibri by default.}
+\item{base_family}{Base font family. Inter Tight by default.}
 }
 \value{
 A ggplot2 theme

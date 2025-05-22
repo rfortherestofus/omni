@@ -2,18 +2,29 @@
 % Please edit documentation in R/colors.R
 \name{omni_pal}
 \alias{omni_pal}
-\title{Return function to interpolate an OMNI color palette}
+\title{Function to interpolate a OMNI color palette}
 \usage{
-omni_pal(palette = "Main", reverse = FALSE, ...)
+omni_pal(
+  palette = c("orange-red 400", "golden-yellow 400", "olive-green 400", "teal 400",
+    "plum 400", "periwinkle 400"),
+  reverse = FALSE,
+  ...
+)
 }
 \arguments{
-\item{palette}{Character name of palette in omni_palettes}
+\item{palette}{Character vector of OMNI colors.}
 
-\item{reverse}{Boolean indicating whether the palette should be reversed}
+\item{reverse}{Boolean, should palette be reversed?}
 
-\item{...}{Additional arguments to pass to colorRampPalette()}
+\item{...}{Additional arguments for colorRampPalette()}
+}
+\value{
+A function that generates interpolated colors.
 }
 \description{
-Return function to interpolate an OMNI color palette
+Function to interpolate a OMNI color palette
 }
-\keyword{internal}
+\examples{
+omni_palette <- omni_pal(c("periwinkle 600", "orange-red 400"))
+omni_palette(10)
+}
