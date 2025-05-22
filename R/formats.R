@@ -5,19 +5,31 @@
 #' @return An rmd format
 #' @export
 #'
-pdf_report <- function(main_font = NULL, secondary_font = NULL, ...) {
-    css <- pkg_resource("pdf_report.css")
+pdf_report <- function(
+    main_font = NULL,
+    secondary_font = NULL,
+    background_color = NULL,
+    primary_color = NULL,
+    ...
+) {
+    css_file <- pkg_resource("pdf_report.css")
     interface_css <- pkg_resource("interface.css")
     fix_toc_html <- pkg_resource("fix-toc.html")
 
-    css <- change_fonts(
-        css,
-        new_main_font = main_font,
-        new_secondary_font = secondary_font
+    css_file <- change_fonts(
+        file = css_file,
+        main_font = main_font,
+        secondary_font = secondary_font
+    )
+
+    css_file <- change_colors(
+        file = css_file,
+        background_color = background_color,
+        primary_color = primary_color
     )
 
     pagedown::html_paged(
-        css = c(css, interface_css),
+        css = c(css_file, interface_css),
         self_contained = TRUE,
         toc = TRUE,
         fig_caption = TRUE,
@@ -26,35 +38,68 @@ pdf_report <- function(main_font = NULL, secondary_font = NULL, ...) {
     )
 }
 
-#' Change main fonts in CSS
+#' Change main colors in CSS
 #'
 #' @param file CSS file path
-#' @param new_main_font New main font (optionnal)
-#' @param new_secondary_font New secondary font (optionnal)
-change_fonts <- function(
+#' @param background_color Background color (optionnal)
+#' @param primary_color Primary color (optionnal)
+change_colors <- function(
     file,
-    new_main_font = NULL,
-    new_secondary_font = NULL
+    background_color = NULL,
+    primary_color = NULL
 ) {
     css_lines <- readLines(file)
 
-    if (!(is.null(new_main_font))) {
+    if (!(is.null(background_color))) {
         css_lines <- gsub(
-            '--main-font:.*?;',
-            glue::glue('--main-font: "{new_main_font}";'),
-            css_lines
-        )
-        css_lines <- gsub(
-            '--header-font:.*?;',
-            glue::glue('--header-font: "{new_main_font}";'),
+            '--background-color:.*?;',
+            glue::glue('--background-color: {background_color};'),
             css_lines
         )
     }
 
-    if (!(is.null(new_secondary_font))) {
+    if (!(is.null(primary_color))) {
+        css_lines <- gsub(
+            '--primary-color:.*?;',
+            glue::glue('--primary-color: {primary_color};'),
+            css_lines
+        )
+    }
+
+    temp_css <- file.path(dirname(file), "temp.css")
+    writeLines(css_lines, temp_css)
+    return(temp_css)
+}
+
+#' Change main fonts in CSS
+#'
+#' @param file CSS file path
+#' @param main_font New main font (optionnal)
+#' @param secondary_font New secondary font (optionnal)
+change_fonts <- function(
+    file,
+    main_font = NULL,
+    secondary_font = NULL
+) {
+    css_lines <- readLines(file)
+
+    if (!(is.null(main_font))) {
+        css_lines <- gsub(
+            '--main-font:.*?;',
+            glue::glue('--main-font: "{main_font}";'),
+            css_lines
+        )
+        css_lines <- gsub(
+            '--header-font:.*?;',
+            glue::glue('--header-font: "{main_font}";'),
+            css_lines
+        )
+    }
+
+    if (!(is.null(secondary_font))) {
         css_lines <- gsub(
             '--secondary-font:.*?;',
-            glue::glue('--secondary-font: "{new_secondary_font}";'),
+            glue::glue('--secondary-font: "{secondary_font}";'),
             css_lines
         )
     }

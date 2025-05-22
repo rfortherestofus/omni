@@ -11,8 +11,8 @@ toc-title: "Table of Contents"
 knit: pagedown::chrome_print
 output: 
   omni::pdf_report:
-    main_font: "Times New Roman"
-    secondary_font: "Helvetica"
+    background_color: "#ccc"
+    primary_color: "rgb(183, 221, 43)"
 abstract: >
   ```{r, child = system.file('assets/rmd/abstract.Rmd', package = 'omni')}
   ```

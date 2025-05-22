@@ -12,8 +12,10 @@
   --header-font: "Inter Tight";
   --secondary-font: "Sometype Mono";
   --background-color: #f9f7f4;
-  --dark-blue: #081c39;
+  --primary-color: #081c39;
   --steel-blue: #677384;
+  --logo-bottom: url("images/logo-no-text.png");
+  --logo-cover: url("images/logo.png");
   --steel-blue-light: #bfcbd3;
   --pagedjs-margin-top: 0mm;
   --pagedjs-margin-right: 0mm;
@@ -53,7 +55,7 @@
 
   @bottom-left {
     content: "";
-    background-image: url("images/logo-no-text.png");
+    background-image: var(--logo-bottom);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: right top;
@@ -136,7 +138,7 @@ h1.toc-title {
 }
 
 #TOC li a {
-  color: var(--dark-blue) !important;
+  color: var(--primary-color) !important;
   text-decoration: none;
 }
 
@@ -209,7 +211,7 @@ h3.abstract {
   left: 0px;
   width: 150px;
   height: 50px;
-  background-image: url("images/logo.png");
+  background-image: var(--logo-cover);
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -271,7 +273,7 @@ h1.subtitle:nth-child(2):not(.abstract h1) {
   font-family: var(--header-font);
   margin-block-start: 0 !important;
   margin-block-end: 0 !important;
-  color: var(--dark-blue);
+  color: var(--primary-color);
   margin-top: 0 !important;
   margin-bottom: 0;
   margin-left: 0 !important;
@@ -289,7 +291,7 @@ h1.subtitle:nth-child(2):not(.abstract h1) {
 }
 
 .abstract h1.subtitle {
-  color: var(--dark-blue);
+  color: var(--primary-color);
   font-weight: bolder;
   font-size: 12pt;
   font-family: var(--header-font);
@@ -317,7 +319,7 @@ h1.subtitle:nth-child(2):not(.abstract h1) {
 h1 {
   font-size: 24pt;
   font-weight: 700;
-  color: var(--dark-blue);
+  color: var(--primary-color);
   padding: 0;
 }
 
@@ -326,7 +328,7 @@ h2 {
   font-size: 30pt;
   font-weight: 400;
   letter-spacing: 0.03em;
-  color: var(--dark-blue);
+  color: var(--primary-color);
   margin-top: 0 !important;
 }
 
@@ -335,7 +337,7 @@ h3 {
   font-size: 16pt;
   font-weight: 400;
   letter-spacing: 0.03em;
-  color: var(--dark-blue);
+  color: var(--primary-color);
 }
 
 h4 {
@@ -343,7 +345,7 @@ h4 {
   font-size: 11pt;
   font-weight: 400;
   letter-spacing: 0.03em;
-  color: var(--dark-blue);
+  color: var(--primary-color);
 }
 
 /* Normal paragraph */
