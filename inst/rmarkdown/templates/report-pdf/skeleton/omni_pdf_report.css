@@ -47,9 +47,10 @@
   }
 
   @bottom-center {
-    content: "Omni Institute Report";
-    margin-left: 4in;
+    content: "Omni Institute Report | " string(h1-title);
+    margin-left: 2in;
     font-size: 10pt;
+    color: #7a7a7a;
   }
 
   @bottom-left {
@@ -61,6 +62,14 @@
     width: 30px;
     height: auto;
   }
+}
+
+h1.title {
+  string-set: h1-title content(text);
+}
+
+.shorttitle1 {
+  string-set: h1-text content(text);
 }
 
 /* --------------------- Cover Page ------------------ */
