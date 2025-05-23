@@ -22,6 +22,8 @@ abstract: >
   ```
 ---
 
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 ```
@@ -262,3 +264,32 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 ## Appendix B
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+
+
+<script>
+if (typeof Paged !== 'undefined') {
+  class CustomPagedHandler {
+    afterRendered(pages) {
+      var covers = document.querySelectorAll('.cover-page-full');
+
+      covers.forEach(cover => {
+        var page_container = cover.closest('.pagedjs_page');
+        if (page_container) {
+          var marginBottom = page_container.querySelector('.pagedjs_margin-bottom');
+          if (marginBottom) {
+            marginBottom.classList.add('custom-style');
+          }
+
+          var bottomCenter = page_container.querySelector('.pagedjs_margin.pagedjs_margin-bottom-center.hasContent');
+          if (bottomCenter) {
+            bottomCenter.classList.add('custom-style');
+          }
+        }
+      });
+    }
+  }
+
+  Paged.registerHandlers(CustomPagedHandler);
+}
+
+</script>

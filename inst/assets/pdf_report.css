@@ -314,6 +314,23 @@ h1.subtitle:nth-child(2):not(.abstract h1) {
   display: block;
   align-items: center;
   margin-top: 10px;
+  background: transparent;
+}
+
+.pagedjs_margin-content {
+  background: transparent;
+}
+
+.pagedjs_margin-bottom.custom-style,
+.pagedjs_margin.pagedjs_margin-bottom-center.hasContent.custom-style {
+  background: transparent;
+  color: white;
+}
+
+
+.pagedjs_pagebox .pagedjs_margin-bottom {
+  z-index: 2000;
+  background: transparent;
 }
 
 /* Levels of title */
