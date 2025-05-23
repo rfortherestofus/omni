@@ -17,7 +17,7 @@
   --logo-bottom: url("images/logo-no-text.png");
   --logo-cover: url("images/logo.png");
   --steel-blue-light: #bfcbd3;
-  --display-cover-page: block;
+  --display-cover-page: none;
   --pagedjs-margin-top: 0mm;
   --pagedjs-margin-right: 0mm;
   --pagedjs-margin-bottom: 0mm;
@@ -463,8 +463,4 @@ hr {
 
 #page-1 {
   display: var(--display-cover-page) !important;
-}
-
-.pagedjs_page:first-of-type {
-  display: none !important;
 }

@@ -4,7 +4,15 @@
 \alias{pdf_report}
 \title{Omni Paged PDF Report}
 \usage{
-pdf_report(...)
+pdf_report(
+  main_font = NULL,
+  secondary_font = NULL,
+  background_color = NULL,
+  primary_color = NULL,
+  remove_logo = FALSE,
+  remove_cover_page = FALSE,
+  ...
+)
 }
 \arguments{
 \item{...}{Other params to pagedown::html_paged}

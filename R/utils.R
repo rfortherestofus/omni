@@ -15,20 +15,20 @@ pkg_resource <- function(...) {
 #'
 #' @examples
 #' \dontrun{
-#' remove_cover_page("my_file.pdf")
+#' remove_cover_page_pdf("my_file.pdf")
 #'
-#' remove_cover_page("path/to/my/file.pdf")
+#' remove_cover_page_pdf("path/to/my/file.pdf")
 #' }
-remove_cover_page <- function(path) {
+remove_cover_page_pdf <- function(path) {
   if (dir.exists(path)) {
-    stop("The provided path is a directory, not a PDF file.")
+    stop("The provided path is a directory, not a PDF file: '", path, "'")
   }
 
   if (!file.exists(path)) {
-    stop("The specified file does not exist.")
+    stop("The specified file does not exist: '", path, "'")
   }
 
-  pdf_length <- pdf_length(path)
+  pdf_length <- qpdf::pdf_length(path)
 
   if (pdf_length < 2) {
     stop("PDF has less than 2 pages; nothing to remove.")
@@ -36,7 +36,7 @@ remove_cover_page <- function(path) {
 
   path_temp <- paste0(dirname(path), "/temp-", basename(path))
 
-  pdf_subset(path, pages = 2:pdf_length, output = path_temp)
+  qpdf::pdf_subset(path, pages = 2:pdf_length, output = path_temp)
 
   unlink(path)
   file.rename(path_temp, path)

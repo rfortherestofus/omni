@@ -11,6 +11,7 @@ pdf_report <- function(
     background_color = NULL,
     primary_color = NULL,
     remove_logo = FALSE,
+    remove_cover_page = FALSE,
     ...
 ) {
     css_file <- pkg_resource("pdf_report.css")
@@ -29,10 +30,18 @@ pdf_report <- function(
         primary_color = primary_color
     )
 
-    if (remove_logo) css_file <- remove_logo(file = css_file)
+    if (remove_cover_page) {
+        css_file <- add_hide_cover_page_css(file = css_file)
+    }
+
+    if (remove_logo) {
+        css_file <- remove_logo(file = css_file)
+    }
+
+    print(readLines(css_file))
 
     pagedown::html_paged(
-        css = c(css_file, interface_css),
+        css = c(interface_css, css_file),
         self_contained = TRUE,
         toc = TRUE,
         fig_caption = TRUE,
@@ -129,6 +138,22 @@ change_fonts <- function(
             css_lines
         )
     }
+
+    temp_css <- file.path(dirname(file), "temp.css")
+    writeLines(css_lines, temp_css)
+    return(temp_css)
+}
+
+
+#' Add CSS rule to hide cover page ([data-page-number="1"])
+#'
+#' @param file CSS file path
+#'
+add_hide_cover_page_css <- function(file) {
+    css_lines <- readLines(file)
+
+    rule <- '[data-page-number="1"] {\n  display: none !important\n}'
+    css_lines <- c(css_lines, "", rule)
 
     temp_css <- file.path(dirname(file), "temp.css")
     writeLines(css_lines, temp_css)
