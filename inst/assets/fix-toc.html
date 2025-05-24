@@ -1,3 +1,4 @@
+<script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
 <script>
   setTimeout(() => {
     // Select all spans with class 'toc-section-number' inside the TOC
@@ -9,33 +10,37 @@
         span.textContent = `0${num}`;
       }
     });
-    if (typeof Paged !== "undefined") {
-      class CustomPagedHandler {
-        afterRendered(pages) {
-          var covers = document.querySelectorAll(".cover-page-full");
-
-          covers.forEach((cover) => {
-            var page_container = cover.closest(".pagedjs_page");
-            if (page_container) {
-              var marginBottom = page_container.querySelector(
-                ".pagedjs_margin-bottom"
-              );
-              if (marginBottom) {
-                marginBottom.classList.add("custom-style");
-              }
-
-              var bottomCenter = page_container.querySelector(
-                ".pagedjs_margin.pagedjs_margin-bottom-center.hasContent"
-              );
-              if (bottomCenter) {
-                bottomCenter.classList.add("custom-style");
-              }
-            }
-          });
-        }
-      }
-
-      Paged.registerHandlers(CustomPagedHandler);
-    }
   }, 2000); // Adjust if rendering is delayed
+</script>
+<script>
+  class CustomPagedHandler extends Paged.Handler {
+    constructor(chunker, polisher, caller) {
+      super(chunker, polisher, caller);
+    }
+
+    afterRendered(pages) {
+      var covers = document.querySelectorAll(".cover-page-full");
+
+      covers.forEach((cover) => {
+        var page_container = cover.closest(".pagedjs_page");
+        if (page_container) {
+          var marginBottom = page_container.querySelector(
+            ".pagedjs_margin-bottom"
+          );
+          if (marginBottom) {
+            marginBottom.classList.add("custom-style");
+          }
+
+          var bottomCenter = page_container.querySelector(
+            ".pagedjs_margin.pagedjs_margin-bottom-center.hasContent"
+          );
+          if (bottomCenter) {
+            bottomCenter.classList.add("custom-style");
+          }
+        }
+      });
+    }
+  }
+
+  Paged.registerHandlers(CustomPagedHandler);
 </script>
