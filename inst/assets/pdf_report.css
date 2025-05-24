@@ -327,8 +327,8 @@ h1.subtitle:nth-child(2):not(.abstract h1) {
   color: white;
 }
 
-
-.pagedjs_pagebox .pagedjs_margin-bottom {
+/* not apply to very first page */
+.pagedjs_page:not(.pagedjs_first_page) .pagedjs_pagebox .pagedjs_margin-bottom {
   z-index: 2000;
   background: transparent;
 }
