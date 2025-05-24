@@ -16,7 +16,7 @@ pdf_report <- function(
 ) {
     css_file <- pkg_resource("pdf_report.css")
     interface_css <- pkg_resource("interface.css")
-    fix_toc_html <- pkg_resource("fix-toc.html")
+    fix_toc_html <- pkg_resource("pdf_report_js.html")
 
     css_file <- change_fonts(
         file = css_file,
