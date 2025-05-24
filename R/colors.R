@@ -46,6 +46,42 @@ omni_colors <- function(
     ),
     named = FALSE
 ) {
+    allowed_colors <- c(
+        "white",
+        "ivory",
+        "ivory-400",
+        "orange-red-200",
+        "orange-red-400",
+        "orange-red-600",
+        "golden-yellow-200",
+        "golden-yellow-400",
+        "golden-yellow-600",
+        "olive-green-200",
+        "olive-green-400",
+        "olive-green-600",
+        "teal-200",
+        "teal-400",
+        "teal-600",
+        "plum-200",
+        "plum-400",
+        "plum-600",
+        "periwinkle-200",
+        "periwinkle-400",
+        "periwinkle-600",
+        "steel-blue-200",
+        "steel-blue",
+        "navy"
+    )
+
+    wrong_colors <- colors_sub[!(colors_sub %in% allowed_colors)]
+    contains_not_allowed_colors <- length(wrong_colors) > 0
+    if (contains_not_allowed_colors) {
+        cli::cli_abort(
+            'All colors in {.var colors_sub} must be one of {.val {allowed_colors}}.
+            The following colors are not allowed: {.val {wrong_colors}}'
+        )
+    }
+
     omni_color_vector <- c(
         `white` = "#ffffff",
         `ivory` = "#F9F7F4",
