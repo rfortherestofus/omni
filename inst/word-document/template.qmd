@@ -10,13 +10,11 @@ toc: true
 
 # This is a chapter 
 
-:::{custom-style="Omni Chapter Subtitle"}
 
-## This is a section
+## This is a section {custom-style="Heading 2"}
 
-:::
 
-### Subtopic A
+### Subtopic A 
 
 The project will start with a virtual project alignment meeting with the key county leadership and staff to discuss the overall approach; review the initial workplan to support establishing strong working relationships; and ensure clear communication, detailed schedules, timelines and milestones. 
 
