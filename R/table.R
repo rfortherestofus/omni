@@ -6,6 +6,7 @@
 #' @param group_by Character vector containing of grouping variables
 #' @param first_col_grey Should the first column be grey. Default to FALSE
 #' @param caption The caption of the table
+#' @param with_stripes TRUE or FALSE depending on whether a striped pattern should be used. Defaults to TRUE (which uses stripes.)
 #'
 #' @return A table themed
 #' @export
@@ -36,13 +37,25 @@
 #'    dplyr::slice(1:3) |>
 #'    omni_table(caption = 'Table 1. [Insert Table Name]')
 #'
+#' # Without striped pattern
+#' palmerpenguins::penguins |>
+#'   dplyr::slice(1:3) |>
+#'   omni_table(with_stripes = FALSE)
+#'
+#' # Overwrite number formatting by transforming to character format
+#' palmerpenguins::penguins |>
+#'   dplyr::slice(1:3) |>
+#'   dplyr::mutate(year = as.character(year)) |>
+#'   omni_table()
+#'
 
 omni_table <-
   function(
     df,
     group_by = NULL,
     first_col_grey = FALSE,
-    caption = NULL
+    caption = NULL,
+    with_stripes = TRUE
   ) {
     # handle group
     if (!is.null(group_by)) {
@@ -57,7 +70,11 @@ omni_table <-
     # table theme with flextable
     table <- table |>
       theme_zebra(
-        even_body = omni_colors('steel-blue-200'),
+        even_body = if (with_stripes) {
+          omni_colors('steel-blue-200')
+        } else {
+          omni_colors('white')
+        },
         odd_body = omni_colors('white')
       ) |>
       bold(part = 'header', bold = FALSE) |>
@@ -144,13 +161,3 @@ omni_table <-
 
     table
   }
-
-# The guide isn't clear on alignment.
-# I'd go with numbers right-aligned and rest is left-aligned
-
-# The bg color of the striped background is using `#DDE1E5` in the Word doc.
-# That's not a defined brand color.
-# I'm going with `steel-blue-200` (`#BFCBD3`) here as this is closest to the color in the Word doc.
-
-# The argument `first_col_blue` was translated to `first_col_grey`.
-# Is this feature still required? For now, I've defaulted it to `FALSE`
