@@ -107,6 +107,10 @@ h1.title {
   background-position: center;
 }
 
+.cover-orange {
+  background-image: url("images/pattern-cover.png") !important;
+}
+
 .cover-content {
   background-color: transparent;
 }
