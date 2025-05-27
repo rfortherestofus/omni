@@ -252,7 +252,7 @@ icon_text_grid(
 
 Lorem Ipsum
 
-<div class="page-break-before"></div>
+\newpage
 
 ## Appendix A
 
