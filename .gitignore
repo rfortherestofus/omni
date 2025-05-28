@@ -17,5 +17,9 @@ test.Rmd
 test.html
 temp.*
 
+
+# vs code config file
 .vscode/
 /.quarto/
+
+*_files/

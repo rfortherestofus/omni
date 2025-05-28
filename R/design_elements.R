@@ -325,17 +325,19 @@ number_emphasis <- function(
       style = htmltools::css(
         font_size = font_size,
         color = 'black',
-        background = 'white',
+        background = 'white !important',
         border = paste0(border_width_px, 'px solid ', color_hex),
         border_radius = '100%',
         aspect_ratio = 1,
         width = '75px',
         height = '75px',
         display = 'flex',
+        z_index = 1
       ),
       htmltools::div(
         style = htmltools::css(
-          margin = 'auto'
+          margin = 'auto',
+          background = 'white !important',
         ),
         number
       )
@@ -352,7 +354,7 @@ number_emphasis <- function(
         padding_right = '10px',
         padding_top = '2px',
         padding_bottom = '2px',
-        z_index = -10
+        z_index = 0
       ),
       text
     )
@@ -440,6 +442,11 @@ omni_icon <- function(
   xml2::xml_set_attr(path_nodes_with_fill, "fill", icon_color_fg)
   xml2::xml_set_attr(icon_svg, "width", icon_width)
   xml2::xml_set_attr(icon_svg, "height", icon_width)
+  xml2::xml_set_attr(
+    icon_svg,
+    "style",
+    htmltools::css(background = icon_color_bg_hex)
+  )
   ## -- After this icon_svg is modified
 
   icon_html <- icon_svg |>
@@ -459,7 +466,8 @@ omni_icon <- function(
     ),
     htmltools::div(
       style = htmltools::css(
-        margin = 'auto'
+        margin = 'auto',
+        background = icon_color_bg_hex,
       ),
       icon_html
     )

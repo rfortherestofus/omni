@@ -87,7 +87,7 @@ omni_table <-
       border_inner(part = "body", border = fp_border(color = "white")) |>
       border(part = "header", border.bottom = fp_border(color = "white"))
 
-    # highlight grouped row
+      # highlight grouped row
     if (!is.null(group_by)) {
       # get row nb of grouped row
       grouped_df <- df |> as_grouped_data(group_by)
