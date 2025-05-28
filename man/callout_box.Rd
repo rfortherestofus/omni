@@ -9,7 +9,7 @@ callout_box(text, color, fixed_width_px = 300)
 \arguments{
 \item{text}{The text of the callout box. Character vector of length 1. Text that is supposed to be highlighted needs to be wrapped in <highlight></highlight> tags.}
 
-\item{color}{The color of the callout box. One of the "version 600" colors from omni_colors(), i.e. "orange-red 600", "golden-yellow 600", "teal 600", "plum 600", "periwinkle 600"}
+\item{color}{The color of the callout box. One of the "version 600" colors from omni_colors(), i.e. "orange-red-600", "golden-yellow-600", "teal-600", "plum-600", "periwinkle-600"}
 
 \item{fixed_width_px}{Width of the callout box in px. Must be numeric vector of length 1. Defaults to 300.}
 }
@@ -24,14 +24,14 @@ This function creates the HTML & CSS for the desired callout boxes. It can use t
 htmltools::browsable(
   callout_box(
     text = 'This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',
-    color = 'olive-green 600'
+    color = 'olive-green-600'
   )
 )
 
 htmltools::browsable(
   callout_box(
     text = 'This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',
-    color = 'orange-red 600'
+    color = 'orange-red-600'
   )
 )
 

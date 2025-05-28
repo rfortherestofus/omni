@@ -3,10 +3,10 @@
 #' This function creates a table in OMNI's style.
 #'
 #' @param df The data frame to be put into the table
-#' @param option flextable (by default) or gt
-#' @param grouped Only with option="flextable", use grouped output
-#' @param first_col_blue Should the first column be blue. Default to TRUE
+#' @param group_by Character vector containing of grouping variables
+#' @param first_col_grey Should the first column be grey. Default to FALSE
 #' @param caption The caption of the table
+#' @param with_stripes TRUE or FALSE depending on whether a striped pattern should be used. Defaults to TRUE (which uses stripes.)
 #'
 #' @return A table themed
 #' @export
@@ -20,155 +20,144 @@
 #' @importFrom knitr include_graphics
 #' @importFrom tibble rowid_to_column
 #'
+#' @examples
+#' palmerpenguins::penguins |>
+#'  dplyr::slice(1:3) |>
+#'    omni_table()
+#'
+#'  palmerpenguins::penguins |>
+#'    dplyr::slice(1:3) |>
+#'    omni_table(first_col_grey = TRUE)
+#'
+#'  palmerpenguins::penguins |>
+#'    dplyr::slice(1:3, .by = species) |>
+#'    omni_table(group_by = 'species')
+#'
+#'  palmerpenguins::penguins |>
+#'    dplyr::slice(1:3) |>
+#'    omni_table(caption = 'Table 1. [Insert Table Name]')
+#'
+#' # Without striped pattern
+#' palmerpenguins::penguins |>
+#'   dplyr::slice(1:3) |>
+#'   omni_table(with_stripes = FALSE)
+#'
+#' # Overwrite number formatting by transforming to character format
+#' palmerpenguins::penguins |>
+#'   dplyr::slice(1:3) |>
+#'   dplyr::mutate(year = as.character(year)) |>
+#'   omni_table()
+#'
 
 omni_table <-
-  function(df,
-           option = "flextable",
-           grouped = NULL,
-           first_col_blue = TRUE,
-           caption = NULL) {
-    if (option == "flextable")
-    {
-      # handle group
-      if (!is.null(grouped)) {
-        table <- df |>
-          as_grouped_data(grouped) |>
-          as_flextable(hide_grouplabel = TRUE)
-      } else{
-        table <- df |>
-          flextable()
-      }
+  function(
+    df,
+    group_by = NULL,
+    first_col_grey = FALSE,
+    caption = NULL,
+    with_stripes = TRUE
+  ) {
+    # handle group
+    if (!is.null(group_by)) {
+      table <- df |>
+        as_grouped_data(group_by) |>
+        as_flextable(hide_grouplabel = TRUE)
+    } else {
+      table <- df |>
+        flextable()
+    }
 
-      # table theme with flextable
-      table <- table |>
-        theme_zebra(even_body = "#9DAECE",
-                    odd_body = "#CED6E6")  |>
-        fontsize(part = "all", size = 11) |>
-        font(part = "all", fontname = "Calibri") |>
-        bold(part = "header", bold = TRUE) |>
-        align(part = "all", align = "center") |>
-        bg(part = "header", bg = omni_colors("Dark Blue")) |>
-        color(part = "header", color = "white") |>
-        color(part = "body", color = "#333333") |>
-        height_all(height = 0.4) |>
-        border_inner(part = "body", border = fp_border(color = "white")) |>
-        border(part = "header",
-               border.bottom = fp_border(color = "white"))
+    # table theme with flextable
+    table <- table |>
+      theme_zebra(
+        even_body = if (with_stripes) {
+          omni_colors('steel-blue-200')
+        } else {
+          omni_colors('white')
+        },
+        odd_body = omni_colors('white')
+      ) |>
+      bold(part = 'header', bold = FALSE) |>
+      fontsize(part = "all", size = 11) |>
+      font(part = "all", fontname = "Inter Tight") |>
+      bg(part = "header", bg = omni_colors("steel-blue")) |>
+      color(part = "header", color = "white") |>
+      color(part = "body", color = "#333333") |>
+      height_all(height = 0.4) |>
+      border_inner(part = "body", border = fp_border(color = "white")) |>
+      border(part = "header", border.bottom = fp_border(color = "white"))
 
       # highlight grouped row
-      if (!is.null(grouped)) {
-        # get row nb of grouped row
-        grouped_row_nb <- df |>
-          rowid_to_column() |>
-          group_by(!!sym(grouped)) |>
-          slice(1) |>
-          ungroup() |>
-          rowid_to_column(var = "rowid2") |>
-          mutate(rowid = .data$rowid + .data$rowid2 - 1) |>
-          pull(.data$rowid)
+    if (!is.null(group_by)) {
+      # get row nb of grouped row
+      grouped_df <- df |> as_grouped_data(group_by)
+      grouped_row_nb <- which(!is.na(grouped_df$species))
 
+      table <- table |>
+        bg(
+          part = "body",
+          j = 1,
+          i = grouped_row_nb,
+          bg = omni_colors("steel-blue")
+        ) |>
+        color(
+          part = "body",
+          j = 1,
+          i = grouped_row_nb,
+          color = "white"
+        )
+    }
+
+    # first column
+    if (first_col_grey) {
+      table <- table |>
+        bg(part = "body", j = 1, bg = omni_colors("steel-blue")) |>
+        color(part = "body", j = 1, color = "white")
+    }
+    # add caption within flextable
+    if (!is.null(caption)) {
+      # valid without rmd
+      if (!is.null(knitr::opts_knit$get("rmarkdown.pandoc.to"))) {
+        # if rmd format is word
+        if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "docx") {
+          table <- table |>
+            set_caption(
+              as_paragraph(as_chunk(
+                caption,
+                props = fp_text_default(font.family = "Inter Tight")
+              )),
+              word_stylename = "Table Caption"
+            )
+        } else {
+          table <- table |>
+            set_caption(
+              caption = as_paragraph(
+                as_chunk(
+                  caption,
+                  props = fp_text_default(
+                    font.family = "Inter Tight",
+                    bold = TRUE
+                  )
+                )
+              )
+            )
+        }
+      } else {
         table <- table |>
-          bg(
-            part = "body",
-            j = 1,
-            i = grouped_row_nb,
-            bg = omni_colors("Dark Blue")
-          ) |>
-          bold(
-            part = "body",
-            j = 1,
-            i = grouped_row_nb,
-            bold = TRUE
-          )  |>
-          color(
-            part = "body",
-            j = 1,
-            i = grouped_row_nb,
-            color = "white"
+          set_caption(
+            caption = as_paragraph(
+              as_chunk(
+                caption,
+                props = fp_text_default(
+                  font.family = "Inter Tight",
+                  font.size = 11
+                )
+              )
+            ),
+            align_with_table = FALSE
           )
       }
-
-      # first column
-      if (first_col_blue) {
-        table <- table  |>
-          bg(part = "body",
-             j = 1,
-             bg = omni_colors("Dark Blue")) |>
-          bold(part = "body",
-               j = 1,
-               bold = TRUE)  |>
-          color(part = "body",
-                j = 1,
-                color = "white")
-      }
-      # add caption within flextable
-      if (!is.null(caption)) {
-        # valid without rmd
-        if (!is.null(knitr::opts_knit$get("rmarkdown.pandoc.to"))) {
-          # if rmd format is word
-          if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "docx") {
-            table <- table |>
-              set_caption(as_paragraph(as_chunk(
-                caption, props = fp_text_default(font.family = "Calibri")
-              )), word_stylename = "Table Caption")
-          } else{
-            table <- table |>
-              set_caption(caption = caption)
-          }
-        } else{
-          table <- table |>
-            set_caption(caption = caption)
-        }
-      }
-    } else if (option == "gt") {
-      # table theme with gt
-      table <- df |>
-        gt() |>
-        tab_style(style = list(cell_text(
-          font = "Calibri",
-          size = 11,
-          color = "#333333"
-        )),
-        locations = list(cells_body())) |>
-        tab_style(
-          style = list(
-            cell_text(
-              font = "Calibri",
-              size = 11,
-              weight = "bold",
-              color = "white"
-            ),
-            cell_fill(color = omni_colors("Dark Blue"))
-          ),
-          locations = list(cells_column_labels())
-        ) |>
-        tab_style(style = cell_borders(color = "white"),
-                  locations = cells_body()) |>
-        tab_style(style = cell_borders("b", color = "white"),
-                  locations = cells_column_labels()) |>
-        cols_align(align = "center") |>
-        tab_options(
-          table.background.color = "#9DAECE",
-          row.striping.background_color  = "#CED6E6"
-        ) |>
-        opt_row_striping()
-
-      if (first_col_blue) {
-        table <- table   |>
-          tab_style(style = list(
-            cell_text(weight = "bold",
-                      color = "white"),
-            cell_fill(color = omni_colors("Dark Blue"))
-          ),
-          locations = cells_body(columns = 1))
-      }
-
-      # add caption within gt
-      if (!is.null(caption)) {
-        table <- table |>
-          tab_caption(caption = caption)
-      }
     }
-    # return table
+
     table
   }

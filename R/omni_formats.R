@@ -6,17 +6,10 @@
 #' @export
 #'
 omni_pdf_report <- function(...) {
-  # style
-  css_style <-
-    pkg_resource("omni_pdf_report.css")
-
-  # template
   pagedown::html_paged(
     self_contained = TRUE,
     toc = TRUE,
-    number_sections = FALSE,
     fig_caption = TRUE,
-    css = css_style,
     ...
   )
 }
@@ -55,10 +48,7 @@ omni_pdf_report_new <- function(...) {
 #' @export
 #'
 omni_pdf_memo <-
-  function(main_font = NULL,
-           header_font = NULL,
-           main_color = NULL,
-           ...) {
+  function(main_font = NULL, header_font = NULL, main_color = NULL, ...) {
     # style
     css_style <-
       pkg_resource("omni_pdf_memo.css")
@@ -116,8 +106,7 @@ omni_pdf_memo <-
 #' @return An rmd format
 #' @export
 #'
-omni_word_report <- function(number_sections = TRUE,
-                             ...) {
+omni_word_report <- function(number_sections = TRUE, ...) {
   # word template
   word_template <-
     pkg_resource("omni_word_report.docx")
@@ -140,8 +129,7 @@ omni_word_report <- function(number_sections = TRUE,
 #' @return An rmd format
 #' @export
 #'
-omni_word_report_new <- function(number_sections = TRUE,
-                                 ...) {
+omni_word_report_new <- function(number_sections = TRUE, ...) {
   # word template
   word_template <-
     pkg_resource("omni_word_report_new.docx")
@@ -176,7 +164,9 @@ omni_html_memo <- function(hypothesis = FALSE, ...) {
     toc_float = TRUE,
     fig_caption = TRUE,
     number_sections = TRUE,
-    includes = rmarkdown::includes(before_body = include_hypothesis(hypothesis)),
+    includes = rmarkdown::includes(
+      before_body = include_hypothesis(hypothesis)
+    ),
     ...
   )
 }
@@ -201,7 +191,9 @@ omni_html_report <- function(hypothesis = FALSE, ...) {
     toc_float = TRUE,
     fig_caption = TRUE,
     number_sections = TRUE,
-    includes = rmarkdown::includes(before_body = include_hypothesis(hypothesis)),
+    includes = rmarkdown::includes(
+      before_body = include_hypothesis(hypothesis)
+    ),
     ...
   )
 }
@@ -223,7 +215,9 @@ omni_html_slidy <- function(hypothesis = FALSE, ...) {
   # template
   rmarkdown::slidy_presentation(
     css = c(css_slidy),
-    includes = rmarkdown::includes(before_body = include_hypothesis(hypothesis)),
+    includes = rmarkdown::includes(
+      before_body = include_hypothesis(hypothesis)
+    ),
     ...
   )
 }

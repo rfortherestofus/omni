@@ -5,8 +5,8 @@
 \title{Discrete fill scale based on OMNI colors}
 \usage{
 scale_fill_omni_discrete(
-  palette = c("orange-red 400", "golden-yellow 400", "olive-green 400", "teal 400",
-    "plum 400", "periwinkle 400"),
+  palette = c("orange-red-400", "golden-yellow-400", "olive-green-400", "teal-400",
+    "plum-400", "periwinkle-400"),
   reverse = FALSE,
   ...
 )

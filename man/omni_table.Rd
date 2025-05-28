@@ -6,26 +6,55 @@
 \usage{
 omni_table(
   df,
-  option = "flextable",
-  grouped = NULL,
-  first_col_blue = TRUE,
-  caption = NULL
+  group_by = NULL,
+  first_col_grey = FALSE,
+  caption = NULL,
+  with_stripes = TRUE
 )
 }
 \arguments{
 \item{df}{The data frame to be put into the table}
 
-\item{option}{flextable (by default) or gt}
+\item{group_by}{Character vector containing of grouping variables}
 
-\item{grouped}{Only with option="flextable", use grouped output}
-
-\item{first_col_blue}{Should the first column be blue. Default to TRUE}
+\item{first_col_grey}{Should the first column be grey. Default to FALSE}
 
 \item{caption}{The caption of the table}
+
+\item{with_stripes}{TRUE or FALSE depending on whether a striped pattern should be used. Defaults to TRUE (which uses stripes.)}
 }
 \value{
 A table themed
 }
 \description{
 This function creates a table in OMNI's style.
+}
+\examples{
+palmerpenguins::penguins |>
+ dplyr::slice(1:3) |>
+   omni_table()
+
+ palmerpenguins::penguins |>
+   dplyr::slice(1:3) |>
+   omni_table(first_col_grey = TRUE)
+
+ palmerpenguins::penguins |>
+   dplyr::slice(1:3, .by = species) |>
+   omni_table(group_by = 'species')
+
+ palmerpenguins::penguins |>
+   dplyr::slice(1:3) |>
+   omni_table(caption = 'Table 1. [Insert Table Name]')
+
+# Without striped pattern
+palmerpenguins::penguins |>
+  dplyr::slice(1:3) |>
+  omni_table(with_stripes = FALSE)
+
+# Overwrite number formatting by transforming to character format
+palmerpenguins::penguins |>
+  dplyr::slice(1:3) |>
+  dplyr::mutate(year = as.character(year)) |>
+  omni_table()
+
 }
