@@ -111,3 +111,19 @@ p {
   margin-top: 70px !important;
   font-size: 1.4em;
 }
+
+/* overwrite of the TOC float */
+.list-group-item.active,
+.list-group-item.active:focus,
+.list-group-item.active:hover {
+  background-color: #081c39 !important;
+  border-color: #081c39 !important;
+}
+
+li {
+  font-family: var(--header-font) !important;
+}
+
+.tocify-extend-page {
+  height: 0px !important;
+}
