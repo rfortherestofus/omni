@@ -3,7 +3,7 @@ title: "Project title"
 subtitle: "Project subtitle"
 author: "Author"
 date: "`r Sys.Date() |> format('%B %d, %Y')`"
-toc-title: "Table of Content"
+toc-title: "Table of Contents"
 output:
   omni::html_report:
     toc: true
