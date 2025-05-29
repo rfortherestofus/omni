@@ -4,14 +4,10 @@ subtitle: "Project subtitle"
 author: "Author"
 date: "`r Sys.Date() |> format('%B %d, %Y')`"
 toc-title: "Table of Content"
-output: 
-  html_document:
-    css: "../omni_html_report.css"
+output:
+  omni::html_report:
     toc: true
     toc_float: true
-    includes:
-      before_body: "../header.html"
-      after_body: "../footer.html"
 ---
 
 
