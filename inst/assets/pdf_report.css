@@ -1,0 +1,491 @@
+/* -------------------------------------------- */
+/* ---- OMNI PDF Report CSS ---- */
+/* -------------------------------------------- */
+
+/* ---- Interface ------------------- */
+/* Include interface for debugging */
+
+/* ---- Variables ------------------- */
+/* setup default values for variables */
+:root {
+  --main-font: "Inter Tight";
+  --header-font: "Inter Tight";
+  --secondary-font: "Sometype Mono";
+  --background-color: #f9f7f4;
+  --primary-color: #081c39;
+  --steel-blue: #677384;
+  --logo-bottom: url("images/logo-no-text.png");
+  --logo-cover: url("images/logo.png");
+  --steel-blue-light: #bfcbd3;
+  --display-cover-page: block;
+  --pagedjs-margin-top: 0mm;
+  --pagedjs-margin-right: 0mm;
+  --pagedjs-margin-bottom: 0mm;
+  --pagedjs-margin-left: 0mm;
+}
+
+* {
+  background-color: var(--background-color);
+  font-family: var(--main-font);
+}
+
+/* Import Fonts */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&display=swap");
+
+/* --------------------- Pages ----------------------- */
+
+@page {
+  size: 8.5in 11in !important;
+  margin: 25mm 15mm;
+  background-color: var(--background-color);
+  border-bottom: solid 1px var(--steel-blue-light);
+
+  @bottom-right {
+    content: counter(page);
+    font-size: 10pt;
+    background: none;
+  }
+
+  @bottom-center {
+    content: "Omni Institute Report | " string(h1-title);
+    margin-left: 2in;
+    font-size: 10pt;
+    color: #7a7a7a;
+  }
+
+  @bottom-left {
+    content: "";
+    background-image: var(--logo-bottom);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right top;
+    width: 30px;
+    height: auto;
+  }
+}
+
+h1.title {
+  string-set: h1-title content(text);
+}
+
+.shorttitle1 {
+  string-set: h1-text content(text);
+}
+
+/* --------------------- Cover Page ------------------ */
+
+/* Add a cover image container that will appear only on first page */
+.cover-container {
+  position: absolute;
+  bottom: -12%;
+  left: -8%;
+  width: 116%;
+  height: 60%;
+  z-index: 1000; /* allow to go over margins */
+}
+
+.cover-image {
+  width: 100%;
+  height: 100%;
+  background-image: url("images/pattern-cover-periwinkle.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center bottom;
+}
+
+.cover-page-full {
+  position: absolute;
+  top: -11%;
+  left: -8%;
+  z-index: 1000; /* allow to go over margins */
+  width: 116%;
+  height: 122%;
+  background-image: url("images/pattern-cover-periwinkle.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.cover-orange {
+  background-image: url("images/pattern-cover.png") !important;
+}
+
+.cover-content {
+  background-color: transparent;
+}
+
+.cover-content h2 {
+  position: absolute;
+  left: 10%;
+  bottom: 20%;
+  color: white;
+  background-color: transparent;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+/*  --------------------- TOC --------------------- */
+
+h1.toc-title {
+  font-size: 16pt;
+  margin-top: 5pt;
+}
+
+#TOC li {
+  border-top: 1px solid #ccc !important;
+  padding: 5pt;
+  list-style-type: none;
+}
+
+#TOC > ul > li:last-of-type {
+  border-bottom: 1px solid #ccc !important;
+}
+
+#TOC li a {
+  color: var(--primary-color) !important;
+  text-decoration: none;
+}
+
+#TOC li li {
+  border-top: none !important;
+  margin-bottom: 0 !important;
+  padding: 1pt 0pt 1pt 0pt;
+}
+
+#TOC li li a {
+  color: var(--steel-blue) !important;
+}
+
+#TOC li li a::before() {
+  content: none !important;
+}
+
+.toc .leaders::before {
+  content: ""; /* remove all the dots "........." */
+}
+
+.toc-section-number {
+  margin-right: 15px;
+  font-family: var(--secondary-font);
+}
+
+.header-section-number {
+  display: none;
+}
+
+li li .toc-section-number {
+  display: none;
+}
+
+.toc a::after {
+  background-color: var(--background-color);
+}
+
+/* --------------------- Abstract --------------------- */
+
+.submitted-to {
+  font-weight: 500;
+  font-family: var(--header-font);
+  margin-top: 325pt;
+}
+
+p.for-more-info,
+p.acknowledge,
+p.suggested-citation {
+  font-size: 1.2em !important;
+  margin-top: 10pt;
+  margin-bottom: 1pt;
+}
+
+/* by default, abstracts have smaller width */
+div.abstract {
+  width: 100% !important;
+}
+
+/* remove the h3 title "Abstract" */
+h3.abstract {
+  display: none;
+}
+
+/* --------------------- logo --------------------- */
+
+.logo-container {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 150px;
+  height: 50px;
+  background-image: var(--logo-cover);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/*  --------------------- date --------------------- */
+
+h2.date {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 12pt;
+  font-family: var(--secondary-font);
+  font-weight: normal;
+  text-align: right;
+  padding-top: 0;
+}
+
+/* avoid supplementary blank page */
+.page-content div {
+  width: auto !important;
+  max-width: 99%;
+}
+
+/* title cover page */
+#header > h1:nth-child(1)::before {
+  content: "Omni Institute Report";
+  display: block;
+  /* background-color: #faecc3; */
+  color: black;
+  font-weight: 500;
+  font-size: 11pt;
+  font-family: var(--main-font);
+  line-height: 1.2;
+  padding-top: 0.3em;
+  margin-bottom: 1em;
+  width: fit-content;
+}
+
+h1.title:nth-child(1):not(.abstract h1) {
+  font-weight: bolder;
+  font-family: var(--header-font);
+  margin-top: 2in;
+  font-size: 30pt;
+}
+
+h1.subtitle:nth-child(2):not(.abstract h1) {
+  margin-top: 0.5in;
+  border-top: 1px solid #d4ddeb;
+  font-family: var(--header-font);
+  font-weight: bolder;
+  font-size: 16pt;
+}
+
+/* Abstract title and subtitle */
+.abstract h1.title {
+  break-before: page !important;
+  font-size: 24pt;
+  font-weight: bolder;
+  font-family: var(--header-font);
+  margin-block-start: 0 !important;
+  margin-block-end: 0 !important;
+  color: var(--primary-color);
+  margin-top: 0 !important;
+  margin-bottom: 0;
+  margin-left: 0 !important;
+}
+
+.abstract h1.title::before {
+  content: "Omni Institute Report";
+  display: block;
+  color: var(--steel-blue);
+  font-weight: 500;
+  font-size: 0.9rem;
+  font-family: var(--main-font);
+  padding-top: 0.3em;
+  width: fit-content;
+}
+
+.abstract h1.subtitle {
+  color: var(--primary-color);
+  font-weight: bolder;
+  font-size: 12pt;
+  font-family: var(--header-font);
+  margin-top: 5pt;
+  margin-bottom: 20pt;
+  margin-left: 0 !important;
+}
+
+.subtitle span {
+  font-size: 0.9em;
+}
+
+.pagedjs_pagebox .pagedjs_margin-bottom-left-corner,
+.pagedjs_pagebox .pagedjs_margin-bottom-right-corner,
+.pagedjs_pagebox .pagedjs_margin-bottom-left,
+.pagedjs_pagebox .pagedjs_margin-bottom-right,
+.pagedjs_pagebox .pagedjs_margin-bottom-center,
+.pagedjs_pagebox .pagedjs_margin-bottom-center {
+  display: block;
+  align-items: center;
+  margin-top: 10px;
+  background: transparent;
+}
+
+.pagedjs_margin-content {
+  background: transparent;
+}
+
+.pagedjs_margin-bottom.custom-style,
+.pagedjs_margin.pagedjs_margin-bottom-center.hasContent.custom-style {
+  background: transparent;
+  color: white;
+}
+
+/* not apply to very first page */
+.pagedjs_page:not(.pagedjs_first_page) .pagedjs_pagebox .pagedjs_margin-bottom {
+  z-index: 2000;
+  background: transparent;
+}
+
+/* Levels of title */
+h1 {
+  font-size: 24pt;
+  font-weight: 700;
+  color: var(--primary-color);
+  padding: 0;
+}
+
+h2 {
+  margin-block-end: 0 !important;
+  font-size: 30pt;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: var(--primary-color);
+  margin-top: 0 !important;
+}
+
+h3 {
+  margin-block-end: 8pt !important;
+  font-size: 16pt;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: var(--primary-color);
+}
+
+h4 {
+  margin-block-end: 5.5pt !important;
+  font-size: 11pt;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: var(--primary-color);
+}
+
+/* Normal paragraph */
+p {
+  font-size: 11pt;
+  font-weight: 400;
+  padding: 1pt;
+  margin: 1pt 0;
+  line-height: 1.4;
+}
+
+.small-title {
+  font-size: 5pt;
+  text-transform: uppercase;
+  font: var(--secondary-font);
+  letter-spacing: 2px;
+  position: relative;
+  padding-left: 30px;
+}
+
+.small-title::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background-color: black;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.dot-purple::before {
+  background-color: #821c4c;
+}
+
+.dot-green::before {
+  background-color: #3b5530;
+}
+
+.dot-red::before {
+  background-color: #cc4100;
+}
+
+/* images */
+/* this ensure images doesn't go outside the page */
+img {
+  max-width: 100%;
+}
+
+.figure {
+  break-inside: avoid;
+}
+
+/* bullet points */
+
+#TOC > ul {
+  margin-left: 0pt !important;
+  padding-inline-start: 10pt;
+}
+
+ul:not(.toc ul):not(.toc),
+ul ul:not(.toc) {
+  list-style: none;
+  padding-right: 5pt;
+}
+
+ul:not(.toc ul) > li::before {
+  content: "• ";
+  font-size: 1.5em;
+  vertical-align: middle;
+}
+
+ul ul > li:not(#TOC li)::before {
+  content: "> ";
+  font-size: 0.9em;
+}
+
+/* columns */
+
+.columns {
+  display: flex;
+  gap: 20px;
+}
+
+.columns-wrap {
+  clear: both;
+}
+
+.columns img {
+  padding-top: 20px;
+}
+
+.wrap-right {
+  float: right;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  margin-left: 15px;
+  clear: both;
+}
+
+.wrap-left {
+  float: left;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  margin-right: 15px;
+  clear: both;
+}
+
+/* section markers */
+hr {
+  border: 1px solid var(--steel-blue-light);
+}
+
+#page-1 {
+  display: var(--display-cover-page) !important;
+}
+
+.pagedjs_page:first-of-type {
+  display: none !important;
+}

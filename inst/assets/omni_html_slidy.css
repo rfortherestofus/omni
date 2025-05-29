@@ -5,8 +5,8 @@
 /* ---- Variables ------------------- */
 /* setup default values for variables */
 :root {
-  --main-font: "Calibri";
-  --header-font: "Calibri";
+  --main-font: "Neue Haas Grotesk Display Pro";
+  --header-font: "Neue Haas Grotesk Display Pro";
   --main-color: #314160;
 }
 
@@ -46,13 +46,15 @@ p {
 }
 
 /* Links */
-a, a:active, a:visited {
+a,
+a:active,
+a:visited {
   color: #000000;
 }
 
 /* ----------------- Tables -------------------- */
 table {
-  font-family: "Calibri", Arial, serif;
+  font-family: "Neue Haas Grotesk Display Pro", Arial, serif;
   font-weight: 300;
   font-size: 12pt;
   margin: auto;
@@ -70,15 +72,16 @@ img {
   max-width: 100%;
 }
 
-.slide{
+.slide {
   background-image: url(images/colorbar.svg);
   background-repeat: no-repeat;
   background-position: 0in 7.5in;
 }
 
-.titlepage{
-  background-image: url(images/colorbar.svg), url(logo/OMNI_Logo-Gold_Stacked.svg);
+.titlepage {
+  background-image: url(images/colorbar.svg),
+    url(logo/OMNI_Logo-Gold_Stacked.svg);
   background-repeat: no-repeat, no-repeat;
-  background-position: 0in 7.5in, .5in .5in;
+  background-position: 0in 7.5in, 0.5in 0.5in;
   background-size: contain, 1in;
 }
