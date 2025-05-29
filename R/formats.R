@@ -56,11 +56,11 @@ pdf_report <- function(
 #'
 #' @export
 html_report <- function(...) {
-    css_file <- pkg_resource("omni_html_report.css")
+    css_file <- pkg_resource("html_report.css")
     header <- pkg_resource("header-htmlreport.html")
     footer <- pkg_resource("footer-htmlreport.html")
 
-    pagedown::html_paged(
+    rmarkdown::html_document(
         css = css_file,
         self_contained = TRUE,
         includes = rmarkdown::includes(

@@ -4,11 +4,9 @@
 \alias{omni_html_report}
 \title{Omni HTML Report to share with clients}
 \usage{
-omni_html_report(hypothesis = FALSE, ...)
+omni_html_report(...)
 }
 \arguments{
-\item{hypothesis}{Add Hypothesis}
-
 \item{...}{Other params to bookdown::html_document2}
 }
 \value{

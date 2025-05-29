@@ -2,6 +2,7 @@
 
 export(callout_box)
 export(ggplot_defaults)
+export(html_report)
 export(icon_text)
 export(icon_text_grid)
 export(include_hypothesis)
