@@ -17,6 +17,7 @@
   --logo-bottom: url("images/logo-no-text.png");
   --logo-bottom-page-break: url("images/logo-no-text-transparent.png");
   --logo-cover: url("images/logo.png");
+  --background-cover-page: url("images/pattern-cover-periwinkle.png");
   --steel-blue-light: #bfcbd3;
   --display-cover-page: block;
   --pagedjs-margin-top: 0mm;
@@ -89,7 +90,7 @@ h1.title {
 .cover-image {
   width: 100%;
   height: 100%;
-  background-image: url("images/pattern-cover-periwinkle.png");
+  background-image: var(--background-cover-page);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center bottom;
