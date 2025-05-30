@@ -37,6 +37,13 @@
           if (bottomCenter) {
             bottomCenter.classList.add("custom-style");
           }
+          
+          var bottomLeft = page_container.querySelector(
+            ".pagedjs_margin.pagedjs_margin-bottom-left.hasContent"
+          );
+          if (bottomLeft) {
+            bottomLeft.classList.add("page-break-icon");
+          }
         }
       });
     }

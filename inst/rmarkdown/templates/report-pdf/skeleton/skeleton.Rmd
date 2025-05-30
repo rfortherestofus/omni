@@ -70,13 +70,32 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 
 ```{r}
-omni::omni_page_break("One Page Break", "orange")
+omni::omni_page_break("One Page Break", "yellow")
+```
+
+```{r}
+omni::omni_page_break("Another Page Break", "teal")
+```
+
+```{r}
+omni::omni_page_break("Here's another one", "orangered")
 ```
 
 
 ```{r}
-omni::omni_page_break("Some Other Title here", "orange")
+omni::omni_page_break(
+  "One more teal background", "teal", nmbr_pattern = 2
+)
 ```
+
+```{r}
+omni::omni_page_break("Almost done", "periwinkle")
+```
+
+```{r}
+omni::omni_page_break("And the last one", "plum")
+```
+
 
 
 
@@ -143,7 +162,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 ```{r}
 callout_box(
     text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
-    color = "olive-green 600"
+    color = "olive-green-600"
 )
 ```
 
@@ -166,7 +185,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 quote_box(
     text = "This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
     author = "David Keyes",
-    color = "olive-green 600"
+    color = "olive-green-600"
 )
 ```
 
@@ -218,7 +237,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 number_emphasis(
     number = 1234,
     text = "pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.",
-    color = "teal 400",
+    color = "teal-400",
 )
 ```
 
@@ -228,7 +247,7 @@ number_emphasis(
 ```{r}
 width_px <- 50
 icon_color_fg <- "white"
-icon_color_bg <- 'teal 600'
+icon_color_bg <- 'teal-600'
 
 icon_text_grid(
     omni_icon('education', width_px, icon_color_bg, icon_color_fg),
