@@ -108,7 +108,6 @@ h1.title {
   background-position: center;
 }
 
-
 .cover-yellow-1 {
   background-image: url("images/pattern-01-yellow.png") !important;
 }
@@ -357,11 +356,6 @@ h1.subtitle:nth-child(2):not(.abstract h1) {
 .pagedjs_margin.pagedjs_margin-bottom-left.hasContent.page-break-icon {
   background-image: var(--logo-bottom-page-break);
 }
-
-
-
-
-
 
 /* not apply to very first page */
 .pagedjs_page:not(.pagedjs_first_page) .pagedjs_pagebox .pagedjs_margin-bottom {
