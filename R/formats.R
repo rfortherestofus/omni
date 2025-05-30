@@ -1,13 +1,20 @@
 #' Omni Paged PDF Report
 #'
-#' @param ... Other params to pagedown::html_paged
+#' @param main_font Main font
+#' @param secondary_font Secondary font
+#' @param background_cover_image Image to use for the background in the cover page. It must be one of (case insensitive): `c("01-yellow", "02-teal", "03-orangered", "06-teal", "07-periwinkle", "07-olive", "08-plum")`.
+#' @param background_color Background color of the document
+#' @param primary_color Primary color, mostly used in titles.
+#' @param remove_logo Whether to remove Omni logos from the document.
+#' @param remove_cover_page Whether to remove the cover page.
+#' @param ... Additional arguments passed to `pagedown::html_paged()`
 #'
 #' @return An rmd format
 #' @export
-#'
 pdf_report <- function(
     main_font = NULL,
     secondary_font = NULL,
+    background_cover_image = NULL,
     background_color = NULL,
     primary_color = NULL,
     remove_logo = FALSE,
@@ -28,6 +35,11 @@ pdf_report <- function(
         file = css_file,
         background_color = background_color,
         primary_color = primary_color
+    )
+
+    css_file <- change_background_image(
+        file = css_file,
+        background_cover_image = background_cover_image
     )
 
     if (remove_cover_page) {
@@ -65,6 +77,53 @@ remove_logo <- function(file) {
         '--logo-cover: none;',
         css_lines
     )
+
+    temp_css <- file.path(dirname(file), "temp.css")
+    writeLines(css_lines, temp_css)
+    return(temp_css)
+}
+
+#' Remove logo files in CSS
+#'
+#' @param file CSS file path
+#' @param background_cover_image Path to the new background image
+change_background_image <- function(file, background_cover_image) {
+    css_lines <- readLines(file)
+
+    if (!(is.null(background_cover_image))) {
+        background_cover_image <- tolower(background_cover_image)
+
+        valid_background_image <- c(
+            "01-yellow",
+            "02-teal",
+            "03-orangered",
+            "06-teal",
+            "07-periwinkle",
+            "07-olive",
+            "08-plum"
+        )
+
+        if (!(background_cover_image %in% valid_background_image)) {
+            stop(
+                "Invalid background image input. Valid options are: ",
+                paste(valid_background_image, collapse = ", ")
+            )
+        }
+
+        image_mapper <- setNames(
+            paste0("images/pattern-cover-", valid_background_image, ".png"),
+            valid_background_image
+        )
+        image_path <- image_mapper[background_cover_image]
+
+        css_lines <- gsub(
+            '--background-cover-page:.*?;',
+            glue::glue(
+                '--background-cover-page: url("{image_path}");'
+            ),
+            css_lines
+        )
+    }
 
     temp_css <- file.path(dirname(file), "temp.css")
     writeLines(css_lines, temp_css)
