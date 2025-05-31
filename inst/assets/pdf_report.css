@@ -272,7 +272,7 @@ h2.date {
   font-size: 11pt;
   font-family: var(--main-font);
   line-height: 1.2;
-  padding-top: 0.3em;
+  padding-top: 0.5em;
   margin-bottom: 1em;
   width: fit-content;
 }
@@ -286,6 +286,7 @@ h1.title:nth-child(1):not(.abstract h1) {
 
 h1.subtitle:nth-child(2):not(.abstract h1) {
   margin-top: 0.5in;
+  padding-top: 0.2in;
   border-top: 1px solid #d4ddeb;
   font-family: var(--header-font);
   font-weight: bolder;
@@ -314,6 +315,7 @@ h1.subtitle:nth-child(2):not(.abstract h1) {
   font-size: 0.9rem;
   font-family: var(--main-font);
   padding-top: 0.3em;
+  padding-bottom: 0.15in;
   width: fit-content;
 }
 
