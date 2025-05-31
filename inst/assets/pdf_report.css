@@ -15,7 +15,9 @@
   --primary-color: #081c39;
   --steel-blue: #677384;
   --logo-bottom: url("images/logo-no-text.png");
+  --logo-bottom-page-break: url("images/logo-no-text-transparent.png");
   --logo-cover: url("images/logo.png");
+  --background-cover-page: url("images/pattern-cover-periwinkle.png");
   --steel-blue-light: #bfcbd3;
   --display-cover-page: block;
   --pagedjs-margin-top: 0mm;
@@ -88,7 +90,7 @@ h1.title {
 .cover-image {
   width: 100%;
   height: 100%;
-  background-image: url("images/pattern-cover-periwinkle.png");
+  background-image: var(--background-cover-page);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center bottom;
@@ -101,14 +103,34 @@ h1.title {
   z-index: 1000; /* allow to go over margins */
   width: 116%;
   height: 122%;
-  background-image: url("images/pattern-cover-periwinkle.png");
+  background-image: url("images/pattern-01-yellow.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.cover-orange {
-  background-image: url("images/pattern-cover.png") !important;
+.cover-yellow-1 {
+  background-image: url("images/pattern-01-yellow.png") !important;
+}
+
+.cover-teal-1 {
+  background-image: url("images/pattern-02-teal.png") !important;
+}
+
+.cover-orangered-1 {
+  background-image: url("images/pattern-03-orangered.png") !important;
+}
+
+.cover-teal-2 {
+  background-image: url("images/pattern-06-teal.png") !important;
+}
+
+.cover-periwinkle-1 {
+  background-image: url("images/pattern-07-periwinkle.png") !important;
+}
+
+.cover-plum-1 {
+  background-image: url("images/pattern-08-plum.png") !important;
 }
 
 .cover-content {
@@ -329,6 +351,11 @@ h1.subtitle:nth-child(2):not(.abstract h1) {
 .pagedjs_margin.pagedjs_margin-bottom-center.hasContent.custom-style {
   background: transparent;
   color: white;
+}
+
+.pagedjs_margin-bottom.page-break-icon,
+.pagedjs_margin.pagedjs_margin-bottom-left.hasContent.page-break-icon {
+  background-image: var(--logo-bottom-page-break);
 }
 
 /* not apply to very first page */

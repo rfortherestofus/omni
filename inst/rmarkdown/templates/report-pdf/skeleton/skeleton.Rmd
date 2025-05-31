@@ -17,6 +17,7 @@ output:
     primary_color: "#081c39"
     remove_logo: FALSE
     remove_cover_page: FALSE
+    background_cover_image: "01-Yellow"
 abstract: >
   ```{r, child = system.file('assets/rmd/abstract.Rmd', package = 'omni')}
   ```
@@ -70,13 +71,34 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 
 ```{r}
-omni::omni_page_break("One Page Break", "orange")
+omni::omni_page_break("One Page Break", "yellow")
+```
+
+```{r}
+omni::omni_page_break("Another Page Break", "teal")
+```
+
+```{r}
+omni::omni_page_break("Here's another one", "orangered")
 ```
 
 
 ```{r}
-omni::omni_page_break("Some Other Title here", "orange")
+omni::omni_page_break(
+    "One more teal background",
+    "teal",
+    nmbr_pattern = 2
+)
 ```
+
+```{r}
+omni::omni_page_break("Almost done", "periwinkle")
+```
+
+```{r}
+omni::omni_page_break("And the last one", "plum")
+```
+
 
 
 
@@ -101,7 +123,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 ::: {.column width="70%"}
 
-![](logo.png)
+![](https://github.com/rfortherestofus/omni/blob/rebrand/inst/assets/images/logo-no-text.png?raw=true)
 
 :::
 
@@ -117,14 +139,14 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
 
 
-![](logo.png){.wrap-right}
+![](https://github.com/rfortherestofus/omni/blob/rebrand/inst/assets/images/logo-no-text.png?raw=true){.wrap-right}
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
 
 
 ### Section title
 
-![](logo.png){.wrap-left width="40%"}
+![](https://github.com/rfortherestofus/omni/blob/rebrand/inst/assets/images/logo-no-text.png?raw=true){.wrap-left width="40%"}
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum 
 
@@ -143,7 +165,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 ```{r}
 callout_box(
     text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
-    color = "olive-green 600"
+    color = "olive-green-600"
 )
 ```
 
@@ -166,7 +188,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 quote_box(
     text = "This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
     author = "David Keyes",
-    color = "olive-green 600"
+    color = "olive-green-600"
 )
 ```
 
@@ -218,7 +240,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 number_emphasis(
     number = 1234,
     text = "pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.",
-    color = "teal 400",
+    color = "teal-400",
 )
 ```
 
@@ -228,7 +250,7 @@ number_emphasis(
 ```{r}
 width_px <- 50
 icon_color_fg <- "white"
-icon_color_bg <- 'teal 600'
+icon_color_bg <- 'teal-600'
 
 icon_text_grid(
     omni_icon('education', width_px, icon_color_bg, icon_color_fg),

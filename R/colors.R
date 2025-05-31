@@ -6,7 +6,7 @@
 #' "orange-red-600", "golden-yellow-200", "golden-yellow-400", "golden-yellow-600",
 #' "olive-green-200", "olive-green-400", "olive-green-600", "teal-200", "teal-400",
 #' "teal-600", "plum-200", "plum-400", "plum-600", "periwinkle-200", "periwinkle-400",
-#' "periwinkle-600", "steel-blue-200", "steel-blue"
+#' "periwinkle-600", "steel-blue-200", "steel-blue-400", "steel-blue-600"
 #'
 #' @name omni_colors
 #' @param colors_sub Character vector of color names.
@@ -41,7 +41,8 @@ omni_colors <- function(
         "periwinkle-400",
         "periwinkle-600",
         "steel-blue-200",
-        "steel-blue",
+        "steel-blue-400",
+        "steel-blue-600",
         "navy"
     ),
     named = FALSE
@@ -69,7 +70,8 @@ omni_colors <- function(
         "periwinkle-400",
         "periwinkle-600",
         "steel-blue-200",
-        "steel-blue",
+        "steel-blue-400",
+        "steel-blue-600",
         "navy"
     )
 
@@ -105,7 +107,8 @@ omni_colors <- function(
         `periwinkle-400` = "#A9BAD8",
         `periwinkle-600` = "#5776B2",
         `steel-blue-200` = "#BFCBD3",
-        `steel-blue` = "#677384",
+        `steel-blue-400` = "#677384",
+        `steel-blue-600` = "#405065",
         `navy` = "#081C39"
     )
 
