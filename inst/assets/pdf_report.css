@@ -417,7 +417,6 @@ p {
   font-size: 5pt;
   text-transform: uppercase;
   font: var(--secondary-font);
-  letter-spacing: 2px;
   position: relative;
   padding-left: 30px;
 }
