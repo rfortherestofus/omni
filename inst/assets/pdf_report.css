@@ -247,7 +247,7 @@ h3.abstract {
 
 h2.date {
   position: absolute;
-  top: 0;
+  top: 7pt;
   right: 0;
   font-size: 12pt;
   font-family: var(--secondary-font);
