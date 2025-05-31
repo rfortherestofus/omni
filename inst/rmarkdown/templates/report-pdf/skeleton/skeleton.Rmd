@@ -14,7 +14,7 @@ output:
     main_font: "Inter Tight"
     secondary_font: "Sometype Mono"
     background_color: "#f9f7f4"
-    primary_color: "#081c39"
+    primary_font_color: "#081c39"
     remove_logo: FALSE
     remove_cover_page: FALSE
     background_cover_image: "01-Yellow"
