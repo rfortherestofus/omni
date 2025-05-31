@@ -7,7 +7,7 @@
   <h1 class="title">`r rmarkdown::metadata$title` </h1>
   <h1 class="subtitle"> `r rmarkdown::metadata$subtitle` </h1>
   <p class="submitted-to">Submitted to:</p>
-  <p>`r rmarkdown::metadata$client_name`</p>
+  <p class="client-name">`r rmarkdown::metadata$client_name`</p>
   </div>
 
   <div class="end-of-abstract">

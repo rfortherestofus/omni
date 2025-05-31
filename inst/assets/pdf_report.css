@@ -209,7 +209,10 @@ li li .toc-section-number {
 .submitted-to {
   font-weight: 500;
   font-family: var(--header-font);
-  margin-top: 325pt;
+}
+
+.client-name {
+  margin-bottom: 325pt;
 }
 
 p.for-more-info,
