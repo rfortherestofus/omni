@@ -461,21 +461,22 @@ img {
   padding-inline-start: 0pt;
 }
 
-ul:not(.toc ul):not(.toc),
-ul ul:not(.toc) {
-  list-style: none;
-  padding-right: 5pt;
-}
-
 ul:not(.toc ul) > li::before {
-  content: "• ";
   font-size: 1.5em;
-  vertical-align: middle;
+  vertical-align: top;
 }
 
-ul ul > li:not(#TOC li)::before {
+ul ul > li:not(#TOC li)::marker {
   content: "> ";
   font-size: 0.9em;
+}
+
+ul ul > li:not(#TOC li) {
+  padding-left: 10pt;
+}
+
+ul > li:not(#TOC li) {
+  padding-left: 10pt;
 }
 
 /* columns */

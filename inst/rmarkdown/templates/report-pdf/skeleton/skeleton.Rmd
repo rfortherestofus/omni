@@ -52,6 +52,27 @@ The project will start with a virtual project alignment meeting with the key cou
 
 The project will start with a virtual project alignment meeting with the key county leadership and staff to discuss the overall approach; review the initial workplan to support establishing strong working relationships; and ensure clear communication, detailed schedules, timelines and milestones. 
 
+:::: {.columns}
+
+
+::: {.column width="30%"}
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+
+:::
+
+::: {.column width="10%"}
+
+:::
+
+::: {.column width="60%"}
+
+![](https://github.com/rfortherestofus/omni/blob/rebrand/inst/assets/images/logo.png?raw=true)
+
+:::
+
+::::
+
 This is the end of the page.
 
 \newpage
@@ -214,6 +235,8 @@ Small title section
   - Lorem ipsum dolor sit amet, consectetu.
 - Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
   - Ut enim ad minim veniam, quis nostru.
+    - Sed do eiusmod tempor incididunt
+    - Lorem ipsum dolor
   - Nisi ut aliquip ex ea commodo consequat.
 
 :::
