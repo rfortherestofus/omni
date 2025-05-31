@@ -46,6 +46,7 @@
   @bottom-right {
     content: counter(page);
     font-size: 10pt;
+    margin-top: 13pt;
     background: none;
   }
 
@@ -54,6 +55,7 @@
     margin-left: 2in;
     font-size: 10pt;
     color: #7a7a7a;
+    margin-top: 13pt;
   }
 
   @bottom-left {
