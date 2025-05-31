@@ -458,8 +458,7 @@ img {
 /* bullet points */
 
 #TOC > ul {
-  margin-left: 0pt !important;
-  padding-inline-start: 10pt;
+  padding-inline-start: 0pt;
 }
 
 ul:not(.toc ul):not(.toc),
