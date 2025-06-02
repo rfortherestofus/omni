@@ -15,6 +15,19 @@ theme_omni <- function(
   base_family = "Inter Tight"
 ) {
   # general theme based on theme_minimal
+  omni_style <- marquee::style_set(
+    base = marquee::base_style(),
+    str = marquee::style(weight = 'bold'),
+    em = marquee::style(italic = TRUE),
+    u = marquee::style(underline = TRUE),
+    `periwinkle-600` = marquee::style(
+      color = omni::omni_colors("periwinkle-600")
+    ),
+    `plum-400` = marquee::style(
+      color = omni::omni_colors("plum-400")
+    )
+  )
+
   omni_theme <- theme_minimal(base_family = base_family) +
     theme(
       panel.grid.minor = element_blank(),
@@ -30,11 +43,13 @@ theme_omni <- function(
         color = "#333333"
       ),
       axis.text = element_text(size = 11),
-      plot.title = element_markdown(
-        margin = margin(0, 0, 15, 0),
-        color = "#666665",
-        face = "bold",
-        size = 13
+      plot.title = marquee::element_marquee(
+        #margin = margin(0, 0, 15, 0),
+        #color = "#666665",
+        #face = "bold",
+        #size = 13,
+        style = omni_style,
+        width = 1
       ),
       plot.title.position = "plot",
       plot.subtitle = element_markdown(
