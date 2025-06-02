@@ -113,7 +113,10 @@ quote_box <- function(
         border_left = '20px solid transparent',
         border_right = '0px solid transparent',
         border_top = paste('20px solid', color_hex),
-        margin_left = 'auto'
+        margin_left = 'auto',
+        # Shift triangle a tiny bit upwards to avoid line in pdf
+        margin_top = '-2px',
+        background = 'transparent'
       )
     )
   )
@@ -199,6 +202,7 @@ callout_box <- function(
     htmltools::div(
       style = htmltools::css(
         padding_left = '10px',
+        padding_bottom = '3px',
         color = allowed_colors['navy'],
         border_left = paste('5px solid', color_hex)
       ),
@@ -206,7 +210,6 @@ callout_box <- function(
     )
   )
 }
-
 
 #' Create a number emphasis element
 #'
