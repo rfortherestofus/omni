@@ -302,3 +302,34 @@ scale_color_omni_discrete <- function(
         ...
     )
 }
+
+#' Colorize text within inline text
+#'
+#' @name text_color
+#' @param text Must be a character vector of length 1.
+#' @param color color to be used. Must be one of `omni_colors(named = TRUE)`
+#' @export
+text_color <- function(text, color) {
+    # Checks on color argument ----------------------------------------------------------
+    allowed_colors <- omni_colors(named = TRUE)
+    allowed_color_names <- names(allowed_colors)
+    if (!(color %in% allowed_color_names)) {
+        cli::cli_abort(
+            '{.var color} must be one of {.val {allowed_color_names}}. See {.help [{.fun omni_colors}](omni::omni_colors)}.'
+        )
+    }
+
+    text |>
+        commonmark::markdown_html() |>
+        stringr::str_replace(
+            stringr::fixed("<p>"),
+            stringr::fixed(
+                glue::glue("<span style = 'color: {allowed_colors[color]}'>") |>
+                    as.character()
+            )
+        ) |>
+        stringr::str_replace(
+            stringr::fixed("</p>\n"),
+            stringr::fixed("</span>")
+        )
+}

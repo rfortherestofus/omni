@@ -1,0 +1,11 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r}
+library(omni)
+```
+
+
+This is a `r text_color("little test", "orange-red-600")` to test `r text_color("**the new inline color functionality**", "periwinkle-600")`.
