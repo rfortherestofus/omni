@@ -51,10 +51,10 @@
   }
 
   @bottom-center {
-    content: "Omni Institute Report | " string(h1-title);
+    content: string(h1-title);
     margin-left: 2in;
     font-size: 10pt;
-    color: #7a7a7a;
+    color: var(--steel-blue);
     margin-top: 13pt;
   }
 
@@ -67,6 +67,17 @@
     width: 30px;
     height: auto;
   }
+}
+
+.pagedjs_page .pagedjs_margin-bottom-center > .pagedjs_margin-content::before {
+  content: "Omni Institute Report | " !important;
+  color: var(--primary-color);
+}
+
+.pagedjs_page .pagedjs_margin-bottom-center > .pagedjs_margin-content::before,
+.pagedjs_page .pagedjs_margin-bottom-center > .pagedjs_margin-content::after {
+  display: inline;
+  white-space: nowrap;
 }
 
 h1.title {
