@@ -11,7 +11,7 @@
 set_omni_defaults <- function(
   base_family = "Inter Tight",
   base_color = "#314160"
-) {
+    ) {
   # set default theme -----------------------------------------------------
 
   ggplot2::theme_set(omni::theme_omni(base_family = base_family))
@@ -22,28 +22,32 @@ set_omni_defaults <- function(
     "text",
     list(
       family = base_family,
-      size = 4.22
+      size = 12,
+      size.unit = "pt"
     )
   )
   ggplot2::update_geom_defaults(
     "label",
     list(
       family = base_family,
-      size = 4.22
+      size = 12,
+      size.unit = "pt"
     )
   )
   ggplot2::update_geom_defaults(
     "text_repel",
     list(
       family = base_family,
-      size = 4.22
+      size = 12,
+      size.unit = "pt"
     )
   )
   ggplot2::update_geom_defaults(
     "label_repel",
     list(
       family = base_family,
-      size = 4.22
+      size = 12,
+      size.unit = "pt"
     )
   )
 

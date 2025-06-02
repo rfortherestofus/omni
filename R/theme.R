@@ -21,28 +21,28 @@ theme_omni <- function(
       axis.ticks = element_blank(),
       axis.title.x = element_text(
         margin = margin(15, 0, 0, 0),
-        size = 10,
+        size = 12,
         color = "#333333"
       ),
       axis.title.y = element_text(
         margin = margin(0, 15, 0, 0),
-        size = 14,
+        size = 12,
         color = "#333333"
       ),
-      axis.text = element_text(size = 11),
+      axis.text = element_text(size = 12),
       plot.title = element_markdown(
         margin = margin(0, 0, 15, 0),
         color = "#666665",
         face = "bold",
-        size = 13
+        size = 14
       ),
       plot.title.position = "plot",
       plot.subtitle = element_markdown(
-        size = 11,
+        size = 13,
         color = "#333333"
       ),
       plot.caption = element_text(
-        size = 11,
+        size = 12,
         face = "italic"
       ),
       plot.margin = margin(

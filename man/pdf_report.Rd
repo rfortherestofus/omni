@@ -7,6 +7,7 @@
 pdf_report(
   main_font = NULL,
   secondary_font = NULL,
+  background_cover_image = NULL,
   background_color = NULL,
   primary_color = NULL,
   remove_logo = FALSE,
@@ -15,7 +16,21 @@ pdf_report(
 )
 }
 \arguments{
-\item{...}{Other params to pagedown::html_paged}
+\item{main_font}{Main font}
+
+\item{secondary_font}{Secondary font}
+
+\item{background_cover_image}{Image to use for the background in the cover page. It must be one of (case insensitive): `c("01-yellow", "02-teal", "03-orangered", "06-teal", "07-periwinkle", "07-olive", "08-plum")`.}
+
+\item{background_color}{Background color of the document}
+
+\item{primary_color}{Primary color, mostly used in titles.}
+
+\item{remove_logo}{Whether to remove Omni logos from the document.}
+
+\item{remove_cover_page}{Whether to remove the cover page.}
+
+\item{...}{Additional arguments passed to `pagedown::html_paged()`}
 }
 \value{
 An rmd format
