@@ -21,7 +21,7 @@ theme_omni <- function(
       axis.ticks = element_blank(),
       axis.title.x = element_text(
         margin = margin(15, 0, 0, 0),
-        size = 10,
+        size = 14,
         color = "#333333"
       ),
       axis.title.y = element_text(
