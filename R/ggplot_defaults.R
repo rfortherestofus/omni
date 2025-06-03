@@ -22,7 +22,7 @@ set_omni_defaults <- function(
     "text",
     list(
       family = base_family,
-      size = 12,
+      size = 12 / .pt,
       size.unit = "pt"
     )
   )
