@@ -51,7 +51,7 @@ diamonds |>
         y = element_blank(),
         title = 'Most diamonds are small {.plum-400 **but as they get heavier**}, 
         they also {.periwinkle-600 *get more expensive*}. **Shocking, I know**. 
-        But not as shocking as this title using _automatic line breaks_.',
-        subtitle = 'Diamond Price'
+        But not as {.teal-600 shocking} as this title using _automatic line breaks_.',
+        subtitle = 'Diamond Price by weight'
     ) 
 ```
