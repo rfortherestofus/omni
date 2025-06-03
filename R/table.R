@@ -4,7 +4,7 @@
 #'
 #' @param df The data frame to be put into the table
 #' @param group_by Character vector containing of grouping variables
-#' @param first_col_grey Should the first column be grey. Default to FALSE
+#' @param first_col_gray Should the first column be gray. Default to FALSE
 #' @param caption The caption of the table
 #' @param with_stripes TRUE or FALSE depending on whether a striped pattern should be used. Defaults to TRUE (which uses stripes.)
 #'
@@ -27,7 +27,7 @@
 #'
 #'  palmerpenguins::penguins |>
 #'    dplyr::slice(1:3) |>
-#'    omni_table(first_col_grey = TRUE)
+#'    omni_table(first_col_gray = TRUE)
 #'
 #'  palmerpenguins::penguins |>
 #'    dplyr::slice(1:3, .by = species) |>
@@ -53,7 +53,7 @@ omni_table <-
   function(
     df,
     group_by = NULL,
-    first_col_grey = FALSE,
+    first_col_gray = FALSE,
     caption = NULL,
     with_stripes = TRUE
   ) {
@@ -109,7 +109,7 @@ omni_table <-
     }
 
     # first column
-    if (first_col_grey) {
+    if (first_col_gray) {
       table <- table |>
         bg(part = "body", j = 1, bg = omni_colors("steel-blue-400")) |>
         color(part = "body", j = 1, color = "white")

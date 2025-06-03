@@ -4,12 +4,14 @@
 \alias{omni_page_break}
 \title{Create page break}
 \usage{
-omni_page_break(page_break_title, color)
+omni_page_break(page_break_title, color, nmbr_pattern = 1)
 }
 \arguments{
 \item{page_break_title}{title of the page break}
 
-\item{color}{Desired color. Currently only orange implemented}
+\item{color}{Desired color. Must be one of 'yellow', 'teal', 'orangered', 'periwinkle', 'plum'.}
+
+\item{nmbr_pattern}{Desired pattern number. Most colors (except Teal) have only one.}
 }
 \description{
 Creates a page break page for the pdf report

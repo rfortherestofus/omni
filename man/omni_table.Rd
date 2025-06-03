@@ -7,7 +7,7 @@
 omni_table(
   df,
   group_by = NULL,
-  first_col_grey = FALSE,
+  first_col_gray = FALSE,
   caption = NULL,
   with_stripes = TRUE
 )
@@ -17,7 +17,7 @@ omni_table(
 
 \item{group_by}{Character vector containing of grouping variables}
 
-\item{first_col_grey}{Should the first column be grey. Default to FALSE}
+\item{first_col_gray}{Should the first column be gray. Default to FALSE}
 
 \item{caption}{The caption of the table}
 
@@ -36,7 +36,7 @@ palmerpenguins::penguins |>
 
  palmerpenguins::penguins |>
    dplyr::slice(1:3) |>
-   omni_table(first_col_grey = TRUE)
+   omni_table(first_col_gray = TRUE)
 
  palmerpenguins::penguins |>
    dplyr::slice(1:3, .by = species) |>
