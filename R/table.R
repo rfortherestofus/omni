@@ -80,7 +80,7 @@ omni_table <-
       bold(part = 'header', bold = FALSE) |>
       fontsize(part = "all", size = 11) |>
       font(part = "all", fontname = "Inter Tight") |>
-      bg(part = "header", bg = omni_colors("steel-blue")) |>
+      bg(part = "header", bg = omni_colors("steel-blue-400")) |>
       color(part = "header", color = "white") |>
       color(part = "body", color = "#333333") |>
       height_all(height = 0.4) |>
@@ -98,7 +98,7 @@ omni_table <-
           part = "body",
           j = 1,
           i = grouped_row_nb,
-          bg = omni_colors("steel-blue")
+          bg = omni_colors("steel-blue-400")
         ) |>
         color(
           part = "body",
@@ -111,7 +111,7 @@ omni_table <-
     # first column
     if (first_col_grey) {
       table <- table |>
-        bg(part = "body", j = 1, bg = omni_colors("steel-blue")) |>
+        bg(part = "body", j = 1, bg = omni_colors("steel-blue-400")) |>
         color(part = "body", j = 1, color = "white")
     }
     # add caption within flextable
