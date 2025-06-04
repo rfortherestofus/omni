@@ -194,14 +194,21 @@ tibble::tribble(
   "Something",         "xxxxx",       "xxxxx",    "xxxx",
   "Something",         "xxxxx",       "xxxxx",    "xxxx"
   ) |> 
-omni::omni_table()
+omni::omni_table(caption = "Table 1. [Insert Table name]")
 ```
 
 
 \newpage
 
+\newpage
+
+::: {.chapter-title .dot-purple}
+Chapter title here
+:::
 
 ## Full Page Section Breaks
+
+The pages below are full page section breaks. Take a look at the code to see how they are created.
 
 ```{r}
 omni::omni_page_break("One Page Break", "yellow")
@@ -237,7 +244,9 @@ omni::omni_page_break("And the last one", "plum")
 Chapter title here
 :::
 
-## Example section
+## Additional Design Elements
+
+Again, to see how these are made, take a look at the R Markdown document.
 
 #### Number Emphasis
 
@@ -275,10 +284,6 @@ icon_text_grid(
 ```
 
 
-#### Sub section title
-
-Lorem Ipsum
-
 \newpage
 
 
@@ -291,6 +296,8 @@ Lorem Ipsum
 ## Appendix A
 
 :::
+
+\newpage
 
 ## Appendix A
 

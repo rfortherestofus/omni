@@ -234,7 +234,7 @@ p.suggested-citation {
   font-size: 1.2em !important;
   margin-top: 10pt;
   margin-bottom: 1pt;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
 }
 
 /* by default, abstracts have smaller width */
@@ -292,7 +292,7 @@ h2.date {
   padding-top: 0.5em;
   margin-bottom: 1em;
   width: fit-content;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
 }
 
 h1.title:nth-child(1):not(.abstract h1) {
@@ -335,7 +335,7 @@ h1.subtitle:nth-child(2):not(.abstract h1) {
   padding-top: 0.3em;
   padding-bottom: 0.15in;
   width: fit-content;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
 }
 
 .abstract h1.subtitle {
@@ -439,7 +439,7 @@ p {
   font: var(--secondary-font);
   position: relative;
   padding-left: 30px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
 }
 
 .chapter-title::before {
