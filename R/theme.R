@@ -49,7 +49,7 @@ theme_omni <- function(
       ),
       axis.title.y = element_text(
         margin = margin(0, 15, 0, 0),
-        size = 14,
+        size = 12,
         color = "#333333"
       ),
       axis.text = element_text(size = 11),
@@ -64,7 +64,7 @@ theme_omni <- function(
         style = omni_style |>
           marquee::modify_style(
             "base",
-            size = 11,
+            size = 13,
             color = "#333333",
             weight = 'normal'
           )
@@ -73,7 +73,7 @@ theme_omni <- function(
         style = omni_style |>
           marquee::modify_style(
             "base",
-            size = 11,
+            size = 12,
             weight = 'normal',
             italic = TRUE
           )
