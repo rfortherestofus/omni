@@ -539,3 +539,18 @@ hr {
 .pagedjs_page:first-of-type {
   display: none !important;
 }
+
+.pattern-appendix {
+  position: absolute;
+  left: -9%;
+  top: -33%;
+  width: 118%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.appendix-wrapper {
+  position: relative;
+  padding-top: 275px;
+}
