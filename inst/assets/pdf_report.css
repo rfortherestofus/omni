@@ -70,7 +70,7 @@
 }
 
 .pagedjs_page .pagedjs_margin-bottom-center > .pagedjs_margin-content::before {
-  content: "Omni Institute Report | " !important;
+  content: "Omni Institute Report | ";
   color: var(--primary-color);
 }
 
@@ -368,7 +368,13 @@ h1.subtitle:nth-child(2):not(.abstract h1) {
 .pagedjs_margin-bottom.custom-style,
 .pagedjs_margin.pagedjs_margin-bottom-center.hasContent.custom-style {
   background: transparent;
-  color: white;
+  color: white !important;
+}
+
+.pagedjs_page
+  .pagedjs_margin-bottom-center.custom-style
+  > .pagedjs_margin-content::before {
+  color: white !important;
 }
 
 .pagedjs_margin-bottom.page-break-icon,
