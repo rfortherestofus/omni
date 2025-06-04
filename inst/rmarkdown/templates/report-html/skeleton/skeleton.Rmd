@@ -15,18 +15,36 @@ output:
 knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 ```
 
+```{r}
+library(tidyverse)
+library(janitor)
+library(omni)
+library(scales)
+```
+
 
 ## First section
+
+- Bullet 1
+- Bullet 2
+    - bullet 1
+    - bullet 2
+        - bullet 1
+        - bullet 2
+
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
 :::: {.columns}
 
-::: {.column width="50%"}
+::: {.column width="55%"}
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum 
 :::
 
-::: {.column width="50%"}
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
 ```{r, echo=FALSE}
 omni::quote_box(
     text = "This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
@@ -57,17 +75,23 @@ ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
 ```
 
 
+<hr>
+
 ## Second section
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
 :::: {.columns}
 
-::: {.column width="50%"}
+::: {.column width="55%"}
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum 
 :::
 
-::: {.column width="50%"}
+::: {.column width="5%"}
+:::
+
+
+::: {.column width="40%"}
 
 ```{r, echo=FALSE}
 omni::callout_box(

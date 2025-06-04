@@ -63,6 +63,18 @@ body {
   text-decoration: none;
 }
 
+#header {
+  margin-bottom: 3rem;
+}
+
+hr {
+  border: none;
+  height: 2px;
+  background: #ddd;
+  margin: 60px 0;
+  border-radius: 2px;
+}
+
 /* ---- Titles & text ------------------ */
 /* Main title and subtitle */
 h1.title {
@@ -126,4 +138,22 @@ li {
 
 .tocify-extend-page {
   height: 0px !important;
+}
+
+ul ul {
+  list-style: none; /* Remove default bullets for level 2 */
+}
+
+ul ul li::before {
+  content: "> ";
+  color: black;
+}
+
+ul ul ul {
+  list-style: none; /* Remove default bullets for level 3 */
+}
+
+ul ul ul li::before {
+  content: "> ";
+  color: black;
 }
