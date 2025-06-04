@@ -1,5 +1,8 @@
 #' OMNI Institute ggplot2 theme
 #'
+#' @description Applies the OMNI Institute theme to the plot.
+#' This also allows for colorizing inline texts and using Markdown notation in title, subtitle and caption of the plot.
+#'
 #' @param show_legend Whether or not to show the legend. FALSE by default.
 #' @param base_family Base font family. Inter Tight by default.
 #' @param show_grid_lines Whether or not to show grid lines. FALSE by default.
@@ -8,12 +11,32 @@
 #' @export
 #'
 #' @importFrom ggplot2 theme_minimal theme element_blank element_text margin
-#' @importFrom ggtext element_markdown
 theme_omni <- function(
   show_grid_lines = FALSE,
   show_legend = FALSE,
   base_family = "Inter Tight"
 ) {
+  style_wo_colors <- marquee::style_set(
+    base = marquee::base_style(weight = 'bold', size = 13),
+    str = marquee::style(weight = 'bold'),
+    em = marquee::style(italic = TRUE),
+    u = marquee::style(underline = TRUE)
+  )
+
+  # Iteratively add the color tag styles
+  omni_colors <- omni_colors(named = TRUE)
+  omni_style <- purrr::reduce2(
+    .x = names(omni_colors), # color names
+    .y = unname(omni_colors), # color hex codes
+    .f = \(style, color_name, color_hex) {
+      style |>
+        marquee::modify_style(
+          tag = color_name,
+          color = color_hex
+        )
+    },
+    .init = style_wo_colors
+  )
   # general theme based on theme_minimal
   omni_theme <- theme_minimal(base_family = base_family) +
     theme(
@@ -30,20 +53,30 @@ theme_omni <- function(
         color = "#333333"
       ),
       axis.text = element_text(size = 11),
-      plot.title = element_markdown(
+      plot.title = marquee::element_marquee(
         margin = margin(0, 0, 15, 0),
         color = "#666665",
-        face = "bold",
-        size = 13
+        style = omni_style,
+        width = 1
       ),
       plot.title.position = "plot",
-      plot.subtitle = element_markdown(
-        size = 11,
-        color = "#333333"
+      plot.subtitle = marquee::element_marquee(
+        style = omni_style |>
+          marquee::modify_style(
+            "base",
+            size = 11,
+            color = "#333333",
+            weight = 'normal'
+          )
       ),
-      plot.caption = element_text(
-        size = 11,
-        face = "italic"
+      plot.caption = marquee::element_marquee(
+        style = omni_style |>
+          marquee::modify_style(
+            "base",
+            size = 11,
+            weight = 'normal',
+            italic = TRUE
+          )
       ),
       plot.margin = margin(
         t = 7,

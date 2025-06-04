@@ -1,0 +1,57 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+<style>
+
+.white {color: #ffffff;}
+.ivory {color: #F9F7F4;}
+.ivory-400 {color: #E9DFCF;}
+.orange-red-200 {color: #FF9E85;}
+.orange-red-400 {color: #FF5E34;}
+.orange-red-600 {color: #CC4100;}
+.golden-yellow-200 {color: #FDE880;}
+.golden-yellow-400 {color: #FCD82B;}
+.golden-yellow-600 {color: #F7B925;}
+.olive-green-200 {color: #B8C690;}
+.olive-green-400 {color: #89A046;}
+.olive-green-600 {color: #3B5530;}
+.teal-200 {color: #C5DFD9;}
+.teal-400 {color: #8AC0B3;}
+.teal-600 {color: #41816F;}
+.plum-200 {color: #DD9CB9;}
+.plum-400 {color: #C65A8B;}
+.plum-600 {color: #821C4C;}
+.periwinkle-200 {color: #D4DDEB;}
+.periwinkle-400 {color: #A9BAD8;}
+.periwinkle-600 {color: #5776B2;}
+.steel-blue-200 {color: #BFCBD3;}
+.steel-blue-400 {color: #677384;}
+.steel-blue-600 {color: #405065;}
+.navy {color: #081C39;}
+
+</style>
+
+
+This is a [little test]{.orange-red-600} to test [**the new inline color functionality**]{.periwinkle-600}.
+And here is also an [**example plot (btw this uses Olive Green color)**]{.olive-green-400}.
+
+```{r}
+library(omni)
+library(ggplot2)
+diamonds |> 
+    ggplot(aes(carat, price)) +
+    geom_hex(color = 'black', linewidth = 0.1) +
+    omni::theme_omni() +
+    scale_y_continuous(labels = scales::label_dollar()) +
+    omni::scale_fill_omni_continuous(palette = 'plum') +
+    labs(
+        x = 'Diamond Weight (Carat)',
+        y = element_blank(),
+        title = 'Most diamonds are small {.plum-400 **but as they get heavier**}, 
+        they also {.periwinkle-600 *get more expensive*}. **Shocking, I know**. 
+        But not as {.teal-600 shocking} as this title using _automatic line breaks_.',
+        subtitle = 'Diamond Price by weight'
+    ) 
+```
