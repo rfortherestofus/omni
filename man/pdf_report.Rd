@@ -9,7 +9,7 @@ pdf_report(
   secondary_font = NULL,
   background_cover_image = NULL,
   background_color = NULL,
-  primary_color = NULL,
+  primary_font_color = NULL,
   remove_logo = FALSE,
   remove_cover_page = FALSE,
   ...
@@ -24,7 +24,7 @@ pdf_report(
 
 \item{background_color}{Background color of the document}
 
-\item{primary_color}{Primary color, mostly used in titles.}
+\item{primary_font_color}{Primary color, mostly used in titles.}
 
 \item{remove_logo}{Whether to remove Omni logos from the document.}
 
