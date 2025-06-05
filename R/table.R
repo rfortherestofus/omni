@@ -48,7 +48,6 @@
 #'   dplyr::mutate(year = as.character(year)) |>
 #'   omni_table()
 #'
-
 omni_table <-
   function(
     df,
@@ -66,7 +65,7 @@ omni_table <-
       table <- df |>
         flextable()
     }
-    
+
     # table theme with flextable
     table <- table |>
       theme_zebra(
@@ -86,13 +85,13 @@ omni_table <-
       height_all(height = 0.4) |>
       border_inner(part = "body", border = fp_border(color = "white")) |>
       border(part = "header", border.bottom = fp_border(color = "white"))
-    
+
     # highlight grouped row
     if (!is.null(group_by)) {
       # get row nb of grouped row
       grouped_df <- df |> as_grouped_data(group_by)
       grouped_row_nb <- which(!is.na(grouped_df$species))
-      
+
       table <- table |>
         bg(
           part = "body",
@@ -107,7 +106,7 @@ omni_table <-
           color = "white"
         )
     }
-    
+
     # first column
     if (first_col_gray) {
       table <- table |>
@@ -158,6 +157,6 @@ omni_table <-
           )
       }
     }
-    
+
     table
   }
