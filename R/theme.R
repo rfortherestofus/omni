@@ -63,7 +63,7 @@ theme_omni <- function(
       ),
       plot.title.position = "plot",
       plot.subtitle = marquee::element_marquee(
-        margin = margin(-6, 0, 0, 0), 
+        margin = margin(-4, 0, 0, 0), 
         style = omni_style |>
           marquee::modify_style(
             "base",
