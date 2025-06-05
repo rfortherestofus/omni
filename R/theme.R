@@ -6,6 +6,7 @@
 #' @param show_legend Whether or not to show the legend. FALSE by default.
 #' @param base_family Base font family. Inter Tight by default.
 #' @param show_grid_lines Whether or not to show grid lines. FALSE by default.
+#' @param plot_background_color Whether to make background color Ivory or White
 #'
 #' @return A ggplot2 theme
 #' @export
@@ -14,7 +15,8 @@
 theme_omni <- function(
   show_grid_lines = FALSE,
   show_legend = FALSE,
-  base_family = "Inter Tight"
+  base_family = "Inter Tight",
+  plot_background_color = "Ivory"
 ) {
   style_wo_colors <- marquee::style_set(
     base = marquee::base_style(weight = 'bold', size = 13),
@@ -84,10 +86,14 @@ theme_omni <- function(
         b = 7,
         l = 7,
         unit = "points"
-      )
+      ),
+      plot.background = 
+        element_rect(
+          fill = omni_colors("ivory"),
+          color = omni_colors("ivory")
+        )
     )
 
-  # grid lines option
   if (show_grid_lines == FALSE) {
     omni_theme <- omni_theme +
       theme(panel.grid.major = element_blank())
@@ -96,6 +102,15 @@ theme_omni <- function(
   if (show_legend == FALSE) {
     omni_theme <- omni_theme +
       theme(legend.position = "none")
+  }
+  
+  if (plot_background_color |> stringr::str_to_lower() == "white") {
+    omni_theme <- omni_theme +
+      theme(plot.background = 
+              element_rect(
+                fill = omni_colors("white"),
+                color = omni_colors("white")
+              ))
   }
 
   # return
