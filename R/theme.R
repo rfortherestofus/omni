@@ -56,13 +56,14 @@ theme_omni <- function(
       ),
       axis.text = element_text(size = 11),
       plot.title = marquee::element_marquee(
-        margin = margin(0, 0, 15, 0),
+        margin = margin(0, 0, 0, 0),
         color = "#666665",
         style = omni_style,
         width = 1
       ),
       plot.title.position = "plot",
       plot.subtitle = marquee::element_marquee(
+        margin = margin(-6, 0, 0, 0), 
         style = omni_style |>
           marquee::modify_style(
             "base",
