@@ -10,6 +10,7 @@
 #' @param ... Additional arguments passed to `pagedown::html_paged()`
 #'
 #' @return An rmd format
+#'
 #' @export
 pdf_report <- function(
     main_font = NULL,
@@ -56,6 +57,29 @@ pdf_report <- function(
         toc = TRUE,
         fig_caption = TRUE,
         includes = rmarkdown::includes(in_header = fix_toc_html),
+        ...
+    )
+}
+
+#' Omni HTML Report
+#'
+#' @param ... Params to pagedown::html_paged
+#'
+#' @return An rmd format
+#'
+#' @export
+html_report <- function(...) {
+    css_file <- pkg_resource("html_report.css")
+    header <- pkg_resource("header-htmlreport.html")
+    footer <- pkg_resource("footer-htmlreport.html")
+
+    rmarkdown::html_document(
+        css = css_file,
+        self_contained = TRUE,
+        includes = rmarkdown::includes(
+            before_body = header,
+            after_body = footer
+        ),
         ...
     )
 }

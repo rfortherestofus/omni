@@ -4,14 +4,14 @@
 \alias{change_colors}
 \title{Change main colors in CSS}
 \usage{
-change_colors(file, background_color = NULL, primary_color = NULL)
+change_colors(file, background_color = NULL, primary_font_color = NULL)
 }
 \arguments{
 \item{file}{CSS file path}
 
 \item{background_color}{Background color (optionnal)}
 
-\item{primary_color}{Primary color (optionnal)}
+\item{primary_font_color}{Primary color (optionnal)}
 }
 \description{
 Change main colors in CSS
