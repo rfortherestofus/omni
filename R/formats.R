@@ -4,7 +4,7 @@
 #' @param secondary_font Secondary font
 #' @param background_cover_image Image to use for the background in the cover page. It must be one of (case insensitive): `c("01-yellow", "02-teal", "03-orangered", "06-teal", "07-periwinkle", "07-olive", "08-plum")`.
 #' @param background_color Background color of the document
-#' @param primary_color Primary color, mostly used in titles.
+#' @param primary_font_color Primary color, mostly used in titles.
 #' @param remove_logo Whether to remove Omni logos from the document.
 #' @param remove_cover_page Whether to remove the cover page.
 #' @param ... Additional arguments passed to `pagedown::html_paged()`
@@ -17,7 +17,7 @@ pdf_report <- function(
     secondary_font = NULL,
     background_cover_image = NULL,
     background_color = NULL,
-    primary_color = NULL,
+    primary_font_color = NULL,
     remove_logo = FALSE,
     remove_cover_page = FALSE,
     ...
@@ -35,7 +35,7 @@ pdf_report <- function(
     css_file <- change_colors(
         file = css_file,
         background_color = background_color,
-        primary_color = primary_color
+        primary_font_color = primary_font_color
     )
 
     css_file <- change_background_image(
@@ -158,11 +158,11 @@ change_background_image <- function(file, background_cover_image) {
 #'
 #' @param file CSS file path
 #' @param background_color Background color (optionnal)
-#' @param primary_color Primary color (optionnal)
+#' @param primary_font_color Primary color (optionnal)
 change_colors <- function(
     file,
     background_color = NULL,
-    primary_color = NULL
+    primary_font_color = NULL
 ) {
     css_lines <- readLines(file)
 
@@ -174,10 +174,10 @@ change_colors <- function(
         )
     }
 
-    if (!(is.null(primary_color))) {
+    if (!(is.null(primary_font_color))) {
         css_lines <- gsub(
             '--primary-color:.*?;',
-            glue::glue('--primary-color: {primary_color};'),
+            glue::glue('--primary-color: {primary_font_color};'),
             css_lines
         )
     }

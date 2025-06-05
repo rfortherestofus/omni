@@ -7,7 +7,7 @@
   <h1 class="title">`r rmarkdown::metadata$title` </h1>
   <h1 class="subtitle"> `r rmarkdown::metadata$subtitle` </h1>
   <p class="submitted-to">Submitted to:</p>
-  <p>`r rmarkdown::metadata$client_name`</p>
+  <p class="client-name">`r rmarkdown::metadata$client_name`</p>
   </div>
 
   <div class="end-of-abstract">
@@ -16,7 +16,7 @@
   <p class="acknowledge">Acknowledgements:</p>
   <p>The OMNI Institute wants to thank `r rmarkdown::metadata$acknowledgements` for their contributions to the creation of this report.</p>
   <p class="suggested-citation">Suggested Citation:</p>
-  <p>OMNI Institute `r rmarkdown::metadata$report_year`. `r rmarkdown::metadata$title`. Submitted to `r rmarkdown::metadata$client_name`, `r rmarkdown::metadata$client_city`, `r rmarkdown::metadata$client_state`.</p>
+  <p>OMNI Institute `r rmarkdown::metadata$report_year`. `r gsub("<br\\s*/?>", " ", rmarkdown::metadata$title)`. Submitted to `r rmarkdown::metadata$client_name`, `r rmarkdown::metadata$client_city`, `r rmarkdown::metadata$client_state`.</p>
   </div>
   <div class="page-break-before"></div>
 
