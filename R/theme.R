@@ -17,10 +17,10 @@ theme_omni <- function(
   show_legend = FALSE,
   base_family = "Inter Tight",
   plot_background_color = "Ivory"
-) {
+    ) {
   style_wo_colors <- marquee::style_set(
-    base = marquee::base_style(weight = 'bold', size = 13),
-    str = marquee::style(weight = 'bold'),
+    base = marquee::base_style(weight = "bold", size = 13),
+    str = marquee::style(weight = "bold"),
     em = marquee::style(italic = TRUE),
     u = marquee::style(underline = TRUE)
   )
@@ -28,8 +28,10 @@ theme_omni <- function(
   # Iteratively add the color tag styles
   omni_colors <- omni_colors(named = TRUE)
   omni_style <- purrr::reduce2(
-    .x = names(omni_colors), # color names
-    .y = unname(omni_colors), # color hex codes
+    .x = names(omni_colors),
+    # color names
+    .y = unname(omni_colors),
+    # color hex codes
     .f = \(style, color_name, color_hex) {
       style |>
         marquee::modify_style(
@@ -43,6 +45,10 @@ theme_omni <- function(
   omni_theme <- theme_minimal(base_family = base_family) +
     theme(
       panel.grid.minor = element_blank(),
+      panel.grid.major = element_line(
+        linewidth = 0.25,
+        color = omni_colors("steel-blue-200")
+      ),
       axis.ticks = element_blank(),
       axis.title.x = element_text(
         margin = margin(15, 0, 0, 0),
@@ -63,13 +69,13 @@ theme_omni <- function(
       ),
       plot.title.position = "plot",
       plot.subtitle = marquee::element_marquee(
-        margin = margin(-4, 0, 0, 0), 
+        margin = margin(-4, 0, 0, 0),
         style = omni_style |>
           marquee::modify_style(
             "base",
             size = 13,
             color = "#333333",
-            weight = 'normal'
+            weight = "normal"
           )
       ),
       plot.caption = marquee::element_marquee(
@@ -77,7 +83,7 @@ theme_omni <- function(
           marquee::modify_style(
             "base",
             size = 12,
-            weight = 'normal',
+            weight = "normal",
             italic = TRUE
           )
       ),
@@ -88,7 +94,7 @@ theme_omni <- function(
         l = 7,
         unit = "points"
       ),
-      plot.background = 
+      plot.background =
         element_rect(
           fill = omni_colors("ivory"),
           color = omni_colors("ivory")
@@ -104,14 +110,16 @@ theme_omni <- function(
     omni_theme <- omni_theme +
       theme(legend.position = "none")
   }
-  
+
   if (plot_background_color |> stringr::str_to_lower() == "white") {
     omni_theme <- omni_theme +
-      theme(plot.background = 
-              element_rect(
-                fill = omni_colors("white"),
-                color = omni_colors("white")
-              ))
+      theme(
+        plot.background =
+          element_rect(
+            fill = omni_colors("white"),
+            color = omni_colors("white")
+          )
+      )
   }
 
   # return
