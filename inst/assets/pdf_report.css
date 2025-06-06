@@ -46,14 +46,16 @@
   @bottom-right {
     content: counter(page);
     font-size: 10pt;
+    margin-top: 13pt;
     background: none;
   }
 
   @bottom-center {
-    content: "Omni Institute Report | " string(h1-title);
+    content: string(h1-title);
     margin-left: 2in;
     font-size: 10pt;
-    color: #7a7a7a;
+    color: var(--steel-blue);
+    margin-top: 13pt;
   }
 
   @bottom-left {
@@ -65,6 +67,17 @@
     width: 30px;
     height: auto;
   }
+}
+
+.pagedjs_page .pagedjs_margin-bottom-center > .pagedjs_margin-content::before {
+  content: "Omni Institute Report | ";
+  color: var(--primary-color);
+}
+
+.pagedjs_page .pagedjs_margin-bottom-center > .pagedjs_margin-content::before,
+.pagedjs_page .pagedjs_margin-bottom-center > .pagedjs_margin-content::after {
+  display: inline;
+  white-space: nowrap;
 }
 
 h1.title {
@@ -209,7 +222,10 @@ li li .toc-section-number {
 .submitted-to {
   font-weight: 500;
   font-family: var(--header-font);
-  margin-top: 325pt;
+}
+
+.client-name {
+  margin-bottom: 325pt;
 }
 
 p.for-more-info,
@@ -218,6 +234,7 @@ p.suggested-citation {
   font-size: 1.2em !important;
   margin-top: 10pt;
   margin-bottom: 1pt;
+  letter-spacing: 0.05em;
 }
 
 /* by default, abstracts have smaller width */
@@ -247,7 +264,7 @@ h3.abstract {
 
 h2.date {
   position: absolute;
-  top: 0;
+  top: 7pt;
   right: 0;
   font-size: 12pt;
   font-family: var(--secondary-font);
@@ -268,13 +285,14 @@ h2.date {
   display: block;
   /* background-color: #faecc3; */
   color: black;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 11pt;
   font-family: var(--main-font);
   line-height: 1.2;
-  padding-top: 0.3em;
+  padding-top: 0.5em;
   margin-bottom: 1em;
   width: fit-content;
+  letter-spacing: 0.05em;
 }
 
 h1.title:nth-child(1):not(.abstract h1) {
@@ -286,6 +304,7 @@ h1.title:nth-child(1):not(.abstract h1) {
 
 h1.subtitle:nth-child(2):not(.abstract h1) {
   margin-top: 0.5in;
+  padding-top: 0.2in;
   border-top: 1px solid #d4ddeb;
   font-family: var(--header-font);
   font-weight: bolder;
@@ -310,11 +329,13 @@ h1.subtitle:nth-child(2):not(.abstract h1) {
   content: "Omni Institute Report";
   display: block;
   color: var(--steel-blue);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 0.9rem;
   font-family: var(--main-font);
   padding-top: 0.3em;
+  padding-bottom: 0.15in;
   width: fit-content;
+  letter-spacing: 0.05em;
 }
 
 .abstract h1.subtitle {
@@ -350,7 +371,13 @@ h1.subtitle:nth-child(2):not(.abstract h1) {
 .pagedjs_margin-bottom.custom-style,
 .pagedjs_margin.pagedjs_margin-bottom-center.hasContent.custom-style {
   background: transparent;
-  color: white;
+  color: white !important;
+}
+
+.pagedjs_page
+  .pagedjs_margin-bottom-center.custom-style
+  > .pagedjs_margin-content::before {
+  color: white !important;
 }
 
 .pagedjs_margin-bottom.page-break-icon,
@@ -391,7 +418,7 @@ h3 {
 
 h4 {
   margin-block-end: 5.5pt !important;
-  font-size: 11pt;
+  font-size: 13pt;
   font-weight: 400;
   letter-spacing: 0.03em;
   color: var(--primary-color);
@@ -406,16 +433,16 @@ p {
   line-height: 1.4;
 }
 
-.small-title {
+.chapter-title {
   font-size: 5pt;
   text-transform: uppercase;
   font: var(--secondary-font);
-  letter-spacing: 2px;
   position: relative;
   padding-left: 30px;
+  letter-spacing: 0.05em;
 }
 
-.small-title::before {
+.chapter-title::before {
   content: "";
   width: 12px;
   height: 12px;
@@ -452,25 +479,25 @@ img {
 /* bullet points */
 
 #TOC > ul {
-  margin-left: 0pt !important;
-  padding-inline-start: 10pt;
-}
-
-ul:not(.toc ul):not(.toc),
-ul ul:not(.toc) {
-  list-style: none;
-  padding-right: 5pt;
+  padding-inline-start: 0pt;
 }
 
 ul:not(.toc ul) > li::before {
-  content: "• ";
   font-size: 1.5em;
-  vertical-align: middle;
+  vertical-align: top;
 }
 
-ul ul > li:not(#TOC li)::before {
+ul ul > li:not(#TOC li)::marker {
   content: "> ";
   font-size: 0.9em;
+}
+
+ul ul > li:not(#TOC li) {
+  padding-left: 10pt;
+}
+
+ul > li:not(#TOC li) {
+  padding-left: 10pt;
 }
 
 /* columns */
@@ -515,4 +542,19 @@ hr {
 
 .pagedjs_page:first-of-type {
   display: none !important;
+}
+
+.pattern-appendix {
+  position: absolute;
+  left: -9%;
+  top: -33%;
+  width: 118%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.appendix-wrapper {
+  position: relative;
+  padding-top: 275px;
 }

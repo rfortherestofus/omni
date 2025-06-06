@@ -30,7 +30,8 @@ Imports:
     stringr,
     gt,
     sjlabelled,
-    officedown
+    officedown,
+    marquee
 Suggests:
     gghighlight,
     scales,

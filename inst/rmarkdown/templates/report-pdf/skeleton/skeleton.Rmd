@@ -14,7 +14,7 @@ output:
     main_font: "Inter Tight"
     secondary_font: "Sometype Mono"
     background_color: "#f9f7f4"
-    primary_color: "#081c39"
+    primary_font_color: "#081c39"
     remove_logo: FALSE
     remove_cover_page: FALSE
     background_cover_image: "01-Yellow"
@@ -38,8 +38,8 @@ library(omni)
 ```
 
 
-::: {.small-title .dot-red}
-Small title section 
+::: {.chapter-title .dot-red}
+Chapter title here
 :::
 
 ## Example Section
@@ -130,12 +130,11 @@ quote_box(
 The project will start with a virtual project alignment meeting with the key county leadership and staff to discuss the overall approach; review the initial workplan to support establishing strong working relationships; ensure clear communication, detailed schedules, timelines and milestones; and determine how best to foster engagement throughout the project. 
 
 
+
 \newpage
 
-
-
-::: {.small-title .dot-green}
-Small title section 
+::: {.chapter-title .dot-green}
+Chapter title here
 :::
 
 ## Example Section
@@ -246,13 +245,208 @@ omni::omni_page_break("Another Page Break", "teal")
 ```{r}
 omni::omni_page_break("Here's another one", "orangered")
 ```
+## Example section
+
+### Subtopic A
+
+::: {.wrap-right}
+```{r}
+quote_box(
+  text = "This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
+  author = "Name Here, Title Here",
+  color = "olive-green-600"
+)
+``
+`
+:::
+
+
+The project will start with a virtual project alignment meeting with the key county leadership and staff to discuss the overall approach; review the initial workplan to support establishing strong working relationships; ensure clear communication, detailed schedules, timelines and milestones; and determine how best to foster engagement throughout the project. 
+
+Omni will conduct a thorough review of background materials to ensure that the project is grounded in an understanding of the opioid issues facing Bedford County as well as other related existing community plans to ensure integration. A larger in-person project kickoff meeting that will include key partners will follow, where Omni staff will introduce the project team, present the workplan, and gather input from key partners across the opioid landscape in the County. In-person engagement is an important part of building trust, and this larger kickoff meeting will help establish the groundwork for ongoing collaboration and commitment from all partners.
+
+
+
+### Subtopic B
+
+:::: {.columns}
+
+
+::: {.column width="55%"}
+
+The project will start with a virtual project alignment meeting with the key county leadership and staff to discuss the overall approach; review the initial workplan to support establishing strong working relationships; ensure clear communication, detailed schedules, timelines and milestones; and determine how best to foster engagement throughout the project. 
+
+:::
+
+::: {.column width="3%"}
+
+:::
+
+::: {.column width="42%"}
+
+`
+``
+{
+  r
+}
+callout_box(
+  text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
+  color = "orange-red-600"
+)
+```
+
+:::
+
+::::
+
+The project will start with a virtual project alignment meeting with the key county leadership and staff to discuss the overall approach; review the initial workplan to support establishing strong working relationships; ensure clear communication, detailed schedules, timelines and milestones; and determine how best to foster engagement throughout the project. 
+
+\newpage
+
+### Subtopic C
+
+::: {.wrap-right}
+```{r}
+quote_box(
+  text = "This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
+  author = "Name Here, Title Here",
+  color = "plum-600"
+)
+`
+`
+`
+:::
+
+The project will start with a virtual project alignment meeting with the key county leadership and staff to discuss the overall approach; review the initial workplan to support establishing strong working relationships; ensure clear communication, detailed schedules, timelines and milestones; and determine how best to foster engagement throughout the project. 
+
+
+\newpage
+
+
+
+::: {.chapter-title .dot-purple}
+Chapter title here
+:::
+
+## Example Section
+
+
+### Subtopic A
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicuptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+
+#### Subtopic 1
+
+:::: {.columns}
+
+
+::: {.column width="54%"}
+
+
+- Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore. 
+    - Lorem ipsum dolor sit amet, consectetu.
+- Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    - Ut enim ad minim veniam, quis nostru.
+    - Nisi ut aliquip ex ea commodo consequat
+:::
+
+::: {.column width="2%"}
+
+:::
+
+::: {.column width="44%"}
+
+![](https://images.unsplash.com/photo-1540479859555-17af45c78602?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+
+:::
+
+::::
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
+
+Lorem ipsum dolor sit amet, consectetu.
+
+\newpage
+
+::: {.chapter-title .dot-purple}
+Chapter title here
+:::
+
+## Example Section
+
+### Subtopic C
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+
+`
+``
+{
+  r
+}
+tibble::tribble(
+  ~`Work Area`,
+  ~`Key Activities`,
+  ~`Deliverables`,
+  ~`Timeline`,
+  "Something",
+  "xxxxx",
+  "xxxxx",
+  "xxxx",
+  "Something",
+  "xxxxx",
+  "xxxxx",
+  "xxxx",
+  "Something",
+  "xxxxx",
+  "xxxxx",
+  "xxxx",
+  "Something",
+  "xxxxx",
+  "xxxxx",
+  "xxxx",
+  "Something",
+  "xxxxx",
+  "xxxxx",
+  "xxxx",
+  "Something",
+  "xxxxx",
+  "xxxxx",
+  "xxxx"
+) |>
+  omni::omni_table(caption = "Table 1. [Insert Table name]")
+```
+
+
+\newpage
+
+\newpage
+
+::: {.chapter-title .dot-purple}
+Chapter title here
+:::
+
+## Full Page Section Breaks
+
+The pages below are full page section breaks. Take a look at the code to see how they are created.
+
+```{r}
+omni::omni_page_break("One Page Break", "yellow")
+```
+
+```{r}
+omni::omni_page_break("Another Page Break", "teal")
+```
+
+```{r}
+omni::omni_page_break("Here's another one", "orangered")
+```
 
 
 ```{r}
 omni::omni_page_break(
-    "One more teal background",
-    "teal",
-    nmbr_pattern = 2
+  "One more teal background",
+  "teal",
+  nmbr_pattern = 2
 )
 ```
 
@@ -265,147 +459,21 @@ omni::omni_page_break("And the last one", "plum")
 ```
 
 
-
-
-::: {.small-title .dot-purple}
-Small title section 
+::: {.chapter-title .dot-green}
+Chapter title here
 :::
 
-## Chapter title
+## Additional Design Elements
 
-:::: {.columns}
-
-
-::: {.column width="29%"}
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-
-:::
-
-::: {.column width="1%"}
-
-:::
-
-::: {.column width="70%"}
-
-![](https://github.com/rfortherestofus/omni/blob/rebrand/inst/assets/images/logo-no-text.png?raw=true)
-
-:::
-
-::::
-
-
-### Section title
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-
-## Chapter title
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-
-
-![](https://github.com/rfortherestofus/omni/blob/rebrand/inst/assets/images/logo-no-text.png?raw=true){.wrap-right}
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-
-
-### Section title
-
-![](https://github.com/rfortherestofus/omni/blob/rebrand/inst/assets/images/logo-no-text.png?raw=true){.wrap-left width="40%"}
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum 
-
-\newpage
-
-### Section title
-
-:::: {.columns}
-
-::: {.column width="50%"}
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum 
-:::
-
-::: {.column width="50%"}
-
-```{r}
-callout_box(
-    text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
-    color = "olive-green-600"
-)
-```
-
-:::
-
-::::
-
-
-
-### First section
-
-:::: {.columns}
-
-::: {.column width="50%"}
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum 
-:::
-
-::: {.column width="50%"}
-```{r}
-quote_box(
-    text = "This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
-    author = "David Keyes",
-    color = "olive-green-600"
-)
-```
-
-:::
-
-::::
-
-
-
-\newpage
-
-::: {.small-title}
-Small title section 
-:::
-
-## Chapter title
-
-:::: {.columns}
-
-::: {.column width="50%"}
-
-- Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore. 
-  - Lorem ipsum dolor sit amet, consectetu.
-- Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  - Ut enim ad minim veniam, quis nostru.
-  - Nisi ut aliquip ex ea commodo consequat.
-
-:::
-
-::: {.column width="50%"}
-![](https://images.unsplash.com/photo-1747599309107-20504ba6b8dd?q=80&w=1752&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
-:::
-
-::::
-
-### Section title
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum 
-
-<hr>
-
-
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum 
+Again, to see how these are made, take a look at the R Markdown document.
 
 #### Number Emphasis
 
 ```{r}
 number_emphasis(
-    number = 1234,
-    text = "pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.",
-    color = "teal-400",
+  number = 1234,
+  text = "pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.",
+  color = "teal-400",
 )
 ```
 
@@ -418,19 +486,19 @@ icon_color_fg <- "white"
 icon_color_bg <- 'teal-600'
 
 icon_text_grid(
-    omni_icon('education', width_px, icon_color_bg, icon_color_fg),
-    icon_text(
-        text = '**71.9%:** Any person younger than 21 caught with or suspected of consuming alcohol or marijuana is charged with Minor in Possession (MIP).'
-    ),
-    omni_icon('security', width_px, icon_color_bg, icon_color_fg),
-    icon_text(
-        '**69.8%:** Adults in Colorado who knowingly hep someone younger than 18 break the law - which includes providing minors with alcohol or drubgs - can be charged with a Class 4 felony.'
-    ),
-    omni_icon('vault', width_px, icon_color_bg, icon_color_fg),
-    icon_text(
-        '**34.4%:** It is legal for a person ages 18-20 to possess marijuana with a medical marijuana card.'
-    ),
-    width_px = width_px
+  omni_icon('education', width_px, icon_color_bg, icon_color_fg),
+  icon_text(
+    text = '**71.9%:** Any person younger than 21 caught with or suspected of consuming alcohol or marijuana is charged with Minor in Possession (MIP).'
+  ),
+  omni_icon('security', width_px, icon_color_bg, icon_color_fg),
+  icon_text(
+    '**69.8%:** Adults in Colorado who knowingly hep someone younger than 18 break the law - which includes providing minors with alcohol or drubgs - can be charged with a Class 4 felony.'
+  ),
+  omni_icon('vault', width_px, icon_color_bg, icon_color_fg),
+  icon_text(
+    '**34.4%:** It is legal for a person ages 18-20 to possess marijuana with a medical marijuana card.'
+  ),
+  width_px = width_px
 )
 ```
 
@@ -448,14 +516,14 @@ icon_text_grid(
 
 :::
 
-\newpage
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
 
-## Appendix A
+## Subtopic B
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
 
-## Appendix B
+## Subtopic C
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
 
 

@@ -10,7 +10,7 @@
 #' @export
 set_omni_defaults <- function(
   base_family = "Inter Tight",
-  base_color = "#314160"
+  base_color = "#405065"
 ) {
   # set default theme -----------------------------------------------------
 

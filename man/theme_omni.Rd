@@ -24,5 +24,6 @@ theme_omni(
 A ggplot2 theme
 }
 \description{
-OMNI Institute ggplot2 theme
+Applies the OMNI Institute theme to the plot.
+This also allows for colorizing inline texts and using Markdown notation in title, subtitle and caption of the plot.
 }

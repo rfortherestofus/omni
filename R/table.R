@@ -4,7 +4,7 @@
 #'
 #' @param df The data frame to be put into the table
 #' @param group_by Character vector containing of grouping variables
-#' @param first_col_grey Should the first column be grey. Default to FALSE
+#' @param first_col_gray Should the first column be gray. Default to FALSE
 #' @param caption The caption of the table
 #' @param with_stripes TRUE or FALSE depending on whether a striped pattern should be used. Defaults to TRUE (which uses stripes.)
 #'
@@ -27,7 +27,7 @@
 #'
 #'  palmerpenguins::penguins |>
 #'    dplyr::slice(1:3) |>
-#'    omni_table(first_col_grey = TRUE)
+#'    omni_table(first_col_gray = TRUE)
 #'
 #'  palmerpenguins::penguins |>
 #'    dplyr::slice(1:3, .by = species) |>
@@ -48,12 +48,11 @@
 #'   dplyr::mutate(year = as.character(year)) |>
 #'   omni_table()
 #'
-
 omni_table <-
   function(
     df,
     group_by = NULL,
-    first_col_grey = FALSE,
+    first_col_gray = FALSE,
     caption = NULL,
     with_stripes = TRUE
   ) {
@@ -80,14 +79,14 @@ omni_table <-
       bold(part = 'header', bold = FALSE) |>
       fontsize(part = "all", size = 11) |>
       font(part = "all", fontname = "Inter Tight") |>
-      bg(part = "header", bg = omni_colors("steel-blue")) |>
+      bg(part = "header", bg = omni_colors("steel-blue-400")) |>
       color(part = "header", color = "white") |>
       color(part = "body", color = "#333333") |>
       height_all(height = 0.4) |>
       border_inner(part = "body", border = fp_border(color = "white")) |>
       border(part = "header", border.bottom = fp_border(color = "white"))
 
-      # highlight grouped row
+    # highlight grouped row
     if (!is.null(group_by)) {
       # get row nb of grouped row
       grouped_df <- df |> as_grouped_data(group_by)
@@ -98,7 +97,7 @@ omni_table <-
           part = "body",
           j = 1,
           i = grouped_row_nb,
-          bg = omni_colors("steel-blue")
+          bg = omni_colors("steel-blue-400")
         ) |>
         color(
           part = "body",
@@ -109,9 +108,9 @@ omni_table <-
     }
 
     # first column
-    if (first_col_grey) {
+    if (first_col_gray) {
       table <- table |>
-        bg(part = "body", j = 1, bg = omni_colors("steel-blue")) |>
+        bg(part = "body", j = 1, bg = omni_colors("steel-blue-400")) |>
         color(part = "body", j = 1, color = "white")
     }
     # add caption within flextable
