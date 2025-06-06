@@ -69,8 +69,7 @@ quote_box(
   author = "Name Here, Title Here",
   color = "olive-green-600"
 )
-``
-`
+```
 :::
 
 
@@ -97,11 +96,7 @@ The project will start with a virtual project alignment meeting with the key cou
 
 ::: {.column width="42%"}
 
-`
-``
-{
-  r
-}
+```{r}
 callout_box(
   text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
   color = "orange-red-600"
@@ -125,9 +120,7 @@ quote_box(
   author = "Name Here, Title Here",
   color = "plum-600"
 )
-`
-`
-`
+```
 :::
 
 The project will start with a virtual project alignment meeting with the key county leadership and staff to discuss the overall approach; review the initial workplan to support establishing strong working relationships; ensure clear communication, detailed schedules, timelines and milestones; and determine how best to foster engagement throughout the project. 
@@ -191,11 +184,7 @@ Chapter title here
 
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
 
-`
-``
-{
-  r
-}
+```{r}
 tibble::tribble(
   ~`Work Area`,
   ~`Key Activities`,
