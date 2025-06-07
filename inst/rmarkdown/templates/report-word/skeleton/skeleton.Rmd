@@ -1,10 +1,9 @@
 ---
-format:
-  docx:
-    reference-doc: reference.docx
 title: Report Title Goes Here 2 Lines Max for Best Readability
 subtitle: Sub-Headline Goes Here
-toc: true
+output:
+  omni::word_report:
+    toc: true
 ---
 
 
