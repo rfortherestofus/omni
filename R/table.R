@@ -113,50 +113,32 @@ omni_table <-
         bg(part = "body", j = 1, bg = omni_colors("steel-blue-400")) |>
         color(part = "body", j = 1, color = "white")
     }
+    
     # add caption within flextable
     if (!is.null(caption)) {
-      # valid without rmd
-      if (!is.null(knitr::opts_knit$get("rmarkdown.pandoc.to"))) {
-        # if rmd format is word
-        if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "docx") {
-          table <- table |>
-            set_caption(
-              as_paragraph(as_chunk(
-                caption,
-                props = fp_text_default(font.family = "Inter Tight")
-              )),
-              word_stylename = "Table Caption"
+      table <- table |>
+        set_caption(
+          as_paragraph(as_chunk(
+            caption,
+            props = fp_text_default(
+              font.family = "Inter Tight",
+              bold = FALSE,
+              color = omni_colors('steel-blue-400')
             )
-        } else {
-          table <- table |>
-            set_caption(
-              caption = as_paragraph(
-                as_chunk(
-                  caption,
-                  props = fp_text_default(
-                    font.family = "Inter Tight",
-                    bold = TRUE
-                  )
-                )
-              )
-            )
-        }
-      } else {
-        table <- table |>
-          set_caption(
-            caption = as_paragraph(
-              as_chunk(
-                caption,
-                props = fp_text_default(
-                  font.family = "Inter Tight",
-                  font.size = 11
-                )
-              )
-            ),
-            align_with_table = FALSE
-          )
-      }
+          )),
+          align_with_table = FALSE
+        )
     }
-
-    table
+    
+    table |> 
+      flextable::set_table_properties(
+        layout = 'autofit',
+        width = 1
+      )
   }
+
+
+palmerpenguins::penguins |>
+  dplyr::slice(1:3) |>
+  dplyr::mutate(year = as.character(year)) |>
+  omni_table(caption = 'Table 1. [Insert Table Name]')

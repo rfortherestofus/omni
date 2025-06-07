@@ -1,0 +1,62 @@
+---
+title: "test"
+output: html_document
+---
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const shadowHosts = document.querySelectorAll(
+    '.flextable-shadow-host'
+    );
+  
+    if (shadowHosts) {
+      shadowHosts.forEach(shadowHost => {
+        const shadowRoot = shadowHost.shadowRoot;
+        if (shadowRoot) {
+          const caption = shadowRoot.querySelector('div.tabwid caption');
+          if (caption) {
+            caption.style.textAlign = 'left';
+            caption.style.color = "#677384"
+            caption.style.fontSize = "11pt";
+            caption.style.fontFamily = "Inter Tight";
+          }
+        } else {
+        console.warn("Shadow host .flextable-shadow-host not found.");
+        }
+      })
+    }
+  });
+
+</script>
+
+
+
+# One Table
+
+```{r}
+#| tbl-cap: "Table 1. [Insert Table Name]"
+palmerpenguins::penguins |> 
+  dplyr::slice(1:3) |>
+  dplyr::mutate(year = as.character(year)) |>
+  omni::omni_table(caption = 'Table 1. [Insert Table Name]')
+```
+
+# One more without caption
+
+```{r}
+palmerpenguins::penguins |> 
+  dplyr::slice(1:3) |>
+  dplyr::mutate(year = as.character(year)) |>
+  omni::omni_table(caption = 'Table 1. [Insert Table Name]')
+```
+
+# One more with caption again
+
+```{r}
+#| tbl-cap: "Table 1. [Insert Table Name]"
+palmerpenguins::penguins |> 
+  dplyr::slice(1:3) |>
+  dplyr::mutate(year = as.character(year)) |>
+  omni::omni_table(caption = 'Table 1. [Insert Table Name]')
+```
+
