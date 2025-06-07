@@ -7,7 +7,8 @@
 theme_omni(
   show_grid_lines = FALSE,
   show_legend = FALSE,
-  base_family = "Inter Tight"
+  base_family = "Inter Tight",
+  plot_background_color = "Ivory"
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ theme_omni(
 \item{show_legend}{Whether or not to show the legend. FALSE by default.}
 
 \item{base_family}{Base font family. Inter Tight by default.}
+
+\item{plot_background_color}{Whether to make background color Ivory or White}
 }
 \value{
 A ggplot2 theme
