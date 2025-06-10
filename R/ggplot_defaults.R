@@ -135,3 +135,24 @@ ggplot_defaults <- function() {
   ggplot2::update_geom_defaults("point", list(size = 1.5))
   ggplot2::update_geom_defaults("text", list(size = 3.88))
 }
+
+
+#' Update defaults to OMNI's client theme
+#'
+#'
+#' @param base_family The base font family for the theme.
+#' @param base_color Base color
+#'
+#' @import ggplot2
+#' @import ggrepel
+#'
+#' @export
+set_client_defaults <- function(
+  base_family = "Inter Tight",
+  base_color = "#405065"
+) {
+  set_omni_defaults(
+    base_family = base_family,
+    base_color = base_color
+  )
+}
