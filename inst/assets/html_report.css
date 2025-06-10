@@ -22,6 +22,10 @@ body {
   background-color: var(--background-color);
 }
 
+p {
+  font-family: var(--main-font);
+}
+
 /* Header  */
 .custom-header {
   padding: 15px;
