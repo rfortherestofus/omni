@@ -72,9 +72,9 @@ omni_table <-
         even_body = if (with_stripes) {
           omni_colors('steel-blue-200')
         } else {
-          omni_colors('white')
+          'transparent'
         },
-        odd_body = omni_colors('white')
+        odd_body = 'transparent'
       ) |>
       bold(part = 'header', bold = FALSE) |>
       fontsize(part = "all", size = 11) |>
@@ -83,8 +83,7 @@ omni_table <-
       color(part = "header", color = "white") |>
       color(part = "body", color = "#333333") |>
       height_all(height = 0.4) |>
-      border_inner(part = "body", border = fp_border(color = "white")) |>
-      border(part = "header", border.bottom = fp_border(color = "white"))
+      border_inner(part = "all", border = fp_border(color = "white"))
 
     # highlight grouped row
     if (!is.null(group_by)) {
@@ -113,7 +112,7 @@ omni_table <-
         bg(part = "body", j = 1, bg = omni_colors("steel-blue-400")) |>
         color(part = "body", j = 1, color = "white")
     }
-    
+
     # add caption within flextable
     if (!is.null(caption)) {
       table <- table |>
@@ -126,11 +125,12 @@ omni_table <-
               color = omni_colors('steel-blue-400')
             )
           )),
-          align_with_table = FALSE
+          align_with_table = FALSE,
+          fp_p = officer::fp_par(padding.bottom = 6, padding.top = 10)
         )
     }
-    
-    table |> 
+
+    table |>
       flextable::set_table_properties(
         layout = 'autofit',
         width = 1
