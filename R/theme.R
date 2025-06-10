@@ -17,7 +17,7 @@ theme_omni <- function(
   show_legend = FALSE,
   base_family = "Inter Tight",
   plot_background_color = "Ivory"
-    ) {
+) {
   style_wo_colors <- marquee::style_set(
     base = marquee::base_style(weight = "bold", size = 13),
     str = marquee::style(weight = "bold"),
@@ -94,11 +94,10 @@ theme_omni <- function(
         l = 7,
         unit = "points"
       ),
-      plot.background =
-        element_rect(
-          fill = omni_colors("ivory"),
-          color = omni_colors("ivory")
-        )
+      plot.background = element_rect(
+        fill = omni_colors("ivory"),
+        color = omni_colors("ivory")
+      )
     )
 
   if (show_grid_lines == FALSE) {
@@ -114,14 +113,38 @@ theme_omni <- function(
   if (plot_background_color |> stringr::str_to_lower() == "white") {
     omni_theme <- omni_theme +
       theme(
-        plot.background =
-          element_rect(
-            fill = omni_colors("white"),
-            color = omni_colors("white")
-          )
+        plot.background = element_rect(
+          fill = omni_colors("white"),
+          color = omni_colors("white")
+        )
       )
   }
 
   # return
   omni_theme
+}
+
+#' Create theme for OMNI's clients.
+#'
+#' @param show_legend Whether or not to show the legend. FALSE by default.
+#' @param base_family Base font family. Inter Tight by default.
+#' @param show_grid_lines Whether or not to show grid lines. FALSE by default.
+#' @param plot_background_color Whether to make background color Ivory or White
+#'
+#' @return A ggplot2 theme
+#' @export
+#'
+#' @importFrom ggplot2 theme_minimal theme element_blank element_text margin
+theme_client <- function(
+  show_grid_lines = FALSE,
+  show_legend = FALSE,
+  base_family = "Inter Tight",
+  plot_background_color = "Ivory"
+) {
+  theme_omni(
+    show_grid_lines = show_grid_lines,
+    show_legend = show_legend,
+    base_family = base_family,
+    plot_background_color = plot_background_color
+  )
 }
