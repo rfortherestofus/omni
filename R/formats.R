@@ -1,3 +1,19 @@
+#' Omni Word Report
+#'
+#' @param ... Other params to rmarkdown::word_document
+#'
+#' @return An rmd format
+#' @export
+#'
+word_report <- function(...) {
+    reference <- pkg_resource("reference.docx")
+
+    rmarkdown::word_document(
+        reference_docx = reference,
+        ...
+    )
+}
+
 #' Omni Paged PDF Report
 #'
 #' @param main_font Main font

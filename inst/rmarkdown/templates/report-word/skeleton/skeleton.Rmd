@@ -1,0 +1,76 @@
+---
+title: Report Title Goes Here 2 Lines Max for Best Readability
+subtitle: Sub-Headline Goes Here
+output:
+  omni::word_report:
+    toc: true
+---
+
+
+# Example Section
+
+## Subtopic A
+
+The project will start with a virtual project alignment meeting with the key county leadership and staff to discuss the overall approach; review the initial workplan to support establishing strong working relationships; and ensure clear communication, detailed schedules, timelines and milestones. 
+
+
+### Sub-Subtopic 1
+
+The project will start with a virtual project alignment meeting with the key county leadership and staff to discuss the overall approach; review the initial workplan to support establishing strong working relationships; and ensure clear communication, detailed schedules, timelines and milestones. 
+
+
+## Example Section
+
+### Subtopic A
+
+The project will start with a virtual project alignment meeting with the key county leadership and staff to discuss the overall approach; review the initial workplan to support establishing strong working relationships; ensure clear communication, detailed schedules, timelines and milestones; and determine how best to foster engagement throughout the project. 
+
+Omni will conduct a thorough review of background materials to ensure that the project is grounded in an understanding of the opioid issues facing Bedford County as well as other related existing community plans to ensure integration. A larger in-person project kickoff meeting that will include key partners will follow, where Omni staff will introduce the project team, present the workplan, and gather input from key partners across the opioid landscape in the County. In-person engagement is an important part of building trust, and this larger kickoff meeting will help establish the groundwork for ongoing collaboration and commitment from all partners.
+
+### Subtopic B
+
+The project will start with a virtual project alignment meeting with the key county leadership and staff to discuss the overall approach; review the initial workplan to support establishing strong working relationships; ensure clear communication, detailed schedules, timelines and milestones; and determine how best to foster engagement throughout the project.
+
+The project will start with a virtual project alignment meeting with the key county leadership and staff to discuss the overall approach; review the initial workplan to support establishing strong working relationships; ensure clear communication, detailed schedules, timelines, and milestones; and determine how best to foster engagement throughout the project.
+
+### Subtopic C
+
+The project will start with a virtual project alignment meeting with the key county leadership and staff to discuss the overall approach to foster engagement throughout the project. 
+
+## Example Section
+
+### Subtopic A
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicuptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+
+
+### Subtopic B
+
+- Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
+    - Lorem ipsum dolor sit amet, consectetu.
+
+- Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    - Ut enim ad minim veniam, quis nostru.
+    - Nisi ut aliquip ex ea commodo consequat.
+    - Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore. Lorem ipsum dolor sit amet, consectetu.
+
+### Subtopic C
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+
+INSERT TABLE HERE
+
+## Appendix A
+
+### Subtopic A
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+
+### Subtopic B
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+
+### Subtopic C
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+
