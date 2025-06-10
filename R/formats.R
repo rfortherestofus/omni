@@ -23,6 +23,7 @@ pdf_report <- function(
     ...
 ) {
     css_file <- pkg_resource("pdf_report.css")
+    colors <- pkg_resource("colors.css")
     interface_css <- pkg_resource("interface.css")
     fix_toc_html <- pkg_resource("pdf_report_js.html")
 
@@ -52,7 +53,7 @@ pdf_report <- function(
     }
 
     pagedown::html_paged(
-        css = c(interface_css, css_file),
+        css = c(interface_css, css_file, colors),
         self_contained = TRUE,
         toc = TRUE,
         fig_caption = TRUE,
@@ -70,11 +71,12 @@ pdf_report <- function(
 #' @export
 html_report <- function(...) {
     css_file <- pkg_resource("html_report.css")
+    colors <- pkg_resource("colors.css")
     header <- pkg_resource("header-htmlreport.html")
     footer <- pkg_resource("footer-htmlreport.html")
 
     rmarkdown::html_document(
-        css = css_file,
+        css = c(css_file, colors),
         self_contained = TRUE,
         includes = rmarkdown::includes(
             before_body = header,

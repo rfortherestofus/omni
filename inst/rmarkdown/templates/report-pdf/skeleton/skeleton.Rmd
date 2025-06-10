@@ -48,6 +48,12 @@ Chapter title here
 
 The project will start with a virtual project alignment meeting with the key county leadership and staff to discuss the overall approach; review the initial workplan to support establishing strong working relationships; and ensure clear communication, detailed schedules, timelines and milestones. 
 
+Lorem Ipsum is simply <span class="plum-200">dummy text</span>.
+
+<span class="olive-green-400">Lorem Ipsum is simply dummy text</span>.
+
+Lorem <span class="orange-red-600">Ipsum</span> is simply dummy text.
+
 #### Subtopic 1
 
 The project will start with a virtual project alignment meeting with the key county leadership and staff to discuss the overall approach; review the initial workplan to support establishing strong working relationships; and ensure clear communication, detailed schedules, timelines and milestones. 
