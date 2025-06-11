@@ -20,6 +20,8 @@ html {
 
 body {
   background-color: var(--background-color);
+  font-family: var(--main-font);
+  font-size: 14pt;
 }
 
 p {
@@ -82,7 +84,7 @@ hr {
 /* ---- Titles & text ------------------ */
 /* Main title and subtitle */
 h1.title {
-  font-size: 24pt;
+  font-size: 36pt;
   font-weight: 700;
   color: var(--dark-blue);
   padding: 0;
@@ -138,6 +140,7 @@ p {
 
 li {
   font-family: var(--header-font) !important;
+  font-size: 14pt;
 }
 
 .tocify-extend-page {
