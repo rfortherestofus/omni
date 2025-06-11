@@ -8,7 +8,6 @@ report_year: "[year]"
 acknowledgements: "[...]"
 date: "`r toupper(format(Sys.time(), '%B %Y'))`"
 toc-title: "Table of Contents"
-knit: pagedown::chrome_print
 output:
   omni::pdf_report:
     main_font: "Inter Tight"
@@ -18,6 +17,7 @@ output:
     remove_logo: FALSE
     remove_cover_page: FALSE
     background_cover_image: "01-Yellow"
+knit: pagedown::chrome_print
 abstract: >
   ```{r, child = system.file('assets/rmd/abstract.Rmd', package = 'omni')}
   ```
