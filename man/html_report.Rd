@@ -4,7 +4,12 @@
 \alias{html_report}
 \title{Omni HTML Report}
 \usage{
-html_report(...)
+html_report(
+  main_font = NULL,
+  background_color = NULL,
+  remove_logo = FALSE,
+  ...
+)
 }
 \arguments{
 \item{...}{Params to pagedown::html_paged}
