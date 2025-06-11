@@ -4,7 +4,7 @@
 This package contains a set of internal functions and templates for Omni
 Institute. An overview of the functions can be found on the [reference
 page](reference/). Long-form documentation of how the package works can be found
-on the R @ Omni website.
+on the [R @ Omni website](https://ratomni.netlify.app/).
 
 *This template was created for the Omni Institute, a Colorado-based
 nonprofit social science consultancy that provides integrated research
