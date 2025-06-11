@@ -22,28 +22,28 @@ set_omni_defaults <- function(
     "text",
     list(
       family = base_family,
-      size = 4.22
+      size = 12 / .pt
     )
   )
   ggplot2::update_geom_defaults(
     "label",
     list(
       family = base_family,
-      size = 4.22
+      size = 12 / .pt
     )
   )
   ggplot2::update_geom_defaults(
     "text_repel",
     list(
       family = base_family,
-      size = 4.22
+      size = 12 / .pt
     )
   )
   ggplot2::update_geom_defaults(
     "label_repel",
     list(
       family = base_family,
-      size = 4.22
+      size = 12 / .pt
     )
   )
 
@@ -85,7 +85,6 @@ set_omni_defaults <- function(
   ggplot2::update_geom_defaults("step", list(linewidth = 1))
   ggplot2::update_geom_defaults("path", list(linewidth = 1))
   ggplot2::update_geom_defaults("point", list(size = 3))
-  ggplot2::update_geom_defaults("text", list(size = 1 / 0.352777778))
 }
 
 #' Resets to default setting
