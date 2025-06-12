@@ -21,11 +21,11 @@ html {
 body {
   background-color: var(--background-color);
   font-family: var(--main-font);
-  font-size: 14pt;
 }
 
 p {
   font-family: var(--main-font);
+  font-size: 14pt;
 }
 
 /* Header  */
@@ -138,7 +138,7 @@ p {
   border-color: #081c39 !important;
 }
 
-li {
+li:not(#TOC) {
   font-family: var(--header-font) !important;
   font-size: 14pt;
 }
