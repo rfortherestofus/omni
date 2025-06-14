@@ -92,6 +92,7 @@ quote_box <- function(
       style = htmltools::css(
         padding = '25px 20px',
         background = paste(color_hex, '!important;'),
+        font_size = '14pt',
         color = 'white'
       ),
       htmltools::HTML(paste0('"', preprocessed_text, '"')),
@@ -204,7 +205,8 @@ callout_box <- function(
         padding_left = '10px',
         padding_bottom = '3px',
         color = allowed_colors['navy'],
-        border_left = paste('5px solid', color_hex)
+        border_left = paste('5px solid', color_hex),
+        font_size = '14pt'
       ),
       htmltools::HTML(preprocessed_text),
     )
