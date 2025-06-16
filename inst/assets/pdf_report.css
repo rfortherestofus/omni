@@ -536,14 +536,6 @@ hr {
   border: 1px solid var(--steel-blue-light);
 }
 
-#page-1 {
-  display: var(--display-cover-page) !important;
-}
-
-.pagedjs_page:first-of-type {
-  display: none !important;
-}
-
 .pattern-appendix {
   position: absolute;
   left: -9%;
@@ -557,4 +549,8 @@ hr {
 .appendix-wrapper {
   position: relative;
   padding-top: 275px;
+}
+
+[data-page-number="1"] {
+  display: var(--display-cover-page);
 }

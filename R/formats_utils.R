@@ -148,7 +148,7 @@ change_fonts <- function(
 }
 
 
-#' Add CSS rule to hide cover page ([data-page-number="1"])
+#' Add CSS rule to hide cover page
 #'
 #' @param file CSS file path
 #'
@@ -156,8 +156,11 @@ change_fonts <- function(
 add_hide_cover_page_css <- function(file) {
     css_lines <- readLines(file)
 
-    rule <- '[data-page-number="1"] {\n  display: none !important\n}'
-    css_lines <- c(css_lines, "", rule)
+    css_lines <- gsub(
+        '--display-cover-page:.*?;',
+        glue::glue('--display-cover-page: none;'),
+        css_lines
+    )
 
     temp_css <- file.path(dirname(file), "temp.css")
     writeLines(css_lines, temp_css)
