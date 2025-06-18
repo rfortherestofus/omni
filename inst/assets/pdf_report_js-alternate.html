@@ -51,3 +51,21 @@
 
   Paged.registerHandlers(CustomPagedHandler);
 </script>
+<script>
+  class MyHandler extends Paged.Handler {
+    constructor(chunker, polisher, caller) {
+      super(chunker, polisher, caller);
+    }
+
+    afterRendered(pages) {
+      let cover_page = document.querySelector(".pagedjs_first_page");
+      if (cover_page) {
+        cover_page.style.display = "none";
+      } else {
+        console.log("Cover page not found.");
+      }
+    }
+  }
+
+  Paged.registerHandlers(MyHandler);
+</script>

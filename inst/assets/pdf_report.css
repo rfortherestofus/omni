@@ -19,7 +19,7 @@
   --logo-cover: url("images/logo.png");
   --background-cover-page: url("images/pattern-cover-periwinkle.png");
   --steel-blue-light: #bfcbd3;
-  --display-cover-page: block;
+  --display-the-cover-page: block;
   --pagedjs-margin-top: 0mm;
   --pagedjs-margin-right: 0mm;
   --pagedjs-margin-bottom: 0mm;
@@ -551,6 +551,6 @@ hr {
   padding-top: 275px;
 }
 
-[data-page-number="1"] {
-  display: var(--display-cover-page);
+#page-1 {
+  display: var(--display-the-cover-page);
 }

@@ -41,7 +41,12 @@ pdf_report <- function(
     css_file <- pkg_resource("pdf_report.css")
     colors <- pkg_resource("colors.css")
     interface_css <- pkg_resource("interface.css")
-    fix_toc_html <- pkg_resource("pdf_report_js.html")
+
+    if (remove_cover_page) {
+        custom_js <- pkg_resource("pdf_report_js-alternate.html")
+    } else {
+        custom_js <- pkg_resource("pdf_report_js.html")
+    }
 
     css_file <- change_fonts(
         file = css_file,
@@ -60,10 +65,6 @@ pdf_report <- function(
         background_cover_image = background_cover_image
     )
 
-    if (remove_cover_page) {
-        css_file <- add_hide_cover_page_css(file = css_file)
-    }
-
     if (remove_logo) {
         css_file <- remove_logo(file = css_file)
     }
@@ -73,7 +74,7 @@ pdf_report <- function(
         self_contained = TRUE,
         toc = TRUE,
         fig_caption = TRUE,
-        includes = rmarkdown::includes(in_header = fix_toc_html),
+        includes = rmarkdown::includes(in_header = custom_js),
         ...
     )
 }

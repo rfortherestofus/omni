@@ -157,12 +157,13 @@ add_hide_cover_page_css <- function(file) {
     css_lines <- readLines(file)
 
     css_lines <- gsub(
-        '--display-cover-page:.*?;',
-        glue::glue('--display-cover-page: none;'),
+        '--display-the-cover-page:.*?;',
+        glue::glue('--display-the-cover-page: none;'),
         css_lines
     )
 
     temp_css <- file.path(dirname(file), "temp.css")
+    writeLines(css_lines, file.path(Sys.getenv("HOME"), "Desktop", "here.css"))
     writeLines(css_lines, temp_css)
     return(temp_css)
 }
