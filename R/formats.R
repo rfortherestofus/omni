@@ -23,6 +23,8 @@ word_report <- function(...) {
 #' @param primary_font_color Primary color, mostly used in titles.
 #' @param remove_logo Whether to remove Omni logos from the document.
 #' @param remove_cover_page Whether to remove the cover page.
+#' @param remove_title_page Whether to remove the title page.
+#' @param remove_toc_page Whether to remove the TOC (table of content) page.
 #' @param ... Additional arguments passed to `pagedown::html_paged()`
 #'
 #' @return An rmd format
@@ -36,16 +38,34 @@ pdf_report <- function(
     primary_font_color = NULL,
     remove_logo = FALSE,
     remove_cover_page = FALSE,
+    remove_title_page = FALSE,
+    remove_toc_page = FALSE,
     ...
 ) {
     css_file <- pkg_resource("pdf_report.css")
     colors <- pkg_resource("colors.css")
     interface_css <- pkg_resource("interface.css")
+    custom_js <- c(pkg_resource("pdf_report_js.html"))
 
     if (remove_cover_page) {
-        custom_js <- pkg_resource("pdf_report_js-alternate.html")
-    } else {
-        custom_js <- pkg_resource("pdf_report_js.html")
+        custom_js <- c(
+            custom_js,
+            pkg_resource("pdf-report_remove_cover_page.html")
+        )
+    }
+
+    if (remove_title_page) {
+        custom_js <- c(
+            custom_js,
+            pkg_resource("pdf-report_remove_title_page.html")
+        )
+    }
+
+    if (remove_toc_page) {
+        custom_js <- c(
+            custom_js,
+            pkg_resource("pdf-report_remove_toc_page.html")
+        )
     }
 
     css_file <- change_fonts(
@@ -68,6 +88,8 @@ pdf_report <- function(
     if (remove_logo) {
         css_file <- remove_logo(file = css_file)
     }
+
+    print(custom_js)
 
     pagedown::html_paged(
         css = c(interface_css, css_file, colors),

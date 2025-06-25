@@ -16,6 +16,8 @@ output:
     primary_font_color: "#081c39"
     remove_logo: FALSE
     remove_cover_page: TRUE
+    remove_title_page: TRUE
+    remove_toc_page: TRUE
     background_cover_image: "01-Yellow"
 knit: pagedown::chrome_print
 abstract: >

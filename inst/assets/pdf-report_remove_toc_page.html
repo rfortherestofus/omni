@@ -1,0 +1,18 @@
+<script>
+  class TOCPageHandler extends Paged.Handler {
+    constructor(chunker, polisher, caller) {
+      super(chunker, polisher, caller);
+    }
+
+    afterRendered(pages) {
+      let toc_page = document.querySelector('[data-page-number="3"]');
+      if (toc_page) {
+        toc_page.style.display = "none";
+      } else {
+        console.log("toc page not found.");
+      }
+    }
+  }
+
+  Paged.registerHandlers(TOCPageHandler);
+</script>
