@@ -15,9 +15,9 @@ output:
     background_color: "#f9f7f4"
     primary_font_color: "#081c39"
     remove_logo: FALSE
-    remove_cover_page: TRUE
-    remove_title_page: TRUE
-    remove_toc_page: TRUE
+    remove_cover_page: FALSE
+    remove_title_page: FALSE
+    remove_toc_page: FALSE
     background_cover_image: "01-Yellow"
 knit: pagedown::chrome_print
 abstract: >
