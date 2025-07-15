@@ -2,31 +2,36 @@
 % Please edit documentation in R/colors.R
 \name{omni_colors}
 \alias{omni_colors}
-\title{Function to extract OMNI colors as hex codes}
+\title{Function to extract WVC colors as hex codes}
 \usage{
 omni_colors(
-  colors_sub = c("Dark Blue", "Medium Blue", "Light Blue", "Teal", "Orange", "Tan"),
-  variations_sub = "0",
+  colors_sub = c("white", "ivory", "ivory-400", "orange-red-200", "orange-red-400",
+    "orange-red-600", "golden-yellow-200", "golden-yellow-400", "golden-yellow-600",
+    "olive-green-200", "olive-green-400", "olive-green-600", "teal-200", "teal-400",
+    "teal-600", "plum-200", "plum-400", "plum-600", "periwinkle-200", "periwinkle-400",
+    "periwinkle-600", "steel-blue-200", "steel-blue-400", "steel-blue-600", "navy"),
   named = FALSE
 )
 }
 \arguments{
-\item{colors_sub}{color or colors you want to return - vector}
+\item{colors_sub}{Character vector of color names.}
 
-\item{variations_sub}{Variation, default to 0 - vector}
-
-\item{named}{Snould the output be named ? FALSE by default}
+\item{named}{Logical, should output be named? Default is FALSE.}
 }
 \value{
-A color vector
+A vector of hex codes.
 }
 \description{
-omni_colors() enables you to pull colors directly from the OMNI palette.
-Choose one of the following options: Gray, Medium Gray, Dark Gray, Dark Blue, Medium Blue,
-Light Blue, Teal, Orange, or Tan. You'll use this function as follows:
-omni_colors("Dark Blue") returns the hex value of the OMNI Dark Blue.
+omni_colors() enables you to pull colors directly from the WVC palette.
+Choose from:
+"white", "ivory", "ivory-400", "orange-red-200", "orange-red-400",
+"orange-red-600", "golden-yellow-200", "golden-yellow-400", "golden-yellow-600",
+"olive-green-200", "olive-green-400", "olive-green-600", "teal-200", "teal-400",
+"teal-600", "plum-200", "plum-400", "plum-600", "periwinkle-200", "periwinkle-400",
+"periwinkle-600", "steel-blue-200", "steel-blue-400", "steel-blue-600"
 }
 \examples{
-omni_colors(c("Dark Blue", "Light Blue"))
-
+omni_colors("orange-red-400")
+omni_colors(c("plum-400", "golden-yellow-400", "teal-400"))
+omni_colors(c("steel-blue-200", "olive-green-400"), named = TRUE)
 }

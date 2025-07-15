@@ -9,8 +9,8 @@
 #'
 #' @export
 set_omni_defaults <- function(
-  base_family = "Calibri",
-  base_color = "#314160"
+  base_family = "Inter Tight",
+  base_color = "#405065"
 ) {
   # set default theme -----------------------------------------------------
 
@@ -22,28 +22,32 @@ set_omni_defaults <- function(
     "text",
     list(
       family = base_family,
-      size = 5
+      size = 12 / .pt,
+      color = "#595959"
     )
   )
   ggplot2::update_geom_defaults(
     "label",
     list(
       family = base_family,
-      size = 5
+      size = 12 / .pt,
+      color = "#595959"
     )
   )
   ggplot2::update_geom_defaults(
     "text_repel",
     list(
       family = base_family,
-      size = 5
+      size = 12 / .pt,
+      color = "#595959"
     )
   )
   ggplot2::update_geom_defaults(
     "label_repel",
     list(
       family = base_family,
-      size = 5
+      size = 12 / .pt,
+      color = "#595959"
     )
   )
 
@@ -85,7 +89,6 @@ set_omni_defaults <- function(
   ggplot2::update_geom_defaults("step", list(linewidth = 1))
   ggplot2::update_geom_defaults("path", list(linewidth = 1))
   ggplot2::update_geom_defaults("point", list(size = 3))
-  ggplot2::update_geom_defaults("text", list(size = 1 / 0.352777778))
 }
 
 #' Resets to default setting
@@ -98,12 +101,12 @@ set_omni_defaults <- function(
 ggplot_defaults <- function() {
   ggplot2::theme_set(ggplot2::theme_grey())
 
-  # add Helvetica font to text and label geoms ---------------------------
+  # add Inter Tight font to text and label geoms ---------------------------
 
-  ggplot2::update_geom_defaults("text", list(family = "Helvetica"))
-  ggplot2::update_geom_defaults("label", list(family = "Helvetica"))
-  ggplot2::update_geom_defaults("text_repel", list(family = "Helvetica"))
-  ggplot2::update_geom_defaults("label_repel", list(family = "Helvetica"))
+  ggplot2::update_geom_defaults("text", list(family = "Inter Tight"))
+  ggplot2::update_geom_defaults("label", list(family = "Inter Tight"))
+  ggplot2::update_geom_defaults("text_repel", list(family = "Inter Tight"))
+  ggplot2::update_geom_defaults("label_repel", list(family = "Inter Tight"))
 
   # set default colours for monochromatic geoms -----------------------------
 
@@ -134,4 +137,25 @@ ggplot_defaults <- function() {
   ggplot2::update_geom_defaults("path", list(linewidth = .5))
   ggplot2::update_geom_defaults("point", list(size = 1.5))
   ggplot2::update_geom_defaults("text", list(size = 3.88))
+}
+
+
+#' Update defaults to OMNI's client theme
+#'
+#'
+#' @param base_family The base font family for the theme.
+#' @param base_color Base color
+#'
+#' @import ggplot2
+#' @import ggrepel
+#'
+#' @export
+set_client_defaults <- function(
+  base_family = "Inter Tight",
+  base_color = "#405065"
+) {
+  set_omni_defaults(
+    base_family = base_family,
+    base_color = base_color
+  )
 }

@@ -1,0 +1,18 @@
+<script>
+  class TitlePageHandler extends Paged.Handler {
+    constructor(chunker, polisher, caller) {
+      super(chunker, polisher, caller);
+    }
+
+    afterRendered(pages) {
+      let title_page = document.querySelector('[data-page-number="2"]');
+      if (title_page) {
+        title_page.style.display = "none";
+      } else {
+        console.log("Title page not found.");
+      }
+    }
+  }
+
+  Paged.registerHandlers(TitlePageHandler);
+</script>

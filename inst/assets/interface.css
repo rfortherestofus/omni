@@ -1,0 +1,26 @@
+@media screen {
+  body {
+    background-color: #dddddd;
+  }
+
+  .pagedjs_pages {
+    display: flex;
+    width: calc(var(--pagedjs-pagebox-width) * 2);
+    flex: 0;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    margin-bottom: 0;
+  }
+
+  .pagedjs_page {
+    margin: 0;
+    flex-shrink: 0;
+    flex-grow: 0;
+    margin-top: 10mm;
+  }
+
+  [class*="pagedjs_margin"] {
+    box-shadow: 0 0 0 1px inset red;
+    z-index: 200;
+  }
+}

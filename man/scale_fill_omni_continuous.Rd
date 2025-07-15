@@ -4,15 +4,27 @@
 \alias{scale_fill_omni_continuous}
 \title{Continuous fill scale based on OMNI colors}
 \usage{
-scale_fill_omni_continuous(palette = "Main", reverse = FALSE, ...)
+scale_fill_omni_continuous(palette, reverse = FALSE, ...)
 }
 \arguments{
-\item{palette}{Character name of palette in omni_palettes ("Main" or "Blues")}
+\item{palette}{Character vector of OMNI colors OR one of `c("orange-red", "golden-yellow", "olive-green", "plum", "teal", "periwinkle")`.}
 
-\item{reverse}{Boolean indicating whether the palette should be reversed}
+\item{reverse}{Boolean, should palette be reversed?}
 
-\item{...}{Additional arguments passed to scale_color_gradientn()}
+\item{...}{Additional arguments passed to scale_fill_gradientn()}
 }
 \description{
 Continuous fill scale based on OMNI colors
+}
+\examples{
+library(ggplot2)
+library(dplyr)
+
+mpg_summary <- mpg |>
+ group_by(class) |>
+ summarise(avg_hwy = mean(hwy))
+
+ggplot(mpg_summary, aes(x = class, y = avg_hwy, fill = avg_hwy)) +
+  geom_bar(stat = "identity") +
+  scale_fill_omni_continuous()
 }

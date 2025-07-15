@@ -7,7 +7,8 @@
 theme_omni(
   show_grid_lines = FALSE,
   show_legend = FALSE,
-  base_family = "Calibri"
+  base_family = "Inter Tight",
+  plot_background_color = "Ivory"
 )
 }
 \arguments{
@@ -15,11 +16,14 @@ theme_omni(
 
 \item{show_legend}{Whether or not to show the legend. FALSE by default.}
 
-\item{base_family}{Base font family. Calibri by default.}
+\item{base_family}{Base font family. Inter Tight by default.}
+
+\item{plot_background_color}{Whether to make background color Ivory or White}
 }
 \value{
 A ggplot2 theme
 }
 \description{
-OMNI Institute ggplot2 theme
+Applies the OMNI Institute theme to the plot.
+This also allows for colorizing inline texts and using Markdown notation in title, subtitle and caption of the plot.
 }

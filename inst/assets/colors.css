@@ -1,0 +1,99 @@
+.white {
+  color: #ffffff;
+}
+
+.ivory {
+  color: #f9f7f4;
+}
+
+.ivory-400 {
+  color: #e9dfcf;
+}
+
+.orange-red-200 {
+  color: #ff9e85;
+}
+
+.orange-red-400 {
+  color: #ff5e34;
+}
+
+.orange-red-600 {
+  color: #cc4100;
+}
+
+.golden-yellow-200 {
+  color: #fde880;
+}
+
+.golden-yellow-400 {
+  color: #fcd82b;
+}
+
+.golden-yellow-600 {
+  color: #f7b925;
+}
+
+.olive-green-200 {
+  color: #b8c690;
+}
+
+.olive-green-400 {
+  color: #89a046;
+}
+
+.olive-green-600 {
+  color: #3b5530;
+}
+
+.teal-200 {
+  color: #c5dfd9;
+}
+
+.teal-400 {
+  color: #8ac0b3;
+}
+
+.teal-600 {
+  color: #41816f;
+}
+
+.plum-200 {
+  color: #dd9cb9;
+}
+
+.plum-400 {
+  color: #c65a8b;
+}
+
+.plum-600 {
+  color: #821c4c;
+}
+
+.periwinkle-200 {
+  color: #d4ddeb;
+}
+
+.periwinkle-400 {
+  color: #a9bad8;
+}
+
+.periwinkle-600 {
+  color: #5776b2;
+}
+
+.steel-blue-200 {
+  color: #bfcbd3;
+}
+
+.steel-blue-400 {
+  color: #677384;
+}
+
+.steel-blue-600 {
+  color: #405065;
+}
+
+.navy {
+  color: #081c39;
+}
