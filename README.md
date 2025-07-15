@@ -24,13 +24,12 @@ remotes::install_github("rfortherestofus/omni", force = TRUE)
 You can rerun this code at any point to get the newest version of the
 package.
 
-## Rebrand in Progress
+## Old Version
 
-We are currently working on updating this package to match OMNI's rebrand. If
-you want to test the in-progress "rebrand" version of the package, you can do it
+If you want to install the old version of the package (prior to the 2025 rebrand), you can do it
 with the following code:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("rfortherestofus/omni", force = TRUE, ref = "rebrand")
+remotes::install_github("rfortherestofus/omni", force = TRUE, ref = "old")
 ```
