@@ -22,28 +22,32 @@ set_omni_defaults <- function(
     "text",
     list(
       family = base_family,
-      size = 12 / .pt
+      size = 12 / .pt,
+      color = "#595959"
     )
   )
   ggplot2::update_geom_defaults(
     "label",
     list(
       family = base_family,
-      size = 12 / .pt
+      size = 12 / .pt,
+      color = "#595959"
     )
   )
   ggplot2::update_geom_defaults(
     "text_repel",
     list(
       family = base_family,
-      size = 12 / .pt
+      size = 12 / .pt,
+      color = "#595959"
     )
   )
   ggplot2::update_geom_defaults(
     "label_repel",
     list(
       family = base_family,
-      size = 12 / .pt
+      size = 12 / .pt,
+      color = "#595959"
     )
   )
 
