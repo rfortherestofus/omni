@@ -455,15 +455,106 @@ p {
 }
 
 .dot-purple::before {
-  background-color: #821c4c;
+  /* here "purple" stays for backward compatibility only https://github.com/rfortherestofus/omni/issues/162 */
+  background-color: #921c4c;
+}
+.dot-plum-200::before {
+  background-color: #dd9cb9;
+}
+.dot-plum-400::before {
+  background-color: #c65a8b;
+}
+.dot-plum-600::before {
+  background-color: #921c4c;
+}
+.dot-plum::before {
+  background-color: #921c4c;
 }
 
 .dot-green::before {
+  /* here "green" stays for backward compatibility only https://github.com/rfortherestofus/omni/issues/162 */
+  background-color: #3b5530;
+}
+.dot-olive-green-200::before {
+  background-color: #b8c690;
+}
+.dot-olive-green-400::before {
+  background-color: #89a046;
+}
+.dot-olive-green-600::before {
+  background-color: #3b5530;
+}
+.dot-olive-green::before {
   background-color: #3b5530;
 }
 
 .dot-red::before {
+  /* here "red" stays for backward compatibility only https://github.com/rfortherestofus/omni/issues/162 */
   background-color: #cc4100;
+}
+.dot-orange-red-200::before {
+  background-color: #ff9e85;
+}
+.dot-orange-red-400::before {
+  background-color: #ff5e34;
+}
+.dot-orange-red-600::before {
+  background-color: #cc4100;
+}
+.dot-orange-red::before {
+  background-color: #cc4100;
+}
+
+.dot-teal-200::before {
+  background-color: #c5dfd9;
+}
+.dot-teal-400::before {
+  background-color: #8ac0b3;
+}
+.dot-teal-600::before {
+  background-color: #41816f;
+}
+.dot-teal::before {
+  background-color: #41816f;
+}
+
+.dot-golden-yellow-200::before {
+  background-color: #fde880;
+}
+.dot-golden-yellow-400::before {
+  background-color: #fcd82b;
+}
+.dot-golden-yellow-600::before {
+  background-color: #f7b925;
+}
+.dot-golden-yellow::before {
+  background-color: #f7b925;
+}
+
+.dot-periwinkle-200::before {
+  background-color: #d4ddeb;
+}
+.dot-periwinkle-400::before {
+  background-color: #a9bad8;
+}
+.dot-periwinkle-600::before {
+  background-color: #5776b2;
+}
+.dot-periwinkle::before {
+  background-color: #5776b2;
+}
+
+.dot-steel-blue-200::before {
+  background-color: #bfcbd3;
+}
+.dot-steel-blue-400::before {
+  background-color: #677384;
+}
+.dot-steel-blue-600::before {
+  background-color: #405065;
+}
+.dot-steel-blue::before {
+  background-color: #405065;
 }
 
 /* images */
