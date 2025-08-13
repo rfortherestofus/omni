@@ -40,7 +40,7 @@ library(omni)
 ```
 
 
-::: {.chapter-title .dot-red}
+::: {.chapter-title .dot-orange-red}
 Chapter title here
 :::
 
@@ -62,7 +62,7 @@ The project will start with a virtual project alignment meeting with the key cou
 
 \newpage
 
-::: {.chapter-title .dot-green}
+::: {.chapter-title .dot-olive-green}
 Chapter title here
 :::
 
@@ -142,7 +142,7 @@ The project will start with a virtual project alignment meeting with the key cou
 
 
 
-::: {.chapter-title .dot-purple}
+::: {.chapter-title .dot-plum}
 Chapter title here
 :::
 
@@ -186,11 +186,49 @@ Lorem ipsum dolor sit amet, consectetu.
 
 \newpage
 
-::: {.chapter-title .dot-purple}
+::: {.chapter-title .dot-plum}
 Chapter title here
 :::
 
-## Example Section
+## Chapter title dot colors
+
+For each of the following color: "`orange-red`", "`golden-yellow`", "`olive-green`", "`teal`", "`plum`", "`periwinkle`", "`steel-blue`", you just have to prefix it with "`.dot-`" and it will set the color as follow:
+
+::: {.chapter-title .dot-plum}
+.dot-plum
+:::
+
+::: {.chapter-title .dot-plum-600}
+.dot-plum-600
+:::
+
+::: {.chapter-title .dot-plum-200}
+.dot-plum-200
+:::
+
+::: {.chapter-title .dot-plum-400}
+.dot-plum-400
+:::
+
+::: {.chapter-title .dot-orange-red}
+.dot-orange-red
+:::
+
+::: {.chapter-title .dot-orange-red-600}
+.dot-orange-red-600
+:::
+
+::: {.chapter-title .dot-orange-red-200}
+.dot-orange-red-200
+:::
+
+::: {.chapter-title .dot-orange-red-400}
+.dot-orange-red-400
+:::
+
+And so on.
+
+> Note that `.dot-red`, `.dot-green` and `.dot-purple` also work, but it's recommended to use the previous names instead.
 
 ### Subtopic C
 
@@ -235,7 +273,7 @@ tibble::tribble(
 
 \newpage
 
-::: {.chapter-title .dot-purple}
+::: {.chapter-title .dot-plum}
 Chapter title here
 :::
 
@@ -273,7 +311,7 @@ omni::omni_page_break("And the last one", "plum")
 ```
 
 
-::: {.chapter-title .dot-green}
+::: {.chapter-title .dot-olive-green}
 Chapter title here
 :::
 
