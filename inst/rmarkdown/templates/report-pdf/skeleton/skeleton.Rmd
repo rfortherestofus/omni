@@ -296,7 +296,7 @@ omni::omni_page_break("Here's another one", "orangered")
 
 ```{r}
 omni::omni_page_break(
-    "One more teal background",
+    "One more teal background One more teal background",
     "teal",
     nmbr_pattern = 2
 )

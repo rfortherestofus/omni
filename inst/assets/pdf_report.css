@@ -122,6 +122,12 @@ h1.title {
   background-position: center;
 }
 
+.cover-page-full h2 {
+  max-width: 30ch; /* roughly 30 characters per line */
+  word-wrap: break-word; /* ensures very long words break */
+  overflow-wrap: break-word; /* modern alternative */
+}
+
 .cover-yellow-1 {
   background-image: url("images/pattern-01-yellow.png") !important;
 }
