@@ -14,9 +14,9 @@
   <p class="for-more-info">For More Information:</p>
   <p>projects@omni.org</p>
   <p class="acknowledge">Acknowledgements:</p>
-  <p>The OMNI Institute wants to thank `r rmarkdown::metadata$acknowledgements` for their contributions to the creation of this report.</p>
+  <p>Omni Institute wants to thank `r rmarkdown::metadata$acknowledgements` for their contributions to the creation of this report.</p>
   <p class="suggested-citation">Suggested Citation:</p>
-  <p>OMNI Institute `r rmarkdown::metadata$report_year`. `r gsub("<br\\s*/?>", " ", rmarkdown::metadata$title)`. Submitted to `r rmarkdown::metadata$client_name`, `r rmarkdown::metadata$client_city`, `r rmarkdown::metadata$client_state`.</p>
+  <p>Omni Institute `r rmarkdown::metadata$report_year`. `r gsub("<br\\s*/?>", " ", rmarkdown::metadata$title)`. Submitted to `r rmarkdown::metadata$client_name`, `r rmarkdown::metadata$client_city`, `r rmarkdown::metadata$client_state`.</p>
   </div>
   <div class="page-break-before"></div>
 
