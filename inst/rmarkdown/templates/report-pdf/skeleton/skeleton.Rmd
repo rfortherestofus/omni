@@ -123,6 +123,47 @@ The project will start with a virtual project alignment meeting with the key cou
 
 ### Subtopic C
 
+You can control the width of callout boxes and quote boxes thanks to the `fixed_width_px`
+
+```r
+callout_box(
+    text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
+    color = "orange-red-600",
+    fixed_width_px = 600       # default value is 300
+)
+```
+
+```{r}
+callout_box(
+    text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
+    color = "orange-red-600",
+    fixed_width_px = 600
+)
+```
+
+<br>
+<br>
+
+```r
+quote_box(
+    text = "This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
+    author = "Name Here, Title Here",
+    color = "plum-600",
+    fixed_width_px = 600                # default value is 300
+)
+```
+
+<br>
+
+```{r}
+quote_box(
+    text = "This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
+    author = "Name Here, Title Here",
+    color = "plum-600",
+    fixed_width_px = 600
+)
+```
+
 ::: {.wrap-right}
 
 ```{r}
@@ -136,6 +177,62 @@ quote_box(
 :::
 
 The project will start with a virtual project alignment meeting with the key county leadership and staff to discuss the overall approach; review the initial workplan to support establishing strong working relationships; ensure clear communication, detailed schedules, timelines and milestones; and determine how best to foster engagement throughout the project. 
+
+<br>
+
+- Default icon with text
+
+```{r}
+width_px <- 50 # default value
+icon_color_fg <- "white"
+icon_color_bg <- 'teal-600'
+
+icon_text_grid(
+    omni_icon('education', width_px, icon_color_bg, icon_color_fg),
+    icon_text(
+        text = '**71.9%:** Any person younger than 21 caught with or suspected of consuming alcohol or marijuana is charged with Minor in Possession (MIP).'
+    ),
+    omni_icon('security', width_px, icon_color_bg, icon_color_fg),
+    icon_text(
+        '**69.8%:** Adults in Colorado who knowingly hep someone younger than 18 break the law - which includes providing minors with alcohol or drubgs - can be charged with a Class 4 felony.'
+    ),
+    omni_icon('vault', width_px, icon_color_bg, icon_color_fg),
+    icon_text(
+        '**34.4%:** It is legal for a person ages 18-20 to possess marijuana with a medical marijuana card.'
+    ),
+    width_px = width_px
+)
+```
+
+- Customized version
+
+```{r}
+width_px <- 40
+text_width <- 700
+icon_color_fg <- "white"
+icon_color_bg <- 'teal-600'
+
+icon_text_grid(
+    omni_icon('education', width_px, icon_color_bg, icon_color_fg),
+    icon_text(
+        text = '**71.9%:** Any person younger than 21 caught with or suspected of consuming alcohol or marijuana is charged with Minor in Possession (MIP).',
+        text_width
+    ),
+    omni_icon('security', width_px, icon_color_bg, icon_color_fg),
+    icon_text(
+        '**69.8%:** Adults in Colorado who knowingly hep someone younger than 18 break the law - which includes providing minors with alcohol or drubgs - can be charged with a Class 4 felony.',
+        text_width
+    ),
+    omni_icon('vault', width_px, icon_color_bg, icon_color_fg),
+    icon_text(
+        '**34.4%:** It is legal for a person ages 18-20 to possess marijuana with a medical marijuana card.',
+        text_width
+    ),
+    column_gap_px = 5, # default is 10
+    row_gap_px = 5, # default is 10
+    width_px = width_px
+)
+```
 
 
 \newpage
