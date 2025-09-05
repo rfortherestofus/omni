@@ -123,7 +123,6 @@ h1.title {
 }
 
 .cover-page-full h2 {
-  max-width: 30ch; /* roughly 30 characters per line */
   word-wrap: break-word; /* ensures very long words break */
   overflow-wrap: break-word; /* modern alternative */
 }
@@ -163,6 +162,7 @@ h1.title {
 .cover-content h2 {
   position: absolute;
   left: 10%;
+  right: 10%;
   bottom: 20%;
   color: white;
   background-color: transparent;
