@@ -89,8 +89,6 @@ pdf_report <- function(
         css_file <- remove_logo(file = css_file)
     }
 
-    print(custom_js)
-
     pagedown::html_paged(
         css = c(interface_css, css_file, colors),
         self_contained = TRUE,
