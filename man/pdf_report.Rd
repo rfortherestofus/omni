@@ -12,6 +12,8 @@ pdf_report(
   primary_font_color = NULL,
   remove_logo = FALSE,
   remove_cover_page = FALSE,
+  remove_title_page = FALSE,
+  remove_toc_page = FALSE,
   ...
 )
 }
@@ -29,6 +31,10 @@ pdf_report(
 \item{remove_logo}{Whether to remove Omni logos from the document.}
 
 \item{remove_cover_page}{Whether to remove the cover page.}
+
+\item{remove_title_page}{Whether to remove the title page.}
+
+\item{remove_toc_page}{Whether to remove the TOC (table of content) page.}
 
 \item{...}{Additional arguments passed to `pagedown::html_paged()`}
 }

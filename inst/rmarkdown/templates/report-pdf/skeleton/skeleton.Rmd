@@ -123,7 +123,7 @@ The project will start with a virtual project alignment meeting with the key cou
 
 ### Subtopic C
 
-You can control the width of callout boxes and quote boxes thanks to the `fixed_width_px`
+You can control the width of callout boxes and quote boxes thanks to the `fixed_width_px` argument:
 
 ```r
 callout_box(
@@ -137,6 +137,27 @@ callout_box(
 callout_box(
     text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
     color = "orange-red-600",
+    fixed_width_px = 600
+)
+```
+
+<br>
+<br>
+
+You can also use markdown content:
+
+```r
+callout_box(
+    text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text **all white**. Change the background color as desired to match the page.^[footnote example]",
+    color = "olive-green-600",
+    fixed_width_px = 600
+)
+```
+
+```{r}
+callout_box(
+    text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text **all white**. Change the background color as desired to match the page.^[footnote example]",
+    color = "olive-green-600",
     fixed_width_px = 600
 )
 ```
@@ -388,6 +409,13 @@ omni::omni_page_break("Another Page Break", "teal")
 
 ```{r}
 omni::omni_page_break("Here's another one", "orangered")
+```
+
+```{r}
+omni::omni_page_break(
+    "Long title using the olive color, that automatically goes to next line.",
+    "olive"
+)
 ```
 
 

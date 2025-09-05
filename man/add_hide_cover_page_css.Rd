@@ -2,7 +2,7 @@
 % Please edit documentation in R/formats_utils.R
 \name{add_hide_cover_page_css}
 \alias{add_hide_cover_page_css}
-\title{Add CSS rule to hide cover page ([data-page-number="1"])}
+\title{Add CSS rule to hide cover page}
 \usage{
 add_hide_cover_page_css(file)
 }
@@ -10,6 +10,6 @@ add_hide_cover_page_css(file)
 \item{file}{CSS file path}
 }
 \description{
-Add CSS rule to hide cover page ([data-page-number="1"])
+Add CSS rule to hide cover page
 }
 \keyword{internal}

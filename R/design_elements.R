@@ -190,10 +190,24 @@ callout_box <- function(
       stringr::fixed('<highlight>'),
       glue::glue('<span style="color:{color_hex};">')
     ) |>
-    stringr::str_replace(
+    stringr::str_replace_all(
       stringr::fixed('</highlight>'),
       '</span>'
     )
+
+  tmp_rmd <- tempfile(fileext = ".Rmd")
+  tmp_html <- tempfile(fileext = ".html")
+
+  cat(text, file = tmp_rmd)
+
+  rmarkdown::render(
+    input = tmp_rmd,
+    output_format = "html_fragment",
+    output_file = tmp_html,
+    quiet = TRUE
+  )
+
+  rendered_text <- paste(readLines(tmp_html), collapse = "\n")
 
   # Assemble HTML & CSS for callout box  -----------------------------------------------
   htmltools::div(
@@ -208,7 +222,7 @@ callout_box <- function(
         border_left = paste('5px solid', color_hex),
         font_size = '11pt'
       ),
-      htmltools::HTML(preprocessed_text),
+      htmltools::HTML(rendered_text),
     )
   )
 }
