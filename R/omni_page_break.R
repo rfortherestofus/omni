@@ -8,7 +8,14 @@
 #' @param nmbr_pattern Desired pattern number. Most colors (except Teal) have only one.
 #' @export
 omni_page_break <- function(page_break_title, color, nmbr_pattern = 1) {
-  allowed_colors <- c('yellow', 'teal', 'orangered', 'periwinkle', 'plum')
+  allowed_colors <- c(
+    'yellow',
+    'teal',
+    'orangered',
+    'periwinkle',
+    'plum',
+    'olive'
+  )
   if (length(color) != 1) {
     cli::cli_abort('{.var color} must be character vector of length 1.')
   }

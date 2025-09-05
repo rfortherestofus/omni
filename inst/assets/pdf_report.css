@@ -152,6 +152,10 @@ h1.title {
   background-image: url("images/pattern-08-plum.png") !important;
 }
 
+.cover-olive-1 {
+  background-image: url("images/pattern-07-olive.png") !important;
+}
+
 .cover-content {
   background-color: transparent;
 }

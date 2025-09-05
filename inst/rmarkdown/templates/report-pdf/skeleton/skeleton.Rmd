@@ -411,6 +411,10 @@ omni::omni_page_break("Another Page Break", "teal")
 omni::omni_page_break("Here's another one", "orangered")
 ```
 
+```{r}
+omni::omni_page_break("Olive page break", "olive")
+```
+
 
 ```{r}
 omni::omni_page_break(
