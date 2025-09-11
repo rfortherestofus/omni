@@ -48,13 +48,13 @@ Chapter title here
 
 ### Subtopic A
 
-The project will start with a virtual project alignment meeting with the key county leadership and staff to discuss the overall approach; review the initial workplan to support establishing strong working relationships; and ensure clear communication, detailed schedules, timelines and milestones. 
+The project will start with a virtual project alignment meeting with the key county leadership and staff to discuss the overall approach; review the initial workplan to support establishing strong working relationships; and ensure clear communication, detailed schedules, timelines and milestones.^[this is a footnote]
 
 Lorem Ipsum is simply [dummy text]{.plum-200}.
 
 [Lorem Ipsum is simply dummy text]{.olive-green-400}.
 
-Lorem [Ipsum]{.orange-red-600} is simply dummy text.
+Lorem [Ipsum]{.orange-red-600} is simply dummy text.^[another footnote]
 
 #### Subtopic 1
 

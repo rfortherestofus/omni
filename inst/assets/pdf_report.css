@@ -657,3 +657,27 @@ hr {
 #page-1 {
   display: var(--display-the-cover-page);
 }
+
+.pagedjs-end-to-footnote {
+  float: footnote;
+}
+
+/* define the position of the footnote on the page (only bottom is possible for now) */
+
+@page {
+  @footnote {
+    float: bottom;
+  }
+}
+
+::footnote-call {
+  color: red;
+  font-weight: 400;
+  line-height: 0;
+}
+
+::footnote-marker {
+  color: red;
+  font-weight: 400;
+  line-height: 0;
+}
