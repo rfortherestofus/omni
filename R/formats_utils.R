@@ -208,8 +208,15 @@ change_to_csi_style <- function(file) {
 
     # change omni report to CSI report
     css_lines <- gsub(
-        "Omni Institute",
+        "Omni Institute Report",
         "Center for Social Investment",
+        css_lines
+    )
+
+    # change spacing footer
+    css_lines <- gsub(
+        "margin-left: 2in;",
+        "margin-left: 1.7in;",
         css_lines
     )
 
