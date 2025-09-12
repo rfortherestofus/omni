@@ -12,13 +12,14 @@ output:
   omni::pdf_report:
     main_font: "Inter Tight"
     secondary_font: "Sometype Mono"
-    background_color: "#f9f7f4"
+    background_color: "#ffffff"
     primary_font_color: "#081c39"
     remove_logo: FALSE
     remove_cover_page: FALSE
     remove_title_page: FALSE
     remove_toc_page: FALSE
     background_cover_image: "01-Yellow"
+    use_csi_style: TRUE
 knit: pagedown::chrome_print
 abstract: >
   ```{r, child = system.file('assets/rmd/abstract.Rmd', package = 'omni')}

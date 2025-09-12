@@ -25,6 +25,7 @@ word_report <- function(...) {
 #' @param remove_cover_page Whether to remove the cover page.
 #' @param remove_title_page Whether to remove the title page.
 #' @param remove_toc_page Whether to remove the TOC (table of content) page.
+#' @param use_csi_style Whether to use CSI (Center for Social Investment) styling. This basically change logos and text in the footer.
 #' @param ... Additional arguments passed to `pagedown::html_paged()`
 #'
 #' @return An rmd format
@@ -40,6 +41,7 @@ pdf_report <- function(
     remove_cover_page = FALSE,
     remove_title_page = FALSE,
     remove_toc_page = FALSE,
+    use_csi_style = FALSE,
     ...
 ) {
     css_file <- pkg_resource("pdf_report.css")
@@ -84,6 +86,10 @@ pdf_report <- function(
         file = css_file,
         background_cover_image = background_cover_image
     )
+
+    if (use_csi_style) {
+        css_file <- change_to_csi_style(file = css_file)
+    }
 
     if (remove_logo) {
         css_file <- remove_logo(file = css_file)

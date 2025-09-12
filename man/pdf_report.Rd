@@ -14,6 +14,7 @@ pdf_report(
   remove_cover_page = FALSE,
   remove_title_page = FALSE,
   remove_toc_page = FALSE,
+  use_csi_style = FALSE,
   ...
 )
 }
@@ -35,6 +36,8 @@ pdf_report(
 \item{remove_title_page}{Whether to remove the title page.}
 
 \item{remove_toc_page}{Whether to remove the TOC (table of content) page.}
+
+\item{use_csi_style}{Whether to use CSI (Center for Social Investment) styling. This basically change logos and text in the footer.}
 
 \item{...}{Additional arguments passed to `pagedown::html_paged()`}
 }

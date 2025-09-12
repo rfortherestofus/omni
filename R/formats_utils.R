@@ -158,7 +158,7 @@ add_hide_cover_page_css <- function(file) {
 
     css_lines <- gsub(
         '--display-the-cover-page:.*?;',
-        glue::glue('--display-the-cover-page: none;'),
+        '--display-the-cover-page: none;',
         css_lines
     )
 
@@ -178,6 +178,52 @@ add_hide_logo_css <- function(file) {
 
     rule <- '.logo {\n  display: none !important;\n}'
     css_lines <- c(css_lines, "", rule)
+
+    temp_css <- file.path(dirname(file), "temp.css")
+    writeLines(css_lines, temp_css)
+    return(temp_css)
+}
+
+#' Use the CSI style
+#'
+#' @param file CSS file path
+#'
+#' @keywords internal
+change_to_csi_style <- function(file) {
+    css_lines <- readLines(file)
+
+    # change default logo to CSI one
+    css_lines <- gsub(
+        '--logo-cover:.*?;',
+        '--logo-cover: url("images/logo-csi.png");',
+        css_lines
+    )
+
+    # change 'no text' logo to CSI one
+    css_lines <- gsub(
+        '--logo-bottom:.*?;',
+        '--logo-bottom: url("images/logo-no-text-csi.png");',
+        css_lines
+    )
+
+    # change omni report to CSI report
+    css_lines <- gsub(
+        "Omni Institute",
+        "Center for Social Investment",
+        css_lines
+    )
+
+    # make logo slightly bigger
+    css_lines <- gsub(
+        'width: 150px;',
+        'width: 160px;',
+        css_lines
+    )
+    css_lines <- gsub(
+        'height: 50px;',
+        'height: 60px;',
+        css_lines
+    )
 
     temp_css <- file.path(dirname(file), "temp.css")
     writeLines(css_lines, temp_css)
