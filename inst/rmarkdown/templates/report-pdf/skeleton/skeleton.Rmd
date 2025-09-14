@@ -19,6 +19,7 @@ output:
     remove_title_page: FALSE
     remove_toc_page: FALSE
     background_cover_image: "01-Yellow"
+    use_csi_style: FALSE
 knit: pagedown::chrome_print
 abstract: >
   ```{r, child = system.file('assets/rmd/abstract.Rmd', package = 'omni')}
