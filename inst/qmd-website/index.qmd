@@ -1,0 +1,49 @@
+---
+title: "qmd-web"
+---
+
+```{r}
+library(omni)
+```
+
+This is a Quarto website template, made for the [Omni Institute](https://www.omni.org/).
+
+It's based on Omni branding and is intended to be easy to customize using built-in Quarto toolbox.
+
+## Panel tabset
+
+::: {.panel-tabset}
+
+### First panel
+
+You can include anything you want here, from code to charts.
+
+```{r}
+#| echo: true
+
+plot(cars$speed, cars$dist)
+```
+
+### Second panel
+
+Content of the second panel
+
+:::
+
+````md
+::: {.panel-tabset}
+
+### First panel
+
+You can include anything you want here, from code to charts.
+
+```{{r}}
+plot(cars$speed, cars$dist)
+```
+
+### Second panel
+
+Content of the second panel
+
+:::
+````

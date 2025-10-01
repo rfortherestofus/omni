@@ -1,0 +1,14 @@
+---
+title: "How to use this template"
+execute: 
+  echo: true
+---
+
+This is a Quarto website template, made for the [Omni Institute](https://www.omni.org/).
+
+## Create a new website
+
+```{r}
+library(omni)
+```
+
