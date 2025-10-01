@@ -10,6 +10,12 @@ This is a Quarto website template, made for the [Omni Institute](https://www.omn
 
 It's based on Omni branding and is intended to be easy to customize using built-in Quarto toolbox.
 
+It contains 3 pages:
+
+- [Home](./index.qmd): the page you're currently in
+- [Impact](./impact.qmd): an empty page
+- [Use this template](./about.qmd): a short tutorial on how to use and customize the website
+
 ## Panel tabset
 
 ::: {.panel-tabset}
