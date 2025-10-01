@@ -12,6 +12,7 @@
   --dark-blue: #081c39;
   --steel-blue: #677384;
   --steel-blue-light: #bfcbd3;
+  --logo-header-footer: url("images/logo.png");
 }
 
 html {
@@ -37,6 +38,11 @@ p {
 }
 .logo {
   height: 70px;
+  width: 140px;
+  background-image: var(--logo-header-footer);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .title-text {
   font-size: 24px;

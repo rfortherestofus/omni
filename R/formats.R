@@ -88,7 +88,7 @@ pdf_report <- function(
     )
 
     if (use_csi_style) {
-        css_file <- change_to_csi_style(file = css_file)
+        css_file <- change_to_csi_style_pdf(file = css_file)
     }
 
     if (remove_logo) {
@@ -116,12 +116,19 @@ html_report <- function(
     main_font = NULL,
     background_color = NULL,
     remove_logo = FALSE,
+    use_csi_style = FALSE,
     ...
 ) {
     css_file <- pkg_resource("html_report.css")
     colors <- pkg_resource("colors.css")
-    header <- pkg_resource("header-htmlreport.html")
-    footer <- pkg_resource("footer-htmlreport.html")
+
+    if (use_csi_style) {
+        header <- pkg_resource("header-htmlreport-csi.html")
+        footer <- pkg_resource("footer-htmlreport-csi.html")
+    } else {
+        header <- pkg_resource("header-htmlreport.html")
+        footer <- pkg_resource("footer-htmlreport.html")
+    }
 
     css_file <- change_fonts(
         file = css_file,
@@ -135,6 +142,10 @@ html_report <- function(
 
     if (remove_logo) {
         css_file <- add_hide_logo_css(file = css_file)
+    }
+
+    if (use_csi_style) {
+        css_file <- change_to_csi_style_html(file = css_file)
     }
 
     rmarkdown::html_document(

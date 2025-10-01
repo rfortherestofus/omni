@@ -10,6 +10,7 @@ output:
     main_font: "Inter Tight"
     background_color: "#f9f7f4"
     remove_logo: FALSE
+    use_csi_style: FALSE
 ---
 
 
