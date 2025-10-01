@@ -1,26 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&display=swap");
 
-:root {
-  --main-font: "Inter Tight";
-  --header-font: "Inter Tight";
-  --secondary-font: "Sometype Mono";
-  --background-color: #f9f7f4;
-  --primary-color: #081c39;
-  --steel-blue: #677384;
-}
-
-body {
-  background-color: var(--background-color);
-  font-family: var(--main-font);
-}
-
 h1,
 h2,
 h3 {
   margin-top: 3em;
   font-weight: bold;
-}
-
-.nav-footer {
-  background-color: var(--background-color);
 }
