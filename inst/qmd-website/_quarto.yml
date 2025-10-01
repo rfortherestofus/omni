@@ -4,16 +4,7 @@ project:
     port: 5000
 
 website:
-  page-footer:
-    center: "Copyright 2025, Omni Institute"
-    right: |
-      [![](https://github.com/rfortherestofus/omni/blob/main/inst/assets/images/logo.png?raw=true){fig-alt="Omni institute" width=100px}](https://www.omni.org/)
   navbar:
-    background: "#081c39"
-    foreground: white
-    logo: https://github.com/rfortherestofus/omni/blob/main/inst/assets/images/logo-no-text.png?raw=true
-    logo-alt: Logo of the Omni Institute
-    logo-href: https://www.omni.org/
     left:
       - href: index.qmd
         text: Home
@@ -21,6 +12,15 @@ website:
         text: Use this template
       - href: customization.qmd
         text: Customization
+    background: "#081c39"
+    foreground: white
+    logo: https://github.com/rfortherestofus/omni/blob/main/inst/assets/images/logo-no-text.png?raw=true
+    logo-alt: Logo of the Omni Institute
+    logo-href: https://www.omni.org/
+  page-footer:
+    center: "Copyright 2025, Omni Institute"
+    right: |
+      [![](https://github.com/rfortherestofus/omni/blob/main/inst/assets/images/logo.png?raw=true){fig-alt="Omni institute" width=100px}](https://www.omni.org/)
 
 format:
   html:
