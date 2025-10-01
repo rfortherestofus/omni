@@ -13,43 +13,5 @@ It's based on Omni branding and is intended to be easy to customize using built-
 It contains 3 pages:
 
 - [Home](./index.qmd): the page you're currently in
-- [Impact](./impact.qmd): an empty page
-- [Use this template](./about.qmd): a short tutorial on how to use and customize the website
-
-## Panel tabset
-
-::: {.panel-tabset}
-
-### First panel
-
-You can include anything you want here, from code to charts.
-
-```{r}
-#| echo: true
-
-plot(cars$speed, cars$dist)
-```
-
-### Second panel
-
-Content of the second panel
-
-:::
-
-````md
-::: {.panel-tabset}
-
-### First panel
-
-You can include anything you want here, from code to charts.
-
-```{{r}}
-plot(cars$speed, cars$dist)
-```
-
-### Second panel
-
-Content of the second panel
-
-:::
-````
+- [Use this template](./about.qmd): a short tutorial on how to use this website template
+- [Customization](./customization.qmd): a list of nice customizations you can make with Quarto, and how to do them

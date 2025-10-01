@@ -17,10 +17,10 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: impact.qmd
-        text: Impact
       - href: about.qmd
         text: Use this template
+      - href: customization.qmd
+        text: Customization
 
 format:
   html:
