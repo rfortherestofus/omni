@@ -1,9 +1,12 @@
 ---
 title: Customization
+toc-depth: 2
 ---
 
 
 ## Panel tabset
+
+### Output
 
 ::: {.panel-tabset}
 
@@ -22,6 +25,8 @@ plot(cars$speed, cars$dist)
 Content of the second panel
 
 :::
+
+### How to do
 
 ````md
 ::: {.panel-tabset}

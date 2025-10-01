@@ -8,7 +8,13 @@ This is a Quarto website template, made for the [Omni Institute](https://www.omn
 
 ## Create a new website
 
-```{r}
+The `{omni}` package contains a `create_website()` function that will create a new directory (named `my_report` in the example below) with default files to get you started.
+
+```r
 library(omni)
+
+create_website("my_report")
 ```
+
+Once you created the new directory, it'll open the main Quarto page, named `index.qmd`. Hit the `Render` button and you should be able to preview your website.
 
