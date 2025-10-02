@@ -8,7 +8,7 @@ output:
     toc: true
     toc_float: true
     main_font: "Inter Tight"
-    background_color: "#f9f7f4"
+    background_color: "#555555"
     remove_logo: FALSE
     use_csi_style: FALSE
 ---
