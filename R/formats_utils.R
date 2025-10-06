@@ -184,12 +184,12 @@ add_hide_logo_css <- function(file) {
     return(temp_css)
 }
 
-#' Use the CSI style
+#' Use the CSI style in PDF report
 #'
 #' @param file CSS file path
 #'
 #' @keywords internal
-change_to_csi_style <- function(file) {
+change_to_csi_style_pdf <- function(file) {
     css_lines <- readLines(file)
 
     # change default logo to CSI one
@@ -229,6 +229,33 @@ change_to_csi_style <- function(file) {
     css_lines <- gsub(
         'height: 50px;',
         'height: 60px;',
+        css_lines
+    )
+
+    temp_css <- file.path(dirname(file), "temp.css")
+    writeLines(css_lines, temp_css)
+    return(temp_css)
+}
+
+#' Use the CSI style in HTML report
+#'
+#' @param file CSS file path
+#'
+#' @keywords internal
+change_to_csi_style_html <- function(file) {
+    css_lines <- readLines(file)
+
+    # change default logo to CSI one
+    css_lines <- gsub(
+        '--logo-header-footer:.*?;',
+        '--logo-header-footer: url("images/logo-csi.png");',
+        css_lines
+    )
+
+    # make logo bigger
+    css_lines <- gsub(
+        'width: 140px;',
+        'width: 190px;',
         css_lines
     )
 
