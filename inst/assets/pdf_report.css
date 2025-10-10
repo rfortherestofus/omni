@@ -671,7 +671,7 @@ hr {
 }
 
 [data-footnote-marker]::before {
-  content: counter(footnote-marker) ". ";
+  content: counter(footnote-marker);
   display: inline;
   font-size: 7pt;
   font-family: var(--main-font);
@@ -694,6 +694,7 @@ div.pagedjs_footnote_area::before {
   display: inline;
   margin: 0;
   padding: 0;
+  font-size: 9pt;
 }
 
 /* we hide some elements not wanted elements in footnotes */
