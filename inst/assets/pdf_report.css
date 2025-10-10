@@ -670,18 +670,19 @@ hr {
   }
 }
 
-::footnote-call {
-  font-weight: 400;
-  font-size: 9pt;
-  font-family: var(--main-font);
-}
-
-[data-footnote-marker]::marker {
-  font-weight: 400;
+[data-footnote-marker]::before {
+  content: counter(footnote-marker) ". ";
+  display: inline;
   font-size: 7pt;
   font-family: var(--main-font);
   vertical-align: super;
   line-height: 1;
+  margin-right: 0.25em;
+}
+
+[data-footnote-marker]::marker {
+  content: "";
+  display: none;
 }
 
 div.pagedjs_footnote_area::before {
