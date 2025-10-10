@@ -62,12 +62,9 @@
     }
 
     beforeParsed(content) {
-      console.log("parsef");
       let callouts = content.querySelectorAll(endNoteCalloutsQuery);
       callouts.forEach((callout) => {
-        console.log(callout.hash);
         let note = content.querySelector(callout.hash);
-        console.log(note);
         if (!note) {
           return console.warn(
             `there is no note with the id of ${callout.hash}`

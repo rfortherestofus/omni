@@ -671,13 +671,33 @@ hr {
 }
 
 ::footnote-call {
-  color: red;
   font-weight: 400;
-  line-height: 0;
+  font-size: 9pt;
+  font-family: var(--main-font);
 }
 
-::footnote-marker {
-  color: red;
+[data-footnote-marker]::marker {
   font-weight: 400;
-  line-height: 0;
+  font-size: 7pt;
+  font-family: var(--main-font);
+  vertical-align: super;
+  line-height: 1;
+}
+
+div.pagedjs_footnote_area::before {
+  content: "";
+  border-top: 2px solid #677384;
+}
+
+.pagedjs_footnote_area p {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+/* we hide some elements not wanted elements in footnotes */
+.footnotes ol,
+.footnotes hr,
+a.footnote-back {
+  display: none;
 }
