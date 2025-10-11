@@ -130,15 +130,22 @@ omni_table <-
         )
     }
 
+    # Add border at bottom of header in column 1
+    if (first_col_gray) {
+      table <- table |>
+        bg(part = "body", j = 1, bg = omni_colors("steel-blue-400")) |>
+        color(part = "body", j = 1, color = "white") |>
+        border(
+          i = 1,
+          j = 1,
+          part = "header",
+          border.bottom = fp_border(color = "white", width = 1)
+        )
+    }
+
     table |>
       flextable::set_table_properties(
         layout = 'autofit',
         width = 1
       )
   }
-
-
-palmerpenguins::penguins |>
-  dplyr::slice(1:3) |>
-  dplyr::mutate(year = as.character(year)) |>
-  omni_table(caption = 'Table 1. [Insert Table Name]')
