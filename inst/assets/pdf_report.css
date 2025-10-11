@@ -685,9 +685,12 @@ hr {
   display: none;
 }
 
+/* top line in footnote sections */
 div.pagedjs_footnote_area::before {
   content: "";
   border-top: 2px solid #677384;
+  display: block;
+  width: 30%;
 }
 
 .pagedjs_footnote_area p {
