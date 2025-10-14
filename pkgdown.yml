@@ -2,7 +2,7 @@ pandoc: 3.1.11
 pkgdown: 2.1.3
 pkgdown_sha: ~
 articles: {}
-last_built: 2025-10-13T22:50Z
+last_built: 2025-10-14T21:43Z
 urls:
   reference: https://rfortherestofus.github.io/omni/reference
   article: https://rfortherestofus.github.io/omni/articles
