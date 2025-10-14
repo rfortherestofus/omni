@@ -1,0 +1,17 @@
+---
+title: "Omni Quarto Website Template"
+---
+
+```{r}
+library(omni)
+```
+
+This is a Quarto website template, made for the [Omni Institute](https://www.omni.org/).
+
+It's based on Omni branding and is intended to be easy to customize using Quarto.
+
+By default, it contains 3 pages:
+
+- [Home](./index.qmd): the page you're currently in
+- [Use this template](./about.qmd): a short tutorial on how to use this website template
+- [Customization](./customization.qmd): a list of nice customizations you can make with Quarto, and how to do them

@@ -1,0 +1,54 @@
+---
+title: "How to use this template"
+execute: 
+  echo: true
+---
+
+This is a Quarto website template, made for the [Omni Institute](https://www.omni.org/).
+
+## Create a new website
+
+The `{omni}` package contains a `create_website()` function that will create a new directory (named `my_report` in the example below) with default files to get you started.
+
+```r
+library(omni)
+
+create_website("my_report")
+```
+
+Once you created the new directory, it'll open the main Quarto page, named `index.qmd`. Hit the `Render` button and you should be able to preview your website.
+
+
+## Add or remove a page
+
+To add/remove a page, you must do two things:
+
+- Create (or delete) the page you want to add (or remove). By default, the website has three pages: `index.qmd`, `customization.qmd` and `about.qmd`. Let's say we want to add an "Appendix" page, we create an `appendix.qmd` file next to other Quarto documents.
+- Add (or remove) the page to `_quarto.yml` configuration file. Default `_quarto.yml` looks like this:
+
+```yaml
+website:
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: Use this template
+      - href: customization.qmd
+        text: Customization
+```
+
+We can add our Appendix page by adding:
+
+```yaml
+- href: appendix.qmd
+  text: Appendix
+```
+
+This gives us:
+
+![](./appendix-example.png)
+
+::: {.callout-warning}
+The `href` attribute above should match exactly the name of the file you created, while the `text` attribute can be whatever you want since it's just what will be in the navigation bar.
+:::

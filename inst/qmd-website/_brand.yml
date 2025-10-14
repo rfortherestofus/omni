@@ -1,0 +1,21 @@
+meta:
+  name: brand.yml
+
+color:
+  foreground: "#081c39"
+  background: "#f9f7f4"
+  primary: "#081c39"
+  secondary: "#677384"
+
+typography:
+  fonts:
+    - family: Inter Tight
+      source: google
+  base:
+    family: Inter Tight
+    line-height: 1.6
+  headings:
+    family: Inter Tight
+    weight: bold
+  link:
+    color: "#5776b2"
