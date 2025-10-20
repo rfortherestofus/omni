@@ -8,6 +8,7 @@ html_report(
   main_font = NULL,
   background_color = NULL,
   remove_logo = FALSE,
+  use_csi_style = FALSE,
   ...
 )
 }

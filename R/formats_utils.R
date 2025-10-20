@@ -4,23 +4,23 @@
 #'
 #' @keywords internal
 remove_logo <- function(file) {
-    css_lines <- readLines(file)
+  css_lines <- readLines(file)
 
-    css_lines <- gsub(
-        '--logo-bottom:.*?;',
-        '--logo-bottom: none;',
-        css_lines
-    )
+  css_lines <- gsub(
+    '--logo-bottom:.*?;',
+    '--logo-bottom: none;',
+    css_lines
+  )
 
-    css_lines <- gsub(
-        '--logo-cover:.*?;',
-        '--logo-cover: none;',
-        css_lines
-    )
+  css_lines <- gsub(
+    '--logo-cover:.*?;',
+    '--logo-cover: none;',
+    css_lines
+  )
 
-    temp_css <- file.path(dirname(file), "temp.css")
-    writeLines(css_lines, temp_css)
-    return(temp_css)
+  temp_css <- file.path(dirname(file), "temp.css")
+  writeLines(css_lines, temp_css)
+  return(temp_css)
 }
 
 #' Remove logo files in CSS
@@ -30,46 +30,46 @@ remove_logo <- function(file) {
 #'
 #' @keywords internal
 change_background_image <- function(file, background_cover_image) {
-    css_lines <- readLines(file)
+  css_lines <- readLines(file)
 
-    if (!(is.null(background_cover_image))) {
-        background_cover_image <- tolower(background_cover_image)
+  if (!(is.null(background_cover_image))) {
+    background_cover_image <- tolower(background_cover_image)
 
-        valid_background_image <- c(
-            "01-yellow",
-            "02-teal",
-            "03-orangered",
-            "06-teal",
-            "07-periwinkle",
-            "07-olive",
-            "08-plum"
-        )
+    valid_background_image <- c(
+      "01-yellow",
+      "02-teal",
+      "03-orangered",
+      "06-teal",
+      "07-periwinkle",
+      "07-olive",
+      "08-plum"
+    )
 
-        if (!(background_cover_image %in% valid_background_image)) {
-            stop(
-                "Invalid background image input. Valid options are: ",
-                paste(valid_background_image, collapse = ", ")
-            )
-        }
-
-        image_mapper <- setNames(
-            paste0("images/pattern-cover-", valid_background_image, ".png"),
-            valid_background_image
-        )
-        image_path <- image_mapper[background_cover_image]
-
-        css_lines <- gsub(
-            '--background-cover-page:.*?;',
-            glue::glue(
-                '--background-cover-page: url("{image_path}");'
-            ),
-            css_lines
-        )
+    if (!(background_cover_image %in% valid_background_image)) {
+      stop(
+        "Invalid background image input. Valid options are: ",
+        paste(valid_background_image, collapse = ", ")
+      )
     }
 
-    temp_css <- file.path(dirname(file), "temp.css")
-    writeLines(css_lines, temp_css)
-    return(temp_css)
+    image_mapper <- setNames(
+      paste0("images/pattern-cover-", valid_background_image, ".png"),
+      valid_background_image
+    )
+    image_path <- image_mapper[background_cover_image]
+
+    css_lines <- gsub(
+      '--background-cover-page:.*?;',
+      glue::glue(
+        '--background-cover-page: url("{image_path}");'
+      ),
+      css_lines
+    )
+  }
+
+  temp_css <- file.path(dirname(file), "temp.css")
+  writeLines(css_lines, temp_css)
+  return(temp_css)
 }
 
 #' Change main colors in CSS
@@ -80,31 +80,31 @@ change_background_image <- function(file, background_cover_image) {
 #'
 #' @keywords internal
 change_colors <- function(
-    file,
-    background_color = NULL,
-    primary_font_color = NULL
+  file,
+  background_color = NULL,
+  primary_font_color = NULL
 ) {
-    css_lines <- readLines(file)
+  css_lines <- readLines(file)
 
-    if (!(is.null(background_color))) {
-        css_lines <- gsub(
-            '--background-color:.*?;',
-            glue::glue('--background-color: {background_color};'),
-            css_lines
-        )
-    }
+  if (!(is.null(background_color))) {
+    css_lines <- gsub(
+      '--background-color:.*?;',
+      glue::glue('--background-color: {background_color};'),
+      css_lines
+    )
+  }
 
-    if (!(is.null(primary_font_color))) {
-        css_lines <- gsub(
-            '--primary-color:.*?;',
-            glue::glue('--primary-color: {primary_font_color};'),
-            css_lines
-        )
-    }
+  if (!(is.null(primary_font_color))) {
+    css_lines <- gsub(
+      '--primary-color:.*?;',
+      glue::glue('--primary-color: {primary_font_color};'),
+      css_lines
+    )
+  }
 
-    temp_css <- file.path(dirname(file), "temp.css")
-    writeLines(css_lines, temp_css)
-    return(temp_css)
+  temp_css <- file.path(dirname(file), "temp.css")
+  writeLines(css_lines, temp_css)
+  return(temp_css)
 }
 
 #' Change main fonts in CSS
@@ -115,36 +115,36 @@ change_colors <- function(
 #'
 #' @keywords internal
 change_fonts <- function(
-    file,
-    main_font = NULL,
-    secondary_font = NULL
+  file,
+  main_font = NULL,
+  secondary_font = NULL
 ) {
-    css_lines <- readLines(file)
+  css_lines <- readLines(file)
 
-    if (!(is.null(main_font))) {
-        css_lines <- gsub(
-            '--main-font:.*?;',
-            glue::glue('--main-font: "{main_font}";'),
-            css_lines
-        )
-        css_lines <- gsub(
-            '--header-font:.*?;',
-            glue::glue('--header-font: "{main_font}";'),
-            css_lines
-        )
-    }
+  if (!(is.null(main_font))) {
+    css_lines <- gsub(
+      '--main-font:.*?;',
+      glue::glue('--main-font: "{main_font}";'),
+      css_lines
+    )
+    css_lines <- gsub(
+      '--header-font:.*?;',
+      glue::glue('--header-font: "{main_font}";'),
+      css_lines
+    )
+  }
 
-    if (!(is.null(secondary_font))) {
-        css_lines <- gsub(
-            '--secondary-font:.*?;',
-            glue::glue('--secondary-font: "{secondary_font}";'),
-            css_lines
-        )
-    }
+  if (!(is.null(secondary_font))) {
+    css_lines <- gsub(
+      '--secondary-font:.*?;',
+      glue::glue('--secondary-font: "{secondary_font}";'),
+      css_lines
+    )
+  }
 
-    temp_css <- file.path(dirname(file), "temp.css")
-    writeLines(css_lines, temp_css)
-    return(temp_css)
+  temp_css <- file.path(dirname(file), "temp.css")
+  writeLines(css_lines, temp_css)
+  return(temp_css)
 }
 
 
@@ -154,18 +154,18 @@ change_fonts <- function(
 #'
 #' @keywords internal
 add_hide_cover_page_css <- function(file) {
-    css_lines <- readLines(file)
+  css_lines <- readLines(file)
 
-    css_lines <- gsub(
-        '--display-the-cover-page:.*?;',
-        '--display-the-cover-page: none;',
-        css_lines
-    )
+  css_lines <- gsub(
+    '--display-the-cover-page:.*?;',
+    '--display-the-cover-page: none;',
+    css_lines
+  )
 
-    temp_css <- file.path(dirname(file), "temp.css")
-    writeLines(css_lines, file.path(Sys.getenv("HOME"), "Desktop", "here.css"))
-    writeLines(css_lines, temp_css)
-    return(temp_css)
+  temp_css <- file.path(dirname(file), "temp.css")
+  writeLines(css_lines, file.path(Sys.getenv("HOME"), "Desktop", "here.css"))
+  writeLines(css_lines, temp_css)
+  return(temp_css)
 }
 
 #' Add CSS rule to hide .logo class
@@ -174,14 +174,14 @@ add_hide_cover_page_css <- function(file) {
 #'
 #' @keywords internal
 add_hide_logo_css <- function(file) {
-    css_lines <- readLines(file)
+  css_lines <- readLines(file)
 
-    rule <- '.logo {\n  display: none !important;\n}'
-    css_lines <- c(css_lines, "", rule)
+  rule <- '.logo {\n  display: none !important;\n}'
+  css_lines <- c(css_lines, "", rule)
 
-    temp_css <- file.path(dirname(file), "temp.css")
-    writeLines(css_lines, temp_css)
-    return(temp_css)
+  temp_css <- file.path(dirname(file), "temp.css")
+  writeLines(css_lines, temp_css)
+  return(temp_css)
 }
 
 #' Use the CSI style in PDF report
@@ -190,51 +190,51 @@ add_hide_logo_css <- function(file) {
 #'
 #' @keywords internal
 change_to_csi_style_pdf <- function(file) {
-    css_lines <- readLines(file)
+  css_lines <- readLines(file)
 
-    # change default logo to CSI one
-    css_lines <- gsub(
-        '--logo-cover:.*?;',
-        '--logo-cover: url("images/logo-csi.png");',
-        css_lines
-    )
+  # change default logo to CSI one
+  css_lines <- gsub(
+    '--logo-cover:.*?;',
+    '--logo-cover: url("images/logo-csi.png");',
+    css_lines
+  )
 
-    # change 'no text' logo to CSI one
-    css_lines <- gsub(
-        '--logo-bottom:.*?;',
-        '--logo-bottom: url("images/logo-no-text-csi.png");',
-        css_lines
-    )
+  # change 'no text' logo to CSI one
+  css_lines <- gsub(
+    '--logo-bottom:.*?;',
+    '--logo-bottom: url("images/logo-no-text-csi.png");',
+    css_lines
+  )
 
-    # change omni report to CSI report
-    css_lines <- gsub(
-        "Omni Institute Report",
-        "Center for Social Investment",
-        css_lines
-    )
+  # change omni report to CSI report
+  css_lines <- gsub(
+    "Omni Institute Report",
+    "Center for Social Investment",
+    css_lines
+  )
 
-    # change spacing footer
-    css_lines <- gsub(
-        "margin-left: 2in;",
-        "margin-left: 1.7in;",
-        css_lines
-    )
+  # change spacing footer
+  css_lines <- gsub(
+    "margin-left: 2in;",
+    "margin-left: 1.7in;",
+    css_lines
+  )
 
-    # make logo slightly bigger
-    css_lines <- gsub(
-        'width: 150px;',
-        'width: 160px;',
-        css_lines
-    )
-    css_lines <- gsub(
-        'height: 50px;',
-        'height: 60px;',
-        css_lines
-    )
+  # make logo slightly bigger
+  css_lines <- gsub(
+    'width: 150px;',
+    'width: 160px;',
+    css_lines
+  )
+  css_lines <- gsub(
+    'height: 50px;',
+    'height: 60px;',
+    css_lines
+  )
 
-    temp_css <- file.path(dirname(file), "temp.css")
-    writeLines(css_lines, temp_css)
-    return(temp_css)
+  temp_css <- file.path(dirname(file), "temp.css")
+  writeLines(css_lines, temp_css)
+  return(temp_css)
 }
 
 #' Use the CSI style in HTML report
@@ -243,23 +243,52 @@ change_to_csi_style_pdf <- function(file) {
 #'
 #' @keywords internal
 change_to_csi_style_html <- function(file) {
-    css_lines <- readLines(file)
+  css_lines <- readLines(file)
 
-    # change default logo to CSI one
-    css_lines <- gsub(
-        '--logo-header-footer:.*?;',
-        '--logo-header-footer: url("images/logo-csi.png");',
-        css_lines
+  # change default logo to CSI one
+  css_lines <- gsub(
+    '--logo-header-footer:.*?;',
+    '--logo-header-footer: url("images/logo-csi.png");',
+    css_lines
+  )
+
+  # make logo bigger
+  css_lines <- gsub(
+    'width: 140px;',
+    'width: 190px;',
+    css_lines
+  )
+
+  temp_css <- file.path(dirname(file), "temp.css")
+  writeLines(css_lines, temp_css)
+  return(temp_css)
+}
+
+#' @title Set the page counter in Omni pdf reports
+#'
+#' @description
+#' Controls the page counter for Omni PDF reports.
+#'
+#' @param start_from The page on which the counter should restart
+#' @param counter_start The value of the first page
+#' @param total_pages Number of pages to generate CSS for (default: 100)
+#'
+#' @import glue
+#' @return An HTML character for rmarkdown
+#' @export
+omni_set_page_start_pdf <- function(
+  start_from,
+  counter_start,
+  total_pages = 100
+) {
+  rules <- purrr::map_chr(
+    seq(start_from, start_from + total_pages - 1),
+    ~ glue::glue(
+      '[data-page-number="{.x}"] {{
+  counter-reset: page {counter_start + (.x - start_from)};
+}}'
     )
+  )
 
-    # make logo bigger
-    css_lines <- gsub(
-        'width: 140px;',
-        'width: 190px;',
-        css_lines
-    )
-
-    temp_css <- file.path(dirname(file), "temp.css")
-    writeLines(css_lines, temp_css)
-    return(temp_css)
+  glue::glue('<style>\n{paste(rules, collapse = "\n\n")}\n</style>')
 }
