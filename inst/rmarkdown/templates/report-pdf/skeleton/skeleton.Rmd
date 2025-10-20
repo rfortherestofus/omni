@@ -41,10 +41,6 @@ omni_set_page_start_pdf(start_from = 2, counter_start = 12)
 <div class="page-break-before"></div>
 ```
 
-```{r}
-
-```
-
 
 ::: {.chapter-title .dot-orange-red}
 Chapter title here
