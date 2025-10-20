@@ -22,6 +22,7 @@ Imports:
     ggtext,
     grDevices,
     knitr,
+    glue,
     officer,
     pagedown,
     qualtRics,

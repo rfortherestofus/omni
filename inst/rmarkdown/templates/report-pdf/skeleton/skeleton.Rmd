@@ -32,12 +32,13 @@ abstract: >
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 ```
 
-```{=html}
-<div class="page-break-before"></div>
+```{r, results='asis'}
+library(omni)
+omni_set_page_start_pdf(start_from = 2, counter_start = 12)
 ```
 
-```{r}
-library(omni)
+```{=html}
+<div class="page-break-before"></div>
 ```
 
 
@@ -75,9 +76,9 @@ Chapter title here
 
 ```{r}
 quote_box(
-    text = "This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
-    author = "Name Here, Title Here",
-    color = "olive-green-600"
+  text = "This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
+  author = "Name Here, Title Here",
+  color = "olive-green-600"
 )
 ```
 
@@ -109,8 +110,8 @@ The project will start with a virtual project alignment meeting with the key cou
 
 ```{r}
 callout_box(
-    text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
-    color = "orange-red-600"
+  text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
+  color = "orange-red-600"
 )
 ```
 
@@ -136,9 +137,9 @@ callout_box(
 
 ```{r}
 callout_box(
-    text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
-    color = "orange-red-600",
-    fixed_width_px = 600
+  text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
+  color = "orange-red-600",
+  fixed_width_px = 600
 )
 ```
 
@@ -157,9 +158,9 @@ callout_box(
 
 ```{r}
 callout_box(
-    text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text **all white**. Change the background color as desired to match the page.^[footnote example]",
-    color = "olive-green-600",
-    fixed_width_px = 600
+  text = "This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text **all white**. Change the background color as desired to match the page.^[footnote example]",
+  color = "olive-green-600",
+  fixed_width_px = 600
 )
 ```
 
@@ -179,10 +180,10 @@ quote_box(
 
 ```{r}
 quote_box(
-    text = "This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
-    author = "Name Here, Title Here",
-    color = "plum-600",
-    fixed_width_px = 600
+  text = "This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
+  author = "Name Here, Title Here",
+  color = "plum-600",
+  fixed_width_px = 600
 )
 ```
 
@@ -190,9 +191,9 @@ quote_box(
 
 ```{r}
 quote_box(
-    text = "This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
-    author = "Name Here, Title Here",
-    color = "plum-600"
+  text = "This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.",
+  author = "Name Here, Title Here",
+  color = "plum-600"
 )
 ```
 
@@ -210,19 +211,19 @@ icon_color_fg <- "white"
 icon_color_bg <- 'teal-600'
 
 icon_text_grid(
-    omni_icon('education', width_px, icon_color_bg, icon_color_fg),
-    icon_text(
-        text = '**71.9%:** Any person younger than 21 caught with or suspected of consuming alcohol or marijuana is charged with Minor in Possession (MIP).'
-    ),
-    omni_icon('security', width_px, icon_color_bg, icon_color_fg),
-    icon_text(
-        '**69.8%:** Adults in Colorado who knowingly hep someone younger than 18 break the law - which includes providing minors with alcohol or drubgs - can be charged with a Class 4 felony.'
-    ),
-    omni_icon('vault', width_px, icon_color_bg, icon_color_fg),
-    icon_text(
-        '**34.4%:** It is legal for a person ages 18-20 to possess marijuana with a medical marijuana card.'
-    ),
-    width_px = width_px
+  omni_icon('education', width_px, icon_color_bg, icon_color_fg),
+  icon_text(
+    text = '**71.9%:** Any person younger than 21 caught with or suspected of consuming alcohol or marijuana is charged with Minor in Possession (MIP).'
+  ),
+  omni_icon('security', width_px, icon_color_bg, icon_color_fg),
+  icon_text(
+    '**69.8%:** Adults in Colorado who knowingly hep someone younger than 18 break the law - which includes providing minors with alcohol or drubgs - can be charged with a Class 4 felony.'
+  ),
+  omni_icon('vault', width_px, icon_color_bg, icon_color_fg),
+  icon_text(
+    '**34.4%:** It is legal for a person ages 18-20 to possess marijuana with a medical marijuana card.'
+  ),
+  width_px = width_px
 )
 ```
 
@@ -235,24 +236,24 @@ icon_color_fg <- "white"
 icon_color_bg <- 'teal-600'
 
 icon_text_grid(
-    omni_icon('education', width_px, icon_color_bg, icon_color_fg),
-    icon_text(
-        text = '**71.9%:** Any person younger than 21 caught with or suspected of consuming alcohol or marijuana is charged with Minor in Possession (MIP).',
-        text_width
-    ),
-    omni_icon('security', width_px, icon_color_bg, icon_color_fg),
-    icon_text(
-        '**69.8%:** Adults in Colorado who knowingly hep someone younger than 18 break the law - which includes providing minors with alcohol or drubgs - can be charged with a Class 4 felony.',
-        text_width
-    ),
-    omni_icon('vault', width_px, icon_color_bg, icon_color_fg),
-    icon_text(
-        '**34.4%:** It is legal for a person ages 18-20 to possess marijuana with a medical marijuana card.',
-        text_width
-    ),
-    column_gap_px = 5, # default is 10
-    row_gap_px = 5, # default is 10
-    width_px = width_px
+  omni_icon('education', width_px, icon_color_bg, icon_color_fg),
+  icon_text(
+    text = '**71.9%:** Any person younger than 21 caught with or suspected of consuming alcohol or marijuana is charged with Minor in Possession (MIP).',
+    text_width
+  ),
+  omni_icon('security', width_px, icon_color_bg, icon_color_fg),
+  icon_text(
+    '**69.8%:** Adults in Colorado who knowingly hep someone younger than 18 break the law - which includes providing minors with alcohol or drubgs - can be charged with a Class 4 felony.',
+    text_width
+  ),
+  omni_icon('vault', width_px, icon_color_bg, icon_color_fg),
+  icon_text(
+    '**34.4%:** It is legal for a person ages 18-20 to possess marijuana with a medical marijuana card.',
+    text_width
+  ),
+  column_gap_px = 5, # default is 10
+  row_gap_px = 5, # default is 10
+  width_px = width_px
 )
 ```
 
@@ -355,36 +356,36 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
 
 ```{r}
 tibble::tribble(
-    ~`Work Area`,
-    ~`Key Activities`,
-    ~`Deliverables`,
-    ~`Timeline`,
-    "Something",
-    "xxxxx",
-    "xxxxx",
-    "xxxx",
-    "Something",
-    "xxxxx",
-    "xxxxx",
-    "xxxx",
-    "Something",
-    "xxxxx",
-    "xxxxx",
-    "xxxx",
-    "Something",
-    "xxxxx",
-    "xxxxx",
-    "xxxx",
-    "Something",
-    "xxxxx",
-    "xxxxx",
-    "xxxx",
-    "Something",
-    "xxxxx",
-    "xxxxx",
-    "xxxx"
+  ~`Work Area`,
+  ~`Key Activities`,
+  ~`Deliverables`,
+  ~`Timeline`,
+  "Something",
+  "xxxxx",
+  "xxxxx",
+  "xxxx",
+  "Something",
+  "xxxxx",
+  "xxxxx",
+  "xxxx",
+  "Something",
+  "xxxxx",
+  "xxxxx",
+  "xxxx",
+  "Something",
+  "xxxxx",
+  "xxxxx",
+  "xxxx",
+  "Something",
+  "xxxxx",
+  "xxxxx",
+  "xxxx",
+  "Something",
+  "xxxxx",
+  "xxxxx",
+  "xxxx"
 ) |>
-    omni::omni_table(caption = "Table 1. [Insert Table name]")
+  omni::omni_table(caption = "Table 1. [Insert Table name]")
 ```
 
 
@@ -414,17 +415,17 @@ omni::omni_page_break("Here's another one", "orangered")
 
 ```{r}
 omni::omni_page_break(
-    "Long title using the olive color, that automatically goes to next line.",
-    "olive"
+  "Long title using the olive color, that automatically goes to next line.",
+  "olive"
 )
 ```
 
 
 ```{r}
 omni::omni_page_break(
-    "One more teal background One more teal background",
-    "teal",
-    nmbr_pattern = 2
+  "One more teal background One more teal background",
+  "teal",
+  nmbr_pattern = 2
 )
 ```
 
@@ -449,9 +450,9 @@ Again, to see how these are made, take a look at the R Markdown document.
 
 ```{r}
 number_emphasis(
-    number = 1234,
-    text = "pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.",
-    color = "teal-400",
+  number = 1234,
+  text = "pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.",
+  color = "teal-400",
 )
 ```
 
@@ -464,19 +465,19 @@ icon_color_fg <- "white"
 icon_color_bg <- 'teal-600'
 
 icon_text_grid(
-    omni_icon('education', width_px, icon_color_bg, icon_color_fg),
-    icon_text(
-        text = '**71.9%:** Any person younger than 21 caught with or suspected of consuming alcohol or marijuana is charged with Minor in Possession (MIP).'
-    ),
-    omni_icon('security', width_px, icon_color_bg, icon_color_fg),
-    icon_text(
-        '**69.8%:** Adults in Colorado who knowingly hep someone younger than 18 break the law - which includes providing minors with alcohol or drubgs - can be charged with a Class 4 felony.'
-    ),
-    omni_icon('vault', width_px, icon_color_bg, icon_color_fg),
-    icon_text(
-        '**34.4%:** It is legal for a person ages 18-20 to possess marijuana with a medical marijuana card.'
-    ),
-    width_px = width_px
+  omni_icon('education', width_px, icon_color_bg, icon_color_fg),
+  icon_text(
+    text = '**71.9%:** Any person younger than 21 caught with or suspected of consuming alcohol or marijuana is charged with Minor in Possession (MIP).'
+  ),
+  omni_icon('security', width_px, icon_color_bg, icon_color_fg),
+  icon_text(
+    '**69.8%:** Adults in Colorado who knowingly hep someone younger than 18 break the law - which includes providing minors with alcohol or drubgs - can be charged with a Class 4 felony.'
+  ),
+  omni_icon('vault', width_px, icon_color_bg, icon_color_fg),
+  icon_text(
+    '**34.4%:** It is legal for a person ages 18-20 to possess marijuana with a medical marijuana card.'
+  ),
+  width_px = width_px
 )
 ```
 
