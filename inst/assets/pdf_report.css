@@ -80,6 +80,10 @@
   white-space: nowrap;
 }
 
+.pagedjs_page .pagedjs_margin-bottom-center > .pagedjs_margin-content::after {
+  display: inline !important;
+}
+
 h1.title {
   string-set: h1-title content(text);
 }
