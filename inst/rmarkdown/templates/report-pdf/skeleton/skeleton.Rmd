@@ -20,6 +20,7 @@ output:
     remove_toc_page: FALSE
     background_cover_image: "01-Yellow"
     use_csi_style: FALSE
+    acknowledgements_margin_top: 325pt
 knit: pagedown::chrome_print
 abstract: >
   ```{r, child = system.file('assets/rmd/abstract.Rmd', package = 'omni')}
@@ -355,33 +356,33 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
 
 ```{r}
 tibble::tribble(
-    ~`Work Area`,
-    ~`Key Activities`,
-    ~`Deliverables`,
-    ~`Timeline`,
-    "Something",
-    "xxxxx",
-    "xxxxx",
-    "xxxx",
-    "Something",
-    "xxxxx",
-    "xxxxx",
-    "xxxx",
-    "Something",
-    "xxxxx",
-    "xxxxx",
-    "xxxx",
-    "Something",
-    "xxxxx",
-    "xxxxx",
-    "xxxx",
-    "Something",
-    "xxxxx",
-    "xxxxx",
-    "xxxx",
-    "Something",
-    "xxxxx",
-    "xxxxx",
+    ~`Work Area`      ,
+    ~`Key Activities` ,
+    ~`Deliverables`   ,
+    ~`Timeline`       ,
+    "Something"       ,
+    "xxxxx"           ,
+    "xxxxx"           ,
+    "xxxx"            ,
+    "Something"       ,
+    "xxxxx"           ,
+    "xxxxx"           ,
+    "xxxx"            ,
+    "Something"       ,
+    "xxxxx"           ,
+    "xxxxx"           ,
+    "xxxx"            ,
+    "Something"       ,
+    "xxxxx"           ,
+    "xxxxx"           ,
+    "xxxx"            ,
+    "Something"       ,
+    "xxxxx"           ,
+    "xxxxx"           ,
+    "xxxx"            ,
+    "Something"       ,
+    "xxxxx"           ,
+    "xxxxx"           ,
     "xxxx"
 ) |>
     omni::omni_table(caption = "Table 1. [Insert Table name]")
