@@ -26,6 +26,7 @@ word_report <- function(...) {
 #' @param remove_title_page Whether to remove the title page.
 #' @param remove_toc_page Whether to remove the TOC (table of content) page.
 #' @param use_csi_style Whether to use CSI (Center for Social Investment) styling. This basically change logos and text in the footer.
+#' @param acknowledgements_margin_top Margin top of the a acknowledgements section in the title page. Default to `325pt`.
 #' @param ... Additional arguments passed to `pagedown::html_paged()`
 #'
 #' @return An rmd format
@@ -42,6 +43,7 @@ pdf_report <- function(
     remove_title_page = FALSE,
     remove_toc_page = FALSE,
     use_csi_style = FALSE,
+    acknowledgements_margin_top = "325pt",
     ...
 ) {
     css_file <- pkg_resource("pdf_report.css")
@@ -69,6 +71,11 @@ pdf_report <- function(
             pkg_resource("pdf-report_remove_toc_page.html")
         )
     }
+
+    css_file <- change_acknowledgements_margin_top(
+        file = css_file,
+        margin_top = acknowledgements_margin_top
+    )
 
     css_file <- change_fonts(
         file = css_file,

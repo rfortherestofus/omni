@@ -1,3 +1,23 @@
+#' Change acknowledgements margin top in title page.
+#'
+#' @param file CSS file path
+#' @param margin_top New margin top value (e.g., "325pt").
+#'
+#' @keywords internal
+change_acknowledgements_margin_top <- function(file, margin_top) {
+    css_lines <- readLines(file)
+
+    css_lines <- gsub(
+        "margin-bottom: 325pt;",
+        glue::glue("margin-bottom: {margin_top};"),
+        css_lines
+    )
+
+    temp_css <- file.path(dirname(file), "temp.css")
+    writeLines(css_lines, temp_css)
+    return(temp_css)
+}
+
 #' Remove logo files in CSS
 #'
 #' @param file CSS file path
