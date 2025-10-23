@@ -287,6 +287,13 @@ change_footer_text <- function(file) {
         css_lines
     )
 
+    # change alignment of footer text
+    css_lines <- gsub(
+        "position: static;",
+        "position: absolute;", # allows the 'right' attribute to be used
+        css_lines
+    )
+
     temp_css <- file.path(dirname(file), "temp.css")
     writeLines(css_lines, temp_css)
     return(temp_css)

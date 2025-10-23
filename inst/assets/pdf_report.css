@@ -72,6 +72,8 @@
 .pagedjs_page .pagedjs_margin-bottom-center > .pagedjs_margin-content::before {
   content: "Omni Institute Report | ";
   color: var(--primary-color);
+  position: static;
+  right: 10%;
 }
 
 .pagedjs_page .pagedjs_margin-bottom-center > .pagedjs_margin-content::before,
