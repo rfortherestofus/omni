@@ -657,3 +657,52 @@ hr {
 #page-1 {
   display: var(--display-the-cover-page);
 }
+
+.pagedjs-end-to-footnote {
+  float: footnote;
+}
+
+/* define the position of the footnote on the page (only bottom is possible for now) */
+
+@page {
+  @footnote {
+    float: bottom;
+  }
+}
+
+[data-footnote-marker]::before {
+  content: counter(footnote-marker);
+  display: inline;
+  font-size: 7pt;
+  font-family: var(--main-font);
+  vertical-align: super;
+  line-height: 1;
+  margin-right: 0.25em;
+}
+
+[data-footnote-marker]::marker {
+  content: "";
+  display: none;
+}
+
+/* top line in footnote sections */
+div.pagedjs_footnote_area::before {
+  content: "";
+  border-top: 2px solid #677384;
+  display: block;
+  width: 30%;
+}
+
+.pagedjs_footnote_area p {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  font-size: 9pt;
+}
+
+/* we hide some elements not wanted elements in footnotes */
+.footnotes ol,
+.footnotes hr,
+a.footnote-back {
+  display: none;
+}
