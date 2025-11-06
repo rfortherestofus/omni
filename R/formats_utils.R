@@ -263,3 +263,38 @@ change_to_csi_style_html <- function(file) {
     writeLines(css_lines, temp_css)
     return(temp_css)
 }
+
+
+#' Change text in Footer
+#'
+#' @param file CSS file path
+#'
+#' @keywords internal
+change_footer_text <- function(file) {
+    css_lines <- readLines(file)
+
+    # change default text in footer
+    css_lines <- gsub(
+        'content: "Omni Institute Report | ";',
+        'content: "Omni Institute Report";',
+        css_lines
+    )
+
+    # hide report title in footer
+    css_lines <- gsub(
+        "display: inline !important;",
+        "display: none !important;",
+        css_lines
+    )
+
+    # change alignment of footer text
+    css_lines <- gsub(
+        "position: static;",
+        "position: absolute;", # allows the 'right' attribute to be used
+        css_lines
+    )
+
+    temp_css <- file.path(dirname(file), "temp.css")
+    writeLines(css_lines, temp_css)
+    return(temp_css)
+}

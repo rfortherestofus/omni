@@ -42,6 +42,7 @@ pdf_report <- function(
     remove_title_page = FALSE,
     remove_toc_page = FALSE,
     use_csi_style = FALSE,
+    use_simple_footer = FALSE,
     ...
 ) {
     css_file <- pkg_resource("pdf_report.css")
@@ -93,6 +94,10 @@ pdf_report <- function(
 
     if (remove_logo) {
         css_file <- remove_logo(file = css_file)
+    }
+
+    if (use_simple_footer) {
+        css_file <- change_footer_text(file = css_file)
     }
 
     pagedown::html_paged(
