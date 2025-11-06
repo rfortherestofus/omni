@@ -1,5 +1,5 @@
 ---
-title: "Report Title Goes Here: <br>2 Lines Max for Best Readability"
+title: "`r params$csb_name`"
 subtitle: "Sub-Headline Goes Here" 
 client_name: "[client]"
 client_city: "[city]"

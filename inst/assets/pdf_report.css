@@ -20,10 +20,10 @@
   --background-cover-page: url("images/pattern-cover-periwinkle.png");
   --steel-blue-light: #bfcbd3;
   --display-the-cover-page: block;
-  --pagedjs-margin-top: 0mm;
-  --pagedjs-margin-right: 0mm;
-  --pagedjs-margin-bottom: 0mm;
-  --pagedjs-margin-left: 0mm;
+  --pagedjs-margin-top: 25mm;
+  --pagedjs-margin-right: 15mm;
+  --pagedjs-margin-bottom: 25mm;
+  --pagedjs-margin-left: 15mm;
 }
 
 * {
