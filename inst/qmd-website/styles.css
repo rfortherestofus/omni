@@ -10,3 +10,87 @@ h3 {
   font-weight: normal;
   font-size: 1.3em;
 }
+
+/* === Omni color palette classes === */
+
+/* --- orange-red --- */
+.orange-red-600 {
+  color: #cc4100;
+}
+.orange-red-400 {
+  color: #ff5e34;
+}
+.orange-red-200 {
+  color: #ffc5aa;
+}
+
+/* --- golden yellow --- */
+.golden-yellow-600 {
+  color: #f7b925;
+}
+.golden-yellow-400 {
+  color: #fdcb2b;
+}
+.golden-yellow-200 {
+  color: #fde880;
+}
+
+/* --- olive green --- */
+.olive-green-600 {
+  color: #3b5530;
+}
+.olive-green-400 {
+  color: #89a046;
+}
+.olive-green-200 {
+  color: #b8c690;
+}
+
+/* --- teal --- */
+.teal-600 {
+  color: #41816f;
+}
+.teal-400 {
+  color: #8ac0b3;
+}
+.teal-200 {
+  color: #c5dfd9;
+}
+
+/* --- plum --- */
+.plum-600 {
+  color: #921c4c;
+}
+.plum-400 {
+  color: #c65a8b;
+}
+.plum-200 {
+  color: #dd9cb9;
+}
+
+/* --- periwinkle --- */
+.periwinkle-600 {
+  color: #5776b2;
+}
+.periwinkle-400 {
+  color: #9ba8db;
+}
+.periwinkle-200 {
+  color: #d4ddeb;
+}
+
+/* --- steel blue --- */
+.steel-blue-600 {
+  color: #405065;
+}
+.steel-blue-400 {
+  color: #677384;
+}
+.steel-blue-200 {
+  color: #bfcdd3;
+}
+
+/* --- navy --- */
+.navy {
+  color: #081c39;
+}
