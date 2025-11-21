@@ -20,10 +20,10 @@
   --background-cover-page: url("images/pattern-cover-periwinkle.png");
   --steel-blue-light: #bfcbd3;
   --display-the-cover-page: block;
-  --pagedjs-margin-top: 0mm;
-  --pagedjs-margin-right: 0mm;
-  --pagedjs-margin-bottom: 0mm;
-  --pagedjs-margin-left: 0mm;
+  --pagedjs-margin-top: 25mm;
+  --pagedjs-margin-right: 15mm;
+  --pagedjs-margin-bottom: 25mm;
+  --pagedjs-margin-left: 15mm;
 }
 
 * {
@@ -72,12 +72,18 @@
 .pagedjs_page .pagedjs_margin-bottom-center > .pagedjs_margin-content::before {
   content: "Omni Institute Report | ";
   color: var(--primary-color);
+  position: static;
+  right: 10%;
 }
 
 .pagedjs_page .pagedjs_margin-bottom-center > .pagedjs_margin-content::before,
 .pagedjs_page .pagedjs_margin-bottom-center > .pagedjs_margin-content::after {
   display: inline;
   white-space: nowrap;
+}
+
+.pagedjs_page .pagedjs_margin-bottom-center > .pagedjs_margin-content::after {
+  display: inline !important;
 }
 
 h1.title {
