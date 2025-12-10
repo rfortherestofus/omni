@@ -26,6 +26,8 @@
   : Create page break
 - [`omni_pal()`](https://rfortherestofus.github.io/omni/reference/omni_pal.md)
   : Function to interpolate a OMNI color palette
+- [`omni_set_page_start_pdf()`](https://rfortherestofus.github.io/omni/reference/omni_set_page_start_pdf.md)
+  : Set the page counter in Omni pdf reports
 - [`omni_table()`](https://rfortherestofus.github.io/omni/reference/omni_table.md)
   : OMNI Table Function
 - [`pdf_report()`](https://rfortherestofus.github.io/omni/reference/pdf_report.md)
