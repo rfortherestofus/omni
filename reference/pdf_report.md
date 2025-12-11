@@ -15,6 +15,7 @@ pdf_report(
   remove_cover_page = FALSE,
   remove_title_page = FALSE,
   remove_toc_page = FALSE,
+  reduce_margin_top_bottom = FALSE,
   use_csi_style = FALSE,
   ...
 )
@@ -59,6 +60,11 @@ pdf_report(
 - remove_toc_page:
 
   Whether to remove the TOC (table of content) page.
+
+- reduce_margin_top_bottom:
+
+  Whether to reduce top and bottom margin. It will go from 25mm to 15mm
+  in order to match left/right margin.
 
 - use_csi_style:
 
