@@ -14,6 +14,7 @@ pdf_report(
   remove_cover_page = FALSE,
   remove_title_page = FALSE,
   remove_toc_page = FALSE,
+  reduce_margin_top_bottom = FALSE,
   use_csi_style = FALSE,
   ...
 )
@@ -36,6 +37,8 @@ pdf_report(
 \item{remove_title_page}{Whether to remove the title page.}
 
 \item{remove_toc_page}{Whether to remove the TOC (table of content) page.}
+
+\item{reduce_margin_top_bottom}{Whether to reduce top and bottom margin. It will go from 25mm to 15mm in order to match left/right margin.}
 
 \item{use_csi_style}{Whether to use CSI (Center for Social Investment) styling. This basically change logos and text in the footer.}
 

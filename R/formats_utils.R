@@ -285,10 +285,30 @@ omni_set_page_start_pdf <- function(
     seq(start_from, start_from + total_pages - 1),
     ~ glue::glue(
       '[data-page-number="{.x}"] {{
-  counter-reset: page {counter_start + (.x - start_from)};
-}}'
+        counter-reset: page {counter_start + (.x - start_from)};
+      }}'
     )
   )
 
   glue::glue('<style>\n{paste(rules, collapse = "\n\n")}\n</style>')
+}
+
+
+#' Use the CSI style in HTML report
+#'
+#' @param file CSS file path
+#'
+#' @keywords internal
+reduce_bottom_and_top_margin <- function(file) {
+  css_lines <- readLines(file)
+
+  css_lines <- gsub(
+    '  margin: 25mm 15mm;',
+    '  margin: 15mm 15mm;',
+    css_lines
+  )
+
+  temp_css <- file.path(dirname(file), "temp.css")
+  writeLines(css_lines, temp_css)
+  return(temp_css)
 }

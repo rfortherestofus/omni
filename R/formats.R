@@ -6,12 +6,12 @@
 #' @export
 #'
 word_report <- function(...) {
-    reference <- pkg_resource("reference.docx")
+  reference <- pkg_resource("reference.docx")
 
-    rmarkdown::word_document(
-        reference_docx = reference,
-        ...
-    )
+  rmarkdown::word_document(
+    reference_docx = reference,
+    ...
+  )
 }
 
 #' Omni Paged PDF Report
@@ -26,83 +26,89 @@ word_report <- function(...) {
 #' @param remove_title_page Whether to remove the title page.
 #' @param remove_toc_page Whether to remove the TOC (table of content) page.
 #' @param use_csi_style Whether to use CSI (Center for Social Investment) styling. This basically change logos and text in the footer.
+#' @param reduce_margin_top_bottom Whether to reduce top and bottom margin. It will go from 25mm to 15mm in order to match left/right margin.
 #' @param ... Additional arguments passed to `pagedown::html_paged()`
 #'
 #' @return An rmd format
 #'
 #' @export
 pdf_report <- function(
-    main_font = NULL,
-    secondary_font = NULL,
-    background_cover_image = NULL,
-    background_color = NULL,
-    primary_font_color = NULL,
-    remove_logo = FALSE,
-    remove_cover_page = FALSE,
-    remove_title_page = FALSE,
-    remove_toc_page = FALSE,
-    use_csi_style = FALSE,
-    ...
+  main_font = NULL,
+  secondary_font = NULL,
+  background_cover_image = NULL,
+  background_color = NULL,
+  primary_font_color = NULL,
+  remove_logo = FALSE,
+  remove_cover_page = FALSE,
+  remove_title_page = FALSE,
+  remove_toc_page = FALSE,
+  reduce_margin_top_bottom = FALSE,
+  use_csi_style = FALSE,
+  ...
 ) {
-    css_file <- pkg_resource("pdf_report.css")
-    colors <- pkg_resource("colors.css")
-    interface_css <- pkg_resource("interface.css")
-    custom_js <- c(pkg_resource("pdf_report_js.html"))
+  css_file <- pkg_resource("pdf_report.css")
+  colors <- pkg_resource("colors.css")
+  interface_css <- pkg_resource("interface.css")
+  custom_js <- c(pkg_resource("pdf_report_js.html"))
 
-    if (remove_cover_page) {
-        custom_js <- c(
-            custom_js,
-            pkg_resource("pdf-report_remove_cover_page.html")
-        )
-    }
-
-    if (remove_title_page) {
-        custom_js <- c(
-            custom_js,
-            pkg_resource("pdf-report_remove_title_page.html")
-        )
-    }
-
-    if (remove_toc_page) {
-        custom_js <- c(
-            custom_js,
-            pkg_resource("pdf-report_remove_toc_page.html")
-        )
-    }
-
-    css_file <- change_fonts(
-        file = css_file,
-        main_font = main_font,
-        secondary_font = secondary_font
+  if (remove_cover_page) {
+    custom_js <- c(
+      custom_js,
+      pkg_resource("pdf-report_remove_cover_page.html")
     )
+  }
 
-    css_file <- change_colors(
-        file = css_file,
-        background_color = background_color,
-        primary_font_color = primary_font_color
+  if (remove_title_page) {
+    custom_js <- c(
+      custom_js,
+      pkg_resource("pdf-report_remove_title_page.html")
     )
+  }
 
-    css_file <- change_background_image(
-        file = css_file,
-        background_cover_image = background_cover_image
+  if (remove_toc_page) {
+    custom_js <- c(
+      custom_js,
+      pkg_resource("pdf-report_remove_toc_page.html")
     )
+  }
 
-    if (use_csi_style) {
-        css_file <- change_to_csi_style_pdf(file = css_file)
-    }
+  css_file <- change_fonts(
+    file = css_file,
+    main_font = main_font,
+    secondary_font = secondary_font
+  )
 
-    if (remove_logo) {
-        css_file <- remove_logo(file = css_file)
-    }
+  css_file <- change_colors(
+    file = css_file,
+    background_color = background_color,
+    primary_font_color = primary_font_color
+  )
 
-    pagedown::html_paged(
-        css = c(interface_css, css_file, colors),
-        self_contained = TRUE,
-        toc = TRUE,
-        fig_caption = TRUE,
-        includes = rmarkdown::includes(in_header = custom_js),
-        ...
-    )
+  css_file <- change_background_image(
+    file = css_file,
+    background_cover_image = background_cover_image
+  )
+
+  if (use_csi_style) {
+    css_file <- change_to_csi_style_pdf(file = css_file)
+  }
+
+  if (remove_logo) {
+    css_file <- remove_logo(file = css_file)
+  }
+
+  if (reduce_margin_top_bottom) {
+    css_file <- reduce_bottom_and_top_margin(file = css_file)
+  }
+
+  pagedown::html_paged(
+    css = c(interface_css, css_file, colors),
+    self_contained = TRUE,
+    toc = TRUE,
+    fig_caption = TRUE,
+    includes = rmarkdown::includes(in_header = custom_js),
+    ...
+  )
 }
 
 #' Omni HTML Report
@@ -113,48 +119,48 @@ pdf_report <- function(
 #'
 #' @export
 html_report <- function(
-    main_font = NULL,
-    background_color = NULL,
-    remove_logo = FALSE,
-    use_csi_style = FALSE,
-    ...
+  main_font = NULL,
+  background_color = NULL,
+  remove_logo = FALSE,
+  use_csi_style = FALSE,
+  ...
 ) {
-    css_file <- pkg_resource("html_report.css")
-    colors <- pkg_resource("colors.css")
+  css_file <- pkg_resource("html_report.css")
+  colors <- pkg_resource("colors.css")
 
-    if (use_csi_style) {
-        header <- pkg_resource("header-htmlreport-csi.html")
-        footer <- pkg_resource("footer-htmlreport-csi.html")
-    } else {
-        header <- pkg_resource("header-htmlreport.html")
-        footer <- pkg_resource("footer-htmlreport.html")
-    }
+  if (use_csi_style) {
+    header <- pkg_resource("header-htmlreport-csi.html")
+    footer <- pkg_resource("footer-htmlreport-csi.html")
+  } else {
+    header <- pkg_resource("header-htmlreport.html")
+    footer <- pkg_resource("footer-htmlreport.html")
+  }
 
-    css_file <- change_fonts(
-        file = css_file,
-        main_font = main_font,
-    )
+  css_file <- change_fonts(
+    file = css_file,
+    main_font = main_font,
+  )
 
-    css_file <- change_colors(
-        file = css_file,
-        background_color = background_color
-    )
+  css_file <- change_colors(
+    file = css_file,
+    background_color = background_color
+  )
 
-    if (remove_logo) {
-        css_file <- add_hide_logo_css(file = css_file)
-    }
+  if (remove_logo) {
+    css_file <- add_hide_logo_css(file = css_file)
+  }
 
-    if (use_csi_style) {
-        css_file <- change_to_csi_style_html(file = css_file)
-    }
+  if (use_csi_style) {
+    css_file <- change_to_csi_style_html(file = css_file)
+  }
 
-    rmarkdown::html_document(
-        css = c(css_file, colors),
-        self_contained = TRUE,
-        includes = rmarkdown::includes(
-            before_body = header,
-            after_body = footer
-        ),
-        ...
-    )
+  rmarkdown::html_document(
+    css = c(css_file, colors),
+    self_contained = TRUE,
+    includes = rmarkdown::includes(
+      before_body = header,
+      after_body = footer
+    ),
+    ...
+  )
 }
