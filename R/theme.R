@@ -16,7 +16,7 @@ theme_omni <- function(
   show_grid_lines = FALSE,
   show_legend = FALSE,
   base_family = "Inter Tight",
-  plot_background_color = "Ivory"
+  plot_background_color = "White"
 ) {
   style_wo_colors <- marquee::style_set(
     base = marquee::base_style(weight = "bold", size = 13),
@@ -139,7 +139,7 @@ theme_client <- function(
   show_grid_lines = FALSE,
   show_legend = FALSE,
   base_family = "Inter Tight",
-  plot_background_color = "Ivory"
+  plot_background_color = "White"
 ) {
   theme_omni(
     show_grid_lines = show_grid_lines,
