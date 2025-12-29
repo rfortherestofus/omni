@@ -137,9 +137,8 @@ omni_table <-
         color(part = "body", j = 1, color = "white") |>
         border(
           i = 1,
-          j = 1,
           part = "header",
-          border.bottom = fp_border(color = "white", width = 1)
+          border.bottom = fp_border(color = "white")
         )
     }
 
