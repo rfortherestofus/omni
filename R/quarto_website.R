@@ -9,24 +9,24 @@
 #'
 #' @export
 create_website <- function(output_dir) {
-    source_dir <- system.file(
-        "qmd-website",
-        package = "omni",
-        mustWork = TRUE
+  source_dir <- system.file(
+    "qmd-website",
+    package = "omni",
+    mustWork = TRUE
+  )
+
+  output_dir_full <- here::here(output_dir)
+
+  files <- list.files(source_dir, full.names = TRUE)
+  dir.create(output_dir_full, recursive = TRUE, showWarnings = FALSE)
+
+  suppressWarnings(
+    out <- file.copy(
+      from = files,
+      to = file.path(output_dir_full, basename(files)),
+      recursive = TRUE
     )
+  )
 
-    output_dir_full <- here::here(output_dir)
-
-    files <- list.files(source_dir, full.names = TRUE)
-    dir.create(output_dir_full, recursive = TRUE, showWarnings = FALSE)
-
-    suppressWarnings(
-        out <- file.copy(
-            from = files,
-            to = file.path(output_dir_full, basename(files)),
-            recursive = TRUE
-        )
-    )
-
-    file.edit(file.path(output_dir_full, "index.qmd"))
+  file.edit(file.path(output_dir_full, "index.qmd"))
 }
