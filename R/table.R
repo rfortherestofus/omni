@@ -7,6 +7,7 @@
 #' @param first_col_gray Should the first column be gray. Default to FALSE
 #' @param caption The caption of the table
 #' @param with_stripes TRUE or FALSE depending on whether a striped pattern should be used. Defaults to TRUE (which uses stripes.)
+#' @param dark_group_rows Whether or not to use a darker color (navy) for group rows when `group_by` is not NULL
 #'
 #' @return A table themed
 #' @export

@@ -9,7 +9,8 @@ omni_table(
   group_by = NULL,
   first_col_gray = FALSE,
   caption = NULL,
-  with_stripes = TRUE
+  with_stripes = TRUE,
+  dark_group_rows = FALSE
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ omni_table(
 \item{caption}{The caption of the table}
 
 \item{with_stripes}{TRUE or FALSE depending on whether a striped pattern should be used. Defaults to TRUE (which uses stripes.)}
+
+\item{dark_group_rows}{Whether or not to use a darker color (navy) for group rows when `group_by` is not NULL}
 }
 \value{
 A table themed
