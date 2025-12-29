@@ -54,7 +54,8 @@ omni_table <-
     group_by = NULL,
     first_col_gray = FALSE,
     caption = NULL,
-    with_stripes = TRUE
+    with_stripes = TRUE,
+    dark_group_rows = FALSE
   ) {
     # handle group
     if (!is.null(group_by)) {
@@ -140,6 +141,21 @@ omni_table <-
           part = "header",
           border.bottom = fp_border(color = "white")
         )
+    }
+
+    if (!is.null(group_by)) {
+      # get row nb of grouped row
+      grouped_df <- df |> as_grouped_data(group_by)
+      grouped_row_nb <- which(!is.na(grouped_df$species))
+
+      if (dark_group_rows) {
+        bg_color <- omni_colors("navy")
+      } else {
+        bg_color <- omni_colors("steel-blue-400")
+      }
+
+      table <- table |>
+        bg(part = "body", j = 1, i = grouped_row_nb, bg = bg_color)
     }
 
     table |>
