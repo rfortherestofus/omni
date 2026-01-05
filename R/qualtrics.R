@@ -21,17 +21,11 @@ qualtrics_register <-
     }
 
     keyconcat <-
-      paste0("QUALTRICS_API_KEY_", organization_name, " = '", api_key,
-             "'")
+      paste0("QUALTRICS_API_KEY_", organization_name, " = '", api_key, "'")
     urlconcat <-
-      paste0("QUALTRICS_BASE_URL_",
-             organization_name,
-             " = '",
-             base_url,
-             "'")
+      paste0("QUALTRICS_BASE_URL_", organization_name, " = '", base_url, "'")
     write(keyconcat, renv, sep = "\n", append = TRUE)
     write(urlconcat, renv, sep = "\n", append = TRUE)
-
   }
 
 #' Read Renviron Qualtrics variables
@@ -50,8 +44,7 @@ read_renviron_qualtrics <- function(organization_name = "OMNI") {
     Sys.getenv(paste0("QUALTRICS_BASE_URL_", organization_name))
 
   # return
-  list("api_key" = api_key_renviron,
-       "base_url" = base_url_renviron)
+  list("api_key" = api_key_renviron, "base_url" = base_url_renviron)
 }
 
 #' Connect to Qualtrics
@@ -68,19 +61,21 @@ read_renviron_qualtrics <- function(organization_name = "OMNI") {
 #' @export
 #'
 qualtrics_connect <-
-  function(organization_name = "OMNI",
-           api_key = "",
-           base_url = "") {
+  function(organization_name = "OMNI", api_key = "", base_url = "") {
     # read Renviron
     list_connect_vars <-
       read_renviron_qualtrics(organization_name = organization_name)
 
     # connect
-    try(suppressMessages(
-      qualtRics::qualtrics_api_credentials(api_key = list_connect_vars$api_key,
-                                           base_url = list_connect_vars$base_url)
-    ),
-    silent = TRUE)
+    try(
+      suppressMessages(
+        qualtRics::qualtrics_api_credentials(
+          api_key = list_connect_vars$api_key,
+          base_url = list_connect_vars$base_url
+        )
+      ),
+      silent = TRUE
+    )
 
     # test connection
     # taken from https://stackoverflow.com/questions/2158780/catching-an-error-and-then-branching-logic
@@ -97,8 +92,7 @@ qualtrics_connect <-
         print("Base URL or API key are missing, please provide them")
 
         stop()
-
-      } else{
+      } else {
         qualtrics_register(
           organization_name = organization_name,
           api_key = api_key,
@@ -110,13 +104,15 @@ qualtrics_connect <-
         read_renviron_qualtrics(organization_name = organization_name)
 
       # try connection again
-      try(suppressMessages(
-        qualtRics::qualtrics_api_credentials(
-          api_key = list_connect_vars$api_key,
-          base_url = list_connect_vars$base_url
-        )
-      ),
-      silent = TRUE)
+      try(
+        suppressMessages(
+          qualtRics::qualtrics_api_credentials(
+            api_key = list_connect_vars$api_key,
+            base_url = list_connect_vars$base_url
+          )
+        ),
+        silent = TRUE
+      )
 
       # test connection again
       t_bis <- try(qualtrics_list_surveys(), silent = TRUE)
@@ -125,19 +121,16 @@ qualtrics_connect <-
         print("Problem somewhere please check your inputs")
 
         stop()
-
-      } else{
+      } else {
         # ----
         # ALL OK after that
         print("Connection ok")
       }
-
-    } else{
+    } else {
       # ----
       # ALL OK on first try
       print("Connection ok")
     }
-
   }
 
 #' Get surveys
@@ -161,10 +154,7 @@ qualtrics_list_surveys <- function() {
 #'
 #' @importFrom rlang .data
 qualtrics_get_survey <-
-  function(survey_id_name,
-           convert = FALSE,
-           var_labels = FALSE,
-           ...) {
+  function(survey_id_name, convert = FALSE, var_labels = FALSE, ...) {
     if (substr(survey_id_name, 1, 3) == "SV_") {
       # by ID
       qualtRics::fetch_survey(
@@ -176,7 +166,7 @@ qualtrics_get_survey <-
         add_var_labels = var_labels,
         ...
       )
-    } else{
+    } else {
       # by name
       survey_id <- qualtRics::all_surveys() |>
         dplyr::filter(.data$name == survey_id_name) |>

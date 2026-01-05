@@ -14,7 +14,10 @@ set_omni_defaults <- function(
 ) {
   # set default theme -----------------------------------------------------
 
-  ggplot2::theme_set(omni::theme_omni(base_family = base_family))
+  ggplot2::theme_set(omni::theme_omni(
+    base_family = base_family,
+    plot_background_color = "White"
+  ))
 
   # add base_family font to text and label geoms ---------------------------
 
