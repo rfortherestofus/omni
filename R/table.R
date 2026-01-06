@@ -91,7 +91,7 @@ omni_table <-
     if (!is.null(group_by)) {
       # get row nb of grouped row
       grouped_df <- df |> as_grouped_data(group_by)
-      grouped_row_nb <- which(!is.na(grouped_df$species))
+      grouped_row_nb <- which(!is.na(grouped_df[[group_by[1]]]))
 
       table <- table |>
         bg(
