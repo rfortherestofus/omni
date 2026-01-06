@@ -234,9 +234,6 @@ li li .toc-section-number {
   font-family: var(--header-font);
 }
 
-.client-name {
-  margin-bottom: 325pt;
-}
 
 p.for-more-info,
 p.acknowledge,
@@ -247,9 +244,21 @@ p.suggested-citation {
   letter-spacing: 0.05em;
 }
 
+div.front-page {
+  display: flex;
+  height: -webkit-fill-available;
+}
+
 /* by default, abstracts have smaller width */
 div.abstract {
   width: 100% !important;
+  display: flex;
+  flex-direction: column;
+}
+
+div.end-of-abstract {
+  margin-top: auto;
+  margin-bottom: 1em;
 }
 
 /* remove the h3 title "Abstract" */
