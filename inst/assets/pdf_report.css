@@ -685,6 +685,15 @@ hr {
   display: none;
 }
 
+/* we need to explicit this because this seems browser-specific */
+/* https://github.com/rfortherestofus/omni/issues/201 */
+[data-footnote-call]::after {
+  vertical-align: super !important;
+  font-size: 65% !important;
+  line-height: normal;
+  content: counter(footnote);
+}
+
 /* top line in footnote sections */
 div.pagedjs_footnote_area::before {
   content: "";
