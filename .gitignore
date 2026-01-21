@@ -25,3 +25,4 @@ temp.*
 *_files/
 
 sandbox/
+.claude/settings.local.json
