@@ -6,7 +6,7 @@
 #' @param show_legend Whether or not to show the legend. FALSE by default.
 #' @param base_family Base font family. Inter Tight by default.
 #' @param show_grid_lines Whether or not to show grid lines. FALSE by default.
-#' @param plot_background_color Whether to make background color Ivory or White
+#' @param plot_background_color Plot background color. White by default, can be set to Ivory.
 #'
 #' @return A ggplot2 theme
 #' @export
@@ -53,14 +53,14 @@ theme_omni <- function(
       axis.title.x = element_text(
         margin = margin(15, 0, 0, 0),
         size = 14,
-        color = "#333333"
+        color = "#000000"
       ),
       axis.title.y = element_text(
         margin = margin(0, 15, 0, 0),
         size = 12,
-        color = "#333333"
+        color = "#000000"
       ),
-      axis.text = element_text(size = 11),
+      axis.text = element_text(size = 12, color = "#000000"),
       plot.title = marquee::element_marquee(
         margin = margin(0, 0, 0, 0),
         color = "#666665",
@@ -95,8 +95,8 @@ theme_omni <- function(
         unit = "points"
       ),
       plot.background = element_rect(
-        fill = omni_colors("ivory"),
-        color = omni_colors("ivory")
+        fill = omni_colors("white"),
+        color = omni_colors("white")
       )
     )
 
@@ -110,12 +110,12 @@ theme_omni <- function(
       theme(legend.position = "none")
   }
 
-  if (plot_background_color |> stringr::str_to_lower() == "white") {
+  if (plot_background_color |> stringr::str_to_lower() == "ivory") {
     omni_theme <- omni_theme +
       theme(
         plot.background = element_rect(
-          fill = omni_colors("white"),
-          color = omni_colors("white")
+          fill = omni_colors("ivory"),
+          color = omni_colors("ivory")
         )
       )
   }
@@ -129,7 +129,7 @@ theme_omni <- function(
 #' @param show_legend Whether or not to show the legend. FALSE by default.
 #' @param base_family Base font family. Inter Tight by default.
 #' @param show_grid_lines Whether or not to show grid lines. FALSE by default.
-#' @param plot_background_color Whether to make background color Ivory or White
+#' @param plot_background_color Plot background color. White by default, can be set to Ivory.
 #'
 #' @return A ggplot2 theme
 #' @export

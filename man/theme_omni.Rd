@@ -8,7 +8,7 @@ theme_omni(
   show_grid_lines = FALSE,
   show_legend = FALSE,
   base_family = "Inter Tight",
-  plot_background_color = "Ivory"
+  plot_background_color = "White"
 )
 }
 \arguments{
@@ -18,7 +18,7 @@ theme_omni(
 
 \item{base_family}{Base font family. Inter Tight by default.}
 
-\item{plot_background_color}{Whether to make background color Ivory or White}
+\item{plot_background_color}{Plot background color. White by default, can be set to Ivory.}
 }
 \value{
 A ggplot2 theme
