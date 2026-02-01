@@ -654,6 +654,11 @@ hr {
   padding-top: 275px;
 }
 
+.appendix-pattern-only {
+  position: relative;
+  height: 300px;
+}
+
 #page-1 {
   display: var(--display-the-cover-page);
 }
