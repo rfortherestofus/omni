@@ -5,7 +5,23 @@ to the following technical standards and coding conventions defined
 below. If instructions conflict with these rules, prioritize these rules
 unless explicitly overridden.
 
-------------------------------------------------------------------------
+## About the project
+
+This project consists of an R package for the Omni Insititute
+(<https://www.omni.org/>) with internal functions. It also contains
+rmarkdown template for them to use:
+
+- html template
+  (inst/rmarkdown/templates/report-html/skeleton/skeleton.Rmd)
+- pdf template
+  (inst/rmarkdown/templates/report-pdf/skeleton/skeleton.Rmd). The pdf
+  template used paged.js to convert a web page into a pdf.
+
+Those templates use a lot of assets (css, js, etc) from inst/assets/ and
+are created using functions inside R/formats.R and R/formats_utils.R in
+order to have full control over the output.
+
+## Coding rules
 
 General coding rules to follow for the R programming language:
 
