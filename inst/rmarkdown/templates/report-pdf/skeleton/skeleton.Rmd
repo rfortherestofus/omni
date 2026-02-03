@@ -489,7 +489,7 @@ icon_text_grid(
 ::: {.appendix-pattern-only}
 
 ::: {.pattern-appendix}
-![](https://github.com/rfortherestofus/omni/blob/rebrand/inst/assets/images/pattern-appendix.png?raw=true)
+![](https://github.com/rfortherestofus/omni/blob/main/inst/assets/images/pattern-appendix.png?raw=true)
 :::
 
 :::
