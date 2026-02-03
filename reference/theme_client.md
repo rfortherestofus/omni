@@ -9,7 +9,7 @@ theme_client(
   show_grid_lines = FALSE,
   show_legend = FALSE,
   base_family = "Inter Tight",
-  plot_background_color = "Ivory"
+  plot_background_color = "White"
 )
 ```
 
@@ -29,7 +29,7 @@ theme_client(
 
 - plot_background_color:
 
-  Whether to make background color Ivory or White
+  Plot background color. White by default, can be set to Ivory.
 
 ## Value
 

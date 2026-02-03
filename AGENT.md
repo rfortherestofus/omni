@@ -32,7 +32,7 @@ General coding rules to follow for the R programming language:
 - For less common packages, give installation instructions using `pak`:
   [`pak::pkg_install()`](https://pak.r-lib.org/reference/pkg_install.html).
 - Make the code as consistent as possible
-- Avoid as much as reasonnable code dupplications
+- Avoid as much as reasonable code dupplications
 - Warn users when code would benefit from a refactoring, without
   blocking them.
 - Always use the `<-` operator when assigning a variable/functions.
