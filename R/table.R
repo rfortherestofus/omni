@@ -7,6 +7,7 @@
 #' @param first_col_gray Should the first column be gray. Default to FALSE
 #' @param caption The caption of the table
 #' @param with_stripes TRUE or FALSE depending on whether a striped pattern should be used. Defaults to TRUE (which uses stripes.)
+#' @param dark_group_rows Whether or not to use a darker color (navy) for group rows when `group_by` is not NULL
 #'
 #' @return A table themed
 #' @export
@@ -54,7 +55,8 @@ omni_table <-
     group_by = NULL,
     first_col_gray = FALSE,
     caption = NULL,
-    with_stripes = TRUE
+    with_stripes = TRUE,
+    dark_group_rows = FALSE
   ) {
     # handle group
     if (!is.null(group_by)) {
@@ -89,7 +91,7 @@ omni_table <-
     if (!is.null(group_by)) {
       # get row nb of grouped row
       grouped_df <- df |> as_grouped_data(group_by)
-      grouped_row_nb <- which(!is.na(grouped_df$species))
+      grouped_row_nb <- which(!is.na(grouped_df[[group_by[1]]]))
 
       table <- table |>
         bg(
@@ -137,10 +139,24 @@ omni_table <-
         color(part = "body", j = 1, color = "white") |>
         border(
           i = 1,
-          j = 1,
           part = "header",
-          border.bottom = fp_border(color = "white", width = 1)
+          border.bottom = fp_border(color = "white")
         )
+    }
+
+    if (!is.null(group_by)) {
+      # get row nb of grouped row
+      grouped_df <- df |> as_grouped_data(group_by)
+      grouped_row_nb <- which(!is.na(grouped_df$species))
+
+      if (dark_group_rows) {
+        bg_color <- omni_colors("navy")
+      } else {
+        bg_color <- omni_colors("steel-blue-400")
+      }
+
+      table <- table |>
+        bg(part = "body", j = 1, i = grouped_row_nb, bg = bg_color)
     }
 
     table |>
