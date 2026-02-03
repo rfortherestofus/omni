@@ -5,7 +5,7 @@ client_name: "[client]"
 client_city: "[city]"
 client_state: "[state]"
 report_year: "[year]"
-acknowledgements: "[...]"
+acknowledgements: "**[one name, and another name, and more names, and lots of names]**"
 date: "`r toupper(format(Sys.time(), '%B %Y'))`"
 toc-title: "Table of Contents"
 output:
