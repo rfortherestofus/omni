@@ -11,7 +11,7 @@ omni_set_page_start_pdf(start_from, counter_start, total_pages = 100)
 
 \item{counter_start}{The value of the first page}
 
-\item{total_pages}{Number of pages to generate CSS for (default: 100)}
+\item{total_pages}{Deprecated. Kept for backward compatibility.}
 }
 \value{
 An HTML character for rmarkdown

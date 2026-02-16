@@ -8,6 +8,8 @@
 #' files.
 #'
 #' @export
+#'
+#' @importFrom utils file.edit
 create_website <- function(output_dir) {
   source_dir <- system.file(
     "qmd-website",

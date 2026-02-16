@@ -25,7 +25,7 @@ This function creates the HTML & CSS that places the icons and texts from `omni_
 
 width_px <- 50
 icon_color_fg <- "white"
-icon_color_bg <- 'teal 600'
+icon_color_bg <- 'teal-600'
 
 icon_text_grid(
   omni_icon('education', width_px, icon_color_bg, icon_color_fg),
