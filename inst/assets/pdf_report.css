@@ -234,7 +234,6 @@ li li .toc-section-number {
   font-family: var(--header-font);
 }
 
-
 p.for-more-info,
 p.acknowledge,
 p.suggested-citation {
@@ -247,6 +246,11 @@ p.suggested-citation {
 div.front-page {
   display: flex;
   height: -webkit-fill-available;
+}
+
+.pagedjs_first_page div.front-page,
+.pagedjs_page[data-page-number="1"] div.front-page {
+  flex-direction: column !important;
 }
 
 /* by default, abstracts have smaller width */
@@ -324,10 +328,20 @@ h1.title:nth-child(1):not(.abstract h1) {
 h1.subtitle:nth-child(2):not(.abstract h1) {
   margin-top: 0.5in;
   padding-top: 0.2in;
-  border-top: 1px solid #d4ddeb;
   font-family: var(--header-font);
   font-weight: bolder;
   font-size: 16pt;
+  position: relative;
+}
+
+h1.subtitle:nth-child(2):not(.abstract h1)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3in;
+  height: 1px;
+  background: #d4ddeb;
 }
 
 /* Abstract title and subtitle */
