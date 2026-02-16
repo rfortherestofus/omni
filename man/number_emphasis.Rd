@@ -29,7 +29,7 @@ number_emphasis(
    number = 1234,
    text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
    color = 'teal 400'
-),
+)
 
 htmltools::browsable(
  htmltools::div(

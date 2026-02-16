@@ -12,14 +12,12 @@ BugReports: https://github.com/rfortherestofus/omni/issues
 Depends: 
     R (>= 4.1)
 Imports: 
-    bookdown,
     tibble,
     dplyr,
     flextable,
     fs,
     ggplot2,
     ggrepel,
-    ggtext,
     grDevices,
     knitr,
     glue,
@@ -31,9 +29,13 @@ Imports:
     stringr,
     gt,
     sjlabelled,
-    officedown,
     marquee,
-    palmerpenguins
+    cli,
+    here,
+    htmltools,
+    purrr,
+    qpdf,
+    xml2
 Suggests:
     gghighlight,
     scales,

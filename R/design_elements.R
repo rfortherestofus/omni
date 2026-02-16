@@ -103,7 +103,7 @@ quote_box <- function(
             margin_top = '15px',
             background = paste(color_hex, '!important;')
           ),
-          paste('—', author)
+          paste('-', author)
         )
       }
     ),
@@ -246,7 +246,7 @@ callout_box <- function(
 #'    number = 1234,
 #'    text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
 #'    color = 'teal 400'
-#' ),
+#' )
 #'
 #' htmltools::browsable(
 #'  htmltools::div(
@@ -541,7 +541,7 @@ icon_text <- function(text, width_px = 400) {
 #'
 #' width_px <- 50
 #' icon_color_fg <- "white"
-#' icon_color_bg <- 'teal 600'
+#' icon_color_bg <- 'teal-600'
 #'
 #' icon_text_grid(
 #'   omni_icon('education', width_px, icon_color_bg, icon_color_fg),

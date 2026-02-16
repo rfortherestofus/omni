@@ -113,6 +113,10 @@ pdf_report <- function(
 
 #' Omni HTML Report
 #'
+#' @param main_font Main font for the report
+#' @param background_color Background color
+#' @param remove_logo Whether to remove Omni logo or not
+#' @param use_csi_style Whether to use CSI style or not
 #' @param ... Params to pagedown::html_paged
 #'
 #' @return An rmd format

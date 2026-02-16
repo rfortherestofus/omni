@@ -6,8 +6,12 @@
 ^pkgdown/
 ^doc/
 ^\.github$
+^\.quarto$
 ^_pkgdown\.yml$
+^air\.toml$
+^AGENTS\.md$
 ^docs$
+^bookdown$
 ^pkgdown$
 inst/reference/
 ^.*\.pdf

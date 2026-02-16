@@ -29,6 +29,8 @@ remove_logo <- function(file) {
 #' @param background_cover_image Path to the new background image
 #'
 #' @keywords internal
+#'
+#' @importFrom stats setNames
 change_background_image <- function(file, background_cover_image) {
   css_lines <- readLines(file)
 
