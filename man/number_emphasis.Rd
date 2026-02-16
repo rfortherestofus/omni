@@ -28,7 +28,7 @@ This function creates the HTML & CSS for the desired number emphasis.
 number_emphasis(
    number = 1234,
    text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
-   color = 'teal 400'
+   color = 'teal-400'
 )
 
 htmltools::browsable(
@@ -37,37 +37,37 @@ htmltools::browsable(
    number_emphasis(
      number = 1,
      text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
-     color = 'teal 400'
+     color = 'teal-400'
    ),
    htmltools::br(),
    number_emphasis(
      number = 12,
      text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
-     color = 'teal 400'
+     color = 'teal-400'
    ),
    htmltools::br(),
    number_emphasis(
      number = 123,
      text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
-     color = 'teal 400'
+     color = 'teal-400'
    ),
    htmltools::br(),
    number_emphasis(
      number = 1234,
      text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
-     color = 'teal 400'
+     color = 'teal-400'
    ),
    htmltools::br(),
    number_emphasis(
      number = '12.1K',
      text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
-     color = 'teal 400'
+     color = 'teal-400'
    ),
    htmltools::br(),
    number_emphasis(
      number = '123,456',
      text = 'and some shorter text as well.',
-     color = 'teal 400',
+     color = 'teal-400',
      font_size_pt = 14
    )
  )

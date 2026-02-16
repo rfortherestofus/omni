@@ -20,5 +20,5 @@ Continuous color scale based on OMNI colors
 library(ggplot2)
 ggplot(mpg, aes(x = displ, y = hwy, color = hwy)) +
     geom_point(size = 2.5) +
-    scale_color_omni_continuous()
+    scale_color_omni_continuous("orange-red")
 }

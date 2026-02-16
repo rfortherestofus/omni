@@ -245,7 +245,7 @@ callout_box <- function(
 #' number_emphasis(
 #'    number = 1234,
 #'    text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
-#'    color = 'teal 400'
+#'    color = 'teal-400'
 #' )
 #'
 #' htmltools::browsable(
@@ -254,37 +254,37 @@ callout_box <- function(
 #'    number_emphasis(
 #'      number = 1,
 #'      text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
-#'      color = 'teal 400'
+#'      color = 'teal-400'
 #'    ),
 #'    htmltools::br(),
 #'    number_emphasis(
 #'      number = 12,
 #'      text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
-#'      color = 'teal 400'
+#'      color = 'teal-400'
 #'    ),
 #'    htmltools::br(),
 #'    number_emphasis(
 #'      number = 123,
 #'      text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
-#'      color = 'teal 400'
+#'      color = 'teal-400'
 #'    ),
 #'    htmltools::br(),
 #'    number_emphasis(
 #'      number = 1234,
 #'      text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
-#'      color = 'teal 400'
+#'      color = 'teal-400'
 #'    ),
 #'    htmltools::br(),
 #'    number_emphasis(
 #'      number = '12.1K',
 #'      text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
-#'      color = 'teal 400'
+#'      color = 'teal-400'
 #'    ),
 #'    htmltools::br(),
 #'    number_emphasis(
 #'      number = '123,456',
 #'      text = 'and some shorter text as well.',
-#'      color = 'teal 400',
+#'      color = 'teal-400',
 #'      font_size_pt = 14
 #'    )
 #'  )
@@ -410,7 +410,7 @@ omni_icons()
 #' @returns HTML & CSS that of the desired icon (can be transformed into plain text using `as.character()`)
 #'
 #' @examples
-#' omni_icon('education', 50, 'teal 600', 'white')
+#' omni_icon('education', 50, 'teal-600', 'white')
 #'
 #' @export
 omni_icon <- function(

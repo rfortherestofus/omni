@@ -35,7 +35,9 @@ Imports:
     htmltools,
     purrr,
     qpdf,
-    xml2
+    xml2,
+    palmerpenguins,
+    commonmark
 Suggests:
     gghighlight,
     scales,
