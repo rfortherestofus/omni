@@ -224,7 +224,13 @@ li li .toc-section-number {
 }
 
 .toc a::after {
+  content: target-counter(attr(href), page);
+  float: right;
   background-color: var(--background-color);
+}
+
+.toc a.front-matter-ref::after {
+  content: target-counter(attr(href), page, lower-roman);
 }
 
 /* --------------------- Abstract --------------------- */
