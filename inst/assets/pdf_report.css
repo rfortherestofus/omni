@@ -245,7 +245,9 @@ p.suggested-citation {
 
 div.front-page {
   display: flex;
+  flex-direction: column;
   height: -webkit-fill-available;
+  min-height: 100%;
 }
 
 .pagedjs_first_page div.front-page,
@@ -258,6 +260,7 @@ div.abstract {
   width: 100% !important;
   display: flex;
   flex-direction: column;
+  flex: 1 1 auto;
 }
 
 div.end-of-abstract {
