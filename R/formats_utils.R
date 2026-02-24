@@ -29,6 +29,8 @@ remove_logo <- function(file) {
 #' @param background_cover_image Path to the new background image
 #'
 #' @keywords internal
+#'
+#' @importFrom stats setNames
 change_background_image <- function(file, background_cover_image) {
   css_lines <- readLines(file)
 
@@ -271,7 +273,7 @@ change_to_csi_style_html <- function(file) {
 #'
 #' @param start_from The page on which the counter should restart
 #' @param counter_start The value of the first page
-#' @param total_pages Number of pages to generate CSS for (default: 100)
+#' @param total_pages Deprecated. Kept for backward compatibility.
 #'
 #' @import glue
 #' @return An HTML character for rmarkdown
@@ -281,16 +283,16 @@ omni_set_page_start_pdf <- function(
   counter_start,
   total_pages = 100
 ) {
-  rules <- purrr::map_chr(
-    seq(start_from, start_from + total_pages - 1),
-    ~ glue::glue(
-      '[data-page-number="{.x}"] {{
-        counter-reset: page {counter_start + (.x - start_from)};
-      }}'
-    )
+  # Keep `total_pages` for backward compatibility, but only reset once.
+  # Multiple `counter-reset: page ...` rules prevent TOC target-counter()
+  # values from resolving in paged.js.
+  rule <- glue::glue(
+    '[data-page-number="{start_from}"] {{
+      counter-reset: page {counter_start};
+    }}'
   )
 
-  glue::glue('<style>\n{paste(rules, collapse = "\n\n")}\n</style>')
+  glue::glue('<style>\n{rule}\n</style>')
 }
 
 

@@ -13,6 +13,14 @@ html_report(
 )
 }
 \arguments{
+\item{main_font}{Main font for the report}
+
+\item{background_color}{Background color}
+
+\item{remove_logo}{Whether to remove Omni logo or not}
+
+\item{use_csi_style}{Whether to use CSI style or not}
+
 \item{...}{Params to pagedown::html_paged}
 }
 \value{

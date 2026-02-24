@@ -23,6 +23,6 @@ This function creates the HTML & CSS for the icon that should be placed into the
 The HTML container of the icon always centers inside the surrounding environment.
 }
 \examples{
-omni_icon('education', 50, 'teal 600', 'white')
+omni_icon('education', 50, 'teal-600', 'white')
 
 }

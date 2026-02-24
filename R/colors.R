@@ -165,7 +165,7 @@ omni_pal <- function(
 #' library(ggplot2)
 #' ggplot(mpg, aes(x = displ, y = hwy, color = hwy)) +
 #'     geom_point(size = 2.5) +
-#'     scale_color_omni_continuous()
+#'     scale_color_omni_continuous("orange-red")
 scale_color_omni_continuous <- function(
   palette,
   reverse = FALSE,
@@ -211,7 +211,7 @@ scale_color_omni_continuous <- function(
 #'
 #' ggplot(mpg_summary, aes(x = class, y = avg_hwy, fill = avg_hwy)) +
 #'   geom_bar(stat = "identity") +
-#'   scale_fill_omni_continuous()
+#'   scale_fill_omni_continuous("orange-red")
 scale_fill_omni_continuous <- function(
   palette,
   reverse = FALSE,
