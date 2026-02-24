@@ -43,6 +43,5 @@ mpg_summary <- mpg |>
 
 ggplot(mpg_summary, aes(x = class, y = avg_hwy, fill = avg_hwy)) +
   geom_bar(stat = "identity") +
-  scale_fill_omni_continuous()
-#> Error in scale_fill_omni_continuous(): argument "palette" is missing, with no default
+  scale_fill_omni_continuous("orange-red")
 ```

@@ -37,11 +37,13 @@ using \`as.character()\`)
 ## Examples
 
 ``` r
-omni_icon('education', 50, 'teal 600', 'white')
-#> Error in omni_icon("education", 50, "teal 600", "white"): `icon_color_bg` must be one of "white", "ivory", "ivory-400",
-#> "orange-red-200", "orange-red-400", "orange-red-600", "golden-yellow-200",
-#> "golden-yellow-400", "golden-yellow-600", "olive-green-200", "olive-green-400",
-#> "olive-green-600", "teal-200", "teal-400", "teal-600", "plum-200", "plum-400",
-#> "plum-600", …, "steel-blue-600", and "navy". See `omni_colors()`
-#> (`?omni::omni_colors()`).
+omni_icon('education', 50, 'teal-600', 'white')
+#> <div style="background:#41816F;width:30px;height:30px;display:flex;margin:auto;border-radius:100%;padding:10px;box-sizing:content-box;">
+#>   <div style="margin:auto;background:#41816F;"><?xml version="1.0" encoding="UTF-8"?>
+#> <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 70 70" fill="none" style="background:#41816F;">
+#>   <path d="M11.1533 33.8992V51.0154C17.6637 55.4932 25.5468 58.1259 34.0449 58.1259C42.543 58.1259 49.6535 55.7482 55.9764 51.6604V34.2442L34.0449 42.1048L11.1533 33.8992Z" fill="white"/>
+#>   <path d="M64.0792 35.0842V21.7708L34.0396 11L4 21.7708V26.6236L34.0396 37.3944L61.079 27.6962V36.1568L59.4364 36.7418V42.7873L65.7144 40.5371V34.4917L64.0717 35.0767L64.0792 35.0842ZM34.0396 23.5334C31.2419 23.5334 28.9693 22.7458 28.9693 21.7708C28.9693 20.7957 31.2419 20.0081 34.0396 20.0081C36.8373 20.0081 39.11 20.7957 39.11 21.7708C39.11 22.7458 36.8373 23.5334 34.0396 23.5334Z" fill="white"/>
+#> </svg>
+#> </div>
+#> </div>
 ```

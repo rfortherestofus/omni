@@ -72,7 +72,63 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">number_emphasis</span><span class="op">(</span></span></span>
+<span class="r-in"><span>   number <span class="op">=</span> <span class="fl">1234</span>,</span></span>
+<span class="r-in"><span>   text <span class="op">=</span> <span class="st">'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.'</span>,</span></span>
+<span class="r-in"><span>   color <span class="op">=</span> <span class="st">'teal-400'</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;div style="width:300px;display:flex;font-weight:600;"&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;div style="font-size:16pt;color:black;background:white !important;border:5px solid #8AC0B3;border-radius:100%;aspect-ratio:1;width:75px;height:75px;display:flex;z-index:1;"&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;div style="margin:auto;background:white !important;"&gt;1234&lt;/div&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/div&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;div style="background:#8AC0B3;height:80%;font-size:12pt;margin-top:auto;margin-bottom:auto;margin-left:-30px;padding-left:55px;padding-right:10px;padding-top:2px;padding-bottom:2px;z-index:0;"&gt;pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.&lt;/div&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/div&gt;</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">htmltools</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/htmltools/reference/browsable.html" class="external-link">browsable</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span> <span class="fu">htmltools</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">div</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>   style <span class="op">=</span> <span class="st">'font-family: "Inter Tight"'</span>,</span></span>
+<span class="r-in"><span>   <span class="fu">number_emphasis</span><span class="op">(</span></span></span>
+<span class="r-in"><span>     number <span class="op">=</span> <span class="fl">1</span>,</span></span>
+<span class="r-in"><span>     text <span class="op">=</span> <span class="st">'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.'</span>,</span></span>
+<span class="r-in"><span>     color <span class="op">=</span> <span class="st">'teal-400'</span></span></span>
+<span class="r-in"><span>   <span class="op">)</span>,</span></span>
+<span class="r-in"><span>   <span class="fu">htmltools</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">br</a></span><span class="op">(</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>   <span class="fu">number_emphasis</span><span class="op">(</span></span></span>
+<span class="r-in"><span>     number <span class="op">=</span> <span class="fl">12</span>,</span></span>
+<span class="r-in"><span>     text <span class="op">=</span> <span class="st">'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.'</span>,</span></span>
+<span class="r-in"><span>     color <span class="op">=</span> <span class="st">'teal-400'</span></span></span>
+<span class="r-in"><span>   <span class="op">)</span>,</span></span>
+<span class="r-in"><span>   <span class="fu">htmltools</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">br</a></span><span class="op">(</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>   <span class="fu">number_emphasis</span><span class="op">(</span></span></span>
+<span class="r-in"><span>     number <span class="op">=</span> <span class="fl">123</span>,</span></span>
+<span class="r-in"><span>     text <span class="op">=</span> <span class="st">'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.'</span>,</span></span>
+<span class="r-in"><span>     color <span class="op">=</span> <span class="st">'teal-400'</span></span></span>
+<span class="r-in"><span>   <span class="op">)</span>,</span></span>
+<span class="r-in"><span>   <span class="fu">htmltools</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">br</a></span><span class="op">(</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>   <span class="fu">number_emphasis</span><span class="op">(</span></span></span>
+<span class="r-in"><span>     number <span class="op">=</span> <span class="fl">1234</span>,</span></span>
+<span class="r-in"><span>     text <span class="op">=</span> <span class="st">'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.'</span>,</span></span>
+<span class="r-in"><span>     color <span class="op">=</span> <span class="st">'teal-400'</span></span></span>
+<span class="r-in"><span>   <span class="op">)</span>,</span></span>
+<span class="r-in"><span>   <span class="fu">htmltools</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">br</a></span><span class="op">(</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>   <span class="fu">number_emphasis</span><span class="op">(</span></span></span>
+<span class="r-in"><span>     number <span class="op">=</span> <span class="st">'12.1K'</span>,</span></span>
+<span class="r-in"><span>     text <span class="op">=</span> <span class="st">'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.'</span>,</span></span>
+<span class="r-in"><span>     color <span class="op">=</span> <span class="st">'teal-400'</span></span></span>
+<span class="r-in"><span>   <span class="op">)</span>,</span></span>
+<span class="r-in"><span>   <span class="fu">htmltools</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">br</a></span><span class="op">(</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>   <span class="fu">number_emphasis</span><span class="op">(</span></span></span>
+<span class="r-in"><span>     number <span class="op">=</span> <span class="st">'123,456'</span>,</span></span>
+<span class="r-in"><span>     text <span class="op">=</span> <span class="st">'and some shorter text as well.'</span>,</span></span>
+<span class="r-in"><span>     color <span class="op">=</span> <span class="st">'teal-400'</span>,</span></span>
+<span class="r-in"><span>     font_size_pt <span class="op">=</span> <span class="fl">14</span></span></span>
+<span class="r-in"><span>   <span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span> <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>

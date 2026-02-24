@@ -29,6 +29,5 @@ scale_color_omni_continuous(palette, reverse = FALSE, ...)
 library(ggplot2)
 ggplot(mpg, aes(x = displ, y = hwy, color = hwy)) +
     geom_point(size = 2.5) +
-    scale_color_omni_continuous()
-#> Error in scale_color_omni_continuous(): argument "palette" is missing, with no default
+    scale_color_omni_continuous("orange-red")
 ```

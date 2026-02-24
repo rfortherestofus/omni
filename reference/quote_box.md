@@ -51,7 +51,7 @@ htmltools::browsable(
 
   
     "This is a quote box. You can change text color to highlight certain parts, or just leave the text all white. Change the background color as desired to match the page."
-    — John Jacob, random guy
+    - John Jacob, random guy
   
   
 
@@ -66,7 +66,7 @@ htmltools::browsable(
 
   
     "This is a quote box. You can change text color to highlight certain parts, or just leave the text all white. Change the background color as desired to match the page."
-    — John Jacob, random guy
+    - John Jacob, random guy
   
   
 
