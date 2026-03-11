@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @importFrom utils file.edit
-create_website <- function(output_dir) {
+create_website <- function(output_dir, brand_details = NULL) {
   source_dir <- system.file(
     "qmd-website",
     package = "omni",
@@ -29,6 +29,23 @@ create_website <- function(output_dir) {
       recursive = TRUE
     )
   )
+
+  if (!is.null(brand_details)) {
+    if (!inherits(brand_details, "omni::Brand")) {
+      cli::cli_abort(
+        "{.arg brand_details} must be Brand object (created with {.fun Brand})"
+      )
+    }
+    cli::cli_alert_info('Using custom branding.')
+  } else {
+    cli::cli_alert_info('Using default branding.')
+    brand_details <- get_default_brand()
+  }
+
+  path_new_brand_file <- here::here(output_dir_full, '_brand.yml')
+  brand_details |>
+    brand_to_list() |>
+    yaml::write_yaml(path_new_brand_file)
 
   file.edit(file.path(output_dir_full, "index.qmd"))
 }
