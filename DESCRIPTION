@@ -37,7 +37,9 @@ Imports:
     qpdf,
     xml2,
     palmerpenguins,
-    commonmark
+    commonmark,
+    S7,
+    yaml
 Suggests:
     gghighlight,
     scales,

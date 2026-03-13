@@ -1,30 +1,3 @@
-# --- Top-level Brand class ---
-
-#' Brand
-#'
-#' @description
-#' Top-level brand object that combines metadata, color palette, and typography
-#' settings into a single cohesive brand definition. Can be serialized to a
-#' `_brand.yml` file via [brand_to_list()] and [brand_write_yaml()].
-#'
-#' @param meta A [BrandMeta] object with brand metadata. Defaults to `NULL`.
-#' @param color A [BrandColor] object with brand colors. Defaults to `NULL`.
-#' @param typography A [BrandTypography] object with brand typography. Defaults to `NULL`.
-#'
-#' @export
-Brand <- S7::new_class(
-  "Brand",
-  properties = list(
-    meta = S7::new_property(BrandMeta | NULL, default = NULL),
-    color = S7::new_property(BrandColor | NULL, default = NULL),
-    typography = S7::new_property(
-      BrandTypography | NULL,
-      default = NULL
-    )
-  )
-)
-
-
 # --- Sub-classes ---
 
 #' Brand Metadata
@@ -189,6 +162,33 @@ BrandTypography <- S7::new_class(
     ),
     monospace = S7::new_property(
       FontSpec | NULL,
+      default = NULL
+    )
+  )
+)
+
+
+# --- Top-level Brand class ---
+
+#' Brand
+#'
+#' @description
+#' Top-level brand object that combines metadata, color palette, and typography
+#' settings into a single cohesive brand definition. Can be serialized to a
+#' `_brand.yml` file via [brand_to_list()] and [brand_write_yaml()].
+#'
+#' @param meta A [BrandMeta] object with brand metadata. Defaults to `NULL`.
+#' @param color A [BrandColor] object with brand colors. Defaults to `NULL`.
+#' @param typography A [BrandTypography] object with brand typography. Defaults to `NULL`.
+#'
+#' @export
+Brand <- S7::new_class(
+  "Brand",
+  properties = list(
+    meta = S7::new_property(BrandMeta | NULL, default = NULL),
+    color = S7::new_property(BrandColor | NULL, default = NULL),
+    typography = S7::new_property(
+      BrandTypography | NULL,
       default = NULL
     )
   )
