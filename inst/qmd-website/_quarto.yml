@@ -12,8 +12,9 @@ website:
         text: Use this template
       - href: customization.qmd
         text: Customization
-    background: "#081c39"
-    foreground: white
+    # Uncomment for explicitly setting navbar colors if default behavior not intended
+    # background: "#081c39"
+    # foreground: white
     logo: https://github.com/rfortherestofus/omni/blob/main/inst/assets/images/logo-no-text.png?raw=true
     logo-alt: Logo of the Omni Institute
     logo-href: https://www.omni.org/
