@@ -4,11 +4,15 @@
 \alias{create_website}
 \title{Create a new Quarto website}
 \usage{
-create_website(output_dir)
+create_website(output_dir, brand = NULL)
 }
 \arguments{
 \item{output_dir}{New directory that will contain the Quarto
 files.}
+
+\item{brand}{Optional Brand object for custom branding
+(created with `Brand()`. Default template available via `get_brand_template()`).
+If not specified uses default _brand.yml file.}
 }
 \description{
 `create_website()` creates a new directory with pre-defined
