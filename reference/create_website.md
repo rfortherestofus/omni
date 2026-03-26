@@ -6,7 +6,7 @@ documents based on Omni branding.
 ## Usage
 
 ``` r
-create_website(output_dir)
+create_website(output_dir, brand = NULL)
 ```
 
 ## Arguments
@@ -14,3 +14,9 @@ create_website(output_dir)
 - output_dir:
 
   New directory that will contain the Quarto files.
+
+- brand:
+
+  Optional Brand object for custom branding (created with \`Brand()\`.
+  Default template available via \`get_brand_template()\`). If not
+  specified uses default \_brand.yml file.

@@ -2,6 +2,22 @@
 
 ## All functions
 
+- [`Brand()`](https://rfortherestofus.github.io/omni/reference/Brand.md)
+  : Brand
+- [`BrandColor()`](https://rfortherestofus.github.io/omni/reference/BrandColor.md)
+  : Brand Color Palette
+- [`BrandMeta()`](https://rfortherestofus.github.io/omni/reference/BrandMeta.md)
+  : Brand Metadata
+- [`BrandTypography()`](https://rfortherestofus.github.io/omni/reference/BrandTypography.md)
+  : Brand Typography
+- [`Font()`](https://rfortherestofus.github.io/omni/reference/Font.md) :
+  Font Definition
+- [`FontSpec()`](https://rfortherestofus.github.io/omni/reference/FontSpec.md)
+  : Font Specification
+- [`brand_template()`](https://rfortherestofus.github.io/omni/reference/brand_template.md)
+  : Example Brand Template
+- [`brand_to_list()`](https://rfortherestofus.github.io/omni/reference/brand_to_list.md)
+  : Coerce a Brand object to a plain list
 - [`callout_box()`](https://rfortherestofus.github.io/omni/reference/callout_box.md)
   : Create a callout box
 - [`create_website()`](https://rfortherestofus.github.io/omni/reference/create_website.md)
@@ -34,6 +50,8 @@
   : Omni Paged PDF Report
 - [`pkg_resource()`](https://rfortherestofus.github.io/omni/reference/pkg_resource.md)
   : Load resources - shortcut to system.file
+- [`print_brand_template()`](https://rfortherestofus.github.io/omni/reference/print_brand_template.md)
+  : Print the example Brand Template Source
 - [`qualtrics_apply_labels()`](https://rfortherestofus.github.io/omni/reference/qualtrics_apply_labels.md)
   : Apply labels to survey
 - [`qualtrics_connect()`](https://rfortherestofus.github.io/omni/reference/qualtrics_connect.md)

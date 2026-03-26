@@ -4,8 +4,16 @@
 <url><loc>https://rfortherestofus.github.io/omni/LICENSE-text.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/authors.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/index.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/Brand.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/BrandColor.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/BrandMeta.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/BrandTypography.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/Font.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/FontSpec.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/add_hide_cover_page_css.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/add_hide_logo_css.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/brand_template.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/brand_to_list.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/callout_box.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/change_background_image.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/change_colors.html</loc></url>
@@ -28,6 +36,7 @@
 <url><loc>https://rfortherestofus.github.io/omni/reference/omni_table.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/pdf_report.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/pkg_resource.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/print_brand_template.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/qualtrics_apply_labels.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/qualtrics_connect.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/qualtrics_get_labels.html</loc></url>
