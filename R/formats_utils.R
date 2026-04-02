@@ -273,6 +273,7 @@ change_to_csi_style_html <- function(file) {
 #'
 #' @param start_from The page on which the counter should restart
 #' @param counter_start The value of the first page
+#' @param params Params from knitr environment.
 #' @param total_pages Deprecated. Kept for backward compatibility.
 #'
 #' @import glue
@@ -281,14 +282,27 @@ change_to_csi_style_html <- function(file) {
 omni_set_page_start_pdf <- function(
   start_from,
   counter_start,
+  params = rmarkdown::metadata$output,
   total_pages = 100
 ) {
+  params <- params[["omni::pdf_report"]]
+  to_add <- 0
+  if (params$remove_cover_page) {
+    to_add <- to_add + 1
+  }
+  if (params$remove_title_page) {
+    to_add <- to_add + 1
+  }
+  if (params$remove_toc_page) {
+    to_add <- to_add + 1
+  }
+
   # Keep `total_pages` for backward compatibility, but only reset once.
   # Multiple `counter-reset: page ...` rules prevent TOC target-counter()
   # values from resolving in paged.js.
   rule <- glue::glue(
-    '[data-page-number="{start_from}"] {{
-      counter-reset: page {counter_start};
+    '[data-page-number="{start_from - to_add}"] {{
+      counter-reset: page {counter_start-to_add};
     }}'
   )
 
