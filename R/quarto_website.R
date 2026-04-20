@@ -9,22 +9,22 @@
 #' @param brand Optional Brand object for custom branding
 #' (created with `Brand()`. Default template available via `get_brand_template()`).
 #' If not specified uses default _brand.yml file.
+#' @param use_csi_logos Boolean that determines whether CSI logos will be used. Defaults to `FALSE`.
 #'
 #' @export
 #'
 #' @importFrom utils file.edit
-create_website <- function(output_dir, brand = NULL) {
+create_website <- function(output_dir, brand = NULL, use_csi_logos = FALSE) {
+  ## Copy Quarto template -----
   source_dir <- system.file(
     "qmd-website",
     package = "omni",
     mustWork = TRUE
   )
-
   output_dir_full <- here::here(output_dir)
 
   files <- list.files(source_dir, full.names = TRUE)
   dir.create(output_dir_full, recursive = TRUE, showWarnings = FALSE)
-
   suppressWarnings(
     out <- file.copy(
       from = files,
@@ -33,12 +33,20 @@ create_website <- function(output_dir, brand = NULL) {
     )
   )
 
+  ## Modify logo if needed -----
+  if (use_csi_logos) {
+    path_out_quarto_settings <- fs::path(output_dir_full, '_quarto.yml')
+    set_csi_logos_in_quarto_yml(path_out_quarto_settings)
+  }
+
+  ## Check if default branding -----
   use_default_branding <- is.null(brand)
   if (use_default_branding) {
     cli::cli_alert_info('Using default branding.')
     return(file.edit(file.path(output_dir_full, "index.qmd")))
   }
 
+  ## Modify branding if needed -----
   if (!inherits(brand, "omni::Brand")) {
     cli::cli_abort(
       "{.arg brand} must be Brand object (created with {.fun Brand})"
@@ -55,6 +63,29 @@ create_website <- function(output_dir, brand = NULL) {
   copy_custom_font_files(output_dir_full, brand)
 
   file.edit(file.path(output_dir_full, "index.qmd"))
+}
+
+
+set_csi_logos_in_quarto_yml <- function(path_quarto_settings) {
+  list_quarto_yml <- yaml::read_yaml(path_quarto_settings)
+
+  url_logo <- "https://github.com/rfortherestofus/omni/blob/main/inst/assets/images/logo-no-text-csi.png?raw=true"
+  list_quarto_yml$website$navbar$logo <- url_logo
+
+  footer_logo <- "[![](https://github.com/rfortherestofus/omni/blob/main/inst/assets/images/logo-csi.png?raw=true){fig-alt=\"Omni institute\" width=100px}](https://www.omni.org/)\n"
+  list_quarto_yml$website$`page-footer`$right <- footer_logo
+
+  list_quarto_yml |>
+    yaml::write_yaml(
+      file = path_quarto_settings,
+      handlers = list(
+        logical = function(x) {
+          result <- ifelse(x, "true", "false")
+          class(result) <- "verbatim"
+          result
+        }
+      )
+    )
 }
 
 
