@@ -4,7 +4,7 @@
 \alias{create_website}
 \title{Create a new Quarto website}
 \usage{
-create_website(output_dir, brand = NULL)
+create_website(output_dir, brand = NULL, use_csi_logos = FALSE)
 }
 \arguments{
 \item{output_dir}{New directory that will contain the Quarto
@@ -13,6 +13,8 @@ files.}
 \item{brand}{Optional Brand object for custom branding
 (created with `Brand()`. Default template available via `get_brand_template()`).
 If not specified uses default _brand.yml file.}
+
+\item{use_csi_logos}{Boolean that determines whether CSI logos will be used. Defaults to `FALSE`.}
 }
 \description{
 `create_website()` creates a new directory with pre-defined
