@@ -26,3 +26,5 @@ temp.*
 
 sandbox/
 .claude/settings.local.json
+
+*.knit.md

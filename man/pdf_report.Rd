@@ -16,6 +16,7 @@ pdf_report(
   remove_toc_page = FALSE,
   reduce_margin_top_bottom = FALSE,
   use_csi_style = FALSE,
+  hide_acknowledgement = FALSE,
   ...
 )
 }

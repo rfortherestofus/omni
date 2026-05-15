@@ -44,6 +44,7 @@ pdf_report <- function(
   remove_toc_page = FALSE,
   reduce_margin_top_bottom = FALSE,
   use_csi_style = FALSE,
+  hide_acknowledgement = FALSE,
   ...
 ) {
   css_file <- pkg_resource("pdf_report.css")
@@ -99,6 +100,10 @@ pdf_report <- function(
 
   if (reduce_margin_top_bottom) {
     css_file <- reduce_bottom_and_top_margin(file = css_file)
+  }
+
+  if (hide_acknowledgement) {
+    css_file <- hide_acknowledgement_section(file = css_file)
   }
 
   pagedown::html_paged(
