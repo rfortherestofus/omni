@@ -41,6 +41,7 @@ HTML & CSS that of the desired quote box
 ## Examples
 
 ``` r
+
 htmltools::browsable(
   quote_box(
     text = 'This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',

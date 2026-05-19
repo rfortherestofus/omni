@@ -35,6 +35,7 @@ HTML & CSS
 ## Examples
 
 ``` r
+
 width_px <- 50
 icon_color_fg <- "white"
 icon_color_bg <- 'teal-600'

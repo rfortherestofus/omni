@@ -39,6 +39,7 @@ HTML & CSS that of the desired number emphasis
 ## Examples
 
 ``` r
+
 number_emphasis(
    number = 1234,
    text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',

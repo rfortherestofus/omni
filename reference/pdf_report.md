@@ -17,6 +17,7 @@ pdf_report(
   remove_toc_page = FALSE,
   reduce_margin_top_bottom = FALSE,
   use_csi_style = FALSE,
+  hide_acknowledgement = FALSE,
   ...
 )
 ```
@@ -70,6 +71,10 @@ pdf_report(
 
   Whether to use CSI (Center for Social Investment) styling. This
   basically change logos and text in the footer.
+
+- hide_acknowledgement:
+
+  Whether to remove the acknowledgement section.
 
 - ...:
 

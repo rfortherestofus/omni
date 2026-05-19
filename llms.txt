@@ -17,6 +17,7 @@ this OMNI branded template please contact <omni@omni.org>.*
 You can install `omni` from [GitHub](https://github.com/) with:
 
 ``` r
+
 # install.packages("remotes")
 remotes::install_github("rfortherestofus/omni", force = TRUE)
 ```
@@ -30,6 +31,7 @@ If you want to install the old version of the package (prior to the 2025
 rebrand), you can do it with the following code:
 
 ``` r
+
 # install.packages("remotes")
 remotes::install_github("rfortherestofus/omni", force = TRUE, ref = "old")
 ```
