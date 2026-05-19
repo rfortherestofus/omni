@@ -240,6 +240,10 @@ li li .toc-section-number {
   font-family: var(--header-font);
 }
 
+.acknowledgement {
+  display: block; /* Option to hide acknowledgement */
+}
+
 p.for-more-info,
 p.acknowledge,
 p.suggested-citation {

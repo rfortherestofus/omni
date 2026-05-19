@@ -149,27 +149,6 @@ change_fonts <- function(
   return(temp_css)
 }
 
-
-#' Add CSS rule to hide cover page
-#'
-#' @param file CSS file path
-#'
-#' @keywords internal
-add_hide_cover_page_css <- function(file) {
-  css_lines <- readLines(file)
-
-  css_lines <- gsub(
-    '--display-the-cover-page:.*?;',
-    '--display-the-cover-page: none;',
-    css_lines
-  )
-
-  temp_css <- file.path(dirname(file), "temp.css")
-  writeLines(css_lines, file.path(Sys.getenv("HOME"), "Desktop", "here.css"))
-  writeLines(css_lines, temp_css)
-  return(temp_css)
-}
-
 #' Add CSS rule to hide .logo class
 #'
 #' @param file CSS file path
@@ -308,6 +287,26 @@ reduce_bottom_and_top_margin <- function(file) {
     '  margin: 25mm 15mm;',
     '  margin: 15mm 15mm;',
     css_lines
+  )
+
+  temp_css <- file.path(dirname(file), "temp.css")
+  writeLines(css_lines, temp_css)
+  return(temp_css)
+}
+
+#' Remove acknownledgement
+#'
+#' @param file CSS file path
+#'
+#' @keywords internal
+hide_acknowledgement_section <- function(file) {
+  css_lines <- readLines(file)
+
+  css_lines <- gsub(
+    '  display: block; /* Option to hide acknowledgement */',
+    '  display: none; /* Option to hide acknowledgement */',
+    css_lines,
+    fixed = TRUE
   )
 
   temp_css <- file.path(dirname(file), "temp.css")

@@ -16,6 +16,7 @@ pdf_report(
   remove_toc_page = FALSE,
   reduce_margin_top_bottom = FALSE,
   use_csi_style = FALSE,
+  hide_acknowledgement = FALSE,
   ...
 )
 }
@@ -41,6 +42,8 @@ pdf_report(
 \item{reduce_margin_top_bottom}{Whether to reduce top and bottom margin. It will go from 25mm to 15mm in order to match left/right margin.}
 
 \item{use_csi_style}{Whether to use CSI (Center for Social Investment) styling. This basically change logos and text in the footer.}
+
+\item{hide_acknowledgement}{Whether to remove the acknowledgement section.}
 
 \item{...}{Additional arguments passed to `pagedown::html_paged()`}
 }
