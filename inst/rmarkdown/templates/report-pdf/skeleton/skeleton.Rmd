@@ -356,7 +356,9 @@ And so on.
 
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
 
-```{r}
+See Table \@ref(tab:work-areas).
+
+```{r work-areas, tab.cap="Key activities and deliverables by work area."}
 tibble::tribble(
   ~`Work Area`      ,
   ~`Key Activities` ,
@@ -387,7 +389,7 @@ tibble::tribble(
   "xxxxx"           ,
   "xxxx"
 ) |>
-  omni::omni_table(caption = "Table 1. [Insert Table name]")
+  omni::omni_table()
 ```
 
 
@@ -510,4 +512,3 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
 ### Subtopic B
 
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-

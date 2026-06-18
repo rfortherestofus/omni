@@ -107,7 +107,10 @@ pdf_report <- function(
     css_file <- hide_acknowledgement_section(file = css_file)
   }
 
-  pagedown::html_paged(
+  bookdown::html_document2(
+    base_format = pagedown::html_paged,
+    number_sections = FALSE,
+    global_numbering = TRUE,
     css = c(interface_css, css_file, colors),
     self_contained = TRUE,
     toc = TRUE,
@@ -123,7 +126,7 @@ pdf_report <- function(
 #' @param background_color Background color
 #' @param remove_logo Whether to remove Omni logo or not
 #' @param use_csi_style Whether to use CSI style or not
-#' @param ... Params to pagedown::html_paged
+#' @param ... Additional arguments passed to `rmarkdown::html_document()`
 #'
 #' @return An rmd format
 #'
@@ -164,7 +167,10 @@ html_report <- function(
     css_file <- change_to_csi_style_html(file = css_file)
   }
 
-  rmarkdown::html_document(
+  bookdown::html_document2(
+    base_format = rmarkdown::html_document,
+    number_sections = FALSE,
+    global_numbering = TRUE,
     css = c(css_file, colors),
     self_contained = TRUE,
     includes = rmarkdown::includes(

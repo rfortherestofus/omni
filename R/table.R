@@ -159,9 +159,51 @@ omni_table <-
         bg(part = "body", j = 1, i = grouped_row_nb, bg = bg_color)
     }
 
-    table |>
+    table <- table |>
       flextable::set_table_properties(
         layout = 'autofit',
         width = 1
       )
+
+    attr(table, "omni_explicit_caption") <- !is.null(caption)
+    class(table) <- c("omni_table", class(table))
+    table
   }
+
+#' Print an Omni table in an R Markdown document
+#'
+#' @param x An object created by `omni_table()`.
+#' @param ... Additional arguments passed to flextable's print method.
+#'
+#' @return The rendered table output.
+#'
+#' @importFrom knitr knit_print
+#' @export
+knit_print.omni_table <- function(x, ...) {
+  is_bookdown <- isTRUE(knitr::opts_knit$get("bookdown.internal.label"))
+  is_paged <- isTRUE(knitr::opts_knit$get("is.paged.js"))
+  has_tab_caption <- !is.null(knitr::opts_current$get("tab.cap"))
+  has_explicit_caption <- isTRUE(attr(x, "omni_explicit_caption"))
+
+  if (
+    is_bookdown &&
+      knitr::is_html_output() &&
+      has_explicit_caption &&
+      !has_tab_caption
+  ) {
+    x$caption$autonum <- list()
+  }
+
+  if (!is_bookdown || !is_paged) {
+    return(NextMethod())
+  }
+
+  old_is_paged <- knitr::opts_knit$get("is.paged.js")
+  on.exit(knitr::opts_knit$set("is.paged.js" = old_is_paged), add = TRUE)
+
+  extra_class <- x$properties$opts_html$extra_class
+  x$properties$opts_html$extra_class <- unique(c(extra_class, "no-shadow-dom"))
+  knitr::opts_knit$set("is.paged.js" = FALSE)
+
+  NextMethod()
+}

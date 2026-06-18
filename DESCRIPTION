@@ -39,7 +39,8 @@ Imports:
     palmerpenguins,
     commonmark,
     S7,
-    yaml
+    yaml,
+    bookdown
 Suggests:
     gghighlight,
     scales,
