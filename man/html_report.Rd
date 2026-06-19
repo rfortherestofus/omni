@@ -21,7 +21,7 @@ html_report(
 
 \item{use_csi_style}{Whether to use CSI style or not}
 
-\item{...}{Params to pagedown::html_paged}
+\item{...}{Additional arguments passed to `rmarkdown::html_document()`}
 }
 \value{
 An rmd format
