@@ -756,3 +756,7 @@ div.pagedjs_footnote_area::before {
 a.footnote-back {
   display: none;
 }
+
+.tabwid table {
+  line-height: normal !important;
+}
