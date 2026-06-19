@@ -30,6 +30,8 @@
   : Text for Icon-Text-Grid
 - [`icon_text_grid()`](https://rfortherestofus.github.io/omni/reference/icon_text_grid.md)
   : Place icons and texts on grid
+- [`knit_print(`*`<omni_table>`*`)`](https://rfortherestofus.github.io/omni/reference/knit_print.omni_table.md)
+  : Print an Omni table in an R Markdown document
 - [`number_emphasis()`](https://rfortherestofus.github.io/omni/reference/number_emphasis.md)
   : Create a number emphasis element
 - [`omni_colors()`](https://rfortherestofus.github.io/omni/reference/omni_colors.md)

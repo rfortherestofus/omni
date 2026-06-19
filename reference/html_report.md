@@ -34,7 +34,7 @@ html_report(
 
 - ...:
 
-  Params to pagedown::html_paged
+  Additional arguments passed to \`rmarkdown::html_document()\`
 
 ## Value
 
