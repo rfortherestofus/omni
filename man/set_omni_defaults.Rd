@@ -4,7 +4,10 @@
 \alias{set_omni_defaults}
 \title{Update defaults to OMNI's theme}
 \usage{
-set_omni_defaults(base_family = "Inter Tight", base_color = "#405065")
+set_omni_defaults(
+  base_family = "Inter Tight",
+  base_color = omni_colors("chart-gray")
+)
 }
 \arguments{
 \item{base_family}{The base font family for the theme.}
