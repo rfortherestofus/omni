@@ -35,7 +35,7 @@
 #'
 #' @param primary Required. The finding, written as a sentence.
 #' @param keyword Substring of `primary` to color (first occurrence). `NULL` = all navy.
-#' @param top_header Eyebrow line, e.g. `"PROGRAM REACH · FY2024"`. `NULL` = no eyebrow.
+#' @param top_header Eyebrow line, e.g. `"PROGRAM REACH - FY2024"`. `NULL` = no eyebrow.
 #' @param measure Measure description (subtitle). `NULL` = no subtitle.
 #' @param finding Secondary finding sentence (caption). `NULL` = no secondary line.
 #' @param finding_keyword Leading phrase of `finding` to color + give the stripe.
@@ -52,7 +52,7 @@
 #' ggplot(mtcars, aes(wt, mpg)) +
 #'   geom_point() +
 #'   omni_header(
-#'     top_header = "MOTOR TRENDS · 1974",
+#'     top_header = "MOTOR TRENDS - 1974",
 #'     keyword    = "Heavier cars",
 #'     primary    = "Heavier cars use more fuel",
 #'     measure    = "Fuel economy by weight",
@@ -101,7 +101,7 @@ omni_header <- function(
     .wrap_first(
       finding,
       finding_keyword,
-      function(k) stringr::str_glue("{{.{color} ▌ {k}}}"),
+      function(k) stringr::str_glue("{{.{color} \u258c {k}}}"),
       "omni_header()"
     )
   } else {

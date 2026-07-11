@@ -23,7 +23,7 @@ omni_header(
 
 \item{keyword}{Substring of `primary` to color (first occurrence). `NULL` = all navy.}
 
-\item{top_header}{Eyebrow line, e.g. `"PROGRAM REACH · FY2024"`. `NULL` = no eyebrow.}
+\item{top_header}{Eyebrow line, e.g. `"PROGRAM REACH - FY2024"`. `NULL` = no eyebrow.}
 
 \item{measure}{Measure description (subtitle). `NULL` = no subtitle.}
 
@@ -58,7 +58,7 @@ library(ggplot2)
 ggplot(mtcars, aes(wt, mpg)) +
   geom_point() +
   omni_header(
-    top_header = "MOTOR TRENDS · 1974",
+    top_header = "MOTOR TRENDS - 1974",
     keyword    = "Heavier cars",
     primary    = "Heavier cars use more fuel",
     measure    = "Fuel economy by weight",

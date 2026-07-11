@@ -15,7 +15,7 @@ test_that("omni_header returns labs + theme components", {
   h <- omni_header(
     primary = "Test finding",
     keyword = "finding",
-    top_header = "TOPIC · FY2024",
+    top_header = "TOPIC - FY2024",
     measure = "What is measured",
     finding = "A second point",
     finding_keyword = "second",
