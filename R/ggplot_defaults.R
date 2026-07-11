@@ -26,7 +26,8 @@ set_omni_defaults <- function(
     list(
       family = base_family,
       size = 12 / .pt,
-      color = "#595959"
+      color = "#595959",
+      fontface = "bold"
     )
   )
   ggplot2::update_geom_defaults(
@@ -34,7 +35,8 @@ set_omni_defaults <- function(
     list(
       family = base_family,
       size = 12 / .pt,
-      color = "#595959"
+      color = "#595959",
+      fontface = "bold"
     )
   )
   ggplot2::update_geom_defaults(
@@ -42,7 +44,8 @@ set_omni_defaults <- function(
     list(
       family = base_family,
       size = 12 / .pt,
-      color = "#595959"
+      color = "#595959",
+      fontface = "bold"
     )
   )
   ggplot2::update_geom_defaults(
@@ -50,7 +53,8 @@ set_omni_defaults <- function(
     list(
       family = base_family,
       size = 12 / .pt,
-      color = "#595959"
+      color = "#595959",
+      fontface = "bold"
     )
   )
 
