@@ -34,8 +34,14 @@
   : Print an Omni table in an R Markdown document
 - [`number_emphasis()`](https://rfortherestofus.github.io/omni/reference/number_emphasis.md)
   : Create a number emphasis element
+- [`omni_baseline()`](https://rfortherestofus.github.io/omni/reference/omni_baseline.md)
+  : Omni baseline axis line (non-bar/column charts only)
 - [`omni_colors()`](https://rfortherestofus.github.io/omni/reference/omni_colors.md)
   : Function to extract WVC colors as hex codes
+- [`omni_header()`](https://rfortherestofus.github.io/omni/reference/omni_header.md)
+  : Omni chart header - the five text elements + their theme
+- [`omni_highlight_labels()`](https://rfortherestofus.github.io/omni/reference/omni_highlight_labels.md)
+  : Highlight a category label
 - [`omni_icon()`](https://rfortherestofus.github.io/omni/reference/omni_icon.md)
   : Get one of the pre-defined Omni icons
 - [`omni_icons()`](https://rfortherestofus.github.io/omni/reference/omni_icons.md)
@@ -46,6 +52,8 @@
   : Function to interpolate a OMNI color palette
 - [`omni_set_page_start_pdf()`](https://rfortherestofus.github.io/omni/reference/omni_set_page_start_pdf.md)
   : Set the page counter in Omni pdf reports
+- [`omni_span()`](https://rfortherestofus.github.io/omni/reference/omni_span.md)
+  : Color a phrase inside a header (or any ggtext/HTML text)
 - [`omni_table()`](https://rfortherestofus.github.io/omni/reference/omni_table.md)
   : OMNI Table Function
 - [`pdf_report()`](https://rfortherestofus.github.io/omni/reference/pdf_report.md)

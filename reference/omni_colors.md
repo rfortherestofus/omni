@@ -7,7 +7,7 @@ Choose from: "white", "ivory", "ivory-400", "orange-red-200",
 "olive-green-400", "olive-green-600", "teal-200", "teal-400",
 "teal-600", "plum-200", "plum-400", "plum-600", "periwinkle-200",
 "periwinkle-400", "periwinkle-600", "steel-blue-200", "steel-blue-400",
-"steel-blue-600", "navy", "label-gray", "bar-gray"
+"steel-blue-600", "navy", "chart-gray"
 
 ## Usage
 
@@ -18,7 +18,7 @@ omni_colors(
     "olive-green-200", "olive-green-400", "olive-green-600", "teal-200", "teal-400",
     "teal-600", "plum-200", "plum-400", "plum-600", "periwinkle-200", "periwinkle-400",
     "periwinkle-600", "steel-blue-200", "steel-blue-400", "steel-blue-600", "navy",
-    "label-gray", "bar-gray"),
+    "chart-gray"),
   named = FALSE
 )
 ```
