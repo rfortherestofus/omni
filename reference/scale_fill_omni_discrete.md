@@ -6,8 +6,8 @@ Discrete fill scale based on OMNI colors
 
 ``` r
 scale_fill_omni_discrete(
-  palette = c("orange-red-400", "golden-yellow-400", "olive-green-400", "teal-400",
-    "plum-400", "periwinkle-400"),
+  palette = c("periwinkle-600", "orange-red-600", "plum-600", "olive-green-600",
+    "teal-600"),
   reverse = FALSE,
   ...
 )
@@ -17,7 +17,9 @@ scale_fill_omni_discrete(
 
 - palette:
 
-  Character vector of OMNI colors.
+  Character vector of OMNI colors. The default is the 600-level
+  colorblind-ordered categorical palette; golden-yellow is excluded
+  because it fails contrast on a white background.
 
 - reverse:
 
