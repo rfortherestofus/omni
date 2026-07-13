@@ -10,7 +10,7 @@
 #' @export
 set_omni_defaults <- function(
   base_family = "Inter Tight",
-  base_color = "#405065"
+  base_color = omni_colors("chart-gray")
 ) {
   # set default theme -----------------------------------------------------
 
@@ -26,7 +26,7 @@ set_omni_defaults <- function(
     list(
       family = base_family,
       size = 12 / .pt,
-      color = "#595959",
+      color = omni_colors("chart-gray"),
       fontface = "bold"
     )
   )
@@ -35,7 +35,7 @@ set_omni_defaults <- function(
     list(
       family = base_family,
       size = 12 / .pt,
-      color = "#595959",
+      color = omni_colors("chart-gray"),
       fontface = "bold"
     )
   )
@@ -44,7 +44,7 @@ set_omni_defaults <- function(
     list(
       family = base_family,
       size = 12 / .pt,
-      color = "#595959",
+      color = omni_colors("chart-gray"),
       fontface = "bold"
     )
   )
@@ -53,7 +53,7 @@ set_omni_defaults <- function(
     list(
       family = base_family,
       size = 12 / .pt,
-      color = "#595959",
+      color = omni_colors("chart-gray"),
       fontface = "bold"
     )
   )

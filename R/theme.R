@@ -53,14 +53,19 @@ theme_omni <- function(
       axis.title.x = element_text(
         margin = margin(15, 0, 0, 0),
         size = 14,
-        color = "#000000"
+        color = omni_colors("chart-gray")
       ),
       axis.title.y = element_text(
         margin = margin(0, 15, 0, 0),
         size = 12,
-        color = "#000000"
+        color = omni_colors("chart-gray")
       ),
-      axis.text = element_text(size = 12, color = "#000000"),
+      # element_markdown so omni_highlight_labels() colored spans render without a
+      # per-chart override; the position-specific slots are set too because ggplot
+      # resolves those (not the parent) for the drawn tick labels
+      axis.text = ggtext::element_markdown(size = 12, color = omni_colors("chart-gray")),
+      axis.text.x.bottom = ggtext::element_markdown(size = 12, color = omni_colors("chart-gray")),
+      axis.text.y.left = ggtext::element_markdown(size = 12, color = omni_colors("chart-gray")),
       plot.title = marquee::element_marquee(
         margin = margin(0, 0, 0, 0),
         color = "#666665",
