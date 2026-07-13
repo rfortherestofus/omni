@@ -5,7 +5,10 @@ Update defaults to OMNI's theme
 ## Usage
 
 ``` r
-set_omni_defaults(base_family = "Inter Tight", base_color = "#405065")
+set_omni_defaults(
+  base_family = "Inter Tight",
+  base_color = omni_colors("chart-gray")
+)
 ```
 
 ## Arguments
