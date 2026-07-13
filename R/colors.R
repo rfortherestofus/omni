@@ -128,7 +128,9 @@ omni_colors <- function(
 #' Function to interpolate a OMNI color palette
 #'
 #' @name omni_pal
-#' @param palette Character vector of OMNI colors.
+#' @param palette Character vector of OMNI colors. The default is the 600-level
+#'   colorblind-ordered categorical palette; golden-yellow is excluded because it
+#'   fails contrast on a white background.
 #' @param reverse Boolean, should palette be reversed?
 #' @param ... Additional arguments for colorRampPalette()
 #' @return A function that generates interpolated colors.
@@ -138,12 +140,11 @@ omni_colors <- function(
 #' omni_palette(10)
 omni_pal <- function(
   palette = c(
-    "orange-red-400",
-    "golden-yellow-400",
-    "olive-green-400",
-    "teal-400",
-    "plum-400",
-    "periwinkle-400"
+    "periwinkle-600",
+    "orange-red-600",
+    "plum-600",
+    "olive-green-600",
+    "teal-600"
   ),
   reverse = FALSE,
   ...
@@ -246,7 +247,9 @@ scale_fill_omni_continuous <- function(
 #' Discrete fill scale based on OMNI colors
 #'
 #' @name scale_fill_omni_discrete
-#' @param palette Character vector of OMNI colors.
+#' @param palette Character vector of OMNI colors. The default is the 600-level
+#'   colorblind-ordered categorical palette; golden-yellow is excluded because it
+#'   fails contrast on a white background.
 #' @param reverse Boolean, should palette be reversed?
 #' @param ... Additional arguments passed to discrete_scale()
 #' @export
@@ -257,12 +260,11 @@ scale_fill_omni_continuous <- function(
 #'   scale_fill_omni_discrete()
 scale_fill_omni_discrete <- function(
   palette = c(
-    "orange-red-400",
-    "golden-yellow-400",
-    "olive-green-400",
-    "teal-400",
-    "plum-400",
-    "periwinkle-400"
+    "periwinkle-600",
+    "orange-red-600",
+    "plum-600",
+    "olive-green-600",
+    "teal-600"
   ),
   reverse = FALSE,
   ...
@@ -278,7 +280,9 @@ scale_fill_omni_discrete <- function(
 #' Discrete color scale based on OMNI colors
 #'
 #' @name scale_color_omni_discrete
-#' @param palette Character vector of OMNI colors.
+#' @param palette Character vector of OMNI colors. The default is the 600-level
+#'   colorblind-ordered categorical palette; golden-yellow is excluded because it
+#'   fails contrast on a white background.
 #' @param reverse Boolean, should palette be reversed?
 #' @param ... Additional arguments passed to discrete_scale()
 #' @export
@@ -289,12 +293,11 @@ scale_fill_omni_discrete <- function(
 #'     scale_color_omni_discrete()
 scale_color_omni_discrete <- function(
   palette = c(
-    "orange-red-400",
-    "golden-yellow-400",
-    "olive-green-400",
-    "teal-400",
-    "plum-400",
-    "periwinkle-400"
+    "periwinkle-600",
+    "orange-red-600",
+    "plum-600",
+    "olive-green-600",
+    "teal-600"
   ),
   reverse = FALSE,
   ...
