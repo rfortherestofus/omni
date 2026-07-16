@@ -6,6 +6,9 @@
   Tables now keep consistent, content-proportional column widths on every
   page (#238).
 * Table header rows now repeat at the top of each page a table spans (#238).
+* Tables no longer draw white horizontal lines between rows; rows are
+  separated by the zebra shading and the vertical column dividers are kept.
+  Applies to HTML, Word and PDF output (#240).
 * `omni_table()` gained a fuller help page, including how to set column
   widths manually with `flextable::width()` and
   `flextable::set_table_properties(layout = "fixed")` (#238).
