@@ -33,7 +33,7 @@ scale_color_omni_discrete(
 
 ``` r
 library(ggplot2)
-ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
+ggplot(mpg, aes(x = displ, y = hwy, color = drv)) +
     geom_point(size = 2.5) +
     scale_color_omni_discrete()
 ```

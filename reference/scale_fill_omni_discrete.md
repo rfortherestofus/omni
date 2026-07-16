@@ -33,7 +33,7 @@ scale_fill_omni_discrete(
 
 ``` r
 library(ggplot2)
-ggplot(mpg, aes(x = class, fill = class)) +
+ggplot(mpg, aes(x = drv, fill = drv)) +
   geom_bar() +
   scale_fill_omni_discrete()
 ```

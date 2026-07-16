@@ -35,6 +35,11 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.1.0" id="omni-110">omni 1.1.0<a class="anchor" aria-label="anchor" href="#omni-110"></a></h2>
 <div class="section level3">
+<h3 id="ggplot-color-scales-1-1-0">ggplot color scales<a class="anchor" aria-label="anchor" href="#ggplot-color-scales-1-1-0"></a></h3>
+<ul><li>
+<code><a href="../reference/scale_fill_omni_discrete.html">scale_fill_omni_discrete()</a></code> and <code><a href="../reference/scale_color_omni_discrete.html">scale_color_omni_discrete()</a></code> now use the first <em>k</em> palette colors for <em>k</em> categories instead of interpolating <em>k</em> colors across the five-color ramp. Categorical charts get the exact brand colors at every count (three categories are periwinkle, orange-red and plum; four add olive-green), and the scale errors clearly when more categories than palette colors are requested (<a href="https://github.com/rfortherestofus/omni/issues/242" class="external-link">#242</a>).</li>
+</ul></div>
+<div class="section level3">
 <h3 id="pdf-report-tables-1-1-0">PDF report tables<a class="anchor" aria-label="anchor" href="#pdf-report-tables-1-1-0"></a></h3>
 <ul><li>Table columns no longer change width where a table breaks across pages. Tables now keep consistent, content-proportional column widths on every page (<a href="https://github.com/rfortherestofus/omni/issues/238" class="external-link">#238</a>).</li>
 <li>Table header rows now repeat at the top of each page a table spans (<a href="https://github.com/rfortherestofus/omni/issues/238" class="external-link">#238</a>).</li>
