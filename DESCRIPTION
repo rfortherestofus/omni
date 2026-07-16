@@ -2,7 +2,7 @@ Type: Package
 Package: omni
 Title: RMarkdown template, ggplot2 theme, and table function for OMNI
     Institute
-Version: 1.0.2023
+Version: 1.1.0
 Description: RMarkdown template, ggplot2 theme, and table function for
     OMNI Institute.
 License: file LICENSE
