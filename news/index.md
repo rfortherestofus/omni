@@ -10,6 +10,10 @@
   ([\#238](https://github.com/rfortherestofus/omni/issues/238)).
 - Table header rows now repeat at the top of each page a table spans
   ([\#238](https://github.com/rfortherestofus/omni/issues/238)).
+- Tables no longer draw white horizontal lines between rows; rows are
+  separated by the zebra shading and the vertical column dividers are
+  kept. Applies to HTML, Word and PDF output
+  ([\#240](https://github.com/rfortherestofus/omni/issues/240)).
 - [`omni_table()`](https://rfortherestofus.github.io/omni/reference/omni_table.md)
   gained a fuller help page, including how to set column widths manually
   with
