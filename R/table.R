@@ -250,6 +250,20 @@ knit_print.omni_table <- function(x, ...) {
   old_is_paged <- knitr::opts_knit$get("is.paged.js")
   on.exit(knitr::opts_knit$set("is.paged.js" = old_is_paged), add = TRUE)
 
+  # In the paged (PDF) context, give the table explicit content-proportional
+  # column widths and a fixed layout. Combined with `table-layout: fixed` in
+  # pdf_report.css this keeps columns from being recomputed (and shifting)
+  # where the table breaks across pages, while preserving the content-based
+  # proportions of the default autofit layout. Skipped when the caller has
+  # already set a fixed layout, so a manual
+  # `width() |> set_table_properties(layout = "fixed")` is left untouched.
+  if (is.null(x$properties$layout) || identical(x$properties$layout, "autofit")) {
+    col_widths <- flextable::dim_pretty(x, part = "all")$widths
+    x <- x |>
+      flextable::width(width = col_widths) |>
+      flextable::set_table_properties(layout = "fixed", width = 1)
+  }
+
   extra_class <- x$properties$opts_html$extra_class
   x$properties$opts_html$extra_class <- unique(c(extra_class, "no-shadow-dom"))
   knitr::opts_knit$set("is.paged.js" = FALSE)
