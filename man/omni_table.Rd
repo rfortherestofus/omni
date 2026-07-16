@@ -2,7 +2,7 @@
 % Please edit documentation in R/table.R
 \name{omni_table}
 \alias{omni_table}
-\title{OMNI Table Function}
+\title{Create a table in OMNI's style}
 \usage{
 omni_table(
   df,
@@ -14,50 +14,99 @@ omni_table(
 )
 }
 \arguments{
-\item{df}{The data frame to be put into the table}
+\item{df}{The data frame to turn into a table.}
 
-\item{group_by}{Character vector containing of grouping variables}
+\item{group_by}{Optional character vector of grouping variable(s). When
+supplied, the data is grouped and the group-label rows are shaded.
+Defaults to \code{NULL} (no grouping).}
 
-\item{first_col_gray}{Should the first column be gray. Default to FALSE}
+\item{first_col_gray}{Should the first column be shaded gray (with white
+text)? Defaults to \code{FALSE}.}
 
-\item{caption}{The caption of the table}
+\item{caption}{The table caption. Defaults to \code{NULL} (no caption).}
 
-\item{with_stripes}{TRUE or FALSE depending on whether a striped pattern should be used. Defaults to TRUE (which uses stripes.)}
+\item{with_stripes}{Should rows use a striped (zebra) pattern? Defaults to
+\code{TRUE}.}
 
-\item{dark_group_rows}{Whether or not to use a darker color (navy) for group rows when `group_by` is not NULL}
+\item{dark_group_rows}{When \code{group_by} is supplied, should the group
+rows use a darker navy shade instead of steel blue? Defaults to
+\code{FALSE}.}
 }
 \value{
-A table themed
+A \pkg{flextable} object (of class \code{omni_table}).
 }
 \description{
-This function creates a table in OMNI's style.
+Turns a data frame into a table styled with OMNI Institute's fonts,
+colours and row striping. The result is a \pkg{flextable} object, so it can
+be piped into any \pkg{flextable} function for further customisation (for
+example to set column widths, merge cells, or format specific rows).
+}
+\details{
+By default the table uses an autofit layout and fills the width of the page
+or container, sizing each column to fit its content.
+
+When rendered in the OMNI PDF report, column widths are held constant where
+a table breaks across pages, and the header row is repeated at the top of
+each page the table spans. This is handled automatically and needs no extra
+code.
+
+To control the relative width of columns, pipe the result through
+\code{\link[flextable]{width}} and switch the layout to \code{"fixed"} with
+\code{\link[flextable]{set_table_properties}}. The widths act as
+proportions and are scaled to fill the available width. There must be one
+width per column:
+
+\preformatted{
+omni_table(df) |>
+  flextable::width(width = c(2.5, 1, 1, 1)) |>
+  flextable::set_table_properties(layout = "fixed", width = 1)
+}
 }
 \examples{
+# Basic table
 palmerpenguins::penguins |>
- dplyr::slice(1:3) |>
-   omni_table()
+  dplyr::slice(1:3) |>
+  omni_table()
 
- palmerpenguins::penguins |>
-   dplyr::slice(1:3) |>
-   omni_table(first_col_gray = TRUE)
+# Shade the first column
+palmerpenguins::penguins |>
+  dplyr::slice(1:3) |>
+  omni_table(first_col_gray = TRUE)
 
- palmerpenguins::penguins |>
-   dplyr::slice(1:3, .by = species) |>
-   omni_table(group_by = 'species')
+# Group rows by a variable
+palmerpenguins::penguins |>
+  dplyr::slice(1:3, .by = species) |>
+  omni_table(group_by = "species")
 
- palmerpenguins::penguins |>
-   dplyr::slice(1:3) |>
-   omni_table(caption = 'Table 1. [Insert Table Name]')
+# Add a caption
+palmerpenguins::penguins |>
+  dplyr::slice(1:3) |>
+  omni_table(caption = "Table 1. [Insert Table Name]")
 
-# Without striped pattern
+# Without the striped pattern
 palmerpenguins::penguins |>
   dplyr::slice(1:3) |>
   omni_table(with_stripes = FALSE)
 
-# Overwrite number formatting by transforming to character format
+# Overwrite number formatting by transforming to character first
 palmerpenguins::penguins |>
   dplyr::slice(1:3) |>
   dplyr::mutate(year = as.character(year)) |>
   omni_table()
 
+# Set column widths manually. Pipe through flextable::width() and switch
+# the layout to "fixed" so the widths are respected. The width vector needs
+# one entry per column (palmerpenguins::penguins has 8); here the first
+# column is made wider than the rest.
+palmerpenguins::penguins |>
+  dplyr::slice(1:3) |>
+  omni_table() |>
+  flextable::width(width = c(2, 1, 1, 1, 1, 1, 1, 1)) |>
+  flextable::set_table_properties(layout = "fixed", width = 1)
+
+}
+\seealso{
+\code{\link[flextable]{width}} and
+  \code{\link[flextable]{set_table_properties}} for adjusting column widths
+  and the table layout.
 }
