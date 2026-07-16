@@ -1,5 +1,14 @@
 # omni 1.1.0
 
+## ggplot color scales
+
+* `scale_fill_omni_discrete()` and `scale_color_omni_discrete()` now use the
+  first *k* palette colors for *k* categories instead of interpolating *k*
+  colors across the five-color ramp. Categorical charts get the exact brand
+  colors at every count (three categories are periwinkle, orange-red and plum;
+  four add olive-green), and the scale errors clearly when more categories than
+  palette colors are requested (#242).
+
 ## PDF report tables
 
 * Table columns no longer change width where a table breaks across pages.

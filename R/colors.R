@@ -158,6 +158,55 @@ omni_pal <- function(
   grDevices::colorRampPalette(pal, ...)
 }
 
+#' First-k discrete OMNI palette
+#'
+#' Returns a palette function for [ggplot2::discrete_scale()] that hands back the
+#' first `n` colors of `palette`, in order, rather than interpolating `n` colors
+#' across them (which is what [omni_pal()] does for the continuous scales).
+#' Categorical data should get the exact brand colors, so a three-category chart
+#' uses the first three palette colors and a five-category chart uses all five.
+#'
+#' @param palette Character vector of OMNI colors.
+#' @param reverse Boolean, should the palette be reversed?
+#' @return A function of `n` returning the first `n` palette colors.
+#' @noRd
+omni_pal_discrete <- function(
+  palette = c(
+    "periwinkle-600",
+    "orange-red-600",
+    "plum-600",
+    "olive-green-600",
+    "teal-600"
+  ),
+  reverse = FALSE
+) {
+  pal <- unname(omni_colors(palette))
+
+  if (reverse) {
+    pal <- rev(pal)
+  }
+
+  function(n) {
+    if (n > length(pal)) {
+      stop(
+        sprintf(
+          paste0(
+            "The OMNI categorical palette has %d colors but %d categories were ",
+            "requested. Reduce the number of categories (facet into small ",
+            "multiples, group the smaller categories, or highlight one), or pass ",
+            "a longer `palette`."
+          ),
+          length(pal),
+          n
+        ),
+        call. = FALSE
+      )
+    }
+
+    pal[seq_len(n)]
+  }
+}
+
 
 #' Continuous color scale based on OMNI colors
 #'
@@ -255,7 +304,7 @@ scale_fill_omni_continuous <- function(
 #' @export
 #' @examples
 #' library(ggplot2)
-#' ggplot(mpg, aes(x = class, fill = class)) +
+#' ggplot(mpg, aes(x = drv, fill = drv)) +
 #'   geom_bar() +
 #'   scale_fill_omni_discrete()
 scale_fill_omni_discrete <- function(
@@ -272,7 +321,7 @@ scale_fill_omni_discrete <- function(
   ggplot2::discrete_scale(
     aesthetics = "fill",
     scale_name = "omni",
-    palette = omni_pal(palette, reverse),
+    palette = omni_pal_discrete(palette, reverse),
     ...
   )
 }
@@ -288,7 +337,7 @@ scale_fill_omni_discrete <- function(
 #' @export
 #' @examples
 #' library(ggplot2)
-#' ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
+#' ggplot(mpg, aes(x = displ, y = hwy, color = drv)) +
 #'     geom_point(size = 2.5) +
 #'     scale_color_omni_discrete()
 scale_color_omni_discrete <- function(
@@ -305,7 +354,7 @@ scale_color_omni_discrete <- function(
   ggplot2::discrete_scale(
     aesthetics = "color",
     scale_name = "omni",
-    palette = omni_pal(palette, reverse),
+    palette = omni_pal_discrete(palette, reverse),
     ...
   )
 }
