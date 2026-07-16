@@ -304,7 +304,7 @@ scale_fill_omni_continuous <- function(
 #' @export
 #' @examples
 #' library(ggplot2)
-#' ggplot(mpg, aes(x = class, fill = class)) +
+#' ggplot(mpg, aes(x = drv, fill = drv)) +
 #'   geom_bar() +
 #'   scale_fill_omni_discrete()
 scale_fill_omni_discrete <- function(
@@ -337,7 +337,7 @@ scale_fill_omni_discrete <- function(
 #' @export
 #' @examples
 #' library(ggplot2)
-#' ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
+#' ggplot(mpg, aes(x = displ, y = hwy, color = drv)) +
 #'     geom_point(size = 2.5) +
 #'     scale_color_omni_discrete()
 scale_color_omni_discrete <- function(

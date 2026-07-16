@@ -25,9 +25,14 @@ test_that("omni_pal_discrete reverses the palette when asked", {
 })
 
 test_that("the discrete scales use first-k selection, not interpolation", {
+  # suppressWarnings: building the scale trips ggplot2's unrelated, pre-existing
+  # discrete_scale(scale_name=) deprecation; we only care about the palette here.
+  fill_scale <- suppressWarnings(scale_fill_omni_discrete())
+  color_scale <- suppressWarnings(scale_color_omni_discrete())
+
   # 4 categories must be exact brand colors, not interpolated midtones
   expect_equal(
-    scale_fill_omni_discrete()$palette(4),
+    fill_scale$palette(4),
     unname(omni_colors(c(
       "periwinkle-600",
       "orange-red-600",
@@ -36,7 +41,7 @@ test_that("the discrete scales use first-k selection, not interpolation", {
     )))
   )
   expect_equal(
-    scale_color_omni_discrete()$palette(3),
+    color_scale$palette(3),
     unname(omni_colors(c("periwinkle-600", "orange-red-600", "plum-600")))
   )
 })
