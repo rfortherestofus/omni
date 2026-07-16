@@ -25,7 +25,7 @@ Discrete fill scale based on OMNI colors
 }
 \examples{
 library(ggplot2)
-ggplot(mpg, aes(x = class, fill = class)) +
+ggplot(mpg, aes(x = drv, fill = drv)) +
   geom_bar() +
   scale_fill_omni_discrete()
 }
