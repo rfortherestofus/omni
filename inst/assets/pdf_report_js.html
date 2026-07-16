@@ -79,3 +79,82 @@
   }
   Paged.registerHandlers(endToFootNotes);
 </script>
+<script>
+  // Repeat table headers when a table breaks across pages.
+  // paged.js does not clone <thead> into the table fragments it creates on
+  // following pages, so long tables lose their header row after a page break.
+  // This handler re-inserts the header (and any <colgroup>) into each
+  // continuation fragment. Adapted from the canonical paged.js recipe:
+  // https://github.com/pagedjs/pagedjs (repeating table headers).
+  class OmniRepeatingTableHeaders extends Paged.Handler {
+    constructor(chunker, polisher, caller) {
+      super(chunker, polisher, caller);
+      this.splitTablesRefs = [];
+    }
+
+    afterPageLayout(pageElement, page, breakToken, chunker) {
+      this.chunker = chunker;
+      this.splitTablesRefs = [];
+
+      if (breakToken) {
+        const node = breakToken.node;
+        const tables = this.findAllAncestors(node, "table");
+        if (node && node.tagName === "TABLE") {
+          tables.push(node);
+        }
+        this.splitTablesRefs = tables
+          .map((t) => t.dataset.ref)
+          .filter(Boolean);
+      }
+    }
+
+    layout(rendered, layout) {
+      for (const ref of this.splitTablesRefs) {
+        const renderedTable = rendered.querySelector(`[data-ref='${ref}']`);
+        if (!renderedTable) continue;
+        if (renderedTable.getAttribute("data-repeated-headers")) continue;
+
+        const sourceTable = this.chunker.source.querySelector(
+          `[data-ref='${ref}']`
+        );
+        if (!sourceTable) continue;
+
+        this.repeatColgroup(sourceTable, renderedTable);
+        this.repeatTHead(sourceTable, renderedTable);
+        renderedTable.setAttribute("data-repeated-headers", true);
+      }
+    }
+
+    repeatColgroup(sourceTable, renderedTable) {
+      const colgroups = sourceTable.querySelectorAll("colgroup");
+      const firstChild = renderedTable.firstChild;
+      for (const cg of colgroups) {
+        renderedTable.insertBefore(cg.cloneNode(true), firstChild);
+      }
+    }
+
+    repeatTHead(sourceTable, renderedTable) {
+      const thead = sourceTable.querySelector("thead");
+      if (thead) {
+        renderedTable.insertBefore(
+          thead.cloneNode(true),
+          renderedTable.firstChild
+        );
+      }
+    }
+
+    findAllAncestors(node, selector) {
+      const ancestors = [];
+      let el = node ? node.parentNode : null;
+      while (el) {
+        if (el.matches && el.matches(selector)) {
+          ancestors.unshift(el);
+        }
+        el = el.parentNode;
+      }
+      return ancestors;
+    }
+  }
+
+  Paged.registerHandlers(OmniRepeatingTableHeaders);
+</script>

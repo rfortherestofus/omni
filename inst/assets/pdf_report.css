@@ -763,4 +763,10 @@ a.footnote-back {
 
 .tabwid table {
   line-height: normal !important;
+  /* Fixed layout keeps column widths identical on every page fragment.
+     With auto layout, paged.js recomputes each fragment's columns from the
+     content that lands on that page, so the same column changes width where
+     the table breaks. width:100% makes the columns fill the text area. */
+  table-layout: fixed !important;
+  width: 100% !important;
 }
