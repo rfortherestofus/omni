@@ -134,7 +134,12 @@ omni_table <-
       color(part = "header", color = "white") |>
       color(part = "body", color = "#333333") |>
       height_all(height = 0.4) |>
-      border_inner(part = "all", border = fp_border(color = "white"))
+      # Vertical (column) separators only. Horizontal white row separators are
+      # omitted: on striped tables the zebra shading already separates rows, and
+      # on unstriped (all-white) tables white lines are invisible anyway. Thin
+      # white horizontal lines over the grey fill could also render as a faint
+      # double line / shading spillover in some PDF viewers.
+      border_inner_v(part = "all", border = fp_border(color = "white"))
 
     # highlight grouped row
     if (!is.null(group_by)) {
