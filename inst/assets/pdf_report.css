@@ -471,11 +471,15 @@ h4 {
 }
 
 /* Normal paragraph */
+/* Line spacing within a paragraph is set by line-height; the gap *between*
+   paragraphs is set by margin-bottom. These must differ or paragraphs run
+   together. Mirrors the Word brand template (Report Template.dotx): ~1.16
+   line spacing and 8pt space after each paragraph, no space before. */
 p {
   font-size: 11pt;
   font-weight: 400;
-  padding: 1pt;
-  margin: 1pt 0;
+  padding: 0;
+  margin: 0 0 8pt 0;
   line-height: 1.4;
 }
 
