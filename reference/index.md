@@ -55,7 +55,7 @@
 - [`omni_span()`](https://rfortherestofus.github.io/omni/reference/omni_span.md)
   : Color a phrase inside a header (or any ggtext/HTML text)
 - [`omni_table()`](https://rfortherestofus.github.io/omni/reference/omni_table.md)
-  : OMNI Table Function
+  : Create a table in OMNI's style
 - [`pdf_report()`](https://rfortherestofus.github.io/omni/reference/pdf_report.md)
   : Omni Paged PDF Report
 - [`pkg_resource()`](https://rfortherestofus.github.io/omni/reference/pkg_resource.md)
