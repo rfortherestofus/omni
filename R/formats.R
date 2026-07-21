@@ -149,6 +149,9 @@ html_report <- function(
     footer <- pkg_resource("footer-htmlreport.html")
   }
 
+  # Stamp the footer with the current year so it never goes stale.
+  footer <- set_footer_year(footer)
+
   css_file <- change_fonts(
     file = css_file,
     main_font = main_font,
