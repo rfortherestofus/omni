@@ -28,3 +28,8 @@
   Previously the gap between paragraphs matched the line spacing within a
   paragraph, so paragraphs ran together; manual blank lines are no longer
   needed to separate them (#237).
+
+## HTML report
+
+* The report footer now shows the year the report is knitted rather than a
+  hard-coded year, so it no longer needs a manual update each January (#243).

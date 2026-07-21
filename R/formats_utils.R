@@ -294,6 +294,32 @@ reduce_bottom_and_top_margin <- function(file) {
   return(temp_css)
 }
 
+#' Set the copyright year in an HTML report footer
+#'
+#' Replaces the hard-coded year in a footer include with the current year, so
+#' knitted reports always show the year in which they were rendered. The
+#' hard-coded year in the footer file acts as a fallback.
+#'
+#' @param file Footer HTML file path
+#'
+#' @return Path to a temporary footer file with the year updated.
+#'
+#' @keywords internal
+set_footer_year <- function(file) {
+  footer_lines <- readLines(file)
+
+  current_year <- format(Sys.Date(), "%Y")
+  footer_lines <- gsub(
+    "&copy; [0-9]{4}",
+    paste("&copy;", current_year),
+    footer_lines
+  )
+
+  temp_footer <- tempfile(fileext = ".html")
+  writeLines(footer_lines, temp_footer)
+  return(temp_footer)
+}
+
 #' Remove acknownledgement
 #'
 #' @param file CSS file path
