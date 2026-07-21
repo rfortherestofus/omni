@@ -40,3 +40,9 @@
   spacing within a paragraph, so paragraphs ran together; manual blank
   lines are no longer needed to separate them
   ([\#237](https://github.com/rfortherestofus/omni/issues/237)).
+
+### HTML report
+
+- The report footer now shows the year the report is knitted rather than
+  a hard-coded year, so it no longer needs a manual update each January
+  ([\#243](https://github.com/rfortherestofus/omni/issues/243)).
