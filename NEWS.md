@@ -33,3 +33,7 @@
 
 * The report footer now shows the year the report is knitted rather than a
   hard-coded year, so it no longer needs a manual update each January (#243).
+
+## Quarto website template
+
+* Updated the page-footer copyright year to 2026 (#243).
