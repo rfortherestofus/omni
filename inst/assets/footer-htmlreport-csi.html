@@ -1,3 +1,5 @@
+</main>
+<footer>
 <div class="custom-footer">
   <div class="logo"></div>
   <div class="footer-text">
@@ -5,3 +7,16 @@
     <p>Contact: <a href="mailto:projects@omni.org">projects@omni.org</a></p>
   </div>
 </div>
+</footer>
+<script>
+(function () {
+  // See footer-htmlreport.html for why this exists — same rmarkdown
+  // template quirk, fixed the same way for the CSI variant.
+  var sub = document.querySelector("h3.subtitle");
+  if (!sub) return;
+  var h2 = document.createElement("h2");
+  h2.className = sub.className;
+  h2.innerHTML = sub.innerHTML;
+  sub.replaceWith(h2);
+})();
+</script>
