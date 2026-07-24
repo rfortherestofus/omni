@@ -49,7 +49,7 @@ number_emphasis(
 #>   <div style="font-size:16pt;color:black;background:white !important;border:5px solid #8AC0B3;border-radius:100%;aspect-ratio:1;width:75px;height:75px;display:flex;z-index:1;">
 #>     <div style="margin:auto;background:white !important;">1234</div>
 #>   </div>
-#>   <div style="background:#8AC0B3;height:80%;font-size:12pt;margin-top:auto;margin-bottom:auto;margin-left:-30px;padding-left:55px;padding-right:10px;padding-top:2px;padding-bottom:2px;z-index:0;">pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.</div>
+#>   <div style="background:#8AC0B3;color:white;height:80%;font-size:12pt;margin-top:auto;margin-bottom:auto;margin-left:-30px;padding-left:55px;padding-right:10px;padding-top:2px;padding-bottom:2px;z-index:0;">pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.</div>
 #> </div>
 
 htmltools::browsable(
