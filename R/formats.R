@@ -177,6 +177,11 @@ html_report <- function(
       before_body = header,
       after_body = footer
     ),
+    # Pandoc only sets <html lang="..."> when told to — without it every
+    # report fails the accessibility scan's html-has-lang check. Every
+    # Omni report is written in English; a client-specific override can
+    # still pass its own lang via `...` (a later --metadata wins).
+    pandoc_args = c("--metadata", "lang=en"),
     ...
   )
 }

@@ -65,18 +65,19 @@ quote_box <- function(
 
   # Preprocess colors  ----------------------------------------------------------------
   color_hex <- allowed_colors[color]
-  color_hex_highlight <- allowed_colors[
-    color |> stringr::str_replace('600', '200')
-  ]
   width_textbox <- paste0(fixed_width_px, 'px')
 
   # convert highlight text to span tags  -----------------------------------------------
+  # Previously recolored the text to a "200" tint of the same family on the
+  # unchanged "600" background — measured as low as 3.3:1 (need 4.5:1) for at
+  # least one family, and would need re-verifying per family since a tint that
+  # clears AA for one color isn't guaranteed to for another. Weight/underline
+  # differentiates the phrase without touching color, so it inherits the same
+  # white-on-600 contrast already used for the rest of the quote.
   preprocessed_text <- text |>
     stringr::str_replace_all(
       stringr::fixed('<highlight>'),
-      glue::glue(
-        '<span style="color:{color_hex_highlight}; background: {color_hex} !important;">'
-      )
+      '<span style="font-weight: 700; text-decoration: underline;">'
     ) |>
     stringr::str_replace(
       stringr::fixed('</highlight>'),
@@ -364,6 +365,7 @@ number_emphasis <- function(
     htmltools::div(
       style = htmltools::css(
         background = color_hex,
+        color = 'white',
         height = '80%',
         font_size = '12pt',
         margin_top = 'auto',

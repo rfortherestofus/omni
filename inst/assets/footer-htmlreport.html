@@ -1,3 +1,5 @@
+</main>
+<footer>
 <div class="custom-footer">
   <div class="logo"></div>
   <div class="footer-text">
@@ -5,3 +7,20 @@
     <p>Contact: <a href="mailto:projects@omni.org">projects@omni.org</a></p>
   </div>
 </div>
+</footer>
+<script>
+(function () {
+  // rmarkdown's bundled Pandoc template hardcodes the subtitle as
+  // <h3 class="subtitle">, straight after the <h1 class="title"> — a
+  // heading-order violation (skips h2, then a real h2 follows it). Not an
+  // omni asset, can't be fixed via a Lua filter (title/subtitle are
+  // rendered from template variables, not the document's own heading AST),
+  // so fix the rendered DOM directly instead of forking rmarkdown's template.
+  var sub = document.querySelector("h3.subtitle");
+  if (!sub) return;
+  var h2 = document.createElement("h2");
+  h2.className = sub.className;
+  h2.innerHTML = sub.innerHTML;
+  sub.replaceWith(h2);
+})();
+</script>
