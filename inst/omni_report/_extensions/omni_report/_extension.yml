@@ -9,7 +9,8 @@ contributes:
       template-partials:
         - typst-template.typ
         - typst-show.typ
-        - pages.typ    
+        - pages.typ
+        - design_elements.typ
       filters:
         - filter.lua
     html:
