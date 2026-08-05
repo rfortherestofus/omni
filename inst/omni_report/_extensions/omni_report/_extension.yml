@@ -1,0 +1,19 @@
+title: Omni_report
+author: Albert Rapp
+version: 1.0.0
+quarto-required: ">=1.7.0"
+contributes:
+  formats:
+    typst:
+      template: template.typ
+      template-partials:
+        - typst-template.typ
+        - typst-show.typ
+        - pages.typ    
+      filters:
+        - filter.lua
+    html:
+      toc: true
+      theme:
+        - colors.scss
+
