@@ -18,7 +18,7 @@
   abstract: none,
   abstract-title: none,
   cols: 1,
-  margin: (x: 1.25in, y: 1.25in),
+  margin: (x: 1in, y: 1in),
   paper: "us-letter",
   lang: "en",
   region: "US",
