@@ -42,6 +42,9 @@
   used the same spacing, which didn't match Word's per-level spacing and, for
   h1, was visibly tighter than the gap under a top-level heading in Word
   (#257).
+* Fixed spacing between paragraphs and around bulleted/numbered lists, which
+  was noticeably tighter than the Word brand template. Paragraph-to-paragraph
+  and list spacing now match the gaps in Word.
 * Corrected which heading level receives which spacing from the fix above.
   The report-html skeleton starts sections at `##`, not `#`, so h2/h3/h4 are
   the levels actually used for primary/subtopic/sub-subtopic headings in
