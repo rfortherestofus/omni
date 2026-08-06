@@ -69,6 +69,18 @@ function Div(el)
   for _, block in ipairs(el.content) do
     if block.t == "Div" and block.classes:includes("column") then
       local width = block.attributes["width"] or "1fr"
+      -- Pandoc column widths ("55%") are meant as proportions of the row,
+      -- not literal percentages of the page: passed through as Typst `%`
+      -- they're sized against the full container *before* `gutter` is
+      -- subtracted, so percentages (which already sum to ~100% across
+      -- columns) plus the gutter on top overflow past 100% and push later
+      -- columns off the page. Typst `fr` tracks are sized *after* gutter is
+      -- subtracted and distributed by ratio, which is what "55%, 5%, 40%"
+      -- actually intends -- so convert the percentage to an equivalent fr.
+      local pct = width:match("^([%d.]+)%%$")
+      if pct then
+        width = pct .. "fr"
+      end
       table.insert(widths, width)
       -- render inner content as Typst, preserving all formatting
       local inner = pandoc.write(pandoc.Pandoc(block.content), "typst")

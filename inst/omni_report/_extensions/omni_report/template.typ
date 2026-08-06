@@ -1,5 +1,7 @@
 $pages.typ()$
 
+$design_elements.typ()$
+
 
 $typst-template.typ()$
 
