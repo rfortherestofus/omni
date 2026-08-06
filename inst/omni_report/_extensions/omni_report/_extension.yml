@@ -15,6 +15,7 @@ contributes:
         - filter.lua
     html:
       toc: true
+      # appendix-style: none
       theme:
         - colors.scss
 

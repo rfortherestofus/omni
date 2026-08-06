@@ -53,6 +53,25 @@ function Span(el)
 end
 
 
+local appendix_header_inserted = false
+
+function Header(el)
+  if not quarto.doc.is_format("typst") then
+    return el
+  end
+
+  if appendix_header_inserted or not el.classes:includes("appendix") then
+    return el
+  end
+
+  appendix_header_inserted = true
+  return {
+    pandoc.RawBlock("typst", "#create-appendix-header()"),
+    el,
+  }
+end
+
+
 function Div(el)
   if not quarto.doc.is_format("typst") then
     return el
