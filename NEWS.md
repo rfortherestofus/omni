@@ -33,3 +33,7 @@
 
 * The report footer now shows the year the report is knitted rather than a
   hard-coded year, so it no longer needs a manual update each January (#243).
+* Fixed spacing above and below section headings (h1-h4) so it matches the
+  Word brand template (Report Template.dotx). Previously every heading level
+  used the same spacing, which didn't match Word's per-level spacing and, for
+  h1, was visibly tighter than the gap under a top-level heading in Word.
