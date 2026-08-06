@@ -114,25 +114,29 @@ h4:not(#header h4) {
    the Word brand template (Report Template.dotx). Word's own "space
    before/after" paragraph attributes don't map 1:1 to the visual gap
    because of line-height/leading, so these are measured pixel gaps from
-   an actual Word-rendered PDF, not the raw docx spacing values. */
-h1:not(#header h1) {
+   an actual Word-rendered PDF, not the raw docx spacing values.
+
+   The report-html skeleton starts sections at "##", not "#" - the
+   document title comes from YAML front matter, so h1 is never a real
+   section heading in practice. h2 is the primary section heading, h3 is
+   the subtopic, h4 the sub-subtopic - one level down from what the tag
+   name suggests - so these rules target Word's heading levels shifted
+   accordingly (h1 keeps the top-level values in case anyone still uses
+   a bare "#"). */
+h1:not(#header h1),
+h2:not(#header h2) {
   margin-top: 20pt;
   margin-bottom: 9pt;
 }
 
-h2:not(#header h2) {
+h3:not(#header h3) {
   margin-top: 11pt;
   margin-bottom: 8pt;
 }
 
-h3:not(#header h3) {
+h4:not(#header h4) {
   margin-top: 15pt;
   margin-bottom: 0pt;
-}
-
-h4:not(#header h4) {
-  margin-top: 11pt;
-  margin-bottom: 5pt;
 }
 
 h2 {

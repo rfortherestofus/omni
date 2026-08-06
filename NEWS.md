@@ -38,3 +38,8 @@
   used the same spacing, which didn't match Word's per-level spacing and, for
   h1, was visibly tighter than the gap under a top-level heading in Word
   (#257).
+* Corrected which heading level receives which spacing from the fix above.
+  The report-html skeleton starts sections at `##`, not `#`, so h2/h3/h4 are
+  the levels actually used for primary/subtopic/sub-subtopic headings in
+  practice; the previous fix had applied each level's spacing one tag too
+  high.
