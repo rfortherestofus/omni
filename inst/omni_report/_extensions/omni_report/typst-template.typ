@@ -46,6 +46,7 @@
     margin: margin,
     numbering: pagenumbering,
   )
+  appendix-margin-state.update(margin)
   set par(justify: true)
   set text(lang: lang, region: region, font: font, size: fontsize)
   set heading(numbering: sectionnumbering)
