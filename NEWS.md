@@ -28,6 +28,10 @@
   Previously the gap between paragraphs matched the line spacing within a
   paragraph, so paragraphs ran together; manual blank lines are no longer
   needed to separate them (#237).
+* Fixed spacing above and below section headings (`##`/`###`/`####`) so it
+  matches the Word brand template (Report Template.dotx). The primary
+  heading level (`##`) previously had almost no space below it before body
+  text, and the two lower levels had spacing that didn't match Word either.
 
 ## HTML report
 
@@ -41,3 +45,8 @@
 * Fixed spacing between paragraphs and around bulleted/numbered lists, which
   was noticeably tighter than the Word brand template. Paragraph-to-paragraph
   and list spacing now match the gaps in Word.
+* Corrected which heading level receives which spacing from the fix above.
+  The report-html skeleton starts sections at `##`, not `#`, so h2/h3/h4 are
+  the levels actually used for primary/subtopic/sub-subtopic headings in
+  practice; the previous fix had applied each level's spacing one tag too
+  high.

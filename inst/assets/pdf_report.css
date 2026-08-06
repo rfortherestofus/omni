@@ -446,16 +446,17 @@ h1 {
 }
 
 h2 {
-  margin-block-end: 0 !important;
+  margin-block-end: 8pt !important;
   font-size: 30pt;
   font-weight: 400;
   letter-spacing: 0.03em;
   color: var(--primary-color);
-  margin-top: 0 !important;
+  margin-top: 18pt !important;
 }
 
 h3 {
   margin-block-end: 8pt !important;
+  margin-top: 9pt !important;
   font-size: 16pt;
   font-weight: 400;
   letter-spacing: 0.03em;
@@ -463,7 +464,8 @@ h3 {
 }
 
 h4 {
-  margin-block-end: 5.5pt !important;
+  margin-block-end: 0pt !important;
+  margin-top: 13pt !important;
   font-size: 13pt;
   font-weight: 400;
   letter-spacing: 0.03em;
