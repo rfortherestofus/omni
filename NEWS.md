@@ -28,6 +28,10 @@
   Previously the gap between paragraphs matched the line spacing within a
   paragraph, so paragraphs ran together; manual blank lines are no longer
   needed to separate them (#237).
+* Fixed spacing above and below section headings (`##`/`###`/`####`) so it
+  matches the Word brand template (Report Template.dotx). The primary
+  heading level (`##`) previously had almost no space below it before body
+  text, and the two lower levels had spacing that didn't match Word either.
 
 ## HTML report
 
