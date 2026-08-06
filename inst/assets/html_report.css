@@ -150,9 +150,23 @@ h3 {
 }
 
 /* Normal paragraph */
+/* margin-bottom matches the measured paragraph-to-paragraph gap in the
+   Word brand template (Report Template.dotx) — see the heading rules
+   above for how this was measured (rendered output, not the raw docx
+   spacing attributes). */
 p {
   font-size: 14pt;
   font-weight: 400;
+  margin: 0 0 10pt 0;
+}
+
+/* Space around bulleted/numbered lists, matched to the Word template the
+   same way as the paragraph and heading spacing above. Excludes the
+   sidebar TOC, which has its own spacing. */
+ul:not(#TOC ul),
+ol:not(#TOC ol) {
+  margin-top: 12pt;
+  margin-bottom: 9pt;
 }
 
 #TOC {
