@@ -438,6 +438,26 @@ h1.subtitle:nth-child(2):not(.abstract h1)::before {
 }
 
 /* Levels of title */
+/* Known limitation: margin-top on h2/h3/h4 below is not trimmed when a
+   heading happens to land at the top of a printed page - paged.js (the
+   pagination engine behind this PDF output) doesn't implement the part of
+   the CSS Fragmentation spec that discards a box's margin at a page-break
+   boundary. Confirmed by rendering test docs and forcing headings to the
+   top of a page: the heading's own margin-top survives the break in full,
+   while a trailing margin-bottom on the element before it is correctly
+   discarded. That second fact means the fix - moving this spacing onto
+   the *previous* element's margin-bottom instead of the heading's
+   margin-top - is possible in principle, but pandoc wraps every section in
+   its own nested <div>, so "the previous element" is the wrapping div of
+   the prior section, not a direct sibling of the heading. Selecting it
+   correctly needs to special-case every block type a section can end
+   with (paragraph, list, table, image, quote_box()/callout_box()), and
+   silently loses the spacing for any type not covered. Given that, this
+   was left as an accepted, purely cosmetic limitation rather than fixed:
+   the extra space above a heading at the top of a page is the same
+   spacing that correctly separates it from body text everywhere else, it
+   just has nothing to visually separate from when there's no preceding
+   line on that page. */
 h1 {
   font-size: 24pt;
   font-weight: 700;
