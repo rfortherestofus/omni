@@ -54,14 +54,13 @@ An rmd format
 Omni Paged PDF Report
 }
 \details{
-Because page breaks depend on where content happens to fall, some layout
-issues only show up after knitting and are best fixed by hand, iteratively,
-rather than automatically. Force a page break with a `\\newpage` on its own
-line. If a `##`/`###`/`####` heading lands at the top of a page (so its
-normal spacing above it looks like too much, with nothing above it on
-that page to visually separate from), wrap just that heading in a fenced
-div with the `remove-header-space` class and re-knit, e.g.
-`::: \{.remove-header-space\}` then `## My Heading` then `:::` on their own
-lines. Only that heading is affected; every other heading keeps its
-normal spacing.
+If a `##`/`###`/`####` heading lands at the top of a page (so its normal
+spacing above it looks like too much, with nothing above it on that page
+to visually separate from), that position depends on where content
+happens to break across pages and can't be detected automatically at
+CSS-authoring time. Fix it by hand instead, after knitting: wrap the
+heading in a fenced div with the `remove-header-space` class and re-knit,
+e.g. `::: \{.remove-header-space\}` then `## My Heading` then `:::` on
+their own lines. Only that heading is affected; every other heading
+keeps its normal spacing.
 }
