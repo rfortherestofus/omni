@@ -40,6 +40,10 @@
 <code><a href="../reference/scale_fill_omni_discrete.html">scale_fill_omni_discrete()</a></code> and <code><a href="../reference/scale_color_omni_discrete.html">scale_color_omni_discrete()</a></code> now use the first <em>k</em> palette colors for <em>k</em> categories instead of interpolating <em>k</em> colors across the five-color ramp. Categorical charts get the exact brand colors at every count (three categories are periwinkle, orange-red and plum; four add olive-green), and the scale errors clearly when more categories than palette colors are requested (<a href="https://github.com/rfortherestofus/omni/issues/242" class="external-link">#242</a>).</li>
 </ul></div>
 <div class="section level3">
+<h3 id="omni_header-1-1-0">omni_header()<a class="anchor" aria-label="anchor" href="#omni_header-1-1-0"></a></h3>
+<ul><li>Fixed <code>finding_keyword</code> (the secondary-finding stripe/text in the caption) silently rendering gray instead of <code>color</code>. It colors via marquee markdown (<code>{.color ...}</code>), which only resolves if <code>plot.caption</code>’s style has that color registered as a tag - <code><a href="../reference/omni_header.html">omni_header()</a></code> was never supplying that style itself, so it only worked by accident, when <code><a href="../reference/theme_omni.html">theme_omni()</a></code>’s own <code>plot.caption</code> element (which does carry the right style) was still in place immediately beforehand for ggplot2’s theme-merge to inherit it from. Any code resetting <code>plot.caption</code> first - including a fix for an unrelated title/subtitle theme-merge issue - broke it. <code><a href="../reference/omni_header.html">omni_header()</a></code> now supplies its own style unconditionally, independent of theme order.</li>
+</ul></div>
+<div class="section level3">
 <h3 id="pdf-report-tables-1-1-0">PDF report tables<a class="anchor" aria-label="anchor" href="#pdf-report-tables-1-1-0"></a></h3>
 <ul><li>Table columns no longer change width where a table breaks across pages. Tables now keep consistent, content-proportional column widths on every page (<a href="https://github.com/rfortherestofus/omni/issues/238" class="external-link">#238</a>).</li>
 <li>Table header rows now repeat at the top of each page a table spans (<a href="https://github.com/rfortherestofus/omni/issues/238" class="external-link">#238</a>).</li>
@@ -50,11 +54,14 @@
 <div class="section level3">
 <h3 id="pdf-report-layout-1-1-0">PDF report layout<a class="anchor" aria-label="anchor" href="#pdf-report-layout-1-1-0"></a></h3>
 <ul><li>Fixed the spacing between paragraphs so paragraphs are clearly separated. Previously the gap between paragraphs matched the line spacing within a paragraph, so paragraphs ran together; manual blank lines are no longer needed to separate them (<a href="https://github.com/rfortherestofus/omni/issues/237" class="external-link">#237</a>).</li>
+<li>Fixed spacing above and below section headings (<code>##</code>/<code>###</code>/<code>####</code>) so it matches the Word brand template (Report Template.dotx). The primary heading level (<code>##</code>) previously had almost no space below it before body text, and the two lower levels had spacing that didn’t match Word either.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="html-report-1-1-0">HTML report<a class="anchor" aria-label="anchor" href="#html-report-1-1-0"></a></h3>
 <ul><li>The report footer now shows the year the report is knitted rather than a hard-coded year, so it no longer needs a manual update each January (<a href="https://github.com/rfortherestofus/omni/issues/243" class="external-link">#243</a>).</li>
-<li>Fixed spacing above and below section headings (h1-h4) so it matches the Word brand template (Report Template.dotx). Previously every heading level used the same spacing, which didn’t match Word’s per-level spacing and, for h1, was visibly tighter than the gap under a top-level heading in Word.</li>
+<li>Fixed spacing above and below section headings (h1-h4) so it matches the Word brand template (Report Template.dotx). Previously every heading level used the same spacing, which didn’t match Word’s per-level spacing and, for h1, was visibly tighter than the gap under a top-level heading in Word (<a href="https://github.com/rfortherestofus/omni/issues/257" class="external-link">#257</a>).</li>
+<li>Fixed spacing between paragraphs and around bulleted/numbered lists, which was noticeably tighter than the Word brand template. Paragraph-to-paragraph and list spacing now match the gaps in Word.</li>
+<li>Corrected which heading level receives which spacing from the fix above. The report-html skeleton starts sections at <code>##</code>, not <code>#</code>, so h2/h3/h4 are the levels actually used for primary/subtopic/sub-subtopic headings in practice; the previous fix had applied each level’s spacing one tag too high.</li>
 </ul></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

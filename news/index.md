@@ -14,6 +14,24 @@
   errors clearly when more categories than palette colors are requested
   ([\#242](https://github.com/rfortherestofus/omni/issues/242)).
 
+### omni_header()
+
+- Fixed `finding_keyword` (the secondary-finding stripe/text in the
+  caption) silently rendering gray instead of `color`. It colors via
+  marquee markdown (`{.color ...}`), which only resolves if
+  `plot.caption`’s style has that color registered as a tag -
+  [`omni_header()`](https://rfortherestofus.github.io/omni/reference/omni_header.md)
+  was never supplying that style itself, so it only worked by accident,
+  when
+  [`theme_omni()`](https://rfortherestofus.github.io/omni/reference/theme_omni.md)’s
+  own `plot.caption` element (which does carry the right style) was
+  still in place immediately beforehand for ggplot2’s theme-merge to
+  inherit it from. Any code resetting `plot.caption` first - including a
+  fix for an unrelated title/subtitle theme-merge issue - broke it.
+  [`omni_header()`](https://rfortherestofus.github.io/omni/reference/omni_header.md)
+  now supplies its own style unconditionally, independent of theme
+  order.
+
 ### PDF report tables
 
 - Table columns no longer change width where a table breaks across
@@ -40,6 +58,11 @@
   spacing within a paragraph, so paragraphs ran together; manual blank
   lines are no longer needed to separate them
   ([\#237](https://github.com/rfortherestofus/omni/issues/237)).
+- Fixed spacing above and below section headings (`##`/`###`/`####`) so
+  it matches the Word brand template (Report Template.dotx). The primary
+  heading level (`##`) previously had almost no space below it before
+  body text, and the two lower levels had spacing that didn’t match Word
+  either.
 
 ### HTML report
 
@@ -50,4 +73,13 @@
   the Word brand template (Report Template.dotx). Previously every
   heading level used the same spacing, which didn’t match Word’s
   per-level spacing and, for h1, was visibly tighter than the gap under
-  a top-level heading in Word.
+  a top-level heading in Word
+  ([\#257](https://github.com/rfortherestofus/omni/issues/257)).
+- Fixed spacing between paragraphs and around bulleted/numbered lists,
+  which was noticeably tighter than the Word brand template.
+  Paragraph-to-paragraph and list spacing now match the gaps in Word.
+- Corrected which heading level receives which spacing from the fix
+  above. The report-html skeleton starts sections at `##`, not `#`, so
+  h2/h3/h4 are the levels actually used for
+  primary/subtopic/sub-subtopic headings in practice; the previous fix
+  had applied each level’s spacing one tag too high.
