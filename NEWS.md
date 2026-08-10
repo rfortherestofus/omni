@@ -45,6 +45,14 @@
   matches the Word brand template (Report Template.dotx). The primary
   heading level (`##`) previously had almost no space below it before body
   text, and the two lower levels had spacing that didn't match Word either.
+* Added a manual fix for a heading that lands at the top of a printed page:
+  the normal spacing above a heading looks like too much space there since
+  there's nothing above it on that page to separate from, and the renderer
+  has no way to detect that position automatically at CSS-authoring time.
+  After knitting, wrap a heading that visibly lands at the top of a page in
+  a fenced div with the new `remove-header-space` class and re-knit:
+  `::: {.remove-header-space}` / `## My Heading` / `:::`. Only that
+  heading's top spacing is removed; every other heading is unaffected.
 
 ## HTML report
 

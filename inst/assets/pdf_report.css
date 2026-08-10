@@ -472,6 +472,28 @@ h4 {
   color: var(--primary-color);
 }
 
+/* Manual fix for a heading that lands at the top of a printed page: the
+   margin-top values above give correct, deliberate spacing when a heading
+   follows body text on the same page, but that same margin isn't trimmed
+   when the heading happens to start a new page instead - there's nothing
+   above it there to visually separate from, so it looks like too much
+   space. There's no way to detect that position automatically at CSS-authoring
+   time (it depends on where content happens to break across pages, which
+   shifts as content changes), so this is an opt-in, per-heading override:
+   after knitting, if a heading visibly lands at the top of a page, wrap
+   just that heading in a fenced div with this class and re-knit -
+     ::: {.remove-header-space}
+     ## My Heading
+     :::
+   Only that heading's top margin is removed; every other heading's normal
+   spacing is unaffected. */
+.remove-header-space h1,
+.remove-header-space h2,
+.remove-header-space h3,
+.remove-header-space h4 {
+  margin-top: 0pt !important;
+}
+
 /* Normal paragraph */
 /* Line spacing within a paragraph is set by line-height; the gap *between*
    paragraphs is set by margin-bottom. These must differ or paragraphs run
