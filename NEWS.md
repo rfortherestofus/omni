@@ -45,6 +45,13 @@
   matches the Word brand template (Report Template.dotx). The primary
   heading level (`##`) previously had almost no space below it before body
   text, and the two lower levels had spacing that didn't match Word either.
+* Corrected the heading spacing values from the fix above. They were
+  measured from the Word template's built-in "Heading 1/2/3" styles, which
+  the template doesn't actually use (they render in an unbranded orange, not
+  Omni's navy) - the real reference is the template's custom "Omni Header
+  1/2/3" styles, which give uniform spacing across all three levels rather
+  than the hierarchical spacing the built-in styles have. All three levels
+  (`##`/`###`/`####`) now get the same ~11pt before / ~12pt after spacing.
 
 ## HTML report
 
@@ -63,3 +70,8 @@
   the levels actually used for primary/subtopic/sub-subtopic headings in
   practice; the previous fix had applied each level's spacing one tag too
   high.
+* Corrected the heading spacing values themselves, for the same reason as
+  the PDF report fix above: they were measured from the Word template's
+  unbranded built-in "Heading 1/2/3" styles rather than its custom "Omni
+  Header 1/2/3" styles. All heading levels now get the same ~11pt before /
+  ~12pt after spacing, matching Omni Header 1/2/3's uniform spacing.
