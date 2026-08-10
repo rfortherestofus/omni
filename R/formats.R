@@ -16,6 +16,17 @@ word_report <- function(...) {
 
 #' Omni Paged PDF Report
 #'
+#' @details
+#' If a `##`/`###`/`####` heading lands at the top of a page (so its normal
+#' spacing above it looks like too much, with nothing above it on that page
+#' to visually separate from), that position depends on where content
+#' happens to break across pages and can't be detected automatically at
+#' CSS-authoring time. Fix it by hand instead, after knitting: wrap the
+#' heading in a fenced div with the `remove-header-space` class and re-knit,
+#' e.g. `::: \{.remove-header-space\}` then `## My Heading` then `:::` on
+#' their own lines. Only that heading is affected; every other heading
+#' keeps its normal spacing.
+#'
 #' @param main_font Main font
 #' @param secondary_font Secondary font
 #' @param background_cover_image Image to use for the background in the cover page. It must be one of (case insensitive): `c("01-yellow", "02-teal", "03-orangered", "06-teal", "07-periwinkle", "07-olive", "08-plum")`.

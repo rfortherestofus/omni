@@ -52,6 +52,14 @@
   1/2/3" styles, which give uniform spacing across all three levels rather
   than the hierarchical spacing the built-in styles have. All three levels
   (`##`/`###`/`####`) now get the same ~11pt before / ~12pt after spacing.
+* Added a manual fix for a heading that lands at the top of a printed page:
+  the normal spacing above a heading looks like too much space there since
+  there's nothing above it on that page to separate from, and the renderer
+  has no way to detect that position automatically at CSS-authoring time.
+  After knitting, wrap a heading that visibly lands at the top of a page in
+  a fenced div with the new `remove-header-space` class and re-knit:
+  `::: {.remove-header-space}` / `## My Heading` / `:::`. Only that
+  heading's top spacing is removed; every other heading is unaffected.
 
 ## HTML report
 
