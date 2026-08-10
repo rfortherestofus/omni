@@ -34,6 +34,26 @@ test_that("omni_header colors the keyword and warns on a missing one", {
   expect_warning(omni_header(primary = "Housing led", keyword = "Nope"))
 })
 
+test_that("omni_header's caption carries its own marquee style (regression: finding_keyword gray fallback)", {
+  # omni_header()'s finding_keyword coloring works by wrapping it in marquee
+  # class markdown (e.g. "{.plum-600 ...}"), which only resolves to a color
+  # if plot.caption's element_marquee() has a style with that class
+  # registered. It must supply that style itself rather than relying on
+  # ggplot2's theme-merge to backfill it from a pre-existing plot.caption
+  # element (e.g. theme_omni()'s) - that only works by accident, and breaks
+  # the moment anything resets plot.caption first (as a fix for the
+  # title/subtitle theme-merge issue does).
+  h <- omni_header(
+    primary = "Test finding",
+    finding = "A second point",
+    finding_keyword = "second",
+    color = "plum-600"
+  )
+  caption_style <- h[[2]]$plot.caption$style
+  expect_false(is.null(caption_style))
+  expect_identical(caption_style, .omni_marquee_style())
+})
+
 test_that("omni_highlight_labels colors only matched labels", {
   labeller <- omni_highlight_labels("North", color = "teal-600")
   out <- labeller(c("North", "South"))

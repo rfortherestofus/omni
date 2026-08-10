@@ -9,6 +9,19 @@
   four add olive-green), and the scale errors clearly when more categories than
   palette colors are requested (#242).
 
+## omni_header()
+
+* Fixed `finding_keyword` (the secondary-finding stripe/text in the caption)
+  silently rendering gray instead of `color`. It colors via marquee markdown
+  (`{.color ...}`), which only resolves if `plot.caption`'s style has that
+  color registered as a tag - `omni_header()` was never supplying that style
+  itself, so it only worked by accident, when `theme_omni()`'s own
+  `plot.caption` element (which does carry the right style) was still in
+  place immediately beforehand for ggplot2's theme-merge to inherit it from.
+  Any code resetting `plot.caption` first - including a fix for an unrelated
+  title/subtitle theme-merge issue - broke it. `omni_header()` now supplies
+  its own style unconditionally, independent of theme order.
+
 ## PDF report tables
 
 * Table columns no longer change width where a table breaks across pages.
