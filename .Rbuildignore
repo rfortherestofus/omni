@@ -16,3 +16,4 @@
 inst/reference/
 ^.*\.pdf
 (^|/).*(?:_libs|_files)/$
+^\.claude$
