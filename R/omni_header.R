@@ -146,7 +146,14 @@ omni_header <- function(
         padding = ggplot2::margin(0, 0, 0, 0)
       ),
       plot.subtitle = ggplot2::element_text(colour = hex_gray),
-      plot.caption = marquee::element_marquee(hjust = 0, colour = hex_gray)
+      # style is passed explicitly (not inherited from whatever plot.caption
+      # element theme_omni() or the caller left behind) so the {.color ...}
+      # class markdown built above always resolves, regardless of theme order
+      plot.caption = marquee::element_marquee(
+        hjust = 0,
+        colour = hex_gray,
+        style = .omni_marquee_style()
+      )
     )
   )
 }
