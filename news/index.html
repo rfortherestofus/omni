@@ -55,6 +55,7 @@
 <h3 id="pdf-report-layout-1-1-0">PDF report layout<a class="anchor" aria-label="anchor" href="#pdf-report-layout-1-1-0"></a></h3>
 <ul><li>Fixed the spacing between paragraphs so paragraphs are clearly separated. Previously the gap between paragraphs matched the line spacing within a paragraph, so paragraphs ran together; manual blank lines are no longer needed to separate them (<a href="https://github.com/rfortherestofus/omni/issues/237" class="external-link">#237</a>).</li>
 <li>Fixed spacing above and below section headings (<code>##</code>/<code>###</code>/<code>####</code>) so it matches the Word brand template (Report Template.dotx). The primary heading level (<code>##</code>) previously had almost no space below it before body text, and the two lower levels had spacing that didn’t match Word either.</li>
+<li>Corrected the heading spacing values from the fix above. They were measured from the Word template’s built-in “Heading 1/2/3” styles, which the template doesn’t actually use (they render in an unbranded orange, not Omni’s navy) - the real reference is the template’s custom “Omni Header 1/2/3” styles, which give uniform spacing across all three levels rather than the hierarchical spacing the built-in styles have. All three levels (<code>##</code>/<code>###</code>/<code>####</code>) now get the same ~11pt before / ~12pt after spacing.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="html-report-1-1-0">HTML report<a class="anchor" aria-label="anchor" href="#html-report-1-1-0"></a></h3>
@@ -62,6 +63,7 @@
 <li>Fixed spacing above and below section headings (h1-h4) so it matches the Word brand template (Report Template.dotx). Previously every heading level used the same spacing, which didn’t match Word’s per-level spacing and, for h1, was visibly tighter than the gap under a top-level heading in Word (<a href="https://github.com/rfortherestofus/omni/issues/257" class="external-link">#257</a>).</li>
 <li>Fixed spacing between paragraphs and around bulleted/numbered lists, which was noticeably tighter than the Word brand template. Paragraph-to-paragraph and list spacing now match the gaps in Word.</li>
 <li>Corrected which heading level receives which spacing from the fix above. The report-html skeleton starts sections at <code>##</code>, not <code>#</code>, so h2/h3/h4 are the levels actually used for primary/subtopic/sub-subtopic headings in practice; the previous fix had applied each level’s spacing one tag too high.</li>
+<li>Corrected the heading spacing values themselves, for the same reason as the PDF report fix above: they were measured from the Word template’s unbranded built-in “Heading 1/2/3” styles rather than its custom “Omni Header 1/2/3” styles. All heading levels now get the same ~11pt before / ~12pt after spacing, matching Omni Header 1/2/3’s uniform spacing.</li>
 </ul></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
