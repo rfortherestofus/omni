@@ -139,13 +139,19 @@ omni_header <- function(
     ggplot2::theme(
       plot.title.position = "plot",
       plot.caption.position = "plot",
-      # element_textbox_simple (not element_markdown) so long findings wrap to the plot width
+      # element_textbox_simple (not element_markdown) so long findings wrap to the plot width.
+      # margin.t gives the eyebrow (when present) space above it instead of sitting flush
+      # against the plot's outer margin. Deliberately not adding extra space between the
+      # eyebrow and primary finding themselves (they're one HTML string joined by a plain
+      # <br>) - that gap can only be tuned in discrete jumps, not continuously, with the
+      # markdown renderer this textbox uses, and the smallest available jump reads as too
+      # much space per design feedback.
       plot.title = ggtext::element_textbox_simple(
         lineheight = 1.4,
-        margin = ggplot2::margin(b = 14),
+        margin = ggplot2::margin(t = 8, b = 14),
         padding = ggplot2::margin(0, 0, 0, 0)
       ),
-      plot.subtitle = ggplot2::element_text(colour = hex_gray),
+      plot.subtitle = ggplot2::element_text(colour = hex_gray, margin = ggplot2::margin(b = 12)),
       # style is passed explicitly (not inherited from whatever plot.caption
       # element theme_omni() or the caller left behind) so the {.color ...}
       # class markdown built above always resolves, regardless of theme order

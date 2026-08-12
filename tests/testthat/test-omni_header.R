@@ -54,6 +54,16 @@ test_that("omni_header's caption carries its own marquee style (regression: find
   expect_identical(caption_style, .omni_marquee_style())
 })
 
+test_that("omni_header gives the eyebrow space above it and the measure space below it", {
+  h <- omni_header(
+    primary = "Test finding",
+    top_header = "TOPIC - FY2024",
+    measure = "What is measured"
+  )
+  expect_equal(h[[2]]$plot.title$margin, ggplot2::margin(t = 8, b = 14))
+  expect_equal(h[[2]]$plot.subtitle$margin, ggplot2::margin(b = 12))
+})
+
 test_that("omni_highlight_labels colors only matched labels", {
   labeller <- omni_highlight_labels("North", color = "teal-600")
   out <- labeller(c("North", "South"))
