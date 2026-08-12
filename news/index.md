@@ -31,6 +31,13 @@
   [`omni_header()`](https://rfortherestofus.github.io/omni/reference/omni_header.md)
   now supplies its own style unconditionally, independent of theme
   order.
+- Fixed the header elements feeling scrunched together: added space
+  above the eyebrow (`top_header`), which previously sat flush against
+  the plot’s outer margin, and more room below the measure description
+  (`measure`) before the panel starts. The gap between the eyebrow and
+  the primary finding itself is unchanged - the markdown renderer behind
+  that text box only offers that specific gap in one fixed size, and
+  design feedback was that size reads as too much space.
 
 ### PDF report tables
 
