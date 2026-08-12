@@ -56,10 +56,17 @@
   the normal spacing above a heading looks like too much space there since
   there's nothing above it on that page to separate from, and the renderer
   has no way to detect that position automatically at CSS-authoring time.
-  After knitting, wrap a heading that visibly lands at the top of a page in
-  a fenced div with the new `remove-header-space` class and re-knit:
-  `::: {.remove-header-space}` / `## My Heading` / `:::`. Only that
-  heading's top spacing is removed; every other heading is unaffected.
+  After knitting, add the `remove-header-space` class to a heading that
+  visibly lands at the top of a page and re-knit.
+* Corrected how to apply the `remove-header-space` class from the fix
+  above. It must be added as a header attribute -
+  `## My Heading {.remove-header-space}` - not by wrapping the heading in a
+  fenced div (`::: {.remove-header-space}` / heading / `:::`), which was
+  the originally documented form. The fenced-div form forces the heading's
+  own section to close immediately after it, orphaning any subsections -
+  and their table-of-contents entries - that should nest inside it as flat
+  siblings instead, breaking the table of contents for the rest of that
+  section.
 
 ## HTML report
 
