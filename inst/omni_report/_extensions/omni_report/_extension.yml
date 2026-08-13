@@ -18,4 +18,6 @@ contributes:
       # appendix-style: none
       theme:
         - colors.scss
+      filters:
+        - filter.lua
 

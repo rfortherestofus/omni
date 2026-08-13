@@ -26,6 +26,18 @@ local color_map = {
   ["navy"]             = "#081c39",
 }
 
+-- Renders inline content as Typst, preserving any nested formatting
+-- (bold, italic, other spans, etc.)
+local function inlines_to_typst(inlines)
+  local typst = pandoc.write(
+    pandoc.Pandoc({ pandoc.Plain(inlines) }),
+    "typst"
+  )
+  -- Strip the trailing newline pandoc.write adds
+  return typst:gsub("%s+$", "")
+end
+
+
 function Span(el)
   if not quarto.doc.is_format("typst") then
     return el
@@ -34,17 +46,9 @@ function Span(el)
   for _, class in ipairs(el.classes) do
     local color = color_map[class]
     if color then
-      -- Render the span's inline content as Typst, preserving any
-      -- nested formatting (bold, italic, other spans, etc.)
-      local inner = pandoc.write(
-        pandoc.Pandoc({ pandoc.Plain(el.content) }),
-        "typst"
-      )
-      -- Strip the trailing newline pandoc.write adds
-      inner = inner:gsub("%s+$", "")
       return pandoc.RawInline(
         "typst",
-        '#text(fill: rgb("' .. color .. '"))[' .. inner .. ']'
+        '#text(fill: rgb("' .. color .. '"))[' .. inlines_to_typst(el.content) .. ']'
       )
     end
   end
@@ -53,22 +57,72 @@ function Span(el)
 end
 
 
+-- Patterns available for the colored divider pages. The class name doubles as
+-- the image file name, e.g. `# Findings {.pattern-01-yellow}` renders
+-- pattern-01-yellow.png.
+local page_break_patterns = {
+  ["pattern-01-yellow"]     = true,
+  ["pattern-02-teal"]       = true,
+  ["pattern-03-orangered"]  = true,
+  ["pattern-06-teal"]       = true,
+  ["pattern-07-periwinkle"] = true,
+  ["pattern-07-olive"]      = true,
+  ["pattern-08-plum"]       = true,
+}
+
+local extension_dir = "_extensions/omni_report/"
+
+local function get_class_if_page_break(el)
+  for _, class in ipairs(el.classes) do
+    if page_break_patterns[class] then
+      return class
+    end
+  end
+  return nil
+end
+
 local appendix_header_inserted = false
 
 function Header(el)
+
+  if quarto.doc.is_format("html") and el.level == 1 then
+    return {}
+  end
   if not quarto.doc.is_format("typst") then
     return el
   end
 
-  if appendix_header_inserted or not el.classes:includes("appendix") then
-    return el
+  -- The appendix banner brings its own (weak) page break, so the first appendix
+  -- heading must not also get the generic one below -- that would push the
+  -- banner onto the page before its heading. Later appendix headings are
+  -- ordinary sections and fall through to the page break rule.
+  if el.classes:includes("appendix") and not appendix_header_inserted then
+    appendix_header_inserted = true
+    return {
+      pandoc.RawBlock("typst", "#create-appendix-header()"),
+      el,
+    }
   end
 
-  appendix_header_inserted = true
-  return {
-    pandoc.RawBlock("typst", "#create-appendix-header()"),
-    el,
-  }
+  -- Page breaks on Level 1 headings
+  local pattern = get_class_if_page_break(el)
+  if el.level == 1 and pattern then
+    return pandoc.RawBlock(
+      "typst",
+      '#create-page-break(title: [' .. inlines_to_typst(el.content) ..
+        '], pattern: "' .. extension_dir .. pattern .. '.png")'
+    )
+  end
+
+  -- Sections start on a fresh page. 
+  if el.level <= 2 then
+    return {
+      pandoc.RawBlock("typst", "#pagebreak(weak: true)"),
+      el,
+    }
+  end
+
+  return el
 end
 
 
