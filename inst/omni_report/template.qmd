@@ -8,7 +8,7 @@ execute:
     message: false
     echo: false
 format:
-    omni_report-html: default
+    # omni_report-html: default
     omni_report-typst:
       cover-page: true
       title-page: true

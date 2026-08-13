@@ -33,7 +33,7 @@
   )[
     #set text(fill: white)
     #v(2fr)
-    #heading(level: 1, title)
+    #heading(level: 1, outlined: false, title)
     #v(1fr)
   ]
 }
