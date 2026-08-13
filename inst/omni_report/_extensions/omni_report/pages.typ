@@ -24,6 +24,19 @@
   page()[#align(center + horizon)[This will be the title page]]
 }
 
+#let create-page-break(
+  title: none,
+  pattern: "_extensions/omni_report/pattern-01-yellow.png",
+) = {
+  page(
+    background: image(pattern, width: 100%, height: 100%, fit: "cover"),
+  )[
+    #set text(fill: white)
+    #v(2fr)
+    #heading(level: 1, title)
+    #v(1fr)
+  ]
+}
 
 
 #let create-appendix-header(
