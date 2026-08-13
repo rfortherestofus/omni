@@ -84,6 +84,10 @@ end
 local appendix_header_inserted = false
 
 function Header(el)
+
+  if quarto.doc.is_format("html") and el.level == 1 then
+    return {}
+  end
   if not quarto.doc.is_format("typst") then
     return el
   end
