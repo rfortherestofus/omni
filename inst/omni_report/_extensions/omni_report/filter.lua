@@ -26,6 +26,18 @@ local color_map = {
   ["navy"]             = "#081c39",
 }
 
+-- Renders inline content as Typst, preserving any nested formatting
+-- (bold, italic, other spans, etc.)
+local function inlines_to_typst(inlines)
+  local typst = pandoc.write(
+    pandoc.Pandoc({ pandoc.Plain(inlines) }),
+    "typst"
+  )
+  -- Strip the trailing newline pandoc.write adds
+  return typst:gsub("%s+$", "")
+end
+
+
 function Span(el)
   if not quarto.doc.is_format("typst") then
     return el
@@ -34,17 +46,9 @@ function Span(el)
   for _, class in ipairs(el.classes) do
     local color = color_map[class]
     if color then
-      -- Render the span's inline content as Typst, preserving any
-      -- nested formatting (bold, italic, other spans, etc.)
-      local inner = pandoc.write(
-        pandoc.Pandoc({ pandoc.Plain(el.content) }),
-        "typst"
-      )
-      -- Strip the trailing newline pandoc.write adds
-      inner = inner:gsub("%s+$", "")
       return pandoc.RawInline(
         "typst",
-        '#text(fill: rgb("' .. color .. '"))[' .. inner .. ']'
+        '#text(fill: rgb("' .. color .. '"))[' .. inlines_to_typst(el.content) .. ']'
       )
     end
   end
