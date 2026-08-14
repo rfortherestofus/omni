@@ -36,6 +36,30 @@
   )
 }
 
+#' Build the marquee style for caption text
+#'
+#' [.omni_marquee_style()] with the caption's quieter typography layered on
+#' top: smaller, normal weight, italic. The caption sits below the plot and
+#' must read as subordinate to the subtitle above it, so it must not inherit
+#' the shared base's larger bold setting.
+#'
+#' Both [theme_omni()] and [omni_header()] set `plot.caption` themselves, and
+#' each must pass a fully-specified style rather than relying on ggplot2's
+#' theme-merge to backfill one from the other (see [.omni_marquee_style()]).
+#' They share this helper so the two can't drift apart - they have twice
+#' before, once on color and once on size/weight.
+#'
+#' @noRd
+.omni_caption_style <- function() {
+  .omni_marquee_style() |>
+    marquee::modify_style(
+      "base",
+      size = 12,
+      weight = "normal",
+      italic = TRUE
+    )
+}
+
 #' OMNI Institute ggplot2 theme
 #'
 #' @description Applies the OMNI Institute theme to the plot.
@@ -94,14 +118,16 @@ theme_omni <- function(
             weight = "normal"
           )
       ),
+      # hjust = 0 is set explicitly: ggplot2 right-aligns captions by default,
+      # and this theme previously overrode the caption's size, weight and
+      # italic but not its alignment - so a chart built with theme_omni()
+      # alone put source/N bottom-right, while the same chart built through
+      # omni_header() (which sets hjust = 0) put it bottom-left. Left is the
+      # brand standard; both paths now agree regardless of the order they
+      # are applied in.
       plot.caption = marquee::element_marquee(
-        style = omni_style |>
-          marquee::modify_style(
-            "base",
-            size = 12,
-            weight = "normal",
-            italic = TRUE
-          )
+        hjust = 0,
+        style = .omni_caption_style()
       ),
       plot.margin = margin(
         t = 7,

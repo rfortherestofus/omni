@@ -28,6 +28,23 @@
   finding itself is unchanged - the markdown renderer behind that text box
   only offers that specific gap in one fixed size, and design feedback was
   that size reads as too much space.
+* Fixed the caption (secondary finding and source/N) rendering larger and
+  bold, heavier than the measure description above it - the reverse of the
+  intended hierarchy. It now renders at the smaller, normal-weight, italic
+  styling `theme_omni()` has always specified for captions. This was a
+  regression from the `finding_keyword` color fix above: passing the shared
+  base style explicitly fixed the color but silently brought the base's own
+  larger, bold typography with it. `theme_omni()` and `omni_header()` now
+  build `plot.caption`'s style from one shared helper, so the two can't
+  drift apart again.
+* Captions are now left-aligned under `theme_omni()` as well as under
+  `omni_header()`. `theme_omni()` styled the caption's size, weight and
+  italic but never its alignment, leaving ggplot2's right-aligned default -
+  so a chart built with `theme_omni()` alone put source/N bottom-right,
+  while the same chart built through `omni_header()` put it bottom-left.
+  Left is the brand standard. Note this changes existing figures that use
+  `theme_omni()` with a caption but without `omni_header()`: their caption
+  moves from the bottom-right to the bottom-left when re-rendered.
 
 ## PDF report tables
 
