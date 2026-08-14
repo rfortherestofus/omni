@@ -1,8 +1,8 @@
 # Create a quote box
 
-Renders a quote box, dispatching to \[quote_box_html()\] or
-\[quote_box_typst()\] depending on the output format (via
-\`knitr::is_html_output()\`).
+This function creates the HTML & CSS for the desired quote boxes. It can
+use the "version 600" colors of the color palette and highlight specific
+text via \`\<highlight\>\` tags.
 
 ## Usage
 
@@ -34,6 +34,41 @@ quote_box(text, author, color, fixed_width_px = 300)
   Width of the quote box in px. Must be numeric vector of length 1.
   Defaults to 300.
 
-## See also
+## Value
 
-\[quote_box_html()\], \[quote_box_typst()\]
+HTML & CSS that of the desired quote box
+
+## Examples
+
+``` r
+
+htmltools::browsable(
+  quote_box(
+    text = 'This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',
+    author = 'John Jacob, random guy',
+    color = 'olive-green-600'
+  )
+)
+
+  
+    "This is a quote box. You can change text color to highlight certain parts, or just leave the text all white. Change the background color as desired to match the page."
+    - John Jacob, random guy
+  
+  
+
+
+htmltools::browsable(
+  quote_box(
+    text = 'This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',
+    author = 'John Jacob, random guy',
+    color = 'periwinkle-600'
+  )
+)
+
+  
+    "This is a quote box. You can change text color to highlight certain parts, or just leave the text all white. Change the background color as desired to match the page."
+    - John Jacob, random guy
+  
+  
+
+```

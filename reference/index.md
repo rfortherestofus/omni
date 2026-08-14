@@ -20,10 +20,6 @@
   : Coerce a Brand object to a plain list
 - [`callout_box()`](https://rfortherestofus.github.io/omni/reference/callout_box.md)
   : Create a callout box
-- [`callout_box_html()`](https://rfortherestofus.github.io/omni/reference/callout_box_html.md)
-  : Create a callout box (HTML)
-- [`callout_box_typst()`](https://rfortherestofus.github.io/omni/reference/callout_box_typst.md)
-  : Create a callout box (Typst)
 - [`create_website()`](https://rfortherestofus.github.io/omni/reference/create_website.md)
   : Create a new Quarto website
 - [`ggplot_defaults()`](https://rfortherestofus.github.io/omni/reference/ggplot_defaults.md)
@@ -34,22 +30,10 @@
   : Text for Icon-Text-Grid
 - [`icon_text_grid()`](https://rfortherestofus.github.io/omni/reference/icon_text_grid.md)
   : Place icons and texts on grid
-- [`icon_text_grid_html()`](https://rfortherestofus.github.io/omni/reference/icon_text_grid_html.md)
-  : Place icons and texts on grid (HTML)
-- [`icon_text_grid_typst()`](https://rfortherestofus.github.io/omni/reference/icon_text_grid_typst.md)
-  : Place icons and texts on grid (Typst)
-- [`icon_text_html()`](https://rfortherestofus.github.io/omni/reference/icon_text_html.md)
-  : Text for Icon-Text-Grid (HTML)
-- [`icon_text_typst()`](https://rfortherestofus.github.io/omni/reference/icon_text_typst.md)
-  : Text for Icon-Text-Grid (Typst)
 - [`knit_print(`*`<omni_table>`*`)`](https://rfortherestofus.github.io/omni/reference/knit_print.omni_table.md)
   : Print an Omni table in an R Markdown document
 - [`number_emphasis()`](https://rfortherestofus.github.io/omni/reference/number_emphasis.md)
   : Create a number emphasis element
-- [`number_emphasis_html()`](https://rfortherestofus.github.io/omni/reference/number_emphasis_html.md)
-  : Create a number emphasis element (HTML)
-- [`number_emphasis_typst()`](https://rfortherestofus.github.io/omni/reference/number_emphasis_typst.md)
-  : Create a number emphasis element (Typst)
 - [`omni_baseline()`](https://rfortherestofus.github.io/omni/reference/omni_baseline.md)
   : Omni baseline axis line (non-bar/column charts only)
 - [`omni_colors()`](https://rfortherestofus.github.io/omni/reference/omni_colors.md)
@@ -60,10 +44,6 @@
   : Highlight a category label
 - [`omni_icon()`](https://rfortherestofus.github.io/omni/reference/omni_icon.md)
   : Get one of the pre-defined Omni icons
-- [`omni_icon_html()`](https://rfortherestofus.github.io/omni/reference/omni_icon_html.md)
-  : Get one of the pre-defined Omni icons (HTML)
-- [`omni_icon_typst()`](https://rfortherestofus.github.io/omni/reference/omni_icon_typst.md)
-  : Get one of the pre-defined Omni icons (Typst)
 - [`omni_icons()`](https://rfortherestofus.github.io/omni/reference/omni_icons.md)
   : List all available Omni icons
 - [`omni_page_break()`](https://rfortherestofus.github.io/omni/reference/omni_page_break.md)
@@ -96,10 +76,6 @@
   : Write API key to the system - run only once
 - [`quote_box()`](https://rfortherestofus.github.io/omni/reference/quote_box.md)
   : Create a quote box
-- [`quote_box_html()`](https://rfortherestofus.github.io/omni/reference/quote_box_html.md)
-  : Create a quote box (HTML)
-- [`quote_box_typst()`](https://rfortherestofus.github.io/omni/reference/quote_box_typst.md)
-  : Create a quote box (Typst)
 - [`read_renviron_qualtrics()`](https://rfortherestofus.github.io/omni/reference/read_renviron_qualtrics.md)
   : Read Renviron Qualtrics variables
 - [`remove_cover_page_pdf()`](https://rfortherestofus.github.io/omni/reference/remove_cover_page_pdf.md)
