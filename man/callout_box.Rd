@@ -13,11 +13,26 @@ callout_box(text, color, fixed_width_px = 300)
 
 \item{fixed_width_px}{Width of the callout box in px. Must be numeric vector of length 1. Defaults to 300.}
 }
-\description{
-Renders a callout box, dispatching to [callout_box_html()] or
-[callout_box_typst()] depending on the output format (via
-`knitr::is_html_output()`).
+\value{
+HTML & CSS that of the desired callout box
 }
-\seealso{
-[callout_box_html()], [callout_box_typst()]
+\description{
+This function creates the HTML & CSS for the desired callout boxes. It can use the "version 600" colors of the color palette and highlight specific text via `<highlight>` tags.
+}
+\examples{
+
+htmltools::browsable(
+  callout_box(
+    text = 'This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',
+    color = 'olive-green-600'
+  )
+)
+
+htmltools::browsable(
+  callout_box(
+    text = 'This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',
+    color = 'orange-red-600'
+  )
+)
+
 }

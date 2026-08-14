@@ -4,14 +4,7 @@
 \alias{number_emphasis}
 \title{Create a number emphasis element}
 \usage{
-number_emphasis(
-  number,
-  text,
-  color,
-  font_size_pt = 16,
-  text_font_size_pt = 12,
-  fixed_width_px = 300
-)
+number_emphasis(number, text, color, font_size_pt = 16, fixed_width_px = 300)
 }
 \arguments{
 \item{number}{The emphasized number. Numeric or character vector of length 1.}
@@ -22,15 +15,63 @@ number_emphasis(
 
 \item{font_size_pt}{Font size of emphasized number in pt. Numeric vector of length 1. Defaults to 16.}
 
-\item{text_font_size_pt}{Font size of the info text in pt. Numeric vector of length 1. Defaults to 12.}
-
 \item{fixed_width_px}{Width of the number emphasis in px. Must be numeric vector of length 1. Defaults to 300.}
 }
-\description{
-Renders a number emphasis element, dispatching to [number_emphasis_html()]
-or [number_emphasis_typst()] depending on the output format (via
-`knitr::is_html_output()`).
+\value{
+HTML & CSS that of the desired number emphasis
 }
-\seealso{
-[number_emphasis_html()], [number_emphasis_typst()]
+\description{
+This function creates the HTML & CSS for the desired number emphasis.
+}
+\examples{
+
+number_emphasis(
+   number = 1234,
+   text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
+   color = 'teal-400'
+)
+
+htmltools::browsable(
+ htmltools::div(
+   style = 'font-family: "Inter Tight"',
+   number_emphasis(
+     number = 1,
+     text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
+     color = 'teal-400'
+   ),
+   htmltools::br(),
+   number_emphasis(
+     number = 12,
+     text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
+     color = 'teal-400'
+   ),
+   htmltools::br(),
+   number_emphasis(
+     number = 123,
+     text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
+     color = 'teal-400'
+   ),
+   htmltools::br(),
+   number_emphasis(
+     number = 1234,
+     text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
+     color = 'teal-400'
+   ),
+   htmltools::br(),
+   number_emphasis(
+     number = '12.1K',
+     text = 'pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.',
+     color = 'teal-400'
+   ),
+   htmltools::br(),
+   number_emphasis(
+     number = '123,456',
+     text = 'and some shorter text as well.',
+     color = 'teal-400',
+     font_size_pt = 14
+   )
+ )
+) |>
+ print()
+
 }
