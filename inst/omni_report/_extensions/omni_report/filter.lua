@@ -172,3 +172,38 @@ function Div(el)
 
   return pandoc.RawBlock("typst", typst)
 end
+
+
+-- The logos that ship with the extension, named without a directory, mapped to
+-- the height each one needs: the Omni wordmark is a single line, the CSI
+-- lockup two. Client logos we know nothing about get the fallback.
+local shipped_logos = {
+  ["logo.png"]     = "30px",
+  ["logo-csi.png"] = "62px",
+}
+local fallback_logo_height = "50px"
+
+function Meta(meta)
+  if not quarto.doc.is_format("html") then
+    return meta
+  end
+
+  local logo = pandoc.utils.stringify(meta["logo-ref"] or "")
+  local file = logo:match("[^/\\]+$") or ""
+
+  -- A bare shipped logo name is looked up in the extension; anything else is a
+  -- path relative to the qmd and is left exactly as written.
+  if shipped_logos[logo] then
+    meta["logo-ref"] = pandoc.MetaString(extension_dir .. logo)
+  end
+
+  -- `logo-height: default` sizes the logo for us; an explicit length wins.
+  local height = pandoc.utils.stringify(meta["logo-height"] or "")
+  if height == "" or height == "default" then
+    meta["logo-height"] = pandoc.MetaString(
+      shipped_logos[file] or fallback_logo_height
+    )
+  end
+
+  return meta
+end

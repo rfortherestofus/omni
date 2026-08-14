@@ -1,0 +1,38 @@
+<header id="title-block-header" class="quarto-title-block default">
+
+<!-- logo-ref, organization-name and logo-height are defaulted in the html
+     format of _extension.yml; a document overrides any of them. A
+     `logo-height` of "default" is resolved from the logo file by filter.lua. -->
+<div class="omni-header">
+  <img class="omni-header-logo" src="$logo-ref$" alt="$organization-name$ logo"
+       style="height: $logo-height$;" />
+  <div class="omni-header-name">$organization-name$</div>
+</div>
+
+<div class="quarto-title">
+$if(title)$
+<h1 class="title">$title$</h1>
+$endif$
+$if(subtitle)$
+<p class="subtitle lead">$subtitle$</p>
+$endif$
+</div>
+
+$if(by-author)$
+<div class="omni-title-meta">
+$for(by-author)$
+$if(it.name.literal)$
+<p class="author">$it.name.literal$</p>
+$endif$
+$endfor$
+$if(date)$
+<p class="date">$date$</p>
+$endif$
+</div>
+$elseif(date)$
+<div class="omni-title-meta">
+<p class="date">$date$</p>
+</div>
+$endif$
+
+</header>
