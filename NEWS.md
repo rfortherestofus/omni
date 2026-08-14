@@ -59,8 +59,16 @@
   on the default and are genuinely orange-red charts need
   `color = "orange-red-600"` added.
 
+* Tightened the header's vertical rhythm against design feedback that the
+  elements sat too far apart: the gap between the primary finding and the
+  measure description is down ~60% and the gap between the measure
+  description and the plot panel is down ~10%. Both were set by measuring
+  the rendered output rather than by picking margin values, since the
+  visible gap is the margin plus the font's own line box.
 * The gap between the eyebrow (`top_header`) and the primary finding is now
-  adjustable, via a new `eyebrow_gap` argument. Previously the header's five
+  adjustable, via a new `eyebrow_gap` argument (default `0`, the tightest
+  the two lines go - the residual gap there is the fonts' line boxes, which
+  no margin can shrink). Previously the header's five
   elements read as scrunched together, but this particular gap could not be
   opened up: the title was rendered by ggtext, whose renderer only offers
   that gap in one fixed step - too large per design feedback - with no

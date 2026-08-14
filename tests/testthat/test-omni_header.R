@@ -137,8 +137,12 @@ test_that("omni_header gives the eyebrow space above it and the measure space be
     top_header = "TOPIC - FY2024",
     measure = "What is measured"
   )
-  expect_equal(h[[2]]$plot.title$margin, ggplot2::margin(t = 8, b = 14))
-  expect_equal(h[[2]]$plot.subtitle$margin, ggplot2::margin(b = 12))
+  # These bottom margins are tuned against measured output, not chosen: they put
+  # ~24px between the primary finding and the measure description, and ~36px
+  # between the measure description and the panel. Changing them changes the
+  # header's rhythm, so they are pinned here deliberately.
+  expect_equal(h[[2]]$plot.title$margin, ggplot2::margin(t = 8, b = 5.3))
+  expect_equal(h[[2]]$plot.subtitle$margin, ggplot2::margin(b = 9))
 })
 
 test_that("omni_highlight_labels colors only matched labels", {

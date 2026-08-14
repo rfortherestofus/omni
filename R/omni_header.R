@@ -82,10 +82,10 @@
 #' @param n Sample size; rendered as `"N = <n>."`.
 #' @param color The chart's one highlight color name (title keyword + finding keyword/stripe).
 #' @param primary_size,eyebrow_size Font sizes in pt.
-#' @param eyebrow_gap Space between the eyebrow and the primary finding, in `rem` (relative
-#'   to `primary_size`). Only applies when `top_header` is given. `0` sits the primary
-#'   directly under the eyebrow; the default leaves a small gap. Does not affect the space
-#'   below the primary finding.
+#' @param eyebrow_gap Extra space between the eyebrow and the primary finding, in `rem`.
+#'   Only applies when `top_header` is given. `0` (the default) is as tight as the two lines
+#'   go - the residual gap at `0` is the fonts' own line boxes, which no margin can shrink.
+#'   Does not affect the space below the primary finding.
 #'
 #' @return A list of ggplot components (`labs()` + `theme()`).
 #' @export
@@ -114,7 +114,7 @@ omni_header <- function(
   color = "orange-red-600",
   primary_size = 18,
   eyebrow_size = 10,
-  eyebrow_gap = 0.35
+  eyebrow_gap = 0
 ) {
   hex_gray <- omni_colors("chart-gray")
 
@@ -179,12 +179,19 @@ omni_header <- function(
       # width = 1 wraps a long primary finding to the full plot width. margin.t gives the
       # eyebrow (when present) space above it instead of sitting flush against the plot's
       # outer margin; the eyebrow-to-primary gap is `eyebrow_gap`, carried by the style.
+      #
+      # The bottom margins below are tuned against the rendered output rather than picked:
+      # b = 5.3 puts ~24px between the primary finding and the measure description, and the
+      # subtitle's b = 9 puts ~36px between the measure description and the panel (at
+      # 150 dpi). Both were measured by scanning the rendered PNG for rows of ink, because
+      # the visible gap is the margin plus the font's own line box - the margin alone does
+      # not predict it.
       plot.title = marquee::element_marquee(
         width = 1,
         style = .omni_title_style(primary_size, eyebrow_size, eyebrow_gap),
-        margin = ggplot2::margin(t = 8, b = 14)
+        margin = ggplot2::margin(t = 8, b = 5.3)
       ),
-      plot.subtitle = ggplot2::element_text(colour = hex_gray, margin = ggplot2::margin(b = 12)),
+      plot.subtitle = ggplot2::element_text(colour = hex_gray, margin = ggplot2::margin(b = 9)),
       # style is passed explicitly (not inherited from whatever plot.caption
       # element theme_omni() or the caller left behind) so the {.color ...}
       # class markdown built above always resolves, regardless of theme order.

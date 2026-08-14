@@ -16,7 +16,7 @@ omni_header(
   color = "orange-red-600",
   primary_size = 18,
   eyebrow_size = 10,
-  eyebrow_gap = 0.35
+  eyebrow_gap = 0
 )
 }
 \arguments{
@@ -40,10 +40,10 @@ omni_header(
 
 \item{primary_size, eyebrow_size}{Font sizes in pt.}
 
-\item{eyebrow_gap}{Space between the eyebrow and the primary finding, in `rem` (relative
-to `primary_size`). Only applies when `top_header` is given. `0` sits the primary
-directly under the eyebrow; the default leaves a small gap. Does not affect the space
-below the primary finding.}
+\item{eyebrow_gap}{Extra space between the eyebrow and the primary finding, in `rem`.
+Only applies when `top_header` is given. `0` (the default) is as tight as the two lines
+go - the residual gap at `0` is the fonts' own line boxes, which no margin can shrink.
+Does not affect the space below the primary finding.}
 }
 \value{
 A list of ggplot components (`labs()` + `theme()`).
