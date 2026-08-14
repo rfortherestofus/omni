@@ -1,13 +1,11 @@
-# Create a number emphasis element
+# Create a number emphasis element (Typst)
 
-Renders a number emphasis element, dispatching to
-\[number_emphasis_html()\] or \[number_emphasis_typst()\] depending on
-the output format (via \`knitr::is_html_output()\`).
+This function creates the Typst markup for the desired number emphasis.
 
 ## Usage
 
 ``` r
-number_emphasis(
+number_emphasis_typst(
   number,
   text,
   color,
@@ -46,6 +44,7 @@ number_emphasis(
   Width of the number emphasis in px. Must be numeric vector of
   length 1. Defaults to 300.
 
-## See also
+## Value
 
-\[number_emphasis_html()\], \[number_emphasis_typst()\]
+Raw Typst markup for the desired number emphasis, inserted via
+\`knitr::asis_output()\`.

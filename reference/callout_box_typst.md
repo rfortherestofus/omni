@@ -1,13 +1,13 @@
-# Create a callout box
+# Create a callout box (Typst)
 
-Renders a callout box, dispatching to \[callout_box_html()\] or
-\[callout_box_typst()\] depending on the output format (via
-\`knitr::is_html_output()\`).
+This function creates the Typst markup for the desired callout boxes. It
+can use the "version 600" colors of the color palette and highlight
+specific text via \`\<highlight\>\` tags.
 
 ## Usage
 
 ``` r
-callout_box(text, color, fixed_width_px = 300)
+callout_box_typst(text, color, fixed_width_px = 300)
 ```
 
 ## Arguments
@@ -29,6 +29,7 @@ callout_box(text, color, fixed_width_px = 300)
   Width of the callout box in px. Must be numeric vector of length 1.
   Defaults to 300.
 
-## See also
+## Value
 
-\[callout_box_html()\], \[callout_box_typst()\]
+Raw Typst markup for the desired callout box, inserted via
+\`knitr::asis_output()\`.
