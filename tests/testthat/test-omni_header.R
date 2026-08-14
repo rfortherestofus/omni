@@ -71,6 +71,14 @@ test_that("omni_highlight_labels colors only matched labels", {
   expect_equal(out[2], "South")
 })
 
+test_that("omni_highlight_labels requires color rather than defaulting it", {
+  # A default silently produced an orange-red axis label on a chart whose
+  # bars and title keyword were some other highlight color - a brand
+  # violation with nothing in the output to flag it, and invisible to
+  # anyone using a tool that generates the call for them.
+  expect_error(omni_highlight_labels("North"), "`color` is required")
+})
+
 test_that("omni_baseline returns a ggplot layer", {
   expect_s3_class(omni_baseline(n = 5), "ggproto")
 })
