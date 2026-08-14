@@ -38,6 +38,37 @@
   the primary finding itself is unchanged - the markdown renderer behind
   that text box only offers that specific gap in one fixed size, and
   design feedback was that size reads as too much space.
+- Fixed the caption (secondary finding and source/N) rendering larger
+  and bold, heavier than the measure description above it - the reverse
+  of the intended hierarchy. It now renders at the smaller,
+  normal-weight, italic styling
+  [`theme_omni()`](https://rfortherestofus.github.io/omni/reference/theme_omni.md)
+  has always specified for captions. This was a regression from the
+  `finding_keyword` color fix above: passing the shared base style
+  explicitly fixed the color but silently brought the base’s own larger,
+  bold typography with it.
+  [`theme_omni()`](https://rfortherestofus.github.io/omni/reference/theme_omni.md)
+  and
+  [`omni_header()`](https://rfortherestofus.github.io/omni/reference/omni_header.md)
+  now build `plot.caption`’s style from one shared helper, so the two
+  can’t drift apart again.
+- Captions are now left-aligned under
+  [`theme_omni()`](https://rfortherestofus.github.io/omni/reference/theme_omni.md)
+  as well as under
+  [`omni_header()`](https://rfortherestofus.github.io/omni/reference/omni_header.md).
+  [`theme_omni()`](https://rfortherestofus.github.io/omni/reference/theme_omni.md)
+  styled the caption’s size, weight and italic but never its alignment,
+  leaving ggplot2’s right-aligned default - so a chart built with
+  [`theme_omni()`](https://rfortherestofus.github.io/omni/reference/theme_omni.md)
+  alone put source/N bottom-right, while the same chart built through
+  [`omni_header()`](https://rfortherestofus.github.io/omni/reference/omni_header.md)
+  put it bottom-left. Left is the brand standard. Note this changes
+  existing figures that use
+  [`theme_omni()`](https://rfortherestofus.github.io/omni/reference/theme_omni.md)
+  with a caption but without
+  [`omni_header()`](https://rfortherestofus.github.io/omni/reference/omni_header.md):
+  their caption moves from the bottom-right to the bottom-left when
+  re-rendered.
 
 ### PDF report tables
 
