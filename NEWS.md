@@ -46,6 +46,19 @@
   `theme_omni()` with a caption but without `omni_header()`: their caption
   moves from the bottom-right to the bottom-left when re-rendered.
 
+## omni_highlight_labels()
+
+* **Breaking:** `color` is now required instead of defaulting to
+  `"orange-red-600"`. A chart uses one highlight color and the colored axis
+  label has to match the bar or point it labels, but the default silently
+  produced an orange-red label on charts highlighted in any other color -
+  a brand violation with nothing in the rendered output to flag it, and
+  invisible to anyone using a tool that writes the call for them. Omitting
+  `color` now raises an error naming the fix. Update existing calls by
+  passing the same color given to `omni_header()`; calls that were relying
+  on the default and are genuinely orange-red charts need
+  `color = "orange-red-600"` added.
+
 ## PDF report tables
 
 * Table columns no longer change width where a table breaks across pages.
