@@ -36,6 +36,30 @@
   )
 }
 
+#' Build the marquee style for caption text
+#'
+#' [.omni_marquee_style()] with the caption's quieter typography layered on
+#' top: smaller, normal weight, italic. The caption sits below the plot and
+#' must read as subordinate to the subtitle above it, so it must not inherit
+#' the shared base's larger bold setting.
+#'
+#' Both [theme_omni()] and [omni_header()] set `plot.caption` themselves, and
+#' each must pass a fully-specified style rather than relying on ggplot2's
+#' theme-merge to backfill one from the other (see [.omni_marquee_style()]).
+#' They share this helper so the two can't drift apart - they have twice
+#' before, once on color and once on size/weight.
+#'
+#' @noRd
+.omni_caption_style <- function() {
+  .omni_marquee_style() |>
+    marquee::modify_style(
+      "base",
+      size = 12,
+      weight = "normal",
+      italic = TRUE
+    )
+}
+
 #' OMNI Institute ggplot2 theme
 #'
 #' @description Applies the OMNI Institute theme to the plot.
@@ -94,15 +118,7 @@ theme_omni <- function(
             weight = "normal"
           )
       ),
-      plot.caption = marquee::element_marquee(
-        style = omni_style |>
-          marquee::modify_style(
-            "base",
-            size = 12,
-            weight = "normal",
-            italic = TRUE
-          )
-      ),
+      plot.caption = marquee::element_marquee(style = .omni_caption_style()),
       plot.margin = margin(
         t = 7,
         r = 7,

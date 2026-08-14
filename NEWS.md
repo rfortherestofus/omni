@@ -28,6 +28,15 @@
   finding itself is unchanged - the markdown renderer behind that text box
   only offers that specific gap in one fixed size, and design feedback was
   that size reads as too much space.
+* Fixed the caption (secondary finding and source/N) rendering larger and
+  bold, heavier than the measure description above it - the reverse of the
+  intended hierarchy. It now renders at the smaller, normal-weight, italic
+  styling `theme_omni()` has always specified for captions. This was a
+  regression from the `finding_keyword` color fix above: passing the shared
+  base style explicitly fixed the color but silently brought the base's own
+  larger, bold typography with it. `theme_omni()` and `omni_header()` now
+  build `plot.caption`'s style from one shared helper, so the two can't
+  drift apart again.
 
 ## PDF report tables
 

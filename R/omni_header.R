@@ -154,11 +154,14 @@ omni_header <- function(
       plot.subtitle = ggplot2::element_text(colour = hex_gray, margin = ggplot2::margin(b = 12)),
       # style is passed explicitly (not inherited from whatever plot.caption
       # element theme_omni() or the caller left behind) so the {.color ...}
-      # class markdown built above always resolves, regardless of theme order
+      # class markdown built above always resolves, regardless of theme order.
+      # It must be the *caption* style, not the shared base: the base is
+      # larger and bold, which would render the secondary finding and
+      # source/N heavier than the subtitle above them.
       plot.caption = marquee::element_marquee(
         hjust = 0,
         colour = hex_gray,
-        style = .omni_marquee_style()
+        style = .omni_caption_style()
       )
     )
   )
