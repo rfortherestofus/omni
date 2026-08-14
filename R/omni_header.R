@@ -72,6 +72,34 @@
 #' braces colors a phrase directly - `"{.plum-600 Housing} led the requests"` - which is what
 #' [omni_span()] produces.
 #'
+#' @section Spacing:
+#' The five elements occupy three ggplot theme slots: the eyebrow and primary finding share
+#' `plot.title`, the measure description is `plot.subtitle`, and the secondary finding and
+#' source/N share `plot.caption`. The vertical gaps between them are set here to match the
+#' brand standard, and are not meant to be adjusted chart by chart - a consistent header
+#' rhythm across figures is the point.
+#'
+#' `eyebrow_gap` is the one gap deliberately left adjustable, because how close the eyebrow
+#' should sit to the finding is a judgement call that varies with how long the finding is.
+#' It only adds space; at its default of `0` the two lines are already as close as they go.
+#' The gap that remains there is the two fonts' own line boxes - the eyebrow's descender
+#' space plus the finding's ascender space - and no margin shrinks it. Negative margins are
+#' clamped, and line-height has no effect on it. Reducing `eyebrow_size` is the only thing
+#' that closes it further, and it buys very little (10pt to 9pt is about one pixel at
+#' 150 dpi), so it is not worth trading a brand type size for.
+#'
+#' The remaining gaps can be overridden by adding a `theme()` *after* the header, but note
+#' that the visible gap is the margin plus the font's line box, so a margin change does not
+#' translate one-for-one into pixels - check the rendered output rather than trusting the
+#' number. If you override `plot.title`, it must stay a [marquee::element_marquee()] carrying
+#' the title style; replacing it with a plain `element_text()` silently drops the markdown,
+#' so the eyebrow, the colored keyword and the text wrapping all disappear at once.
+#'
+#' Spacing *inside* the plotting area - how close the category labels sit to the bars, for
+#' instance - is not set here. That is the scale's expansion and the axis text's margin,
+#' which belong to the chart code and [theme_omni()]; `omni_header()` is text-only and
+#' geometry-agnostic by design.
+#'
 #' @param primary Required. The finding, written as a sentence.
 #' @param keyword Substring of `primary` to color (first occurrence). `NULL` = all navy.
 #' @param top_header Eyebrow line, e.g. `"PROGRAM REACH - FY2024"`. `NULL` = no eyebrow.
