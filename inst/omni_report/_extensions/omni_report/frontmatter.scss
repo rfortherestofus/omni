@@ -1,0 +1,143 @@
+/*-- scss:defaults --*/
+
+// TOC entries in Omni navy instead of the bootstrap link color. The active
+// entry gets a filled navy background below, so the accent border Quarto
+// draws on it is switched off.
+$toc-color: #081c39 !default;
+$toc-active-border: transparent !default;
+$toc-font-size: 1rem !default;
+
+// Let the text column use the width the page actually offers. Quarto caps the
+// body at `$grid-body-width` (800px, minus 50px in the toc-left grid), which
+// leaves the whole right half of a wide screen empty now that the TOC sits on
+// the left. The pagedown report gave the content `col-md-9` of a 1170px
+// container (~880px) with the TOC in the remaining `col-md-3`, so size the body
+// to match and hand most of the unused right margin column back to it. Both
+// are `minmax()` tracks, so narrow windows still shrink the text as before.
+$grid-body-width: 1000px !default;
+$grid-margin-width: 50px !default;
+
+// The TOC box gets 1.5rem of air on each side (see the margin rule below); the
+// sidebar column is widened by the same 3rem so the box itself stays as wide as
+// it was.
+$grid-sidebar-width: 298px !default;
+
+/*-- scss:rules --*/
+
+// Ported from inst/assets/html_report.css (the pagedown report) -- frontmatter
+// pieces only: header bar, title block, TOC and nested bullets.
+
+// ---- Header bar --------------------------------------------------------
+// Logo left, organization name right, 2px rule underneath
+// (old .custom-header / .logo / .title-text).
+.omni-header {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  padding-bottom: 25px;
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 1.25rem;
+
+}
+
+// Sized by height only, so the aspect ratio does the rest -- the height itself
+// comes from the `logo-height` option (inline style in title-block.html),
+// because a one-line wordmark and a stacked lockup need different values.
+.omni-header-logo {
+  width: auto;
+  max-width: 100%;
+}
+
+.omni-header-name {
+  margin-left: auto;
+  font-size: 24px;
+  font-weight: 700;
+  color: #081c39;
+}
+
+// ---- Title block -------------------------------------------------------
+#title-block-header h1.title {
+  font-size: 36pt;
+  font-weight: 700;
+  color: #081c39;
+  margin-bottom: 0.5rem;
+}
+
+#title-block-header .subtitle {
+  font-size: 24pt;
+  font-weight: 500;
+  color: #081c39;
+  margin-bottom: 0.2rem;
+}
+
+.omni-title-meta p {
+  font-size: 14pt;
+  margin-bottom: 0.25rem;
+  line-height: 1.25
+}
+
+header#title-block-header {
+  margin-bottom: 3rem;
+}
+
+// ---- TOC ---------------------------------------------------------------
+#quarto-sidebar-toc-left nav[role="doc-toc"] {
+  border: 1px solid #ddd;
+  padding: 0.25rem 0;
+  border-radius: 10px;
+  overflow: clip;
+  // Air on every side of the box. The sidebar column is widened by the same
+  // amount via `$grid-sidebar-width` above, so the box keeps its width and only
+  // the gutters -- towards the page edge and towards the text -- grow.
+  margin: 70px 1.5rem 1.5rem 1.5rem;
+}
+
+// The old report showed no TOC heading. Keep it in the accessibility tree
+// rather than removing it with `display: none`.
+#quarto-sidebar-toc-left #toc-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sidebar nav[role="doc-toc"] ul > li > a {
+  padding: 0.35rem 0.75rem;
+}
+
+// `!important` and the full selector are needed to beat Quarto's own
+// `.sidebar nav[role="doc-toc"] ul > li > a.active { color: ... !important }`.
+.sidebar nav[role="doc-toc"] ul > li > a.active,
+.sidebar nav[role="doc-toc"] ul > li > ul > li > a.active {
+  background-color: #081c39;
+  color: #ffffff !important;
+}
+.sidebar nav[role=doc-toc]>ul {
+  margin-left: 0px;
+  margin-bottom: 0px;
+}
+
+// ---- Bullets -----------------------------------------------------------
+// Nested levels use "> " instead of circle/square (old `ul ul li::before`).
+// Scoped to the document body so the TOC, callouts and tables keep their own
+// list styling.
+#quarto-document-content ul ul {
+  list-style: none;
+}
+
+#quarto-document-content ul ul > li::before {
+  content: "> ";
+  color: #081c39;
+}
+
+
+
+h2, .h2 {
+  border-bottom: none;
+  padding-bottom: 0px;
+}
