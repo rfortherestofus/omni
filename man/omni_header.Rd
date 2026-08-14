@@ -15,7 +15,8 @@ omni_header(
   n = NULL,
   color = "orange-red-600",
   primary_size = 18,
-  eyebrow_size = 10
+  eyebrow_size = 10,
+  eyebrow_gap = 0.35
 )
 }
 \arguments{
@@ -38,6 +39,11 @@ omni_header(
 \item{color}{The chart's one highlight color name (title keyword + finding keyword/stripe).}
 
 \item{primary_size, eyebrow_size}{Font sizes in pt.}
+
+\item{eyebrow_gap}{Space between the eyebrow and the primary finding, in `rem` (relative
+to `primary_size`). Only applies when `top_header` is given. `0` sits the primary
+directly under the eyebrow; the default leaves a small gap. Does not affect the space
+below the primary finding.}
 }
 \value{
 A list of ggplot components (`labs()` + `theme()`).
@@ -52,6 +58,10 @@ omit it. Text-only and geometry-agnostic; pair with [omni_baseline()] and
 \details{
 For a comparison header that names two colors instead of one keyword, skip `keyword` and
 write `primary` yourself with one [omni_span()] per called-out phrase.
+
+`primary` and `top_header` are rendered as marquee markdown, so a brand color name in
+braces colors a phrase directly - `"{.plum-600 Housing} led the requests"` - which is what
+[omni_span()] produces.
 }
 \examples{
 library(ggplot2)

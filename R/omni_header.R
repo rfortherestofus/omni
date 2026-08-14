@@ -1,7 +1,13 @@
 # Helpers for assembling the standard Omni chart header (the five text elements) and its
-# companion structural pieces. These build on theme_omni(): omni_header() overrides the title
-# with a ggtext textbox (so the eyebrow + finding stack and long findings wrap) and the caption
-# with marquee (so a key phrase can be colored and given the left stripe).
+# companion structural pieces. These build on theme_omni(): omni_header() overrides both the
+# title and the caption with marquee, so a key phrase can be colored, the caption can carry
+# its left stripe, and the eyebrow's distance from the primary finding is adjustable.
+#
+# The title is marquee rather than a ggtext textbox because ggtext's renderer only offers the
+# eyebrow-to-primary gap in one fixed jump - the smallest step it can produce reads as too
+# much space, and no font-size or line-height trick shrinks it further. marquee exposes the
+# gap as a real block margin (see .omni_title_style()) while still wrapping long findings to
+# the plot width, which was the reason the textbox was chosen originally.
 
 #' Wrap the first occurrence of `phrase` in `text` using `wrapper(phrase)`
 #'
@@ -22,6 +28,35 @@
   stringr::str_replace(text, stringr::fixed(phrase), wrapper(phrase))
 }
 
+#' Marquee style for the header's title block
+#'
+#' The eyebrow is rendered as a level-1 heading (`# ...`) so it is a *block*,
+#' which is what makes `eyebrow_gap` work: margins are a block property, so a
+#' margin set on an inline span (`{.tag ...}`) is silently ignored. Putting the
+#' gap on `h1`'s bottom margin - rather than on `base` - also keeps it from
+#' touching the space below the primary finding, since `base`'s margin would
+#' apply to every paragraph in the block.
+#'
+#' @noRd
+.omni_title_style <- function(primary_size, eyebrow_size, eyebrow_gap) {
+  .omni_marquee_style() |>
+    marquee::modify_style(
+      "base",
+      size = primary_size,
+      weight = "bold",
+      color = omni_colors("navy"),
+      lineheight = 1.25,
+      margin = marquee::trbl(0, 0, 0)
+    ) |>
+    marquee::modify_style(
+      "h1",
+      size = eyebrow_size,
+      weight = "bold",
+      color = omni_colors("chart-gray"),
+      margin = marquee::trbl(0, 0, marquee::rem(eyebrow_gap))
+    )
+}
+
 #' Omni chart header - the five text elements + their theme
 #'
 #' Assembles the standard Omni header (top header / eyebrow, primary finding, measure
@@ -33,6 +68,10 @@
 #' For a comparison header that names two colors instead of one keyword, skip `keyword` and
 #' write `primary` yourself with one [omni_span()] per called-out phrase.
 #'
+#' `primary` and `top_header` are rendered as marquee markdown, so a brand color name in
+#' braces colors a phrase directly - `"{.plum-600 Housing} led the requests"` - which is what
+#' [omni_span()] produces.
+#'
 #' @param primary Required. The finding, written as a sentence.
 #' @param keyword Substring of `primary` to color (first occurrence). `NULL` = all navy.
 #' @param top_header Eyebrow line, e.g. `"PROGRAM REACH - FY2024"`. `NULL` = no eyebrow.
@@ -43,6 +82,10 @@
 #' @param n Sample size; rendered as `"N = <n>."`.
 #' @param color The chart's one highlight color name (title keyword + finding keyword/stripe).
 #' @param primary_size,eyebrow_size Font sizes in pt.
+#' @param eyebrow_gap Space between the eyebrow and the primary finding, in `rem` (relative
+#'   to `primary_size`). Only applies when `top_header` is given. `0` sits the primary
+#'   directly under the eyebrow; the default leaves a small gap. Does not affect the space
+#'   below the primary finding.
 #'
 #' @return A list of ggplot components (`labs()` + `theme()`).
 #' @export
@@ -70,30 +113,24 @@ omni_header <- function(
   n = NULL,
   color = "orange-red-600",
   primary_size = 18,
-  eyebrow_size = 10
+  eyebrow_size = 10,
+  eyebrow_gap = 0.35
 ) {
-  hex_navy <- omni_colors("navy")
   hex_gray <- omni_colors("chart-gray")
 
-  # --- title: eyebrow (optional) + primary, via ggtext HTML spans ---
-  primary_html <- .wrap_first(
+  # --- title: eyebrow (optional) + primary, as marquee markdown ---
+  # Size, weight and color come from the style (see .omni_title_style()), so the
+  # text itself carries only the keyword's color tag and the eyebrow's heading marker.
+  primary_md <- .wrap_first(
     primary,
     keyword,
-    function(k) {
-      stringr::str_glue("<span style='color:{omni_colors(color)}'>{k}</span>")
-    },
+    function(k) stringr::str_glue("{{.{color} {k}}}"),
     "omni_header()"
   )
-  primary_span <- stringr::str_glue(
-    "<span style='font-size:{primary_size}pt;font-weight:bold;color:{hex_navy}'>{primary_html}</span>"
-  )
   title <- if (!is.null(top_header)) {
-    eyebrow_span <- stringr::str_glue(
-      "<span style='font-size:{eyebrow_size}pt;font-weight:bold;color:{hex_gray}'>{top_header}</span>"
-    )
-    stringr::str_glue("{eyebrow_span}<br>{primary_span}")
+    stringr::str_glue("# {top_header}\n\n{primary_md}")
   } else {
-    primary_span
+    primary_md
   }
 
   # --- caption: secondary finding (stripe + colored keyword) then source/N, via marquee ---
@@ -139,17 +176,13 @@ omni_header <- function(
     ggplot2::theme(
       plot.title.position = "plot",
       plot.caption.position = "plot",
-      # element_textbox_simple (not element_markdown) so long findings wrap to the plot width.
-      # margin.t gives the eyebrow (when present) space above it instead of sitting flush
-      # against the plot's outer margin. Deliberately not adding extra space between the
-      # eyebrow and primary finding themselves (they're one HTML string joined by a plain
-      # <br>) - that gap can only be tuned in discrete jumps, not continuously, with the
-      # markdown renderer this textbox uses, and the smallest available jump reads as too
-      # much space per design feedback.
-      plot.title = ggtext::element_textbox_simple(
-        lineheight = 1.4,
-        margin = ggplot2::margin(t = 8, b = 14),
-        padding = ggplot2::margin(0, 0, 0, 0)
+      # width = 1 wraps a long primary finding to the full plot width. margin.t gives the
+      # eyebrow (when present) space above it instead of sitting flush against the plot's
+      # outer margin; the eyebrow-to-primary gap is `eyebrow_gap`, carried by the style.
+      plot.title = marquee::element_marquee(
+        width = 1,
+        style = .omni_title_style(primary_size, eyebrow_size, eyebrow_gap),
+        margin = ggplot2::margin(t = 8, b = 14)
       ),
       plot.subtitle = ggplot2::element_text(colour = hex_gray, margin = ggplot2::margin(b = 12)),
       # style is passed explicitly (not inherited from whatever plot.caption
@@ -267,25 +300,29 @@ omni_highlight_labels <- function(highlight, color = NULL) {
   }
 }
 
-#' Color a phrase inside a header (or any ggtext/HTML text)
+#' Color a phrase inside a header
 #'
-#' Returns an inline HTML `<span>` that sets `text` to a 600-level brand color. Use it to build
-#' multi-color primary headers by hand: skip [omni_header()]'s `keyword`/`color` shortcut (which
-#' colors a single phrase) and write the primary with one `omni_span()` per called-out phrase,
-#' composed with `stringr::str_glue()`. [omni_header()] wraps the whole primary in navy, so each
-#' span overrides it for its phrase. Also works inside a `scale_*_discrete(labels = ...)`
-#' labeller to color category labels to match.
+#' Returns a marquee markdown span that sets `text` to a 600-level brand color. Use it to
+#' build multi-color primary headers by hand: skip [omni_header()]'s `keyword`/`color`
+#' shortcut (which colors a single phrase) and write the primary with one `omni_span()` per
+#' called-out phrase, composed with `stringr::str_glue()`. [omni_header()] renders the whole
+#' primary in navy, so each span overrides it for its phrase.
+#'
+#' This is for [omni_header()]'s `primary` and `top_header`, which are marquee markdown. To
+#' color a category label on an axis, use [omni_highlight_labels()] instead - axis text is
+#' rendered by ggtext, which reads HTML rather than marquee markdown, so the two are not
+#' interchangeable.
 #'
 #' @param text Phrase to color (scalar or vector).
 #' @param color A brand color name, e.g. `"periwinkle-600"`.
 #'
-#' @return A character HTML `<span>` string.
+#' @return A character marquee markdown string.
 #' @export
 #'
 #' @examples
 #' stringr::str_glue("{omni_span('Housing', 'periwinkle-600')} led the requests")
 omni_span <- function(text, color) {
   as.character(
-    stringr::str_glue("<span style='color:{omni_colors(color)}'>{text}</span>")
+    stringr::str_glue("{{#{omni_colors(color)} {text}}}")
   )
 }
