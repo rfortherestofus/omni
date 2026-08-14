@@ -118,7 +118,17 @@ theme_omni <- function(
             weight = "normal"
           )
       ),
-      plot.caption = marquee::element_marquee(style = .omni_caption_style()),
+      # hjust = 0 is set explicitly: ggplot2 right-aligns captions by default,
+      # and this theme previously overrode the caption's size, weight and
+      # italic but not its alignment - so a chart built with theme_omni()
+      # alone put source/N bottom-right, while the same chart built through
+      # omni_header() (which sets hjust = 0) put it bottom-left. Left is the
+      # brand standard; both paths now agree regardless of the order they
+      # are applied in.
+      plot.caption = marquee::element_marquee(
+        hjust = 0,
+        style = .omni_caption_style()
+      ),
       plot.margin = margin(
         t = 7,
         r = 7,

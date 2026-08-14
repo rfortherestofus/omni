@@ -37,6 +37,14 @@
   larger, bold typography with it. `theme_omni()` and `omni_header()` now
   build `plot.caption`'s style from one shared helper, so the two can't
   drift apart again.
+* Captions are now left-aligned under `theme_omni()` as well as under
+  `omni_header()`. `theme_omni()` styled the caption's size, weight and
+  italic but never its alignment, leaving ggplot2's right-aligned default -
+  so a chart built with `theme_omni()` alone put source/N bottom-right,
+  while the same chart built through `omni_header()` put it bottom-left.
+  Left is the brand standard. Note this changes existing figures that use
+  `theme_omni()` with a caption but without `omni_header()`: their caption
+  moves from the bottom-right to the bottom-left when re-rendered.
 
 ## PDF report tables
 

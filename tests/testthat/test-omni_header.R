@@ -82,6 +82,23 @@ test_that("theme_omni and omni_header agree on caption styling", {
   )
 })
 
+test_that("the caption is left-aligned no matter which order the theme is applied in", {
+  # ggplot2 right-aligns captions by default. theme_omni() styled the
+  # caption's text but not its alignment, so source/N landed bottom-right
+  # via theme_omni() alone and bottom-left via omni_header() - the same
+  # chart differing on the order two lines were written in.
+  hdr <- omni_header(primary = "x", finding = "y", source = "s", n = 1)
+  base <- ggplot2::ggplot(mtcars, ggplot2::aes(wt, mpg)) + ggplot2::geom_point()
+
+  caption_hjust <- function(p) {
+    ggplot2::ggplot_build(p)$plot$theme$plot.caption$hjust
+  }
+
+  expect_equal(caption_hjust(base + theme_omni() + hdr), 0)
+  expect_equal(caption_hjust(base + hdr + theme_omni()), 0)
+  expect_equal(caption_hjust(base + theme_omni()), 0)
+})
+
 test_that("omni_header gives the eyebrow space above it and the measure space below it", {
   h <- omni_header(
     primary = "Test finding",
