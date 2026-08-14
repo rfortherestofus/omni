@@ -28,3 +28,4 @@ sandbox/
 .claude/settings.local.json
 
 *.knit.md
+/.luarc.json
