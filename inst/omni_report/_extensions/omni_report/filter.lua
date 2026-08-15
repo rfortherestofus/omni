@@ -183,7 +183,26 @@ local shipped_logos = {
 }
 local fallback_logo_height = "50px"
 
+-- Pass through as plain text so that Typst doesn't escape eg. @ in the email
+-- Necessary since some fields like acknowledgement accept Markdown
+local plain_text_yml_headers = {
+  "cover-pattern",
+  "organization-name",
+  "contact-email",
+}
+
 function Meta(meta)
+  if quarto.doc.is_format("typst") then
+    for _, key in ipairs(typst_string_fields) do
+      if meta[key] then
+        local value = pandoc.utils.stringify(meta[key])
+        meta[key] = pandoc.MetaInlines({
+          pandoc.RawInline("typst", '"' .. value .. '"'),
+        })
+      end
+    end
+  end
+
   if not quarto.doc.is_format("html") then
     return meta
   end
