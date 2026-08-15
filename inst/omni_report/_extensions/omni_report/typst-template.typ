@@ -39,12 +39,24 @@
   toc_indent: 1.5em,
   cover-page: true,
   title-page: true,
+  organization_name: "Omni Institute",
+  cover_pattern: "_extensions/omni_report/pattern-cover-01-yellow.png",
+  client_name: none,
+  client_city: none,
+  client_state: none,
+  contact_email: "projects@omni.org",
+  acknowledgements: none,
+  report_year: none,
   doc,
 ) = {
   set page(
     paper: paper,
     margin: margin,
-    numbering: pagenumbering,
+    footer: create-document-footer(
+      title: title,
+      organization_name: organization_name,
+      pagenumbering: pagenumbering,
+    ),
   )
   appendix-margin-state.update(margin)
   set par(justify: true)
@@ -52,28 +64,37 @@
   set heading(numbering: sectionnumbering)
 
   if cover-page {
-    // Fill these with arguments like title, subtitle, etc from article() function
-    create-cover-page()
+    create-cover-page(
+      title: title,
+      subtitle: subtitle,
+      date: date,
+      organization_name: organization_name,
+      cover_pattern: cover_pattern,
+    )
   }
 
   if title-page {
-    // Fill these with arguments like title, subtitle, etc from article() function
-    create-title-page()
+    create-title-page(
+      title: title,
+      subtitle: subtitle,
+      organization_name: organization_name,
+      client_name: client_name,
+      client_city: client_city,
+      client_state: client_state,
+      contact_email: contact_email,
+      acknowledgements: acknowledgements,
+      report_year: report_year,
+    )
   }
 
   if toc {
-    let title = if toc_title == none {
-      auto
-    } else {
-      toc_title
-    }
-    page[
-      #outline(
-        title: toc_title,
-        depth: toc_depth,
-        indent: toc_indent,
-      );
-    ]
+    create-toc-page(
+      title: title,
+      organization_name: organization_name,
+      toc_title: toc_title,
+      toc_depth: toc_depth,
+      toc_indent: toc_indent,
+    )
   }
 
   if cols == 1 {

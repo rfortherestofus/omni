@@ -96,5 +96,29 @@ $endif$
   cols: $if(columns)$$columns$$else$1$endif$,
   cover-page: $if(cover-page)$$cover-page$$else$false$endif$,
   title-page: $if(title-page)$$title-page$$else$false$endif$,
+$if(organization-name)$
+  organization_name: $organization-name$,
+$endif$
+$if(cover-pattern)$
+  cover_pattern: "_extensions/omni_report/" + $cover-pattern$ + ".png",
+$endif$
+$if(client-name)$
+  client_name: [$client-name$],
+$endif$
+$if(client-city)$
+  client_city: [$client-city$],
+$endif$
+$if(client-state)$
+  client_state: [$client-state$],
+$endif$
+$if(contact-email)$
+  contact_email: $contact-email$,
+$endif$
+$if(acknowledgements)$
+  acknowledgements: [$acknowledgements$],
+$endif$
+$if(report-year)$
+  report_year: [$report-year$],
+$endif$
   doc,
 )
