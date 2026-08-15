@@ -17,7 +17,7 @@ format:
       toc: true
       toc-title: "Table of Contents"
       cover-pattern: pattern-cover-01-yellow
-      organization-name: Omni Institute's 123
+      organization-name: Omni Institute
       client-name: "[Favorite client]"
       client-city: "[city]"
       client-state: "[state]"

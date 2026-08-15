@@ -31,22 +31,22 @@
   heading-style: "normal",
   heading-color: black,
   heading-line-height: 0.65em,
-  sectionnumbering: none,
-  pagenumbering: "1",
+  section-numbering: none,
+  page-numbering: "1",
   toc: false,
-  toc_title: none,
-  toc_depth: none,
-  toc_indent: 1.5em,
+  toc-title: none,
+  toc-depth: none,
+  toc-indent: 1.5em,
   cover-page: true,
   title-page: true,
-  organization_name: "Omni Institute",
-  cover_pattern: "_extensions/omni_report/pattern-cover-01-yellow.png",
-  client_name: none,
-  client_city: none,
-  client_state: none,
-  contact_email: "projects@omni.org",
+  organization-name: "Omni Institute",
+  cover-pattern: "_extensions/omni_report/pattern-cover-01-yellow.png",
+  client-name: none,
+  client-city: none,
+  client-state: none,
+  contact-email: "projects@omni.org",
   acknowledgements: none,
-  report_year: none,
+  report-year: none,
   doc,
 ) = {
   set page(
@@ -54,22 +54,22 @@
     margin: margin,
     footer: create-document-footer(
       title: title,
-      organization_name: organization_name,
-      pagenumbering: pagenumbering,
+      organization-name: organization-name,
+      page-numbering: page-numbering,
     ),
   )
   appendix-margin-state.update(margin)
   set par(justify: true)
   set text(lang: lang, region: region, font: font, size: fontsize)
-  set heading(numbering: sectionnumbering)
+  set heading(numbering: section-numbering)
 
   if cover-page {
     create-cover-page(
       title: title,
       subtitle: subtitle,
       date: date,
-      organization_name: organization_name,
-      cover_pattern: cover_pattern,
+      organization-name: organization-name,
+      cover-pattern: cover-pattern,
     )
   }
 
@@ -77,23 +77,23 @@
     create-title-page(
       title: title,
       subtitle: subtitle,
-      organization_name: organization_name,
-      client_name: client_name,
-      client_city: client_city,
-      client_state: client_state,
-      contact_email: contact_email,
+      organization-name: organization-name,
+      client-name: client-name,
+      client-city: client-city,
+      client-state: client-state,
+      contact-email: contact-email,
       acknowledgements: acknowledgements,
-      report_year: report_year,
+      report-year: report-year,
     )
   }
 
   if toc {
     create-toc-page(
       title: title,
-      organization_name: organization_name,
-      toc_title: toc_title,
-      toc_depth: toc_depth,
-      toc_indent: toc_indent,
+      organization-name: organization-name,
+      toc-title: toc-title,
+      toc-depth: toc-depth,
+      toc-indent: toc-indent,
     )
   }
 

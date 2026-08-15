@@ -80,45 +80,45 @@ $if(brand.typography.headings.line-height)$
 $endif$
 $endif$
 $if(section-numbering)$
-  sectionnumbering: "$section-numbering$",
+  section-numbering: "$section-numbering$",
 $endif$
-  pagenumbering: $if(page-numbering)$"$page-numbering$"$else$none$endif$,
+  page-numbering: $if(page-numbering)$"$page-numbering$"$else$none$endif$,
 $if(toc)$
   toc: $toc$,
 $endif$
 $if(toc-title)$
-  toc_title: [$toc-title$],
+  toc-title: [$toc-title$],
 $endif$
 $if(toc-indent)$
-  toc_indent: $toc-indent$,
+  toc-indent: $toc-indent$,
 $endif$
-  toc_depth: $toc-depth$,
+  toc-depth: $toc-depth$,
   cols: $if(columns)$$columns$$else$1$endif$,
   cover-page: $if(cover-page)$$cover-page$$else$false$endif$,
   title-page: $if(title-page)$$title-page$$else$false$endif$,
 $if(organization-name)$
-  organization_name: $organization-name$,
+  organization-name: $organization-name$,
 $endif$
 $if(cover-pattern)$
-  cover_pattern: "_extensions/omni_report/" + $cover-pattern$ + ".png",
+  cover-pattern: "_extensions/omni_report/" + $cover-pattern$ + ".png",
 $endif$
 $if(client-name)$
-  client_name: [$client-name$],
+  client-name: [$client-name$],
 $endif$
 $if(client-city)$
-  client_city: [$client-city$],
+  client-city: [$client-city$],
 $endif$
 $if(client-state)$
-  client_state: [$client-state$],
+  client-state: [$client-state$],
 $endif$
 $if(contact-email)$
-  contact_email: $contact-email$,
+  contact-email: $contact-email$,
 $endif$
 $if(acknowledgements)$
   acknowledgements: [$acknowledgements$],
 $endif$
 $if(report-year)$
-  report_year: [$report-year$],
+  report-year: [$report-year$],
 $endif$
   doc,
 )

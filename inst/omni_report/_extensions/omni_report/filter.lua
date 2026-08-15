@@ -193,7 +193,7 @@ local plain_text_yml_headers = {
 
 function Meta(meta)
   if quarto.doc.is_format("typst") then
-    for _, key in ipairs(typst_string_fields) do
+    for _, key in ipairs(plain_text_yml_headers) do
       if meta[key] then
         local value = pandoc.utils.stringify(meta[key])
         meta[key] = pandoc.MetaInlines({

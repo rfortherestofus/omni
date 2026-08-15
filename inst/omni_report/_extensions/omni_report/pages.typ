@@ -17,8 +17,8 @@
 
 #let create-document-footer(
   title: none,
-  organization_name: "Omni Institute",
-  pagenumbering: "1",
+  organization-name: "Omni Institute",
+  page-numbering: "1",
   logo: "_extensions/omni_report/logo-no-text.png",
 ) = context {
   set text(size: 9pt, fill: rgb("#081c39"))
@@ -29,8 +29,8 @@
     column-gutter: 6pt,
     align: horizon,
     image(logo, height: 12pt),
-    align(center)[#organization_name Report | #title],
-    align(right)[#numbering(pagenumbering, ..counter(page).get())],
+    align(center)[#organization-name Report | #title],
+    align(right)[#numbering(page-numbering, ..counter(page).get())],
   )
 }
 
@@ -38,14 +38,14 @@
   title: none,
   subtitle: none,
   date: none,
-  organization_name: "Omni Institute",
-  cover_pattern: "_extensions/omni_report/pattern-cover-01-yellow.png",
+  organization-name: "Omni Institute",
+  cover-pattern: "_extensions/omni_report/pattern-cover-01-yellow.png",
   logo: "_extensions/omni_report/logo.png",
 ) = {
   page(
     footer: none,
     background: align(bottom)[
-      #image(cover_pattern, width: 100%, height: 45%, fit: "cover")
+      #image(cover-pattern, width: 100%, height: 45%, fit: "cover")
     ],
   )[
     #grid(
@@ -56,7 +56,7 @@
       ],
     )
     #v(1.6in)
-    #text(size: 10pt, fill: rgb("#677384"), tracking: 1pt)[#upper[#organization_name Report]]
+    #text(size: 10pt, fill: rgb("#677384"), tracking: 1pt)[#upper[#organization-name Report]]
     #v(0.6em)
     #text(size: 26pt, weight: "bold", fill: rgb("#081c39"))[#title]
     #v(0.7em)
@@ -70,53 +70,53 @@
 #let create-title-page(
   title: none,
   subtitle: none,
-  organization_name: "Omni Institute",
-  client_name: none,
-  client_city: none,
-  client_state: none,
-  contact_email: "projects@omni.org",
+  organization-name: "Omni Institute",
+  client-name: none,
+  client-city: none,
+  client-state: none,
+  contact-email: "projects@omni.org",
   acknowledgements: none,
-  report_year: none,
+  report-year: none,
 ) = {
   page()[
-    #text(size: 10pt, fill: rgb("#677384"), tracking: 1pt)[#upper[#organization_name Report]]
+    #text(size: 10pt, fill: rgb("#677384"), tracking: 1pt)[#upper[#organization-name Report]]
     #v(0.6em)
     #text(size: 22pt, weight: "bold", fill: rgb("#081c39"))[#title]
     #v(0.3em)
     #text(size: 13pt, weight: "bold", fill: rgb("#081c39"))[#subtitle]
     #v(1.5em)
-    #if client_name != none {
+    #if client-name != none {
       text(weight: "bold")[Submitted to:]
       v(2pt)
-      client_name
+      client-name
       v(1fr)
     } else {
       v(1fr)
     }
     #text(weight: "bold")[For More Information:]
     #v(2pt)
-    #link("mailto:" + contact_email)[#underline[#contact_email]]
+    #link("mailto:" + contact-email)[#underline[#contact-email]]
     #v(0.8em)
     #if acknowledgements != none {
       text(weight: "bold")[Acknowledgements:]
       v(2pt)
-      par[#organization_name wants to thank #acknowledgements for their contributions to the creation of this report.]
+      par[#organization-name wants to thank #acknowledgements for their contributions to the creation of this report.]
       v(0.8em)
     }
     #text(weight: "bold")[Suggested Citation:]
     #v(2pt)
-    #let location = (client_city, client_state).filter(p => p != none).join(", ")
-    #par[#organization_name #report_year. #title. Submitted to #client_name, #location.]
+    #let location = (client-city, client-state).filter(p => p != none).join(", ")
+    #par[#organization-name #report-year. #title. Submitted to #client-name, #location.]
   ]
 }
 
 
 #let create-toc-page(
   title: none,
-  organization_name: "Omni Institute",
-  toc_title: none,
-  toc_depth: none,
-  toc_indent: 1.5em,
+  organization-name: "Omni Institute",
+  toc-title: none,
+  toc-depth: none,
+  toc-indent: 1.5em,
 ) = {
   page()[
     #show outline.entry: it => {
@@ -130,7 +130,7 @@
           #link(it.element.location(), it.body()) #h(1fr) #it.page()
         ]
       } else {
-        pad(left: toc_indent)[
+        pad(left: toc-indent)[
           #show link: set text(fill: rgb("#677384"))
           #text(fill: rgb("#677384"), size: 0.9em)[
             #link(it.element.location(), it.body()) #h(1fr) #it.page()
@@ -139,10 +139,10 @@
       }
     }
     #heading(level: 2, outlined: false)[
-      #if toc_title == none { [Table of Contents] } else { toc_title }
+      #if toc-title == none { [Table of Contents] } else { toc-title }
     ]
     #v(1em)
-    #outline(title: none, depth: toc_depth, indent: toc_indent)
+    #outline(title: none, depth: toc-depth, indent: toc-indent)
   ]
 }
 
