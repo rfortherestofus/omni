@@ -18,7 +18,7 @@
   abstract: none,
   abstract-title: none,
   cols: 1,
-  margin: (x: 1in, y: 1in),
+  margin: (x: 0.6in,top: 1.1in, bottom: 1.4in),
   paper: "us-letter",
   lang: "en",
   region: "US",
@@ -93,7 +93,6 @@
       organization-name: organization-name,
       toc-title: toc-title,
       toc-depth: toc-depth,
-      toc-indent: toc-indent,
     )
   }
 

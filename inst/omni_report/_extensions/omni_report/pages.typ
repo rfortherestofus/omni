@@ -21,15 +21,16 @@
   page-numbering: "1",
   logo: "_extensions/omni_report/logo-no-text.png",
 ) = context {
-  set text(size: 9pt, fill: rgb("#081c39"))
+  set text(size: 10pt, fill: rgb("#081c39"))
   line(length: 100%, stroke: 0.5pt + rgb("#bfcbd3"))
-  v(6pt)
+  v(0.3cm, weak: true)
   grid(
+    inset: 0cm,
     columns: (auto, 1fr, auto),
     column-gutter: 6pt,
     align: horizon,
-    image(logo, height: 12pt),
-    align(center)[#organization-name Report | #title],
+    image(logo, height: 0.75cm),
+    align(right)[#organization-name Report | #text(fill: rgb("#677384"), title) #h(0.5cm)],
     align(right)[#numbering(page-numbering, ..counter(page).get())],
   )
 }
@@ -45,24 +46,29 @@
   page(
     footer: none,
     background: align(bottom)[
-      #image(cover-pattern, width: 100%, height: 45%, fit: "cover")
+      #image(cover-pattern, width: 100%, height: 48%, fit: "stretch")
     ],
   )[
+    #set par(leading: 0.7cm)
+    #let date-str = "2026-08-01"
+    #let parts = date-str.split("-").map(int)
+    #let d = datetime(year: parts.at(0), month: parts.at(1), day: parts.at(2))
+    #let display-date = d.display("[month repr:long] [year]")
     #grid(
       columns: (1fr, 1fr),
-      align(left + top)[#image(logo, width: 130pt)],
+      align(left + top)[#image(logo, width: 110pt)],
       align(right + top)[
-        #text(size: 10pt, tracking: 1pt)[#upper[#date]]
+        #text(size: 10pt, tracking: 1pt)[#upper[#display-date]]
       ],
     )
-    #v(1.6in)
-    #text(size: 10pt, fill: rgb("#677384"), tracking: 1pt)[#upper[#organization-name Report]]
-    #v(0.6em)
-    #text(size: 26pt, weight: "bold", fill: rgb("#081c39"))[#title]
-    #v(0.7em)
-    #line(length: 30%, stroke: 1pt + rgb("#d4ddeb"))
-    #v(0.7em)
-    #text(size: 15pt, weight: "bold", fill: rgb("#081c39"))[#subtitle]
+    #v(1.4in)
+    #text(size: 10pt, fill: rgb("#677384"), tracking: 1pt)[#organization-name Report] 
+    #v(0.8cm, weak: true)
+    #text(size: 30pt, weight: "bold", fill: rgb("#081c39"))[#title]
+    #v(1em)
+    #line(length: 40%, stroke: 1pt + rgb("#d4ddeb"))
+    #v(7mm, weak: true)
+    #text(size: 14pt, weight: "bold", fill: rgb("#081c39"))[#subtitle]
   ]
 }
 
@@ -79,32 +85,39 @@
   report-year: none,
 ) = {
   page()[
-    #text(size: 10pt, fill: rgb("#677384"), tracking: 1pt)[#upper[#organization-name Report]]
-    #v(0.6em)
-    #text(size: 22pt, weight: "bold", fill: rgb("#081c39"))[#title]
+    #show heading.where(level: 1): set text(size: 30pt)
+    #show heading.where(level: 1): set par(leading: 0.5cm)
+    #text(size: 10pt, fill: rgb("#677384"), tracking: 1pt)[#organization-name Report]
+    #v(7mm, weak: true)
+    #heading(level: 1, outlined: false)[#title]
     #v(0.3em)
-    #text(size: 13pt, weight: "bold", fill: rgb("#081c39"))[#subtitle]
+    #heading(level: 2, outlined: false)[#subtitle]
     #v(1.5em)
     #if client-name != none {
-      text(weight: "bold")[Submitted to:]
+      [Submitted to:]
       v(2pt)
       client-name
       v(1fr)
     } else {
       v(1fr)
     }
-    #text(weight: "bold")[For More Information:]
-    #v(2pt)
+    #let title_size = 13pt
+    #let spacing_after_section_title = 3mm
+    #let spacing_after_section = 0.5em
+    #text(size: title_size)[For More Information:]
+    #v(spacing_after_section_title, weak: true)
     #link("mailto:" + contact-email)[#underline[#contact-email]]
-    #v(0.8em)
+    #v(spacing_after_section)
+
     #if acknowledgements != none {
-      text(weight: "bold")[Acknowledgements:]
-      v(2pt)
+      text(size: title_size)[Acknowledgements:]
+      v(spacing_after_section_title, weak: true)
       par[#organization-name wants to thank #acknowledgements for their contributions to the creation of this report.]
-      v(0.8em)
+      v(spacing_after_section)
     }
-    #text(weight: "bold")[Suggested Citation:]
-    #v(2pt)
+
+    #text(size: title_size)[Suggested Citation:]
+    #v(spacing_after_section_title, weak: true)
     #let location = (client-city, client-state).filter(p => p != none).join(", ")
     #par[#organization-name #report-year. #title. Submitted to #client-name, #location.]
   ]
@@ -115,24 +128,26 @@
   title: none,
   organization-name: "Omni Institute",
   toc-title: none,
-  toc-depth: none,
-  toc-indent: 1.5em,
+  toc-depth: none
 ) = {
+  show heading.where(level: 2): set text(size: 16pt)
+
   page()[
     #show outline.entry: it => {
       if it.level == 2 {
-        v(6pt, weak: true)
+        let padding_sections = 0.3cm
+        v(padding_sections, weak: true)
         line(length: 100%, stroke: 0.5pt + rgb("#bfcbd3"))
-        v(4pt, weak: true)
+        v(padding_sections, weak: true)
         // Overwrite _brand.yml link color
         show link: set text(fill: rgb("#081c39"))
-        text(fill: rgb("#081c39"), weight: "bold")[
+        text(fill: rgb("#081c39"), size: 13pt)[
           #link(it.element.location(), it.body()) #h(1fr) #it.page()
         ]
       } else {
-        pad(left: toc-indent)[
+        pad(left: 1cm)[
           #show link: set text(fill: rgb("#677384"))
-          #text(fill: rgb("#677384"), size: 0.9em)[
+          #text(fill: rgb("#677384"), size: 12pt)[
             #link(it.element.location(), it.body()) #h(1fr) #it.page()
           ]
         ]
@@ -142,7 +157,7 @@
       #if toc-title == none { [Table of Contents] } else { toc-title }
     ]
     #v(1em)
-    #outline(title: none, depth: toc-depth, indent: toc-indent)
+    #outline(title: none, depth: toc-depth)
   ]
 }
 
