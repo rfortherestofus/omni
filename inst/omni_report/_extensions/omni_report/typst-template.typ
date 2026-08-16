@@ -27,7 +27,7 @@
   title-size: 1.5em,
   subtitle-size: 1.25em,
   heading-family: "libertinus serif",
-  heading-weight: "bold",
+  heading-weight: "plain",
   heading-style: "normal",
   heading-color: black,
   heading-line-height: 0.65em,
@@ -59,6 +59,7 @@
     ),
   )
   appendix-margin-state.update(margin)
+  footer-info-state.update((title: title, organization-name: organization-name, page-numbering: page-numbering))
   set par(justify: true)
   set text(lang: lang, region: region, font: font, size: fontsize)
   set heading(numbering: section-numbering)

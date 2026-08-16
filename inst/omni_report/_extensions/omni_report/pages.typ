@@ -2,6 +2,12 @@
 // This state is created beforehand as this is inserted earlier via template.typ
 #let appendix-margin-state = state("appendix-margin", (x: 1in, y: 1in))
 
+// Track footer state so that page break functions can access that
+#let footer-info-state = state(
+  "footer-info",
+  (title: none, organization-name: "Omni Institute", page-numbering: "1"),
+)
+
 // Mirrors Typst's own margin-dict precedence (left/top > x/y > rest) so the
 // left/top offset can be recovered regardless of which shorthand the
 // document's margin was specified with.
@@ -20,17 +26,24 @@
   organization-name: "Omni Institute",
   page-numbering: "1",
   logo: "_extensions/omni_report/logo-no-text.png",
+  inverted: false,
+  with-line: true
 ) = context {
-  set text(size: 10pt, fill: rgb("#081c39"))
-  line(length: 100%, stroke: 0.5pt + rgb("#bfcbd3"))
-  v(0.3cm, weak: true)
+  let text-color = if inverted { white } else { rgb("#081c39") }
+  let line-color = if inverted { white } else { rgb("#bfcbd3") }
+  let muted-color = if inverted { white } else { rgb("#677384") }
+  set text(size: 10pt, fill: text-color)
+  if with-line {
+    line(length: 100%, stroke: 0.5pt + line-color)
+    v(0.3cm, weak: true)
+  }
   grid(
     inset: 0cm,
     columns: (auto, 1fr, auto),
     column-gutter: 6pt,
     align: horizon,
     image(logo, height: 0.75cm),
-    align(right)[#organization-name Report | #text(fill: rgb("#677384"), title) #h(0.5cm)],
+    align(right)[#organization-name Report | #text(fill: muted-color, title) #h(0.5cm)],
     align(right)[#numbering(page-numbering, ..counter(page).get())],
   )
 }
@@ -167,12 +180,22 @@
 ) = {
   page(
     background: image(pattern, width: 100%, height: 100%, fit: "cover"),
-    footer: none
+    footer: context {
+      let info = footer-info-state.get()
+      create-document-footer(
+        title: info.title,
+        organization-name: info.organization-name,
+        page-numbering: info.page-numbering,
+        logo: "_extensions/omni_report/logo-no-text-transparent.png",
+        inverted: true,
+        with-line: false
+      )
+    },
   )[
-    #set text(fill: white)
-    #v(2fr)
+    #set text(fill: white, size: 22pt)
+    #v(5fr)
     #heading(level: 1, outlined: false, title)
-    #v(1fr)
+    #v(0.75fr)
   ]
 }
 
