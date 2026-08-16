@@ -253,13 +253,6 @@ local function build_footer_html(meta)
 end
 
 function Pandoc(doc)
-  doc.meta = Meta(doc.meta)
-  doc = doc:walk({
-    Header = Header,
-    Div = Div,
-    Span = Span,
-  })
-
   if quarto.doc.is_format("html") then
     doc.blocks:insert(pandoc.RawBlock("html", build_footer_html(doc.meta)))
   end
