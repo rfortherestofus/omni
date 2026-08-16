@@ -141,3 +141,34 @@ h2, .h2 {
   border-bottom: none;
   padding-bottom: 0px;
 }
+
+// ---- Footer -------------------------------------------------------------
+.omni-footer {
+  display: flex;
+  align-items: center;
+  padding-top: 25px;
+  margin-top: 4rem;
+  border-top: 2px solid #ddd;
+}
+
+.omni-footer-logo {
+  height: 30px;
+  width: auto;
+  max-width: 100%;
+}
+
+.omni-footer-text {
+  margin-left: auto;
+  text-align: right;
+  font-size: 14px;
+  color: #555;
+}
+
+.omni-footer-text p {
+  margin-bottom: 0.25rem;
+}
+
+.omni-footer-text a {
+  color: #555;
+  text-decoration: none;
+}

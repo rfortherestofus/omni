@@ -226,3 +226,43 @@ function Meta(meta)
 
   return meta
 end
+
+-- Build page footer with Lua as include-after-body does not insert into <main>.
+-- Thus content would be full page width instead of <main> width.
+local function build_footer_html(meta)
+  local logo = pandoc.utils.stringify(meta["logo-ref"] or "")
+  local organization_name = pandoc.utils.stringify(meta["organization-name"] or "")
+  local contact_email = pandoc.utils.stringify(meta["contact-email"] or "")
+  local year = os.date("%Y")
+
+  local contact_line = ""
+  if contact_email ~= "" then
+    contact_line = '\n<p>Contact: <a href="mailto:' .. contact_email .. '">' ..
+      contact_email .. '</a></p>'
+  end
+
+  return table.concat({
+    '<div class="omni-footer">',
+    '<img class="omni-footer-logo" src="' .. logo ..
+      '" alt="' .. organization_name .. ' logo" />',
+    '<div class="omni-footer-text">',
+    '<p>&copy; ' .. year .. ' ' .. organization_name .. '</p>' .. contact_line,
+    '</div>',
+    '</div>',
+  }, "\n")
+end
+
+function Pandoc(doc)
+  doc.meta = Meta(doc.meta)
+  doc = doc:walk({
+    Header = Header,
+    Div = Div,
+    Span = Span,
+  })
+
+  if quarto.doc.is_format("html") then
+    doc.blocks:insert(pandoc.RawBlock("html", build_footer_html(doc.meta)))
+  end
+
+  return doc
+end
