@@ -1,20 +1,29 @@
 ---
-title: "Project title"
-subtitle: "Project subtitle"
+title: "Report Title Goes Here: 2 Lines Max for Best Readability"
+subtitle: "Sub-Headline Goes Here"
 author: "Author"
-date: "`r Sys.Date() |> format('%B %d, %Y')`"
+date: "`r toupper(format(Sys.time(), '%B %Y'))`"
 execute:
     warning: false
     message: false
     echo: false
 format:
-    omni_report-html: 
+    omni_report-html:
       logo-ref: logo.png
       organization-name: Omni Institute
     omni_report-typst:
       cover-page: true
       title-page: true
       toc: true
+      toc-title: "Table of Contents"
+      cover-pattern: pattern-cover-01-yellow
+      organization-name: Omni Institute
+      client-name: "[Favorite client]"
+      client-city: "[city]"
+      client-state: "[state]"
+      contact-email: projects@omni.org
+      report-year: "[year]"
+      acknowledgements: "**[one name, and another name, and more names, and lots of names, and even more names. There were lots of people involved with this magnificient project.]**"
 ---
 
 
@@ -73,7 +82,7 @@ omni::quote_box(
 
 ::::
 
-### Sub section
+### Subtopic A
 
 Some text
 
@@ -110,7 +119,17 @@ tibble::tribble(
 
 ## Second section
 
+### Subtopic A
+
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+
+### Subtopic B
+
+Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop pub
+
+### Subtopic C
+
 
 :::: {.columns}
 

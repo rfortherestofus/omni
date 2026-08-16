@@ -43,6 +43,55 @@ appears in white in the lower third of the page. Available patterns:
 A level 1 heading without a pattern class simply starts a new page. The classes
 have no effect on HTML output.
 
+### Frontmatter pages (PDF)
+
+The PDF (Typst) output can open with up to three frontmatter pages, each
+toggled independently. Page numbering in the body always starts at "1"
+regardless of which subset is shown:
+
+```yaml
+format:
+  omni_report-typst:
+    cover-page: true
+    title-page: true
+    toc: true
+```
+
+| Option | Meaning | Default |
+| --- | --- | --- |
+| `cover-page` | Show the cover (logo, date, title, colored pattern) | `false` unless set |
+| `title-page` | Show the title page (submitted-to, acknowledgements, citation) | `false` unless set |
+| `toc` | Show the table of contents | `false` unless set |
+| `cover-pattern` | Which pattern covers the bottom of the cover page | `pattern-cover-01-yellow` |
+| `organization-name` | Category label on the cover/title pages and the running footer | `Omni Institute` |
+| `client-name` | "Submitted to:" value on the title page | none |
+| `client-state` | State used in the suggested citation | none |
+| `contact-email` | "For More Information:" mailto link | `projects@omni.org` |
+| `acknowledgements` | Names thanked on the title page (supports markdown, e.g. `**bold**`) | none |
+| `report-year` | Year used in the suggested citation | none |
+
+`cover-pattern` accepts the same seven colors as the page-break patterns
+above, with a `pattern-cover-` prefix instead of `pattern-`:
+
+- `pattern-cover-01-yellow`
+- `pattern-cover-02-teal`
+- `pattern-cover-03-orangered`
+- `pattern-cover-06-teal`
+- `pattern-cover-07-periwinkle`
+- `pattern-cover-07-olive`
+- `pattern-cover-08-plum`
+
+`date` is shown verbatim on the cover page (no reformatting happens in
+Typst), so format it the way it should appear, e.g.:
+
+```yaml
+date: "`r toupper(format(Sys.Date(), '%B %Y'))`"
+```
+
+A running footer (small logo, "{organization-name} Report | {title}", page
+number) appears on every page except the cover, whose pattern already fills
+that space.
+
 ### HTML header bar
 
 The HTML output opens with a header bar that shows a logo on the left and an
