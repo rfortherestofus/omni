@@ -14,6 +14,36 @@
   errors clearly when more categories than palette colors are requested
   ([\#242](https://github.com/rfortherestofus/omni/issues/242)).
 
+### Chart defaults
+
+- **Breaking-ish:** data marks now default to a 600-level brand colour
+  (`periwinkle-600`) instead of the chart gray.
+  [`set_omni_defaults()`](https://rfortherestofus.github.io/omni/reference/set_omni_defaults.md)
+  was setting every bar, column, point, line, boxplot, density and
+  violin - and the matching stat defaults - to `chart-gray`, so any
+  chart that did not call out a single group came out entirely gray. The
+  guidance is that the chart gray is for de-emphasising the *other*
+  groups when one group is highlighted, not for the whole chart.
+- [`set_omni_defaults()`](https://rfortherestofus.github.io/omni/reference/set_omni_defaults.md)’s
+  `base_color` argument is renamed `primary_color`, which better
+  describes what it does, and now accepts a brand colour name
+  (`"orange-red-600"`) as well as a hex. `base_color` still works and
+  warns. Same for
+  [`set_client_defaults()`](https://rfortherestofus.github.io/omni/reference/set_client_defaults.md),
+  whose client blue is unchanged.
+- Documented that switching the colour part-way through a report by
+  calling
+  [`set_omni_defaults()`](https://rfortherestofus.github.io/omni/reference/set_omni_defaults.md)
+  again is unsafe:
+  [`update_geom_defaults()`](https://ggplot2.tidyverse.org/reference/update_defaults.html)
+  resolves when a plot is *drawn*, not when it is built, so a second
+  call repaints every plot object that has not been printed yet - a
+  report that builds figures into a list or saves them at the end would
+  silently get the last colour for all of them. To vary the colour per
+  figure, set it on the geom
+  (`geom_col(fill = omni_colors("orange-red-600"))`), which is captured
+  when the layer is created.
+
 ### omni_header()
 
 - Fixed `finding_keyword` (the secondary-finding stripe/text in the

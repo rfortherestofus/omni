@@ -7,7 +7,8 @@ Update defaults to OMNI's theme
 ``` r
 set_omni_defaults(
   base_family = "Inter Tight",
-  base_color = omni_colors("chart-gray")
+  primary_color = "periwinkle-600",
+  base_color = NULL
 )
 ```
 
@@ -17,6 +18,34 @@ set_omni_defaults(
 
   The base font family for the theme.
 
+- primary_color:
+
+  The chart's primary data colour: a brand colour name such as
+  \`"periwinkle-600"\`, or a hex string. Defaults to
+  \`"periwinkle-600"\`.
+
 - base_color:
 
-  Base color
+  Deprecated. Use \`primary_color\`.
+
+## Details
+
+\`primary_color\` is the colour of the data itself - bars, points,
+lines, boxplots and their stat equivalents - for charts that do not call
+out one group. Per the data viz guidance that is a 600-level brand
+colour, not the chart gray, which is reserved for de-emphasising the
+\*other\* groups when one group is highlighted.
+
+To use a different colour for one figure, set it on the geom rather than
+calling this function again:
+
+“\`r geom_col(fill = omni_colors("orange-red-600")) “\`
+
+That is not just a style preference.
+\`ggplot2::update_geom_defaults()\`, which this function uses, is
+resolved when a plot is \*drawn\*, not when it is built - so calling
+\`set_omni_defaults()\` a second time repaints every plot object that
+has not been printed yet. A report that builds figures into a list,
+patchworks them, or saves them at the end would silently get the last
+colour set for all of them. A colour passed to the geom is captured when
+the layer is created and is immune to that.
