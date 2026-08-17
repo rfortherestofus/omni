@@ -91,7 +91,7 @@ remotes::install_github("rfortherestofus/omni", force = TRUE, ref = "old")
 - [`omni_set_page_start_pdf()`](https://rfortherestofus.github.io/omni/reference/omni_set_page_start_pdf.md)
   : Set the page counter in Omni pdf reports
 - [`omni_span()`](https://rfortherestofus.github.io/omni/reference/omni_span.md)
-  : Color a phrase inside a header (or any ggtext/HTML text)
+  : Color a phrase inside a header
 - [`omni_table()`](https://rfortherestofus.github.io/omni/reference/omni_table.md)
   : Create a table in OMNI's style
 - [`pdf_report()`](https://rfortherestofus.github.io/omni/reference/pdf_report.md)

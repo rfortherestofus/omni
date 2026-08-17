@@ -84,6 +84,40 @@
   calls that were relying on the default and are genuinely orange-red
   charts need `color = "orange-red-600"` added.
 
+- Tightened the header’s vertical rhythm against design feedback that
+  the elements sat too far apart: the gap between the primary finding
+  and the measure description is down ~60% and the gap between the
+  measure description and the plot panel is down ~10%. Both were set by
+  measuring the rendered output rather than by picking margin values,
+  since the visible gap is the margin plus the font’s own line box.
+
+- The gap between the eyebrow (`top_header`) and the primary finding is
+  now adjustable, via a new `eyebrow_gap` argument (default `0`, the
+  tightest the two lines go - the residual gap there is the fonts’ line
+  boxes, which no margin can shrink). Previously the header’s five
+  elements read as scrunched together, but this particular gap could not
+  be opened up: the title was rendered by ggtext, whose renderer only
+  offers that gap in one fixed step - too large per design feedback -
+  with no font-size or line-height trick able to shrink it. The title is
+  now rendered by marquee, which exposes the gap as a real block margin
+  while still wrapping long findings to the plot width (the reason
+  ggtext’s textbox was chosen originally). `eyebrow_gap` only moves the
+  eyebrow; the space below the primary finding is unchanged.
+
+- **Breaking:** because the title is now marquee markdown rather than
+  HTML,
+  [`omni_span()`](https://rfortherestofus.github.io/omni/reference/omni_span.md)
+  returns marquee markdown instead of an HTML `<span>`. Existing
+  [`omni_span()`](https://rfortherestofus.github.io/omni/reference/omni_span.md)
+  calls inside `primary` keep working. But
+  [`omni_span()`](https://rfortherestofus.github.io/omni/reference/omni_span.md)
+  no longer works for coloring axis labels - axis text is rendered by
+  ggtext, which reads HTML, not marquee markdown. Use
+  [`omni_highlight_labels()`](https://rfortherestofus.github.io/omni/reference/omni_highlight_labels.md)
+  for axis labels, which is what it is for. Note that an HTML span
+  passed into `primary` now renders as *uncolored* text rather than
+  erroring, so any hand-written `<span>` in a header needs converting.
+
 ### PDF report tables
 
 - Table columns no longer change width where a table breaks across
