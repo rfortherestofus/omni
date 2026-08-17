@@ -46,7 +46,8 @@ Suggests:
     gghighlight,
     scales,
     testthat (>= 3.0.0),
-    tidyverse
+    tidyverse,
+    withr
 VignetteBuilder: 
     knitr
 Author: c( person("Thomas", "Vroylandt", email =
