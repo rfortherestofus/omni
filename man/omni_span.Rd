@@ -2,7 +2,7 @@
 % Please edit documentation in R/omni_header.R
 \name{omni_span}
 \alias{omni_span}
-\title{Color a phrase inside a header (or any ggtext/HTML text)}
+\title{Color a phrase inside a header}
 \usage{
 omni_span(text, color)
 }
@@ -12,15 +12,20 @@ omni_span(text, color)
 \item{color}{A brand color name, e.g. `"periwinkle-600"`.}
 }
 \value{
-A character HTML `<span>` string.
+A character marquee markdown string.
 }
 \description{
-Returns an inline HTML `<span>` that sets `text` to a 600-level brand color. Use it to build
-multi-color primary headers by hand: skip [omni_header()]'s `keyword`/`color` shortcut (which
-colors a single phrase) and write the primary with one `omni_span()` per called-out phrase,
-composed with `stringr::str_glue()`. [omni_header()] wraps the whole primary in navy, so each
-span overrides it for its phrase. Also works inside a `scale_*_discrete(labels = ...)`
-labeller to color category labels to match.
+Returns a marquee markdown span that sets `text` to a 600-level brand color. Use it to
+build multi-color primary headers by hand: skip [omni_header()]'s `keyword`/`color`
+shortcut (which colors a single phrase) and write the primary with one `omni_span()` per
+called-out phrase, composed with `stringr::str_glue()`. [omni_header()] renders the whole
+primary in navy, so each span overrides it for its phrase.
+}
+\details{
+This is for [omni_header()]'s `primary` and `top_header`, which are marquee markdown. To
+color a category label on an axis, use [omni_highlight_labels()] instead - axis text is
+rendered by ggtext, which reads HTML rather than marquee markdown, so the two are not
+interchangeable.
 }
 \examples{
 stringr::str_glue("{omni_span('Housing', 'periwinkle-600')} led the requests")

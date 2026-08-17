@@ -29,9 +29,41 @@ test_that("omni_header returns labs + theme components", {
 })
 
 test_that("omni_header colors the keyword and warns on a missing one", {
+  # The title is marquee markdown, so the keyword carries the brand color's
+  # tag name; .omni_marquee_style() is what resolves it to a hex.
   h <- omni_header(primary = "Housing led", keyword = "Housing")
-  expect_match(h[[1]]$title, omni_colors("orange-red-600"), fixed = TRUE)
+  expect_match(h[[1]]$title, "{.orange-red-600 Housing}", fixed = TRUE)
   expect_warning(omni_header(primary = "Housing led", keyword = "Nope"))
+})
+
+test_that("omni_header renders the eyebrow as a heading block so the gap is adjustable", {
+  # The eyebrow must be a block (a level-1 heading), not an inline span:
+  # margins are a block property, so a margin on an inline span is silently
+  # ignored and eyebrow_gap would do nothing.
+  h <- omni_header(primary = "Housing led", top_header = "TOPIC - FY2024")
+  expect_match(h[[1]]$title, "# TOPIC - FY2024", fixed = TRUE)
+
+  # No eyebrow -> no heading block at all.
+  h_none <- omni_header(primary = "Housing led")
+  expect_false(grepl("^# ", h_none[[1]]$title))
+})
+
+test_that("eyebrow_gap sets the eyebrow's bottom margin and nothing else", {
+  tight <- omni_header(primary = "x", top_header = "T", eyebrow_gap = 0)
+  loose <- omni_header(primary = "x", top_header = "T", eyebrow_gap = 0.9)
+
+  style_of <- function(h, tag) {
+    paste(format(unclass(h[[2]]$plot.title$style)[[1]][[tag]]), collapse = " | ")
+  }
+
+  # the gap lands on h1's bottom margin ...
+  expect_match(style_of(tight, "h1"), "margin_bottom: rem(0)", fixed = TRUE)
+  expect_match(style_of(loose, "h1"), "margin_bottom: rem(0.9)", fixed = TRUE)
+
+  # ... and nowhere else: base carries no bottom margin, so the space below
+  # the primary finding does not move with eyebrow_gap
+  expect_identical(style_of(tight, "base"), style_of(loose, "base"))
+  expect_identical(tight[[2]]$plot.title$margin, loose[[2]]$plot.title$margin)
 })
 
 test_that("omni_header's caption carries its own marquee style (regression: finding_keyword gray fallback)", {
@@ -105,8 +137,12 @@ test_that("omni_header gives the eyebrow space above it and the measure space be
     top_header = "TOPIC - FY2024",
     measure = "What is measured"
   )
-  expect_equal(h[[2]]$plot.title$margin, ggplot2::margin(t = 8, b = 14))
-  expect_equal(h[[2]]$plot.subtitle$margin, ggplot2::margin(b = 12))
+  # These bottom margins are tuned against measured output, not chosen: they put
+  # ~24px between the primary finding and the measure description, and ~36px
+  # between the measure description and the panel. Changing them changes the
+  # header's rhythm, so they are pinned here deliberately.
+  expect_equal(h[[2]]$plot.title$margin, ggplot2::margin(t = 8, b = 5.3))
+  expect_equal(h[[2]]$plot.subtitle$margin, ggplot2::margin(b = 9))
 })
 
 test_that("omni_highlight_labels colors only matched labels", {
