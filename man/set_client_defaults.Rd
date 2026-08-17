@@ -4,12 +4,19 @@
 \alias{set_client_defaults}
 \title{Update defaults to OMNI's client theme}
 \usage{
-set_client_defaults(base_family = "Inter Tight", base_color = "#405065")
+set_client_defaults(
+  base_family = "Inter Tight",
+  primary_color = "#405065",
+  base_color = NULL
+)
 }
 \arguments{
 \item{base_family}{The base font family for the theme.}
 
-\item{base_color}{Base color}
+\item{primary_color}{The chart's primary data colour: a brand colour name or
+a hex string. Defaults to the client blue, `"#405065"`.}
+
+\item{base_color}{Deprecated. Use `primary_color`.}
 }
 \description{
 Update defaults to OMNI's client theme

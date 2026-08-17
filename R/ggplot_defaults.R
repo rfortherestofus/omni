@@ -1,8 +1,55 @@
+#' Resolve a primary colour argument to a hex string
+#'
+#' Accepts a brand colour name (`"periwinkle-600"`) or a literal hex, so
+#' [set_client_defaults()] can keep passing a non-brand client colour. Also
+#' carries the `base_color` deprecation.
+#'
+#' @noRd
+.resolve_primary_color <- function(primary_color, base_color, fn) {
+  if (!is.null(base_color)) {
+    cli::cli_warn(c(
+      "!" = "{.arg base_color} is deprecated in {.fn {fn}}; use {.arg primary_color}.",
+      "i" = "It sets the chart's primary data colour, which now defaults to
+             {.val periwinkle-600} rather than the old chart gray."
+    ))
+    primary_color <- base_color
+  }
+  if (grepl("^#[0-9A-Fa-f]{6}$", primary_color)) {
+    unname(primary_color)
+  } else {
+    unname(omni_colors(primary_color))
+  }
+}
+
 #' Update defaults to OMNI's theme
 #'
+#' @details
+#' `primary_color` is the colour of the data itself - bars, points, lines,
+#' boxplots and their stat equivalents - for charts that do not call out one
+#' group. Per the data viz guidance that is a 600-level brand colour, not the
+#' chart gray, which is reserved for de-emphasising the *other* groups when one
+#' group is highlighted.
+#'
+#' To use a different colour for one figure, set it on the geom rather than
+#' calling this function again:
+#'
+#' ```r
+#' geom_col(fill = omni_colors("orange-red-600"))
+#' ```
+#'
+#' That is not just a style preference. `ggplot2::update_geom_defaults()`,
+#' which this function uses, is resolved when a plot is *drawn*, not when it is
+#' built - so calling `set_omni_defaults()` a second time repaints every plot
+#' object that has not been printed yet. A report that builds figures into a
+#' list, patchworks them, or saves them at the end would silently get the last
+#' colour set for all of them. A colour passed to the geom is captured when the
+#' layer is created and is immune to that.
 #'
 #' @param base_family The base font family for the theme.
-#' @param base_color Base color
+#' @param primary_color The chart's primary data colour: a brand colour name
+#'   such as `"periwinkle-600"`, or a hex string. Defaults to
+#'   `"periwinkle-600"`.
+#' @param base_color Deprecated. Use `primary_color`.
 #'
 #' @import ggplot2
 #' @import ggrepel
@@ -10,8 +57,10 @@
 #' @export
 set_omni_defaults <- function(
   base_family = "Inter Tight",
-  base_color = omni_colors("chart-gray")
+  primary_color = "periwinkle-600",
+  base_color = NULL
 ) {
+  base_color <- .resolve_primary_color(primary_color, base_color, "set_omni_defaults")
   # set default theme -----------------------------------------------------
 
   ggplot2::theme_set(omni::theme_omni(
@@ -151,7 +200,9 @@ ggplot_defaults <- function() {
 #'
 #'
 #' @param base_family The base font family for the theme.
-#' @param base_color Base color
+#' @param primary_color The chart's primary data colour: a brand colour name or
+#'   a hex string. Defaults to the client blue, `"#405065"`.
+#' @param base_color Deprecated. Use `primary_color`.
 #'
 #' @import ggplot2
 #' @import ggrepel
@@ -159,10 +210,16 @@ ggplot_defaults <- function() {
 #' @export
 set_client_defaults <- function(
   base_family = "Inter Tight",
-  base_color = "#405065"
+  primary_color = "#405065",
+  base_color = NULL
 ) {
+  primary_color <- .resolve_primary_color(
+    primary_color,
+    base_color,
+    "set_client_defaults"
+  )
   set_omni_defaults(
     base_family = base_family,
-    base_color = base_color
+    primary_color = primary_color
   )
 }
