@@ -145,6 +145,30 @@ test_that("omni_header gives the eyebrow space above it and the measure space be
   expect_equal(h[[2]]$plot.subtitle$margin, ggplot2::margin(b = 9))
 })
 
+test_that("omni_header's title sets its own colour rather than inheriting one", {
+  # element_marquee()'s colour overrides the style's base color, and a NULL
+  # colour inherits from whatever plot.title the active theme already had.
+  # Left unset, the primary finding rendered in theme_omni()'s title gray
+  # (#666665) instead of navy - confirmed at the pixel level, not just in the
+  # theme object, which looked correct throughout. Third instance of the same
+  # shape: an element built without being fully specified inherits stale state
+  # from theme_omni() (see the caption's color and typography regressions).
+  h <- omni_header(primary = "Housing led", top_header = "TOPIC")
+  expect_identical(h[[2]]$plot.title$colour, unname(omni_colors("navy")))
+})
+
+test_that("theme_omni's title colour cannot leak into an omni_header title", {
+  # The regression only appeared once theme_omni() was in play, so pin the
+  # interaction rather than the element in isolation.
+  p <- ggplot2::ggplot(mtcars, ggplot2::aes(wt, mpg)) +
+    ggplot2::geom_point() +
+    theme_omni() +
+    omni_header(primary = "Housing led", top_header = "TOPIC")
+  resolved <- ggplot2::ggplot_build(p)$plot$theme$plot.title
+  expect_identical(resolved$colour, unname(omni_colors("navy")))
+  expect_false(identical(resolved$colour, "#666665"))
+})
+
 test_that("omni_highlight_labels colors only matched labels", {
   labeller <- omni_highlight_labels("North", color = "teal-600")
   out <- labeller(c("North", "South"))

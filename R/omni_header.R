@@ -214,8 +214,17 @@ omni_header <- function(
       # 150 dpi). Both were measured by scanning the rendered PNG for rows of ink, because
       # the visible gap is the margin plus the font's own line box - the margin alone does
       # not predict it.
+      # colour is set explicitly as well as in the style: element_marquee()'s own
+      # colour overrides the style's base color, and when it is left NULL it
+      # inherits from whatever plot.title the active theme already had - which
+      # rendered the primary finding in theme_omni()'s title gray (#666665)
+      # instead of navy. Same failure shape as the caption's twice-fixed color
+      # and typography bugs: an element built without being fully specified
+      # picks up stale state from theme_omni(). The style's base color still
+      # matters (it is what {.color ...} tags override), so both are set.
       plot.title = marquee::element_marquee(
         width = 1,
+        colour = omni_colors("navy"),
         style = .omni_title_style(primary_size, eyebrow_size, eyebrow_gap),
         margin = ggplot2::margin(t = 8, b = 5.3)
       ),
