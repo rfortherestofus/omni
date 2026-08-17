@@ -46,6 +46,15 @@
   `theme_omni()` with a caption but without `omni_header()`: their caption
   moves from the bottom-right to the bottom-left when re-rendered.
 
+* Fixed the primary finding rendering in `theme_omni()`'s title gray
+  (`#666665`) instead of navy. `omni_header()` set `plot.title`'s style but
+  not its `colour`, and `element_marquee()`'s own `colour` overrides the
+  style's base color - so with `colour` left unset it inherited whatever
+  `plot.title` the active theme already had. The colored keyword was
+  unaffected (it is a tag, which overrides the base), which is part of why
+  this survived review. Third instance of one shape: an element built
+  without being fully specified inheriting stale state from `theme_omni()`.
+
 ## omni_highlight_labels()
 
 * **Breaking:** `color` is now required instead of defaulting to
