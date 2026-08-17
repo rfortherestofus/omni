@@ -31,6 +31,7 @@
   [`omni_header()`](https://rfortherestofus.github.io/omni/reference/omni_header.md)
   now supplies its own style unconditionally, independent of theme
   order.
+
 - Fixed the header elements feeling scrunched together: added space
   above the eyebrow (`top_header`), which previously sat flush against
   the plot’s outer margin, and more room below the measure description
@@ -38,6 +39,7 @@
   the primary finding itself is unchanged - the markdown renderer behind
   that text box only offers that specific gap in one fixed size, and
   design feedback was that size reads as too much space.
+
 - Fixed the caption (secondary finding and source/N) rendering larger
   and bold, heavier than the measure description above it - the reverse
   of the intended hierarchy. It now renders at the smaller,
@@ -52,6 +54,7 @@
   [`omni_header()`](https://rfortherestofus.github.io/omni/reference/omni_header.md)
   now build `plot.caption`’s style from one shared helper, so the two
   can’t drift apart again.
+
 - Captions are now left-aligned under
   [`theme_omni()`](https://rfortherestofus.github.io/omni/reference/theme_omni.md)
   as well as under
@@ -69,6 +72,19 @@
   [`omni_header()`](https://rfortherestofus.github.io/omni/reference/omni_header.md):
   their caption moves from the bottom-right to the bottom-left when
   re-rendered.
+
+- Fixed the primary finding rendering in
+  [`theme_omni()`](https://rfortherestofus.github.io/omni/reference/theme_omni.md)’s
+  title gray (`#666665`) instead of navy.
+  [`omni_header()`](https://rfortherestofus.github.io/omni/reference/omni_header.md)
+  set `plot.title`’s style but not its `colour`, and
+  `element_marquee()`’s own `colour` overrides the style’s base color -
+  so with `colour` left unset it inherited whatever `plot.title` the
+  active theme already had. The colored keyword was unaffected (it is a
+  tag, which overrides the base), which is part of why this survived
+  review. Third instance of one shape: an element built without being
+  fully specified inheriting stale state from
+  [`theme_omni()`](https://rfortherestofus.github.io/omni/reference/theme_omni.md).
 
 ### omni_highlight_labels()
 
