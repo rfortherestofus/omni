@@ -99,9 +99,11 @@ ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
   theme_minimal()
 ```
 
-See Table \@ref(tab:fruit-sales).
+See @tbl-fruit-sales.
 
-```{r fruit-sales, tab.cap="Quarterly sales of nonsense fruit."}
+```{r}
+#| label: tbl-fruit-sales
+#| tbl-cap: "Quarterly sales of nonsense fruit."
 tibble::tribble(
   ~Fruit        , ~`Units Sold` , ~`Revenue (USD)` ,
   "Apples"      ,          1240 ,             3100 ,
@@ -109,7 +111,7 @@ tibble::tribble(
   "Cherries"    ,           310 ,             2480 ,
   "Dragonfruit" ,            75 ,              900
 ) |>
-  omni::omni_table()
+  omni::omni_table2()
 ```
 
 
