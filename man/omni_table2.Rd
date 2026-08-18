@@ -12,7 +12,8 @@ omni_table2(
   dark_group_rows = FALSE,
   brand_color = omni_colors("steel-blue-400"),
   stripe_color = NULL,
-  dark_color = omni_colors("navy")
+  dark_color = omni_colors("navy"),
+  lighten_amount = 0.65
 )
 }
 \arguments{
@@ -20,17 +21,17 @@ omni_table2(
 
 \item{group_by}{Optional name of a single grouping column. When supplied,
 the data is grouped and a full-width label row is inserted before each
-group. Defaults to \code{NULL} (no grouping).}
+group. Defaults to `NULL` (no grouping).}
 
 \item{first_col_gray}{Should the first column be shaded with
-\code{brand_color} (with white text)? Defaults to \code{FALSE}.}
+`brand_color` (with white text)? Defaults to `FALSE`.}
 
 \item{with_stripes}{Should rows use a striped (zebra) pattern? Defaults to
-\code{TRUE}.}
+`TRUE`.}
 
-\item{dark_group_rows}{When \code{group_by} is supplied, should the group
-label rows use \code{dark_color} instead of \code{brand_color}? Defaults
-to \code{FALSE}.}
+\item{dark_group_rows}{When `group_by` is supplied, should the group
+label rows use `dark_color` instead of `brand_color`? Defaults
+to `FALSE`.}
 
 \item{brand_color}{Hex color used for the header row, and for group label
 rows and the shaded first column unless overridden. Defaults to OMNI's
@@ -39,11 +40,16 @@ client's primary color) to restyle the table without changing anything
 else.}
 
 \item{stripe_color}{Hex color used for the striped rows. Defaults to
-\code{NULL}, which derives a light tint of \code{brand_color}
+`NULL`, which derives a light tint of `brand_color`
 automatically.}
 
 \item{dark_color}{Hex color used for group label rows when
-\code{dark_group_rows = TRUE}. Defaults to OMNI's navy.}
+`dark_group_rows = TRUE`. Defaults to OMNI's navy.}
+
+\item{lighten_amount}{Fraction of the remaining distance to white used
+when deriving `stripe_color` from `brand_color`, between
+`0` (no change) and `1` (white). Ignored if `stripe_color`
+is supplied directly. Defaults to `0.65`.}
 }
 \value{
 A \pkg{tinytable} object.
@@ -52,25 +58,10 @@ A \pkg{tinytable} object.
 Turns a data frame into a table styled with OMNI Institute's colours and
 row striping. The result is a \pkg{tinytable} object, so it can be piped
 into any \pkg{tinytable} function for further customisation. Unlike
-\code{\link{omni_table}}, which is built on \pkg{flextable} and only
-renders well in HTML and Word, \code{omni_table2()} is built on
+`\link{omni_table}`, which is built on \pkg{flextable} and only
+renders well in HTML and Word, `omni_table2()` is built on
 \pkg{tinytable}, which has native support for Typst, so it renders
 correctly in \pkg{omni}'s Typst-based PDF reports as well as HTML and Word.
-}
-\details{
-To add a caption, use Quarto's own \code{tbl-cap} chunk option rather than
-\pkg{tinytable}'s own \code{caption} argument (which \code{omni_table2()}
-does not expose): Quarto's HTML/Word writers render it fine, but its
-Markdown-to-Typst conversion silently drops a caption set through
-\pkg{tinytable} directly, while \code{tbl-cap} survives the conversion and
-additionally supports cross-references (\verb{@tbl-my-label}).
-
-\preformatted{
-#| label: tbl-fruit-sales
-#| tbl-cap: "Quarterly sales of nonsense fruit."
-fruit_sales |>
-  omni_table2()
-}
 }
 \examples{
 # Basic table
@@ -96,5 +87,5 @@ palmerpenguins::penguins |>
 # Restyle for another organization's brand color (e.g. a client report)
 palmerpenguins::penguins |>
   dplyr::slice(1:3) |>
-  omni_table2(brand_color = "#921C4C")
+  omni_table2(brand_color = "#921C4C") # red/purple-ish
 }
