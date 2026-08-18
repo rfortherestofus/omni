@@ -8,9 +8,9 @@ execute:
     message: false
     echo: false
 format:
-    omni_report-html:
-      logo-ref: logo.png
-      organization-name: Omni Institute
+    # omni_report-html:
+    #   logo-ref: logo.png
+    #   organization-name: Omni Institute
     omni_report-typst:
       cover-page: true
       title-page: true

@@ -262,7 +262,9 @@ knit_print.omni_table <- function(x, ...) {
   # proportions of the default autofit layout. Skipped when the caller has
   # already set a fixed layout, so a manual
   # `width() |> set_table_properties(layout = "fixed")` is left untouched.
-  if (is.null(x$properties$layout) || identical(x$properties$layout, "autofit")) {
+  if (
+    is.null(x$properties$layout) || identical(x$properties$layout, "autofit")
+  ) {
     col_widths <- flextable::dim_pretty(x, part = "all")$widths
     x <- x |>
       flextable::width(width = col_widths) |>
