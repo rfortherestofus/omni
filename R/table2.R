@@ -1,4 +1,8 @@
 #' Lighten a hex color by blending it toward white
+#'
+#' @param hex A hex color string.
+#' @param amount A number between 0 and 1 giving how far to blend toward white.
+#' @noRd
 lighten_color <- function(hex, amount) {
   rgb_mat <- grDevices::col2rgb(hex) / 255
   lightened <- rgb_mat + (1 - rgb_mat) * amount

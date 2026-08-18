@@ -268,7 +268,7 @@ brand_to_list <- function(x) {
 # --- Write to YAML ---
 
 brand_write_yaml <- function(brand, path) {
-  base <- if (!is.null(base_path)) yaml::read_yaml(base_path) else list()
+  base <- if (file.exists(path)) yaml::read_yaml(path) else list()
   updated <- purrr::list_modify(base, !!!brand_to_list(brand))
   yaml::write_yaml(updated, path)
   invisible(path)

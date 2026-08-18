@@ -37,7 +37,6 @@ Imports:
     purrr,
     qpdf,
     xml2,
-    palmerpenguins,
     commonmark,
     S7,
     yaml,
@@ -46,6 +45,7 @@ Imports:
     stats
 Suggests:
     gghighlight,
+    palmerpenguins,
     scales,
     testthat (>= 3.0.0),
     tidyverse
