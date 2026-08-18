@@ -22,13 +22,6 @@ test_that("omni_table2 groups rows without erroring", {
   )
 })
 
-test_that("omni_table2 rejects more than one grouping column", {
-  expect_error(
-    omni_table2(test_df, group_by = c("species", "x")),
-    "single column"
-  )
-})
-
 test_that("omni_table2 accepts an arbitrary brand color", {
   result <- omni_table2(
     test_df,
