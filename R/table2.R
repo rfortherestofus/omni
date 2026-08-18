@@ -1,6 +1,4 @@
 #' Lighten a hex color by blending it toward white
-#'
-#' @keywords internal
 lighten_color <- function(hex, amount) {
   rgb_mat <- grDevices::col2rgb(hex) / 255
   lightened <- rgb_mat + (1 - rgb_mat) * amount
@@ -12,8 +10,8 @@ lighten_color <- function(hex, amount) {
 #' Turns a data frame into a table styled with OMNI Institute's colours and
 #' row striping. The result is a \pkg{tinytable} object, so it can be piped
 #' into any \pkg{tinytable} function for further customisation. Unlike
-#' \code{\link{omni_table}}, which is built on \pkg{flextable} and only
-#' renders well in HTML and Word, \code{omni_table2()} is built on
+#' `\link{omni_table}`, which is built on \pkg{flextable} and only
+#' renders well in HTML and Word, `omni_table2()` is built on
 #' \pkg{tinytable}, which has native support for Typst, so it renders
 #' correctly in \pkg{omni}'s Typst-based PDF reports as well as HTML and Word.
 #'
@@ -37,7 +35,7 @@ lighten_color <- function(hex, amount) {
 #'   `NULL`, which derives a light tint of `brand_color`
 #'   automatically.
 #' @param dark_color Hex color used for group label rows when
-#'   `dark_group_rows`= TRUE}. Defaults to OMNI's navy.
+#'   `dark_group_rows = TRUE`. Defaults to OMNI's navy.
 #' @param lighten_amount Fraction of the remaining distance to white used
 #'   when deriving `stripe_color` from `brand_color`, between
 #'   `0` (no change) and `1` (white). Ignored if `stripe_color`
@@ -45,23 +43,7 @@ lighten_color <- function(hex, amount) {
 #'
 #' @return A \pkg{tinytable} object.
 #'
-#' @details
-#' To add a caption, use Quarto's own \code{tbl-cap} chunk option rather than
-#' \pkg{tinytable}'s own \code{caption} argument (which \code{omni_table2()}
-#' does not expose): Quarto's HTML/Word writers render it fine, but its
-#' Markdown-to-Typst conversion silently drops a caption set through
-#' \pkg{tinytable} directly, while \code{tbl-cap} survives the conversion and
-#' additionally supports cross-references (\verb{@tbl-my-label}).
-#'
-#' \preformatted{
-#' #| label: tbl-fruit-sales
-#' #| tbl-cap: "Quarterly sales of nonsense fruit."
-#' fruit_sales |>
-#'   omni_table2()
-#' }
-#'
 #' @export
-#'
 #' @import tinytable
 #'
 #' @examples
@@ -88,7 +70,7 @@ lighten_color <- function(hex, amount) {
 #' # Restyle for another organization's brand color (e.g. a client report)
 #' palmerpenguins::penguins |>
 #'   dplyr::slice(1:3) |>
-#'   omni_table2(brand_color = "#921C4C")
+#'   omni_table2(brand_color = "#921C4C") # red/purple-ish
 omni_table2 <- function(
   df,
   group_by = NULL,
@@ -106,7 +88,8 @@ omni_table2 <- function(
 
   if (!is.null(group_by)) {
     group_values <- df[[group_by]]
-    df <- df[order(match(group_values, unique(group_values))), , drop = FALSE]
+    group_order <- match(group_values, unique(group_values))
+    df <- df[order(group_order), , drop = FALSE]
     group_values <- df[[group_by]]
     body_df <- df[, setdiff(names(df), group_by), drop = FALSE]
 
@@ -123,7 +106,7 @@ omni_table2 <- function(
   n_row <- nrow(body_df)
   n_render <- n_row + length(group_i)
 
-  table <- body_df |>
+  tbl <- body_df |>
     tt() |>
     theme_html(portable = TRUE) |>
     theme_typst(multipage = TRUE) |>
@@ -131,17 +114,16 @@ omni_table2 <- function(
     style_tt(i = seq_len(n_render), color = "#333333")
 
   if (!is.null(group_i)) {
-    table <- table |>
-      group_tt(i = group_i)
+    tbl <- tbl |> group_tt(i = group_i)
   }
 
   if (with_stripes && n_render >= 2) {
-    table <- table |>
+    tbl <- tbl |>
       style_tt(i = seq(2, n_render, by = 2), background = stripe_color)
   }
 
   if (first_col_gray) {
-    table <- table |>
+    tbl <- tbl |>
       style_tt(
         i = seq_len(n_render),
         j = 1,
@@ -151,7 +133,7 @@ omni_table2 <- function(
   }
 
   if (!is.null(group_i)) {
-    table <- table |>
+    tbl <- tbl |>
       style_tt(
         i = "groupi",
         background = if (dark_group_rows) dark_color else brand_color,
@@ -159,5 +141,5 @@ omni_table2 <- function(
       )
   }
 
-  table
+  tbl
 }
