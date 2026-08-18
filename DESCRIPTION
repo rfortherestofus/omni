@@ -42,7 +42,8 @@ Imports:
     S7,
     yaml,
     bookdown,
-    tinytable
+    tinytable,
+    stats
 Suggests:
     gghighlight,
     scales,

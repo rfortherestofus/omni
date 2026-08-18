@@ -107,6 +107,8 @@ omni_table2 <- function(
 
   if (!is.null(group_by)) {
     group_values <- df[[group_by]]
+    df <- df[order(match(group_values, unique(group_values))), , drop = FALSE]
+    group_values <- df[[group_by]]
     body_df <- df[, setdiff(names(df), group_by), drop = FALSE]
 
     group_runs <- rle(as.character(group_values))
@@ -134,7 +136,7 @@ omni_table2 <- function(
       group_tt(i = group_i)
   }
 
-  if (with_stripes) {
+  if (with_stripes && n_render >= 2) {
     table <- table |>
       style_tt(i = seq(2, n_render, by = 2), background = stripe_color)
   }
