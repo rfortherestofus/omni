@@ -1,13 +1,7 @@
-# Internal helpers ------------------------------------------------------
-
 #' Lighten a hex color by blending it toward white
 #'
-#' Used to derive a stripe color from a single brand color when the caller
-#' does not supply one explicitly, so `omni_table2()` can be handed any
-#' organization's brand color and still produce a sensible zebra stripe.
-#'
-#' @noRd
-lighten_color <- function(hex, amount = 0.65) {
+#' @keywords internal
+lighten_color <- function(hex, amount) {
   rgb_mat <- grDevices::col2rgb(hex) / 255
   lightened <- rgb_mat + (1 - rgb_mat) * amount
   grDevices::rgb(lightened[1, ], lightened[2, ], lightened[3, ])
@@ -26,24 +20,28 @@ lighten_color <- function(hex, amount = 0.65) {
 #' @param df The data frame to turn into a table.
 #' @param group_by Optional name of a single grouping column. When supplied,
 #'   the data is grouped and a full-width label row is inserted before each
-#'   group. Defaults to \code{NULL} (no grouping).
+#'   group. Defaults to `NULL` (no grouping).
 #' @param first_col_gray Should the first column be shaded with
-#'   \code{brand_color} (with white text)? Defaults to \code{FALSE}.
+#'   `brand_color` (with white text)? Defaults to `FALSE`.
 #' @param with_stripes Should rows use a striped (zebra) pattern? Defaults to
-#'   \code{TRUE}.
-#' @param dark_group_rows When \code{group_by} is supplied, should the group
-#'   label rows use \code{dark_color} instead of \code{brand_color}? Defaults
-#'   to \code{FALSE}.
+#'   `TRUE`.
+#' @param dark_group_rows When `group_by` is supplied, should the group
+#'   label rows use `dark_color` instead of `brand_color`? Defaults
+#'   to `FALSE`.
 #' @param brand_color Hex color used for the header row, and for group label
 #'   rows and the shaded first column unless overridden. Defaults to OMNI's
 #'   steel blue. Pass any organization's brand color here (for example a
 #'   client's primary color) to restyle the table without changing anything
 #'   else.
 #' @param stripe_color Hex color used for the striped rows. Defaults to
-#'   \code{NULL}, which derives a light tint of \code{brand_color}
+#'   `NULL`, which derives a light tint of `brand_color`
 #'   automatically.
 #' @param dark_color Hex color used for group label rows when
-#'   \code{dark_group_rows = TRUE}. Defaults to OMNI's navy.
+#'   `dark_group_rows`= TRUE}. Defaults to OMNI's navy.
+#' @param lighten_amount Fraction of the remaining distance to white used
+#'   when deriving `stripe_color` from `brand_color`, between
+#'   `0` (no change) and `1` (white). Ignored if `stripe_color`
+#'   is supplied directly. Defaults to `0.65`.
 #'
 #' @return A \pkg{tinytable} object.
 #'
@@ -99,10 +97,11 @@ omni_table2 <- function(
   dark_group_rows = FALSE,
   brand_color = omni_colors("steel-blue-400"),
   stripe_color = NULL,
-  dark_color = omni_colors("navy")
+  dark_color = omni_colors("navy"),
+  lighten_amount = 0.65
 ) {
   if (is.null(stripe_color)) {
-    stripe_color <- lighten_color(brand_color)
+    stripe_color <- lighten_color(brand_color, lighten_amount)
   }
 
   if (!is.null(group_by)) {
