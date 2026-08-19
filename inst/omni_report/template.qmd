@@ -14,8 +14,6 @@ format:
     omni_report-typst:
       cover-page: true
       title-page: true
-      toc: true
-      toc-title: "Table of Contents"
       cover-pattern: pattern-cover-01-yellow
       organization-name: Omni Institute
       client-name: "[Favorite client]"
@@ -24,6 +22,7 @@ format:
       contact-email: projects@omni.org
       report-year: "[year]"
       acknowledgements: "**[one name, and another name, and more names, and lots of names, and even more names. There were lots of people involved with this magnificient project.]**"
+      start-page-number: 1
 ---
 
 

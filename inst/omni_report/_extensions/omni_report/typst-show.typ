@@ -120,5 +120,8 @@ $endif$
 $if(report-year)$
   report-year: [$report-year$],
 $endif$
+$if(start-page-number)$
+  start-page-number: $start-page-number$,
+$endif$
   doc,
 )
