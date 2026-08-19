@@ -366,7 +366,20 @@ omni_highlight_labels <- function(highlight, color = NULL) {
 #' @examples
 #' stringr::str_glue("{omni_span('Housing', 'periwinkle-600')} led the requests")
 omni_span <- function(text, color) {
+  # Emit the class-based tag, matching what .wrap_first() already uses for
+  # `keyword` and `finding_keyword`, so every coloured phrase in the header
+  # resolves through the one path registered by .omni_marquee_style().
+  #
+  # The previous raw-hex form built "{#" and then interpolated omni_colors(),
+  # which itself returns a leading "#" - emitting "{##5776B2 Housing}", which
+  # marquee cannot parse. It renders the phrase in the base colour with no
+  # error and no warning, so nothing but a parsed or rendered check catches it.
+  #
+  # omni_colors() is called purely to validate: an unknown colour name errors
+  # here instead of emitting an unregistered tag, which would fail the same
+  # silent way the malformed hex did.
+  omni_colors(color)
   as.character(
-    stringr::str_glue("{{#{omni_colors(color)} {text}}}")
+    stringr::str_glue("{{.{color} {text}}}")
   )
 }

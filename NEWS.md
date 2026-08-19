@@ -9,6 +9,20 @@
   four add olive-green), and the scale errors clearly when more categories than
   palette colors are requested (#242).
 
+## omni_span()
+
+* Fixed the colour never applying. `omni_span()` built a raw-hex marquee tag
+  by prefixing `"{#"` and then interpolating `omni_colors()`, which already
+  returns a leading `#` - so it emitted `{##5776B2 Housing}`, which marquee
+  cannot parse. The phrase rendered in the base colour with no error and no
+  warning. It now emits the class-based tag, `{.periwinkle-600 Housing}`,
+  which is what `omni_header()`'s own documentation already described and
+  what `keyword` and `finding_keyword` have always used internally - one
+  resolution path for every coloured phrase in the header instead of two.
+* `omni_span()` now errors on a colour name that is not a brand colour.
+  Previously an unknown name produced an unregistered tag, which fails the
+  same silent way the malformed hex did.
+
 ## Chart defaults
 
 * **Breaking-ish:** data marks now default to a 600-level brand colour
