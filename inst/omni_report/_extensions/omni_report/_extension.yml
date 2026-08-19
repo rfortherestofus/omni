@@ -13,6 +13,7 @@ contributes:
         - design_elements.typ
       filters:
         - filter.lua
+      keep-typ: true
     html:
       toc: true
       toc-location: left
@@ -36,4 +37,3 @@ contributes:
         - frontmatter.scss
       filters:
         - filter.lua
-
