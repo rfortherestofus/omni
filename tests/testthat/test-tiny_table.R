@@ -4,26 +4,26 @@ test_df <- data.frame(
   y = 5:8
 )
 
-test_that("omni_table2 returns a tinytable object", {
-  result <- omni_table2(test_df)
+test_that("omni_tinytable returns a tinytable object", {
+  result <- omni_tinytable(test_df)
   expect_s4_class(result, "tinytable")
 })
 
-test_that("omni_table2 works with no styling options", {
-  expect_no_error(omni_table2(test_df))
-  expect_no_error(omni_table2(test_df, with_stripes = FALSE))
-  expect_no_error(omni_table2(test_df, first_col_gray = TRUE))
+test_that("omni_tinytable works with no styling options", {
+  expect_no_error(omni_tinytable(test_df))
+  expect_no_error(omni_tinytable(test_df, with_stripes = FALSE))
+  expect_no_error(omni_tinytable(test_df, first_col_gray = TRUE))
 })
 
-test_that("omni_table2 groups rows without erroring", {
-  expect_no_error(omni_table2(test_df, group_by = "species"))
+test_that("omni_tinytable groups rows without erroring", {
+  expect_no_error(omni_tinytable(test_df, group_by = "species"))
   expect_no_error(
-    omni_table2(test_df, group_by = "species", dark_group_rows = TRUE)
+    omni_tinytable(test_df, group_by = "species", dark_group_rows = TRUE)
   )
 })
 
-test_that("omni_table2 accepts an arbitrary brand color", {
-  result <- omni_table2(
+test_that("omni_tinytable accepts an arbitrary brand color", {
+  result <- omni_tinytable(
     test_df,
     group_by = "species",
     brand_color = "#921C4C",

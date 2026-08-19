@@ -111,7 +111,7 @@ tibble::tribble(
   "Cherries"    ,           310 ,             2480 ,
   "Dragonfruit" ,            75 ,              900
 ) |>
-  omni::omni_table2()
+  omni::omni_tinytable()
 ```
 
 

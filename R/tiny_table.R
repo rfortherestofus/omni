@@ -15,7 +15,7 @@ lighten_color <- function(hex, amount) {
 #' row striping. The result is a \pkg{tinytable} object, so it can be piped
 #' into any \pkg{tinytable} function for further customisation. Unlike
 #' `\link{omni_table}`, which is built on \pkg{flextable} and only
-#' renders well in HTML and Word, `omni_table2()` is built on
+#' renders well in HTML and Word, `omni_tinytable()` is built on
 #' \pkg{tinytable}, which has native support for Typst, so it renders
 #' correctly in \pkg{omni}'s Typst-based PDF reports as well as HTML and Word.
 #'
@@ -54,28 +54,28 @@ lighten_color <- function(hex, amount) {
 #' # Basic table
 #' palmerpenguins::penguins |>
 #'   dplyr::slice(1:3) |>
-#'   omni_table2()
+#'   omni_tinytable()
 #'
 #' # Shade the first column
 #' palmerpenguins::penguins |>
 #'   dplyr::slice(1:3) |>
-#'   omni_table2(first_col_gray = TRUE)
+#'   omni_tinytable(first_col_gray = TRUE)
 #'
 #' # Group rows by a variable
 #' palmerpenguins::penguins |>
 #'   dplyr::slice(1:3, .by = species) |>
-#'   omni_table2(group_by = "species")
+#'   omni_tinytable(group_by = "species")
 #'
 #' # Without the striped pattern
 #' palmerpenguins::penguins |>
 #'   dplyr::slice(1:3) |>
-#'   omni_table2(with_stripes = FALSE)
+#'   omni_tinytable(with_stripes = FALSE)
 #'
 #' # Restyle for another organization's brand color (e.g. a client report)
 #' palmerpenguins::penguins |>
 #'   dplyr::slice(1:3) |>
-#'   omni_table2(brand_color = "#921C4C") # red/purple-ish
-omni_table2 <- function(
+#'   omni_tinytable(brand_color = "#921C4C") # red/purple-ish
+omni_tinytable <- function(
   df,
   group_by = NULL,
   first_col_gray = FALSE,
