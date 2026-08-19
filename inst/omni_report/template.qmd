@@ -8,9 +8,9 @@ execute:
     message: false
     echo: false
 format:
-    # omni_report-html:
-    #   logo-ref: logo.png
-    #   organization-name: Omni Institute
+    omni_report-html:
+      logo-ref: logo.png
+      organization-name: Omni Institute
     omni_report-typst:
       cover-page: true
       title-page: true
@@ -24,7 +24,7 @@ format:
       contact-email: projects@omni.org
       report-year: "[year]"
       acknowledgements: "**[one name, and another name, and more names, and lots of names, and even more names. There were lots of people involved with this magnificient project.]**"
-      start-page-number: 5
+      start-page-number: 1
 ---
 
 
