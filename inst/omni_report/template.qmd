@@ -99,6 +99,12 @@ ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
   theme_minimal()
 ```
 
+### Tables and cross-references
+
+This template is written in Quarto, not R Markdown, and Quarto uses its own cross-referencing syntax. In R Markdown you would name a chunk and give it a `tab.cap` option (e.g. `{r fruit-sales, tab.cap="..."}`) and reference it with `\@ref(tab:fruit-sales)`. In Quarto, chunk options move inside the chunk as `#|` lines, a table's chunk gets a `label` starting with `tbl-`, and you reference it in text with `@tbl-fruit-sales` (no `\@ref()`, no backslash), as in "See @tbl-fruit-sales." below. The same pattern applies to figures (`fig-` labels, referenced with `@fig-`), equations, and sections. See the [Quarto cross-references guide](https://quarto.org/docs/authoring/cross-references.html) for the full syntax.
+
+**Note:** when a table is produced with `omni::omni_tinytable()`, you must set both `label` and `tbl-cap` in the chunk options. If `tbl-cap` is set without a `label` starting with `tbl-`, tinytable will silently drop the caption.
+
 See @tbl-fruit-sales.
 
 ```{r}
