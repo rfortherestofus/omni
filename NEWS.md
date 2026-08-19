@@ -81,7 +81,6 @@
   Left is the brand standard. Note this changes existing figures that use
   `theme_omni()` with a caption but without `omni_header()`: their caption
   moves from the bottom-right to the bottom-left when re-rendered.
-
 * Fixed the primary finding rendering in `theme_omni()`'s title gray
   (`#666665`) instead of navy. `omni_header()` set `plot.title`'s style but
   not its `colour`, and `element_marquee()`'s own `colour` overrides the
@@ -90,19 +89,6 @@
   unaffected (it is a tag, which overrides the base), which is part of why
   this survived review. Third instance of one shape: an element built
   without being fully specified inheriting stale state from `theme_omni()`.
-
-## omni_highlight_labels()
-
-* **Breaking:** `color` is now required instead of defaulting to
-  `"orange-red-600"`. A chart uses one highlight color and the colored axis
-  label has to match the bar or point it labels, but the default silently
-  produced an orange-red label on charts highlighted in any other color -
-  a brand violation with nothing in the rendered output to flag it, and
-  invisible to anyone using a tool that writes the call for them. Omitting
-  `color` now raises an error naming the fix. Update existing calls by
-  passing the same color given to `omni_header()`; calls that were relying
-  on the default and are genuinely orange-red charts need
-  `color = "orange-red-600"` added.
 
 * Tightened the header's vertical rhythm against design feedback that the
   elements sat too far apart: the gap between the primary finding and the
@@ -131,6 +117,19 @@
   that an HTML span passed into `primary` now renders as *uncolored* text
   rather than erroring, so any hand-written `<span>` in a header needs
   converting.
+
+## omni_highlight_labels()
+
+* **Breaking:** `color` is now required instead of defaulting to
+  `"orange-red-600"`. A chart uses one highlight color and the colored axis
+  label has to match the bar or point it labels, but the default silently
+  produced an orange-red label on charts highlighted in any other color -
+  a brand violation with nothing in the rendered output to flag it, and
+  invisible to anyone using a tool that writes the call for them. Omitting
+  `color` now raises an error naming the fix. Update existing calls by
+  passing the same color given to `omni_header()`; calls that were relying
+  on the default and are genuinely orange-red charts need
+  `color = "orange-red-600"` added.
 
 ## PDF report tables
 
