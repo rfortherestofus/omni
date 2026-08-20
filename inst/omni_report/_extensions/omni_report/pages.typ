@@ -62,7 +62,6 @@
       #image(cover-pattern, width: 100%, height: 48%, fit: "stretch")
     ],
   )[
-    #set par(leading: 0.7cm)
     #let date-str = "2026-08-01"
     #let parts = date-str.split("-").map(int)
     #let d = datetime(year: parts.at(0), month: parts.at(1), day: parts.at(2))
@@ -81,7 +80,7 @@
       tracking: 1pt,
     )[#organization-name Report]
     #v(0.8cm, weak: true)
-    #text(size: 30pt, weight: "bold", fill: brand-color.at("primary"))[#title]
+    #heading(level: 1, text(size: 30pt)[#par(leading: 0.5cm, title)])
     #v(1em)
     #line(length: 40%, stroke: 1pt + brand-color.at("periwinkle-200"))
     #v(7mm, weak: true)

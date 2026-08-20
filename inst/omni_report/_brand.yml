@@ -45,6 +45,7 @@ typography:
     line-height: 1.6
   headings:
     family: Inter Tight
-    weight: bold
+    weight: 600
+    color: primary
   link:
     color: periwinkle-600
