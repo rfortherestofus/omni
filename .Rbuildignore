@@ -16,3 +16,6 @@
 inst/reference/
 ^.*\.pdf
 (^|/).*(?:_libs|_files)/$
+(^|/)\.quarto$
+^inst/qmd-website/_site$
+^ACCESSIBILITY-BUGS.*\.md$

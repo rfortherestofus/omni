@@ -74,9 +74,15 @@ px_to_pt <- function(px) px * 72 / 96
 #'
 #' @examples
 #'
+#' quote_text <- paste0(
+#'   'This is a quote box. You can <highlight>change text color to ',
+#'   'highlight certain parts</highlight>, or just leave the text all ',
+#'   'white. Change the background color as desired to match the page.'
+#' )
+#'
 #' htmltools::browsable(
 #'   quote_box_html(
-#'     text = 'This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',
+#'     text = quote_text,
 #'     author = 'John Jacob, random guy',
 #'     color = 'olive-green-600'
 #'   )
@@ -84,7 +90,7 @@ px_to_pt <- function(px) px * 72 / 96
 #'
 #' htmltools::browsable(
 #'   quote_box_html(
-#'     text = 'This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',
+#'     text = quote_text,
 #'     author = 'John Jacob, random guy',
 #'     color = 'periwinkle-600'
 #'   )
@@ -309,16 +315,22 @@ quote_box <- function(text, author, color, fixed_width_px = 300) {
 #'
 #' @examples
 #'
+#' callout_text <- paste0(
+#'   'This is a callout box. You can <highlight>change text color to ',
+#'   'highlight certain parts</highlight>, or just leave the text all ',
+#'   'white. Change the background color as desired to match the page.'
+#' )
+#'
 #' htmltools::browsable(
 #'   callout_box_html(
-#'     text = 'This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',
+#'     text = callout_text,
 #'     color = 'olive-green-600'
 #'   )
 #' )
 #'
 #' htmltools::browsable(
 #'   callout_box_html(
-#'     text = 'This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',
+#'     text = callout_text,
 #'     color = 'orange-red-600'
 #'   )
 #' )
@@ -1061,19 +1073,27 @@ icon_text <- function(text, width_px = 400) {
 #' icon_color_fg <- "white"
 #' icon_color_bg <- 'teal-600'
 #'
+#' text_1 <- paste0(
+#'   '**71.9%:** Any person younger than 21 caught with or suspected of ',
+#'   'consuming alcohol or marijuana is charged with Minor in Possession (MIP).'
+#' )
+#' text_2 <- paste0(
+#'   '**69.8%:** Adults in Colorado who knowingly hep someone younger than 18 ',
+#'   'break the law - which includes providing minors with alcohol or drubgs ',
+#'   '- can be charged with a Class 4 felony.'
+#' )
+#' text_3 <- paste0(
+#'   '**34.4%:** It is legal for a person ages 18-20 to possess marijuana ',
+#'   'with a medical marijuana card.'
+#' )
+#'
 #' icon_text_grid_html(
 #'   omni_icon_html('education', width_px, icon_color_bg, icon_color_fg),
-#'   icon_text_html(
-#'     text = '**71.9%:** Any person younger than 21 caught with or suspected of consuming alcohol or marijuana is charged with Minor in Possession (MIP).'
-#'   ),
+#'   icon_text_html(text = text_1),
 #'   omni_icon_html('security', width_px, icon_color_bg, icon_color_fg),
-#'   icon_text_html(
-#'     '**69.8%:** Adults in Colorado who knowingly hep someone younger than 18 break the law - which includes providing minors with alcohol or drubgs - can be charged with a Class 4 felony.'
-#'   ),
+#'   icon_text_html(text_2),
 #'   omni_icon_html('vault', width_px, icon_color_bg, icon_color_fg),
-#'   icon_text_html(
-#'     '**34.4%:** It is legal for a person ages 18-20 to possess marijuana with a medical marijuana card.'
-#'   ),
+#'   icon_text_html(text_3),
 #'   width_px = width_px
 #' ) |>
 #'   htmltools::browsable()

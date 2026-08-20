@@ -1,5 +1,12 @@
 #' Create a table in OMNI's style
 #'
+#' \code{omni_table()} is superseded by \link{omni_tinytable}.
+#' \code{omni_table()} is built on \pkg{flextable} and only renders well in
+#' HTML and Word, while \code{omni_tinytable()} is built on \pkg{tinytable},
+#' which also has native Typst support and so renders correctly in
+#' \pkg{omni}'s Typst-based PDF reports. New code is recommended to use
+#' \code{omni_tinytable()}.
+#'
 #' Turns a data frame into a table styled with OMNI Institute's fonts,
 #' colours and row striping. The result is a \pkg{flextable} object, so it can
 #' be piped into any \pkg{flextable} function for further customisation (for
@@ -107,6 +114,12 @@ omni_table <-
     with_stripes = TRUE,
     dark_group_rows = FALSE
   ) {
+    lifecycle::deprecate_soft(
+      when = "1.2.0",
+      what = "omni_table()",
+      with = "omni_tinytable()"
+    )
+
     # handle group
     if (!is.null(group_by)) {
       table <- df |>
@@ -262,7 +275,9 @@ knit_print.omni_table <- function(x, ...) {
   # proportions of the default autofit layout. Skipped when the caller has
   # already set a fixed layout, so a manual
   # `width() |> set_table_properties(layout = "fixed")` is left untouched.
-  if (is.null(x$properties$layout) || identical(x$properties$layout, "autofit")) {
+  if (
+    is.null(x$properties$layout) || identical(x$properties$layout, "autofit")
+  ) {
     col_widths <- flextable::dim_pretty(x, part = "all")$widths
     x <- x |>
       flextable::width(width = col_widths) |>

@@ -8,14 +8,12 @@ execute:
     message: false
     echo: false
 format:
-    omni_report-html:
-      logo-ref: logo.png
-      organization-name: Omni Institute
+    # omni_report-html:
+    #   logo-ref: logo.png
+    #   organization-name: Omni Institute
     omni_report-typst:
       cover-page: true
       title-page: true
-      toc: true
-      toc-title: "Table of Contents"
       cover-pattern: pattern-cover-01-yellow
       organization-name: Omni Institute
       client-name: "[Favorite client]"
@@ -24,6 +22,7 @@ format:
       contact-email: projects@omni.org
       report-year: "[year]"
       acknowledgements: "**[one name, and another name, and more names, and lots of names, and even more names. There were lots of people involved with this magnificient project.]**"
+      start-page-number: 1
 ---
 
 
@@ -97,9 +96,17 @@ ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
   theme_minimal()
 ```
 
-See Table \@ref(tab:fruit-sales).
+### Tables and cross-references
 
-```{r fruit-sales, tab.cap="Quarterly sales of nonsense fruit."}
+This template is written in Quarto, not R Markdown, and Quarto uses its own cross-referencing syntax. In R Markdown you would name a chunk and give it a `tab.cap` option (e.g. `{r fruit-sales, tab.cap="..."}`) and reference it with `\@ref(tab:fruit-sales)`. In Quarto, chunk options move inside the chunk as `#|` lines, a table's chunk gets a `label` starting with `tbl-`, and you reference it in text with `@tbl-fruit-sales` (no `\@ref()`, no backslash), as in "See @tbl-fruit-sales." below. The same pattern applies to figures (`fig-` labels, referenced with `@fig-`), equations, and sections. See the [Quarto cross-references guide](https://quarto.org/docs/authoring/cross-references.html) for the full syntax.
+
+**Note:** when a table is produced with `omni::omni_tinytable()`, you must set both `label` and `tbl-cap` in the chunk options. If `tbl-cap` is set without a `label` starting with `tbl-`, tinytable will silently drop the caption.
+
+See @tbl-fruit-sales.
+
+```{r}
+#| label: tbl-fruit-sales
+#| tbl-cap: "Quarterly sales of nonsense fruit."
 tibble::tribble(
   ~Fruit        , ~`Units Sold` , ~`Revenue (USD)` ,
   "Apples"      ,          1240 ,             3100 ,
@@ -107,7 +114,7 @@ tibble::tribble(
   "Cherries"    ,           310 ,             2480 ,
   "Dragonfruit" ,            75 ,              900
 ) |>
-  omni::omni_table()
+  omni::omni_tinytable()
 ```
 
 

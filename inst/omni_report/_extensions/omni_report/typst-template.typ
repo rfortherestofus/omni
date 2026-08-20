@@ -18,7 +18,7 @@
   abstract: none,
   abstract-title: none,
   cols: 1,
-  margin: (x: 0.6in, top: 1.1in, bottom: 1in),
+  margin: (x: 0.6in, top: 1.1in, bottom: 1.4in),
   paper: "us-letter",
   lang: "en",
   region: "US",
@@ -47,6 +47,7 @@
   contact-email: "projects@omni.org",
   acknowledgements: none,
   report-year: none,
+  start-page-number: 1,
   doc,
 ) = {
   set page(
@@ -59,6 +60,9 @@
       page-numbering: page-numbering,
     ),
   )
+
+  // update page counter, has no effects when start-page-number is 1
+  counter(page).update(n => n + start-page-number - 1)
   appendix-margin-state.update(margin)
   footer-info-state.update((
     title: title,

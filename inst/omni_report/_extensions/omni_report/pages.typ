@@ -27,7 +27,7 @@
   page-numbering: "1",
   logo: "_extensions/omni_report/logo-no-text.png",
   inverted: false,
-  with-line: true
+  with-line: true,
 ) = context {
   let text-color = if inverted { white } else { rgb("#081c39") }
   let line-color = if inverted { white } else { rgb("#bfcbd3") }
@@ -75,7 +75,7 @@
       ],
     )
     #v(1.4in)
-    #text(size: 10pt, fill: rgb("#677384"), tracking: 1pt)[#organization-name Report] 
+    #text(size: 10pt, fill: rgb("#677384"), tracking: 1pt)[#organization-name Report]
     #v(0.8cm, weak: true)
     #text(size: 30pt, weight: "bold", fill: rgb("#081c39"))[#title]
     #v(1em)
@@ -141,7 +141,7 @@
   title: none,
   organization-name: "Omni Institute",
   toc-title: none,
-  toc-depth: none
+  toc-depth: none,
 ) = {
   show heading.where(level: 2): set text(size: 16pt)
 
@@ -188,7 +188,7 @@
         page-numbering: info.page-numbering,
         logo: "_extensions/omni_report/logo-no-text-transparent.png",
         inverted: true,
-        with-line: false
+        with-line: false,
       )
     },
   )[

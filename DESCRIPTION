@@ -22,6 +22,7 @@ Imports:
     grDevices,
     knitr,
     glue,
+    lifecycle,
     officer,
     pagedown,
     qualtRics,
@@ -37,13 +38,15 @@ Imports:
     purrr,
     qpdf,
     xml2,
-    palmerpenguins,
     commonmark,
     S7,
     yaml,
-    bookdown
+    bookdown,
+    tinytable,
+    stats
 Suggests:
     gghighlight,
+    palmerpenguins,
     scales,
     testthat (>= 3.0.0),
     tidyverse
