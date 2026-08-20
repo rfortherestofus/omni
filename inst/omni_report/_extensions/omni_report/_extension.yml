@@ -41,4 +41,3 @@ contributes:
         - frontmatter.scss
       filters:
         - filter.lua
-

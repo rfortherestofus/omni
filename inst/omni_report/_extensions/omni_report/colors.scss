@@ -1,101 +1,101 @@
-/*-- scss:defaults --*/
+/*-- scss:rules --*/
 
 .white {
-  color: #ffffff;
+  color: var(--brand-white);
 }
 
 .ivory {
-  color: #f9f7f4;
+  color: var(--brand-ivory);
 }
 
 .ivory-400 {
-  color: #e9dfcf;
+  color: var(--brand-ivory-400);
 }
 
 .orange-red-200 {
-  color: #ff9e85;
+  color: var(--brand-orange-red-200);
 }
 
 .orange-red-400 {
-  color: #ff5e34;
+  color: var(--brand-orange-red-400);
 }
 
 .orange-red-600 {
-  color: #cc4100;
+  color: var(--brand-orange-red-600);
 }
 
 .golden-yellow-200 {
-  color: #fde880;
+  color: var(--brand-golden-yellow-200);
 }
 
 .golden-yellow-400 {
-  color: #fcd82b;
+  color: var(--brand-golden-yellow-400);
 }
 
 .golden-yellow-600 {
-  color: #f7b925;
+  color: var(--brand-golden-yellow-600);
 }
 
 .olive-green-200 {
-  color: #b8c690;
+  color: var(--brand-olive-green-200);
 }
 
 .olive-green-400 {
-  color: #89a046;
+  color: var(--brand-olive-green-400);
 }
 
 .olive-green-600 {
-  color: #3b5530;
+  color: var(--brand-olive-green-600);
 }
 
 .teal-200 {
-  color: #c5dfd9;
+  color: var(--brand-teal-200);
 }
 
 .teal-400 {
-  color: #8ac0b3;
+  color: var(--brand-teal-400);
 }
 
 .teal-600 {
-  color: #41816f;
+  color: var(--brand-teal-600);
 }
 
 .plum-200 {
-  color: #dd9cb9;
+  color: var(--brand-plum-200);
 }
 
 .plum-400 {
-  color: #c65a8b;
+  color: var(--brand-plum-400);
 }
 
 .plum-600 {
-  color: #921c4c;
+  color: var(--brand-plum-600);
 }
 
 .periwinkle-200 {
-  color: #d4ddeb;
+  color: var(--brand-periwinkle-200);
 }
 
 .periwinkle-400 {
-  color: #a9bad8;
+  color: var(--brand-periwinkle-400);
 }
 
 .periwinkle-600 {
-  color: #5776b2;
+  color: var(--brand-periwinkle-600);
 }
 
 .steel-blue-200 {
-  color: #bfcbd3;
+  color: var(--brand-steel-blue-200);
 }
 
 .steel-blue-400 {
-  color: #677384;
+  color: var(--brand-steel-blue-400);
 }
 
 .steel-blue-600 {
-  color: #405065;
+  color: var(--brand-steel-blue-600);
 }
 
 .navy {
-  color: #081c39;
+  color: var(--brand-navy);
 }

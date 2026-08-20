@@ -1,29 +1,29 @@
-local color_map = {
-  ["white"]            = "#ffffff",
-  ["ivory"]            = "#f9f7f4",
-  ["ivory-400"]        = "#e9dfcf",
-  ["orange-red-200"]   = "#ff9e85",
-  ["orange-red-400"]   = "#ff5e34",
-  ["orange-red-600"]   = "#cc4100",
-  ["golden-yellow-200"]= "#fde880",
-  ["golden-yellow-400"]= "#fcd82b",
-  ["golden-yellow-600"]= "#f7b925",
-  ["olive-green-200"]  = "#b8c690",
-  ["olive-green-400"]  = "#89a046",
-  ["olive-green-600"]  = "#3b5530",
-  ["teal-200"]         = "#c5dfd9",
-  ["teal-400"]         = "#8ac0b3",
-  ["teal-600"]         = "#41816f",
-  ["plum-200"]         = "#dd9cb9",
-  ["plum-400"]         = "#c65a8b",
-  ["plum-600"]         = "#921c4c",
-  ["periwinkle-200"]   = "#d4ddeb",
-  ["periwinkle-400"]   = "#a9bad8",
-  ["periwinkle-600"]   = "#5776b2",
-  ["steel-blue-200"]   = "#bfcbd3",
-  ["steel-blue-400"]   = "#677384",
-  ["steel-blue-600"]   = "#405065",
-  ["navy"]             = "#081c39",
+local color_classes = {
+  ["white"]             = true,
+  ["ivory"]             = true,
+  ["ivory-400"]         = true,
+  ["orange-red-200"]    = true,
+  ["orange-red-400"]    = true,
+  ["orange-red-600"]    = true,
+  ["golden-yellow-200"] = true,
+  ["golden-yellow-400"] = true,
+  ["golden-yellow-600"] = true,
+  ["olive-green-200"]   = true,
+  ["olive-green-400"]   = true,
+  ["olive-green-600"]   = true,
+  ["teal-200"]          = true,
+  ["teal-400"]          = true,
+  ["teal-600"]          = true,
+  ["plum-200"]          = true,
+  ["plum-400"]          = true,
+  ["plum-600"]          = true,
+  ["periwinkle-200"]    = true,
+  ["periwinkle-400"]    = true,
+  ["periwinkle-600"]    = true,
+  ["steel-blue-200"]    = true,
+  ["steel-blue-400"]    = true,
+  ["steel-blue-600"]    = true,
+  ["navy"]              = true,
 }
 
 -- Renders inline content as Typst, preserving any nested formatting
@@ -44,18 +44,16 @@ function Span(el)
   end
 
   for _, class in ipairs(el.classes) do
-    local color = color_map[class]
-    if color then
+    if color_classes[class] then
       return pandoc.RawInline(
         "typst",
-        '#text(fill: rgb("' .. color .. '"))[' .. inlines_to_typst(el.content) .. ']'
+        '#text(fill: brand-color.at("' .. class .. '"))[' .. inlines_to_typst(el.content) .. ']'
       )
     end
   end
 
   return el
 end
-
 
 -- Patterns available for the colored divider pages. The class name doubles as
 -- the image file name, e.g. `# Findings {.pattern-01-yellow}` renders
@@ -84,7 +82,6 @@ end
 local appendix_header_inserted = false
 
 function Header(el)
-
   if quarto.doc.is_format("html") and el.level == 1 then
     return {}
   end
@@ -110,11 +107,11 @@ function Header(el)
     return pandoc.RawBlock(
       "typst",
       '#create-page-break(title: [' .. inlines_to_typst(el.content) ..
-        '], pattern: "' .. extension_dir .. pattern .. '.png")'
+      '], pattern: "' .. extension_dir .. pattern .. '.png")'
     )
   end
 
-  -- Sections start on a fresh page. 
+  -- Sections start on a fresh page.
   if el.level <= 2 then
     return {
       pandoc.RawBlock("typst", "#pagebreak(weak: true)"),
@@ -124,7 +121,6 @@ function Header(el)
 
   return el
 end
-
 
 function Div(el)
   if not quarto.doc.is_format("typst") then
@@ -172,7 +168,6 @@ function Div(el)
 
   return pandoc.RawBlock("typst", typst)
 end
-
 
 -- The logos that ship with the extension, named without a directory, mapped to
 -- the height each one needs: the Omni wordmark is a single line, the CSI
@@ -238,13 +233,13 @@ local function build_footer_html(meta)
   local contact_line = ""
   if contact_email ~= "" then
     contact_line = '\n<p>Contact: <a href="mailto:' .. contact_email .. '">' ..
-      contact_email .. '</a></p>'
+        contact_email .. '</a></p>'
   end
 
   return table.concat({
     '<div class="omni-footer">',
     '<img class="omni-footer-logo" src="' .. logo ..
-      '" alt="' .. organization_name .. ' logo" />',
+    '" alt="' .. organization_name .. ' logo" />',
     '<div class="omni-footer-text">',
     '<p>&copy; ' .. year .. ' ' .. organization_name .. '</p>' .. contact_line,
     '</div>',

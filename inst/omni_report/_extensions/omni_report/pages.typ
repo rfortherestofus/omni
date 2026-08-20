@@ -29,9 +29,9 @@
   inverted: false,
   with-line: true,
 ) = context {
-  let text-color = if inverted { white } else { rgb("#081c39") }
-  let line-color = if inverted { white } else { rgb("#bfcbd3") }
-  let muted-color = if inverted { white } else { rgb("#677384") }
+  let text-color = if inverted { white } else { brand-color.at("primary") }
+  let line-color = if inverted { white } else { brand-color.at("steel-blue-200") }
+  let muted-color = if inverted { white } else { brand-color.at("secondary") }
   set text(size: 10pt, fill: text-color)
   if with-line {
     line(length: 100%, stroke: 0.5pt + line-color)
@@ -100,7 +100,11 @@
   page()[
     #show heading.where(level: 1): set text(size: 30pt)
     #show heading.where(level: 1): set par(leading: 0.5cm)
-    #text(size: 10pt, fill: rgb("#677384"), tracking: 1pt)[#organization-name Report]
+    #text(
+      size: 10pt,
+      fill: brand-color.at("secondary"),
+      tracking: 1pt,
+    )[#organization-name Report]
     #v(7mm, weak: true)
     #heading(level: 1, outlined: false)[#title]
     #v(0.3em)
@@ -193,6 +197,7 @@
     },
   )[
     #set text(fill: white, size: 22pt)
+    #show heading: set text(fill: white)
     #v(5fr)
     #heading(level: 1, outlined: false, title)
     #v(0.75fr)
