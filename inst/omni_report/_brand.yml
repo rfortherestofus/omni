@@ -43,6 +43,7 @@ typography:
   base:
     family: Inter Tight
     line-height: 1.6
+    size: 12pt
   headings:
     family: Inter Tight
     weight: 600

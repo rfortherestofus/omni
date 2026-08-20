@@ -80,7 +80,7 @@
       tracking: 1pt,
     )[#organization-name Report]
     #v(0.8cm, weak: true)
-    #heading(level: 1, text(size: 30pt)[#par(leading: 0.5cm, title)])
+    #heading(level: 1, outlined: false, text(size: 30pt)[#par(leading: 0.5cm, title)])
     #v(1em)
     #line(length: 40%, stroke: 1pt + brand-color.at("periwinkle-200"))
     #v(7mm, weak: true)
@@ -102,14 +102,13 @@
 ) = {
   page()[
     #show heading.where(level: 1): set text(size: 30pt)
-    #show heading.where(level: 1): set par(leading: 0.5cm)
     #text(
       size: 10pt,
       fill: brand-color.at("secondary"),
       tracking: 1pt,
     )[#organization-name Report]
     #v(7mm, weak: true)
-    #heading(level: 1, outlined: false)[#title]
+    #heading(level: 1, outlined: false, text(size: 30pt)[#par(leading: 0.5cm, title)])
     #v(0.3em)
     #heading(level: 2, outlined: false)[#subtitle]
     #v(1.5em)

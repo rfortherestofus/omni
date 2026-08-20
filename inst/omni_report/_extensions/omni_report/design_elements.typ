@@ -33,7 +33,7 @@
   layout(size => {
     box(width: calc.min(width, size.width), inset: (left: 10pt, bottom: 3pt))[
       #rect(stroke: (left: 5pt + color), inset: (left: 10pt), width: 100%)[
-        #set text(size: 11pt, fill: rgb("#081C39"))
+        #set text(size: 11pt, fill: brand-color.at("primary"))
         #body
       ]
     ]
