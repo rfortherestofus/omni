@@ -79,9 +79,6 @@ $if(brand.typography.headings.line-height)$
   heading-line-height: $brand.typography.headings.line-height$,
 $endif$
 $endif$
-$if(brand.typography.link.color)$
-  link-color: $brand.typography.link.color$,
-$endif$
 $if(section-numbering)$
   section-numbering: "$section-numbering$",
 $endif$

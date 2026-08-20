@@ -31,7 +31,6 @@
   heading-style: "normal",
   heading-color: black,
   heading-line-height: 0.65em,
-  link-color: none,
   section-numbering: none,
   page-numbering: "1",
   toc: false,
@@ -79,7 +78,6 @@
     fill: heading-color,
   )
   show heading: set par(leading: heading-line-height)
-  show link: set text(fill: link-color) if link-color != none
 
   if cover-page {
     create-cover-page(
