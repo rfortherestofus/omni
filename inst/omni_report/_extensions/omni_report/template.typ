@@ -2,11 +2,9 @@ $pages.typ()$
 
 $design_elements.typ()$
 
-$if(highlighting-definitions)$
-// syntax highlighting functions from skylighting:
-$highlighting-definitions$
 
-$endif$
+$definitions.typ()$
+
 
 $typst-template.typ()$
 

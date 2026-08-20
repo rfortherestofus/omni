@@ -2,3 +2,5 @@
 template.pdf
 template.html
 template.typ
+
+**/*.quarto_ipynb
