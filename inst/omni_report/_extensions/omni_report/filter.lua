@@ -1,30 +1,4 @@
-local color_classes = {
-  ["white"]             = true,
-  ["ivory"]             = true,
-  ["ivory-400"]         = true,
-  ["orange-red-200"]    = true,
-  ["orange-red-400"]    = true,
-  ["orange-red-600"]    = true,
-  ["golden-yellow-200"] = true,
-  ["golden-yellow-400"] = true,
-  ["golden-yellow-600"] = true,
-  ["olive-green-200"]   = true,
-  ["olive-green-400"]   = true,
-  ["olive-green-600"]   = true,
-  ["teal-200"]          = true,
-  ["teal-400"]          = true,
-  ["teal-600"]          = true,
-  ["plum-200"]          = true,
-  ["plum-400"]          = true,
-  ["plum-600"]          = true,
-  ["periwinkle-200"]    = true,
-  ["periwinkle-400"]    = true,
-  ["periwinkle-600"]    = true,
-  ["steel-blue-200"]    = true,
-  ["steel-blue-400"]    = true,
-  ["steel-blue-600"]    = true,
-  ["navy"]              = true,
-}
+local brand = require('modules/brand/brand')
 
 -- Renders inline content as Typst, preserving any nested formatting
 -- (bold, italic, other spans, etc.)
@@ -44,10 +18,11 @@ function Span(el)
   end
 
   for _, class in ipairs(el.classes) do
-    if color_classes[class] then
+    local color = brand.get_color("light", class)
+    if color then
       return pandoc.RawInline(
         "typst",
-        '#text(fill: brand-color.at("' .. class .. '"))[' .. inlines_to_typst(el.content) .. ']'
+        '#text(fill: ' .. color .. ')[' .. inlines_to_typst(el.content) .. ']'
       )
     end
   end
