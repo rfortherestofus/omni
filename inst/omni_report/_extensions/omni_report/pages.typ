@@ -75,13 +75,17 @@
       ],
     )
     #v(1.4in)
-    #text(size: 10pt, fill: rgb("#677384"), tracking: 1pt)[#organization-name Report]
+    #text(
+      size: 10pt,
+      fill: brand-color.at("secondary"),
+      tracking: 1pt,
+    )[#organization-name Report]
     #v(0.8cm, weak: true)
-    #text(size: 30pt, weight: "bold", fill: rgb("#081c39"))[#title]
+    #text(size: 30pt, weight: "bold", fill: brand-color.at("primary"))[#title]
     #v(1em)
-    #line(length: 40%, stroke: 1pt + rgb("#d4ddeb"))
+    #line(length: 40%, stroke: 1pt + brand-color.at("periwinkle-200"))
     #v(7mm, weak: true)
-    #text(size: 14pt, weight: "bold", fill: rgb("#081c39"))[#subtitle]
+    #text(size: 14pt, weight: "bold", fill: brand-color.at("primary"))[#subtitle]
   ]
 }
 
@@ -154,17 +158,17 @@
       if it.level == 2 {
         let padding_sections = 0.3cm
         v(padding_sections, weak: true)
-        line(length: 100%, stroke: 0.5pt + rgb("#bfcbd3"))
+        line(length: 100%, stroke: 0.5pt + brand-color.at("steel-blue-200"))
         v(padding_sections, weak: true)
         // Overwrite _brand.yml link color
-        show link: set text(fill: rgb("#081c39"))
-        text(fill: rgb("#081c39"), size: 13pt)[
+        show link: set text(fill: brand-color.at("primary"))
+        text(fill: brand-color.at("primary"), size: 13pt)[
           #link(it.element.location(), it.body()) #h(1fr) #it.page()
         ]
       } else {
         pad(left: 1cm)[
-          #show link: set text(fill: rgb("#677384"))
-          #text(fill: rgb("#677384"), size: 12pt)[
+          #show link: set text(fill: brand-color.at("secondary"))
+          #text(fill: brand-color.at("secondary"), size: 12pt)[
             #link(it.element.location(), it.body()) #h(1fr) #it.page()
           ]
         ]
