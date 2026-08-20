@@ -33,6 +33,10 @@ contributes:
       # logo.png, 62px for logo-csi.png, 50px for anything else). Set a CSS
       # length here or in the document to override.
       logo-height: default
+
+      # Hide "Footnotes" text
+      language:
+        section-title-footnotes: ""
       # appendix-style: none
       template-partials:
         - title-block.html
@@ -41,4 +45,3 @@ contributes:
         - frontmatter.scss
       filters:
         - filter.lua
-

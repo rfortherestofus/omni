@@ -18,7 +18,7 @@
   abstract: none,
   abstract-title: none,
   cols: 1,
-  margin: (x: 0.6in, top: 1.1in, bottom: 1.4in),
+  margin: (x: 0.6in, top: 1.1in, bottom: 1in),
   paper: "us-letter",
   lang: "en",
   region: "US",
@@ -53,6 +53,7 @@
   set page(
     paper: paper,
     margin: margin,
+    footer-descent: 10% + 0pt,
     footer: create-document-footer(
       title: title,
       organization-name: organization-name,
@@ -71,6 +72,7 @@
   set par(justify: true)
   set text(lang: lang, region: region, font: font, size: fontsize)
   set heading(numbering: section-numbering)
+  set footnote.entry(gap: 0.8em, indent: 0em)
 
   if cover-page {
     create-cover-page(
