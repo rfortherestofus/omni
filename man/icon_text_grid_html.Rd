@@ -27,19 +27,27 @@ width_px <- 50
 icon_color_fg <- "white"
 icon_color_bg <- 'teal-600'
 
+text_1 <- paste0(
+  '**71.9\%:** Any person younger than 21 caught with or suspected of ',
+  'consuming alcohol or marijuana is charged with Minor in Possession (MIP).'
+)
+text_2 <- paste0(
+  '**69.8\%:** Adults in Colorado who knowingly hep someone younger than 18 ',
+  'break the law - which includes providing minors with alcohol or drubgs ',
+  '- can be charged with a Class 4 felony.'
+)
+text_3 <- paste0(
+  '**34.4\%:** It is legal for a person ages 18-20 to possess marijuana ',
+  'with a medical marijuana card.'
+)
+
 icon_text_grid_html(
   omni_icon_html('education', width_px, icon_color_bg, icon_color_fg),
-  icon_text_html(
-    text = '**71.9\%:** Any person younger than 21 caught with or suspected of consuming alcohol or marijuana is charged with Minor in Possession (MIP).'
-  ),
+  icon_text_html(text = text_1),
   omni_icon_html('security', width_px, icon_color_bg, icon_color_fg),
-  icon_text_html(
-    '**69.8\%:** Adults in Colorado who knowingly hep someone younger than 18 break the law - which includes providing minors with alcohol or drubgs - can be charged with a Class 4 felony.'
-  ),
+  icon_text_html(text_2),
   omni_icon_html('vault', width_px, icon_color_bg, icon_color_fg),
-  icon_text_html(
-    '**34.4\%:** It is legal for a person ages 18-20 to possess marijuana with a medical marijuana card.'
-  ),
+  icon_text_html(text_3),
   width_px = width_px
 ) |>
   htmltools::browsable()

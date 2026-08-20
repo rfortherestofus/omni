@@ -21,16 +21,22 @@ This function creates the HTML & CSS for the desired callout boxes. It can use t
 }
 \examples{
 
+callout_text <- paste0(
+  'This is a callout box. You can <highlight>change text color to ',
+  'highlight certain parts</highlight>, or just leave the text all ',
+  'white. Change the background color as desired to match the page.'
+)
+
 htmltools::browsable(
   callout_box_html(
-    text = 'This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',
+    text = callout_text,
     color = 'olive-green-600'
   )
 )
 
 htmltools::browsable(
   callout_box_html(
-    text = 'This is a callout box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',
+    text = callout_text,
     color = 'orange-red-600'
   )
 )

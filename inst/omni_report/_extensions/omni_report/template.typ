@@ -3,6 +3,9 @@ $pages.typ()$
 $design_elements.typ()$
 
 
+$definitions.typ()$
+
+
 $typst-template.typ()$
 
 $for(header-includes)$
