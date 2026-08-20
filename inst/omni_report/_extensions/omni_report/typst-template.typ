@@ -24,12 +24,14 @@
   region: "US",
   font: "libertinus serif",
   fontsize: 11pt,
-  title-size: 1.5em,
-  subtitle-size: 1.25em,
+  line-height: 0.65em,
+  title-size: 30pt,
+  subtitle-size: 14pt,
   heading-family: "libertinus serif",
   heading-weight: "plain",
   heading-style: "normal",
   heading-color: black,
+  heading-decoration: none,
   heading-line-height: 0.65em,
   section-numbering: none,
   page-numbering: "1",
@@ -69,9 +71,17 @@
     organization-name: organization-name,
     page-numbering: page-numbering,
   ))
-  set par(justify: true)
+  set par(justify: true, leading: line-height)
   set text(lang: lang, region: region, font: font, size: fontsize)
   set heading(numbering: section-numbering)
+  show heading: set text(
+    font: heading-family,
+    weight: heading-weight,
+    style: heading-style,
+    fill: heading-color,
+  )
+  show heading: set par(leading: heading-line-height)
+  show heading: it => if heading-decoration == "underline" { underline(it) } else { it }
   set footnote.entry(gap: 0.8em, indent: 0em)
 
   if cover-page {

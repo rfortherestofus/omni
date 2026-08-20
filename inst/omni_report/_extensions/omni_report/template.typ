@@ -1,3 +1,7 @@
+$for(header-includes)$
+$header-includes$
+$endfor$
+
 $pages.typ()$
 
 $design_elements.typ()$
@@ -7,10 +11,6 @@ $definitions.typ()$
 
 
 $typst-template.typ()$
-
-$for(header-includes)$
-$header-includes$
-$endfor$
 
 
 $typst-show.typ()$

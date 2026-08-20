@@ -29,9 +29,9 @@
   inverted: false,
   with-line: true,
 ) = context {
-  let text-color = if inverted { white } else { rgb("#081c39") }
-  let line-color = if inverted { white } else { rgb("#bfcbd3") }
-  let muted-color = if inverted { white } else { rgb("#677384") }
+  let text-color = if inverted { white } else { brand-color.at("primary") }
+  let line-color = if inverted { white } else { brand-color.at("steel-blue-200") }
+  let muted-color = if inverted { white } else { brand-color.at("secondary") }
   set text(size: 10pt, fill: text-color)
   if with-line {
     line(length: 100%, stroke: 0.5pt + line-color)
@@ -62,7 +62,6 @@
       #image(cover-pattern, width: 100%, height: 48%, fit: "stretch")
     ],
   )[
-    #set par(leading: 0.7cm)
     #let date-str = "2026-08-01"
     #let parts = date-str.split("-").map(int)
     #let d = datetime(year: parts.at(0), month: parts.at(1), day: parts.at(2))
@@ -75,13 +74,17 @@
       ],
     )
     #v(1.4in)
-    #text(size: 10pt, fill: rgb("#677384"), tracking: 1pt)[#organization-name Report]
+    #text(
+      size: 10pt,
+      fill: brand-color.at("secondary"),
+      tracking: 1pt,
+    )[#organization-name Report]
     #v(0.8cm, weak: true)
-    #text(size: 30pt, weight: "bold", fill: rgb("#081c39"))[#title]
+    #heading(level: 1, outlined: false, text(size: 30pt)[#par(leading: 0.5cm, title)])
     #v(1em)
-    #line(length: 40%, stroke: 1pt + rgb("#d4ddeb"))
+    #line(length: 40%, stroke: 1pt + brand-color.at("periwinkle-200"))
     #v(7mm, weak: true)
-    #text(size: 14pt, weight: "bold", fill: rgb("#081c39"))[#subtitle]
+    #text(size: 14pt, weight: "bold", fill: brand-color.at("primary"))[#subtitle]
   ]
 }
 
@@ -99,10 +102,13 @@
 ) = {
   page()[
     #show heading.where(level: 1): set text(size: 30pt)
-    #show heading.where(level: 1): set par(leading: 0.5cm)
-    #text(size: 10pt, fill: rgb("#677384"), tracking: 1pt)[#organization-name Report]
+    #text(
+      size: 10pt,
+      fill: brand-color.at("secondary"),
+      tracking: 1pt,
+    )[#organization-name Report]
     #v(7mm, weak: true)
-    #heading(level: 1, outlined: false)[#title]
+    #heading(level: 1, outlined: false, text(size: 30pt)[#par(leading: 0.5cm, title)])
     #v(0.3em)
     #heading(level: 2, outlined: false)[#subtitle]
     #v(1.5em)
@@ -150,17 +156,17 @@
       if it.level == 2 {
         let padding_sections = 0.3cm
         v(padding_sections, weak: true)
-        line(length: 100%, stroke: 0.5pt + rgb("#bfcbd3"))
+        line(length: 100%, stroke: 0.5pt + brand-color.at("steel-blue-200"))
         v(padding_sections, weak: true)
         // Overwrite _brand.yml link color
-        show link: set text(fill: rgb("#081c39"))
-        text(fill: rgb("#081c39"), size: 13pt)[
+        show link: set text(fill: brand-color.at("primary"))
+        text(fill: brand-color.at("primary"), size: 13pt)[
           #link(it.element.location(), it.body()) #h(1fr) #it.page()
         ]
       } else {
         pad(left: 1cm)[
-          #show link: set text(fill: rgb("#677384"))
-          #text(fill: rgb("#677384"), size: 12pt)[
+          #show link: set text(fill: brand-color.at("secondary"))
+          #text(fill: brand-color.at("secondary"), size: 12pt)[
             #link(it.element.location(), it.body()) #h(1fr) #it.page()
           ]
         ]
@@ -193,6 +199,7 @@
     },
   )[
     #set text(fill: white, size: 22pt)
+    #show heading: set text(fill: white)
     #v(5fr)
     #heading(level: 1, outlined: false, title)
     #v(0.75fr)

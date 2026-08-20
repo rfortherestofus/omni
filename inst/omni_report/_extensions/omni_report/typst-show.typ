@@ -59,7 +59,9 @@ $if(fontsize)$
 $elseif(brand.typography.base.size)$
   fontsize: $brand.typography.base.size$,
 $endif$
-$if(title)$
+$if(brand.typography.base.line-height)$
+  line-height: $brand.typography.base.line-height$,
+$endif$
 $if(brand.typography.headings.family)$
   heading-family: $brand.typography.headings.family$,
 $endif$
@@ -77,7 +79,6 @@ $if(brand.typography.headings.color)$
 $endif$
 $if(brand.typography.headings.line-height)$
   heading-line-height: $brand.typography.headings.line-height$,
-$endif$
 $endif$
 $if(section-numbering)$
   section-numbering: "$section-numbering$",
