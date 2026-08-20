@@ -40,7 +40,6 @@ $grid-sidebar-width: 298px !default;
   padding-bottom: 25px;
   border-bottom: 2px solid #ddd;
   margin-bottom: 1.25rem;
-
 }
 
 // Sized by height only, so the aspect ratio does the rest -- the height itself
@@ -74,7 +73,7 @@ $grid-sidebar-width: 298px !default;
 .omni-title-meta p {
   font-size: 14pt;
   margin-bottom: 0.25rem;
-  line-height: 1.25
+  line-height: 1.25;
 }
 
 header#title-block-header {
@@ -118,7 +117,7 @@ header#title-block-header {
   background-color: $toc-color;
   color: $white !important;
 }
-.sidebar nav[role=doc-toc]>ul {
+.sidebar nav[role="doc-toc"] > ul {
   margin-left: 0px;
   margin-bottom: 0px;
 }
@@ -136,9 +135,8 @@ header#title-block-header {
   color: $primary;
 }
 
-
-
-h2, .h2 {
+h2,
+.h2 {
   border-bottom: none;
   padding-bottom: 0px;
 }

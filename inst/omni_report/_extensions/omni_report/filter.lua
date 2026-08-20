@@ -212,13 +212,21 @@ local function build_footer_html(meta)
   end
 
   return table.concat({
-    '<div class="omni-footer">',
+    '<div class="omni-footer" id="omni-footer">',
     '<img class="omni-footer-logo" src="' .. logo ..
     '" alt="' .. organization_name .. ' logo" />',
     '<div class="omni-footer-text">',
     '<p>&copy; ' .. year .. ' ' .. organization_name .. '</p>' .. contact_line,
     '</div>',
     '</div>',
+    -- Move footnotes before footer
+    '<script>',
+    'document.addEventListener("DOMContentLoaded", function () {',
+    '  var footer = document.getElementById("omni-footer");',
+    '  var footnotes = document.getElementById("footnotes");',
+    '  if (footer && footnotes) { footnotes.after(footer); }',
+    '});',
+    '</script>',
   }, "\n")
 end
 
