@@ -60,6 +60,34 @@
     )
 }
 
+#' Build the marquee style for the measure description (subtitle)
+#'
+#' [.omni_marquee_style()] with the measure description's typography layered
+#' on top: normal weight, not italic, in the chart gray. Mirrors
+#' [.omni_caption_style()], so each of [omni_header()]'s three slots is built
+#' from a named style helper rather than assembled inline.
+#'
+#' This is [omni_header()]'s subtitle, not [theme_omni()]'s. `theme_omni()`
+#' keeps its own subtitle treatment (larger, darker) for charts that carry a
+#' plain subtitle without the header - matching them would restyle those
+#' charts, which is a separate decision.
+#'
+#' The base carries no bottom margin: a margin there applies to every
+#' paragraph, so it would add space below a wrapped subtitle's last line as
+#' well as between its lines.
+#'
+#' @noRd
+.omni_subtitle_style <- function() {
+  .omni_marquee_style() |>
+    marquee::modify_style(
+      "base",
+      weight = "normal",
+      italic = FALSE,
+      color = omni_colors("chart-gray"),
+      margin = marquee::trbl(0, 0, 0)
+    )
+}
+
 #' OMNI Institute ggplot2 theme
 #'
 #' @description Applies the OMNI Institute theme to the plot.
