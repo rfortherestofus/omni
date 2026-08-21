@@ -40,6 +40,8 @@ typography:
     - family: Inter Tight
       source: google
       weight: 700 # ← bold
+    - family: Sometype Mono
+      source: google
   base:
     family: Inter Tight
     line-height: 1.6
@@ -50,3 +52,5 @@ typography:
     color: primary
   link:
     color: periwinkle-600
+  monospace:
+    family: Sometype Mono

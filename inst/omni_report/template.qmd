@@ -1,5 +1,5 @@
 ---
-title: "Report Title Goes Here: 2 Lines Max for Best Readability"
+title: "Report Title Goes Here:<br>2 Lines Max for Best Readability"
 subtitle: "Sub-Headline Goes Here"
 author: "Author"
 date: "`r toupper(format(Sys.time(), '%B %Y'))`"

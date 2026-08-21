@@ -82,6 +82,16 @@
   )
   show heading: set par(leading: heading-line-height)
   show heading: it => if heading-decoration == "underline" { underline(it) } else { it }
+  show heading.where(level: 2): it => {
+    set text(size: 1.4em)
+    it
+    v(0.3cm)
+  }
+  show heading.where(level: 3): it => {
+    set text(size: 1.2em)
+    it
+    v(0.1cm)
+  }
   set footnote.entry(gap: 0.8em, indent: 0em)
 
   if cover-page {
