@@ -221,10 +221,13 @@ local function build_footer_html(meta)
         contact_email .. '</a></p>'
   end
 
+  -- CSI's footer logo is the same wordmark rendered twice as wide
+  local logo_style = is_true(meta["use-csi-style"]) and ' style="height: 60px;"' or ""
+
   return table.concat({
     '<div class="omni-footer" id="omni-footer">',
     '<img class="omni-footer-logo" src="' .. logo ..
-    '" alt="' .. organization_name .. ' logo" />',
+    '" alt="' .. organization_name .. ' logo"' .. logo_style .. ' />',
     '<div class="omni-footer-text">',
     '<p>&copy; ' .. year .. ' ' .. organization_name .. '</p>' .. contact_line,
     '</div>',
