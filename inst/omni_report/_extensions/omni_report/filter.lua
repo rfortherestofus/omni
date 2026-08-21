@@ -144,14 +144,13 @@ function Div(el)
   return pandoc.RawBlock("typst", typst)
 end
 
--- The logos that ship with the extension, named without a directory, mapped to
--- the height each one needs: the Omni wordmark is a single line, the CSI
--- lockup two. Client logos we know nothing about get the fallback.
-local shipped_logos = {
-  ["logo.png"]     = "30px",
-  ["logo-csi.png"] = "62px",
-}
-local fallback_logo_height = "50px"
+-- `use-csi-style` is the source of truth for CSI (Center for Social Investment) branding
+local function is_true(value)
+  if type(value) == "boolean" then
+    return value
+  end
+  return value ~= nil and pandoc.utils.stringify(value) == "true"
+end
 
 -- Pass through as plain text so that Typst doesn't escape eg. @ in the email
 -- Necessary since some fields like acknowledgement accept Markdown
@@ -159,10 +158,33 @@ local plain_text_yml_headers = {
   "cover-pattern",
   "organization-name",
   "contact-email",
+  "logo-ref",
+  "logo-icon-ref",
 }
 
 function Meta(meta)
+  local use_csi_style = is_true(meta["use-csi-style"])
+  local organization_name = use_csi_style
+      and "Center for Social Investment"
+      or "Omni Institute"
+
+  if not meta["organization-name"] then
+    meta["organization-name"] = pandoc.MetaString(organization_name)
+  end
+
   if quarto.doc.is_format("typst") then
+    meta["logo-ref"] = pandoc.MetaString(
+      extension_dir .. (use_csi_style and "logo-csi.png" or "logo.png")
+    )
+    meta["logo-icon-ref"] = pandoc.MetaString(
+      extension_dir ..
+      (use_csi_style and "logo-no-text-csi.png" or "logo-no-text.png")
+    )
+    -- Stored as raw Typst code (no quotes) since it's a length, not a string.
+    meta["logo-height"] = pandoc.MetaInlines({
+      pandoc.RawInline("typst", use_csi_style and "60pt" or "29pt"),
+    })
+
     for _, key in ipairs(plain_text_yml_headers) do
       if meta[key] then
         local value = pandoc.utils.stringify(meta[key])
@@ -177,22 +199,10 @@ function Meta(meta)
     return meta
   end
 
-  local logo = pandoc.utils.stringify(meta["logo-ref"] or "")
-  local file = logo:match("[^/\\]+$") or ""
-
-  -- A bare shipped logo name is looked up in the extension; anything else is a
-  -- path relative to the qmd and is left exactly as written.
-  if shipped_logos[logo] then
-    meta["logo-ref"] = pandoc.MetaString(extension_dir .. logo)
-  end
-
-  -- `logo-height: default` sizes the logo for us; an explicit length wins.
-  local height = pandoc.utils.stringify(meta["logo-height"] or "")
-  if height == "" or height == "default" then
-    meta["logo-height"] = pandoc.MetaString(
-      shipped_logos[file] or fallback_logo_height
-    )
-  end
+  meta["logo-ref"] = pandoc.MetaString(
+    extension_dir .. (use_csi_style and "logo-csi.png" or "logo.png")
+  )
+  meta["logo-height"] = pandoc.MetaString(use_csi_style and "62px" or "30px")
 
   return meta
 end
@@ -211,10 +221,13 @@ local function build_footer_html(meta)
         contact_email .. '</a></p>'
   end
 
+  -- CSI's footer logo is the same wordmark rendered twice as wide
+  local logo_style = is_true(meta["use-csi-style"]) and ' style="height: 60px;"' or ""
+
   return table.concat({
     '<div class="omni-footer" id="omni-footer">',
     '<img class="omni-footer-logo" src="' .. logo ..
-    '" alt="' .. organization_name .. ' logo" />',
+    '" alt="' .. organization_name .. ' logo"' .. logo_style .. ' />',
     '<div class="omni-footer-text">',
     '<p>&copy; ' .. year .. ' ' .. organization_name .. '</p>' .. contact_line,
     '</div>',

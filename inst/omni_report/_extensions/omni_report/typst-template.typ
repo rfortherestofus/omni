@@ -42,6 +42,9 @@
   cover-page: true,
   title-page: true,
   organization-name: "Omni Institute",
+  logo-ref: "_extensions/omni_report/logo.png",
+  logo-icon-ref: "_extensions/omni_report/logo-no-text.png",
+  logo-height: 29pt,
   cover-pattern: "_extensions/omni_report/pattern-cover-01-yellow.png",
   client-name: none,
   client-city: none,
@@ -60,6 +63,7 @@
       title: title,
       organization-name: organization-name,
       page-numbering: page-numbering,
+      logo: logo-icon-ref,
     ),
   )
 
@@ -91,6 +95,8 @@
       date: date,
       organization-name: organization-name,
       cover-pattern: cover-pattern,
+      logo: logo-ref,
+      logo-height: logo-height,
     )
   }
 

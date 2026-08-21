@@ -7,9 +7,9 @@ contributes:
     typst:
       toc: true
       toc-title: "Table of Contents"
-      organization-name: Omni Institute
       contact-email: projects@omni.org
       start-page-number: 1
+      use-csi-style: false
       template: template.typ
       template-partials:
         - typst-template.typ
@@ -22,17 +22,11 @@ contributes:
       toc: true
       toc-location: left
       format-links: false
-      # Header bar. `logo.png` and `logo-csi.png` are the logos shipped with the
-      # extension and are found there automatically; any other value is a path
-      # relative to the qmd.
-      logo-ref: logo-csi.png
-      organization-name: Center for Social Investment
       # Shown in the page footer next to the copyright line.
       contact-email: projects@omni.org
-      # "default" lets filter.lua pick the height from the logo file (30px for
-      # logo.png, 62px for logo-csi.png, 50px for anything else). Set a CSS
-      # length here or in the document to override.
-      logo-height: default
+      # Swaps the header logo (and its height) and the default organization
+      # name to the CSI (Center for Social Investment) branding. See filter.lua.
+      use-csi-style: false
 
       # Hide "Footnotes" text
       language:
