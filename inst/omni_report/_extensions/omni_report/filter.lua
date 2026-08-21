@@ -144,21 +144,13 @@ function Div(el)
   return pandoc.RawBlock("typst", typst)
 end
 
--- The logos that ship with the extension, named without a directory, mapped to
--- the height each one needs: the Omni wordmark is a single line, the CSI
--- lockup two. Client logos we know nothing about get the fallback.
-local html_shipped_logos = {
-  ["logo.png"]     = "30px",
-  ["logo-csi.png"] = "62px",
-}
-local html_fallback_logo_height = "50px"
-
-local typst_shipped_logos = {
-  ["logo.png"]     = { icon = "logo-no-text.png", height = "29pt" },
-  ["logo-csi.png"] = { icon = "logo-no-text-csi.png", height = "60pt" },
-}
-local typst_fallback_icon = "logo-no-text.png"
-local typst_fallback_height = "45pt"
+-- `use-csi-style` is the source of truth for CSI (Center for Social Investment) branding
+local function is_true(value)
+  if type(value) == "boolean" then
+    return value
+  end
+  return value ~= nil and pandoc.utils.stringify(value) == "true"
+end
 
 -- Pass through as plain text so that Typst doesn't escape eg. @ in the email
 -- Necessary since some fields like acknowledgement accept Markdown
@@ -171,27 +163,26 @@ local plain_text_yml_headers = {
 }
 
 function Meta(meta)
+  local use_csi_style = is_true(meta["use-csi-style"])
+  local organization_name = use_csi_style
+      and "Center for Social Investment"
+      or "Omni Institute"
+
+  if not meta["organization-name"] then
+    meta["organization-name"] = pandoc.MetaString(organization_name)
+  end
+
   if quarto.doc.is_format("typst") then
-    local logo = pandoc.utils.stringify(meta["logo-ref"] or "logo.png")
-    local file = logo:match("[^/\\]+$") or logo
-
-    if typst_shipped_logos[logo] then
-      meta["logo-ref"] = pandoc.MetaString(extension_dir .. logo)
-    end
-
-    local shipped = typst_shipped_logos[file]
-    meta["logo-icon-ref"] = pandoc.MetaString(
-      extension_dir .. (shipped and shipped.icon or typst_fallback_icon)
+    meta["logo-ref"] = pandoc.MetaString(
+      extension_dir .. (use_csi_style and "logo-csi.png" or "logo.png")
     )
-
-    -- `logo-height: default` sizes the logo for us; an explicit length wins
-    -- Stored as raw Typst code (no quotes) since it's a length
-    local height = pandoc.utils.stringify(meta["logo-height"] or "")
-    if height == "" or height == "default" then
-      height = shipped and shipped.height or typst_fallback_height
-    end
+    meta["logo-icon-ref"] = pandoc.MetaString(
+      extension_dir ..
+      (use_csi_style and "logo-no-text-csi.png" or "logo-no-text.png")
+    )
+    -- Stored as raw Typst code (no quotes) since it's a length, not a string.
     meta["logo-height"] = pandoc.MetaInlines({
-      pandoc.RawInline("typst", height),
+      pandoc.RawInline("typst", use_csi_style and "60pt" or "29pt"),
     })
 
     for _, key in ipairs(plain_text_yml_headers) do
@@ -208,22 +199,10 @@ function Meta(meta)
     return meta
   end
 
-  local logo = pandoc.utils.stringify(meta["logo-ref"] or "")
-  local file = logo:match("[^/\\]+$") or ""
-
-  -- A bare shipped logo name is looked up in the extension; anything else is a
-  -- path relative to the qmd and is left exactly as written.
-  if html_shipped_logos[logo] then
-    meta["logo-ref"] = pandoc.MetaString(extension_dir .. logo)
-  end
-
-  -- `logo-height: default` sizes the logo for us; an explicit length wins.
-  local height = pandoc.utils.stringify(meta["logo-height"] or "")
-  if height == "" or height == "default" then
-    meta["logo-height"] = pandoc.MetaString(
-      html_shipped_logos[file] or html_fallback_logo_height
-    )
-  end
+  meta["logo-ref"] = pandoc.MetaString(
+    extension_dir .. (use_csi_style and "logo-csi.png" or "logo.png")
+  )
+  meta["logo-height"] = pandoc.MetaString(use_csi_style and "62px" or "30px")
 
   return meta
 end

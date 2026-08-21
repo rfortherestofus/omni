@@ -9,17 +9,13 @@ execute:
     echo: false
 format:
     omni_report-html:
-      logo-ref: logo.png # logo-csi.png | Some other file
-      logo-height: default # or <xx>px
-      organization-name: Omni Institute # or: Center for Social Investment
+      use-csi-style: false
       contact-email: projects@omni.org
     omni_report-typst:
       cover-page: true
       title-page: true
       cover-pattern: pattern-cover-01-yellow
-      logo-ref: logo.png # logo-csi.png | Some other file
-      logo-height: default # or <xx>pt
-      organization-name: Omni Institute # or: Center for Social Investment
+      use-csi-style: false
       client-name: "[Favorite client]"
       client-city: "[city]"
       client-state: "[state]"
