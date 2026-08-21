@@ -147,11 +147,18 @@ end
 -- The logos that ship with the extension, named without a directory, mapped to
 -- the height each one needs: the Omni wordmark is a single line, the CSI
 -- lockup two. Client logos we know nothing about get the fallback.
-local shipped_logos = {
+local html_shipped_logos = {
   ["logo.png"]     = "30px",
   ["logo-csi.png"] = "62px",
 }
-local fallback_logo_height = "50px"
+local html_fallback_logo_height = "50px"
+
+local typst_shipped_logos = {
+  ["logo.png"]     = { icon = "logo-no-text.png", height = "29pt" },
+  ["logo-csi.png"] = { icon = "logo-no-text-csi.png", height = "60pt" },
+}
+local typst_fallback_icon = "logo-no-text.png"
+local typst_fallback_height = "45pt"
 
 -- Pass through as plain text so that Typst doesn't escape eg. @ in the email
 -- Necessary since some fields like acknowledgement accept Markdown
@@ -159,10 +166,34 @@ local plain_text_yml_headers = {
   "cover-pattern",
   "organization-name",
   "contact-email",
+  "logo-ref",
+  "logo-icon-ref",
 }
 
 function Meta(meta)
   if quarto.doc.is_format("typst") then
+    local logo = pandoc.utils.stringify(meta["logo-ref"] or "logo.png")
+    local file = logo:match("[^/\\]+$") or logo
+
+    if typst_shipped_logos[logo] then
+      meta["logo-ref"] = pandoc.MetaString(extension_dir .. logo)
+    end
+
+    local shipped = typst_shipped_logos[file]
+    meta["logo-icon-ref"] = pandoc.MetaString(
+      extension_dir .. (shipped and shipped.icon or typst_fallback_icon)
+    )
+
+    -- `logo-height: default` sizes the logo for us; an explicit length wins
+    -- Stored as raw Typst code (no quotes) since it's a length
+    local height = pandoc.utils.stringify(meta["logo-height"] or "")
+    if height == "" or height == "default" then
+      height = shipped and shipped.height or typst_fallback_height
+    end
+    meta["logo-height"] = pandoc.MetaInlines({
+      pandoc.RawInline("typst", height),
+    })
+
     for _, key in ipairs(plain_text_yml_headers) do
       if meta[key] then
         local value = pandoc.utils.stringify(meta[key])
@@ -182,7 +213,7 @@ function Meta(meta)
 
   -- A bare shipped logo name is looked up in the extension; anything else is a
   -- path relative to the qmd and is left exactly as written.
-  if shipped_logos[logo] then
+  if html_shipped_logos[logo] then
     meta["logo-ref"] = pandoc.MetaString(extension_dir .. logo)
   end
 
@@ -190,7 +221,7 @@ function Meta(meta)
   local height = pandoc.utils.stringify(meta["logo-height"] or "")
   if height == "" or height == "default" then
     meta["logo-height"] = pandoc.MetaString(
-      shipped_logos[file] or fallback_logo_height
+      html_shipped_logos[file] or html_fallback_logo_height
     )
   end
 

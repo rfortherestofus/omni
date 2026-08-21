@@ -17,7 +17,9 @@ format:
       cover-page: true
       title-page: true
       cover-pattern: pattern-cover-01-yellow
-      organization-name: Omni Institute
+      logo-ref: logo.png # logo-csi.png | Some other file
+      logo-height: default # or <xx>pt
+      organization-name: Omni Institute # or: Center for Social Investment
       client-name: "[Favorite client]"
       client-city: "[city]"
       client-state: "[state]"

@@ -55,6 +55,7 @@
   organization-name: "Omni Institute",
   cover-pattern: "_extensions/omni_report/pattern-cover-01-yellow.png",
   logo: "_extensions/omni_report/logo.png",
+  logo-height: 29pt,
 ) = {
   page(
     footer: none,
@@ -68,7 +69,7 @@
     #let display-date = d.display("[month repr:long] [year]")
     #grid(
       columns: (1fr, 1fr),
-      align(left + top)[#image(logo, width: 110pt)],
+      align(left + top)[#image(logo, height: logo-height)],
       align(right + top)[
         #text(size: 10pt, tracking: 1pt)[#upper[#display-date]]
       ],

@@ -10,6 +10,8 @@ contributes:
       organization-name: Omni Institute
       contact-email: projects@omni.org
       start-page-number: 1
+      logo-ref: logo.png
+      logo-height: default
       template: template.typ
       template-partials:
         - typst-template.typ
