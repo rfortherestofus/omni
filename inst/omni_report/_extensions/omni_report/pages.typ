@@ -70,18 +70,21 @@
       columns: (1fr, 1fr),
       align(left + top)[#image(logo, width: 110pt)],
       align(right + top)[
-        #text(size: 10pt, tracking: 1pt)[#upper[#display-date]]
+        #text(size: 10pt, tracking: 1pt, font: "Sometype Mono")[#upper[#display-date]]
       ],
     )
     #v(1.4in)
     #text(
       size: 10pt,
-      fill: brand-color.at("secondary"),
+      fill: brand-color.at("primary"),
       tracking: 1pt,
     )[#organization-name Report]
     #v(0.8cm, weak: true)
-    #heading(level: 1, outlined: false, text(size: 30pt)[#par(leading: 0.5cm, title)])
-    #v(1em)
+    #heading(level: 1, outlined: false, text(size: 30pt, weight: "bold")[#par(
+      leading: 0.5cm,
+      title,
+    )])
+    #v(3.5em)
     #line(length: 40%, stroke: 1pt + brand-color.at("periwinkle-200"))
     #v(7mm, weak: true)
     #text(size: 14pt, weight: "bold", fill: brand-color.at("primary"))[#subtitle]
@@ -91,6 +94,7 @@
 
 #let create-title-page(
   title: none,
+  title-display: none,
   subtitle: none,
   organization-name: "Omni Institute",
   client-name: none,
@@ -100,15 +104,17 @@
   acknowledgements: none,
   report-year: none,
 ) = {
+  let title-display = if title-display == none { title } else { title-display }
   page()[
-    #show heading.where(level: 1): set text(size: 30pt)
+    #show heading.where(level: 1): set text(size: 25.5pt)
+    #show heading.where(level: 2): set text(size: 13pt, weight: "regular")
     #text(
       size: 10pt,
       fill: brand-color.at("secondary"),
       tracking: 1pt,
     )[#organization-name Report]
     #v(7mm, weak: true)
-    #heading(level: 1, outlined: false, text(size: 30pt)[#par(leading: 0.5cm, title)])
+    #heading(level: 1, outlined: false, text(size: 25.5pt)[#par(leading: 0.5cm, title-display)])
     #v(0.3em)
     #heading(level: 2, outlined: false)[#subtitle]
     #v(1.5em)
@@ -120,7 +126,7 @@
     } else {
       v(1fr)
     }
-    #let title_size = 13pt
+    #let title_size = 14pt
     #let spacing_after_section_title = 3mm
     #let spacing_after_section = 0.5em
     #text(size: title_size)[For More Information:]
@@ -131,14 +137,18 @@
     #if acknowledgements != none {
       text(size: title_size)[Acknowledgements:]
       v(spacing_after_section_title, weak: true)
-      par[#organization-name wants to thank #acknowledgements for their contributions to the creation of this report.]
+      text(
+        size: 0.85em,
+      )[#par[#organization-name wants to thank #acknowledgements for their contributions to the creation of this report.]]
       v(spacing_after_section)
     }
 
     #text(size: title_size)[Suggested Citation:]
     #v(spacing_after_section_title, weak: true)
     #let location = (client-city, client-state).filter(p => p != none).join(", ")
-    #par[#organization-name #report-year. #title. Submitted to #client-name, #location.]
+    #text(
+      size: 0.85em,
+    )[#par[#organization-name #report-year. #title. Submitted to #client-name, #location.]]
   ]
 }
 
@@ -149,7 +159,7 @@
   toc-title: none,
   toc-depth: none,
 ) = {
-  show heading.where(level: 2): set text(size: 16pt)
+  show heading.where(level: 2): set text(size: 16pt, weight: "bold")
 
   page()[
     #show outline.entry: it => {
