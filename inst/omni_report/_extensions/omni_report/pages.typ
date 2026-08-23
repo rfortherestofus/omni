@@ -105,6 +105,7 @@
 ) = {
   page()[
     #show heading.where(level: 1): set text(size: 25.5pt)
+    #show heading.where(level: 2): set text(size: 13pt, weight: "regular")
     #text(
       size: 10pt,
       fill: brand-color.at("secondary"),
