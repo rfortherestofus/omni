@@ -55,7 +55,7 @@
   set page(
     paper: paper,
     margin: margin,
-    footer-descent: 10% + 0pt,
+    footer-descent: 25% + 0pt,
     footer: create-document-footer(
       title: title,
       organization-name: organization-name,
