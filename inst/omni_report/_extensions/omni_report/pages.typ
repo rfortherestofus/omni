@@ -94,6 +94,7 @@
 
 #let create-title-page(
   title: none,
+  title-display: none,
   subtitle: none,
   organization-name: "Omni Institute",
   client-name: none,
@@ -103,6 +104,7 @@
   acknowledgements: none,
   report-year: none,
 ) = {
+  let title-display = if title-display == none { title } else { title-display }
   page()[
     #show heading.where(level: 1): set text(size: 25.5pt)
     #show heading.where(level: 2): set text(size: 13pt, weight: "regular")
@@ -112,7 +114,7 @@
       tracking: 1pt,
     )[#organization-name Report]
     #v(7mm, weak: true)
-    #heading(level: 1, outlined: false, text(size: 25.5pt)[#par(leading: 0.5cm, title)])
+    #heading(level: 1, outlined: false, text(size: 25.5pt)[#par(leading: 0.5cm, title-display)])
     #v(0.3em)
     #heading(level: 2, outlined: false)[#subtitle]
     #v(1.5em)

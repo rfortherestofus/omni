@@ -16,6 +16,9 @@
 $if(title)$
   title: [$title$],
 $endif$
+$if(title-display)$
+  title-display: [$title-display$],
+$endif$
 $if(subtitle)$
   subtitle: [$subtitle$],
 $endif$

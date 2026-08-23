@@ -12,6 +12,7 @@
 
 #let article(
   title: none,
+  title-display: none,
   subtitle: none,
   authors: none,
   date: none,
@@ -52,6 +53,10 @@
   start-page-number: 1,
   doc,
 ) = {
+  // Only the title/cover-page headings get the line-broken display title;
+  // footer and suggested-citation stay on the flat `title` everywhere else.
+  let title-display = if title-display == none { title } else { title-display }
+
   set page(
     paper: paper,
     margin: margin,
@@ -96,7 +101,7 @@
 
   if cover-page {
     create-cover-page(
-      title: title,
+      title: title-display,
       subtitle: subtitle,
       date: date,
       organization-name: organization-name,
@@ -107,6 +112,7 @@
   if title-page {
     create-title-page(
       title: title,
+      title-display: title-display,
       subtitle: subtitle,
       organization-name: organization-name,
       client-name: client-name,
