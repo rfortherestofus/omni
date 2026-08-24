@@ -113,6 +113,9 @@ Reducing \`eyebrow_size\` is the only thing that closes it further, and
 it buys very little (10pt to 9pt is about one pixel at 150 dpi), so it
 is not worth trading a brand type size for.
 
+The measure description wraps to the plot width on its own, so there is
+no need to insert line breaks by hand.
+
 The remaining gaps can be overridden by adding a \`theme()\` \*after\*
 the header, but note that the visible gap is the margin plus the font's
 line box, so a margin change does not translate one-for-one into
@@ -121,7 +124,8 @@ you override \`plot.title\`, it must stay a
 \[marquee::element_marquee()\] carrying the title style; replacing it
 with a plain \`element_text()\` silently drops the markdown, so the
 eyebrow, the colored keyword and the text wrapping all disappear at
-once.
+once. The same applies to \`plot.subtitle\`, which is also a
+\[marquee::element_marquee()\].
 
 Spacing \*inside\* the plotting area - how close the category labels sit
 to the bars, for instance - is not set here. That is the scale's
