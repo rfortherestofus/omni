@@ -7,8 +7,50 @@ test_that("chart-gray replaces the old two-gray split", {
 test_that("omni_span wraps text in a colored span", {
   out <- omni_span("Housing", "periwinkle-600")
   expect_type(out, "character")
-  expect_match(out, omni_colors("periwinkle-600"), fixed = TRUE)
-  expect_match(out, "Housing", fixed = TRUE)
+  expect_equal(out, "{.periwinkle-600 Housing}")
+})
+
+test_that("omni_span rejects a colour name that is not a brand colour", {
+  # Without this the tag would simply be unregistered and the phrase would
+  # render in the base colour - silently, like every other marquee colour
+  # failure in this file.
+  expect_error(omni_span("Housing", "not-a-colour"))
+})
+
+# Every coloured phrase in the header resolves through a marquee tag, and when
+# a tag is malformed or unregistered marquee emits no error and no warning - it
+# just draws the base colour. Asserting on the *string* is not enough: the
+# previous omni_span() built "{##5776B2 Housing}" (omni_colors() already
+# returns a leading "#"), which still contained the hex and so passed a
+# substring check while rendering navy. These parse the markup the same way the
+# renderer does and assert the colour actually resolves.
+resolved_colour <- function(md, phrase) {
+  parsed <- marquee::marquee_parse(md, style = .omni_marquee_style())
+  # contains, not equals: the finding keyword's node also carries the stripe
+  # glyph ("▌ Housing"), so an exact match would miss it
+  row <- parsed[grepl(phrase, parsed$text, fixed = TRUE), ]
+  if (!nrow(row)) return(NA_character_)
+  row$color[1]
+}
+
+test_that("omni_span's colour resolves when the markup is parsed", {
+  md <- paste(omni_span("Housing", "plum-600"), "led the requests")
+  expect_equal(resolved_colour(md, "Housing"), unname(omni_colors("plum-600")))
+})
+
+test_that("the title keyword's colour resolves when the markup is parsed", {
+  h <- omni_header(primary = "Housing led", keyword = "Housing", color = "teal-600")
+  expect_equal(resolved_colour(h[[1]]$title, "Housing"), unname(omni_colors("teal-600")))
+})
+
+test_that("the finding keyword's colour resolves when the markup is parsed", {
+  h <- omni_header(
+    primary = "x",
+    finding = "Housing led the requests",
+    finding_keyword = "Housing",
+    color = "olive-green-600"
+  )
+  expect_equal(resolved_colour(h[[1]]$caption, "Housing"), unname(omni_colors("olive-green-600")))
 })
 
 test_that("omni_header returns labs + theme components", {

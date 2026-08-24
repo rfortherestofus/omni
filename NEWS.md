@@ -9,6 +9,20 @@
   four add olive-green), and the scale errors clearly when more categories than
   palette colors are requested (#242).
 
+## omni_span()
+
+* Fixed the colour never applying. `omni_span()` built a raw-hex marquee tag
+  by prefixing `"{#"` and then interpolating `omni_colors()`, which already
+  returns a leading `#` - so it emitted `{##5776B2 Housing}`, which marquee
+  cannot parse. The phrase rendered in the base colour with no error and no
+  warning. It now emits the class-based tag, `{.periwinkle-600 Housing}`,
+  which is what `omni_header()`'s own documentation already described and
+  what `keyword` and `finding_keyword` have always used internally - one
+  resolution path for every coloured phrase in the header instead of two.
+* `omni_span()` now errors on a colour name that is not a brand colour.
+  Previously an unknown name produced an unregistered tag, which fails the
+  same silent way the malformed hex did.
+
 ## Chart defaults
 
 * **Breaking-ish:** data marks now default to a 600-level brand colour
@@ -67,7 +81,6 @@
   Left is the brand standard. Note this changes existing figures that use
   `theme_omni()` with a caption but without `omni_header()`: their caption
   moves from the bottom-right to the bottom-left when re-rendered.
-
 * Fixed the primary finding rendering in `theme_omni()`'s title gray
   (`#666665`) instead of navy. `omni_header()` set `plot.title`'s style but
   not its `colour`, and `element_marquee()`'s own `colour` overrides the
@@ -86,20 +99,6 @@
   it by hand can stop. Spacing and colour are unchanged - the margins were
   re-tuned against rendered output because marquee brings its own line-box
   leading, which shifted the gaps by 6 and 18 pixels at the old margin.
-
-## omni_highlight_labels()
-
-* **Breaking:** `color` is now required instead of defaulting to
-  `"orange-red-600"`. A chart uses one highlight color and the colored axis
-  label has to match the bar or point it labels, but the default silently
-  produced an orange-red label on charts highlighted in any other color -
-  a brand violation with nothing in the rendered output to flag it, and
-  invisible to anyone using a tool that writes the call for them. Omitting
-  `color` now raises an error naming the fix. Update existing calls by
-  passing the same color given to `omni_header()`; calls that were relying
-  on the default and are genuinely orange-red charts need
-  `color = "orange-red-600"` added.
-
 * Tightened the header's vertical rhythm against design feedback that the
   elements sat too far apart: the gap between the primary finding and the
   measure description is down ~60% and the gap between the measure
@@ -127,6 +126,19 @@
   that an HTML span passed into `primary` now renders as *uncolored* text
   rather than erroring, so any hand-written `<span>` in a header needs
   converting.
+
+## omni_highlight_labels()
+
+* **Breaking:** `color` is now required instead of defaulting to
+  `"orange-red-600"`. A chart uses one highlight color and the colored axis
+  label has to match the bar or point it labels, but the default silently
+  produced an orange-red label on charts highlighted in any other color -
+  a brand violation with nothing in the rendered output to flag it, and
+  invisible to anyone using a tool that writes the call for them. Omitting
+  `color` now raises an error naming the fix. Update existing calls by
+  passing the same color given to `omni_header()`; calls that were relying
+  on the default and are genuinely orange-red charts need
+  `color = "orange-red-600"` added.
 
 ## PDF report tables
 
