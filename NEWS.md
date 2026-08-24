@@ -136,6 +136,14 @@
   failure mode of its own: `finding_keyword` is matched as a fixed string, so
   a hand-inserted line break landing inside the keyword phrase stopped it
   matching and dropped the stripe and color.
+* Documented that `omni_header()` clears both axis titles. It sets
+  `labs(x = NULL, y = NULL)` - the brand standard drops axis titles and the
+  measure description carries what is being measured - so a `labs()` call
+  placed *before* the header was discarded with no error and no warning. The
+  help page now says so and shows the working order (`labs()` after the
+  header), for the charts that do need one, such as a count axis on a
+  histogram. Behaviour is unchanged; this was previously recorded only in a
+  source comment.
 
 ## omni_highlight_labels()
 
