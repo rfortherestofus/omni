@@ -57,18 +57,18 @@ format:
     toc: true
 ```
 
-| Option | Meaning | Default |
-| --- | --- | --- |
-| `cover-page` | Show the cover (logo, date, title, colored pattern) | `false` unless set |
-| `title-page` | Show the title page (submitted-to, acknowledgements, citation) | `false` unless set |
-| `toc` | Show the table of contents | `false` unless set |
-| `cover-pattern` | Which pattern covers the bottom of the cover page | `pattern-cover-01-yellow` |
-| `organization-name` | Category label on the cover/title pages and the running footer | `Omni Institute` |
-| `client-name` | "Submitted to:" value on the title page | none |
-| `client-state` | State used in the suggested citation | none |
-| `contact-email` | "For More Information:" mailto link | `projects@omni.org` |
-| `acknowledgements` | Names thanked on the title page (supports markdown, e.g. `**bold**`) | none |
-| `report-year` | Year used in the suggested citation | none |
+| Option              | Meaning                                                              | Default                   |
+| ------------------- | -------------------------------------------------------------------- | ------------------------- |
+| `cover-page`        | Show the cover (logo, date, title, colored pattern)                  | `false` unless set        |
+| `title-page`        | Show the title page (submitted-to, acknowledgements, citation)       | `false` unless set        |
+| `toc`               | Show the table of contents                                           | `false` unless set        |
+| `cover-pattern`     | Which pattern covers the bottom of the cover page                    | `pattern-cover-01-yellow` |
+| `organization-name` | Category label on the cover/title pages and the running footer       | `Omni Institute`          |
+| `client-name`       | "Submitted to:" value on the title page                              | none                      |
+| `client-state`      | State used in the suggested citation                                 | none                      |
+| `contact-email`     | "For More Information:" mailto link                                  | `projects@omni.org`       |
+| `acknowledgements`  | Names thanked on the title page (supports markdown, e.g. `**bold**`) | none                      |
+| `report-year`       | Year used in the suggested citation                                  | none                      |
 
 `cover-pattern` accepts the same seven colors as the page-break patterns
 above, with a `pattern-cover-` prefix instead of `pattern-`:
@@ -92,17 +92,31 @@ A running footer (small logo, "{organization-name} Report | {title}", page
 number) appears on every page except the cover, whose pattern already fills
 that space.
 
+### Logo (PDF)
+
+`logo-ref` and `logo-height` size the logo on the cover page; `logo-footer-height` sizes the small logo in the running footer. All three are optional and, when set, take precedence over the CSI/Omni default computed from `use-csi-style`:
+
+```yaml
+format:
+  omni_report-typst:
+    logo-ref: images/client-logo.png
+    logo-height: 40pt
+    logo-footer-height: 1cm
+```
+
+A bare `logo.png`/`logo-csi.png` (the two logos that ship with the extension) resolves within the extension; any other value is a path relative to `template.qmd`. `logo-height` and `logo-footer-height` are Typst lengths (e.g. `40pt`, `1cm`).
+
 ### HTML header bar
 
 The HTML output opens with a header bar that shows a logo on the left and an
 organization name on the right. Three options of the `omni_report-html` format
 control it; their shipped defaults live in the extension's `_extension.yml`:
 
-| Option | Meaning |
-| --- | --- |
-| `logo-ref` | `logo.png`, `logo-csi.png`, or a path relative to the qmd |
-| `organization-name` | Text on the right of the bar |
-| `logo-height` | Any CSS length, or `default` |
+| Option              | Meaning                                                   |
+| ------------------- | --------------------------------------------------------- |
+| `logo-ref`          | `logo.png`, `logo-csi.png`, or a path relative to the qmd |
+| `organization-name` | Text on the right of the bar                              |
+| `logo-height`       | Any CSS length, or `default`                              |
 
 Overriding one of them leaves the others alone, so a report that only switches
 the logo keeps the default name and height:
@@ -123,12 +137,19 @@ The logo is sized by height alone, and the two shipped logos need different
 values: the Omni wordmark is one line, the CSI lockup two. With
 `logo-height: default`, `filter.lua` picks the height from the logo file:
 
-| Logo | Height |
-| --- | --- |
-| `logo.png` | 30px |
-| `logo-csi.png` | 62px |
-| anything else | 50px |
+| Logo           | Height |
+| -------------- | ------ |
+| `logo.png`     | 30px   |
+| `logo-csi.png` | 62px   |
+| anything else  | 50px   |
 
 Setting `logo-height` to a CSS length (`logo-height: 44px`) overrides this for
 any logo.
 
+The footer logo (shown at the bottom of every page) is sized separately via `logo-footer-height`, any CSS length. It's optional; when unset the footer logo keeps its default height (twice the header's when `use-csi-style` is `true`, unchanged otherwise):
+
+```yaml
+format:
+  omni_report-html:
+    logo-footer-height: 50px
+```

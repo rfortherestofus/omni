@@ -112,6 +112,9 @@ $endif$
 $if(logo-height)$
   logo-height: $logo-height$,
 $endif$
+$if(logo-footer-height)$
+  logo-footer-height: $logo-footer-height$,
+$endif$
 $if(cover-pattern)$
   cover-pattern: "_extensions/omni_report/" + $cover-pattern$ + ".png",
 $endif$

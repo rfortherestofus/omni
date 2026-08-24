@@ -46,6 +46,7 @@
   logo-ref: "_extensions/omni_report/logo.png",
   logo-icon-ref: "_extensions/omni_report/logo-no-text.png",
   logo-height: 29pt,
+  logo-footer-height: 0.75cm,
   cover-pattern: "_extensions/omni_report/pattern-cover-01-yellow.png",
   client-name: none,
   client-city: none,
@@ -69,6 +70,7 @@
       organization-name: organization-name,
       page-numbering: page-numbering,
       logo: logo-icon-ref,
+      logo-height: logo-footer-height,
     ),
   )
 
@@ -79,6 +81,7 @@
     title: title,
     organization-name: organization-name,
     page-numbering: page-numbering,
+    logo-footer-height: logo-footer-height,
   ))
   set par(justify: true, leading: line-height)
   set text(lang: lang, region: region, font: font, size: fontsize)

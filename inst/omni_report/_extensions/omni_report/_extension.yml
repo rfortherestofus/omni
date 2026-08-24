@@ -28,6 +28,10 @@ contributes:
       # name to the CSI (Center for Social Investment) branding. See filter.lua.
       use-csi-style: false
 
+      # `default` picks the header logo's height from the logo file
+      # (logo-ref); set a CSS length (e.g. "44px") to override it directly.
+      logo-height: default
+
       # Hide "Footnotes" text
       language:
         section-title-footnotes: ""

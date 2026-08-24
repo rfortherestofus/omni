@@ -152,6 +152,35 @@ local function is_true(value)
   return value ~= nil and pandoc.utils.stringify(value) == "true"
 end
 
+-- Logos that ship inside the extension
+local shipped_logos = {
+  ["logo.png"] = true,
+  ["logo-csi.png"] = true,
+  ["logo-no-text.png"] = true,
+  ["logo-no-text-csi.png"] = true,
+  ["logo-no-text-transparent.png"] = true,
+}
+
+local function resolve_logo_path(value)
+  if shipped_logos[value] then
+    return extension_dir .. value
+  end
+  return value
+end
+
+local default_logo_heights = {
+  ["logo.png"] = "30px",
+  ["logo-csi.png"] = "62px",
+}
+
+local function resolve_logo_height(value, resolved_logo_ref)
+  if value and value ~= "default" then
+    return value
+  end
+  local basename = resolved_logo_ref:match("([^/]+)$")
+  return default_logo_heights[basename] or "50px"
+end
+
 -- Pass through as plain text so that Typst doesn't escape eg. @ in the email
 -- Necessary since some fields like acknowledgement accept Markdown
 local plain_text_yml_headers = {
@@ -168,7 +197,7 @@ local plain_text_yml_headers = {
 -- RawInline before this filter runs, so stringify() would silently drop it.
 local function is_br(el)
   return el.t == "RawInline" and el.format == "html"
-    and el.text:match("^%s*<%s*[Bb][Rr]%s*/?%s*>%s*$")
+      and el.text:match("^%s*<%s*[Bb][Rr]%s*/?%s*>%s*$")
 end
 
 function Meta(meta)
@@ -182,17 +211,30 @@ function Meta(meta)
   end
 
   if quarto.doc.is_format("typst") then
+    local logo_ref_input = meta["logo-ref"] and pandoc.utils.stringify(meta["logo-ref"])
     meta["logo-ref"] = pandoc.MetaString(
-      extension_dir .. (use_csi_style and "logo-csi.png" or "logo.png")
+      logo_ref_input and resolve_logo_path(logo_ref_input)
+      or (extension_dir .. (use_csi_style and "logo-csi.png" or "logo.png"))
     )
     meta["logo-icon-ref"] = pandoc.MetaString(
       extension_dir ..
       (use_csi_style and "logo-no-text-csi.png" or "logo-no-text.png")
     )
-    -- Stored as raw Typst code (no quotes) since it's a length, not a string.
-    meta["logo-height"] = pandoc.MetaInlines({
-      pandoc.RawInline("typst", use_csi_style and "60pt" or "29pt"),
-    })
+    -- Stored as raw Typst code (no quotes) since it's a length
+    if meta["logo-height"] then
+      meta["logo-height"] = pandoc.MetaInlines({
+        pandoc.RawInline("typst", pandoc.utils.stringify(meta["logo-height"])),
+      })
+    else
+      meta["logo-height"] = pandoc.MetaInlines({
+        pandoc.RawInline("typst", use_csi_style and "60pt" or "29pt"),
+      })
+    end
+    if meta["logo-footer-height"] then
+      meta["logo-footer-height"] = pandoc.MetaInlines({
+        pandoc.RawInline("typst", pandoc.utils.stringify(meta["logo-footer-height"])),
+      })
+    end
 
     for _, key in ipairs(plain_text_yml_headers) do
       if meta[key] then
@@ -219,7 +261,7 @@ function Meta(meta)
             meta["title-display"] = pandoc.MetaInlines(display_inlines)
           end
         elseif key == "subtitle" then
-          -- Subtitle is only ever shown on the title/cover pages, 
+          -- Subtitle is only ever shown on the title/cover pages,
           -- so it can keep the line break inline without a separate flat variant.
           local inlines = {}
           for _, el in ipairs(meta[key]) do
@@ -244,10 +286,13 @@ function Meta(meta)
     return meta
   end
 
-  meta["logo-ref"] = pandoc.MetaString(
-    extension_dir .. (use_csi_style and "logo-csi.png" or "logo.png")
-  )
-  meta["logo-height"] = pandoc.MetaString(use_csi_style and "62px" or "30px")
+  local logo_ref_input = meta["logo-ref"] and pandoc.utils.stringify(meta["logo-ref"])
+  local resolved_logo_ref = logo_ref_input and resolve_logo_path(logo_ref_input)
+      or (extension_dir .. (use_csi_style and "logo-csi.png" or "logo.png"))
+  meta["logo-ref"] = pandoc.MetaString(resolved_logo_ref)
+
+  local logo_height_input = meta["logo-height"] and pandoc.utils.stringify(meta["logo-height"])
+  meta["logo-height"] = pandoc.MetaString(resolve_logo_height(logo_height_input, resolved_logo_ref))
 
   return meta
 end
@@ -266,8 +311,10 @@ local function build_footer_html(meta)
         contact_email .. '</a></p>'
   end
 
-  -- CSI's footer logo is the same wordmark rendered twice as wide
-  local logo_style = is_true(meta["use-csi-style"]) and ' style="height: 60px;"' or ""
+  local logo_footer_height = meta["logo-footer-height"]
+      and pandoc.utils.stringify(meta["logo-footer-height"])
+      or (is_true(meta["use-csi-style"]) and "60px" or nil)
+  local logo_style = logo_footer_height and (' style="height: ' .. logo_footer_height .. ';"') or ""
 
   return table.concat({
     '<div class="omni-footer" id="omni-footer">',
