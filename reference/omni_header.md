@@ -137,6 +137,25 @@ expansion and the axis text's margin, which belong to the chart code and
 \[theme_omni()\]; \`omni_header()\` is text-only and geometry-agnostic
 by design.
 
+## Axis titles
+
+Both axis titles are cleared (`labs(x = NULL, y = NULL)`). The brand
+standard drops them and the measure description carries what is being
+measured, so this is what most charts want.
+
+It does mean a
+[`labs()`](https://ggplot2.tidyverse.org/reference/labs.html) call
+placed *before* the header is discarded, with no error and no warning:
+
+
+    p + labs(y = "Students") + omni_header(...)   # dropped
+    p + omni_header(...) + labs(y = "Students")   # kept
+
+Put the [`labs()`](https://ggplot2.tidyverse.org/reference/labs.html)
+after the header on the charts that do need an axis title - a count axis
+on a histogram, for instance, which the measure description does not
+describe.
+
 ## Examples
 
 ``` r

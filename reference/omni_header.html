@@ -163,6 +163,22 @@ instance - is not set here. That is the scale's expansion and the axis text's ma
 which belong to the chart code and [theme_omni()]; `omni_header()` is text-only and
 geometry-agnostic by design.</p>
     </div>
+    <div class="section level2">
+    <h2 id="axis-titles">Axis titles<a class="anchor" aria-label="anchor" href="#axis-titles"></a></h2>
+
+
+<p>Both axis titles are cleared (<code>labs(x = NULL, y = NULL)</code>). The brand standard drops
+them and the measure description carries what is being measured, so this is what most
+charts want.</p>
+<p>It does mean a <code><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs()</a></code> call placed <em>before</em> the header is discarded, with no
+error and no warning:</p>
+<div class="sourceCode"><pre><code><span></span>
+<span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Students"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="../reference/omni_header.html">omni_header</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span>   <span class="co"># dropped</span></span>
+<span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="../reference/omni_header.html">omni_header</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Students"</span><span class="op">)</span>   <span class="co"># kept</span></span></code></pre></div>
+
+<p>Put the <code><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs()</a></code> after the header on the charts that do need an axis title - a count
+axis on a histogram, for instance, which the measure description does not describe.</p>
+    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>

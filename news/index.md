@@ -197,6 +197,19 @@
   line break landing inside the keyword phrase stopped it matching and
   dropped the stripe and color.
 
+- Documented that
+  [`omni_header()`](https://rfortherestofus.github.io/omni/reference/omni_header.md)
+  clears both axis titles. It sets `labs(x = NULL, y = NULL)` - the
+  brand standard drops axis titles and the measure description carries
+  what is being measured - so a
+  [`labs()`](https://ggplot2.tidyverse.org/reference/labs.html) call
+  placed *before* the header was discarded with no error and no warning.
+  The help page now says so and shows the working order
+  ([`labs()`](https://ggplot2.tidyverse.org/reference/labs.html) after
+  the header), for the charts that do need one, such as a count axis on
+  a histogram. Behaviour is unchanged; this was previously recorded only
+  in a source comment.
+
 ### omni_highlight_labels()
 
 - **Breaking:** `color` is now required instead of defaulting to
