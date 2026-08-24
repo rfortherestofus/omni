@@ -106,6 +106,22 @@
 #' which belong to the chart code and [theme_omni()]; `omni_header()` is text-only and
 #' geometry-agnostic by design.
 #'
+#' @section Axis titles:
+#' Both axis titles are cleared (\code{labs(x = NULL, y = NULL)}). The brand standard drops
+#' them and the measure description carries what is being measured, so this is what most
+#' charts want.
+#'
+#' It does mean a \code{labs()} call placed \emph{before} the header is discarded, with no
+#' error and no warning:
+#'
+#' \preformatted{
+#' p + labs(y = "Students") + omni_header(...)   # dropped
+#' p + omni_header(...) + labs(y = "Students")   # kept
+#' }
+#'
+#' Put the \code{labs()} after the header on the charts that do need an axis title - a count
+#' axis on a histogram, for instance, which the measure description does not describe.
+#'
 #' @param primary Required. The finding, written as a sentence.
 #' @param keyword Substring of `primary` to color (first occurrence). `NULL` = all navy.
 #' @param top_header Eyebrow line, e.g. `"PROGRAM REACH - FY2024"`. `NULL` = no eyebrow.
