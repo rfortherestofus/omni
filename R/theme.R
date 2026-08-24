@@ -137,6 +137,7 @@ theme_omni <- function(
       ),
       plot.title.position = "plot",
       plot.subtitle = marquee::element_marquee(
+        width = 1,
         margin = margin(-4, 0, 0, 0),
         style = omni_style |>
           marquee::modify_style(
@@ -153,7 +154,13 @@ theme_omni <- function(
       # omni_header() (which sets hjust = 0) put it bottom-left. Left is the
       # brand standard; both paths now agree regardless of the order they
       # are applied in.
+      # width = 1 on the subtitle and caption as well as the title: these two
+      # were the only marquee slots without it, so long text was clipped at
+      # the canvas edge instead of wrapping. Keeping the field set on all
+      # three also stops this slot pair drifting from omni_header()'s a
+      # fourth time, after color (#267), size/weight (#276) and alignment.
       plot.caption = marquee::element_marquee(
+        width = 1,
         hjust = 0,
         style = .omni_caption_style()
       ),

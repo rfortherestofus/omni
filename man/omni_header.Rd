@@ -80,8 +80,10 @@ clamped, and line-height has no effect on it. Reducing `eyebrow_size` is the onl
 that closes it further, and it buys very little (10pt to 9pt is about one pixel at
 150 dpi), so it is not worth trading a brand type size for.
 
-The measure description wraps to the plot width on its own, so there is no need to insert
-line breaks by hand.
+The measure description and the secondary finding both wrap to the plot width on their own,
+so there is no need to insert line breaks by hand. Doing so can also break `finding_keyword`:
+it is matched against `finding` as a fixed string, so a line break falling inside the keyword
+phrase stops it matching, and the stripe and color are dropped (with a warning).
 
 The remaining gaps can be overridden by adding a `theme()` *after* the header, but note
 that the visible gap is the margin plus the font's line box, so a margin change does not

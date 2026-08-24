@@ -127,6 +127,16 @@
   rather than erroring, so any hand-written `<span>` in a header needs
   converting.
 
+* The secondary finding (`plot.caption`) now wraps to the plot width, as the
+  title and measure description already did. It was the one marquee slot left
+  without `width`, so a finding longer than the canvas was clipped mid-word
+  instead of breaking - silently. `theme_omni()` was missing the same field on
+  both its subtitle and its caption; all three slots in both functions now set
+  it. Scripts wrapping `finding` by hand can stop, which also removes a
+  failure mode of its own: `finding_keyword` is matched as a fixed string, so
+  a hand-inserted line break landing inside the keyword phrase stopped it
+  matching and dropped the stripe and color.
+
 ## omni_highlight_labels()
 
 * **Breaking:** `color` is now required instead of defaulting to
