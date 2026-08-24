@@ -164,6 +164,24 @@ test_that("omni_header's subtitle is a marquee element, matching theme_omni's cl
   expect_identical(sub$colour, unname(omni_colors("chart-gray")))
 })
 
+test_that("every marquee header slot wraps, in both functions", {
+  # A slot with no `width` does not wrap: long text runs off the canvas and is
+  # clipped mid-word, silently. plot.caption was the last one missing it, and
+  # theme_omni() was missing it on the subtitle too. Asserting all six keeps
+  # this field from drifting the way color (#267), size/weight (#276) and
+  # alignment already did.
+  slots <- c("plot.title", "plot.subtitle", "plot.caption")
+
+  hdr <- ggplot2::ggplot(mtcars, ggplot2::aes(wt, mpg)) +
+    ggplot2::geom_point() +
+    omni_header(primary = "P", measure = "M", finding = "F", finding_keyword = "F")
+  resolved <- ggplot2::ggplot_build(hdr)$plot$theme
+  for (sl in slots) expect_equal(resolved[[sl]]$width, 1, info = sl)
+
+  th <- theme_omni()
+  for (sl in slots) expect_equal(th[[sl]]$width, 1, info = sl)
+})
+
 test_that("theme_omni and omni_header agree on caption styling", {
   # These two set plot.caption independently; they have drifted apart twice
   # (once on color, once on size/weight). Same helper, same result.
