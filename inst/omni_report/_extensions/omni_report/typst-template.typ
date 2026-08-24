@@ -12,6 +12,7 @@
 
 #let article(
   title: none,
+  title-display: none,
   subtitle: none,
   authors: none,
   date: none,
@@ -55,10 +56,14 @@
   start-page-number: 1,
   doc,
 ) = {
+  // Only the title/cover-page headings get the line-broken display title;
+  // footer and suggested-citation stay on the flat `title` everywhere else.
+  let title-display = if title-display == none { title } else { title-display }
+
   set page(
     paper: paper,
     margin: margin,
-    footer-descent: 10% + 0pt,
+    footer-descent: 25% + 0pt,
     footer: create-document-footer(
       title: title,
       organization-name: organization-name,
@@ -86,11 +91,21 @@
   )
   show heading: set par(leading: heading-line-height)
   show heading: it => if heading-decoration == "underline" { underline(it) } else { it }
+  show heading.where(level: 2): it => {
+    set text(size: 1.4em)
+    it
+    v(0.3cm)
+  }
+  show heading.where(level: 3): it => {
+    set text(size: 1.2em)
+    it
+    v(0.1cm)
+  }
   set footnote.entry(gap: 0.8em, indent: 0em)
 
   if cover-page {
     create-cover-page(
-      title: title,
+      title: title-display,
       subtitle: subtitle,
       date: date,
       organization-name: organization-name,
@@ -103,6 +118,7 @@
   if title-page {
     create-title-page(
       title: title,
+      title-display: title-display,
       subtitle: subtitle,
       organization-name: organization-name,
       client-name: client-name,

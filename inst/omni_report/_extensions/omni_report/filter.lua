@@ -160,7 +160,16 @@ local plain_text_yml_headers = {
   "contact-email",
   "logo-ref",
   "logo-icon-ref",
+  "title",
+  "subtitle"
 }
+
+-- Quarto/Pandoc already parses raw HTML like <br> in a metadata field into a
+-- RawInline before this filter runs, so stringify() would silently drop it.
+local function is_br(el)
+  return el.t == "RawInline" and el.format == "html"
+    and el.text:match("^%s*<%s*[Bb][Rr]%s*/?%s*>%s*$")
+end
 
 function Meta(meta)
   local use_csi_style = is_true(meta["use-csi-style"])
@@ -187,10 +196,46 @@ function Meta(meta)
 
     for _, key in ipairs(plain_text_yml_headers) do
       if meta[key] then
-        local value = pandoc.utils.stringify(meta[key])
-        meta[key] = pandoc.MetaInlines({
-          pandoc.RawInline("typst", '"' .. value .. '"'),
-        })
+        if key == "title" then
+          -- `title` is reused by the Typst template in places that must stay
+          -- single-line (running footer, suggested citation), so keep it flat
+          -- and instead carry the line-broken version separately for the
+          -- title/cover-page headings only.
+          local flat_inlines, display_inlines, has_break = {}, {}, false
+          for _, el in ipairs(meta[key]) do
+            if is_br(el) then
+              has_break = true
+              table.insert(flat_inlines, pandoc.Space())
+              table.insert(display_inlines, pandoc.RawInline("typst", "#linebreak()"))
+            else
+              table.insert(flat_inlines, el)
+              table.insert(display_inlines, el)
+            end
+          end
+          meta.title = pandoc.MetaInlines(flat_inlines)
+          if has_break then
+            -- This overrides title-display so even if user suppied that via YAML header
+            -- it will be overwritten with title
+            meta["title-display"] = pandoc.MetaInlines(display_inlines)
+          end
+        elseif key == "subtitle" then
+          -- Subtitle is only ever shown on the title/cover pages, 
+          -- so it can keep the line break inline without a separate flat variant.
+          local inlines = {}
+          for _, el in ipairs(meta[key]) do
+            if is_br(el) then
+              table.insert(inlines, pandoc.RawInline("typst", "#linebreak()"))
+            else
+              table.insert(inlines, el)
+            end
+          end
+          meta[key] = pandoc.MetaInlines(inlines)
+        else
+          local value = pandoc.utils.stringify(meta[key])
+          meta[key] = pandoc.MetaInlines({
+            pandoc.RawInline("typst", '"' .. value .. '"'),
+          })
+        end
       end
     end
   end
