@@ -40,5 +40,5 @@ interchangeable.
 
 ``` r
 stringr::str_glue("{omni_span('Housing', 'periwinkle-600')} led the requests")
-#> {##5776B2 Housing} led the requests
+#> {.periwinkle-600 Housing} led the requests
 ```
