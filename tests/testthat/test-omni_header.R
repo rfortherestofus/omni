@@ -147,6 +147,23 @@ test_that("omni_header's caption is quieter than the subtitle, not louder", {
   expect_true(base$italic)
 })
 
+test_that("omni_header's subtitle is a marquee element, matching theme_omni's class", {
+  # plot.subtitle was the last slot where the two disagreed on class
+  # (theme_omni marquee vs omni_header element_text). The mismatch is the
+  # shape that caused theme-merge trouble on the title and caption before
+  # those were converted, and it also denied the measure description any
+  # wrapping - a long one ran off the right edge and clipped.
+  h <- omni_header(primary = "x", measure = "What is measured")
+  sub <- h[[2]]$plot.subtitle
+  expect_s3_class(sub, "element_marquee")
+  expect_s3_class(theme_omni()$plot.subtitle, "element_marquee")
+  expect_identical(sub$style, .omni_subtitle_style())
+  expect_equal(sub$hjust, 0)
+  # colour is set on the element too: the element's colour overrides the
+  # style's base, so leaving it NULL would inherit the active theme's
+  expect_identical(sub$colour, unname(omni_colors("chart-gray")))
+})
+
 test_that("theme_omni and omni_header agree on caption styling", {
   # These two set plot.caption independently; they have drifted apart twice
   # (once on color, once on size/weight). Same helper, same result.
@@ -184,7 +201,9 @@ test_that("omni_header gives the eyebrow space above it and the measure space be
   # between the measure description and the panel. Changing them changes the
   # header's rhythm, so they are pinned here deliberately.
   expect_equal(h[[2]]$plot.title$margin, ggplot2::margin(t = 8, b = 5.3))
-  expect_equal(h[[2]]$plot.subtitle$margin, ggplot2::margin(b = 9))
+  # t = -1.5 compensates for the line-box leading marquee brings to this slot;
+  # together with b = 4 it reproduces the spacing the plain element_text had
+  expect_equal(h[[2]]$plot.subtitle$margin, ggplot2::margin(t = -1.5, b = 4))
 })
 
 test_that("omni_header's title sets its own colour rather than inheriting one", {

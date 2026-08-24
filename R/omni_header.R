@@ -88,12 +88,16 @@
 #' that closes it further, and it buys very little (10pt to 9pt is about one pixel at
 #' 150 dpi), so it is not worth trading a brand type size for.
 #'
+#' The measure description wraps to the plot width on its own, so there is no need to insert
+#' line breaks by hand.
+#'
 #' The remaining gaps can be overridden by adding a `theme()` *after* the header, but note
 #' that the visible gap is the margin plus the font's line box, so a margin change does not
 #' translate one-for-one into pixels - check the rendered output rather than trusting the
 #' number. If you override `plot.title`, it must stay a [marquee::element_marquee()] carrying
 #' the title style; replacing it with a plain `element_text()` silently drops the markdown,
-#' so the eyebrow, the colored keyword and the text wrapping all disappear at once.
+#' so the eyebrow, the colored keyword and the text wrapping all disappear at once. The same
+#' applies to `plot.subtitle`, which is also a [marquee::element_marquee()].
 #'
 #' Spacing *inside* the plotting area - how close the category labels sit to the bars, for
 #' instance - is not set here. That is the scale's expansion and the axis text's margin,
@@ -228,7 +232,29 @@ omni_header <- function(
         style = .omni_title_style(primary_size, eyebrow_size, eyebrow_gap),
         margin = ggplot2::margin(t = 8, b = 5.3)
       ),
-      plot.subtitle = ggplot2::element_text(colour = hex_gray, margin = ggplot2::margin(b = 9)),
+      # marquee, not element_text: this was the last slot where omni_header()
+      # and theme_omni() disagreed on class, which is the shape of mismatch
+      # that caused theme-merge trouble on the title and caption before those
+      # were converted. It also gives the measure description real wrapping -
+      # a long one used to run off the right edge and clip.
+      #
+      # colour is set on the element as well as in the style because the
+      # element's colour overrides the style's base (the title bug, #287).
+      # Size is deliberately NOT set: the style's base size has no effect on
+      # this slot - only the element's size does - so leaving it unset keeps
+      # the size the plain element_text inherited, and the measure line
+      # renders exactly as before.
+      #
+      # margin was tuned against rendered output, not assumed: marquee brings
+      # its own line-box leading, so at margin(b = 9) the gaps grew from
+      # 23/52px to 29/70px. t = -1.5, b = 4 restores 23/51px.
+      plot.subtitle = marquee::element_marquee(
+        width = 1,
+        hjust = 0,
+        colour = hex_gray,
+        style = .omni_subtitle_style(),
+        margin = ggplot2::margin(t = -1.5, b = 4)
+      ),
       # style is passed explicitly (not inherited from whatever plot.caption
       # element theme_omni() or the caller left behind) so the {.color ...}
       # class markdown built above always resolves, regardless of theme order.

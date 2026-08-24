@@ -90,6 +90,15 @@
   this survived review. Third instance of one shape: an element built
   without being fully specified inheriting stale state from `theme_omni()`.
 
+* The measure description (`plot.subtitle`) is now a marquee element rather
+  than a plain `element_text()`. It was the last slot where `omni_header()`
+  and `theme_omni()` disagreed on class - the shape of mismatch that caused
+  theme-merge trouble on the title and caption before those were converted.
+  It also means the measure description **wraps to the plot width**: a long
+  one previously ran off the right edge and clipped, so any script wrapping
+  it by hand can stop. Spacing and colour are unchanged - the margins were
+  re-tuned against rendered output because marquee brings its own line-box
+  leading, which shifted the gaps by 6 and 18 pixels at the old margin.
 * Tightened the header's vertical rhythm against design feedback that the
   elements sat too far apart: the gap between the primary finding and the
   measure description is down ~60% and the gap between the measure
