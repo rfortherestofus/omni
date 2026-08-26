@@ -223,11 +223,10 @@ function Meta(meta)
     }
     local logo_icon_ref_input = meta["logo-icon-ref"] and pandoc.utils.stringify(meta["logo-icon-ref"])
     meta["logo-icon-ref"] = pandoc.MetaString(
-      logo_icon_ref_input and resolve_logo_path(logo_icon_ref_input)
-      or extension_dir .. (
-        (logo_ref_input and icon_for_logo[logo_ref_input])
-        or (use_csi_style and "logo-no-text-csi.png" or "logo-no-text.png")
-      )
+      (logo_icon_ref_input and resolve_logo_path(logo_icon_ref_input))
+      or (logo_ref_input and icon_for_logo[logo_ref_input] and extension_dir .. icon_for_logo[logo_ref_input])
+      or (logo_ref_input and resolve_logo_path(logo_ref_input))
+      or extension_dir .. (use_csi_style and "logo-no-text-csi.png" or "logo-no-text.png")
     )
     -- Stored as raw Typst code (no quotes) since it's a length
     if meta["logo-height"] then
