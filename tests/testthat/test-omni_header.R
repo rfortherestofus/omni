@@ -182,6 +182,49 @@ test_that("every marquee header slot wraps, in both functions", {
   for (sl in slots) expect_equal(th[[sl]]$width, 1, info = sl)
 })
 
+test_that("every marquee header slot sets size on the element, not only the style", {
+  # element_marquee() carries its own `size`, and it takes precedence over the
+  # marquee style's `base` size. Both functions previously set the intended
+  # size only inside the style, so all three slots silently rendered at
+  # whatever the base theme supplied - theme_minimal(11)'s rel() defaults of
+  # 13.2 / 11 / 8.8pt - rather than the brand 18 / 13 / 12. `primary_size` had
+  # no effect at all: the rendered title measured the same at 12, 18, 24 and
+  # 30. Class-level sizes were never affected, which is why `eyebrow_size`
+  # (an h1 tag) worked and masked the problem.
+  #
+  # Fifth field these two functions have disagreed with intent on, after
+  # colour (#267), size/weight (#276), alignment and width (#299), so this
+  # pins all six slots rather than the one that was reported.
+  hdr <- ggplot2::ggplot(mtcars, ggplot2::aes(wt, mpg)) +
+    ggplot2::geom_point() +
+    theme_omni() +
+    omni_header(primary = "P", measure = "M", finding = "F", source = "s", n = 1)
+  th <- ggplot2::ggplot_build(hdr)$plot$theme
+  expect_equal(ggplot2::calc_element("plot.title", th)$size, 18)
+  expect_equal(ggplot2::calc_element("plot.subtitle", th)$size, 13)
+  expect_equal(ggplot2::calc_element("plot.caption", th)$size, 12)
+
+  only <- ggplot2::ggplot(mtcars, ggplot2::aes(wt, mpg)) +
+    ggplot2::geom_point() + theme_omni() +
+    ggplot2::labs(title = "T", subtitle = "S", caption = "C")
+  th2 <- ggplot2::ggplot_build(only)$plot$theme
+  expect_equal(ggplot2::calc_element("plot.title", th2)$size, 13)
+  expect_equal(ggplot2::calc_element("plot.subtitle", th2)$size, 13)
+  expect_equal(ggplot2::calc_element("plot.caption", th2)$size, 12)
+})
+
+test_that("primary_size actually changes the title size", {
+  # The regression this guards is specific: primary_size reached the style but
+  # not the element, so it was inert. Assert it reaches the element.
+  for (ps in c(12, 18, 24)) {
+    hdr <- ggplot2::ggplot(mtcars, ggplot2::aes(wt, mpg)) +
+      ggplot2::geom_point() + theme_omni() +
+      omni_header(primary = "P", primary_size = ps)
+    th <- ggplot2::ggplot_build(hdr)$plot$theme
+    expect_equal(ggplot2::calc_element("plot.title", th)$size, ps, info = ps)
+  }
+})
+
 test_that("theme_omni and omni_header agree on caption styling", {
   # These two set plot.caption independently; they have drifted apart twice
   # (once on color, once on size/weight). Same helper, same result.

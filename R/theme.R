@@ -132,6 +132,9 @@ theme_omni <- function(
       plot.title = marquee::element_marquee(
         margin = margin(0, 0, 0, 0),
         color = "#666665",
+        # see omni_header(): element_marquee()'s own size beats the style base,
+        # so a size set only in the style never applies.
+        size = 13,
         style = omni_style,
         width = 1
       ),
@@ -139,6 +142,7 @@ theme_omni <- function(
       plot.subtitle = marquee::element_marquee(
         width = 1,
         margin = margin(-4, 0, 0, 0),
+        size = 13,
         style = omni_style |>
           marquee::modify_style(
             "base",
@@ -162,6 +166,7 @@ theme_omni <- function(
       plot.caption = marquee::element_marquee(
         width = 1,
         hjust = 0,
+        size = 12,
         style = .omni_caption_style()
       ),
       plot.margin = margin(

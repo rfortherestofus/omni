@@ -144,6 +144,24 @@
   header), for the charts that do need one, such as a count axis on a
   histogram. Behaviour is unchanged; this was previously recorded only in a
   source comment.
+* **Breaking:** fixed all three header text slots rendering 15-27% too
+  small. `marquee::element_marquee()` carries its own `size`, and it takes
+  precedence over the marquee style's `base` size. Both `omni_header()` and
+  `theme_omni()` set the intended size only inside the style, so it never
+  applied and every slot fell back to whatever the base theme supplied -
+  `theme_minimal(11)`'s `rel()` defaults of 13.2 / 11 / 8.8pt against the
+  brand's 18 / 13 / 12pt. The title was rendering below the brand's 14pt
+  minimum for a primary header.
+* **`primary_size` had no effect at all.** It reached the style but not the
+  element, so the rendered title measured identically at 12, 18, 24 and 30.
+  It now works. `eyebrow_size` was always fine: the eyebrow is an `h1` class
+  in the style, and class-level sizes do override the element - only `base`
+  loses. That asymmetry is why the problem survived review, since the one
+  size argument anyone tested by eye was the one that worked.
+* Expect existing figures to change. Header text grows on every chart, and
+  the caption's 8.8 to 12pt jump is large enough to reflow wrapping. This is
+  a correction toward the brand standard rather than a preference, but it is
+  visible and will shift layouts.
 
 ## omni_highlight_labels()
 
