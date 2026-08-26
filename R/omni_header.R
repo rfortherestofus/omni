@@ -247,6 +247,14 @@ omni_header <- function(
       plot.title = marquee::element_marquee(
         width = 1,
         colour = omni_colors("navy"),
+        # size is set on the element, not only in the style: element_marquee()
+        # carries its own size and it takes precedence over the style's base,
+        # so a size set only in the style is silently ignored and the slot
+        # renders at whatever the base theme supplies (13.2pt from
+        # theme_minimal(11)'s rel(1.2)). primary_size had no effect at all
+        # before this. Class-level sizes (the h1 eyebrow) were never affected -
+        # only `base` loses to the element.
+        size = primary_size,
         style = .omni_title_style(primary_size, eyebrow_size, eyebrow_gap),
         margin = ggplot2::margin(t = 8, b = 5.3)
       ),
@@ -270,6 +278,9 @@ omni_header <- function(
         width = 1,
         hjust = 0,
         colour = hex_gray,
+        # 13pt is the brand size for the measure description. Set on the
+        # element for the same reason as the title above.
+        size = 13,
         style = .omni_subtitle_style(),
         margin = ggplot2::margin(t = -1.5, b = 4)
       ),
@@ -286,6 +297,11 @@ omni_header <- function(
         width = 1,
         hjust = 0,
         colour = hex_gray,
+        # 11pt is the brand floor: no figure text goes below it. The
+        # secondary finding and the source/N line are two paragraphs of
+        # this one slot, so both take it, which matches the training
+        # template where those two lines are the same size.
+        size = 11,
         style = .omni_caption_style()
       )
     )
