@@ -217,6 +217,22 @@ test_that("every marquee header slot sets size on the element, not only the styl
   expect_equal(ggplot2::calc_element("plot.caption", th2)$size, 11)
 })
 
+test_that("the eyebrow defaults to 11pt, the brand floor", {
+  # The eyebrow is the smallest and the only ALL CAPS element, so it sits AT
+  # the floor rather than below it: uppercase drops the ascender/descender
+  # cues readers use for word shape, so it needs more size than mixed case for
+  # equal legibility. Measuring the training template agrees - anchoring the
+  # source note at 11pt puts the eyebrow near 11.8pt, so 10 was below both the
+  # floor and the template.
+  h <- omni_header(primary = "P", top_header = "EYEBROW")
+  st <- unclass(h[[2]]$plot.title$style)[[1]]
+  expect_equal(st$h1$size, 11)
+
+  # and it still responds to the argument
+  h16 <- omni_header(primary = "P", top_header = "EYEBROW", eyebrow_size = 16)
+  expect_equal(unclass(h16[[2]]$plot.title$style)[[1]]$h1$size, 16)
+})
+
 test_that("primary_size actually changes the title size", {
   # The regression this guards is specific: primary_size reached the style but
   # not the element, so it was inert. Assert it reaches the element.

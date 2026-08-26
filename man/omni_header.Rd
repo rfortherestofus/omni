@@ -15,7 +15,7 @@ omni_header(
   n = NULL,
   color = "orange-red-600",
   primary_size = 18,
-  eyebrow_size = 10,
+  eyebrow_size = 11,
   eyebrow_gap = 0
 )
 }
@@ -38,7 +38,11 @@ omni_header(
 
 \item{color}{The chart's one highlight color name (title keyword + finding keyword/stripe).}
 
-\item{primary_size, eyebrow_size}{Font sizes in pt.}
+\item{primary_size, eyebrow_size}{Font sizes in pt. The eyebrow defaults to 11, the
+smallest size the brand allows in a figure. It is set at the floor rather than
+below it because it is the only ALL CAPS element on the chart, and uppercase
+removes the ascender and descender cues readers use to recognise word shapes,
+so it needs more size than mixed-case text for equal legibility.}
 
 \item{eyebrow_gap}{Extra space between the eyebrow and the primary finding, in `rem`.
 Only applies when `top_header` is given. `0` (the default) is as tight as the two lines
