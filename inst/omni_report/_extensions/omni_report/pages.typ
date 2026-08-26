@@ -63,38 +63,50 @@
   logo: "_extensions/omni_report/logo.png",
   logo-height: 29pt,
 ) = {
+  let pattern-height = 48%
   page(
     footer: none,
     background: align(bottom)[
-      #image(cover-pattern, width: 100%, height: 48%, fit: "stretch")
+      #image(cover-pattern, width: 100%, height: pattern-height, fit: "stretch")
     ],
   )[
     #let date-str = "2026-08-01"
     #let parts = date-str.split("-").map(int)
     #let d = datetime(year: parts.at(0), month: parts.at(1), day: parts.at(2))
     #let display-date = d.display("[month repr:long] [year]")
-    #grid(
-      columns: (1fr, 1fr),
-      align(left + top)[#image(logo, height: logo-height)],
-      align(right + top)[
-        #text(size: 10pt, tracking: 1pt, font: "Sometype Mono")[#upper[#display-date]]
-      ],
-    )
-    #v(1.4in)
-    #text(
-      size: 10pt,
-      fill: brand-color.at("primary"),
-      tracking: 1pt,
-    )[#organization-name Report]
-    #v(0.8cm, weak: true)
-    #heading(level: 1, outlined: false, text(size: 30pt, weight: "bold")[#par(
-      leading: 0.5cm,
-      title,
-    )])
-    #v(3.5em)
-    #line(length: 40%, stroke: 1pt + brand-color.at("periwinkle-200"))
-    #v(7mm, weak: true)
-    #text(size: 14pt, weight: "bold", fill: brand-color.at("primary"))[#subtitle]
+    #context {
+      // Everything above the pattern must fit between the top margin and
+      // where the pattern starts, since a taller logo (e.g. CSI's) would
+      // otherwise push the block below it down into the pattern. `buffer`
+      // reserves a bit of breathing room below the subtitle
+      let m = resolve-margin(appendix-margin-state.get())
+      let buffer = 8mm
+      let safe-height = page.height * (100% - pattern-height) - m.top - buffer
+      box(width: 100%, height: safe-height)[
+        #grid(
+          columns: (1fr, 1fr),
+          align(left + top)[#image(logo, height: logo-height)],
+          align(right + top)[
+            #text(size: 10pt, tracking: 1pt, font: "Sometype Mono")[#upper[#display-date]]
+          ],
+        )
+        #v(1fr)
+        #text(
+          size: 10pt,
+          fill: brand-color.at("primary"),
+          tracking: 1pt,
+        )[#organization-name Report]
+        #v(0.8cm, weak: true)
+        #heading(level: 1, outlined: false, text(size: 30pt, weight: "bold")[#par(
+          leading: 0.5cm,
+          title,
+        )])
+        #v(3.5em)
+        #line(length: 40%, stroke: 1pt + brand-color.at("periwinkle-200"))
+        #v(7mm, weak: true)
+        #text(size: 14pt, weight: "bold", fill: brand-color.at("primary"))[#subtitle]
+      ]
+    }
   ]
 }
 
