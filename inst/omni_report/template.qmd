@@ -9,15 +9,13 @@ execute:
     echo: false
 format:
     omni_report-html:
-      logo-ref: logo.png # logo-csi.png | Some other file
-      logo-height: default # or <xx>px
-      organization-name: Omni Institute # or: Center for Social Investment
+      use-csi-style: false
       contact-email: projects@omni.org
     omni_report-typst:
       cover-page: true
       title-page: true
       cover-pattern: pattern-cover-01-yellow
-      organization-name: Omni Institute
+      use-csi-style: false
       client-name: "[Favorite client]"
       client-city: "[city]"
       client-state: "[state]"
@@ -181,7 +179,7 @@ Again, to see how these are made, take a look at the R Markdown document.
 number_emphasis(
   number = 1234,
   text = "pt. Inter Tight for stats numbers. 12 pt Inter Tight for stats content.",
-  color = "teal-400",
+  color = "teal-400"
 )
 ```
 

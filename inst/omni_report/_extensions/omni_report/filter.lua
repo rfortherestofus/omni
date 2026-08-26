@@ -144,14 +144,42 @@ function Div(el)
   return pandoc.RawBlock("typst", typst)
 end
 
--- The logos that ship with the extension, named without a directory, mapped to
--- the height each one needs: the Omni wordmark is a single line, the CSI
--- lockup two. Client logos we know nothing about get the fallback.
+-- `use-csi-style` is the source of truth for CSI (Center for Social Investment) branding
+local function is_true(value)
+  if type(value) == "boolean" then
+    return value
+  end
+  return value ~= nil and pandoc.utils.stringify(value) == "true"
+end
+
+-- Logos that ship inside the extension
 local shipped_logos = {
-  ["logo.png"]     = "30px",
+  ["logo.png"] = true,
+  ["logo-csi.png"] = true,
+  ["logo-no-text.png"] = true,
+  ["logo-no-text-csi.png"] = true,
+  ["logo-no-text-transparent.png"] = true,
+}
+
+local function resolve_logo_path(value)
+  if shipped_logos[value] then
+    return extension_dir .. value
+  end
+  return value
+end
+
+local default_logo_heights = {
+  ["logo.png"] = "30px",
   ["logo-csi.png"] = "62px",
 }
-local fallback_logo_height = "50px"
+
+local function resolve_logo_height(value, resolved_logo_ref)
+  if value and value ~= "default" then
+    return value
+  end
+  local basename = resolved_logo_ref:match("([^/]+)$")
+  return default_logo_heights[basename] or "50px"
+end
 
 -- Pass through as plain text so that Typst doesn't escape eg. @ in the email
 -- Necessary since some fields like acknowledgement accept Markdown
@@ -159,6 +187,8 @@ local plain_text_yml_headers = {
   "cover-pattern",
   "organization-name",
   "contact-email",
+  "logo-ref",
+  "logo-icon-ref",
   "title",
   "subtitle"
 }
@@ -167,11 +197,53 @@ local plain_text_yml_headers = {
 -- RawInline before this filter runs, so stringify() would silently drop it.
 local function is_br(el)
   return el.t == "RawInline" and el.format == "html"
-    and el.text:match("^%s*<%s*[Bb][Rr]%s*/?%s*>%s*$")
+      and el.text:match("^%s*<%s*[Bb][Rr]%s*/?%s*>%s*$")
 end
 
 function Meta(meta)
+  local use_csi_style = is_true(meta["use-csi-style"])
+  local organization_name = use_csi_style
+      and "Center for Social Investment"
+      or "Omni Institute"
+
+  if not meta["organization-name"] then
+    meta["organization-name"] = pandoc.MetaString(organization_name)
+  end
+
   if quarto.doc.is_format("typst") then
+    local logo_ref_input = meta["logo-ref"] and pandoc.utils.stringify(meta["logo-ref"])
+    meta["logo-ref"] = pandoc.MetaString(
+      logo_ref_input and resolve_logo_path(logo_ref_input)
+      or (extension_dir .. (use_csi_style and "logo-csi.png" or "logo.png"))
+    )
+
+    local icon_for_logo = {
+      ["logo.png"] = "logo-no-text.png",
+      ["logo-csi.png"] = "logo-no-text-csi.png",
+    }
+    local logo_icon_ref_input = meta["logo-icon-ref"] and pandoc.utils.stringify(meta["logo-icon-ref"])
+    meta["logo-icon-ref"] = pandoc.MetaString(
+      (logo_icon_ref_input and resolve_logo_path(logo_icon_ref_input))
+      or (logo_ref_input and icon_for_logo[logo_ref_input] and extension_dir .. icon_for_logo[logo_ref_input])
+      or (logo_ref_input and resolve_logo_path(logo_ref_input))
+      or extension_dir .. (use_csi_style and "logo-no-text-csi.png" or "logo-no-text.png")
+    )
+    -- Stored as raw Typst code (no quotes) since it's a length
+    if meta["logo-height"] then
+      meta["logo-height"] = pandoc.MetaInlines({
+        pandoc.RawInline("typst", pandoc.utils.stringify(meta["logo-height"])),
+      })
+    else
+      meta["logo-height"] = pandoc.MetaInlines({
+        pandoc.RawInline("typst", use_csi_style and "60pt" or "29pt"),
+      })
+    end
+    if meta["logo-footer-height"] then
+      meta["logo-footer-height"] = pandoc.MetaInlines({
+        pandoc.RawInline("typst", pandoc.utils.stringify(meta["logo-footer-height"])),
+      })
+    end
+
     for _, key in ipairs(plain_text_yml_headers) do
       if meta[key] then
         if key == "title" then
@@ -197,7 +269,7 @@ function Meta(meta)
             meta["title-display"] = pandoc.MetaInlines(display_inlines)
           end
         elseif key == "subtitle" then
-          -- Subtitle is only ever shown on the title/cover pages, 
+          -- Subtitle is only ever shown on the title/cover pages,
           -- so it can keep the line break inline without a separate flat variant.
           local inlines = {}
           for _, el in ipairs(meta[key]) do
@@ -222,22 +294,13 @@ function Meta(meta)
     return meta
   end
 
-  local logo = pandoc.utils.stringify(meta["logo-ref"] or "")
-  local file = logo:match("[^/\\]+$") or ""
+  local logo_ref_input = meta["logo-ref"] and pandoc.utils.stringify(meta["logo-ref"])
+  local resolved_logo_ref = logo_ref_input and resolve_logo_path(logo_ref_input)
+      or (extension_dir .. (use_csi_style and "logo-csi.png" or "logo.png"))
+  meta["logo-ref"] = pandoc.MetaString(resolved_logo_ref)
 
-  -- A bare shipped logo name is looked up in the extension; anything else is a
-  -- path relative to the qmd and is left exactly as written.
-  if shipped_logos[logo] then
-    meta["logo-ref"] = pandoc.MetaString(extension_dir .. logo)
-  end
-
-  -- `logo-height: default` sizes the logo for us; an explicit length wins.
-  local height = pandoc.utils.stringify(meta["logo-height"] or "")
-  if height == "" or height == "default" then
-    meta["logo-height"] = pandoc.MetaString(
-      shipped_logos[file] or fallback_logo_height
-    )
-  end
+  local logo_height_input = meta["logo-height"] and pandoc.utils.stringify(meta["logo-height"])
+  meta["logo-height"] = pandoc.MetaString(resolve_logo_height(logo_height_input, resolved_logo_ref))
 
   return meta
 end
@@ -256,10 +319,15 @@ local function build_footer_html(meta)
         contact_email .. '</a></p>'
   end
 
+  local logo_footer_height = meta["logo-footer-height"]
+      and pandoc.utils.stringify(meta["logo-footer-height"])
+      or (is_true(meta["use-csi-style"]) and "60px" or nil)
+  local logo_style = logo_footer_height and (' style="height: ' .. logo_footer_height .. ';"') or ""
+
   return table.concat({
     '<div class="omni-footer" id="omni-footer">',
     '<img class="omni-footer-logo" src="' .. logo ..
-    '" alt="' .. organization_name .. ' logo" />',
+    '" alt="' .. organization_name .. ' logo"' .. logo_style .. ' />',
     '<div class="omni-footer-text">',
     '<p>&copy; ' .. year .. ' ' .. organization_name .. '</p>' .. contact_line,
     '</div>',

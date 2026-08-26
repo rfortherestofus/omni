@@ -5,7 +5,12 @@
 // Track footer state so that page break functions can access that
 #let footer-info-state = state(
   "footer-info",
-  (title: none, organization-name: "Omni Institute", page-numbering: "1"),
+  (
+    title: none,
+    organization-name: "Omni Institute",
+    page-numbering: "1",
+    logo-footer-height: 0.75cm,
+  ),
 )
 
 // Mirrors Typst's own margin-dict precedence (left/top > x/y > rest) so the
@@ -26,6 +31,7 @@
   organization-name: "Omni Institute",
   page-numbering: "1",
   logo: "_extensions/omni_report/logo-no-text.png",
+  logo-height: 0.75cm,
   inverted: false,
   with-line: true,
 ) = context {
@@ -42,7 +48,7 @@
     columns: (auto, 1fr, auto),
     column-gutter: 6pt,
     align: horizon,
-    image(logo, height: 0.75cm),
+    image(logo, height: logo-height),
     align(right)[#organization-name Report | #text(fill: muted-color, title) #h(0.5cm)],
     align(right)[#numbering(page-numbering, ..counter(page).get())],
   )
@@ -55,39 +61,52 @@
   organization-name: "Omni Institute",
   cover-pattern: "_extensions/omni_report/pattern-cover-01-yellow.png",
   logo: "_extensions/omni_report/logo.png",
+  logo-height: 29pt,
 ) = {
+  let pattern-height = 48%
   page(
     footer: none,
     background: align(bottom)[
-      #image(cover-pattern, width: 100%, height: 48%, fit: "stretch")
+      #image(cover-pattern, width: 100%, height: pattern-height, fit: "stretch")
     ],
   )[
     #let date-str = "2026-08-01"
     #let parts = date-str.split("-").map(int)
     #let d = datetime(year: parts.at(0), month: parts.at(1), day: parts.at(2))
     #let display-date = d.display("[month repr:long] [year]")
-    #grid(
-      columns: (1fr, 1fr),
-      align(left + top)[#image(logo, width: 110pt)],
-      align(right + top)[
-        #text(size: 10pt, tracking: 1pt, font: "Sometype Mono")[#upper[#display-date]]
-      ],
-    )
-    #v(1.4in)
-    #text(
-      size: 10pt,
-      fill: brand-color.at("primary"),
-      tracking: 1pt,
-    )[#organization-name Report]
-    #v(0.8cm, weak: true)
-    #heading(level: 1, outlined: false, text(size: 30pt, weight: "bold")[#par(
-      leading: 0.5cm,
-      title,
-    )])
-    #v(3.5em)
-    #line(length: 40%, stroke: 1pt + brand-color.at("periwinkle-200"))
-    #v(7mm, weak: true)
-    #text(size: 14pt, weight: "bold", fill: brand-color.at("primary"))[#subtitle]
+    #context {
+      // Everything above the pattern must fit between the top margin and
+      // where the pattern starts, since a taller logo (e.g. CSI's) would
+      // otherwise push the block below it down into the pattern. `buffer`
+      // reserves a bit of breathing room below the subtitle
+      let m = resolve-margin(appendix-margin-state.get())
+      let buffer = 8mm
+      let safe-height = page.height * (100% - pattern-height) - m.top - buffer
+      box(width: 100%, height: safe-height)[
+        #grid(
+          columns: (1fr, 1fr),
+          align(left + top)[#image(logo, height: logo-height)],
+          align(right + top)[
+            #text(size: 10pt, tracking: 1pt, font: "Sometype Mono")[#upper[#display-date]]
+          ],
+        )
+        #v(1fr)
+        #text(
+          size: 10pt,
+          fill: brand-color.at("primary"),
+          tracking: 1pt,
+        )[#organization-name Report]
+        #v(0.8cm, weak: true)
+        #heading(level: 1, outlined: false, text(size: 30pt, weight: "bold")[#par(
+          leading: 0.5cm,
+          title,
+        )])
+        #v(3.5em)
+        #line(length: 40%, stroke: 1pt + brand-color.at("periwinkle-200"))
+        #v(7mm, weak: true)
+        #text(size: 14pt, weight: "bold", fill: brand-color.at("primary"))[#subtitle]
+      ]
+    }
   ]
 }
 
@@ -114,7 +133,10 @@
       tracking: 1pt,
     )[#organization-name Report]
     #v(7mm, weak: true)
-    #heading(level: 1, outlined: false, text(size: 25.5pt)[#par(leading: 0.5cm, title-display)])
+    #heading(level: 1, outlined: false, text(size: 25.5pt)[#par(
+      leading: 0.5cm,
+      title-display,
+    )])
     #v(0.3em)
     #heading(level: 2, outlined: false)[#subtitle]
     #v(1.5em)
@@ -203,6 +225,7 @@
         organization-name: info.organization-name,
         page-numbering: info.page-numbering,
         logo: "_extensions/omni_report/logo-no-text-transparent.png",
+        logo-height: info.logo-footer-height,
         inverted: true,
         with-line: false,
       )

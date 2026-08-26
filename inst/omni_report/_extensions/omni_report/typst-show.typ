@@ -103,6 +103,18 @@ $endif$
 $if(organization-name)$
   organization-name: $organization-name$,
 $endif$
+$if(logo-ref)$
+  logo-ref: $logo-ref$,
+$endif$
+$if(logo-icon-ref)$
+  logo-icon-ref: $logo-icon-ref$,
+$endif$
+$if(logo-height)$
+  logo-height: $logo-height$,
+$endif$
+$if(logo-footer-height)$
+  logo-footer-height: $logo-footer-height$,
+$endif$
 $if(cover-pattern)$
   cover-pattern: "_extensions/omni_report/" + $cover-pattern$ + ".png",
 $endif$
