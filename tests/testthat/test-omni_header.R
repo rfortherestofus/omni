@@ -142,7 +142,11 @@ test_that("omni_header's caption is quieter than the subtitle, not louder", {
     finding_keyword = "second"
   )
   base <- unclass(h[[2]]$plot.caption$style)[[1]]$base
-  expect_equal(base$size, 12)
+  # 11pt, the brand floor for figure text. The style's base size does not
+  # drive rendering on its own (element_marquee()'s own size wins, which is
+  # what the size test below covers), but the two are kept in agreement so
+  # reading either one tells the truth.
+  expect_equal(base$size, 11)
   expect_equal(base$weight, 400) # normal, not 700/bold
   expect_true(base$italic)
 })
@@ -202,7 +206,7 @@ test_that("every marquee header slot sets size on the element, not only the styl
   th <- ggplot2::ggplot_build(hdr)$plot$theme
   expect_equal(ggplot2::calc_element("plot.title", th)$size, 18)
   expect_equal(ggplot2::calc_element("plot.subtitle", th)$size, 13)
-  expect_equal(ggplot2::calc_element("plot.caption", th)$size, 12)
+  expect_equal(ggplot2::calc_element("plot.caption", th)$size, 11)
 
   only <- ggplot2::ggplot(mtcars, ggplot2::aes(wt, mpg)) +
     ggplot2::geom_point() + theme_omni() +
@@ -210,7 +214,7 @@ test_that("every marquee header slot sets size on the element, not only the styl
   th2 <- ggplot2::ggplot_build(only)$plot$theme
   expect_equal(ggplot2::calc_element("plot.title", th2)$size, 13)
   expect_equal(ggplot2::calc_element("plot.subtitle", th2)$size, 13)
-  expect_equal(ggplot2::calc_element("plot.caption", th2)$size, 12)
+  expect_equal(ggplot2::calc_element("plot.caption", th2)$size, 11)
 })
 
 test_that("primary_size actually changes the title size", {

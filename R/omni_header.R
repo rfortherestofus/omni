@@ -297,7 +297,11 @@ omni_header <- function(
         width = 1,
         hjust = 0,
         colour = hex_gray,
-        size = 12,
+        # 11pt is the brand floor: no figure text goes below it. The
+        # secondary finding and the source/N line are two paragraphs of
+        # this one slot, so both take it, which matches the training
+        # template where those two lines are the same size.
+        size = 11,
         style = .omni_caption_style()
       )
     )

@@ -54,7 +54,7 @@
   .omni_marquee_style() |>
     marquee::modify_style(
       "base",
-      size = 12,
+      size = 11,
       weight = "normal",
       italic = TRUE
     )
@@ -166,7 +166,7 @@ theme_omni <- function(
       plot.caption = marquee::element_marquee(
         width = 1,
         hjust = 0,
-        size = 12,
+        size = 11,
         style = .omni_caption_style()
       ),
       plot.margin = margin(
