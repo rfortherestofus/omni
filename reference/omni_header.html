@@ -62,7 +62,7 @@ omit it. Text-only and geometry-agnostic; pair with [omni_baseline()] and
 <span>  n <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  color <span class="op">=</span> <span class="st">"orange-red-600"</span>,</span>
 <span>  primary_size <span class="op">=</span> <span class="fl">18</span>,</span>
-<span>  eyebrow_size <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  eyebrow_size <span class="op">=</span> <span class="fl">11</span>,</span>
 <span>  eyebrow_gap <span class="op">=</span> <span class="fl">0</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -108,7 +108,11 @@ omit it. Text-only and geometry-agnostic; pair with [omni_baseline()] and
 
 
 <dt id="arg-primary-size-eyebrow-size">primary_size, eyebrow_size<a class="anchor" aria-label="anchor" href="#arg-primary-size-eyebrow-size"></a></dt>
-<dd><p>Font sizes in pt.</p></dd>
+<dd><p>Font sizes in pt. The eyebrow defaults to 11, the
+smallest size the brand allows in a figure. It is set at the floor rather than
+below it because it is the only ALL CAPS element on the chart, and uppercase
+removes the ascender and descender cues readers use to recognise word shapes,
+so it needs more size than mixed-case text for equal legibility.</p></dd>
 
 
 <dt id="arg-eyebrow-gap">eyebrow_gap<a class="anchor" aria-label="anchor" href="#arg-eyebrow-gap"></a></dt>

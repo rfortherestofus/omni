@@ -239,6 +239,19 @@
   This is a correction toward the brand standard rather than a
   preference, but it is visible and will shift layouts.
 
+- `eyebrow_size` now defaults to 11pt rather than 10. Not a bug fix;
+  `eyebrow_size` always worked. The eyebrow was the only element sitting
+  below the brand’s 11pt floor for figure text, and it is the one
+  element that can least afford it: it is the only ALL CAPS text on a
+  chart, and uppercase removes the ascender and descender cues readers
+  use to recognise word shapes, so it needs more size than mixed case
+  for equal legibility. Measuring the training template agrees -
+  anchoring the source note at 11pt puts its eyebrow near 11.8pt. This
+  is a legibility and hierarchy judgement, not a contrast fix: at both
+  10 and 11pt bold the eyebrow is below the WCAG large-text cutoff, so
+  chart-gray is held to 4.5:1 either way, and it passes at 4.54:1 before
+  and after.
+
 ### omni_highlight_labels()
 
 - **Breaking:** `color` is now required instead of defaulting to

@@ -21,7 +21,7 @@ omni_header(
   n = NULL,
   color = "orange-red-600",
   primary_size = 18,
-  eyebrow_size = 10,
+  eyebrow_size = 11,
   eyebrow_gap = 0
 )
 ```
@@ -69,7 +69,12 @@ omni_header(
 
 - primary_size, eyebrow_size:
 
-  Font sizes in pt.
+  Font sizes in pt. The eyebrow defaults to 11, the smallest size the
+  brand allows in a figure. It is set at the floor rather than below it
+  because it is the only ALL CAPS element on the chart, and uppercase
+  removes the ascender and descender cues readers use to recognise word
+  shapes, so it needs more size than mixed-case text for equal
+  legibility.
 
 - eyebrow_gap:
 
