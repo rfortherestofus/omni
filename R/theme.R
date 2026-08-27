@@ -109,6 +109,7 @@ theme_omni <- function(
   plot_background_color = "White"
 ) {
   omni_style <- .omni_marquee_style()
+  category_label <- element_text(size = 12, color = omni_colors("chart-gray"))
   # general theme based on theme_minimal
   omni_theme <- theme_minimal(base_family = base_family) +
     theme(
@@ -118,6 +119,9 @@ theme_omni <- function(
         color = omni_colors("steel-blue-200")
       ),
       axis.ticks = element_blank(),
+      # correct already, but only by inheritance from theme_minimal();
+      # pinned so it cannot change out from under the strip label.
+      strip.background = element_blank(),
       axis.title.x = element_text(
         margin = margin(15, 0, 0, 0),
         size = 14,
@@ -128,7 +132,20 @@ theme_omni <- function(
         size = 12,
         color = omni_colors("chart-gray")
       ),
-      axis.text = element_text(size = 12, color = omni_colors("chart-gray")),
+      # A facet strip label is a category label: on a single-panel chart the
+      # category name sits on the discrete axis, on a faceted chart it sits in
+      # the strip. Same job, so the same treatment, and they are built from one
+      # element so they cannot drift apart.
+      #
+      # strip.text was the last text element theme_omni() did not govern. Left
+      # unset it inherited theme_minimal()'s default, which resolves to 8.8pt
+      # (rel(0.8) on base_size 11) at #1a1a1a - smaller than the 12pt axis text
+      # beside it but far darker, and darkness wins perceptually, so strip
+      # labels drew more attention than the axis while being physically
+      # smaller. That inverts the intended hierarchy, and nothing failed
+      # loudly: it just rendered at a ggplot2 default that looked plausible.
+      axis.text = category_label,
+      strip.text = category_label,
       plot.title = marquee::element_marquee(
         margin = margin(0, 0, 0, 0),
         color = "#666665",

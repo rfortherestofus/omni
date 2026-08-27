@@ -245,6 +245,31 @@ test_that("primary_size actually changes the title size", {
   }
 })
 
+test_that("strip.text matches axis.text, so facet labels are governed by the theme", {
+  # strip.text was the last text element theme_omni() did not set. Unset, it
+  # inherited theme_minimal()'s default: 8.8pt (rel(0.8) on base_size 11) at
+  # #1a1a1a, against the 12pt #767676 axis text beside it. Smaller but far
+  # darker, and darkness wins perceptually, so strip labels drew MORE attention
+  # than the axis while being physically smaller - the inverse of the intended
+  # hierarchy, with nothing failing loudly.
+  #
+  # A strip label is a category label: same job as a discrete axis label, so
+  # the same treatment. Both are built from one element in theme_omni() so they
+  # cannot drift apart, which is the failure this file keeps re-testing.
+  th <- theme_omni()
+  axis <- ggplot2::calc_element("axis.text", th)
+  strip <- ggplot2::calc_element("strip.text", th)
+
+  expect_equal(strip$size, 12)
+  expect_equal(strip$colour, unname(omni_colors("chart-gray")))
+  # and the point of the fix: they agree
+  expect_equal(strip$size, axis$size)
+  expect_equal(strip$colour, axis$colour)
+
+  # no boxes around strip labels
+  expect_s3_class(ggplot2::calc_element("strip.background", th), "element_blank")
+})
+
 test_that("theme_omni and omni_header agree on caption styling", {
   # These two set plot.caption independently; they have drifted apart twice
   # (once on color, once on size/weight). Same helper, same result.
