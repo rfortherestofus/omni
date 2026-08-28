@@ -1,5 +1,29 @@
 # omni 1.1.0
 
+## PDF report running footer
+
+* A long report title no longer costs you the page number. paged.js sizes the
+  bottom margin boxes from their content, so a running title wide enough to
+  overrun its track pushed `@bottom-right` off the page: at roughly 53
+  characters the page number slid into the trim margin, and past about 68 it
+  disappeared altogether while the title itself ran off the paper. The centre
+  box is now clamped to the width it already occupied, so every title that fit
+  before is positioned exactly as before - measured at 1pt - and only titles
+  that would have overflowed are truncated with an ellipsis.
+
+* New `footer_title` argument to `pdf_report()`, for reports whose title is too
+  long for the footer and would otherwise be truncated. Set it in the YAML for
+  a one-off report, or pass it through `output_options` when rendering the same
+  template once per site:
+
+  ```r
+  rmarkdown::render(
+    "template.Rmd",
+    params = list(site = "Adams"),
+    output_options = list(footer_title = "Adams County No Wrong Door Evaluation")
+  )
+  ```
+
 ## PDF report cover page
 
 * The title page and running footer now show the real title when the title is

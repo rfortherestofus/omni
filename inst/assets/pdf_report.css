@@ -80,6 +80,27 @@
   white-space: nowrap;
 }
 
+/* Stop a long running title from displacing the page number.
+
+   paged.js sizes the bottom margin boxes from their content, so a centre box
+   wide enough to overrun its track pushes @bottom-right off the page and the
+   page number is lost. Clamping the centre box to the width it already
+   occupies keeps every title that fits today in exactly the same position and
+   truncates only the ones that would have overflowed.
+
+   The 2in indent on @bottom-center above counts towards this width, so the
+   usable text width is 6.67in - 2in. Keep the two values in step. */
+.pagedjs_pagebox .pagedjs_margin-bottom-center {
+  max-width: 6.67in;
+}
+
+.pagedjs_page .pagedjs_margin-bottom-center > .pagedjs_margin-content {
+  max-width: 6.67in;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 h1.title {
   string-set: h1-title content(text);
 }
