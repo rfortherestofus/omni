@@ -14,9 +14,10 @@ omni_header(
   source = NULL,
   n = NULL,
   color = "orange-red-600",
-  primary_size = 18,
+  primary_size = 14,
   eyebrow_size = 11,
-  eyebrow_gap = 0
+  eyebrow_gap = 0,
+  eyebrow_color = NULL
 )
 }
 \arguments{
@@ -38,7 +39,13 @@ omni_header(
 
 \item{color}{The chart's one highlight color name (title keyword + finding keyword/stripe).}
 
-\item{primary_size, eyebrow_size}{Font sizes in pt. The eyebrow defaults to 11, the
+\item{primary_size, eyebrow_size}{Font sizes in pt. The document scale is
+11/14/18/24 (`Report Template.dotx`), and the defaults put every header
+element on it: the title at 14 (`OmniHeader3`) and the eyebrow at 11
+(`OmniBodyText`), which is also the smallest size the brand allows in a
+figure. The eyebrow sits at that floor rather than below it because it is
+the only ALL CAPS element, and uppercase removes the ascender and descender
+cues readers use to recognise word shapes. The eyebrow defaults to 11, the
 smallest size the brand allows in a figure. It is set at the floor rather than
 below it because it is the only ALL CAPS element on the chart, and uppercase
 removes the ascender and descender cues readers use to recognise word shapes,
@@ -48,6 +55,11 @@ so it needs more size than mixed-case text for equal legibility.}
 Only applies when `top_header` is given. `0` (the default) is as tight as the two lines
 go - the residual gap at `0` is the fonts' own line boxes, which no margin can shrink.
 Does not affect the space below the primary finding.}
+
+\item{eyebrow_color}{Brand colour name for the eyebrow. `NULL` (the default)
+uses the title's navy, which is the brand default: every text style in the
+Word template is `#081C39`. Pass a name to override it without having to
+re-declare `plot.title`, which silently drops the markdown.}
 }
 \value{
 A list of ggplot components (`labs()` + `theme()`).

@@ -38,12 +38,23 @@
 #' apply to every paragraph in the block.
 #'
 #' @noRd
-.omni_title_style <- function(primary_size, eyebrow_size, eyebrow_gap) {
+.omni_title_style <- function(
+  primary_size,
+  eyebrow_size,
+  eyebrow_gap,
+  eyebrow_color = omni_colors("navy")
+) {
+  # weight is "normal", not "bold", for both: every Omni* paragraph style in
+  # Report Template.dotx is non-bold, OmniHeader1/2/3 included (verified by
+  # reading word/styles.xml), so a bold figure title had no counterpart on the
+  # page. The title carries emphasis through size and its coloured keyword, the
+  # eyebrow through ALL CAPS. Value labels stay bold - they sit on a mark, not
+  # in the text hierarchy.
   .omni_marquee_style() |>
     marquee::modify_style(
       "base",
       size = primary_size,
-      weight = "bold",
+      weight = "normal",
       color = omni_colors("navy"),
       lineheight = 1.25,
       margin = marquee::trbl(0, 0, 0)
@@ -51,8 +62,8 @@
     marquee::modify_style(
       "h1",
       size = eyebrow_size,
-      weight = "bold",
-      color = omni_colors("chart-gray"),
+      weight = "normal",
+      color = eyebrow_color,
       margin = marquee::trbl(0, 0, marquee::rem(eyebrow_gap))
     )
 }
@@ -131,11 +142,21 @@
 #' @param source Data source; rendered as `"Source: <source>."`.
 #' @param n Sample size; rendered as `"N = <n>."`.
 #' @param color The chart's one highlight color name (title keyword + finding keyword/stripe).
-#' @param primary_size,eyebrow_size Font sizes in pt. The eyebrow defaults to 11, the
+#' @param primary_size,eyebrow_size Font sizes in pt. The document scale is
+#'   11/14/18/24 (`Report Template.dotx`), and the defaults put every header
+#'   element on it: the title at 14 (`OmniHeader3`) and the eyebrow at 11
+#'   (`OmniBodyText`), which is also the smallest size the brand allows in a
+#'   figure. The eyebrow sits at that floor rather than below it because it is
+#'   the only ALL CAPS element, and uppercase removes the ascender and descender
+#'   cues readers use to recognise word shapes. The eyebrow defaults to 11, the
 #'   smallest size the brand allows in a figure. It is set at the floor rather than
 #'   below it because it is the only ALL CAPS element on the chart, and uppercase
 #'   removes the ascender and descender cues readers use to recognise word shapes,
 #'   so it needs more size than mixed-case text for equal legibility.
+#' @param eyebrow_color Brand colour name for the eyebrow. `NULL` (the default)
+#'   uses the title's navy, which is the brand default: every text style in the
+#'   Word template is `#081C39`. Pass a name to override it without having to
+#'   re-declare `plot.title`, which silently drops the markdown.
 #' @param eyebrow_gap Extra space between the eyebrow and the primary finding, in `rem`.
 #'   Only applies when `top_header` is given. `0` (the default) is as tight as the two lines
 #'   go - the residual gap at `0` is the fonts' own line boxes, which no margin can shrink.
@@ -166,11 +187,15 @@ omni_header <- function(
   source = NULL,
   n = NULL,
   color = "orange-red-600",
-  primary_size = 18,
+  primary_size = 14,
   eyebrow_size = 11,
-  eyebrow_gap = 0
+  eyebrow_gap = 0,
+  eyebrow_color = NULL
 ) {
-  hex_gray <- omni_colors("chart-gray")
+  hex_navy <- omni_colors("navy")
+  # NULL means "same as the title", which is the brand default: every text
+  # style in the Word template is navy. Passing a name overrides it.
+  eyebrow_color <- if (is.null(eyebrow_color)) hex_navy else omni_colors(eyebrow_color)
 
   # --- title: eyebrow (optional) + primary, as marquee markdown ---
   # Size, weight and color come from the style (see .omni_title_style()), so the
@@ -259,7 +284,7 @@ omni_header <- function(
         # before this. Class-level sizes (the h1 eyebrow) were never affected -
         # only `base` loses to the element.
         size = primary_size,
-        style = .omni_title_style(primary_size, eyebrow_size, eyebrow_gap),
+        style = .omni_title_style(primary_size, eyebrow_size, eyebrow_gap, eyebrow_color),
         margin = ggplot2::margin(t = 8, b = 5.3)
       ),
       # marquee, not element_text: this was the last slot where omni_header()
@@ -281,10 +306,12 @@ omni_header <- function(
       plot.subtitle = marquee::element_marquee(
         width = 1,
         hjust = 0,
-        colour = hex_gray,
-        # 13pt is the brand size for the measure description. Set on the
-        # element for the same reason as the title above.
-        size = 13,
+        # navy, not gray: OmniBodyText in the Word template is #081C39, and
+        # every Omni* paragraph style in the file is navy. 11pt for the same
+        # reason - the document scale is 11/14/18/24, and 13 appeared nowhere
+        # in it.
+        colour = hex_navy,
+        size = 11,
         style = .omni_subtitle_style(),
         margin = ggplot2::margin(t = -1.5, b = 4)
       ),
@@ -300,7 +327,9 @@ omni_header <- function(
       plot.caption = marquee::element_marquee(
         width = 1,
         hjust = 0,
-        colour = hex_gray,
+        # navy for the same reason as the subtitle: the secondary finding and
+        # the source/N line are OmniBodyText.
+        colour = hex_navy,
         # 11pt is the brand floor: no figure text goes below it. The
         # secondary finding and the source/N line are two paragraphs of
         # this one slot, so both take it, which matches the training
