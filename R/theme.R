@@ -109,7 +109,12 @@ theme_omni <- function(
   plot_background_color = "White"
 ) {
   omni_style <- .omni_marquee_style()
-  category_label <- element_text(size = 12, color = omni_colors("chart-gray"))
+  # 11pt gray: category labels are chart apparatus rather than prose, so they
+  # take the gray, but they sit on the document scale (11/14/18/24) like
+  # everything else. omni_colors("chart-gray") is #666666, which clears the
+  # 4.5:1 normal-text threshold by 1.24 where the old #767676 cleared it by
+  # 0.04.
+  category_label <- element_text(size = 11, color = omni_colors("chart-gray"))
   # general theme based on theme_minimal
   omni_theme <- theme_minimal(base_family = base_family) +
     theme(
@@ -148,10 +153,13 @@ theme_omni <- function(
       strip.text = category_label,
       plot.title = marquee::element_marquee(
         margin = margin(0, 0, 0, 0),
-        color = "#666665",
+        # navy at 14pt, matching omni_header()'s title and OmniHeader3 in the
+        # Word template. Was "#666665" at 13pt: a raw hex outside the palette,
+        # at a size absent from the document scale (11/14/18/24).
+        color = omni_colors("navy"),
         # see omni_header(): element_marquee()'s own size beats the style base,
         # so a size set only in the style never applies.
-        size = 13,
+        size = 14,
         style = omni_style,
         width = 1
       ),
@@ -159,12 +167,12 @@ theme_omni <- function(
       plot.subtitle = marquee::element_marquee(
         width = 1,
         margin = margin(-4, 0, 0, 0),
-        size = 13,
+        size = 11,
         style = omni_style |>
           marquee::modify_style(
             "base",
-            size = 13,
-            color = "#333333",
+            size = 11,
+            color = omni_colors("navy"),
             weight = "normal"
           )
       ),
@@ -183,6 +191,7 @@ theme_omni <- function(
       plot.caption = marquee::element_marquee(
         width = 1,
         hjust = 0,
+        colour = omni_colors("navy"),
         size = 11,
         style = .omni_caption_style()
       ),

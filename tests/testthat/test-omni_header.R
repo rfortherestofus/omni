@@ -1,5 +1,9 @@
 test_that("chart-gray replaces the old two-gray split", {
-  expect_equal(unname(omni_colors("chart-gray")), "#767676")
+  # #666666, not the old #767676: #767676 clears the 4.5:1 normal-text
+  # threshold by 0.04, #666666 by 1.24. Darker was tested and rejected -
+  # at #555555 the grayscale gap to plum-600 collapses to ~3 L* points,
+  # which breaks the grayscale-separability rule.
+  expect_equal(unname(omni_colors("chart-gray")), "#666666")
   expect_error(omni_colors("bar-gray"))
   expect_error(omni_colors("label-gray"))
 })
@@ -165,7 +169,7 @@ test_that("omni_header's subtitle is a marquee element, matching theme_omni's cl
   expect_equal(sub$hjust, 0)
   # colour is set on the element too: the element's colour overrides the
   # style's base, so leaving it NULL would inherit the active theme's
-  expect_identical(sub$colour, unname(omni_colors("chart-gray")))
+  expect_identical(sub$colour, unname(omni_colors("navy")))
 })
 
 test_that("every marquee header slot wraps, in both functions", {
@@ -204,16 +208,16 @@ test_that("every marquee header slot sets size on the element, not only the styl
     theme_omni() +
     omni_header(primary = "P", measure = "M", finding = "F", source = "s", n = 1)
   th <- ggplot2::ggplot_build(hdr)$plot$theme
-  expect_equal(ggplot2::calc_element("plot.title", th)$size, 18)
-  expect_equal(ggplot2::calc_element("plot.subtitle", th)$size, 13)
+  expect_equal(ggplot2::calc_element("plot.title", th)$size, 14)
+  expect_equal(ggplot2::calc_element("plot.subtitle", th)$size, 11)
   expect_equal(ggplot2::calc_element("plot.caption", th)$size, 11)
 
   only <- ggplot2::ggplot(mtcars, ggplot2::aes(wt, mpg)) +
     ggplot2::geom_point() + theme_omni() +
     ggplot2::labs(title = "T", subtitle = "S", caption = "C")
   th2 <- ggplot2::ggplot_build(only)$plot$theme
-  expect_equal(ggplot2::calc_element("plot.title", th2)$size, 13)
-  expect_equal(ggplot2::calc_element("plot.subtitle", th2)$size, 13)
+  expect_equal(ggplot2::calc_element("plot.title", th2)$size, 14)
+  expect_equal(ggplot2::calc_element("plot.subtitle", th2)$size, 11)
   expect_equal(ggplot2::calc_element("plot.caption", th2)$size, 11)
 })
 
@@ -231,6 +235,31 @@ test_that("the eyebrow defaults to 11pt, the brand floor", {
   # and it still responds to the argument
   h16 <- omni_header(primary = "P", top_header = "EYEBROW", eyebrow_size = 16)
   expect_equal(unclass(h16[[2]]$plot.title$style)[[1]]$h1$size, 16)
+})
+
+test_that("eyebrow_color defaults to the title colour and can be overridden", {
+  # The eyebrow colour was hardcoded inside .omni_title_style()'s h1 class, so
+  # the only way to change it was re-declaring plot.title - the pattern behind
+  # three separate silent bugs. It is now an argument.
+  h <- omni_header(primary = "P", top_header = "E")
+  st <- unclass(h[[2]]$plot.title$style)[[1]]
+  expect_equal(st$h1$color, unname(omni_colors("navy")))
+
+  o <- unclass(omni_header(primary = "P", top_header = "E",
+                           eyebrow_color = "plum-600")[[2]]$plot.title$style)[[1]]
+  expect_equal(o$h1$color, unname(omni_colors("plum-600")))
+
+  # an unknown colour name errors rather than silently producing base-coloured text
+  expect_error(omni_header(primary = "P", top_header = "E", eyebrow_color = "nope"))
+})
+
+test_that("nothing in the header is bold", {
+  # Every Omni* paragraph style in Report Template.dotx is non-bold,
+  # OmniHeader1/2/3 included, so a bold figure title had no counterpart on the
+  # page. 400 is normal weight; 700 would be bold.
+  st <- unclass(omni_header(primary = "P", top_header = "E")[[2]]$plot.title$style)[[1]]
+  expect_equal(st$base$weight, 400)
+  expect_equal(st$h1$weight, 400)
 })
 
 test_that("primary_size actually changes the title size", {
@@ -260,7 +289,7 @@ test_that("strip.text matches axis.text, so facet labels are governed by the the
   axis <- ggplot2::calc_element("axis.text", th)
   strip <- ggplot2::calc_element("strip.text", th)
 
-  expect_equal(strip$size, 12)
+  expect_equal(strip$size, 11)
   expect_equal(strip$colour, unname(omni_colors("chart-gray")))
   # and the point of the fix: they agree
   expect_equal(strip$size, axis$size)

@@ -113,7 +113,7 @@ omni_colors <- function(
     `steel-blue-400` = "#677384",
     `steel-blue-600` = "#405065",
     `navy` = "#081C39",
-    `chart-gray` = "#767676"
+    `chart-gray` = "#666666"
   )
 
   output_colors <- omni_color_vector[colors_sub]
