@@ -1,5 +1,16 @@
 # omni 1.1.0
 
+## PDF report cover page
+
+* The title page and running footer now show the real title when the title is
+  built from inline R code, such as a `title` that switches on `params$site`.
+  `abstract.Rmd` read `rmarkdown::metadata`, which returns the YAML front
+  matter exactly as written, so the inline code was passed through to the cover
+  page as literal text and the `@bottom-center` footer - which takes its string
+  from `h1.title` - inherited it. It now reads the metadata through the new
+  `omni_meta()` helper, which evaluates any inline code first. This mostly
+  affects templates rendered once per site from an iteration script.
+
 ## ggplot color scales
 
 * `scale_fill_omni_discrete()` and `scale_color_omni_discrete()` now use the

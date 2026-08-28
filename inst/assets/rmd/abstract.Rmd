@@ -4,10 +4,10 @@
   </div>
 
   <div class="top-of-abstract">
-  <h1 class="title">`r rmarkdown::metadata$title` </h1>
-  <h1 class="subtitle"> `r rmarkdown::metadata$subtitle` </h1>
+  <h1 class="title">`r omni::omni_meta("title")` </h1>
+  <h1 class="subtitle"> `r omni::omni_meta("subtitle")` </h1>
   <p class="submitted-to">Submitted to:</p>
-  <p class="client-name">`r rmarkdown::metadata$client_name`</p>
+  <p class="client-name">`r omni::omni_meta("client_name")`</p>
   </div>
 
   <div class="end-of-abstract">
@@ -15,9 +15,9 @@
   <p>projects@omni.org</p>
   <span class="acknowledgement">
     <p class="acknowledge">Acknowledgements:</p>
-    <p>Omni Institute wants to thank `r rmarkdown::metadata$acknowledgements` for their contributions to the creation of this report.</p>
+    <p>Omni Institute wants to thank `r omni::omni_meta("acknowledgements")` for their contributions to the creation of this report.</p>
   </span>
   <p class="suggested-citation">Suggested Citation:</p>
-  <p>Omni Institute `r rmarkdown::metadata$report_year`. `r gsub("<br\\s*/?>", " ", rmarkdown::metadata$title)`. Submitted to `r rmarkdown::metadata$client_name`, `r rmarkdown::metadata$client_state`.</p>
+  <p>Omni Institute `r omni::omni_meta("report_year")`. `r gsub("<br\\s*/?>", " ", omni::omni_meta("title"))`. Submitted to `r omni::omni_meta("client_name")`, `r omni::omni_meta("client_state")`.</p>
   </div>
 
