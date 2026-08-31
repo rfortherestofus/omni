@@ -76,17 +76,14 @@
   ]
 }
 
-// Opt-in "eyebrow" label above a heading: a colored dot bullet followed by
-// small uppercase text. Ported from the old Rmd template's .chapter-title
-// CSS; invoked via a `.chapter-dot` fenced div (see filter.lua's Div()).
 #let chapter-dot(body: none, color: rgb("#000000")) = {
-  set text(size: 8pt, weight: 600, tracking: 0.05em)
+  set text(size: 9pt, weight: 500, tracking: 0.05em)
   box(baseline: 35%)[
     #box(width: 6pt, height: 6pt, radius: 3pt, fill: color)
     #h(6pt)
     #upper(body)
   ]
-  v(0.2cm, weak: true)
+  v(0.35cm, weak: true)
 }
 
 #let icon-badge(svg: none, size: 50pt, bg: rgb("#000000")) = {
