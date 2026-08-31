@@ -185,7 +185,22 @@
 
   page()[
     #show outline.entry: it => {
-      if it.level == 2 {
+      if it.level == 1 {
+        let padding_sections = 0.4cm
+        v(padding_sections, weak: true)
+        line(length: 100%, stroke: 1pt + brand-color.at("primary"))
+        v(0.2cm, weak: true)
+        show link: set text(fill: brand-color.at("primary"))
+        text(
+          fill: brand-color.at("primary"),
+          size: 16pt,
+          weight: "bold",
+          tracking: 0.5pt,
+        )[
+          #upper(link(it.element.location(), it.body())) #h(1fr) #it.page()
+        ]
+        v(padding_sections, weak: true)
+      } else if it.level == 2 {
         let padding_sections = 0.3cm
         v(padding_sections, weak: true)
         line(length: 100%, stroke: 0.5pt + brand-color.at("steel-blue-200"))
@@ -234,7 +249,7 @@
     #set text(fill: white, size: 22pt)
     #show heading: set text(fill: white)
     #v(5fr)
-    #heading(level: 1, outlined: false, title)
+    #heading(level: 1, outlined: true, title)
     #v(0.75fr)
   ]
 }
