@@ -249,7 +249,7 @@
     #set text(fill: white, size: 22pt)
     #show heading: set text(fill: white)
     #v(5fr)
-    #heading(level: 1, outlined: true, title)
+    #heading(level: 1, outlined: true, text(size: 30pt, title))
     #v(0.75fr)
   ]
 }
