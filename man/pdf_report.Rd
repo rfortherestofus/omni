@@ -17,6 +17,7 @@ pdf_report(
   reduce_margin_top_bottom = FALSE,
   use_csi_style = FALSE,
   hide_acknowledgement = FALSE,
+  footer_title = NULL,
   ...
 )
 }
@@ -44,6 +45,11 @@ pdf_report(
 \item{use_csi_style}{Whether to use CSI (Center for Social Investment) styling. This basically change logos and text in the footer.}
 
 \item{hide_acknowledgement}{Whether to remove the acknowledgement section.}
+
+\item{footer_title}{Title to show in the running footer, when the report
+title is too long to fit there. Defaults to `NULL`, which uses the report
+title. A title that does not fit the footer is truncated with an ellipsis,
+so set this for reports whose title runs past roughly 53 characters.}
 
 \item{...}{Additional arguments passed to `pagedown::html_paged()`}
 }
