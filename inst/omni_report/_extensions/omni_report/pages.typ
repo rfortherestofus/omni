@@ -193,7 +193,7 @@
         show link: set text(fill: brand-color.at("primary"))
         text(
           fill: brand-color.at("primary"),
-          size: 14pt,
+          size: 13pt,
           weight: "bold",
           tracking: 0.5pt,
         )[
