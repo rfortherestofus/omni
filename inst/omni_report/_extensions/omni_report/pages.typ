@@ -193,7 +193,7 @@
         show link: set text(fill: brand-color.at("primary"))
         text(
           fill: brand-color.at("primary"),
-          size: 16pt,
+          size: 14pt,
           weight: "bold",
           tracking: 0.5pt,
         )[
@@ -248,8 +248,9 @@
   )[
     #set text(fill: white, size: 22pt)
     #show heading: set text(fill: white)
+    #show heading.where(level: 1): set text(size: 30pt)
     #v(5fr)
-    #heading(level: 1, outlined: true, text(size: 30pt, title))
+    #heading(level: 1, outlined: true, title)
     #v(0.75fr)
   ]
 }

@@ -8,9 +8,9 @@ execute:
     message: false
     echo: false
 format:
-    omni_report-html:
-      use-csi-style: false
-      contact-email: projects@omni.org
+    # omni_report-html:
+    #   use-csi-style: false
+    #   contact-email: projects@omni.org
     omni_report-typst:
       cover-page: true
       title-page: true
@@ -168,6 +168,13 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum 
 
 # Here is one more colored page break with a long title to see how the headline behaves when long {.pattern-07-olive}
+
+## And some section
+
+
+### Just to have...
+
+### ...the table of contents not look silly
 
 # A section break without a pattern
 
