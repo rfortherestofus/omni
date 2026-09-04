@@ -2,9 +2,7 @@
 
 ### Page breaks
 
-In the PDF (Typst) output, every level 1 and level 2 heading starts on a new
-page. A level 1 heading can additionally be turned into a full-page colored
-divider by tagging it with one of the pattern classes:
+In the PDF (Typst) output, every level 1 heading starts on a new page (this is the "section break" level) and appears in the table of contents, styled more prominently than level 2 entries. Level 2 headings do not force a page break and flow naturally with surrounding content. A level 1 heading can additionally be turned into a full-page colored divider by tagging it with one of the pattern classes:
 
 ```markdown
 # Key Findings {.pattern-01-yellow}
@@ -27,6 +25,31 @@ appears in white in the lower third of the page. Available patterns:
 
 A level 1 heading without a pattern class simply starts a new page. The classes
 have no effect on HTML output.
+
+A level 2 heading tagged with `.appendix` (e.g. `## Appendix A {.appendix}`)
+also starts a new page, since appendix sections are conventionally split one
+per page; this is the one exception to "only level 1 forces a page break".
+
+### Chapter dot
+
+An optional "eyebrow" label — a small colored dot bullet followed by
+uppercase text — can be placed above a heading by wrapping it in a
+`.chapter-dot` fenced div with a `.dot-<color>` class:
+
+```markdown
+::: {.chapter-dot .dot-orange-red-600}
+Chapter title here
+:::
+
+## The actual heading
+```
+
+`<color>` accepts the same seven brand hues as the page-break patterns
+(`plum`, `orange-red`, `olive-green`, `teal`, `golden-yellow`, `periwinkle`,
+`steel-blue`), each with an optional `-200`/`-400`/`-600` shade suffix (e.g.
+`dot-teal-200`); a bare `dot-<color>` (no suffix, e.g. `dot-plum`) uses the
+`-600` (darkest) shade. This is off by default — it's purely opt-in per
+heading, unlike the level 1/2 page-break behavior above.
 
 ### Frontmatter pages (PDF)
 

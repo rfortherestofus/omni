@@ -94,13 +94,18 @@
   )
   show heading: set par(leading: heading-line-height)
   show heading: it => if heading-decoration == "underline" { underline(it) } else { it }
+  show heading.where(level: 1): it => {
+    set text(size: 24pt)
+    it
+    v(0.3cm)
+  }
   show heading.where(level: 2): it => {
-    set text(size: 1.4em)
+    set text(size: 18pt)
     it
     v(0.3cm)
   }
   show heading.where(level: 3): it => {
-    set text(size: 1.2em)
+    set text(size: 14pt)
     it
     v(0.1cm)
   }
