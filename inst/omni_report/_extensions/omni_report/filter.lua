@@ -86,8 +86,19 @@ function Header(el)
     )
   end
 
-  -- Sections start on a fresh page.
-  if el.level <= 2 then
+  -- Later appendix headings (2nd, 3rd, ...) don't fall under the level == 1
+  -- rule below, since they're level 2 -- but each one still needs its own
+  -- fresh page like the first did (which gets it from the banner above).
+  if el.classes:includes("appendix") then
+    return {
+      pandoc.RawBlock("typst", "#pagebreak(weak: true)"),
+      el,
+    }
+  end
+
+  -- Section breaks (level 1) start on a fresh page. Level 2 ("h1" body
+  -- headings) flow naturally with surrounding content.
+  if el.level == 1 then
     return {
       pandoc.RawBlock("typst", "#pagebreak(weak: true)"),
       el,
@@ -97,9 +108,63 @@ function Header(el)
   return el
 end
 
+-- brand-color keys for the 7 hues x 3 shades used by the opt-in chapter-dot
+-- element (see design_elements.typ). A bare "dot-<hue>" (no shade) defaults
+-- to the -600 (darkest) shade, matching the legacy pdf_report.css default.
+-- The three deprecated aliases from that stylesheet are kept for parity with
+-- content ported from the old Rmd template.
+local chapter_dot_colors = {
+  ["dot-plum"] = "plum-600",
+  ["dot-plum-200"] = "plum-200",
+  ["dot-plum-400"] = "plum-400",
+  ["dot-plum-600"] = "plum-600",
+  ["dot-orange-red"] = "orange-red-600",
+  ["dot-orange-red-200"] = "orange-red-200",
+  ["dot-orange-red-400"] = "orange-red-400",
+  ["dot-orange-red-600"] = "orange-red-600",
+  ["dot-olive-green"] = "olive-green-600",
+  ["dot-olive-green-200"] = "olive-green-200",
+  ["dot-olive-green-400"] = "olive-green-400",
+  ["dot-olive-green-600"] = "olive-green-600",
+  ["dot-teal"] = "teal-600",
+  ["dot-teal-200"] = "teal-200",
+  ["dot-teal-400"] = "teal-400",
+  ["dot-teal-600"] = "teal-600",
+  ["dot-golden-yellow"] = "golden-yellow-600",
+  ["dot-golden-yellow-200"] = "golden-yellow-200",
+  ["dot-golden-yellow-400"] = "golden-yellow-400",
+  ["dot-golden-yellow-600"] = "golden-yellow-600",
+  ["dot-periwinkle"] = "periwinkle-600",
+  ["dot-periwinkle-200"] = "periwinkle-200",
+  ["dot-periwinkle-400"] = "periwinkle-400",
+  ["dot-periwinkle-600"] = "periwinkle-600",
+  ["dot-steel-blue"] = "steel-blue-600",
+  ["dot-steel-blue-200"] = "steel-blue-200",
+  ["dot-steel-blue-400"] = "steel-blue-400",
+  ["dot-steel-blue-600"] = "steel-blue-600",
+  -- deprecated legacy aliases (pdf_report.css backward-compat classes)
+  ["dot-purple"] = "plum-600",
+  ["dot-green"] = "olive-green-600",
+  ["dot-red"] = "orange-red-600",
+}
+
 function Div(el)
   if not quarto.doc.is_format("typst") then
     return el
+  end
+
+  if el.classes:includes("chapter-dot") then
+    local brand_key = "primary"
+    for _, class in ipairs(el.classes) do
+      if chapter_dot_colors[class] then
+        brand_key = chapter_dot_colors[class]
+      end
+    end
+    local inner = pandoc.write(pandoc.Pandoc(el.content), "typst"):gsub("%s+$", "")
+    return pandoc.RawBlock(
+      "typst",
+      '#chapter-dot(body: [' .. inner .. '], color: brand-color.at("' .. brand_key .. '"))'
+    )
   end
 
   if not el.classes:includes("columns") then

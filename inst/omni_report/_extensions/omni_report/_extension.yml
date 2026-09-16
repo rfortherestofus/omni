@@ -9,6 +9,7 @@ contributes:
       toc-title: "Table of Contents"
       contact-email: projects@omni.org
       start-page-number: 1
+      shift-heading-level-by: 0
       use-csi-style: false
       template: template.typ
       template-partials:

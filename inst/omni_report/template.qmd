@@ -8,9 +8,9 @@ execute:
     message: false
     echo: false
 format:
-    omni_report-html:
-      use-csi-style: false
-      contact-email: projects@omni.org
+    # omni_report-html:
+    #   use-csi-style: false
+    #   contact-email: projects@omni.org
     omni_report-typst:
       cover-page: true
       title-page: true
@@ -169,9 +169,30 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 # Here is one more colored page break with a long title to see how the headline behaves when long {.pattern-07-olive}
 
+## And some section
+
+
+### Just to have...
+
+### ...the table of contents not look silly
+
+# A section break without a pattern
+
+A level 1 heading without a `.pattern-XX` class still starts a new page and still appears in the table of contents, but without the full-page colored divider.
+
 ## Additional Design Elements
 
 Again, to see how these are made, take a look at the R Markdown document.
+
+::: {.chapter-dot .dot-teal-600}
+Optional chapter label
+:::
+
+### Chapter Dot
+
+An opt-in "eyebrow" label with a colored dot bullet, placed above a heading
+via a `.chapter-dot .dot-<color>[-<shade>]` fenced div. See the README for
+the full list of color/shade classes.
 
 #### Number Emphasis
 
