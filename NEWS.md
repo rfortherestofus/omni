@@ -1,3 +1,5 @@
+# omni 1.2.0
+
 # omni 1.1.0
 
 ## ggplot color scales
