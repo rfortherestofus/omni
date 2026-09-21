@@ -14,6 +14,7 @@
   title: none,
   title-display: none,
   subtitle: none,
+  secondary-subtitle: none,
   authors: none,
   date: none,
   abstract: none,
@@ -115,6 +116,7 @@
     create-cover-page(
       title: title-display,
       subtitle: subtitle,
+      secondary-subtitle: secondary-subtitle,
       date: date,
       organization-name: organization-name,
       cover-pattern: cover-pattern,

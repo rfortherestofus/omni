@@ -22,6 +22,9 @@ $endif$
 $if(subtitle)$
   subtitle: [$subtitle$],
 $endif$
+$if(secondary-subtitle)$
+  secondary-subtitle: [$secondary-subtitle$],
+$endif$
 $if(by-author)$
   authors: (
 $for(by-author)$

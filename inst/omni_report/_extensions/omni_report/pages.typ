@@ -57,6 +57,7 @@
 #let create-cover-page(
   title: none,
   subtitle: none,
+  secondary-subtitle: none,
   date: none,
   organization-name: "Omni Institute",
   cover-pattern: "_extensions/omni_report/pattern-cover-01-yellow.png",
@@ -101,10 +102,20 @@
           leading: 0.5cm,
           title,
         )])
-        #v(3.5em)
-        #line(length: 40%, stroke: 1pt + brand-color.at("periwinkle-200"))
-        #v(7mm, weak: true)
-        #text(size: 14pt, weight: "bold", fill: brand-color.at("primary"))[#subtitle]
+        #if subtitle != none {
+          v(0.5cm, weak: true)
+          text(size: 20pt, weight: "bold", fill: brand-color.at("secondary"))[#subtitle]
+        }
+        #if secondary-subtitle != none {
+          v(0.9cm, weak: true)
+          line(length: 40%, stroke: 1pt + brand-color.at("periwinkle-200"))
+          v(7mm, weak: true)
+          text(
+            size: 16pt,
+            weight: "bold",
+            fill: brand-color.at("primary"),
+          )[#secondary-subtitle]
+        }
       ]
     }
   ]
