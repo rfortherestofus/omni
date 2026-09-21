@@ -125,23 +125,21 @@
 ) = {
   let title-display = if title-display == none { title } else { title-display }
   page()[
-    #show heading.where(level: 1): set text(size: 25.5pt)
-    #show heading.where(level: 2): set text(size: 13pt, weight: "regular")
     #text(
       size: 10pt,
       fill: brand-color.at("secondary"),
       tracking: 1pt,
     )[#organization-name Report]
     #v(7mm, weak: true)
-    #heading(level: 1, outlined: false, text(size: 25.5pt)[#par(
+    #heading(level: 1, outlined: false, text(size: 25.5pt, weight: "bold")[#par(
       leading: 0.5cm,
       title-display,
     )])
     #v(0.3em)
-    #heading(level: 2, outlined: false)[#subtitle]
+    #heading(level: 2, outlined: false)[#text(size: 13pt, weight: "bold")[#subtitle]]
     #v(1.5em)
     #if client-name != none {
-      [Submitted to:]
+      text(weight: "bold")[Submitted to:]
       v(2pt)
       client-name
       v(1fr)

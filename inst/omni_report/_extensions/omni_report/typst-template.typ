@@ -19,13 +19,13 @@
   abstract: none,
   abstract-title: none,
   cols: 1,
-  margin: (x: 0.6in, top: 1.1in, bottom: 1in),
+  margin: (x: 1in, top: 1.1in, bottom: 1in),
   paper: "us-letter",
   lang: "en",
   region: "US",
   font: "libertinus serif",
   fontsize: 11pt,
-  line-height: 0.65em,
+  line-height: 0.52em,
   title-size: 30pt,
   subtitle-size: 14pt,
   heading-family: "libertinus serif",
@@ -83,7 +83,7 @@
     page-numbering: page-numbering,
     logo-footer-height: logo-footer-height,
   ))
-  set par(justify: true, leading: line-height)
+  set par(justify: false, leading: line-height)
   set text(lang: lang, region: region, font: font, size: fontsize)
   set heading(numbering: section-numbering)
   show heading: set text(
@@ -100,12 +100,12 @@
     v(0.3cm)
   }
   show heading.where(level: 2): it => {
-    set text(size: 18pt)
+    set text(size: 18pt, weight: "regular")
     it
     v(0.3cm)
   }
   show heading.where(level: 3): it => {
-    set text(size: 14pt)
+    set text(size: 14pt, weight: "regular")
     it
     v(0.1cm)
   }
@@ -158,3 +158,16 @@
   inset: 6pt,
   stroke: none,
 )
+
+// Left-align table captions with the table's own left edge instead of
+// centering them on the page. Quarto wraps cross-referenceable tables in a
+// figure with kind "quarto-float-tbl" (a string), not typst's native
+// `table` element, so both kinds are matched here.
+#show figure.where(kind: table): fig => {
+  show figure.caption: it => align(left, it)
+  fig
+}
+#show figure.where(kind: "quarto-float-tbl"): fig => {
+  show figure.caption: it => align(left, it)
+  fig
+}
