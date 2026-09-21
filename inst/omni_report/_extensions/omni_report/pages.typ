@@ -57,6 +57,7 @@
 #let create-cover-page(
   title: none,
   subtitle: none,
+  secondary-subtitle: none,
   date: none,
   organization-name: "Omni Institute",
   cover-pattern: "_extensions/omni_report/pattern-cover-01-yellow.png",
@@ -101,10 +102,20 @@
           leading: 0.5cm,
           title,
         )])
-        #v(3.5em)
-        #line(length: 40%, stroke: 1pt + brand-color.at("periwinkle-200"))
-        #v(7mm, weak: true)
-        #text(size: 14pt, weight: "bold", fill: brand-color.at("primary"))[#subtitle]
+        #if subtitle != none {
+          v(0.5cm, weak: true)
+          text(size: 20pt, weight: "bold", fill: brand-color.at("secondary"))[#subtitle]
+        }
+        #if secondary-subtitle != none {
+          v(0.9cm, weak: true)
+          line(length: 40%, stroke: 1pt + brand-color.at("periwinkle-200"))
+          v(7mm, weak: true)
+          text(
+            size: 16pt,
+            weight: "bold",
+            fill: brand-color.at("primary"),
+          )[#secondary-subtitle]
+        }
       ]
     }
   ]
@@ -125,23 +136,21 @@
 ) = {
   let title-display = if title-display == none { title } else { title-display }
   page()[
-    #show heading.where(level: 1): set text(size: 25.5pt)
-    #show heading.where(level: 2): set text(size: 13pt, weight: "regular")
     #text(
       size: 10pt,
       fill: brand-color.at("secondary"),
       tracking: 1pt,
     )[#organization-name Report]
     #v(7mm, weak: true)
-    #heading(level: 1, outlined: false, text(size: 25.5pt)[#par(
+    #heading(level: 1, outlined: false, text(size: 25.5pt, weight: "bold")[#par(
       leading: 0.5cm,
       title-display,
     )])
     #v(0.3em)
-    #heading(level: 2, outlined: false)[#subtitle]
+    #heading(level: 2, outlined: false)[#text(size: 13pt, weight: "bold")[#subtitle]]
     #v(1.5em)
     #if client-name != none {
-      [Submitted to:]
+      text(weight: "bold")[Submitted to:]
       v(2pt)
       client-name
       v(1fr)

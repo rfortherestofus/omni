@@ -78,6 +78,16 @@ format:
 | `acknowledgements`  | Names thanked on the title page (supports markdown, e.g. `**bold**`) | none                      |
 | `report-year`       | Year used in the suggested citation                                  | none                      |
 
+`title` and `subtitle` are standard Quarto document metadata (not `omni_report-typst` options), rendered on the cover page below the organization label. `secondary-subtitle` is another standard top-level field — an optional second line shown below a divider, under `subtitle`, on the cover page:
+
+```yaml
+title: "Report Title Goes Here"
+subtitle: "Optional Sub-Headline"
+secondary-subtitle: "Optional Other Sub-Headline Goes Here"
+```
+
+Both `subtitle` and `secondary-subtitle` are optional; leaving either one out of the metadata hides that line (and, when `secondary-subtitle` is omitted, the divider line beneath `subtitle` too).
+
 `cover-pattern` accepts the same seven colors as the page-break patterns
 above, with a `pattern-cover-` prefix instead of `pattern-`:
 
