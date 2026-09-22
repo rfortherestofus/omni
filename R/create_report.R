@@ -7,11 +7,6 @@
 #' @param output_dir New directory that will contain the Quarto
 #' report files.
 #' @param format Report output format, either `"pdf"` or `"html"`.
-#' @param brand Optional Brand object for custom branding
-#' (created with `Brand()`. Default template available via
-#' `brand_template()`). If not specified uses default _brand.yml file.
-#' Fonts with `source = "system"` are copied into a `fonts/` folder of
-#' the report and declared in `_brand.yml` so that Quarto embeds them.
 #' @param use_csi_logos Boolean that determines whether CSI logos will be
 #' used. Defaults to `FALSE`.
 #'
@@ -24,7 +19,6 @@
 create_report <- function(
   output_dir,
   format = c("pdf", "html"),
-  brand = NULL,
   use_csi_logos = FALSE
 ) {
   format <- match.arg(format)
@@ -42,16 +36,6 @@ create_report <- function(
   ## Set report format in template.qmd -----
   path_template_qmd <- fs::path(output_dir_full, "template.qmd")
   set_report_format_in_qmd(path_template_qmd, format, use_csi_logos)
-
-  ## Branding -----
-  is_custom_branding <- write_brand_yml(
-    output_dir_full,
-    brand,
-    fonts_as_files = TRUE
-  )
-  if (is_custom_branding) {
-    copy_custom_font_files(output_dir_full, brand)
-  }
 
   if (rlang::is_interactive()) {
     file.edit(path_template_qmd)
@@ -100,7 +84,10 @@ set_report_format_in_qmd <- function(path_template_qmd, format, use_csi_logos) {
 
   ## Swap commented and active lines if needed -----
   format_key <- c(pdf = "omni_report-typst:", html = "omni_report-html:")
-  idx_requested <- stringr::str_which(block, stringr::fixed(format_key[[format]]))
+  idx_requested <- stringr::str_which(
+    block,
+    stringr::fixed(format_key[[format]])
+  )
   if (length(idx_requested) != 1) {
     cli::cli_abort(
       "Expected one {.field {format_key[[format]]}} entry in {.file {path_template_qmd}}."
