@@ -86,10 +86,10 @@
   v(0.35cm, weak: true)
 }
 
-#let icon-badge(svg: none, size: 50pt, bg: rgb("#000000")) = {
+#let icon-badge(svg: none, size: 50pt, bg: rgb("#000000"), alt: none) = {
   set align(horizon)
   circle(radius: size / 2, fill: bg)[
-    #align(center + horizon)[#image(bytes(svg), width: size * 0.7, format: "svg")]
+    #align(center + horizon)[#image(bytes(svg), width: size * 0.7, format: "svg", alt: alt)]
   ]
 }
 

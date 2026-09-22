@@ -85,6 +85,7 @@ omni::quote_box(
 ### Subtopic A
 
 ```{r, echo=FALSE}
+#| fig-alt: "Scatterplot of sepal length versus sepal width for the iris dataset, colored by species. Setosa points cluster at short, wide sepals; versicolor and virginica overlap at longer, narrower sepals, with virginica trending longest."
 library(tidyverse)
 
 ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +

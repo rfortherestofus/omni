@@ -951,9 +951,10 @@ omni_icon_typst_raw <- function(
     stringr::str_replace_all('\n', '')
 
   width_pt <- px_to_pt(width_px)
+  icon_label <- stringr::str_replace_all(icon_name, '-', ' ')
 
   glue::glue(
-    '#icon-badge(svg: "{typst_escape_str(svg_string)}", size: {width_pt}pt, bg: rgb("{icon_color_bg_hex}"))'
+    '#icon-badge(svg: "{typst_escape_str(svg_string)}", size: {width_pt}pt, bg: rgb("{icon_color_bg_hex}"), alt: "{typst_escape_str(icon_label)} icon")'
   )
 }
 

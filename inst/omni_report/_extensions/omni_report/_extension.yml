@@ -9,6 +9,10 @@ contributes:
       toc-title: "Table of Contents"
       contact-email: projects@omni.org
       start-page-number: 1
+      # Enforces PDF/UA-1 accessibility conformance; Typst itself validates
+      # against the standard at compile time and refuses to emit the PDF on
+      # violation (e.g. missing document title or image alt text).
+      pdf-standard: ua-1
       shift-heading-level-by: 0
       use-csi-style: false
       template: template.typ

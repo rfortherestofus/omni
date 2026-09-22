@@ -62,6 +62,10 @@
   // footer and suggested-citation stay on the flat `title` everywhere else.
   let title-display = if title-display == none { title } else { title-display }
 
+  // PDF/UA-1 requires the document to carry a title (surfaced as /Title +
+  // dc:title in the XMP metadata, and DisplayDocTitle is set automatically).
+  set document(title: title)
+
   set page(
     paper: paper,
     margin: margin,
