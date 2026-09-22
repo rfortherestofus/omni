@@ -4,24 +4,13 @@
 \alias{create_report}
 \title{Create a new Omni report}
 \usage{
-create_report(
-  output_dir,
-  format = c("pdf", "html"),
-  brand = NULL,
-  use_csi_logos = FALSE
-)
+create_report(output_dir, format = c("pdf", "html"), use_csi_logos = FALSE)
 }
 \arguments{
 \item{output_dir}{New directory that will contain the Quarto
 report files.}
 
 \item{format}{Report output format, either `"pdf"` or `"html"`.}
-
-\item{brand}{Optional Brand object for custom branding
-(created with `Brand()`. Default template available via
-`brand_template()`). If not specified uses default _brand.yml file.
-Fonts with `source = "system"` are copied into a `fonts/` folder of
-the report and declared in `_brand.yml` so that Quarto embeds them.}
 
 \item{use_csi_logos}{Boolean that determines whether CSI logos will be
 used. Defaults to `FALSE`.}
