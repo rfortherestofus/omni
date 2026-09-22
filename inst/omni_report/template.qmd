@@ -9,9 +9,9 @@ execute:
     message: false
     echo: false
 format:
-    # omni_report-html:
-    #   use-csi-style: false
-    #   contact-email: projects@omni.org
+    omni_report-html:
+      use-csi-style: false
+      contact-email: projects@omni.org
     omni_report-typst:
       cover-page: true
       title-page: true

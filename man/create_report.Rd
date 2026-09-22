@@ -4,16 +4,11 @@
 \alias{create_report}
 \title{Create a new Omni report}
 \usage{
-create_report(output_dir, format = c("pdf", "html"), use_csi_logos = FALSE)
+create_report(output_dir)
 }
 \arguments{
 \item{output_dir}{New directory that will contain the Quarto
 report files.}
-
-\item{format}{Report output format, either `"pdf"` or `"html"`.}
-
-\item{use_csi_logos}{Boolean that determines whether CSI logos will be
-used. Defaults to `FALSE`.}
 }
 \value{
 The path to the created `template.qmd`, invisibly. In an
@@ -21,5 +16,7 @@ interactive session the file is also opened for editing.
 }
 \description{
 `create_report()` creates a new directory with a pre-defined
-Quarto report document (HTML or PDF) based on Omni branding.
+Quarto report document based on Omni branding. The `template.qmd`
+front matter lists both output formats (`omni_report-html` and
+`omni_report-typst` for PDF). Remove the one you do not need.
 }
