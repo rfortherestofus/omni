@@ -7,7 +7,7 @@
 #' @param output_dir New directory that will contain the Quarto
 #' files.
 #' @param brand Optional Brand object for custom branding
-#' (created with `Brand()`. Default template available via `get_brand_template()`).
+#' (created with `Brand()`. Default template available via `brand_template()`).
 #' If not specified uses default _brand.yml file.
 #' @param use_csi_logos Boolean that determines whether CSI logos will be used. Defaults to `FALSE`.
 #'
