@@ -171,3 +171,27 @@ format:
   omni_report-html:
     logo-footer-height: 50px
 ```
+
+### Accessibility (PDF)
+
+By default, the PDF (Typst) output is [PDF/UA-1](https://en.wikipedia.org/wiki/PDF/UA) compliant (the highest level of PDF accessibility). This is enforced by Typst itself at "compile time" (e.g., when rendering the pdf) via `pdf-standard: ua-1` (set in the extension's `_extension.yml`): if anything in the document isn't accessible, rendering **stops with an error** pointing at the offending element.
+
+**Charts and other figures need their own alt text, this the template cannot infer automatically.** Set it on the chunk with `fig-alt`:
+
+````markdown
+```{r}
+#| fig-alt: "Scatterplot of sepal length versus sepal width, colored by species. Setosa clusters separately; versicolor and virginica overlap."
+ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) +
+  geom_point()
+```
+````
+
+Without it, rendering fails with a `PDF/UA-1 error` naming the figure.
+
+To disable PDF/UA-1 enforcement (e.g. while drafting, or if a specific report can't meet it), override `pdf-standard` in the qmd's own format options:
+
+```yaml
+format:
+  omni_report-typst:
+    pdf-standard: "1.7" # any plain PDF version disables UA-1 checking
+```
