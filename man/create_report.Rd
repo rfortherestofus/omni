@@ -15,13 +15,20 @@ create_report(
 \item{output_dir}{New directory that will contain the Quarto
 report files.}
 
-\item{format}{Report output format, either `"html"` or `"pdf"`.}
+\item{format}{Report output format, either `"pdf"` or `"html"`.}
 
 \item{brand}{Optional Brand object for custom branding
-(created with `Brand()`. Default template available via `brand_template()`).
-If not specified uses default _brand.yml file.}
+(created with `Brand()`. Default template available via
+`brand_template()`). If not specified uses default _brand.yml file.
+Fonts with `source = "system"` are copied into a `fonts/` folder of
+the report and declared in `_brand.yml` so that Quarto embeds them.}
 
-\item{use_csi_logos}{Boolean that determines whether CSI logos will be used. Defaults to `FALSE`.}
+\item{use_csi_logos}{Boolean that determines whether CSI logos will be
+used. Defaults to `FALSE`.}
+}
+\value{
+The path to the created `template.qmd`, invisibly. In an
+interactive session the file is also opened for editing.
 }
 \description{
 `create_report()` creates a new directory with a pre-defined

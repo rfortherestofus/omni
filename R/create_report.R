@@ -6,11 +6,17 @@
 #'
 #' @param output_dir New directory that will contain the Quarto
 #' report files.
-#' @param format Report output format, either `"html"` or `"pdf"`.
+#' @param format Report output format, either `"pdf"` or `"html"`.
 #' @param brand Optional Brand object for custom branding
-#' (created with `Brand()`. Default template available via `brand_template()`).
-#' If not specified uses default _brand.yml file.
-#' @param use_csi_logos Boolean that determines whether CSI logos will be used. Defaults to `FALSE`.
+#' (created with `Brand()`. Default template available via
+#' `brand_template()`). If not specified uses default _brand.yml file.
+#' Fonts with `source = "system"` are copied into a `fonts/` folder of
+#' the report and declared in `_brand.yml` so that Quarto embeds them.
+#' @param use_csi_logos Boolean that determines whether CSI logos will be
+#' used. Defaults to `FALSE`.
+#'
+#' @return The path to the created `template.qmd`, invisibly. In an
+#' interactive session the file is also opened for editing.
 #'
 #' @export
 #'
@@ -37,98 +43,87 @@ create_report <- function(
   path_template_qmd <- fs::path(output_dir_full, "template.qmd")
   set_report_format_in_qmd(path_template_qmd, format, use_csi_logos)
 
-  ## Check if default branding -----
-  use_default_branding <- is.null(brand)
-  if (use_default_branding) {
-    cli::cli_alert_info('Using default branding.')
-    if (rlang::is_interactive()) {
-      return(file.edit(path_template_qmd))
-    } else {
-      return(path_template_qmd)
-    }
+  ## Branding -----
+  is_custom_branding <- write_brand_yml(
+    output_dir_full,
+    brand,
+    fonts_as_files = TRUE
+  )
+  if (is_custom_branding) {
+    copy_custom_font_files(output_dir_full, brand)
   }
-
-  ## Modify branding if needed -----
-  if (!inherits(brand, "omni::Brand")) {
-    cli::cli_abort(
-      "{.arg brand} must be Brand object (created with {.fun Brand})"
-    )
-  }
-  cli::cli_alert_info('Using custom branding.')
-
-  path_new_brand_file <- here::here(output_dir_full, '_brand.yml')
-  brand |>
-    brand_to_list() |>
-    yaml::write_yaml(path_new_brand_file)
 
   if (rlang::is_interactive()) {
     file.edit(path_template_qmd)
-  } else {
-    path_template_qmd
   }
+  invisible(path_template_qmd)
 }
 
 
+#' Activate the requested output format in the report `template.qmd`
+#'
+#' @description
+#' The shipped template lists both `omni_report-html` and
+#' `omni_report-typst` under the top-level `format:` key of the YAML
+#' front matter, one of them commented out. If the requested format is
+#' the commented one, the two blocks are swapped: commented lines are
+#' uncommented and active lines are commented out. `use-csi-style` is
+#' then set on the active block. The file is modified in place, so the
+#' template stays the single source of truth for the format options.
+#'
+#' @param path_template_qmd Path to the copied `template.qmd`.
+#' @param format `"pdf"` or `"html"`.
+#' @param use_csi_logos Whether to set `use-csi-style: true`.
+#'
+#' @return `path_template_qmd`, invisibly.
+#'
+#' @noRd
 set_report_format_in_qmd <- function(path_template_qmd, format, use_csi_logos) {
   lines <- readLines(path_template_qmd)
+
+  ## Locate the `format:` block in the front matter -----
   delims <- which(lines == "---")
-
-  idx_format_start <- which(
-    lines[delims[1]:delims[2]] == "format:"
-  )[1] +
-    delims[1] -
-    1
-
-  idx_next_top_level <- which(
-    stringr::str_detect(
-      lines[(idx_format_start + 1):(delims[2] - 1)],
-      "^\\S"
-    )
-  )[1]
-  idx_format_end <- if (is.na(idx_next_top_level)) {
-    delims[2] - 1
-  } else {
-    idx_format_start + idx_next_top_level - 1
+  if (length(delims) < 2) {
+    cli::cli_abort("No YAML front matter found in {.file {path_template_qmd}}.")
   }
-
-  use_csi_style <- tolower(as.character(isTRUE(use_csi_logos)))
-
-  format_block <- if (format == "pdf") {
-    c(
-      'format:',
-      '    omni_report-typst:',
-      '      cover-page: true',
-      '      title-page: true',
-      '      cover-pattern: pattern-cover-01-yellow',
-      glue::glue('      use-csi-style: {use_csi_style}'),
-      '      client-name: "[Favorite client]"',
-      '      client-city: "[city]"',
-      '      client-state: "[state]"',
-      '      contact-email: projects@omni.org',
-      '      report-year: "[year]"',
-      '      acknowledgements: "**[one name, and another name, and more names, and lots of names, and even more names. There were lots of people involved with this magnificient project.]**"',
-      '      start-page-number: 1'
+  idx_frontmatter <- seq(delims[1] + 1, delims[2] - 1)
+  idx_format <- idx_frontmatter[lines[idx_frontmatter] == "format:"]
+  if (length(idx_format) != 1) {
+    cli::cli_abort(
+      "Expected one top-level {.field format:} key in {.file {path_template_qmd}}."
     )
-  } else {
-    c(
-      'format:',
-      '    omni_report-html:',
-      glue::glue('      use-csi-style: {use_csi_style}'),
-      '      contact-email: projects@omni.org'
+  }
+  idx_after_format <- idx_frontmatter[idx_frontmatter > idx_format]
+  is_top_level <- stringr::str_detect(lines[idx_after_format], "^\\S")
+  idx_block <- idx_after_format[cumsum(is_top_level) == 0]
+  block <- lines[idx_block]
+
+  ## Swap commented and active lines if needed -----
+  format_key <- c(pdf = "omni_report-typst:", html = "omni_report-html:")
+  idx_requested <- stringr::str_which(block, stringr::fixed(format_key[[format]]))
+  if (length(idx_requested) != 1) {
+    cli::cli_abort(
+      "Expected one {.field {format_key[[format]]}} entry in {.file {path_template_qmd}}."
+    )
+  }
+  is_commented <- stringr::str_detect(block, "^\\s*#")
+  if (is_commented[idx_requested]) {
+    block <- ifelse(
+      is_commented,
+      stringr::str_replace(block, "^(\\s*)# ?", "\\1"),
+      stringr::str_replace(block, "^(\\s*)(\\S)", "\\1# \\2")
     )
   }
 
-  idx_rest_frontmatter <- seq_len(delims[2] - 1)
-  idx_rest_frontmatter <- idx_rest_frontmatter[
-    idx_rest_frontmatter > idx_format_end
-  ]
-
-  lines <- c(
-    lines[seq_len(idx_format_start - 1)],
-    format_block,
-    lines[idx_rest_frontmatter],
-    lines[delims[2]:length(lines)]
+  ## Set CSI style on the active block -----
+  use_csi_style <- if (isTRUE(use_csi_logos)) "true" else "false"
+  block <- stringr::str_replace(
+    block,
+    "^(\\s*use-csi-style:).*$",
+    paste0("\\1 ", use_csi_style)
   )
 
+  lines[idx_block] <- block
   writeLines(lines, path_template_qmd)
+  invisible(path_template_qmd)
 }
