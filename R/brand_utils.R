@@ -1,20 +1,3 @@
-#' Check that an object is a Brand
-#'
-#' @param brand Object to check.
-#'
-#' @return `brand`, invisibly. Aborts if it is not a [Brand] object.
-#'
-#' @noRd
-check_brand <- function(brand) {
-  if (!inherits(brand, "omni::Brand")) {
-    cli::cli_abort(
-      "{.arg brand} must be Brand object (created with {.fun Brand})"
-    )
-  }
-  invisible(brand)
-}
-
-
 #' Write a custom `_brand.yml` into a Quarto project
 #'
 #' @description
@@ -30,21 +13,31 @@ check_brand <- function(brand) {
 #' that [copy_custom_font_files()] copies under `fonts/`. Quarto then
 #' embeds them itself (HTML `@font-face`, Typst `font-paths`).
 #'
-#' @return `TRUE` if a custom `_brand.yml` was written, `FALSE` if the
-#' default branding is kept. Invisibly.
-#'
 #' @noRd
 write_brand_yml <- function(output_dir_full, brand, fonts_as_files = FALSE) {
   if (is.null(brand)) {
     cli::cli_alert_info("Using default branding.")
     return(invisible(FALSE))
   }
-  check_brand(brand)
   cli::cli_alert_info("Using custom branding.")
 
   brand_list <- brand_to_list(brand)
   if (fonts_as_files) {
-    brand_list$typography$fonts <- brand_fonts_as_files(brand)
+    brand_list$typography$fonts <- brand@typography@fonts |>
+      purrr::map(\(font) {
+        if (font@source != "system") {
+          return(S7::props(font)[c("family", "source")])
+        }
+        files <- font_file_specs(font@dir_source) |>
+          purrr::map(\(spec) {
+            list(
+              path = as.character(fs::path(font_output_dir(font), spec$file)),
+              weight = spec$weight,
+              style = spec$style
+            )
+          })
+        list(family = font@family, source = "file", files = files)
+      })
   }
 
   yaml::write_yaml(brand_list, fs::path(output_dir_full, "_brand.yml"))
@@ -52,40 +45,7 @@ write_brand_yml <- function(output_dir_full, brand, fonts_as_files = FALSE) {
 }
 
 
-#' Fonts of a Brand as brand.yml entries, with system fonts as files
-#'
-#' @param brand A [Brand] object.
-#'
-#' @return A list of brand.yml font entries. Fonts with
-#' `source = "system"` become `source: file` entries whose `files` list
-#' the font files found in `dir_source`, with their weight and style, at
-#' the location used by [copy_custom_font_files()].
-#'
-#' @noRd
-brand_fonts_as_files <- function(brand) {
-  brand@typography@fonts |>
-    purrr::map(\(font) {
-      if (font@source != "system") {
-        return(S7::props(font)[c("family", "source")])
-      }
-      files <- font_file_specs(font@dir_source) |>
-        purrr::map(\(spec) {
-          list(
-            path = as.character(fs::path(font_output_dir(font), spec$file)),
-            weight = spec$weight,
-            style = spec$style
-          )
-        })
-      list(family = font@family, source = "file", files = files)
-    })
-}
-
-
 #' System fonts of a Brand
-#'
-#' @param brand A [Brand] object.
-#'
-#' @return The [Font] objects with `source = "system"`.
 #'
 #' @noRd
 brand_system_fonts <- function(brand) {
@@ -96,10 +56,6 @@ brand_system_fonts <- function(brand) {
 
 #' Directory of a system font inside a Quarto project
 #'
-#' @param font A [Font] object with `source = "system"`.
-#'
-#' @return Path relative to the project root, `fonts/<dir name>`.
-#'
 #' @noRd
 font_output_dir <- function(font) {
   fs::path("fonts", fs::path_file(font@dir_source))
@@ -107,11 +63,6 @@ font_output_dir <- function(font) {
 
 
 #' Copy the system fonts of a Brand into a Quarto project
-#'
-#' @param output_dir_full Absolute path to the Quarto project directory.
-#' @param brand A [Brand] object.
-#'
-#' @return `NULL`, invisibly. Called for its side effect.
 #'
 #' @noRd
 copy_custom_font_files <- function(output_dir_full, brand) {

@@ -101,7 +101,11 @@ write_custom_css_files <- function(output_dir_full, brand) {
 }
 
 create_brand_css <- function(brand) {
-  check_brand(brand)
+  if (!inherits(brand, "omni::Brand")) {
+    cli::cli_abort(
+      "{.arg brand} must be Brand object (created with {.fun Brand})"
+    )
+  }
   brand_colors <- brand@color |>
     S7::props() |>
     purrr::flatten()
