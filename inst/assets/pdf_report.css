@@ -446,16 +446,17 @@ h1 {
 }
 
 h2 {
-  margin-block-end: 0 !important;
+  margin-block-end: 11pt !important;
   font-size: 30pt;
   font-weight: 400;
   letter-spacing: 0.03em;
   color: var(--primary-color);
-  margin-top: 0 !important;
+  margin-top: 9pt !important;
 }
 
 h3 {
-  margin-block-end: 8pt !important;
+  margin-block-end: 11pt !important;
+  margin-top: 9pt !important;
   font-size: 16pt;
   font-weight: 400;
   letter-spacing: 0.03em;
@@ -463,11 +464,38 @@ h3 {
 }
 
 h4 {
-  margin-block-end: 5.5pt !important;
+  margin-block-end: 11pt !important;
+  margin-top: 9pt !important;
   font-size: 13pt;
   font-weight: 400;
   letter-spacing: 0.03em;
   color: var(--primary-color);
+}
+
+/* Manual fix for a heading that lands at the top of a printed page: the
+   margin-top values above give correct, deliberate spacing when a heading
+   follows body text on the same page, but that same margin isn't trimmed
+   when the heading happens to start a new page instead - there's nothing
+   above it there to visually separate from, so it looks like too much
+   space. There's no way to detect that position automatically at CSS-authoring
+   time (it depends on where content happens to break across pages, which
+   shifts as content changes), so this is an opt-in, per-heading override:
+   after knitting, if a heading visibly lands at the top of a page, add
+   this class as a header attribute and re-knit -
+     ## My Heading {.remove-header-space}
+   Use the header-attribute form, not a fenced div wrapped around the
+   heading (`::: {.remove-header-space}` / heading / `:::`) - a fenced div
+   forces pandoc to close the heading's own section container right after
+   it, which orphans everything that should nest inside it (subsections,
+   and their entries in the table of contents) as flat siblings instead.
+   The attribute form attaches the class without affecting that structure.
+   Only the heading's own top margin is removed either way; every other
+   heading's normal spacing is unaffected. */
+.remove-header-space h1,
+.remove-header-space h2,
+.remove-header-space h3,
+.remove-header-space h4 {
+  margin-top: 0pt !important;
 }
 
 /* Normal paragraph */

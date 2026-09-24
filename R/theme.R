@@ -1,3 +1,41 @@
+#' Build the marquee style shared by Omni's title/subtitle/caption text
+#'
+#' Registers each brand color name (e.g. `"plum-600"`) as a marquee tag, so
+#' `{.plum-600 text}` markdown resolves to that color. Used by [theme_omni()]
+#' (which layers per-slot overrides, e.g. size/weight, on top of this) and by
+#' [omni_header()]'s `plot.caption`, which needs the same color tags
+#' available for `finding_keyword` but builds its own `element_marquee()`
+#' independently of whatever theme is already applied - it must not rely on
+#' inheriting a style from a prior `plot.caption` element via ggplot2's
+#' theme-merge behavior, which only backfills unset fields when one exists
+#' to backfill from.
+#'
+#' @noRd
+.omni_marquee_style <- function() {
+  style_wo_colors <- marquee::style_set(
+    base = marquee::base_style(weight = "bold", size = 13),
+    str = marquee::style(weight = "bold"),
+    em = marquee::style(italic = TRUE),
+    u = marquee::style(underline = TRUE)
+  )
+
+  colors_named <- omni_colors(named = TRUE)
+  purrr::reduce2(
+    .x = names(colors_named),
+    # color names
+    .y = unname(colors_named),
+    # color hex codes
+    .f = \(style, color_name, color_hex) {
+      style |>
+        marquee::modify_style(
+          tag = color_name,
+          color = color_hex
+        )
+    },
+    .init = style_wo_colors
+  )
+}
+
 #' OMNI Institute ggplot2 theme
 #'
 #' @description Applies the OMNI Institute theme to the plot.
@@ -18,29 +56,7 @@ theme_omni <- function(
   base_family = "Inter Tight",
   plot_background_color = "White"
 ) {
-  style_wo_colors <- marquee::style_set(
-    base = marquee::base_style(weight = "bold", size = 13),
-    str = marquee::style(weight = "bold"),
-    em = marquee::style(italic = TRUE),
-    u = marquee::style(underline = TRUE)
-  )
-
-  # Iteratively add the color tag styles
-  omni_colors <- omni_colors(named = TRUE)
-  omni_style <- purrr::reduce2(
-    .x = names(omni_colors),
-    # color names
-    .y = unname(omni_colors),
-    # color hex codes
-    .f = \(style, color_name, color_hex) {
-      style |>
-        marquee::modify_style(
-          tag = color_name,
-          color = color_hex
-        )
-    },
-    .init = style_wo_colors
-  )
+  omni_style <- .omni_marquee_style()
   # general theme based on theme_minimal
   omni_theme <- theme_minimal(base_family = base_family) +
     theme(

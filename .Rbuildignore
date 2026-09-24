@@ -19,3 +19,4 @@ inst/reference/
 (^|/)\.quarto$
 ^inst/qmd-website/_site$
 ^ACCESSIBILITY-BUGS.*\.md$
+^\.claude$

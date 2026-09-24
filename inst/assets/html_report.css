@@ -108,7 +108,34 @@ h2:not(#header h2),
 h3:not(#header h3),
 h4:not(#header h4) {
   font-family: var(--header-font);
-  margin-top: 50px;
+}
+
+/* Space above/below each heading level, matched to the rendered gaps in
+   the Word brand template (Report Template.dotx). Word's own "space
+   before/after" paragraph attributes don't map 1:1 to the visual gap
+   because of line-height/leading, so these are measured pixel gaps from
+   an actual Word-rendered PDF, not the raw docx spacing values.
+
+   Measured from the "Omni Header 1/2/3" custom styles, not the built-in
+   "Heading 1/2/3" styles the template also happens to define - those are
+   an unbranded (orange, not navy) leftover the template never uses.
+   Omni Header 1/2/3 give uniform spacing across all three levels, unlike
+   the built-in styles' hierarchical spacing.
+
+   The report-html skeleton starts sections at "##", not "#" - the
+   document title comes from YAML front matter, so h1 is never a real
+   section heading in practice. h2 is the primary section heading, h3 is
+   the subtopic, h4 the sub-subtopic - one level down from what the tag
+   name suggests - so these rules target Word's heading levels shifted
+   accordingly (h1 keeps the same values in case anyone still uses a bare
+   "#" - Omni Header 1/2/3 are uniform anyway, so there's no level to
+   shift into). */
+h1:not(#header h1),
+h2:not(#header h2),
+h3:not(#header h3),
+h4:not(#header h4) {
+  margin-top: 11pt;
+  margin-bottom: 12pt;
 }
 
 h2 {
@@ -126,9 +153,23 @@ h3 {
 }
 
 /* Normal paragraph */
+/* margin-bottom matches the measured paragraph-to-paragraph gap in the
+   Word brand template (Report Template.dotx) — see the heading rules
+   above for how this was measured (rendered output, not the raw docx
+   spacing attributes). */
 p {
   font-size: 14pt;
   font-weight: 400;
+  margin: 0 0 10pt 0;
+}
+
+/* Space around bulleted/numbered lists, matched to the Word template the
+   same way as the paragraph and heading spacing above. Excludes the
+   sidebar TOC, which has its own spacing. */
+ul:not(#TOC ul),
+ol:not(#TOC ol) {
+  margin-top: 12pt;
+  margin-bottom: 9pt;
 }
 
 #TOC {
