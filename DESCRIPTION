@@ -2,7 +2,7 @@ Type: Package
 Package: omni
 Title: RMarkdown template, ggplot2 theme, and table function for OMNI
     Institute
-Version: 1.1.0
+Version: 1.2.0
 Description: RMarkdown template, ggplot2 theme, and table function for
     OMNI Institute.
 License: file LICENSE
@@ -22,6 +22,7 @@ Imports:
     grDevices,
     knitr,
     glue,
+    lifecycle,
     officer,
     pagedown,
     qualtRics,
@@ -37,13 +38,16 @@ Imports:
     purrr,
     qpdf,
     xml2,
-    palmerpenguins,
     commonmark,
     S7,
     yaml,
-    bookdown
+    bookdown,
+    tinytable (>= 0.17.0),
+    stats,
+    utils
 Suggests:
     gghighlight,
+    palmerpenguins,
     scales,
     testthat (>= 3.0.0),
     tidyverse,
@@ -58,3 +62,4 @@ Encoding: UTF-8
 LazyData: true
 Config/testthat/edition: 3
 Config/roxygen2/version: 8.0.0
+RoxygenNote: 7.3.3

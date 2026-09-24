@@ -11,9 +11,11 @@ icon_text(text, width_px = 400)
 
 \item{width_px}{Width of the text. Must be numeric vector of length 1. Defaults to 400}
 }
-\value{
-HTML & CSS
-}
 \description{
-This function creates the HTML & CSS that contains the text for the icon-text-grid
+Renders text for the icon-text-grid, dispatching to [icon_text_html()] or
+[icon_text_typst()] depending on the output format (via
+`knitr::is_html_output()`).
+}
+\seealso{
+[icon_text_html()], [icon_text_typst()]
 }

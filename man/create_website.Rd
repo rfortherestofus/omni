@@ -11,7 +11,7 @@ create_website(output_dir, brand = NULL, use_csi_logos = FALSE)
 files.}
 
 \item{brand}{Optional Brand object for custom branding
-(created with `Brand()`. Default template available via `get_brand_template()`).
+(created with `Brand()`. Default template available via `brand_template()`).
 If not specified uses default _brand.yml file.}
 
 \item{use_csi_logos}{Boolean that determines whether CSI logos will be used. Defaults to `FALSE`.}

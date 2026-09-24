@@ -36,12 +36,20 @@ rows use a darker navy shade instead of steel blue? Defaults to
 A \pkg{flextable} object (of class \code{omni_table}).
 }
 \description{
+\code{omni_table()} is superseded by \link{omni_tinytable}.
+\code{omni_table()} is built on \pkg{flextable} and only renders well in
+HTML and Word, while \code{omni_tinytable()} is built on \pkg{tinytable},
+which also has native Typst support and so renders correctly in
+\pkg{omni}'s Typst-based PDF reports. New code is recommended to use
+\code{omni_tinytable()}.
+}
+\details{
 Turns a data frame into a table styled with OMNI Institute's fonts,
 colours and row striping. The result is a \pkg{flextable} object, so it can
 be piped into any \pkg{flextable} function for further customisation (for
 example to set column widths, merge cells, or format specific rows).
-}
-\details{
+
+
 By default the table uses an autofit layout and fills the width of the page
 or container, sizing each column to fit its content.
 

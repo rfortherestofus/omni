@@ -1,0 +1,200 @@
+# Omni_pdf_report Format
+
+### Page breaks
+
+In the PDF (Typst) output, every level 1 heading starts on a new page (this is the "section break" level) and appears in the table of contents, styled more prominently than level 2 entries. Level 2 headings do not force a page break and flow naturally with surrounding content. A level 1 heading can additionally be turned into a full-page colored divider by tagging it with one of the pattern classes:
+
+```markdown
+# Key Findings {.pattern-01-yellow}
+
+## First section
+
+# Recommendations {.pattern-08-plum}
+```
+
+The pattern image covers the whole sheet, margins included, and the heading
+appears in white in the lower third of the page. Available patterns:
+
+- `.pattern-01-yellow`
+- `.pattern-02-teal`
+- `.pattern-03-orangered`
+- `.pattern-06-teal`
+- `.pattern-07-periwinkle`
+- `.pattern-07-olive`
+- `.pattern-08-plum`
+
+A level 1 heading without a pattern class simply starts a new page. The classes
+have no effect on HTML output.
+
+A level 2 heading tagged with `.appendix` (e.g. `## Appendix A {.appendix}`)
+also starts a new page, since appendix sections are conventionally split one
+per page; this is the one exception to "only level 1 forces a page break".
+
+### Chapter dot
+
+An optional "eyebrow" label — a small colored dot bullet followed by
+uppercase text — can be placed above a heading by wrapping it in a
+`.chapter-dot` fenced div with a `.dot-<color>` class:
+
+```markdown
+::: {.chapter-dot .dot-orange-red-600}
+Chapter title here
+:::
+
+## The actual heading
+```
+
+`<color>` accepts the same seven brand hues as the page-break patterns
+(`plum`, `orange-red`, `olive-green`, `teal`, `golden-yellow`, `periwinkle`,
+`steel-blue`), each with an optional `-200`/`-400`/`-600` shade suffix (e.g.
+`dot-teal-200`); a bare `dot-<color>` (no suffix, e.g. `dot-plum`) uses the
+`-600` (darkest) shade. This is off by default — it's purely opt-in per
+heading, unlike the level 1/2 page-break behavior above.
+
+### Frontmatter pages (PDF)
+
+The PDF (Typst) output can open with up to three frontmatter pages, each
+toggled independently. Page numbering in the body always starts at "1"
+regardless of which subset is shown:
+
+```yaml
+format:
+  omni_report-typst:
+    cover-page: true
+    title-page: true
+    toc: true
+```
+
+| Option              | Meaning                                                              | Default                   |
+| ------------------- | -------------------------------------------------------------------- | ------------------------- |
+| `cover-page`        | Show the cover (logo, date, title, colored pattern)                  | `false` unless set        |
+| `title-page`        | Show the title page (submitted-to, acknowledgements, citation)       | `false` unless set        |
+| `toc`               | Show the table of contents                                           | `false` unless set        |
+| `cover-pattern`     | Which pattern covers the bottom of the cover page                    | `pattern-cover-01-yellow` |
+| `organization-name` | Category label on the cover/title pages and the running footer       | `Omni Institute`          |
+| `client-name`       | "Submitted to:" value on the title page                              | none                      |
+| `client-state`      | State used in the suggested citation                                 | none                      |
+| `contact-email`     | "For More Information:" mailto link                                  | `projects@omni.org`       |
+| `acknowledgements`  | Names thanked on the title page (supports markdown, e.g. `**bold**`) | none                      |
+| `report-year`       | Year used in the suggested citation                                  | none                      |
+| `report-date`       | Date shown verbatim on the cover page (set it top-level, see below)  | none                      |
+
+`title` and `subtitle` are standard Quarto document metadata (not `omni_report-typst` options), rendered on the cover page below the organization label. `secondary-subtitle` is another standard top-level field — an optional second line shown below a divider, under `subtitle`, on the cover page:
+
+```yaml
+title: "Report Title Goes Here"
+subtitle: "Optional Sub-Headline"
+secondary-subtitle: "Optional Other Sub-Headline Goes Here"
+```
+
+Both `subtitle` and `secondary-subtitle` are optional; leaving either one out of the metadata hides that line (and, when `secondary-subtitle` is omitted, the divider line beneath `subtitle` too).
+
+`cover-pattern` accepts the same seven colors as the page-break patterns
+above, with a `pattern-cover-` prefix instead of `pattern-`:
+
+- `pattern-cover-01-yellow`
+- `pattern-cover-02-teal`
+- `pattern-cover-03-orangered`
+- `pattern-cover-06-teal`
+- `pattern-cover-07-periwinkle`
+- `pattern-cover-07-olive`
+- `pattern-cover-08-plum`
+
+`report-date` is shown verbatim on the cover page. Unlike Quarto's
+standard `date` field, it is never parsed or reformatted, so write it the
+way it should appear. Set it as a top-level field so inline R code gets
+evaluated, e.g.:
+
+```yaml
+report-date: "`r toupper(format(Sys.Date(), '%B %Y'))`"
+```
+
+A running footer (small logo, "{organization-name} Report | {title}", page
+number) appears on every page except the cover, whose pattern already fills
+that space.
+
+### Logo (PDF)
+
+`logo-ref` and `logo-height` size the logo on the cover page; `logo-footer-height` sizes the small logo in the running footer. All three are optional and, when set, take precedence over the CSI/Omni default computed from `use-csi-style`:
+
+```yaml
+format:
+  omni_report-typst:
+    logo-ref: images/client-logo.png
+    logo-height: 40pt
+    logo-footer-height: 1cm
+```
+
+A bare `logo.png`/`logo-csi.png` (the two logos that ship with the extension) resolves within the extension; any other value is a path relative to `template.qmd`. `logo-height` and `logo-footer-height` are Typst lengths (e.g. `40pt`, `1cm`).
+
+### HTML header bar
+
+The HTML output opens with a header bar that shows a logo on the left and an
+organization name on the right. Three options of the `omni_report-html` format
+control it; their shipped defaults live in the extension's `_extension.yml`:
+
+| Option              | Meaning                                                   |
+| ------------------- | --------------------------------------------------------- |
+| `logo-ref`          | `logo.png`, `logo-csi.png`, or a path relative to the qmd |
+| `organization-name` | Text on the right of the bar                              |
+| `logo-height`       | Any CSS length, or `default`                              |
+
+Overriding one of them leaves the others alone, so a report that only switches
+the logo keeps the default name and height:
+
+```yaml
+format:
+  omni_report-html:
+    logo-ref: logo-csi.png
+    organization-name: "Center for Social Investment"
+```
+
+`logo.png` and `logo-csi.png` are the two logos that ship with the extension —
+name them on their own and they are found there, no directory needed. Any other
+value is a path resolved from the qmd's own directory, e.g.
+`logo-ref: images/client-logo.png`.
+
+The logo is sized by height alone, and the two shipped logos need different
+values: the Omni wordmark is one line, the CSI lockup two. With
+`logo-height: default`, `filter.lua` picks the height from the logo file:
+
+| Logo           | Height |
+| -------------- | ------ |
+| `logo.png`     | 30px   |
+| `logo-csi.png` | 62px   |
+| anything else  | 50px   |
+
+Setting `logo-height` to a CSS length (`logo-height: 44px`) overrides this for
+any logo.
+
+The footer logo (shown at the bottom of every page) is sized separately via `logo-footer-height`, any CSS length. It's optional; when unset the footer logo keeps its default height (twice the header's when `use-csi-style` is `true`, unchanged otherwise):
+
+```yaml
+format:
+  omni_report-html:
+    logo-footer-height: 50px
+```
+
+### Accessibility (PDF)
+
+By default, the PDF (Typst) output is [PDF/UA-1](https://en.wikipedia.org/wiki/PDF/UA) compliant (the highest level of PDF accessibility). This is enforced by Typst itself at "compile time" (e.g., when rendering the pdf) via `pdf-standard: ua-1` (set in the extension's `_extension.yml`): if anything in the document isn't accessible, rendering **stops with an error** pointing at the offending element.
+
+**Charts and other figures need their own alt text, this the template cannot infer automatically.** Set it on the chunk with `fig-alt`:
+
+````markdown
+```{r}
+#| fig-alt: "Scatterplot of sepal length versus sepal width, colored by species. Setosa clusters separately; versicolor and virginica overlap."
+ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) +
+  geom_point()
+```
+````
+
+Without it, rendering fails with a `PDF/UA-1 error` naming the figure.
+
+To disable PDF/UA-1 enforcement (e.g. while drafting, or if a specific report can't meet it), override `pdf-standard` in the qmd's own format options:
+
+```yaml
+format:
+  omni_report-typst:
+    pdf-standard: "1.7" # any plain PDF version disables UA-1 checking
+```

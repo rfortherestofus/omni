@@ -4,7 +4,6 @@ on:
   push:
     branches: [main, master]
   pull_request:
-    branches: [main, master]
 
 name: R-CMD-check
 
@@ -18,7 +17,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: ubuntu-latest,   r: 'release'}
+          - { os: ubuntu-latest, r: "release" }
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}

@@ -15,14 +15,10 @@ omni_icon(icon_name, width_px, icon_color_bg, icon_color_fg)
 
 \item{icon_color_fg}{Desired icon color. Should be 'white' or 'black' but technically all hex codes and CSS colors work.}
 }
-\value{
-HTML & CSS that of the desired icon (can be transformed into plain text using `as.character()`)
-}
 \description{
-This function creates the HTML & CSS for the icon that should be placed into the text icon grid.
-The HTML container of the icon always centers inside the surrounding environment.
+Renders an icon, dispatching to [omni_icon_html()] or [omni_icon_typst()]
+depending on the output format (via `knitr::is_html_output()`).
 }
-\examples{
-omni_icon('education', 50, 'teal-600', 'white')
-
+\seealso{
+[omni_icon_html()], [omni_icon_typst()]
 }
