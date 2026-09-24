@@ -42,6 +42,10 @@ word_report <- function(...) {
 #' @param use_csi_style Whether to use CSI (Center for Social Investment) styling. This basically change logos and text in the footer.
 #' @param reduce_margin_top_bottom Whether to reduce top and bottom margin. It will go from 25mm to 15mm in order to match left/right margin.
 #' @param hide_acknowledgement Whether to remove the acknowledgement section.
+#' @param footer_title Title to show in the running footer, when the report
+#'   title is too long to fit there. Defaults to `NULL`, which uses the report
+#'   title. A title that does not fit the footer is truncated with an ellipsis,
+#'   so set this for reports whose title runs past roughly 53 characters.
 #' @param ... Additional arguments passed to `pagedown::html_paged()`
 #'
 #' @return An rmd format
@@ -60,6 +64,7 @@ pdf_report <- function(
   reduce_margin_top_bottom = FALSE,
   use_csi_style = FALSE,
   hide_acknowledgement = FALSE,
+  footer_title = NULL,
   ...
 ) {
   css_file <- pkg_resource("pdf_report.css")
@@ -121,6 +126,13 @@ pdf_report <- function(
     css_file <- hide_acknowledgement_section(file = css_file)
   }
 
+  before_body <- NULL
+
+  if (!is.null(footer_title)) {
+    css_file <- set_footer_title(file = css_file)
+    before_body <- footer_title_include(footer_title)
+  }
+
   bookdown::html_document2(
     base_format = pagedown::html_paged,
     number_sections = FALSE,
@@ -129,7 +141,10 @@ pdf_report <- function(
     self_contained = TRUE,
     toc = TRUE,
     fig_caption = TRUE,
-    includes = rmarkdown::includes(in_header = custom_js),
+    includes = rmarkdown::includes(
+      in_header = custom_js,
+      before_body = before_body
+    ),
     ...
   )
 }
