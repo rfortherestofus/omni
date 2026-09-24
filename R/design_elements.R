@@ -47,12 +47,25 @@ markdown_to_typst <- function(text) {
   tmp_md <- tempfile(fileext = ".md")
   cat(text, file = tmp_md)
 
-  result <- system2(
+  tmp_err <- tempfile(fileext = ".txt")
+  on.exit(unlink(c(tmp_md, tmp_err)), add = TRUE)
+
+  # stderr goes to its own file so pandoc warnings can't leak into the
+  # document, and a non-zero exit status raises an R error
+  result <- suppressWarnings(system2(
     quarto_bin,
     c("pandoc", "-f", "markdown", "-t", "typst", shQuote(tmp_md)),
     stdout = TRUE,
-    stderr = TRUE
-  )
+    stderr = tmp_err
+  ))
+  status <- attr(result, "status")
+  if (!is.null(status) && status != 0) {
+    cli::cli_abort(c(
+      "Converting Markdown to Typst with {.code quarto pandoc} failed
+      (exit status {status}).",
+      "x" = paste(readLines(tmp_err, warn = FALSE), collapse = "\n")
+    ))
+  }
   paste(result, collapse = "\n")
 }
 
@@ -487,9 +500,17 @@ callout_box_typst_raw <- function(
 #' @export
 callout_box <- function(text, color, fixed_width_px = 300) {
   if (knitr::is_html_output()) {
-    callout_box_html(text = text, color = color, fixed_width_px = fixed_width_px)
+    callout_box_html(
+      text = text,
+      color = color,
+      fixed_width_px = fixed_width_px
+    )
   } else {
-    callout_box_typst(text = text, color = color, fixed_width_px = fixed_width_px)
+    callout_box_typst(
+      text = text,
+      color = color,
+      fixed_width_px = fixed_width_px
+    )
   }
 }
 
@@ -580,7 +601,9 @@ number_emphasis_html <- function(
   }
 
   if (!is.numeric(text_font_size_pt)) {
-    cli::cli_abort('{.var text_font_size_pt} must be numeric vector of length 1.')
+    cli::cli_abort(
+      '{.var text_font_size_pt} must be numeric vector of length 1.'
+    )
   }
 
   # Checks on number arguments -------------------------------
@@ -703,7 +726,9 @@ number_emphasis_typst_raw <- function(
   }
 
   if (!is.numeric(text_font_size_pt)) {
-    cli::cli_abort('{.var text_font_size_pt} must be numeric vector of length 1.')
+    cli::cli_abort(
+      '{.var text_font_size_pt} must be numeric vector of length 1.'
+    )
   }
 
   # Checks on number arguments -------------------------------
@@ -901,7 +926,12 @@ omni_icon_typst <- function(
   icon_color_bg,
   icon_color_fg
 ) {
-  as_typst(omni_icon_typst_raw(icon_name, width_px, icon_color_bg, icon_color_fg))
+  as_typst(omni_icon_typst_raw(
+    icon_name,
+    width_px,
+    icon_color_bg,
+    icon_color_fg
+  ))
 }
 
 #' @noRd

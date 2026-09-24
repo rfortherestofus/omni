@@ -42,7 +42,7 @@ Imports:
     S7,
     yaml,
     bookdown,
-    tinytable,
+    tinytable (>= 0.17.0),
     stats,
     utils
 Suggests:

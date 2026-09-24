@@ -77,6 +77,7 @@ format:
 | `contact-email`     | "For More Information:" mailto link                                  | `projects@omni.org`       |
 | `acknowledgements`  | Names thanked on the title page (supports markdown, e.g. `**bold**`) | none                      |
 | `report-year`       | Year used in the suggested citation                                  | none                      |
+| `report-date`       | Date shown verbatim on the cover page (set it top-level, see below)  | none                      |
 
 `title` and `subtitle` are standard Quarto document metadata (not `omni_report-typst` options), rendered on the cover page below the organization label. `secondary-subtitle` is another standard top-level field — an optional second line shown below a divider, under `subtitle`, on the cover page:
 
@@ -99,11 +100,13 @@ above, with a `pattern-cover-` prefix instead of `pattern-`:
 - `pattern-cover-07-olive`
 - `pattern-cover-08-plum`
 
-`date` is shown verbatim on the cover page (no reformatting happens in
-Typst), so format it the way it should appear, e.g.:
+`report-date` is shown verbatim on the cover page. Unlike Quarto's
+standard `date` field, it is never parsed or reformatted, so write it the
+way it should appear. Set it as a top-level field so inline R code gets
+evaluated, e.g.:
 
 ```yaml
-date: "`r toupper(format(Sys.Date(), '%B %Y'))`"
+report-date: "`r toupper(format(Sys.Date(), '%B %Y'))`"
 ```
 
 A running footer (small logo, "{organization-name} Report | {title}", page

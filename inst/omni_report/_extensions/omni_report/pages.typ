@@ -71,7 +71,7 @@
       #image(cover-pattern, width: 100%, height: pattern-height, fit: "stretch")
     ],
   )[
-    #let date-str = "2026-08-01"
+    #let date-str = str(date)
     #let parts = date-str.split("-").map(int)
     #let d = datetime(year: parts.at(0), month: parts.at(1), day: parts.at(2))
     #let display-date = d.display("[month repr:long] [year]")
@@ -86,7 +86,11 @@
       box(width: 100%, height: safe-height)[
         #grid(
           columns: (1fr, 1fr),
-          align(left + top)[#image(logo, height: logo-height, alt: organization-name + " logo")],
+          align(left + top)[#image(
+            logo,
+            height: logo-height,
+            alt: organization-name + " logo",
+          )],
           align(right + top)[
             #text(size: 10pt, tracking: 1pt, font: "Sometype Mono")[#upper[#display-date]]
           ],
@@ -210,7 +214,9 @@
           // written as a bare `#it.page()`): PDF/UA-1 tags a raw counter
           // display as a Span, which isn't a valid direct child of a TOC
           // entry (TOCI) -- link()'s own tag is.
-          #upper(link(it.element.location(), it.body())) #h(1fr) #link(it.element.location())[#it.page()]
+          #upper(link(it.element.location(), it.body())) #h(1fr) #link(
+            it.element.location(),
+          )[#it.page()]
         ]
         v(padding_sections, weak: true)
       } else if it.level == 2 {
@@ -221,13 +227,17 @@
         // Overwrite _brand.yml link color
         show link: set text(fill: brand-color.at("primary"))
         text(fill: brand-color.at("primary"), size: 13pt)[
-          #link(it.element.location(), it.body()) #h(1fr) #link(it.element.location())[#it.page()]
+          #link(it.element.location(), it.body()) #h(1fr) #link(
+            it.element.location(),
+          )[#it.page()]
         ]
       } else {
         pad(left: 1cm)[
           #show link: set text(fill: brand-color.at("secondary"))
           #text(fill: brand-color.at("secondary"), size: 12pt)[
-            #link(it.element.location(), it.body()) #h(1fr) #link(it.element.location())[#it.page()]
+            #link(it.element.location(), it.body()) #h(1fr) #link(
+              it.element.location(),
+            )[#it.page()]
           ]
         ]
       }
@@ -285,7 +295,12 @@
       // the page-break patterns above this isn't a `page(background:)`
       // image (which Typst auto-excludes from tagging), so it needs an
       // explicit artifact marker to satisfy PDF/UA-1.
-      pdf.artifact(kind: "other", image(pattern, width: page.width, height: height, fit: "cover")),
+      pdf.artifact(kind: "other", image(
+        pattern,
+        width: page.width,
+        height: height,
+        fit: "cover",
+      )),
     )
     v(height * 90%)
   }
