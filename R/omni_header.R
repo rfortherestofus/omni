@@ -154,11 +154,14 @@ omni_header <- function(
       plot.subtitle = ggplot2::element_text(colour = hex_gray, margin = ggplot2::margin(b = 12)),
       # style is passed explicitly (not inherited from whatever plot.caption
       # element theme_omni() or the caller left behind) so the {.color ...}
-      # class markdown built above always resolves, regardless of theme order
+      # class markdown built above always resolves, regardless of theme order.
+      # It must be the *caption* style, not the shared base: the base is
+      # larger and bold, which would render the secondary finding and
+      # source/N heavier than the subtitle above them.
       plot.caption = marquee::element_marquee(
         hjust = 0,
         colour = hex_gray,
-        style = .omni_marquee_style()
+        style = .omni_caption_style()
       )
     )
   )
@@ -222,8 +225,16 @@ omni_baseline <- function(
 #' the chart gray, e.g.
 #' `theme(axis.text.y.left = ggtext::element_markdown(colour = omni_colors("chart-gray")))`.
 #'
+#' `color` is required, deliberately. A chart uses one highlight color, and the
+#' colored axis label has to be that same color - it is labelling the bar or point
+#' it sits next to. A default here would silently produce a label in one color and
+#' a bar in another whenever the chart's highlight isn't the default, which is a
+#' brand violation nothing in the rendered output flags. Pass the same color given
+#' to [omni_header()].
+#'
 #' @param highlight One or more category labels to color.
-#' @param color The highlight color name.
+#' @param color Required. The chart's highlight color name - the same one passed to
+#'   [omni_header()].
 #'
 #' @return A function suitable for the `labels` argument of a discrete scale.
 #' @export
@@ -232,8 +243,19 @@ omni_baseline <- function(
 #' library(ggplot2)
 #' ggplot(mtcars, aes(mpg, rownames(mtcars))) +
 #'   geom_point() +
-#'   scale_y_discrete(labels = omni_highlight_labels("Valiant"))
-omni_highlight_labels <- function(highlight, color = "orange-red-600") {
+#'   scale_y_discrete(
+#'     labels = omni_highlight_labels("Valiant", color = "orange-red-600")
+#'   )
+omni_highlight_labels <- function(highlight, color = NULL) {
+  if (is.null(color)) {
+    cli::cli_abort(c(
+      "{.arg color} is required.",
+      "i" = "Pass the chart's highlight color - the same one given to
+             {.fn omni_header} - so the label matches the bar or point it
+             labels.",
+      ">" = '{.code omni_highlight_labels("Denver", color = "periwinkle-600")}'
+    ))
+  }
   hex <- omni_colors(color)
   function(lbls) {
     out <- as.character(lbls)

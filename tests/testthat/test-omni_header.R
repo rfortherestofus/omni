@@ -51,7 +51,52 @@ test_that("omni_header's caption carries its own marquee style (regression: find
   )
   caption_style <- h[[2]]$plot.caption$style
   expect_false(is.null(caption_style))
-  expect_identical(caption_style, .omni_marquee_style())
+  expect_identical(caption_style, .omni_caption_style())
+})
+
+test_that("omni_header's caption is quieter than the subtitle, not louder", {
+  # The caption sits below the plot and must read as subordinate to the
+  # subtitle above it. The shared base style (.omni_marquee_style()) is
+  # larger and bold, so passing it straight through renders the secondary
+  # finding and source/N heavier than the subtitle - the reverse of the
+  # intended hierarchy. Regression: the fix for the finding_keyword color
+  # bug started passing the base style explicitly and silently took the
+  # caption's own size/weight/italic with it.
+  h <- omni_header(
+    primary = "Test finding",
+    finding = "A second point",
+    finding_keyword = "second"
+  )
+  base <- unclass(h[[2]]$plot.caption$style)[[1]]$base
+  expect_equal(base$size, 12)
+  expect_equal(base$weight, 400) # normal, not 700/bold
+  expect_true(base$italic)
+})
+
+test_that("theme_omni and omni_header agree on caption styling", {
+  # These two set plot.caption independently; they have drifted apart twice
+  # (once on color, once on size/weight). Same helper, same result.
+  expect_identical(
+    theme_omni()$plot.caption$style,
+    omni_header(primary = "x", finding = "y")[[2]]$plot.caption$style
+  )
+})
+
+test_that("the caption is left-aligned no matter which order the theme is applied in", {
+  # ggplot2 right-aligns captions by default. theme_omni() styled the
+  # caption's text but not its alignment, so source/N landed bottom-right
+  # via theme_omni() alone and bottom-left via omni_header() - the same
+  # chart differing on the order two lines were written in.
+  hdr <- omni_header(primary = "x", finding = "y", source = "s", n = 1)
+  base <- ggplot2::ggplot(mtcars, ggplot2::aes(wt, mpg)) + ggplot2::geom_point()
+
+  caption_hjust <- function(p) {
+    ggplot2::ggplot_build(p)$plot$theme$plot.caption$hjust
+  }
+
+  expect_equal(caption_hjust(base + theme_omni() + hdr), 0)
+  expect_equal(caption_hjust(base + hdr + theme_omni()), 0)
+  expect_equal(caption_hjust(base + theme_omni()), 0)
 })
 
 test_that("omni_header gives the eyebrow space above it and the measure space below it", {
@@ -69,6 +114,14 @@ test_that("omni_highlight_labels colors only matched labels", {
   out <- labeller(c("North", "South"))
   expect_match(out[1], omni_colors("teal-600"), fixed = TRUE)
   expect_equal(out[2], "South")
+})
+
+test_that("omni_highlight_labels requires color rather than defaulting it", {
+  # A default silently produced an orange-red axis label on a chart whose
+  # bars and title keyword were some other highlight color - a brand
+  # violation with nothing in the output to flag it, and invisible to
+  # anyone using a tool that generates the call for them.
+  expect_error(omni_highlight_labels("North"), "`color` is required")
 })
 
 test_that("omni_baseline returns a ggplot layer", {
