@@ -42,9 +42,15 @@ HTML & CSS that of the desired quote box
 
 ``` r
 
+quote_text <- paste0(
+  'This is a quote box. You can <highlight>change text color to ',
+  'highlight certain parts</highlight>, or just leave the text all ',
+  'white. Change the background color as desired to match the page.'
+)
+
 htmltools::browsable(
   quote_box_html(
-    text = 'This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',
+    text = quote_text,
     author = 'John Jacob, random guy',
     color = 'olive-green-600'
   )
@@ -59,7 +65,7 @@ htmltools::browsable(
 
 htmltools::browsable(
   quote_box_html(
-    text = 'This is a quote box. You can <highlight>change text color to highlight certain parts</highlight>, or just leave the text all white. Change the background color as desired to match the page.',
+    text = quote_text,
     author = 'John Jacob, random guy',
     color = 'periwinkle-600'
   )

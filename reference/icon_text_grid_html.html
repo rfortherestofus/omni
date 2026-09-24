@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">omni</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,19 +74,27 @@
 <span class="r-in"><span><span class="va">icon_color_fg</span> <span class="op">&lt;-</span> <span class="st">"white"</span></span></span>
 <span class="r-in"><span><span class="va">icon_color_bg</span> <span class="op">&lt;-</span> <span class="st">'teal-600'</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">text_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="st">'**71.9%:** Any person younger than 21 caught with or suspected of '</span>,</span></span>
+<span class="r-in"><span>  <span class="st">'consuming alcohol or marijuana is charged with Minor in Possession (MIP).'</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">text_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="st">'**69.8%:** Adults in Colorado who knowingly hep someone younger than 18 '</span>,</span></span>
+<span class="r-in"><span>  <span class="st">'break the law - which includes providing minors with alcohol or drubgs '</span>,</span></span>
+<span class="r-in"><span>  <span class="st">'- can be charged with a Class 4 felony.'</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">text_3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="st">'**34.4%:** It is legal for a person ages 18-20 to possess marijuana '</span>,</span></span>
+<span class="r-in"><span>  <span class="st">'with a medical marijuana card.'</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">icon_text_grid_html</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="omni_icon_html.html">omni_icon_html</a></span><span class="op">(</span><span class="st">'education'</span>, <span class="va">width_px</span>, <span class="va">icon_color_bg</span>, <span class="va">icon_color_fg</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  <span class="fu"><a href="icon_text_html.html">icon_text_html</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>    text <span class="op">=</span> <span class="st">'**71.9%:** Any person younger than 21 caught with or suspected of consuming alcohol or marijuana is charged with Minor in Possession (MIP).'</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="fu"><a href="icon_text_html.html">icon_text_html</a></span><span class="op">(</span>text <span class="op">=</span> <span class="va">text_1</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  <span class="fu"><a href="omni_icon_html.html">omni_icon_html</a></span><span class="op">(</span><span class="st">'security'</span>, <span class="va">width_px</span>, <span class="va">icon_color_bg</span>, <span class="va">icon_color_fg</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  <span class="fu"><a href="icon_text_html.html">icon_text_html</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>    <span class="st">'**69.8%:** Adults in Colorado who knowingly hep someone younger than 18 break the law - which includes providing minors with alcohol or drubgs - can be charged with a Class 4 felony.'</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="fu"><a href="icon_text_html.html">icon_text_html</a></span><span class="op">(</span><span class="va">text_2</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  <span class="fu"><a href="omni_icon_html.html">omni_icon_html</a></span><span class="op">(</span><span class="st">'vault'</span>, <span class="va">width_px</span>, <span class="va">icon_color_bg</span>, <span class="va">icon_color_fg</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  <span class="fu"><a href="icon_text_html.html">icon_text_html</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>    <span class="st">'**34.4%:** It is legal for a person ages 18-20 to possess marijuana with a medical marijuana card.'</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="fu"><a href="icon_text_html.html">icon_text_html</a></span><span class="op">(</span><span class="va">text_3</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  width_px <span class="op">=</span> <span class="va">width_px</span></span></span>
 <span class="r-in"><span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">htmltools</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/htmltools/reference/browsable.html" class="external-link">browsable</a></span><span class="op">(</span><span class="op">)</span></span></span>
