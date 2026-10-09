@@ -284,8 +284,8 @@ reduce_bottom_and_top_margin <- function(file) {
   css_lines <- readLines(file)
 
   css_lines <- gsub(
-    '  margin: 25mm 15mm;',
-    '  margin: 15mm 15mm;',
+    '  margin: 1in 1in;',
+    '  margin: 15mm 1in;',
     css_lines
   )
 

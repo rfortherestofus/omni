@@ -40,7 +40,7 @@ pdf_report(
 
 \item{remove_toc_page}{Whether to remove the TOC (table of content) page.}
 
-\item{reduce_margin_top_bottom}{Whether to reduce top and bottom margin. It will go from 25mm to 15mm in order to match left/right margin.}
+\item{reduce_margin_top_bottom}{Whether to reduce the top and bottom margin from 1in to 15mm, for space-constrained one-pagers. Left/right margins stay at 1in.}
 
 \item{use_csi_style}{Whether to use CSI (Center for Social Investment) styling. This basically change logos and text in the footer.}
 
