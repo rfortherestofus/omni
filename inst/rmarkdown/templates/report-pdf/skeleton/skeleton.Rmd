@@ -31,11 +31,19 @@ abstract: >
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(echo = FALSE, # TRUE If you want code to show in the knitted output
+                      warning = FALSE,
+                      message = FALSE, # TRUE if diagnostics and important messages should show
+                      dpi = 300,
+                      dev = "ragg_png")
+library(tidyverse)
+library(omni)
+library(scales)
+set_omni_defaults()
+omni_gray <- omni_colors("chart-gray")
 ```
 
 ```{r, results='asis'}
-library(omni)
 omni_set_page_start_pdf(start_from = 2, counter_start = 12)
 ```
 
@@ -296,7 +304,49 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
 
 ::: {.column width="44%"}
 
-![](https://images.unsplash.com/photo-1540479859555-17af45c78602?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+```{r fig.width=5, fig.height=4}
+completion_by_program <- tibble::tribble(
+  ~program_area,         ~n_completed, ~n_enrolled,
+  "Behavioral Health",   246,          300,
+  "Economic Security",   185,          250,
+  "Children & Families", 170,          250,
+  "Community Health",    122,          200,
+  "Justice",             108,          200
+) |>
+  mutate(pct = n_completed / n_enrolled)
+
+completion_by_program |>
+  mutate(program_area = fct_reorder(program_area, pct)) |>
+  mutate(highlight = if_else(program_area == "Behavioral Health", "Y", "N")) |>
+  ggplot(aes(x = pct, y = program_area, fill = highlight)) +
+  geom_col(width = 0.7) +
+  geom_text(
+    aes(label = percent(pct, accuracy = 1), color = highlight),
+    hjust = -0.25
+  ) +
+  scale_fill_manual(values = c("Y" = omni_colors("orange-red-600"), "N" = omni_gray)) +
+  scale_color_manual(values = c("Y" = omni_colors("orange-red-600"), "N" = omni_gray)) +
+  scale_y_discrete(labels = omni_highlight_labels("Behavioral Health", color = "orange-red-600")) +
+  scale_x_continuous(
+    limits = c(0, 1),
+    labels = label_percent(),
+    expand = expansion(mult = c(0, 0.05))
+  ) +
+  theme(
+    axis.text.x      = element_blank(),
+    axis.text.y.left = ggtext::element_markdown(colour = omni_gray)
+  ) +
+  omni_header(
+    top_header      = "PROGRAM COMPLETION · 2024",
+    keyword         = "Behavioral Health",
+    primary         = "Behavioral Health had the highest completion rate of any program area",
+    measure         = "Program completion rate by program area",
+    finding         = "Behavioral Health completed at 82% — nearly 30 points above Justice (54%).",
+    finding_keyword = "Behavioral Health",
+    source          = "2024 program participant survey",
+    n               = "1,204"
+  )
+```
 
 :::
 
