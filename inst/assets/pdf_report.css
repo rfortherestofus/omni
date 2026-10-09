@@ -20,10 +20,13 @@
   --background-cover-page: url("images/pattern-cover-periwinkle.png");
   --steel-blue-light: #bfcbd3;
   --display-the-cover-page: block;
-  --pagedjs-margin-top: 0mm;
-  --pagedjs-margin-right: 0mm;
-  --pagedjs-margin-bottom: 0mm;
-  --pagedjs-margin-left: 0mm;
+  /* Keep these equal to the @page margin below - the full-bleed cover/
+     page-break patterns use them (via calc()) to overshoot exactly far
+     enough to reach the page edge, whatever the margin is. */
+  --pagedjs-margin-top: 1in;
+  --pagedjs-margin-right: 1in;
+  --pagedjs-margin-bottom: 1in;
+  --pagedjs-margin-left: 1in;
 }
 
 * {
@@ -39,6 +42,10 @@
 
 @page {
   size: 8.5in 11in !important;
+  /* Keep this equal to --pagedjs-margin-top/right/bottom/left above - paged.js's
+     polyfill doesn't reliably resolve var() inside @page, so this margin can't
+     just reference them directly, but every full-bleed rule that depends on
+     the margin (cover, page breaks) does, via calc(). */
   margin: 1in 1in;
   background-color: var(--background-color);
   border-bottom: solid 1px var(--steel-blue-light);
@@ -115,8 +122,8 @@ h1.title {
 .cover-container {
   position: absolute;
   bottom: -12%;
-  left: -8%;
-  width: 116%;
+  left: calc(-1 * var(--pagedjs-margin-left));
+  width: calc(100% + var(--pagedjs-margin-left) + var(--pagedjs-margin-right));
   height: 60%;
   z-index: 1000; /* allow to go over margins */
 }
@@ -133,9 +140,9 @@ h1.title {
 .cover-page-full {
   position: absolute;
   top: -11%;
-  left: -8%;
+  left: calc(-1 * var(--pagedjs-margin-left));
   z-index: 1000; /* allow to go over margins */
-  width: 116%;
+  width: calc(100% + var(--pagedjs-margin-left) + var(--pagedjs-margin-right));
   height: 122%;
   background-image: url("images/pattern-01-yellow.png");
   background-size: cover;
@@ -730,9 +737,9 @@ hr {
 
 .pattern-appendix {
   position: absolute;
-  left: -9%;
+  left: calc(-1 * var(--pagedjs-margin-left));
   top: -33%;
-  width: 118%;
+  width: calc(100% + var(--pagedjs-margin-left) + var(--pagedjs-margin-right));
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
