@@ -155,10 +155,16 @@ quote_box_html <- function(
   # clears AA for one color isn't guaranteed to for another. Weight/underline
   # differentiates the phrase without touching color, so it inherits the same
   # white-on-600 contrast already used for the rest of the quote.
+  # `background: transparent` is required: pagedown::chrome_print() (headless
+  # Chrome's print-to-PDF) was found to paint a <span>'s unset background as
+  # opaque white instead of transparent, blacking out (whiting out) any
+  # highlighted phrase - reproduced with a completely bare, unstyled <span>,
+  # so it's a print-pipeline quirk, not something specific to font-weight or
+  # text-decoration.
   preprocessed_text <- text |>
     stringr::str_replace_all(
       stringr::fixed('<highlight>'),
-      '<span style="font-weight: 700; text-decoration: underline;">'
+      '<span style="font-weight: 700; text-decoration: underline; background: transparent;">'
     ) |>
     stringr::str_replace(
       stringr::fixed('</highlight>'),
@@ -382,10 +388,14 @@ callout_box_html <- function(
   width_textbox <- paste0(fixed_width_px, 'px')
 
   # convert highlight text to span tags  -----------------------------------------------
+  # `background: transparent` guards against the same chrome_print() print-pipeline
+  # bug documented in quote_box() - see the comment there. It's not visible here
+  # since the callout box background is already white, but a themed/non-white
+  # callout box would otherwise show the same white-out.
   preprocessed_text <- text |>
     stringr::str_replace_all(
       stringr::fixed('<highlight>'),
-      glue::glue('<span style="color:{color_hex};">')
+      glue::glue('<span style="color:{color_hex}; background: transparent;">')
     ) |>
     stringr::str_replace_all(
       stringr::fixed('</highlight>'),

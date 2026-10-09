@@ -284,8 +284,8 @@ reduce_bottom_and_top_margin <- function(file) {
   css_lines <- readLines(file)
 
   css_lines <- gsub(
-    '  margin: 25mm 15mm;',
-    '  margin: 15mm 15mm;',
+    '  margin: 1in 1in;',
+    '  margin: 15mm 1in;',
     css_lines
   )
 
@@ -338,4 +338,69 @@ hide_acknowledgement_section <- function(file) {
   temp_css <- file.path(dirname(file), "temp.css")
   writeLines(css_lines, temp_css)
   return(temp_css)
+}
+
+#' Set an explicit running footer title
+#'
+#' @description
+#' Point the running footer string at a dedicated element instead of the
+#' report title. paged.js only supports `content(text)` in `string-set`, so a
+#' literal string cannot be used; `pdf_report()` pairs this with a hidden
+#' carrier element emitted at the top of the body.
+#'
+#' @param file CSS file path
+#'
+#' @keywords internal
+set_footer_title <- function(file) {
+  css_lines <- readLines(file)
+
+  css_lines <- gsub(
+    "  string-set: h1-title content(text);",
+    "  string-set: none; /* footer title comes from .footer-title */",
+    css_lines,
+    fixed = TRUE
+  )
+
+  css_lines <- c(
+    css_lines,
+    "",
+    ".footer-title {",
+    "  string-set: h1-title content(text);",
+    "  height: 0;",
+    "  overflow: hidden;",
+    "  font-size: 0;",
+    "  line-height: 0;",
+    "  color: transparent;",
+    "}"
+  )
+
+  temp_css <- file.path(dirname(file), "temp.css")
+  writeLines(css_lines, temp_css)
+  return(temp_css)
+}
+
+#' Build the hidden element that carries the running footer title
+#'
+#' @param footer_title Title to use in the running footer
+#'
+#' @keywords internal
+footer_title_include <- function(footer_title) {
+  footer_title <- as.character(footer_title)
+
+  if (length(footer_title) != 1 || is.na(footer_title)) {
+    cli::cli_abort("{.arg footer_title} must be a single string.")
+  }
+
+  file <- tempfile(fileext = ".html")
+
+  writeLines(
+    paste0(
+      '<div class="footer-title">',
+      htmltools::htmlEscape(footer_title),
+      "</div>"
+    ),
+    file
+  )
+
+  return(file)
 }
