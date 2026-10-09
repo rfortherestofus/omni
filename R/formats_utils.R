@@ -1,3 +1,51 @@
+#' Copy a package stylesheet to a private, per-render tempfile
+#'
+#' @description
+#' `pdf_report()`/`html_report()` used to hand every helper below
+#' (`change_fonts()`, `change_colors()`, ...) the stylesheet's path *inside
+#' the installed package*, and each one overwrote a shared `assets/temp.css`
+#' there. Two renders building a format at the same time - on a shared
+#' library, or just two overlapping Knits - would clobber each other's
+#' file, and the installed package's directory may not even be writable (a
+#' site library, an renv cache). Routing every render through its own
+#' `tempfile()` first avoids both problems.
+#'
+#' @param file Path to the package's own copy of the stylesheet
+#'
+#' @keywords internal
+isolate_css_for_render <- function(file) {
+  private_css <- tempfile(fileext = ".css")
+  file.copy(file, private_css, overwrite = TRUE)
+  private_css
+}
+
+#' Make a stylesheet's relative image references resolve from anywhere
+#'
+#' @description
+#' The package's CSS references its images with a path relative to its own
+#' location (e.g. `url("images/logo.png")`). Once the stylesheet has been
+#' copied out to a `tempfile()` (see [isolate_css_for_render()]), that
+#' relative path no longer resolves, since the images don't live next to
+#' it. Rewrite it to an absolute path to the package's real `images/`
+#' directory instead.
+#'
+#' @param file CSS file path (already a private, per-render file)
+#'
+#' @keywords internal
+absolutize_image_urls <- function(file) {
+  css_lines <- readLines(file)
+
+  images_dir <- normalizePath(pkg_resource("images"), winslash = "/")
+  css_lines <- gsub(
+    'url\\("images/',
+    paste0('url("', images_dir, '/'),
+    css_lines
+  )
+
+  writeLines(css_lines, file)
+  file
+}
+
 #' Remove logo files in CSS
 #'
 #' @param file CSS file path
@@ -18,9 +66,11 @@ remove_logo <- function(file) {
     css_lines
   )
 
-  temp_css <- file.path(dirname(file), "temp.css")
-  writeLines(css_lines, temp_css)
-  return(temp_css)
+  # Overwrite in place: by the time any of these helpers run, `file` is
+  # already a private per-render tempfile (see pdf_report()/html_report()),
+  # not the shared path inside the installed package.
+  writeLines(css_lines, file)
+  return(file)
 }
 
 #' Remove logo files in CSS
@@ -69,9 +119,11 @@ change_background_image <- function(file, background_cover_image) {
     )
   }
 
-  temp_css <- file.path(dirname(file), "temp.css")
-  writeLines(css_lines, temp_css)
-  return(temp_css)
+  # Overwrite in place: by the time any of these helpers run, `file` is
+  # already a private per-render tempfile (see pdf_report()/html_report()),
+  # not the shared path inside the installed package.
+  writeLines(css_lines, file)
+  return(file)
 }
 
 #' Change main colors in CSS
@@ -104,9 +156,11 @@ change_colors <- function(
     )
   }
 
-  temp_css <- file.path(dirname(file), "temp.css")
-  writeLines(css_lines, temp_css)
-  return(temp_css)
+  # Overwrite in place: by the time any of these helpers run, `file` is
+  # already a private per-render tempfile (see pdf_report()/html_report()),
+  # not the shared path inside the installed package.
+  writeLines(css_lines, file)
+  return(file)
 }
 
 #' Change main fonts in CSS
@@ -144,9 +198,11 @@ change_fonts <- function(
     )
   }
 
-  temp_css <- file.path(dirname(file), "temp.css")
-  writeLines(css_lines, temp_css)
-  return(temp_css)
+  # Overwrite in place: by the time any of these helpers run, `file` is
+  # already a private per-render tempfile (see pdf_report()/html_report()),
+  # not the shared path inside the installed package.
+  writeLines(css_lines, file)
+  return(file)
 }
 
 #' Add CSS rule to hide .logo class
@@ -160,9 +216,11 @@ add_hide_logo_css <- function(file) {
   rule <- '.logo {\n  display: none !important;\n}'
   css_lines <- c(css_lines, "", rule)
 
-  temp_css <- file.path(dirname(file), "temp.css")
-  writeLines(css_lines, temp_css)
-  return(temp_css)
+  # Overwrite in place: by the time any of these helpers run, `file` is
+  # already a private per-render tempfile (see pdf_report()/html_report()),
+  # not the shared path inside the installed package.
+  writeLines(css_lines, file)
+  return(file)
 }
 
 #' Use the CSI style in PDF report
@@ -213,9 +271,11 @@ change_to_csi_style_pdf <- function(file) {
     css_lines
   )
 
-  temp_css <- file.path(dirname(file), "temp.css")
-  writeLines(css_lines, temp_css)
-  return(temp_css)
+  # Overwrite in place: by the time any of these helpers run, `file` is
+  # already a private per-render tempfile (see pdf_report()/html_report()),
+  # not the shared path inside the installed package.
+  writeLines(css_lines, file)
+  return(file)
 }
 
 #' Use the CSI style in HTML report
@@ -240,9 +300,11 @@ change_to_csi_style_html <- function(file) {
     css_lines
   )
 
-  temp_css <- file.path(dirname(file), "temp.css")
-  writeLines(css_lines, temp_css)
-  return(temp_css)
+  # Overwrite in place: by the time any of these helpers run, `file` is
+  # already a private per-render tempfile (see pdf_report()/html_report()),
+  # not the shared path inside the installed package.
+  writeLines(css_lines, file)
+  return(file)
 }
 
 #' @title Set the page counter in Omni pdf reports
@@ -289,9 +351,11 @@ reduce_bottom_and_top_margin <- function(file) {
     css_lines
   )
 
-  temp_css <- file.path(dirname(file), "temp.css")
-  writeLines(css_lines, temp_css)
-  return(temp_css)
+  # Overwrite in place: by the time any of these helpers run, `file` is
+  # already a private per-render tempfile (see pdf_report()/html_report()),
+  # not the shared path inside the installed package.
+  writeLines(css_lines, file)
+  return(file)
 }
 
 #' Set the copyright year in an HTML report footer
@@ -335,9 +399,11 @@ hide_acknowledgement_section <- function(file) {
     fixed = TRUE
   )
 
-  temp_css <- file.path(dirname(file), "temp.css")
-  writeLines(css_lines, temp_css)
-  return(temp_css)
+  # Overwrite in place: by the time any of these helpers run, `file` is
+  # already a private per-render tempfile (see pdf_report()/html_report()),
+  # not the shared path inside the installed package.
+  writeLines(css_lines, file)
+  return(file)
 }
 
 #' Set an explicit running footer title
@@ -374,9 +440,11 @@ set_footer_title <- function(file) {
     "}"
   )
 
-  temp_css <- file.path(dirname(file), "temp.css")
-  writeLines(css_lines, temp_css)
-  return(temp_css)
+  # Overwrite in place: by the time any of these helpers run, `file` is
+  # already a private per-render tempfile (see pdf_report()/html_report()),
+  # not the shared path inside the installed package.
+  writeLines(css_lines, file)
+  return(file)
 }
 
 #' Build the hidden element that carries the running footer title

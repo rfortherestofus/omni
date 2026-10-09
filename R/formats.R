@@ -67,7 +67,7 @@ pdf_report <- function(
   footer_title = NULL,
   ...
 ) {
-  css_file <- pkg_resource("pdf_report.css")
+  css_file <- isolate_css_for_render(pkg_resource("pdf_report.css"))
   colors <- pkg_resource("colors.css")
   interface_css <- pkg_resource("interface.css")
   custom_js <- c(pkg_resource("pdf_report_js.html"))
@@ -133,6 +133,8 @@ pdf_report <- function(
     before_body <- footer_title_include(footer_title)
   }
 
+  css_file <- absolutize_image_urls(css_file)
+
   bookdown::html_document2(
     base_format = pagedown::html_paged,
     number_sections = FALSE,
@@ -167,7 +169,7 @@ html_report <- function(
   use_csi_style = FALSE,
   ...
 ) {
-  css_file <- pkg_resource("html_report.css")
+  css_file <- isolate_css_for_render(pkg_resource("html_report.css"))
   colors <- pkg_resource("colors.css")
 
   if (use_csi_style) {
@@ -198,6 +200,8 @@ html_report <- function(
   if (use_csi_style) {
     css_file <- change_to_csi_style_html(file = css_file)
   }
+
+  css_file <- absolutize_image_urls(css_file)
 
   bookdown::html_document2(
     base_format = rmarkdown::html_document,
