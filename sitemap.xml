@@ -25,6 +25,7 @@
 <url><loc>https://rfortherestofus.github.io/omni/reference/change_to_csi_style_pdf.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/create_report.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/create_website.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/footer_title_include.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/ggplot_defaults.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/hide_acknowledgement_section.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/html_report.html</loc></url>
@@ -47,6 +48,7 @@
 <url><loc>https://rfortherestofus.github.io/omni/reference/omni_icon_html.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/omni_icon_typst.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/omni_icons.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/omni_meta.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/omni_page_break.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/omni_pal.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/omni_set_page_start_pdf.html</loc></url>
@@ -74,6 +76,7 @@
 <url><loc>https://rfortherestofus.github.io/omni/reference/scale_fill_omni_continuous.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/scale_fill_omni_discrete.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/set_client_defaults.html</loc></url>
+<url><loc>https://rfortherestofus.github.io/omni/reference/set_footer_title.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/set_footer_year.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/set_omni_defaults.html</loc></url>
 <url><loc>https://rfortherestofus.github.io/omni/reference/theme_client.html</loc></url>

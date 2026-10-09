@@ -52,6 +52,7 @@
 <span>  reduce_margin_top_bottom <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  use_csi_style <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  hide_acknowledgement <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  footer_title <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -97,7 +98,7 @@
 
 
 <dt id="arg-reduce-margin-top-bottom">reduce_margin_top_bottom<a class="anchor" aria-label="anchor" href="#arg-reduce-margin-top-bottom"></a></dt>
-<dd><p>Whether to reduce top and bottom margin. It will go from 25mm to 15mm in order to match left/right margin.</p></dd>
+<dd><p>Whether to reduce the top and bottom margin from 1in to 15mm, for space-constrained one-pagers. Left/right margins stay at 1in.</p></dd>
 
 
 <dt id="arg-use-csi-style">use_csi_style<a class="anchor" aria-label="anchor" href="#arg-use-csi-style"></a></dt>
@@ -106,6 +107,13 @@
 
 <dt id="arg-hide-acknowledgement">hide_acknowledgement<a class="anchor" aria-label="anchor" href="#arg-hide-acknowledgement"></a></dt>
 <dd><p>Whether to remove the acknowledgement section.</p></dd>
+
+
+<dt id="arg-footer-title">footer_title<a class="anchor" aria-label="anchor" href="#arg-footer-title"></a></dt>
+<dd><p>Title to show in the running footer, when the report
+title is too long to fit there. Defaults to `NULL`, which uses the report
+title. A title that does not fit the footer is truncated with an ellipsis,
+so set this for reports whose title runs past roughly 53 characters.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>

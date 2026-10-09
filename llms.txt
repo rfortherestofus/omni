@@ -106,6 +106,8 @@ remotes::install_github("rfortherestofus/omni", force = TRUE, ref = "old")
   : Get one of the pre-defined Omni icons (Typst)
 - [`omni_icons()`](https://rfortherestofus.github.io/omni/reference/omni_icons.md)
   : List all available Omni icons
+- [`omni_meta()`](https://rfortherestofus.github.io/omni/reference/omni_meta.md)
+  : Get a YAML metadata field, with inline R code evaluated
 - [`omni_page_break()`](https://rfortherestofus.github.io/omni/reference/omni_page_break.md)
   : Create page break
 - [`omni_pal()`](https://rfortherestofus.github.io/omni/reference/omni_pal.md)

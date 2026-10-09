@@ -38,6 +38,23 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.1.0" id="omni-110">omni 1.1.0<a class="anchor" aria-label="anchor" href="#omni-110"></a></h2>
 <div class="section level3">
+<h3 id="pdf-report-running-footer-1-1-0">PDF report running footer<a class="anchor" aria-label="anchor" href="#pdf-report-running-footer-1-1-0"></a></h3>
+<ul><li><p>A long report title no longer costs you the page number. paged.js sizes the bottom margin boxes from their content, so a running title wide enough to overrun its track pushed <code>@bottom-right</code> off the page: at roughly 53 characters the page number slid into the trim margin, and past about 68 it disappeared altogether while the title itself ran off the paper. The centre box is now clamped to the width it already occupied, so every title that fit before is positioned exactly as before - measured at 1pt - and only titles that would have overflowed are truncated with an ellipsis.</p></li>
+<li>
+<p>New <code>footer_title</code> argument to <code><a href="../reference/pdf_report.html">pdf_report()</a></code>, for reports whose title is too long for the footer and would otherwise be truncated. Set it in the YAML for a one-off report, or pass it through <code>output_options</code> when rendering the same template once per site:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html" class="external-link">render</a></span><span class="op">(</span></span>
+<span>  <span class="st">"template.Rmd"</span>,</span>
+<span>  params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>site <span class="op">=</span> <span class="st">"Adams"</span><span class="op">)</span>,</span>
+<span>  output_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>footer_title <span class="op">=</span> <span class="st">"Adams County No Wrong Door Evaluation"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+</li>
+</ul></div>
+<div class="section level3">
+<h3 id="pdf-report-cover-page-1-1-0">PDF report cover page<a class="anchor" aria-label="anchor" href="#pdf-report-cover-page-1-1-0"></a></h3>
+<ul><li>The title page and running footer now show the real title when the title is built from inline R code, such as a <code>title</code> that switches on <code>params$site</code>. <code>abstract.Rmd</code> read <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/metadata.html" class="external-link">rmarkdown::metadata</a></code>, which returns the YAML front matter exactly as written, so the inline code was passed through to the cover page as literal text and the <code>@bottom-center</code> footer - which takes its string from <code>h1.title</code> - inherited it. It now reads the metadata through the new <code><a href="../reference/omni_meta.html">omni_meta()</a></code> helper, which evaluates any inline code first. This mostly affects templates rendered once per site from an iteration script.</li>
+</ul></div>
+<div class="section level3">
 <h3 id="ggplot-color-scales-1-1-0">ggplot color scales<a class="anchor" aria-label="anchor" href="#ggplot-color-scales-1-1-0"></a></h3>
 <ul><li>
 <code><a href="../reference/scale_fill_omni_discrete.html">scale_fill_omni_discrete()</a></code> and <code><a href="../reference/scale_color_omni_discrete.html">scale_color_omni_discrete()</a></code> now use the first <em>k</em> palette colors for <em>k</em> categories instead of interpolating <em>k</em> colors across the five-color ramp. Categorical charts get the exact brand colors at every count (three categories are periwinkle, orange-red and plum; four add olive-green), and the scale errors clearly when more categories than palette colors are requested (<a href="https://github.com/rfortherestofus/omni/issues/242" class="external-link">#242</a>).</li>

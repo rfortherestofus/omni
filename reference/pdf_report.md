@@ -18,6 +18,7 @@ pdf_report(
   reduce_margin_top_bottom = FALSE,
   use_csi_style = FALSE,
   hide_acknowledgement = FALSE,
+  footer_title = NULL,
   ...
 )
 ```
@@ -64,8 +65,8 @@ pdf_report(
 
 - reduce_margin_top_bottom:
 
-  Whether to reduce top and bottom margin. It will go from 25mm to 15mm
-  in order to match left/right margin.
+  Whether to reduce the top and bottom margin from 1in to 15mm, for
+  space-constrained one-pagers. Left/right margins stay at 1in.
 
 - use_csi_style:
 
@@ -75,6 +76,13 @@ pdf_report(
 - hide_acknowledgement:
 
   Whether to remove the acknowledgement section.
+
+- footer_title:
+
+  Title to show in the running footer, when the report title is too long
+  to fit there. Defaults to \`NULL\`, which uses the report title. A
+  title that does not fit the footer is truncated with an ellipsis, so
+  set this for reports whose title runs past roughly 53 characters.
 
 - ...:
 
