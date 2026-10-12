@@ -77,7 +77,6 @@ format:
 | `contact-email`     | "For More Information:" mailto link                                  | `projects@omni.org`       |
 | `acknowledgements`  | Names thanked on the title page (supports markdown, e.g. `**bold**`) | none                      |
 | `report-year`       | Year used in the suggested citation                                  | none                      |
-| `report-date`       | Date shown verbatim on the cover page (set it top-level, see below)  | none                      |
 
 `title` and `subtitle` are standard Quarto document metadata (not `omni_report-typst` options), rendered on the cover page below the organization label. `secondary-subtitle` is another standard top-level field — an optional second line shown below a divider, under `subtitle`, on the cover page:
 
@@ -100,13 +99,17 @@ above, with a `pattern-cover-` prefix instead of `pattern-`:
 - `pattern-cover-07-olive`
 - `pattern-cover-08-plum`
 
-`report-date` is shown verbatim on the cover page. Unlike Quarto's
-standard `date` field, it is never parsed or reformatted, so write it the
-way it should appear. Set it as a top-level field so inline R code gets
-evaluated, e.g.:
+The cover page's date comes from Quarto's standard top-level `date` field,
+shown as-is (the Typst template displays it directly, uppercased, in a
+monospaced font - it does not parse or reformat it). Pandoc always hands
+this value to Typst as content rather than a plain string, which rules out
+R's inline `` `r ...` `` code in a qmd's YAML (Quarto doesn't evaluate it
+there, unlike an `.Rmd`'s front matter) - use `date: today` with a
+`date-format`, Quarto's own mechanism for a self-updating date, instead:
 
 ```yaml
-report-date: "`r toupper(format(Sys.Date(), '%B %Y'))`"
+date: today
+date-format: "MMMM YYYY"
 ```
 
 A running footer (small logo, "{organization-name} Report | {title}", page
