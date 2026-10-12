@@ -71,10 +71,13 @@
       #image(cover-pattern, width: 100%, height: pattern-height, fit: "stretch")
     ],
   )[
-    #let date-str = str(date)
-    #let parts = date-str.split("-").map(int)
-    #let d = datetime(year: parts.at(0), month: parts.at(1), day: parts.at(2))
-    #let display-date = d.display("[month repr:long] [year]")
+    // `date` arrives from Pandoc/Quarto as Typst content, never a plain
+    // string - str(date) always fails ("expected ... string, found
+    // content"), regardless of what the YAML `date:` value actually is.
+    // Quarto has already formatted it (see `date-format` in template.qmd);
+    // just display it as-is instead of trying to re-parse it as an ISO
+    // date here.
+    #let display-date = date
     #context {
       // Everything above the pattern must fit between the top margin and
       // where the pattern starts, since a taller logo (e.g. CSI's) would
